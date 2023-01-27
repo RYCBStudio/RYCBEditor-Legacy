@@ -3,6 +3,7 @@ using ICSharpCode.AvalonEdit.Document;
 using ICSharpCode.AvalonEdit.Editing;
 using IDE.Properties;
 using System;
+using System.Linq;
 using System.Windows;
 using System.Windows.Interop;
 using System.Windows.Media;
@@ -19,6 +20,22 @@ namespace IDE
             this.Text = text;
             this._type = type;
             this.Description = desc;
+        }
+
+        public RYCBCodeSense(string text, CodeSenseType type)
+        {
+            if (type == CodeSenseType.KEYWORD)
+            {
+                this.Text = text;
+                this._type = type;
+                this.Description = $"{text} 关键字";
+            }
+            else
+            {
+                this.Text = text;
+                this._type = type;
+                this.Description = "";
+            }
         }
 
         public ImageSource Image => _type switch
@@ -39,7 +56,36 @@ namespace IDE
 
         public void Complete(TextArea textArea, ISegment completionSegment, EventArgs insertionRequestEventArgs)
         {
+            textArea.Document.Remove(completionSegment);
             textArea.Document.Replace(completionSegment, Text);
+        }
+    }
+    internal class CodeAnalyser
+    {
+        private string[] tmpStringTables;
+        internal CodeAnalyser(TextArea textArea)
+        {
+            if ((textArea.Document.Text.Contains("def")) | textArea.Document.Text.Contains("定义"))
+            {
+                tmpStringTables = textArea.Document.Text.Split('\n', ' ');
+            }
+        }
+
+        internal string[] GetFunctions()
+        {
+            string[] retList = { };
+            if (tmpStringTables.Length != 0)
+            {
+                for (int i = 0; i < tmpStringTables.Length; i++)
+                {
+                    var _ = tmpStringTables[i];
+                    if (_.Contains("def") | _.Contains("定义"))
+                    {
+                        retList.Append(tmpStringTables[i + 1]);
+                    }
+                }
+            }
+            return retList.Length != 0 ? retList : new string[] { "bbb" };
         }
     }
 }

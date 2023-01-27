@@ -195,9 +195,6 @@
     <Reference Include="Microsoft.VisualStudio.CoreUtility, Version=17.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a, processorArchitecture=MSIL">
       <HintPath>packages\Microsoft.VisualStudio.CoreUtility.17.3.198\lib\net472\Microsoft.VisualStudio.CoreUtility.dll</HintPath>
     </Reference>
-    <Reference Include="Microsoft.VisualStudio.Editor, Version=17.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a, processorArchitecture=MSIL">
-      <HintPath>packages\Microsoft.VisualStudio.Editor.17.3.198\lib\net472\Microsoft.VisualStudio.Editor.dll</HintPath>
-    </Reference>
     <Reference Include="Microsoft.VisualStudio.GraphModel, Version=17.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a, processorArchitecture=MSIL">
       <HintPath>packages\Microsoft.VisualStudio.GraphModel.17.3.32804.24\lib\net472\Microsoft.VisualStudio.GraphModel.dll</HintPath>
     </Reference>
@@ -281,9 +278,6 @@
     </Reference>
     <Reference Include="SharpConfig, Version=3.2.9.1, Culture=neutral, processorArchitecture=MSIL">
       <HintPath>packages\SharpConfig.3.2.9.1\lib\net461\SharpConfig.dll</HintPath>
-    </Reference>
-    <Reference Include="Sharprompt, Version=2.4.5.0, Culture=neutral, processorArchitecture=MSIL">
-      <HintPath>packages\Sharprompt.2.4.5\lib\netstandard2.0\Sharprompt.dll</HintPath>
     </Reference>
     <Reference Include="StreamJsonRpc, Version=2.12.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a, processorArchitecture=MSIL">
       <HintPath>packages\StreamJsonRpc.2.12.27\lib\netstandard2.0\StreamJsonRpc.dll</HintPath>

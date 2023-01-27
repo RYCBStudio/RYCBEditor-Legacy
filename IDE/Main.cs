@@ -20,6 +20,7 @@ using SharpConfig;
 using Microsoft.VisualStudio.Shell;
 using ICSharpCode.AvalonEdit.CodeCompletion;
 using System.Windows.Input;
+using System.Collections.Generic;
 #endregion
 
 namespace IDE
@@ -55,7 +56,7 @@ namespace IDE
         public Main()
         {
             ExecuteCMDWithOutput("mkdir " + Environment.GetFolderPath(Environment.SpecialFolder.ApplicationData) + "\\RYCB\\IDE\\protect", "cmd", "/s /c");
-            keepFile = new StreamWriter(new FileStream(Environment.GetFolderPath(Environment.SpecialFolder.ApplicationData)+"\\RYCB\\IDE\\protect\\.KEEP", FileMode.OpenOrCreate, FileAccess.ReadWrite, FileShare.ReadWrite), Encoding.UTF8);
+            keepFile = new StreamWriter(new FileStream(Environment.GetFolderPath(Environment.SpecialFolder.ApplicationData) + "\\RYCB\\IDE\\protect\\.KEEP", FileMode.OpenOrCreate, FileAccess.ReadWrite, FileShare.ReadWrite), Encoding.UTF8);
             stopwatch.Start();
             Entry splash = new();
             splash.Show();
@@ -113,6 +114,7 @@ namespace IDE
                 Foreground = new SolidColorBrush(System.Windows.Media.Color.FromRgb(0xA9, 0xB7, 0xC6)),
                 ShowLineNumbers = true,
             };
+            edit.TextArea.TextEntered += new TextCompositionEventHandler(this.TextAreaOnTextEntered);
             elementHost1.Child = edit;
             text_tsl2 = toolStripStatusLabel2.Text;
             //快速搜索功能
@@ -875,10 +877,10 @@ namespace IDE
             LOGGER.WriteLog("已询问退出，返回值：" + dRes, EnumMsgLevel.INFO, EnumPort.CLIENT, EnumModule.MAIN);
             if (dRes == DialogResult.Yes)
             {
-                e.Cancel = false;
                 LOGGER.WriteLog("Stopping!", EnumMsgLevel.INFO, EnumPort.CLIENT, EnumModule.MAIN);
                 keepFile.WriteLine(long.MaxValue);
                 keepFile.Close();
+                e.Cancel = false;
             }
         }
         #endregion
@@ -930,20 +932,342 @@ namespace IDE
             catch { }
         }
         #endregion
+        #region 代码提示
         private CompletionWindow _codeSense;
         private void TextAreaOnTextEntered(object sender, TextCompositionEventArgs e)
         {
-            if (e.Text == "a")
+            #region 关键字
+            if (e.Text.ToLower() == "a")
             {
-                _codeSense = new CompletionWindow(edit.TextArea);
-
+                _codeSense = new CompletionWindow(edit.TextArea)
+                {
+                    Background = Brushes.Black,
+                    Foreground = Brushes.White,
+                };
                 var completionData = _codeSense.CompletionList.CompletionData;
-                completionData.Add(new RYCBCodeSense("and", CodeSenseType.KEYWORD, "and 关键字"));
+                completionData.Add(new RYCBCodeSense("and", CodeSenseType.KEYWORD));
+                completionData.Add(new RYCBCodeSense("as", CodeSenseType.KEYWORD));
+                completionData.Add(new RYCBCodeSense("assert", CodeSenseType.KEYWORD));
+                completionData.Add(new RYCBCodeSense("async", CodeSenseType.KEYWORD));
+                completionData.Add(new RYCBCodeSense("await", CodeSenseType.KEYWORD));
                 _codeSense.Show();
-
                 _codeSense.Closed += (o, args) => _codeSense = null;
             }
+            else if (e.Text.ToLower() == "b")
+            {
+                _codeSense = new CompletionWindow(edit.TextArea)
+                {
+                    Background = Brushes.Black,
+                    Foreground = Brushes.White,
+                };
+                var completionData = _codeSense.CompletionList.CompletionData;
+                completionData.Add(new RYCBCodeSense("break", CodeSenseType.KEYWORD));
+                completionData.Add(new RYCBCodeSense("捕获", CodeSenseType.KEYWORD));
+                completionData.Add(new RYCBCodeSense("捕获异常", CodeSenseType.KEYWORD));
+                completionData.Add(new RYCBCodeSense("遍历", CodeSenseType.KEYWORD));
+                completionData.Add(new RYCBCodeSense("不是", CodeSenseType.KEYWORD));
+                completionData.Add(new RYCBCodeSense("不", CodeSenseType.KEYWORD));
+                _codeSense.Show();
+                _codeSense.Closed += (o, args) => _codeSense = null;
+            }
+            else if (e.Text.ToLower() == "c")
+            {
+                _codeSense = new CompletionWindow(edit.TextArea)
+                {
+                    Background = Brushes.Black,
+                    Foreground = Brushes.White,
+                };
+                var completionData = _codeSense.CompletionList.CompletionData;
+                completionData.Add(new RYCBCodeSense("continue", CodeSenseType.KEYWORD));
+                completionData.Add(new RYCBCodeSense("class", CodeSenseType.KEYWORD));
+                completionData.Add(new RYCBCodeSense("尝试运行", CodeSenseType.KEYWORD));
+                completionData.Add(new RYCBCodeSense("尝试", CodeSenseType.KEYWORD));
+                completionData.Add(new RYCBCodeSense("抽象资源处理逻辑", CodeSenseType.KEYWORD));
+                completionData.Add(new RYCBCodeSense("抽象处理逻辑", CodeSenseType.KEYWORD));
+                completionData.Add(new RYCBCodeSense("抽象", CodeSenseType.KEYWORD));
+                _codeSense.Show();
+                _codeSense.Closed += (o, args) => _codeSense = null;
+            }
+            else if (e.Text.ToLower() == "d")
+            {
+                _codeSense = new CompletionWindow(edit.TextArea)
+                {
+                    Background = Brushes.Black,
+                    Foreground = Brushes.White,
+                };
+                var completionData = _codeSense.CompletionList.CompletionData;
+                completionData.Add(new RYCBCodeSense("当", CodeSenseType.KEYWORD));
+                completionData.Add(new RYCBCodeSense("定义", CodeSenseType.KEYWORD));
+                completionData.Add(new RYCBCodeSense("定义方法", CodeSenseType.KEYWORD));
+                completionData.Add(new RYCBCodeSense("定义函数", CodeSenseType.KEYWORD));
+                completionData.Add(new RYCBCodeSense("打断循环", CodeSenseType.KEYWORD));
+                completionData.Add(new RYCBCodeSense("等候", CodeSenseType.KEYWORD));
+                completionData.Add(new RYCBCodeSense("等待", CodeSenseType.KEYWORD));
+                completionData.Add(new RYCBCodeSense("断言", CodeSenseType.KEYWORD));
+                completionData.Add(new RYCBCodeSense("当作", CodeSenseType.KEYWORD));
+                completionData.Add(new RYCBCodeSense("def", CodeSenseType.KEYWORD));
+                completionData.Add(new RYCBCodeSense("del", CodeSenseType.KEYWORD));
+                _codeSense.Show();
+                _codeSense.Closed += (o, args) => _codeSense = null;
+            }
+            else if (e.Text.ToLower() == "e")
+            {
+                _codeSense = new CompletionWindow(edit.TextArea)
+                {
+                    Background = Brushes.Black,
+                    Foreground = Brushes.White,
+                };
+                var completionData = _codeSense.CompletionList.CompletionData;
+                completionData.Add(new RYCBCodeSense("elif", CodeSenseType.KEYWORD));
+                completionData.Add(new RYCBCodeSense("else", CodeSenseType.KEYWORD));
+                completionData.Add(new RYCBCodeSense("except", CodeSenseType.KEYWORD));
+                _codeSense.Show();
+                _codeSense.Closed += (o, args) => _codeSense = null;
+            }
+            else if (e.Text.ToLower() == "f")
+            {
+                _codeSense = new CompletionWindow(edit.TextArea)
+                {
+                    Background = Brushes.Black,
+                    Foreground = Brushes.White,
+                };
+                var completionData = _codeSense.CompletionList.CompletionData;
+                completionData.Add(new RYCBCodeSense("finally", CodeSenseType.KEYWORD));
+                completionData.Add(new RYCBCodeSense("for", CodeSenseType.KEYWORD));
+                completionData.Add(new RYCBCodeSense("from", CodeSenseType.KEYWORD));
+                completionData.Add(new RYCBCodeSense("否则", CodeSenseType.KEYWORD));
+                completionData.Add(new RYCBCodeSense("否则如果", CodeSenseType.KEYWORD));
+                completionData.Add(new RYCBCodeSense("非本地变量", CodeSenseType.KEYWORD));
+                completionData.Add(new RYCBCodeSense("非本地化变量", CodeSenseType.KEYWORD));
+                _codeSense.Show();
+                _codeSense.Closed += (o, args) => _codeSense = null;
+            }
+            else if (e.Text.ToLower() == "g")
+            {
+                _codeSense = new CompletionWindow(edit.TextArea)
+                {
+                    Background = Brushes.Black,
+                    Foreground = Brushes.White,
+                };
+                var completionData = _codeSense.CompletionList.CompletionData;
+                completionData.Add(new RYCBCodeSense("global", CodeSenseType.KEYWORD));
+                _codeSense.Show();
+                _codeSense.Closed += (o, args) => _codeSense = null;
+            }
+            else if (e.Text.ToLower() == "h")
+            {
+                _codeSense = new CompletionWindow(edit.TextArea)
+                {
+                    Background = Brushes.Black,
+                    Foreground = Brushes.White,
+                };
+                var completionData = _codeSense.CompletionList.CompletionData;
+                completionData.Add(new RYCBCodeSense("或", CodeSenseType.KEYWORD));
+                completionData.Add(new RYCBCodeSense("或者", CodeSenseType.KEYWORD));
+                _codeSense.Show();
+                _codeSense.Closed += (o, args) => _codeSense = null;
+            }
+            else if (e.Text.ToLower() == "i")
+            {
+                _codeSense = new CompletionWindow(edit.TextArea)
+                {
+                    Background = Brushes.Black,
+                    Foreground = Brushes.White,
+                };
+                var completionData = _codeSense.CompletionList.CompletionData;
+                completionData.Add(new RYCBCodeSense("if", CodeSenseType.KEYWORD));
+                completionData.Add(new RYCBCodeSense("import", CodeSenseType.KEYWORD));
+                completionData.Add(new RYCBCodeSense("in", CodeSenseType.KEYWORD));
+                completionData.Add(new RYCBCodeSense("is", CodeSenseType.KEYWORD));
+                _codeSense.Show();
+                _codeSense.Closed += (o, args) => _codeSense = null;
+            }
+            else if (e.Text.ToLower() == "j")
+            {
+                _codeSense = new CompletionWindow(edit.TextArea)
+                {
+                    Background = Brushes.Black,
+                    Foreground = Brushes.White,
+                };
+                var completionData = _codeSense.CompletionList.CompletionData;
+                completionData.Add(new RYCBCodeSense("假", CodeSenseType.KEYWORD));
+                _codeSense.Show();
+                _codeSense.Closed += (o, args) => _codeSense = null;
+            }
+            else if (e.Text.ToLower() == "k")
+            {
+                _codeSense = new CompletionWindow(edit.TextArea)
+                {
+                    Background = Brushes.Black,
+                    Foreground = Brushes.White,
+                };
+                var completionData = _codeSense.CompletionList.CompletionData;
+                completionData.Add(new RYCBCodeSense("快速", CodeSenseType.KEYWORD));
+                completionData.Add(new RYCBCodeSense("空", CodeSenseType.KEYWORD));
+                _codeSense.Show();
+                _codeSense.Closed += (o, args) => _codeSense = null;
+            }
+            else if (e.Text.ToLower() == "l")
+            {
+                _codeSense = new CompletionWindow(edit.TextArea)
+                {
+                    Background = Brushes.Black,
+                    Foreground = Brushes.White,
+                };
+                var completionData = _codeSense.CompletionList.CompletionData;
+                completionData.Add(new RYCBCodeSense("lambda", CodeSenseType.KEYWORD));
+                completionData.Add(new RYCBCodeSense("->", CodeSenseType.KEYWORD));
+                _codeSense.Show();
+                _codeSense.Closed += (o, args) => _codeSense = null;
+            }
+            else if (e.Text.ToLower() == "n")
+            {
+                _codeSense = new CompletionWindow(edit.TextArea)
+                {
+                    Background = Brushes.Black,
+                    Foreground = Brushes.White,
+                };
+                var completionData = _codeSense.CompletionList.CompletionData;
+                completionData.Add(new RYCBCodeSense("匿名函数", CodeSenseType.KEYWORD));
+                completionData.Add(new RYCBCodeSense("nonlocal", CodeSenseType.KEYWORD));
+                completionData.Add(new RYCBCodeSense("not", CodeSenseType.KEYWORD));
+                _codeSense.Show();
+                _codeSense.Closed += (o, args) => _codeSense = null;
+            }
+            else if (e.Text.ToLower() == "o")
+            {
+                _codeSense = new CompletionWindow(edit.TextArea)
+                {
+                    Background = Brushes.Black,
+                    Foreground = Brushes.White,
+                };
+                var completionData = _codeSense.CompletionList.CompletionData;
+                completionData.Add(new RYCBCodeSense("or", CodeSenseType.KEYWORD));
+                _codeSense.Show();
+                _codeSense.Closed += (o, args) => _codeSense = null;
+            }
+            else if (e.Text.ToLower() == "p")
+            {
+                _codeSense = new CompletionWindow(edit.TextArea)
+                {
+                    Background = Brushes.Black,
+                    Foreground = Brushes.White,
+                };
+                var completionData = _codeSense.CompletionList.CompletionData;
+                completionData.Add(new RYCBCodeSense("抛出", CodeSenseType.KEYWORD));
+                completionData.Add(new RYCBCodeSense("pass", CodeSenseType.KEYWORD));
+                _codeSense.Show();
+                _codeSense.Closed += (o, args) => _codeSense = null;
+            }
+            else if (e.Text.ToLower() == "r")
+            {
+                _codeSense = new CompletionWindow(edit.TextArea)
+                {
+                    Background = Brushes.Black,
+                    Foreground = Brushes.White,
+                };
+                var completionData = _codeSense.CompletionList.CompletionData;
+                completionData.Add(new RYCBCodeSense("raise", CodeSenseType.KEYWORD));
+                completionData.Add(new RYCBCodeSense("return", CodeSenseType.KEYWORD));
+                completionData.Add(new RYCBCodeSense("如果", CodeSenseType.KEYWORD));
+                completionData.Add(new RYCBCodeSense("若捕获异常", CodeSenseType.KEYWORD));
+                _codeSense.Show();
+                _codeSense.Closed += (o, args) => _codeSense = null;
+            }
+            else if (e.Text.ToLower() == "s")
+            {
+                _codeSense = new CompletionWindow(edit.TextArea)
+                {
+                    Background = Brushes.Black,
+                    Foreground = Brushes.White,
+                };
+                var completionData = _codeSense.CompletionList.CompletionData;
+                completionData.Add(new RYCBCodeSense("删除", CodeSenseType.KEYWORD));
+                completionData.Add(new RYCBCodeSense("使变量全局", CodeSenseType.KEYWORD));
+                completionData.Add(new RYCBCodeSense("使变量全局化", CodeSenseType.KEYWORD));
+                _codeSense.Show();
+                _codeSense.Closed += (o, args) => _codeSense = null;
+            }
+            else if (e.Text.ToLower() == "t")
+            {
+                _codeSense = new CompletionWindow(edit.TextArea)
+                {
+                    Background = Brushes.Black,
+                    Foreground = Brushes.White,
+                };
+                var completionData = _codeSense.CompletionList.CompletionData;
+                completionData.Add(new RYCBCodeSense("try", CodeSenseType.KEYWORD));
+                completionData.Add(new RYCBCodeSense("通过", CodeSenseType.KEYWORD));
+                completionData.Add(new RYCBCodeSense("跳过并继续", CodeSenseType.KEYWORD));
+                _codeSense.Show();
+                _codeSense.Closed += (o, args) => _codeSense = null;
+            }
+            else if (e.Text.ToLower() == "w")
+            {
+                _codeSense = new CompletionWindow(edit.TextArea)
+                {
+                    Background = Brushes.Black,
+                    Foreground = Brushes.White,
+                };
+                var completionData = _codeSense.CompletionList.CompletionData;
+                completionData.Add(new RYCBCodeSense("while", CodeSenseType.KEYWORD));
+                completionData.Add(new RYCBCodeSense("with", CodeSenseType.KEYWORD));
+                _codeSense.Show();
+                _codeSense.Closed += (o, args) => _codeSense = null;
+            }
+            else if (e.Text.ToLower() == "y")
+            {
+                _codeSense = new CompletionWindow(edit.TextArea)
+                {
+                    Background = Brushes.Black,
+                    Foreground = Brushes.White,
+                };
+                var completionData = _codeSense.CompletionList.CompletionData;
+                completionData.Add(new RYCBCodeSense("yield", CodeSenseType.KEYWORD));
+                completionData.Add(new RYCBCodeSense("异步", CodeSenseType.KEYWORD));
+                completionData.Add(new RYCBCodeSense("异步操作", CodeSenseType.KEYWORD));
+                completionData.Add(new RYCBCodeSense("抑或", CodeSenseType.KEYWORD));
+                completionData.Add(new RYCBCodeSense("语句占位符", CodeSenseType.KEYWORD));
+                _codeSense.Show();
+                _codeSense.Closed += (o, args) => _codeSense = null;
+            }
+            else if (e.Text.ToLower() == "z")
+            {
+                _codeSense = new CompletionWindow(edit.TextArea)
+                {
+                    Background = Brushes.Black,
+                    Foreground = Brushes.White,
+                };
+                var completionData = _codeSense.CompletionList.CompletionData;
+                completionData.Add(new RYCBCodeSense("占位语句", CodeSenseType.KEYWORD));
+                completionData.Add(new RYCBCodeSense("占位符", CodeSenseType.KEYWORD));
+                completionData.Add(new RYCBCodeSense("作为", CodeSenseType.KEYWORD));
+                completionData.Add(new RYCBCodeSense("真", CodeSenseType.KEYWORD));
+                _codeSense.Show();
+                _codeSense.Closed += (o, args) => _codeSense = null;
+            }
+            #endregion
+            #region 方法
+            else
+            {
+                _codeSense = new CompletionWindow(edit.TextArea)
+                {
+                    Background = Brushes.Black,
+                    Foreground = Brushes.White,
+                };
+                var completionData = _codeSense.CompletionList.CompletionData;
+                CodeAnalyser analyser = new(edit.TextArea);
+                string[] funcs = analyser.GetFunctions();
+                foreach (var item in funcs)
+                {
+                    completionData.Add(new RYCBCodeSense(item, CodeSenseType.FUNC));
+                }
+                _codeSense.Show();
+                _codeSense.Closed += (o, args) => _codeSense = null;
+            }
+            #endregion
         }
+        #endregion
         #endregion
     }
 }
