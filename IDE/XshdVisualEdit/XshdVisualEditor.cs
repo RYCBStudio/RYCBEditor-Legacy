@@ -1,7 +1,9 @@
 ﻿using ICSharpCode.AvalonEdit;
 using System;
+using System.Collections.Generic;
 using System.Drawing;
 using System.IO;
+using System.Text;
 using System.Windows.Forms;
 using System.Windows.Media;
 using System.Xml;
@@ -12,11 +14,19 @@ namespace IDE
 
     public partial class XshdVisualEditor : Form
     {
-        int i = 0;
-        string path;
-        TreeNode main;
-        XmlDocument doc = new();
-        TextEditor editor;
+        private enum FileSituation
+        {
+            Visual,
+            Code
+        }
+
+        private FileSituation fileSituation = FileSituation.Visual;
+        private int i = 0;
+        internal string path;
+        internal TreeNode main;
+        private static XmlDocument doc = new();
+        private readonly TextEditor editor;
+        private LogUtil LOGGER = Main.LOGGER;
 
         public XshdVisualEditor(string path)
         {
@@ -57,38 +67,94 @@ namespace IDE
             }
         }
 
+        private List<XmlNode> GetXshdKeys(string path, string TagName, bool hasExAttribute)
+        {
+            List<XmlNode> list = new();
+            FileNameTxtBox.Text = path.Split('\\')[path.Split('\\').Length - 1];
+            SyntaxHighlightingTypeNameTxtBox.Text = doc.DocumentElement.Attributes["name"].Value;
+            FileExtensionTypeTxtBox.Text = doc.DocumentElement.Attributes["extensions"].Value;
+            foreach (XmlNode item in doc.DocumentElement.ChildNodes)
+            {
+                if (hasExAttribute)
+                {
+                    if (item.Name == TagName && item.Attributes.Count >= 1)
+                    {
+                        foreach (XmlNode i in item.ChildNodes)
+                        {
+                            list.Add(i);
+                        }
+                    }
+                }
+                else
+                {
+                    if (item.Name == TagName && item.Attributes.Count == 0)
+                    {
+                        foreach (XmlNode i in item.ChildNodes)
+                        {
+                            list.Add(i);
+                        }
+                    }
+                }
+            }
+            return list;
+        }
+
         private string GetXmlKey(string TagName)
         {
             foreach (XmlNode item in doc.DocumentElement.ChildNodes)
             {
                 if (item.Name == TagName)
                 {
+                    if (item.Attributes == null)
+                    {
+                        goto End;
+                    }
+                    if (item.Attributes.Count == 0)
+                    {
+                        goto End;
+                    }
                     return item.Attributes["name"].Value;
                 }
+                else continue;
             }
-            return "";
+        End:
+            return "null";
+        }
+
+        private string GetXmlKey(string TagName, List<XmlNode> childNodes, string attributeName)
+        {
+            foreach (XmlNode item in childNodes)
+            {
+                if (item.Name == TagName)
+                {
+                    if (item.Attributes == null)
+                    {
+                        goto End;
+                    }
+                    if (item.Attributes.Count == 0)
+                    {
+                        goto End;
+                    }
+                    return item.Attributes[attributeName].Value;
+                }
+                else continue;
+            }
+        End:
+            return "null";
         }
 
         private void XshdVisualEditor_Load(object sender, EventArgs e)
         {
             elementHost1.Child = editor;
             GetXshdKeys(path, "Color", 0);
-            GetKey get = (str) =>
-            {
-                foreach (XmlNode item in doc.DocumentElement.ChildNodes)
-                {
-                    if (item.Name == str)
-                    {
-                        foreach (XmlNode node in item.ChildNodes)
-                        {
-                            return item.Attributes["fontWeight"].Value;
-                        }
-                    }
-                }
-                return "";
-            };
             main.Nodes.Add(GetXmlKey("RuleSet"))/*.Nodes.Add(get(""))*/;
-
+            TreeNode mainRuleSet = new TreeNode("主设置");
+            main.Nodes.Add(mainRuleSet);
+            List<XmlNode> keys = GetXshdKeys(path, "RuleSet", false);
+            foreach (XmlNode item in keys)
+            {
+                mainRuleSet.Nodes.Add(GetXmlKey(item.Name, keys, "color")); ;
+            }
             //GetXshdKeys(path, "RuleSet", Tv_File.Nodes.Add(""));
         }
 
@@ -137,7 +203,8 @@ namespace IDE
         {
             if (colorDialog1.ShowDialog() == DialogResult.OK)
             {
-                TxtBox_Edit_Foreground.Text = ColorTranslator.ToHtml(System.Drawing.Color.FromArgb(colorDialog1.Color.A, colorDialog1.Color.R, colorDialog1.Color.G, colorDialog1.Color.B));
+                var tmp = ColorTranslator.ToHtml(System.Drawing.Color.FromArgb(colorDialog1.Color.A, colorDialog1.Color.R, colorDialog1.Color.G, colorDialog1.Color.B));
+                TxtBox_Edit_Foreground.Text = tmp.Insert(1, (tmp.Contains("ff") ? "" : "ff"));
             }
         }
 
@@ -154,14 +221,33 @@ namespace IDE
             i++;
             if (i % 2 != 0)
             {
-                button1.Text = "切换到代码编辑模式(Alt+&C)";
+                EditingModeSwitch.Text = "切换到代码编辑模式(Alt+&C)";
+                fileSituation = FileSituation.Visual;
                 CodeEditingPanel.Hide();
             }
             else
             {
-                button1.Text = "切换到可视化编辑模式(Alt+&V)";
+                EditingModeSwitch.Text = "切换到可视化编辑模式(Alt+&V)";
+                fileSituation = FileSituation.Code;
                 CodeEditingPanel.Show();
                 editor.Text = File.ReadAllText(path);
+            }
+        }
+
+        private void Event_Save(object sender, EventArgs e)
+        {
+            try
+            {
+                if (fileSituation == FileSituation.Code)
+                {
+                    Cancel.Enabled = false;
+                    File.WriteAllText(path, editor.Document.Text, Encoding.UTF8);
+                }
+                LOGGER.WriteLog("保存成功", EnumMsgLevel.INFO, EnumPort.CLIENT, EnumModule.IO);
+            }
+            catch (Exception ex)
+            {
+                LOGGER.WriteErrLog(ex, EnumMsgLevel.ERROR, EnumPort.CLIENT);
             }
         }
     }

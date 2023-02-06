@@ -61,12 +61,13 @@
             this.label6 = new System.Windows.Forms.Label();
             this.statusStrip1 = new System.Windows.Forms.StatusStrip();
             this.Copyright = new System.Windows.Forms.ToolStripStatusLabel();
-            this.toolStripStatusLabel1 = new System.Windows.Forms.ToolStripStatusLabel();
+            this.HelpLb = new System.Windows.Forms.ToolStripStatusLabel();
             this.colorDialog1 = new System.Windows.Forms.ColorDialog();
             this.InfoTip = new System.Windows.Forms.ToolTip(this.components);
-            this.button1 = new System.Windows.Forms.Button();
+            this.EditingModeSwitch = new System.Windows.Forms.Button();
             this.CodeEditingPanel = new System.Windows.Forms.FlowLayoutPanel();
             this.elementHost1 = new System.Windows.Forms.Integration.ElementHost();
+            this.TipLb = new System.Windows.Forms.ToolStripStatusLabel();
             this.FileInfomation.SuspendLayout();
             this.FileStructure.SuspendLayout();
             this.VisualEditingPanel.SuspendLayout();
@@ -98,18 +99,19 @@
             // Save
             // 
             this.Save.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
-            this.Save.Location = new System.Drawing.Point(724, 503);
+            this.Save.Location = new System.Drawing.Point(707, 503);
             this.Save.Name = "Save";
             this.Save.Size = new System.Drawing.Size(100, 29);
             this.Save.TabIndex = 3;
             this.Save.Text = "保存(Enter)";
             this.Save.UseVisualStyleBackColor = true;
+            this.Save.Click += new System.EventHandler(this.Event_Save);
             // 
             // Cancel
             // 
             this.Cancel.DialogResult = System.Windows.Forms.DialogResult.Cancel;
             this.Cancel.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
-            this.Cancel.Location = new System.Drawing.Point(830, 503);
+            this.Cancel.Location = new System.Drawing.Point(813, 503);
             this.Cancel.Name = "Cancel";
             this.Cancel.Size = new System.Drawing.Size(88, 29);
             this.Cancel.TabIndex = 4;
@@ -130,7 +132,7 @@
             this.FileInfomation.ForeColor = System.Drawing.Color.WhiteSmoke;
             this.FileInfomation.Location = new System.Drawing.Point(307, 3);
             this.FileInfomation.Name = "FileInfomation";
-            this.FileInfomation.Size = new System.Drawing.Size(580, 187);
+            this.FileInfomation.Size = new System.Drawing.Size(565, 187);
             this.FileInfomation.TabIndex = 1;
             this.FileInfomation.TabStop = false;
             this.FileInfomation.Text = "文件信息";
@@ -142,7 +144,7 @@
             this.FileExtensionTypeTxtBox.ForeColor = System.Drawing.Color.White;
             this.FileExtensionTypeTxtBox.Location = new System.Drawing.Point(112, 85);
             this.FileExtensionTypeTxtBox.Name = "FileExtensionTypeTxtBox";
-            this.FileExtensionTypeTxtBox.Size = new System.Drawing.Size(462, 27);
+            this.FileExtensionTypeTxtBox.Size = new System.Drawing.Size(447, 27);
             this.FileExtensionTypeTxtBox.TabIndex = 8;
             // 
             // label10
@@ -157,7 +159,7 @@
             // label5
             // 
             this.label5.AutoSize = true;
-            this.label5.Location = new System.Drawing.Point(546, 118);
+            this.label5.Location = new System.Drawing.Point(531, 119);
             this.label5.Name = "label5";
             this.label5.Size = new System.Drawing.Size(28, 20);
             this.label5.TabIndex = 6;
@@ -172,7 +174,7 @@
             this.FileSizeTxtBox.Name = "FileSizeTxtBox";
             this.FileSizeTxtBox.ReadOnly = true;
             this.FileSizeTxtBox.RightToLeft = System.Windows.Forms.RightToLeft.Yes;
-            this.FileSizeTxtBox.Size = new System.Drawing.Size(459, 20);
+            this.FileSizeTxtBox.Size = new System.Drawing.Size(444, 20);
             this.FileSizeTxtBox.TabIndex = 5;
             // 
             // label4
@@ -191,7 +193,7 @@
             this.SyntaxHighlightingTypeNameTxtBox.ForeColor = System.Drawing.Color.White;
             this.SyntaxHighlightingTypeNameTxtBox.Location = new System.Drawing.Point(142, 52);
             this.SyntaxHighlightingTypeNameTxtBox.Name = "SyntaxHighlightingTypeNameTxtBox";
-            this.SyntaxHighlightingTypeNameTxtBox.Size = new System.Drawing.Size(432, 27);
+            this.SyntaxHighlightingTypeNameTxtBox.Size = new System.Drawing.Size(417, 27);
             this.SyntaxHighlightingTypeNameTxtBox.TabIndex = 3;
             // 
             // label3
@@ -211,7 +213,7 @@
             this.FileNameTxtBox.Location = new System.Drawing.Point(81, 20);
             this.FileNameTxtBox.Name = "FileNameTxtBox";
             this.FileNameTxtBox.ReadOnly = true;
-            this.FileNameTxtBox.Size = new System.Drawing.Size(493, 27);
+            this.FileNameTxtBox.Size = new System.Drawing.Size(478, 27);
             this.FileNameTxtBox.TabIndex = 1;
             this.FileNameTxtBox.TextChanged += new System.EventHandler(this.EnableButtons);
             // 
@@ -252,7 +254,7 @@
             this.VisualEditingPanel.Controls.Add(this.Edit);
             this.VisualEditingPanel.Location = new System.Drawing.Point(16, 39);
             this.VisualEditingPanel.Name = "VisualEditingPanel";
-            this.VisualEditingPanel.Size = new System.Drawing.Size(893, 458);
+            this.VisualEditingPanel.Size = new System.Drawing.Size(884, 458);
             this.VisualEditingPanel.TabIndex = 2;
             // 
             // Edit
@@ -261,7 +263,7 @@
             this.Edit.ForeColor = System.Drawing.Color.WhiteSmoke;
             this.Edit.Location = new System.Drawing.Point(3, 196);
             this.Edit.Name = "Edit";
-            this.Edit.Size = new System.Drawing.Size(890, 262);
+            this.Edit.Size = new System.Drawing.Size(869, 262);
             this.Edit.TabIndex = 5;
             this.Edit.TabStop = false;
             this.Edit.Text = "编辑";
@@ -281,7 +283,7 @@
             this.panel1.Controls.Add(this.label6);
             this.panel1.Location = new System.Drawing.Point(6, 23);
             this.panel1.Name = "panel1";
-            this.panel1.Size = new System.Drawing.Size(877, 233);
+            this.panel1.Size = new System.Drawing.Size(857, 233);
             this.panel1.TabIndex = 0;
             // 
             // CBBox_Edit_FontProperties
@@ -400,25 +402,27 @@
             this.statusStrip1.ImageScalingSize = new System.Drawing.Size(20, 20);
             this.statusStrip1.Items.AddRange(new System.Windows.Forms.ToolStripItem[] {
             this.Copyright,
-            this.toolStripStatusLabel1});
+            this.TipLb,
+            this.HelpLb});
             this.statusStrip1.Location = new System.Drawing.Point(0, 538);
             this.statusStrip1.Name = "statusStrip1";
-            this.statusStrip1.Size = new System.Drawing.Size(921, 26);
+            this.statusStrip1.Size = new System.Drawing.Size(910, 26);
             this.statusStrip1.TabIndex = 5;
             this.statusStrip1.Text = "statusStrip1";
             // 
             // Copyright
             // 
             this.Copyright.Name = "Copyright";
+            this.Copyright.RightToLeft = System.Windows.Forms.RightToLeft.No;
             this.Copyright.Size = new System.Drawing.Size(230, 20);
             this.Copyright.Text = "Copyright © 2023 RYCBStudio";
             // 
-            // toolStripStatusLabel1
+            // HelpLb
             // 
-            this.toolStripStatusLabel1.Name = "toolStripStatusLabel1";
-            this.toolStripStatusLabel1.Size = new System.Drawing.Size(676, 20);
-            this.toolStripStatusLabel1.Text = "                                                                                 " +
-    "                      鼠标指针悬浮于各组件上即可获得帮助";
+            this.HelpLb.Name = "HelpLb";
+            this.HelpLb.Size = new System.Drawing.Size(372, 20);
+            this.HelpLb.Text = "                           鼠标指针悬浮于各组件上即可获得帮助";
+            this.HelpLb.TextAlign = System.Drawing.ContentAlignment.MiddleRight;
             // 
             // colorDialog1
             // 
@@ -432,17 +436,17 @@
             this.InfoTip.ToolTipIcon = System.Windows.Forms.ToolTipIcon.Info;
             this.InfoTip.ToolTipTitle = "信息";
             // 
-            // button1
+            // EditingModeSwitch
             // 
-            this.button1.DialogResult = System.Windows.Forms.DialogResult.Cancel;
-            this.button1.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
-            this.button1.Location = new System.Drawing.Point(12, 506);
-            this.button1.Name = "button1";
-            this.button1.Size = new System.Drawing.Size(305, 29);
-            this.button1.TabIndex = 6;
-            this.button1.Text = "切换到代码编辑模式(Alt+&C)";
-            this.button1.UseVisualStyleBackColor = true;
-            this.button1.Click += new System.EventHandler(this.Coding);
+            this.EditingModeSwitch.DialogResult = System.Windows.Forms.DialogResult.Cancel;
+            this.EditingModeSwitch.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
+            this.EditingModeSwitch.Location = new System.Drawing.Point(12, 506);
+            this.EditingModeSwitch.Name = "EditingModeSwitch";
+            this.EditingModeSwitch.Size = new System.Drawing.Size(305, 29);
+            this.EditingModeSwitch.TabIndex = 6;
+            this.EditingModeSwitch.Text = "切换到代码编辑模式(Alt+&C)";
+            this.EditingModeSwitch.UseVisualStyleBackColor = true;
+            this.EditingModeSwitch.Click += new System.EventHandler(this.Coding);
             // 
             // CodeEditingPanel
             // 
@@ -461,6 +465,13 @@
             this.elementHost1.Text = "elementHost1";
             this.elementHost1.Child = null;
             // 
+            // TipLb
+            // 
+            this.TipLb.Name = "TipLb";
+            this.TipLb.RightToLeft = System.Windows.Forms.RightToLeft.No;
+            this.TipLb.Size = new System.Drawing.Size(289, 20);
+            this.TipLb.Text = "            每修改一次，点击“保存”按钮          ";
+            // 
             // XshdVisualEditor
             // 
             this.AcceptButton = this.Save;
@@ -468,15 +479,15 @@
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.BackColor = System.Drawing.Color.Black;
             this.CancelButton = this.Cancel;
-            this.ClientSize = new System.Drawing.Size(921, 564);
+            this.ClientSize = new System.Drawing.Size(910, 564);
             this.Controls.Add(this.VisualEditingPanel);
-            this.Controls.Add(this.CodeEditingPanel);
-            this.Controls.Add(this.button1);
+            this.Controls.Add(this.EditingModeSwitch);
             this.Controls.Add(this.statusStrip1);
             this.Controls.Add(this.Cancel);
             this.Controls.Add(this.Save);
             this.Controls.Add(this.FileTxtBox);
             this.Controls.Add(this.label1);
+            this.Controls.Add(this.CodeEditingPanel);
             this.Font = new System.Drawing.Font("Microsoft YaHei UI", 9F);
             this.ForeColor = System.Drawing.Color.White;
             this.FormBorderStyle = System.Windows.Forms.FormBorderStyle.FixedSingle;
@@ -537,9 +548,10 @@
         private System.Windows.Forms.ToolTip InfoTip;
         private System.Windows.Forms.TextBox FileExtensionTypeTxtBox;
         private System.Windows.Forms.Label label10;
-        private System.Windows.Forms.ToolStripStatusLabel toolStripStatusLabel1;
-        private System.Windows.Forms.Button button1;
+        private System.Windows.Forms.ToolStripStatusLabel HelpLb;
+        private System.Windows.Forms.Button EditingModeSwitch;
         private System.Windows.Forms.FlowLayoutPanel CodeEditingPanel;
         private System.Windows.Forms.Integration.ElementHost elementHost1;
+        private System.Windows.Forms.ToolStripStatusLabel TipLb;
     }
 }
