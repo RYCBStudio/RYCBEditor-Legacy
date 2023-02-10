@@ -110,7 +110,7 @@ namespace IDE
                 {
                     return null;
                 }
-                FileTypeRegInfo regInfo = new FileTypeRegInfo(extendName);
+                FileTypeRegInfo regInfo = new(extendName);
 
                 string relationName = extendName.Substring(1, extendName.Length - 1).ToUpper() + "_FileType";
                 RegistryKey relationKey = Registry.ClassesRoot.OpenSubKey(relationName);

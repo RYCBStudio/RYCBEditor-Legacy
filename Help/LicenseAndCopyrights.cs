@@ -21,7 +21,7 @@ namespace IDE
             Process.Start("http://avalonedit.net/");
         }
 
-        private void LicenseAndCopyrights_Load(object sender, System.EventArgs e)
+        private void LicenseAndCopyrights_Load(object sender, EventArgs e)
         {
             TS_L_Copyright.Text = $"Copyright © {DateTime.Now.Year} RYCB Studio, All rights reserved.";
         }

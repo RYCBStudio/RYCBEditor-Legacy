@@ -7,7 +7,7 @@ public class MessageBoxEX
 {
     public static DialogResult Show(string text, string caption, MessageBoxButtons buttons, string[] buttonTitles)
     {
-        MessageForm frm = new MessageForm(buttons, buttonTitles);
+        MessageForm frm = new(buttons, buttonTitles);
         frm.Show();
         frm.WatchForActivate = true;
         DialogResult result = MessageBox.Show(frm, text, caption, buttons);
@@ -19,7 +19,7 @@ public class MessageBoxEX
     public static DialogResult Show(string text, string caption, MessageBoxButtons buttons,
         MessageBoxIcon icon, MessageBoxDefaultButton defaultButton, string[] buttonTitles)
     {
-        MessageForm frm = new MessageForm(buttons, buttonTitles);
+        MessageForm frm = new(buttons, buttonTitles);
         frm.Show();
         frm.WatchForActivate = true;
         DialogResult result = MessageBox.Show(frm, text, caption, buttons, icon, defaultButton);
@@ -61,7 +61,7 @@ public class MessageBoxEX
             NativeWin32API.SetWindowPos(this.Handle, IntPtr.Zero, 0, 0, 0, 0, 659);
         }
 
-        protected override void WndProc(ref System.Windows.Forms.Message m)
+        protected override void WndProc(ref Message m)
         {
             if (_watchForActivate && m.Msg == 0x0006)
             {
@@ -121,7 +121,7 @@ public class MessageBoxEX
 
         public static string GetWindowClassName(IntPtr handle)
         {
-            StringBuilder sb = new StringBuilder(256);
+            StringBuilder sb = new(256);
 
             // Retrieves the name of the class to which the specified window belongs
             GetClassNameW(handle, sb, sb.Capacity);

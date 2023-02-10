@@ -117,8 +117,8 @@ namespace IDE
                 I18n.Translate((int)msgLevel, "msg", lang),
                 data, DateTime.Now.Hour, DateTime.Now.Minute,
                 DateTime.Now.Second, DateTime.Now.Millisecond,
-                ex.StackTrace, 
-                ex.InnerException != null?ex.InnerException.StackTrace:"(无 InnerException)");
+                ex.StackTrace,
+                ex.InnerException != null ? ex.InnerException.StackTrace : "(无 InnerException)");
             tmpStream.Flush();
             sw.Flush();
         }
@@ -165,15 +165,16 @@ namespace IDE
         /// <returns></returns>
         string ExecuteCMDWithOutput(string command)
         {
-            ProcessStartInfo processInfo = new ProcessStartInfo("cmd /s /c " + command)
+            ProcessStartInfo processInfo = new("cmd")
             {
+                Arguments = " /s /c " + command,
                 CreateNoWindow = true,
                 UseShellExecute = false,
                 WindowStyle = ProcessWindowStyle.Hidden,
                 RedirectStandardOutput = true
             };
 
-            Process process = new Process { StartInfo = processInfo };
+            Process process = new() { StartInfo = processInfo };
             process.Start();
             string outpup = process.StandardOutput.ReadToEnd();
             process.WaitForExit();

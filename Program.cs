@@ -6,7 +6,7 @@ namespace IDE
 {
     internal static class Program
     {
-        static Form class_;
+        private static Form class_;
         /// <summary>
         /// 应用程序的主入口点。
         /// </summary>
@@ -15,16 +15,20 @@ namespace IDE
         {
             Application.EnableVisualStyles();
             Application.SetCompatibleTextRenderingDefault(false);
-            if (args.Length == 0)
+            //Form class_ = new XshdVisualEditor("F:\\VS 2022\\repos\\IDE\\Py-CN.xshd");
+            if (args.Length == 0 )
             {
                 class_ = new Main();
-            }
-            else if (args.Length == 1)
+            }else if(args.Length == 2)
             {
-                class_ = new LightEdit(args[0]);
+                if (args[0] == "-LE"| args[0] == "-le" | args[0] == "-lightedit" | args[0] == "-LightEdit")
+                {
+                    class_ = new LightEdit(args[1]);
+                }else if (args[0] == "-XSHD" | args[0] == "-xshd" | args[0] == "-xv" | args[0] == "-ve")
+                {
+                    class_ = new XshdVisualEditor(args[1]);
+                }
             }
-            //Form class_ = new XshdVisualEditor("F:\\VS 2022\\repos\\IDE\\Py-CN.xshd");
-            //Form class_ = new Main();
             string sys = new ComputerInfo().OSFullName;
             bool sysInfo = sys.Contains("Microsoft Windows");
             if (!(sysInfo)) { }
