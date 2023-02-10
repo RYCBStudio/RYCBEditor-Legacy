@@ -1,26 +1,34 @@
 ﻿using Microsoft.VisualBasic.Devices;
 using System;
-using System.Collections.Generic;
-using System.IO;
-using System.Linq;
-using System.Runtime.CompilerServices;
-using System.Threading.Tasks;
 using System.Windows.Forms;
 
 namespace IDE
 {
     internal static class Program
     {
+        private static Form class_;
         /// <summary>
         /// 应用程序的主入口点。
         /// </summary>
         [STAThread]
-        static void Main()
+        public static void Main(String[] args)
         {
             Application.EnableVisualStyles();
             Application.SetCompatibleTextRenderingDefault(false);
-            //Form _class_ = new XshdVisualEditor("F:\\VS 2022\\repos\\IDE\\Py-CN.xshd");
-            Form _class_ = new Main();
+            //Form class_ = new XshdVisualEditor("F:\\VS 2022\\repos\\IDE\\Py-CN.xshd");
+            if (args.Length == 0 )
+            {
+                class_ = new Main();
+            }else if(args.Length == 2)
+            {
+                if (args[0] == "-LE"| args[0] == "-le" | args[0] == "-lightedit" | args[0] == "-LightEdit")
+                {
+                    class_ = new LightEdit(args[1]);
+                }else if (args[0] == "-XSHD" | args[0] == "-xshd" | args[0] == "-xv" | args[0] == "-ve")
+                {
+                    class_ = new XshdVisualEditor(args[1]);
+                }
+            }
             string sys = new ComputerInfo().OSFullName;
             bool sysInfo = sys.Contains("Microsoft Windows");
             if (!(sysInfo)) { }
@@ -28,19 +36,19 @@ namespace IDE
             {
                 if (sys.Contains("10"))
                 {
-                    func_1a1(_class_);
+                    func_1a1(class_);
                 }
                 else if (sys.Contains("11"))
                 {
-                    func_1a1(_class_);
+                    func_1a1(class_);
                 }
                 else if (sys.Contains("8"))
                 {
-                    func_1a1(_class_);
+                    func_1a1(class_);
                 }
                 else if (sys.Contains("8.1"))
                 {
-                    func_1a1(_class_);
+                    func_1a1(class_);
                 }
                 else { MessageBox.Show("您的计算机版本过低，请升级系统后打开此程序！"); }
             }
