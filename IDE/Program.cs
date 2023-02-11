@@ -16,19 +16,29 @@ namespace IDE
             Application.EnableVisualStyles();
             Application.SetCompatibleTextRenderingDefault(false);
             //Form class_ = new XshdVisualEditor("F:\\VS 2022\\repos\\IDE\\Py-CN.xshd");
-            if (args.Length == 0 )
+            #region 判断参数
+            if (args.Length == 0)
             {
                 class_ = new Main();
-            }else if(args.Length == 2)
+            }
+            else if (args.Length == 2)
             {
-                if (args[0] == "-LE"| args[0] == "-le" | args[0] == "-lightedit" | args[0] == "-LightEdit")
+                if (args[0] == "-LE" | args[0] == "-le" | args[0] == "-lightedit" | args[0] == "-LightEdit")
                 {
                     class_ = new LightEdit(args[1]);
-                }else if (args[0] == "-XSHD" | args[0] == "-xshd" | args[0] == "-xv" | args[0] == "-ve")
+                }
+                else if (args[0] == "-XSHD" | args[0] == "-xshd" | args[0] == "-xv" | args[0] == "-ve")
                 {
                     class_ = new XshdVisualEditor(args[1]);
                 }
             }
+            else
+            {
+                class_ = new Main();
+            }
+            #endregion
+            Application.ThreadException += Application_ThreadException;
+            AppDomain.CurrentDomain.UnhandledException += CurrentDomain_UnhandledException;
             string sys = new ComputerInfo().OSFullName;
             bool sysInfo = sys.Contains("Microsoft Windows");
             if (!(sysInfo)) { }
@@ -52,6 +62,19 @@ namespace IDE
                 }
                 else { MessageBox.Show("您的计算机版本过低，请升级系统后打开此程序！"); }
             }
+        }
+
+        static void Application_ThreadException(object sender, System.Threading.ThreadExceptionEventArgs e)
+
+        {
+            Exception ex = e.Exception;
+            IDE.Main.LOGGER.WriteErrLog(ex, EnumMsgLevel.ERROR, EnumPort.CLIENT);
+        }
+
+        static void CurrentDomain_UnhandledException(object sender, UnhandledExceptionEventArgs e)
+        {
+            Exception ex = e.ExceptionObject as Exception;
+            IDE.Main.LOGGER.WriteErrLog(ex, (e.IsTerminating ? EnumMsgLevel.FATAL : EnumMsgLevel.ERROR), EnumPort.CLIENT);
         }
 
         static void func_1a1(Form form)

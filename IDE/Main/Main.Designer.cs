@@ -32,26 +32,16 @@
             System.ComponentModel.ComponentResourceManager resources = new System.ComponentModel.ComponentResourceManager(typeof(Main));
             this.menuStrip1 = new System.Windows.Forms.MenuStrip();
             this.文件FToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
-            this.新建NToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
-            this.打开OToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
-            this.保存SToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.另存为AToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.编辑EToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.撤消UToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.重复RToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
-            this.剪切TToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
-            this.复制CToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
-            this.粘贴PToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.全选AToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.运行RToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
-            this.运行f5ToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.工具TToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.自定义CToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.选项OToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.帮助HToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
-            this.关于AToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
-            this.鸣谢ToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
-            this.许可与版权声明ToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.toolStripTextBox1 = new System.Windows.Forms.ToolStripTextBox();
             this.toolStripComboBox1 = new System.Windows.Forms.ToolStripComboBox();
             this.openFileDialog1 = new System.Windows.Forms.OpenFileDialog();
@@ -59,14 +49,11 @@
             this.saveFileDialog1 = new System.Windows.Forms.SaveFileDialog();
             this.tabControl1 = new System.Windows.Forms.TabControl();
             this.contextMenuStrip1 = new System.Windows.Forms.ContextMenuStrip(this.components);
-            this.刷新RToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
-            this.关闭CtrlF4ToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.tabPage1 = new System.Windows.Forms.TabPage();
             this.elementHost1 = new System.Windows.Forms.Integration.ElementHost();
             this.timer2 = new System.Windows.Forms.Timer(this.components);
             this.toolStripStatusLabel2 = new System.Windows.Forms.ToolStripStatusLabel();
             this.statusStrip1 = new System.Windows.Forms.StatusStrip();
-            this.toolStripStatusLabel1 = new System.Windows.Forms.ToolStripStatusLabel();
             this.toolStripStatusLabel4 = new System.Windows.Forms.ToolStripStatusLabel();
             this.timer3 = new System.Windows.Forms.Timer(this.components);
             this.statusStrip2 = new System.Windows.Forms.StatusStrip();
@@ -75,14 +62,29 @@
             this.toolStripStatusLabel6 = new System.Windows.Forms.ToolStripStatusLabel();
             this.toolStripStatusLabel7 = new System.Windows.Forms.ToolStripStatusLabel();
             this.contextMenuStrip2 = new System.Windows.Forms.ContextMenuStrip(this.components);
-            this.配置ToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.timer4 = new System.Windows.Forms.Timer(this.components);
             this.timer5 = new System.Windows.Forms.Timer(this.components);
-            this.button1 = new System.Windows.Forms.Button();
-            this.toolStripButton1 = new System.Windows.Forms.ToolStripButton();
-            this.toolStripButton2 = new System.Windows.Forms.ToolStripButton();
             this.toolStripComboBox2 = new System.Windows.Forms.ToolStripComboBox();
             this.toolStrip1 = new System.Windows.Forms.ToolStrip();
+            this.配置ToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
+            this.toolStripButton1 = new System.Windows.Forms.ToolStripButton();
+            this.toolStripButton2 = new System.Windows.Forms.ToolStripButton();
+            this.button1 = new System.Windows.Forms.Button();
+            this.toolStripStatusLabel1 = new System.Windows.Forms.ToolStripStatusLabel();
+            this.刷新RToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
+            this.关闭CtrlF4ToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
+            this.新建NToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
+            this.项目ToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
+            this.文件ToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
+            this.打开OToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
+            this.保存SToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
+            this.剪切TToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
+            this.复制CToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
+            this.粘贴PToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
+            this.运行f5ToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
+            this.关于AToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
+            this.鸣谢ToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
+            this.许可与版权声明ToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.menuStrip1.SuspendLayout();
             this.tabControl1.SuspendLayout();
             this.contextMenuStrip1.SuspendLayout();
@@ -123,48 +125,12 @@
             this.文件FToolStripMenuItem.Size = new System.Drawing.Size(71, 33);
             this.文件FToolStripMenuItem.Text = "文件(&F)";
             // 
-            // 新建NToolStripMenuItem
-            // 
-            this.新建NToolStripMenuItem.BackColor = System.Drawing.SystemColors.ActiveCaptionText;
-            this.新建NToolStripMenuItem.ForeColor = System.Drawing.SystemColors.Control;
-            this.新建NToolStripMenuItem.Image = global::IDE.Properties.Resources.edit;
-            this.新建NToolStripMenuItem.ImageTransparentColor = System.Drawing.Color.Magenta;
-            this.新建NToolStripMenuItem.Name = "新建NToolStripMenuItem";
-            this.新建NToolStripMenuItem.ShortcutKeys = ((System.Windows.Forms.Keys)((System.Windows.Forms.Keys.Control | System.Windows.Forms.Keys.N)));
-            this.新建NToolStripMenuItem.Size = new System.Drawing.Size(202, 26);
-            this.新建NToolStripMenuItem.Text = "新建(&N)";
-            this.新建NToolStripMenuItem.Click += new System.EventHandler(this.New);
-            // 
-            // 打开OToolStripMenuItem
-            // 
-            this.打开OToolStripMenuItem.BackColor = System.Drawing.SystemColors.ActiveCaptionText;
-            this.打开OToolStripMenuItem.ForeColor = System.Drawing.SystemColors.Control;
-            this.打开OToolStripMenuItem.Image = global::IDE.Properties.Resources._disabled_open_file;
-            this.打开OToolStripMenuItem.ImageTransparentColor = System.Drawing.Color.Magenta;
-            this.打开OToolStripMenuItem.Name = "打开OToolStripMenuItem";
-            this.打开OToolStripMenuItem.ShortcutKeys = ((System.Windows.Forms.Keys)((System.Windows.Forms.Keys.Control | System.Windows.Forms.Keys.O)));
-            this.打开OToolStripMenuItem.Size = new System.Drawing.Size(202, 26);
-            this.打开OToolStripMenuItem.Text = "打开(&O)";
-            this.打开OToolStripMenuItem.Click += new System.EventHandler(this.OpenFile);
-            // 
-            // 保存SToolStripMenuItem
-            // 
-            this.保存SToolStripMenuItem.BackColor = System.Drawing.SystemColors.ActiveCaptionText;
-            this.保存SToolStripMenuItem.ForeColor = System.Drawing.SystemColors.Control;
-            this.保存SToolStripMenuItem.Image = global::IDE.Properties.Resources.save;
-            this.保存SToolStripMenuItem.ImageTransparentColor = System.Drawing.Color.Magenta;
-            this.保存SToolStripMenuItem.Name = "保存SToolStripMenuItem";
-            this.保存SToolStripMenuItem.ShortcutKeys = ((System.Windows.Forms.Keys)((System.Windows.Forms.Keys.Control | System.Windows.Forms.Keys.S)));
-            this.保存SToolStripMenuItem.Size = new System.Drawing.Size(202, 26);
-            this.保存SToolStripMenuItem.Text = "保存(&S)";
-            this.保存SToolStripMenuItem.Click += new System.EventHandler(this.QuietSave);
-            // 
             // 另存为AToolStripMenuItem
             // 
             this.另存为AToolStripMenuItem.BackColor = System.Drawing.SystemColors.ActiveCaptionText;
             this.另存为AToolStripMenuItem.ForeColor = System.Drawing.SystemColors.Control;
             this.另存为AToolStripMenuItem.Name = "另存为AToolStripMenuItem";
-            this.另存为AToolStripMenuItem.Size = new System.Drawing.Size(202, 26);
+            this.另存为AToolStripMenuItem.Size = new System.Drawing.Size(224, 26);
             this.另存为AToolStripMenuItem.Text = "另存为(&A)";
             this.另存为AToolStripMenuItem.Click += new System.EventHandler(this.SaveFile);
             // 
@@ -200,39 +166,6 @@
             this.重复RToolStripMenuItem.Size = new System.Drawing.Size(198, 26);
             this.重复RToolStripMenuItem.Text = "重复(&R)";
             // 
-            // 剪切TToolStripMenuItem
-            // 
-            this.剪切TToolStripMenuItem.BackColor = System.Drawing.SystemColors.ActiveCaptionText;
-            this.剪切TToolStripMenuItem.ForeColor = System.Drawing.SystemColors.Control;
-            this.剪切TToolStripMenuItem.Image = global::IDE.Properties.Resources.edit_cut1;
-            this.剪切TToolStripMenuItem.ImageTransparentColor = System.Drawing.Color.Magenta;
-            this.剪切TToolStripMenuItem.Name = "剪切TToolStripMenuItem";
-            this.剪切TToolStripMenuItem.ShortcutKeys = ((System.Windows.Forms.Keys)((System.Windows.Forms.Keys.Control | System.Windows.Forms.Keys.X)));
-            this.剪切TToolStripMenuItem.Size = new System.Drawing.Size(198, 26);
-            this.剪切TToolStripMenuItem.Text = "剪切(&T)";
-            // 
-            // 复制CToolStripMenuItem
-            // 
-            this.复制CToolStripMenuItem.BackColor = System.Drawing.SystemColors.ActiveCaptionText;
-            this.复制CToolStripMenuItem.ForeColor = System.Drawing.SystemColors.Control;
-            this.复制CToolStripMenuItem.Image = global::IDE.Properties.Resources.Copy;
-            this.复制CToolStripMenuItem.ImageTransparentColor = System.Drawing.Color.Magenta;
-            this.复制CToolStripMenuItem.Name = "复制CToolStripMenuItem";
-            this.复制CToolStripMenuItem.ShortcutKeys = ((System.Windows.Forms.Keys)((System.Windows.Forms.Keys.Control | System.Windows.Forms.Keys.C)));
-            this.复制CToolStripMenuItem.Size = new System.Drawing.Size(198, 26);
-            this.复制CToolStripMenuItem.Text = "复制(&C)";
-            // 
-            // 粘贴PToolStripMenuItem
-            // 
-            this.粘贴PToolStripMenuItem.BackColor = System.Drawing.SystemColors.ActiveCaptionText;
-            this.粘贴PToolStripMenuItem.ForeColor = System.Drawing.SystemColors.Control;
-            this.粘贴PToolStripMenuItem.Image = global::IDE.Properties.Resources.d_Paste;
-            this.粘贴PToolStripMenuItem.ImageTransparentColor = System.Drawing.Color.Magenta;
-            this.粘贴PToolStripMenuItem.Name = "粘贴PToolStripMenuItem";
-            this.粘贴PToolStripMenuItem.ShortcutKeys = ((System.Windows.Forms.Keys)((System.Windows.Forms.Keys.Control | System.Windows.Forms.Keys.V)));
-            this.粘贴PToolStripMenuItem.Size = new System.Drawing.Size(198, 26);
-            this.粘贴PToolStripMenuItem.Text = "粘贴(&P)";
-            // 
             // 全选AToolStripMenuItem
             // 
             this.全选AToolStripMenuItem.BackColor = System.Drawing.SystemColors.ActiveCaptionText;
@@ -249,18 +182,6 @@
             this.运行RToolStripMenuItem.Name = "运行RToolStripMenuItem";
             this.运行RToolStripMenuItem.Size = new System.Drawing.Size(73, 33);
             this.运行RToolStripMenuItem.Text = "运行(&R)";
-            // 
-            // 运行f5ToolStripMenuItem
-            // 
-            this.运行f5ToolStripMenuItem.BackColor = System.Drawing.SystemColors.ActiveCaptionText;
-            this.运行f5ToolStripMenuItem.ForeColor = System.Drawing.SystemColors.Control;
-            this.运行f5ToolStripMenuItem.Image = global::IDE.Properties.Resources.detail;
-            this.运行f5ToolStripMenuItem.Name = "运行f5ToolStripMenuItem";
-            this.运行f5ToolStripMenuItem.ShortcutKeys = ((System.Windows.Forms.Keys)(((System.Windows.Forms.Keys.Control | System.Windows.Forms.Keys.Alt) 
-            | System.Windows.Forms.Keys.F5)));
-            this.运行f5ToolStripMenuItem.Size = new System.Drawing.Size(247, 26);
-            this.运行f5ToolStripMenuItem.Text = "运行配置";
-            this.运行f5ToolStripMenuItem.Click += new System.EventHandler(this.Run);
             // 
             // 工具TToolStripMenuItem
             // 
@@ -299,35 +220,6 @@
             this.帮助HToolStripMenuItem.Name = "帮助HToolStripMenuItem";
             this.帮助HToolStripMenuItem.Size = new System.Drawing.Size(75, 33);
             this.帮助HToolStripMenuItem.Text = "帮助(&H)";
-            // 
-            // 关于AToolStripMenuItem
-            // 
-            this.关于AToolStripMenuItem.BackColor = System.Drawing.SystemColors.ActiveCaptionText;
-            this.关于AToolStripMenuItem.ForeColor = System.Drawing.SystemColors.Control;
-            this.关于AToolStripMenuItem.Image = global::IDE.Properties.Resources.help2;
-            this.关于AToolStripMenuItem.Name = "关于AToolStripMenuItem";
-            this.关于AToolStripMenuItem.Size = new System.Drawing.Size(197, 26);
-            this.关于AToolStripMenuItem.Text = "关于(&A)...";
-            this.关于AToolStripMenuItem.Click += new System.EventHandler(this.AboutThis);
-            // 
-            // 鸣谢ToolStripMenuItem
-            // 
-            this.鸣谢ToolStripMenuItem.BackColor = System.Drawing.SystemColors.ActiveCaptionText;
-            this.鸣谢ToolStripMenuItem.ForeColor = System.Drawing.SystemColors.Control;
-            this.鸣谢ToolStripMenuItem.Image = global::IDE.Properties.Resources.Info_dark;
-            this.鸣谢ToolStripMenuItem.Name = "鸣谢ToolStripMenuItem";
-            this.鸣谢ToolStripMenuItem.Size = new System.Drawing.Size(197, 26);
-            this.鸣谢ToolStripMenuItem.Text = "鸣谢";
-            // 
-            // 许可与版权声明ToolStripMenuItem
-            // 
-            this.许可与版权声明ToolStripMenuItem.BackColor = System.Drawing.SystemColors.ActiveCaptionText;
-            this.许可与版权声明ToolStripMenuItem.ForeColor = System.Drawing.SystemColors.Control;
-            this.许可与版权声明ToolStripMenuItem.Image = global::IDE.Properties.Resources._48x48_check;
-            this.许可与版权声明ToolStripMenuItem.Name = "许可与版权声明ToolStripMenuItem";
-            this.许可与版权声明ToolStripMenuItem.Size = new System.Drawing.Size(197, 26);
-            this.许可与版权声明ToolStripMenuItem.Text = "许可与版权声明";
-            this.许可与版权声明ToolStripMenuItem.Click += new System.EventHandler(this.copyrightsAndLicense);
             // 
             // toolStripTextBox1
             // 
@@ -391,25 +283,6 @@
             this.contextMenuStrip1.Name = "contextMenuStrip1";
             this.contextMenuStrip1.Size = new System.Drawing.Size(189, 56);
             // 
-            // 刷新RToolStripMenuItem
-            // 
-            this.刷新RToolStripMenuItem.ForeColor = System.Drawing.Color.White;
-            this.刷新RToolStripMenuItem.Image = global::IDE.Properties.Resources.refresh;
-            this.刷新RToolStripMenuItem.Name = "刷新RToolStripMenuItem";
-            this.刷新RToolStripMenuItem.ShortcutKeys = ((System.Windows.Forms.Keys)((System.Windows.Forms.Keys.Control | System.Windows.Forms.Keys.R)));
-            this.刷新RToolStripMenuItem.Size = new System.Drawing.Size(188, 26);
-            this.刷新RToolStripMenuItem.Text = "刷新(&R)";
-            // 
-            // 关闭CtrlF4ToolStripMenuItem
-            // 
-            this.关闭CtrlF4ToolStripMenuItem.ForeColor = System.Drawing.Color.White;
-            this.关闭CtrlF4ToolStripMenuItem.Image = global::IDE.Properties.Resources.delete;
-            this.关闭CtrlF4ToolStripMenuItem.Name = "关闭CtrlF4ToolStripMenuItem";
-            this.关闭CtrlF4ToolStripMenuItem.ShortcutKeys = ((System.Windows.Forms.Keys)((System.Windows.Forms.Keys.Control | System.Windows.Forms.Keys.F4)));
-            this.关闭CtrlF4ToolStripMenuItem.Size = new System.Drawing.Size(188, 26);
-            this.关闭CtrlF4ToolStripMenuItem.Text = "关闭";
-            this.关闭CtrlF4ToolStripMenuItem.Click += new System.EventHandler(this.CloseFile);
-            // 
             // tabPage1
             // 
             this.tabPage1.BackColor = System.Drawing.Color.Black;
@@ -455,14 +328,6 @@
             this.statusStrip1.Size = new System.Drawing.Size(1902, 26);
             this.statusStrip1.TabIndex = 3;
             this.statusStrip1.Text = "statusStrip1";
-            // 
-            // toolStripStatusLabel1
-            // 
-            this.toolStripStatusLabel1.Image = global::IDE.Properties.Resources._48x48_Warn;
-            this.toolStripStatusLabel1.Name = "toolStripStatusLabel1";
-            this.toolStripStatusLabel1.Size = new System.Drawing.Size(25, 20);
-            this.toolStripStatusLabel1.Text = "    ";
-            this.toolStripStatusLabel1.TextImageRelation = System.Windows.Forms.TextImageRelation.Overlay;
             // 
             // toolStripStatusLabel4
             // 
@@ -522,16 +387,6 @@
             this.contextMenuStrip2.Name = "contextMenuStrip2";
             this.contextMenuStrip2.Size = new System.Drawing.Size(125, 30);
             // 
-            // 配置ToolStripMenuItem
-            // 
-            this.配置ToolStripMenuItem.BackColor = System.Drawing.Color.Black;
-            this.配置ToolStripMenuItem.ForeColor = System.Drawing.Color.White;
-            this.配置ToolStripMenuItem.Image = global::IDE.Properties.Resources.edit___副本;
-            this.配置ToolStripMenuItem.Name = "配置ToolStripMenuItem";
-            this.配置ToolStripMenuItem.Size = new System.Drawing.Size(124, 26);
-            this.配置ToolStripMenuItem.Text = "...配置";
-            this.配置ToolStripMenuItem.Click += new System.EventHandler(this.CodeConfig);
-            // 
             // timer4
             // 
             this.timer4.Interval = 1000;
@@ -542,6 +397,61 @@
             this.timer5.Enabled = true;
             this.timer5.Interval = 1000;
             this.timer5.Tick += new System.EventHandler(this.isMaximized);
+            // 
+            // toolStripComboBox2
+            // 
+            this.toolStripComboBox2.BackColor = System.Drawing.SystemColors.ControlText;
+            this.toolStripComboBox2.DropDownStyle = System.Windows.Forms.ComboBoxStyle.DropDownList;
+            this.toolStripComboBox2.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
+            this.toolStripComboBox2.ForeColor = System.Drawing.SystemColors.Menu;
+            this.toolStripComboBox2.Name = "toolStripComboBox2";
+            this.toolStripComboBox2.RightToLeft = System.Windows.Forms.RightToLeft.No;
+            this.toolStripComboBox2.Size = new System.Drawing.Size(200, 31);
+            // 
+            // toolStrip1
+            // 
+            this.toolStrip1.BackColor = System.Drawing.Color.Black;
+            this.toolStrip1.ContextMenuStrip = this.contextMenuStrip2;
+            this.toolStrip1.ImageScalingSize = new System.Drawing.Size(20, 20);
+            this.toolStrip1.Items.AddRange(new System.Windows.Forms.ToolStripItem[] {
+            this.toolStripButton1,
+            this.toolStripButton2,
+            this.toolStripComboBox2});
+            this.toolStrip1.Location = new System.Drawing.Point(0, 37);
+            this.toolStrip1.Name = "toolStrip1";
+            this.toolStrip1.RenderMode = System.Windows.Forms.ToolStripRenderMode.Professional;
+            this.toolStrip1.RightToLeft = System.Windows.Forms.RightToLeft.Yes;
+            this.toolStrip1.Size = new System.Drawing.Size(1902, 31);
+            this.toolStrip1.TabIndex = 6;
+            // 
+            // 配置ToolStripMenuItem
+            // 
+            this.配置ToolStripMenuItem.BackColor = System.Drawing.Color.Black;
+            this.配置ToolStripMenuItem.ForeColor = System.Drawing.Color.White;
+            this.配置ToolStripMenuItem.Image = global::IDE.Properties.Resources.edit___副本;
+            this.配置ToolStripMenuItem.Name = "配置ToolStripMenuItem";
+            this.配置ToolStripMenuItem.Size = new System.Drawing.Size(124, 26);
+            this.配置ToolStripMenuItem.Text = "...配置";
+            this.配置ToolStripMenuItem.Click += new System.EventHandler(this.CodeConfig);
+            // 
+            // toolStripButton1
+            // 
+            this.toolStripButton1.DisplayStyle = System.Windows.Forms.ToolStripItemDisplayStyle.Image;
+            this.toolStripButton1.Image = global::IDE.Properties.Resources.Debug_Color;
+            this.toolStripButton1.ImageTransparentColor = System.Drawing.Color.Magenta;
+            this.toolStripButton1.Name = "toolStripButton1";
+            this.toolStripButton1.Size = new System.Drawing.Size(29, 28);
+            this.toolStripButton1.Text = "调试";
+            // 
+            // toolStripButton2
+            // 
+            this.toolStripButton2.DisplayStyle = System.Windows.Forms.ToolStripItemDisplayStyle.Image;
+            this.toolStripButton2.Image = global::IDE.Properties.Resources.Run;
+            this.toolStripButton2.ImageTransparentColor = System.Drawing.Color.Magenta;
+            this.toolStripButton2.Name = "toolStripButton2";
+            this.toolStripButton2.Size = new System.Drawing.Size(29, 28);
+            this.toolStripButton2.Text = "运行";
+            this.toolStripButton2.Click += new System.EventHandler(this.RunFile);
             // 
             // button1
             // 
@@ -557,50 +467,164 @@
             this.button1.UseVisualStyleBackColor = false;
             this.button1.Click += new System.EventHandler(this.help);
             // 
-            // toolStripButton1
+            // toolStripStatusLabel1
             // 
-            this.toolStripButton1.DisplayStyle = System.Windows.Forms.ToolStripItemDisplayStyle.Image;
-            this.toolStripButton1.Image = global::IDE.Properties.Resources.Debug_Color;
-            this.toolStripButton1.ImageTransparentColor = System.Drawing.Color.Magenta;
-            this.toolStripButton1.Name = "toolStripButton1";
-            this.toolStripButton1.Size = new System.Drawing.Size(29, 25);
-            this.toolStripButton1.Text = "调试";
+            this.toolStripStatusLabel1.Image = global::IDE.Properties.Resources._48x48_Warn;
+            this.toolStripStatusLabel1.Name = "toolStripStatusLabel1";
+            this.toolStripStatusLabel1.Size = new System.Drawing.Size(25, 20);
+            this.toolStripStatusLabel1.Text = "    ";
+            this.toolStripStatusLabel1.TextImageRelation = System.Windows.Forms.TextImageRelation.Overlay;
             // 
-            // toolStripButton2
+            // 刷新RToolStripMenuItem
             // 
-            this.toolStripButton2.DisplayStyle = System.Windows.Forms.ToolStripItemDisplayStyle.Image;
-            this.toolStripButton2.Image = global::IDE.Properties.Resources.Run;
-            this.toolStripButton2.ImageTransparentColor = System.Drawing.Color.Magenta;
-            this.toolStripButton2.Name = "toolStripButton2";
-            this.toolStripButton2.Size = new System.Drawing.Size(29, 25);
-            this.toolStripButton2.Text = "运行";
-            this.toolStripButton2.Click += new System.EventHandler(this.RunFile);
+            this.刷新RToolStripMenuItem.ForeColor = System.Drawing.Color.White;
+            this.刷新RToolStripMenuItem.Image = global::IDE.Properties.Resources.refresh;
+            this.刷新RToolStripMenuItem.Name = "刷新RToolStripMenuItem";
+            this.刷新RToolStripMenuItem.ShortcutKeys = ((System.Windows.Forms.Keys)((System.Windows.Forms.Keys.Control | System.Windows.Forms.Keys.R)));
+            this.刷新RToolStripMenuItem.Size = new System.Drawing.Size(188, 26);
+            this.刷新RToolStripMenuItem.Text = "刷新(&R)";
             // 
-            // toolStripComboBox2
+            // 关闭CtrlF4ToolStripMenuItem
             // 
-            this.toolStripComboBox2.BackColor = System.Drawing.SystemColors.ControlText;
-            this.toolStripComboBox2.DropDownStyle = System.Windows.Forms.ComboBoxStyle.DropDownList;
-            this.toolStripComboBox2.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
-            this.toolStripComboBox2.ForeColor = System.Drawing.SystemColors.Menu;
-            this.toolStripComboBox2.Name = "toolStripComboBox2";
-            this.toolStripComboBox2.RightToLeft = System.Windows.Forms.RightToLeft.No;
-            this.toolStripComboBox2.Size = new System.Drawing.Size(200, 28);
+            this.关闭CtrlF4ToolStripMenuItem.ForeColor = System.Drawing.Color.White;
+            this.关闭CtrlF4ToolStripMenuItem.Image = global::IDE.Properties.Resources.delete;
+            this.关闭CtrlF4ToolStripMenuItem.Name = "关闭CtrlF4ToolStripMenuItem";
+            this.关闭CtrlF4ToolStripMenuItem.ShortcutKeys = ((System.Windows.Forms.Keys)((System.Windows.Forms.Keys.Control | System.Windows.Forms.Keys.F4)));
+            this.关闭CtrlF4ToolStripMenuItem.Size = new System.Drawing.Size(188, 26);
+            this.关闭CtrlF4ToolStripMenuItem.Text = "关闭";
+            this.关闭CtrlF4ToolStripMenuItem.Click += new System.EventHandler(this.CloseFile);
             // 
-            // toolStrip1
+            // 新建NToolStripMenuItem
             // 
-            this.toolStrip1.BackColor = System.Drawing.Color.Black;
-            this.toolStrip1.ContextMenuStrip = this.contextMenuStrip2;
-            this.toolStrip1.ImageScalingSize = new System.Drawing.Size(20, 20);
-            this.toolStrip1.Items.AddRange(new System.Windows.Forms.ToolStripItem[] {
-            this.toolStripButton1,
-            this.toolStripButton2,
-            this.toolStripComboBox2});
-            this.toolStrip1.Location = new System.Drawing.Point(0, 37);
-            this.toolStrip1.Name = "toolStrip1";
-            this.toolStrip1.RenderMode = System.Windows.Forms.ToolStripRenderMode.Professional;
-            this.toolStrip1.RightToLeft = System.Windows.Forms.RightToLeft.Yes;
-            this.toolStrip1.Size = new System.Drawing.Size(1902, 28);
-            this.toolStrip1.TabIndex = 6;
+            this.新建NToolStripMenuItem.BackColor = System.Drawing.SystemColors.ActiveCaptionText;
+            this.新建NToolStripMenuItem.DropDownItems.AddRange(new System.Windows.Forms.ToolStripItem[] {
+            this.项目ToolStripMenuItem,
+            this.文件ToolStripMenuItem});
+            this.新建NToolStripMenuItem.ForeColor = System.Drawing.SystemColors.Control;
+            this.新建NToolStripMenuItem.Image = global::IDE.Properties.Resources.edit;
+            this.新建NToolStripMenuItem.ImageTransparentColor = System.Drawing.Color.Magenta;
+            this.新建NToolStripMenuItem.Name = "新建NToolStripMenuItem";
+            this.新建NToolStripMenuItem.Size = new System.Drawing.Size(224, 26);
+            this.新建NToolStripMenuItem.Text = "新建";
+            // 
+            // 项目ToolStripMenuItem
+            // 
+            this.项目ToolStripMenuItem.BackColor = System.Drawing.Color.Black;
+            this.项目ToolStripMenuItem.ForeColor = System.Drawing.Color.WhiteSmoke;
+            this.项目ToolStripMenuItem.Image = global::IDE.Properties.Resources.Window;
+            this.项目ToolStripMenuItem.Name = "项目ToolStripMenuItem";
+            this.项目ToolStripMenuItem.ShortcutKeys = ((System.Windows.Forms.Keys)((System.Windows.Forms.Keys.Control | System.Windows.Forms.Keys.P)));
+            this.项目ToolStripMenuItem.Size = new System.Drawing.Size(224, 26);
+            this.项目ToolStripMenuItem.Text = "项目";
+            // 
+            // 文件ToolStripMenuItem
+            // 
+            this.文件ToolStripMenuItem.BackColor = System.Drawing.Color.Black;
+            this.文件ToolStripMenuItem.ForeColor = System.Drawing.Color.WhiteSmoke;
+            this.文件ToolStripMenuItem.Image = global::IDE.Properties.Resources.file_common;
+            this.文件ToolStripMenuItem.Name = "文件ToolStripMenuItem";
+            this.文件ToolStripMenuItem.ShortcutKeys = ((System.Windows.Forms.Keys)((System.Windows.Forms.Keys.Control | System.Windows.Forms.Keys.N)));
+            this.文件ToolStripMenuItem.Size = new System.Drawing.Size(224, 26);
+            this.文件ToolStripMenuItem.Text = "文件";
+            this.文件ToolStripMenuItem.Click += new System.EventHandler(this.New);
+            // 
+            // 打开OToolStripMenuItem
+            // 
+            this.打开OToolStripMenuItem.BackColor = System.Drawing.SystemColors.ActiveCaptionText;
+            this.打开OToolStripMenuItem.ForeColor = System.Drawing.SystemColors.Control;
+            this.打开OToolStripMenuItem.Image = global::IDE.Properties.Resources._disabled_open_file;
+            this.打开OToolStripMenuItem.ImageTransparentColor = System.Drawing.Color.Magenta;
+            this.打开OToolStripMenuItem.Name = "打开OToolStripMenuItem";
+            this.打开OToolStripMenuItem.ShortcutKeys = ((System.Windows.Forms.Keys)((System.Windows.Forms.Keys.Control | System.Windows.Forms.Keys.O)));
+            this.打开OToolStripMenuItem.Size = new System.Drawing.Size(224, 26);
+            this.打开OToolStripMenuItem.Text = "打开(&O)";
+            this.打开OToolStripMenuItem.Click += new System.EventHandler(this.OpenFile);
+            // 
+            // 保存SToolStripMenuItem
+            // 
+            this.保存SToolStripMenuItem.BackColor = System.Drawing.SystemColors.ActiveCaptionText;
+            this.保存SToolStripMenuItem.ForeColor = System.Drawing.SystemColors.Control;
+            this.保存SToolStripMenuItem.Image = global::IDE.Properties.Resources.save;
+            this.保存SToolStripMenuItem.ImageTransparentColor = System.Drawing.Color.Magenta;
+            this.保存SToolStripMenuItem.Name = "保存SToolStripMenuItem";
+            this.保存SToolStripMenuItem.ShortcutKeys = ((System.Windows.Forms.Keys)((System.Windows.Forms.Keys.Control | System.Windows.Forms.Keys.S)));
+            this.保存SToolStripMenuItem.Size = new System.Drawing.Size(224, 26);
+            this.保存SToolStripMenuItem.Text = "保存(&S)";
+            this.保存SToolStripMenuItem.Click += new System.EventHandler(this.QuietSave);
+            // 
+            // 剪切TToolStripMenuItem
+            // 
+            this.剪切TToolStripMenuItem.BackColor = System.Drawing.SystemColors.ActiveCaptionText;
+            this.剪切TToolStripMenuItem.ForeColor = System.Drawing.SystemColors.Control;
+            this.剪切TToolStripMenuItem.Image = global::IDE.Properties.Resources.edit_cut1;
+            this.剪切TToolStripMenuItem.ImageTransparentColor = System.Drawing.Color.Magenta;
+            this.剪切TToolStripMenuItem.Name = "剪切TToolStripMenuItem";
+            this.剪切TToolStripMenuItem.ShortcutKeys = ((System.Windows.Forms.Keys)((System.Windows.Forms.Keys.Control | System.Windows.Forms.Keys.X)));
+            this.剪切TToolStripMenuItem.Size = new System.Drawing.Size(198, 26);
+            this.剪切TToolStripMenuItem.Text = "剪切(&T)";
+            // 
+            // 复制CToolStripMenuItem
+            // 
+            this.复制CToolStripMenuItem.BackColor = System.Drawing.SystemColors.ActiveCaptionText;
+            this.复制CToolStripMenuItem.ForeColor = System.Drawing.SystemColors.Control;
+            this.复制CToolStripMenuItem.Image = global::IDE.Properties.Resources.Copy;
+            this.复制CToolStripMenuItem.ImageTransparentColor = System.Drawing.Color.Magenta;
+            this.复制CToolStripMenuItem.Name = "复制CToolStripMenuItem";
+            this.复制CToolStripMenuItem.ShortcutKeys = ((System.Windows.Forms.Keys)((System.Windows.Forms.Keys.Control | System.Windows.Forms.Keys.C)));
+            this.复制CToolStripMenuItem.Size = new System.Drawing.Size(198, 26);
+            this.复制CToolStripMenuItem.Text = "复制(&C)";
+            // 
+            // 粘贴PToolStripMenuItem
+            // 
+            this.粘贴PToolStripMenuItem.BackColor = System.Drawing.SystemColors.ActiveCaptionText;
+            this.粘贴PToolStripMenuItem.ForeColor = System.Drawing.SystemColors.Control;
+            this.粘贴PToolStripMenuItem.Image = global::IDE.Properties.Resources.d_Paste;
+            this.粘贴PToolStripMenuItem.ImageTransparentColor = System.Drawing.Color.Magenta;
+            this.粘贴PToolStripMenuItem.Name = "粘贴PToolStripMenuItem";
+            this.粘贴PToolStripMenuItem.ShortcutKeys = ((System.Windows.Forms.Keys)((System.Windows.Forms.Keys.Control | System.Windows.Forms.Keys.V)));
+            this.粘贴PToolStripMenuItem.Size = new System.Drawing.Size(198, 26);
+            this.粘贴PToolStripMenuItem.Text = "粘贴(&P)";
+            // 
+            // 运行f5ToolStripMenuItem
+            // 
+            this.运行f5ToolStripMenuItem.BackColor = System.Drawing.SystemColors.ActiveCaptionText;
+            this.运行f5ToolStripMenuItem.ForeColor = System.Drawing.SystemColors.Control;
+            this.运行f5ToolStripMenuItem.Image = global::IDE.Properties.Resources.detail;
+            this.运行f5ToolStripMenuItem.Name = "运行f5ToolStripMenuItem";
+            this.运行f5ToolStripMenuItem.ShortcutKeys = ((System.Windows.Forms.Keys)(((System.Windows.Forms.Keys.Control | System.Windows.Forms.Keys.Alt) 
+            | System.Windows.Forms.Keys.F5)));
+            this.运行f5ToolStripMenuItem.Size = new System.Drawing.Size(247, 26);
+            this.运行f5ToolStripMenuItem.Text = "运行配置";
+            this.运行f5ToolStripMenuItem.Click += new System.EventHandler(this.Run);
+            // 
+            // 关于AToolStripMenuItem
+            // 
+            this.关于AToolStripMenuItem.BackColor = System.Drawing.SystemColors.ActiveCaptionText;
+            this.关于AToolStripMenuItem.ForeColor = System.Drawing.SystemColors.Control;
+            this.关于AToolStripMenuItem.Image = global::IDE.Properties.Resources.help2;
+            this.关于AToolStripMenuItem.Name = "关于AToolStripMenuItem";
+            this.关于AToolStripMenuItem.Size = new System.Drawing.Size(197, 26);
+            this.关于AToolStripMenuItem.Text = "关于(&A)...";
+            this.关于AToolStripMenuItem.Click += new System.EventHandler(this.AboutThis);
+            // 
+            // 鸣谢ToolStripMenuItem
+            // 
+            this.鸣谢ToolStripMenuItem.BackColor = System.Drawing.SystemColors.ActiveCaptionText;
+            this.鸣谢ToolStripMenuItem.ForeColor = System.Drawing.SystemColors.Control;
+            this.鸣谢ToolStripMenuItem.Image = global::IDE.Properties.Resources.Info_dark;
+            this.鸣谢ToolStripMenuItem.Name = "鸣谢ToolStripMenuItem";
+            this.鸣谢ToolStripMenuItem.Size = new System.Drawing.Size(197, 26);
+            this.鸣谢ToolStripMenuItem.Text = "鸣谢";
+            // 
+            // 许可与版权声明ToolStripMenuItem
+            // 
+            this.许可与版权声明ToolStripMenuItem.BackColor = System.Drawing.SystemColors.ActiveCaptionText;
+            this.许可与版权声明ToolStripMenuItem.ForeColor = System.Drawing.SystemColors.Control;
+            this.许可与版权声明ToolStripMenuItem.Image = global::IDE.Properties.Resources._48x48_check;
+            this.许可与版权声明ToolStripMenuItem.Name = "许可与版权声明ToolStripMenuItem";
+            this.许可与版权声明ToolStripMenuItem.Size = new System.Drawing.Size(197, 26);
+            this.许可与版权声明ToolStripMenuItem.Text = "许可与版权声明";
+            this.许可与版权声明ToolStripMenuItem.Click += new System.EventHandler(this.copyrightsAndLicense);
             // 
             // Main
             // 
@@ -699,6 +723,8 @@
         private System.Windows.Forms.ToolStripMenuItem 全选AToolStripMenuItem;
         private System.Windows.Forms.ToolStripStatusLabel toolStripStatusLabel6;
         private System.Windows.Forms.ToolStripStatusLabel toolStripStatusLabel7;
+        private System.Windows.Forms.ToolStripMenuItem 项目ToolStripMenuItem;
+        private System.Windows.Forms.ToolStripMenuItem 文件ToolStripMenuItem;
     }
 }
 
