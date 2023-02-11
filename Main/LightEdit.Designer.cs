@@ -51,31 +51,27 @@
             this.openFileDialog1 = new System.Windows.Forms.OpenFileDialog();
             this.timer1 = new System.Windows.Forms.Timer(this.components);
             this.saveFileDialog1 = new System.Windows.Forms.SaveFileDialog();
-            this.tabControl1 = new System.Windows.Forms.TabControl();
+            this.tabControl1 = new MetroFramework.Controls.MetroTabControl();
             this.contextMenuStrip1 = new System.Windows.Forms.ContextMenuStrip(this.components);
             this.刷新RToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.关闭CtrlF4ToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
-            this.tabPage1 = new System.Windows.Forms.TabPage();
-            this.elementHost1 = new System.Windows.Forms.Integration.ElementHost();
             this.timer2 = new System.Windows.Forms.Timer(this.components);
             this.toolStripStatusLabel2 = new System.Windows.Forms.ToolStripStatusLabel();
             this.statusStrip1 = new System.Windows.Forms.StatusStrip();
             this.toolStripStatusLabel1 = new System.Windows.Forms.ToolStripStatusLabel();
-            this.toolStripStatusLabel4 = new System.Windows.Forms.ToolStripStatusLabel();
             this.timer3 = new System.Windows.Forms.Timer(this.components);
             this.statusStrip2 = new System.Windows.Forms.StatusStrip();
             this.toolStripStatusLabel3 = new System.Windows.Forms.ToolStripStatusLabel();
             this.toolStripStatusLabel5 = new System.Windows.Forms.ToolStripStatusLabel();
             this.toolStripStatusLabel6 = new System.Windows.Forms.ToolStripStatusLabel();
             this.toolStripStatusLabel7 = new System.Windows.Forms.ToolStripStatusLabel();
+            this.toolStripStatusLabel4 = new System.Windows.Forms.ToolStripStatusLabel();
             this.contextMenuStrip2 = new System.Windows.Forms.ContextMenuStrip(this.components);
             this.配置ToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.timer4 = new System.Windows.Forms.Timer(this.components);
             this.button1 = new System.Windows.Forms.Button();
             this.menuStrip1.SuspendLayout();
-            this.tabControl1.SuspendLayout();
             this.contextMenuStrip1.SuspendLayout();
-            this.tabPage1.SuspendLayout();
             this.statusStrip1.SuspendLayout();
             this.statusStrip2.SuspendLayout();
             this.contextMenuStrip2.SuspendLayout();
@@ -300,13 +296,15 @@
             // 
             this.tabControl1.AllowDrop = true;
             this.tabControl1.ContextMenuStrip = this.contextMenuStrip1;
-            this.tabControl1.Controls.Add(this.tabPage1);
             this.tabControl1.Location = new System.Drawing.Point(0, 31);
             this.tabControl1.Multiline = true;
             this.tabControl1.Name = "tabControl1";
-            this.tabControl1.SelectedIndex = 0;
             this.tabControl1.Size = new System.Drawing.Size(1395, 702);
+            this.tabControl1.Style = MetroFramework.MetroColorStyle.Blue;
             this.tabControl1.TabIndex = 2;
+            this.tabControl1.Theme = MetroFramework.MetroThemeStyle.Dark;
+            this.tabControl1.UseSelectable = true;
+            this.tabControl1.UseStyleColors = true;
             this.tabControl1.DragDrop += new System.Windows.Forms.DragEventHandler(this.tabControl1_DragDrop);
             this.tabControl1.DragEnter += new System.Windows.Forms.DragEventHandler(this.LoadFile);
             // 
@@ -318,7 +316,7 @@
             this.刷新RToolStripMenuItem,
             this.关闭CtrlF4ToolStripMenuItem});
             this.contextMenuStrip1.Name = "contextMenuStrip1";
-            this.contextMenuStrip1.Size = new System.Drawing.Size(189, 56);
+            this.contextMenuStrip1.Size = new System.Drawing.Size(266, 56);
             // 
             // 刷新RToolStripMenuItem
             // 
@@ -326,8 +324,9 @@
             this.刷新RToolStripMenuItem.Image = global::IDE.Properties.Resources.refresh;
             this.刷新RToolStripMenuItem.Name = "刷新RToolStripMenuItem";
             this.刷新RToolStripMenuItem.ShortcutKeys = ((System.Windows.Forms.Keys)((System.Windows.Forms.Keys.Control | System.Windows.Forms.Keys.R)));
-            this.刷新RToolStripMenuItem.Size = new System.Drawing.Size(188, 26);
-            this.刷新RToolStripMenuItem.Text = "刷新(&R)";
+            this.刷新RToolStripMenuItem.Size = new System.Drawing.Size(265, 26);
+            this.刷新RToolStripMenuItem.Text = "从磁盘强制刷新";
+            this.刷新RToolStripMenuItem.Click += new System.EventHandler(this.Refresh);
             // 
             // 关闭CtrlF4ToolStripMenuItem
             // 
@@ -335,28 +334,9 @@
             this.关闭CtrlF4ToolStripMenuItem.Image = global::IDE.Properties.Resources.delete;
             this.关闭CtrlF4ToolStripMenuItem.Name = "关闭CtrlF4ToolStripMenuItem";
             this.关闭CtrlF4ToolStripMenuItem.ShortcutKeys = ((System.Windows.Forms.Keys)((System.Windows.Forms.Keys.Control | System.Windows.Forms.Keys.F4)));
-            this.关闭CtrlF4ToolStripMenuItem.Size = new System.Drawing.Size(188, 26);
-            this.关闭CtrlF4ToolStripMenuItem.Text = "关闭";
+            this.关闭CtrlF4ToolStripMenuItem.Size = new System.Drawing.Size(265, 26);
+            this.关闭CtrlF4ToolStripMenuItem.Text = "不保存而强制关闭";
             this.关闭CtrlF4ToolStripMenuItem.Click += new System.EventHandler(this.CloseFile);
-            // 
-            // tabPage1
-            // 
-            this.tabPage1.BackColor = System.Drawing.Color.Black;
-            this.tabPage1.Controls.Add(this.elementHost1);
-            this.tabPage1.Location = new System.Drawing.Point(4, 29);
-            this.tabPage1.Name = "tabPage1";
-            this.tabPage1.Padding = new System.Windows.Forms.Padding(3);
-            this.tabPage1.Size = new System.Drawing.Size(1387, 669);
-            this.tabPage1.TabIndex = 0;
-            // 
-            // elementHost1
-            // 
-            this.elementHost1.Location = new System.Drawing.Point(4, 4);
-            this.elementHost1.Name = "elementHost1";
-            this.elementHost1.Size = new System.Drawing.Size(1375, 813);
-            this.elementHost1.TabIndex = 0;
-            this.elementHost1.Text = "elementHost1";
-            this.elementHost1.Child = null;
             // 
             // timer2
             // 
@@ -376,8 +356,7 @@
             this.statusStrip1.ImageScalingSize = new System.Drawing.Size(20, 20);
             this.statusStrip1.Items.AddRange(new System.Windows.Forms.ToolStripItem[] {
             this.toolStripStatusLabel1,
-            this.toolStripStatusLabel2,
-            this.toolStripStatusLabel4});
+            this.toolStripStatusLabel2});
             this.statusStrip1.Location = new System.Drawing.Point(0, 759);
             this.statusStrip1.Name = "statusStrip1";
             this.statusStrip1.Size = new System.Drawing.Size(1395, 26);
@@ -391,13 +370,6 @@
             this.toolStripStatusLabel1.Size = new System.Drawing.Size(25, 20);
             this.toolStripStatusLabel1.Text = "    ";
             this.toolStripStatusLabel1.TextImageRelation = System.Windows.Forms.TextImageRelation.Overlay;
-            // 
-            // toolStripStatusLabel4
-            // 
-            this.toolStripStatusLabel4.Name = "toolStripStatusLabel4";
-            this.toolStripStatusLabel4.Size = new System.Drawing.Size(1211, 20);
-            this.toolStripStatusLabel4.Spring = true;
-            this.toolStripStatusLabel4.Text = "在LightEdit模式下，您无法最大化。";
             // 
             // timer3
             // 
@@ -413,7 +385,8 @@
             this.toolStripStatusLabel3,
             this.toolStripStatusLabel5,
             this.toolStripStatusLabel6,
-            this.toolStripStatusLabel7});
+            this.toolStripStatusLabel7,
+            this.toolStripStatusLabel4});
             this.statusStrip2.Location = new System.Drawing.Point(0, 733);
             this.statusStrip2.Name = "statusStrip2";
             this.statusStrip2.Size = new System.Drawing.Size(1395, 26);
@@ -440,6 +413,13 @@
             // 
             this.toolStripStatusLabel7.Name = "toolStripStatusLabel7";
             this.toolStripStatusLabel7.Size = new System.Drawing.Size(0, 20);
+            // 
+            // toolStripStatusLabel4
+            // 
+            this.toolStripStatusLabel4.Name = "toolStripStatusLabel4";
+            this.toolStripStatusLabel4.Size = new System.Drawing.Size(1333, 20);
+            this.toolStripStatusLabel4.Spring = true;
+            this.toolStripStatusLabel4.Text = "在LightEdit模式下，您无法最大化。";
             // 
             // contextMenuStrip2
             // 
@@ -492,6 +472,7 @@
             this.Cursor = System.Windows.Forms.Cursors.Default;
             this.Font = new System.Drawing.Font("Microsoft YaHei UI", 9F);
             this.ForeColor = System.Drawing.SystemColors.Control;
+            this.FormBorderStyle = System.Windows.Forms.FormBorderStyle.FixedSingle;
             this.Icon = ((System.Drawing.Icon)(resources.GetObject("$this.Icon")));
             this.MainMenuStrip = this.menuStrip1;
             this.Margin = new System.Windows.Forms.Padding(3, 4, 3, 4);
@@ -505,9 +486,7 @@
             this.Resize += new System.EventHandler(this.Form1_Resize);
             this.menuStrip1.ResumeLayout(false);
             this.menuStrip1.PerformLayout();
-            this.tabControl1.ResumeLayout(false);
             this.contextMenuStrip1.ResumeLayout(false);
-            this.tabPage1.ResumeLayout(false);
             this.statusStrip1.ResumeLayout(false);
             this.statusStrip1.PerformLayout();
             this.statusStrip2.ResumeLayout(false);
@@ -537,9 +516,6 @@
         private System.Windows.Forms.ToolStripMenuItem 运行f5ToolStripMenuItem;
         private System.Windows.Forms.Timer timer1;
         private System.Windows.Forms.SaveFileDialog saveFileDialog1;
-        private System.Windows.Forms.TabControl tabControl1;
-        private System.Windows.Forms.TabPage tabPage1;
-        private System.Windows.Forms.Integration.ElementHost elementHost1;
         private System.Windows.Forms.Timer timer2;
         private System.Windows.Forms.ContextMenuStrip contextMenuStrip1;
         private System.Windows.Forms.ToolStripMenuItem 刷新RToolStripMenuItem;
@@ -562,6 +538,7 @@
         private System.Windows.Forms.ToolStripStatusLabel toolStripStatusLabel6;
         private System.Windows.Forms.ToolStripStatusLabel toolStripStatusLabel7;
         private System.Windows.Forms.ToolStripStatusLabel toolStripStatusLabel4;
+        private MetroFramework.Controls.MetroTabControl tabControl1;
     }
 }
 

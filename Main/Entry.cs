@@ -41,7 +41,7 @@ namespace IDE
         /// <returns></returns>
         string ExecuteCMDWithOutput(string command, string interpreter, string interpreter_params)
         {
-            ProcessStartInfo processInfo = new ProcessStartInfo(interpreter, $"{interpreter_params} " + command)
+            ProcessStartInfo processInfo = new(interpreter, $"{interpreter_params} " + command)
             {
                 CreateNoWindow = true,
                 UseShellExecute = false,
@@ -49,7 +49,7 @@ namespace IDE
                 RedirectStandardOutput = true
             };
 
-            Process process = new Process { StartInfo = processInfo };
+            Process process = new() { StartInfo = processInfo };
             process.Start();
             string outpup = process.StandardOutput.ReadToEnd();
             process.WaitForExit();

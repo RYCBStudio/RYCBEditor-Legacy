@@ -103,7 +103,7 @@ namespace IDE
             StreamWriter sw = new(tmpStream);
             sw.BaseStream.Seek(0, SeekOrigin.End);
             sw.WriteLine("[{3}:{4}:{5}:{6}] [{0}|{1}] [Type {9}] [HResult {7}]" +
-                " [InnerException: {10} HResult {8}] 已捕获异常：{2} ",
+                " [InnerException: {10} HResult {8}] 已捕获异常：{11} \n 异常信息：{2}",
                 I18n.Translate((int)port, "port", lang),
                 I18n.Translate((int)msgLevel, "msg", lang),
                 data, DateTime.Now.Hour, DateTime.Now.Minute,
@@ -111,14 +111,15 @@ namespace IDE
                 ex.HResult,
                 ex.InnerException != null ? ex.InnerException.HResult : "Null",
                 ex.ToString().Split(new string[] { ": " }, StringSplitOptions.RemoveEmptyEntries)[0],
-                ex.InnerException != null ? ex.InnerException.ToString().Split(new string[] { ": " }, StringSplitOptions.RemoveEmptyEntries)[0] : "Null");
+                ex.InnerException != null ? ex.InnerException.ToString().Split(new string[] { ": " }, StringSplitOptions.RemoveEmptyEntries)[0] : "Null", 
+                ex.GetType());
             sw.WriteLine("[{3}:{4}:{5}:{6}] [{0}|{1}] ======== 堆栈跟踪如下 ======== \n\t\t\t\t[Outer Exception] {7}\n\t\t\t\t[Inner Exception] {8}",
                 I18n.Translate((int)port, "port", lang),
                 I18n.Translate((int)msgLevel, "msg", lang),
                 data, DateTime.Now.Hour, DateTime.Now.Minute,
                 DateTime.Now.Second, DateTime.Now.Millisecond,
-                ex.StackTrace, 
-                ex.InnerException != null?ex.InnerException.StackTrace:"(无 InnerException)");
+                ex.StackTrace,
+                ex.InnerException != null ? ex.InnerException.StackTrace : "(无 InnerException)");
             tmpStream.Flush();
             sw.Flush();
         }
@@ -165,15 +166,16 @@ namespace IDE
         /// <returns></returns>
         string ExecuteCMDWithOutput(string command)
         {
-            ProcessStartInfo processInfo = new ProcessStartInfo("cmd /s /c " + command)
+            ProcessStartInfo processInfo = new("cmd")
             {
+                Arguments = " /s /c " + command,
                 CreateNoWindow = true,
                 UseShellExecute = false,
                 WindowStyle = ProcessWindowStyle.Hidden,
                 RedirectStandardOutput = true
             };
 
-            Process process = new Process { StartInfo = processInfo };
+            Process process = new() { StartInfo = processInfo };
             process.Start();
             string outpup = process.StandardOutput.ReadToEnd();
             process.WaitForExit();
@@ -190,7 +192,6 @@ namespace IDE
         #endregion
     }
     #endregion
-
     #region I18n Translation Module
     public static class I18n
     {
@@ -277,7 +278,6 @@ namespace IDE
         #endregion
     }
     #endregion
-
     #region Log Warning Level
     public enum EnumMsgLevel
     {
@@ -288,7 +288,6 @@ namespace IDE
         DEBUG,
     }
     #endregion
-
     #region Log Port
     public enum EnumPort
     {
@@ -296,7 +295,6 @@ namespace IDE
         SERVER,
     }
     #endregion
-
     #region Program Module
     public enum EnumModule
     {
