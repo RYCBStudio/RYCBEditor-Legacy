@@ -1,11 +1,4 @@
 ﻿using System;
-using System.Collections.Generic;
-using System.ComponentModel;
-using System.Data;
-using System.Drawing;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
 using System.Windows.Forms;
 
 namespace IDE
@@ -20,7 +13,7 @@ namespace IDE
 
         private void Form2_Load(object sender, EventArgs e)
         {
-            label3.Text = "Version " + Main.VERSION;
+            label3.Text = "Version " + Main.FRIENDLY_VER;
             label4.Text = $"Copyright © RYCBStudio {DateTime.Now.Year}. All Rights Reserved.";
         }
     }

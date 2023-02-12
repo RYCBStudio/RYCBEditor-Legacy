@@ -12,9 +12,9 @@ namespace IDE
 {
     public partial class CustomSettings : Form
     {
-        Main MainWindow;
-        List<string> files = new List<string>() { };
-        List<ElementHost> hosts = new List<ElementHost> { };
+        private Main MainWindow;
+        private List<string> files = new() { };
+        private List<ElementHost> hosts = new() { };
 
         public CustomSettings()
         {
@@ -35,20 +35,20 @@ namespace IDE
         {
             foreach (var item in files)
             {
-                TextEditor txtEditor = new TextEditor();
+                TextEditor txtEditor = new();
                 SearchPanel.Install(txtEditor.TextArea);
                 //设置语法规则
                 string name = item.ToString();
                 using (Stream s = new FileStream(name, FileMode.Open, FileAccess.ReadWrite, FileShare.ReadWrite))
                 {
-                    using (XmlTextReader reader = new XmlTextReader(s))
-                    {
-                        var xshd = HighlightingLoader.LoadXshd(reader);
-                        txtEditor.SyntaxHighlighting = HighlightingLoader.Load(xshd, HighlightingManager.Instance);
-                    }
+                    using XmlTextReader reader = new(s);
+                    var xshd = HighlightingLoader.LoadXshd(reader);
+                    txtEditor.SyntaxHighlighting = HighlightingLoader.Load(xshd, HighlightingManager.Instance);
                 }
-                ElementHost tmpEHost = new ElementHost();
-                tmpEHost.Child = txtEditor;
+                ElementHost tmpEHost = new()
+                {
+                    Child = txtEditor
+                };
                 hosts.Add(tmpEHost);
             }
         }

@@ -12,12 +12,12 @@ namespace IDE
     {
         #region 变量声明
         internal string logPath;
-        RegistryKey IDE_CFG = Registry.LocalMachine
+        private RegistryKey IDE_CFG = Registry.LocalMachine
             .OpenSubKey(@"SOFTWARE", true)
             .OpenSubKey("RYCB", true)
             .OpenSubKey("IDE", true)
             .CreateSubKey("global_cfg", true);
-        string lang;
+        private string lang;
         #endregion
         #region 构造方法
         public LogUtil(string logPath)
@@ -164,7 +164,7 @@ namespace IDE
         /// </summary>
         /// <param name="command">命令</param>
         /// <returns></returns>
-        string ExecuteCMDWithOutput(string command)
+        private string ExecuteCMDWithOutput(string command)
         {
             ProcessStartInfo processInfo = new("cmd")
             {
