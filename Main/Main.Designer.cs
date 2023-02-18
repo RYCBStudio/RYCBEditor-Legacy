@@ -33,6 +33,8 @@
             this.menuStrip1 = new System.Windows.Forms.MenuStrip();
             this.文件FToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.新建NToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
+            this.项目ToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
+            this.文件ToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.打开OToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.保存SToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.另存为AToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
@@ -54,14 +56,16 @@
             this.许可与版权声明ToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.toolStripTextBox1 = new System.Windows.Forms.ToolStripTextBox();
             this.toolStripComboBox1 = new System.Windows.Forms.ToolStripComboBox();
+            this.开发者选项DToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
+            this.崩溃测试ToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.openFileDialog1 = new System.Windows.Forms.OpenFileDialog();
             this.timer1 = new System.Windows.Forms.Timer(this.components);
             this.saveFileDialog1 = new System.Windows.Forms.SaveFileDialog();
-            this.tabControl1 = new System.Windows.Forms.TabControl();
+            this.tabControl1 = new MetroFramework.Controls.MetroTabControl();
             this.contextMenuStrip1 = new System.Windows.Forms.ContextMenuStrip(this.components);
             this.刷新RToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.关闭CtrlF4ToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
-            this.tabPage1 = new System.Windows.Forms.TabPage();
+            this.tabPage1 = new MetroFramework.Controls.MetroTabPage();
             this.elementHost1 = new System.Windows.Forms.Integration.ElementHost();
             this.timer2 = new System.Windows.Forms.Timer(this.components);
             this.toolStripStatusLabel2 = new System.Windows.Forms.ToolStripStatusLabel();
@@ -78,11 +82,14 @@
             this.配置ToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.timer4 = new System.Windows.Forms.Timer(this.components);
             this.timer5 = new System.Windows.Forms.Timer(this.components);
-            this.button1 = new System.Windows.Forms.Button();
-            this.toolStripButton1 = new System.Windows.Forms.ToolStripButton();
-            this.toolStripButton2 = new System.Windows.Forms.ToolStripButton();
             this.toolStripComboBox2 = new System.Windows.Forms.ToolStripComboBox();
             this.toolStrip1 = new System.Windows.Forms.ToolStrip();
+            this.toolStripButton1 = new System.Windows.Forms.ToolStripButton();
+            this.toolStripButton2 = new System.Windows.Forms.ToolStripButton();
+            this.button1 = new System.Windows.Forms.Button();
+            this.SyntaxErrorChecker = new System.Windows.Forms.Timer(this.components);
+            this.uiGroupBox1 = new Sunny.UI.UIGroupBox();
+            this.uiListBox1 = new Sunny.UI.UIListBox();
             this.menuStrip1.SuspendLayout();
             this.tabControl1.SuspendLayout();
             this.contextMenuStrip1.SuspendLayout();
@@ -91,6 +98,7 @@
             this.statusStrip2.SuspendLayout();
             this.contextMenuStrip2.SuspendLayout();
             this.toolStrip1.SuspendLayout();
+            this.uiGroupBox1.SuspendLayout();
             this.SuspendLayout();
             // 
             // menuStrip1
@@ -104,7 +112,8 @@
             this.工具TToolStripMenuItem,
             this.帮助HToolStripMenuItem,
             this.toolStripTextBox1,
-            this.toolStripComboBox1});
+            this.toolStripComboBox1,
+            this.开发者选项DToolStripMenuItem});
             this.menuStrip1.Location = new System.Drawing.Point(0, 0);
             this.menuStrip1.Name = "menuStrip1";
             this.menuStrip1.Size = new System.Drawing.Size(1902, 37);
@@ -126,14 +135,36 @@
             // 新建NToolStripMenuItem
             // 
             this.新建NToolStripMenuItem.BackColor = System.Drawing.SystemColors.ActiveCaptionText;
+            this.新建NToolStripMenuItem.DropDownItems.AddRange(new System.Windows.Forms.ToolStripItem[] {
+            this.项目ToolStripMenuItem,
+            this.文件ToolStripMenuItem});
             this.新建NToolStripMenuItem.ForeColor = System.Drawing.SystemColors.Control;
             this.新建NToolStripMenuItem.Image = global::IDE.Properties.Resources.edit;
             this.新建NToolStripMenuItem.ImageTransparentColor = System.Drawing.Color.Magenta;
             this.新建NToolStripMenuItem.Name = "新建NToolStripMenuItem";
-            this.新建NToolStripMenuItem.ShortcutKeys = ((System.Windows.Forms.Keys)((System.Windows.Forms.Keys.Control | System.Windows.Forms.Keys.N)));
             this.新建NToolStripMenuItem.Size = new System.Drawing.Size(202, 26);
-            this.新建NToolStripMenuItem.Text = "新建(&N)";
-            this.新建NToolStripMenuItem.Click += new System.EventHandler(this.New);
+            this.新建NToolStripMenuItem.Text = "新建";
+            // 
+            // 项目ToolStripMenuItem
+            // 
+            this.项目ToolStripMenuItem.BackColor = System.Drawing.Color.Black;
+            this.项目ToolStripMenuItem.ForeColor = System.Drawing.Color.WhiteSmoke;
+            this.项目ToolStripMenuItem.Image = global::IDE.Properties.Resources.Window;
+            this.项目ToolStripMenuItem.Name = "项目ToolStripMenuItem";
+            this.项目ToolStripMenuItem.ShortcutKeys = ((System.Windows.Forms.Keys)((System.Windows.Forms.Keys.Control | System.Windows.Forms.Keys.P)));
+            this.项目ToolStripMenuItem.Size = new System.Drawing.Size(180, 26);
+            this.项目ToolStripMenuItem.Text = "项目";
+            // 
+            // 文件ToolStripMenuItem
+            // 
+            this.文件ToolStripMenuItem.BackColor = System.Drawing.Color.Black;
+            this.文件ToolStripMenuItem.ForeColor = System.Drawing.Color.WhiteSmoke;
+            this.文件ToolStripMenuItem.Image = global::IDE.Properties.Resources.file_common;
+            this.文件ToolStripMenuItem.Name = "文件ToolStripMenuItem";
+            this.文件ToolStripMenuItem.ShortcutKeys = ((System.Windows.Forms.Keys)((System.Windows.Forms.Keys.Control | System.Windows.Forms.Keys.N)));
+            this.文件ToolStripMenuItem.Size = new System.Drawing.Size(180, 26);
+            this.文件ToolStripMenuItem.Text = "文件";
+            this.文件ToolStripMenuItem.Click += new System.EventHandler(this.New);
             // 
             // 打开OToolStripMenuItem
             // 
@@ -353,6 +384,27 @@
             this.toolStripComboBox1.Name = "toolStripComboBox1";
             this.toolStripComboBox1.Size = new System.Drawing.Size(135, 33);
             // 
+            // 开发者选项DToolStripMenuItem
+            // 
+            this.开发者选项DToolStripMenuItem.DropDownItems.AddRange(new System.Windows.Forms.ToolStripItem[] {
+            this.崩溃测试ToolStripMenuItem});
+            this.开发者选项DToolStripMenuItem.ForeColor = System.Drawing.Color.WhiteSmoke;
+            this.开发者选项DToolStripMenuItem.Name = "开发者选项DToolStripMenuItem";
+            this.开发者选项DToolStripMenuItem.Size = new System.Drawing.Size(119, 33);
+            this.开发者选项DToolStripMenuItem.Text = "开发者选项(&D)";
+            // 
+            // 崩溃测试ToolStripMenuItem
+            // 
+            this.崩溃测试ToolStripMenuItem.BackColor = System.Drawing.Color.Black;
+            this.崩溃测试ToolStripMenuItem.ForeColor = System.Drawing.Color.WhiteSmoke;
+            this.崩溃测试ToolStripMenuItem.Name = "崩溃测试ToolStripMenuItem";
+            this.崩溃测试ToolStripMenuItem.ShortcutKeys = ((System.Windows.Forms.Keys)((((System.Windows.Forms.Keys.Control | System.Windows.Forms.Keys.Alt) 
+            | System.Windows.Forms.Keys.Shift) 
+            | System.Windows.Forms.Keys.C)));
+            this.崩溃测试ToolStripMenuItem.Size = new System.Drawing.Size(284, 26);
+            this.崩溃测试ToolStripMenuItem.Text = "崩溃测试";
+            this.崩溃测试ToolStripMenuItem.Click += new System.EventHandler(this.TestCrash);
+            // 
             // openFileDialog1
             // 
             this.openFileDialog1.FileName = "code";
@@ -378,8 +430,10 @@
             this.tabControl1.Multiline = true;
             this.tabControl1.Name = "tabControl1";
             this.tabControl1.SelectedIndex = 0;
-            this.tabControl1.Size = new System.Drawing.Size(1890, 853);
+            this.tabControl1.Size = new System.Drawing.Size(1722, 853);
             this.tabControl1.TabIndex = 2;
+            this.tabControl1.Theme = MetroFramework.MetroThemeStyle.Dark;
+            this.tabControl1.UseSelectable = true;
             // 
             // contextMenuStrip1
             // 
@@ -414,18 +468,25 @@
             // 
             this.tabPage1.BackColor = System.Drawing.Color.Black;
             this.tabPage1.Controls.Add(this.elementHost1);
-            this.tabPage1.Location = new System.Drawing.Point(4, 29);
+            this.tabPage1.HorizontalScrollbarBarColor = true;
+            this.tabPage1.HorizontalScrollbarHighlightOnWheel = false;
+            this.tabPage1.HorizontalScrollbarSize = 2;
+            this.tabPage1.Location = new System.Drawing.Point(4, 38);
             this.tabPage1.Name = "tabPage1";
             this.tabPage1.Padding = new System.Windows.Forms.Padding(3);
-            this.tabPage1.Size = new System.Drawing.Size(1882, 820);
+            this.tabPage1.Size = new System.Drawing.Size(1714, 811);
             this.tabPage1.TabIndex = 0;
             this.tabPage1.Text = "(临时)";
+            this.tabPage1.Theme = MetroFramework.MetroThemeStyle.Dark;
+            this.tabPage1.VerticalScrollbarBarColor = true;
+            this.tabPage1.VerticalScrollbarHighlightOnWheel = false;
+            this.tabPage1.VerticalScrollbarSize = 4;
             // 
             // elementHost1
             // 
             this.elementHost1.Location = new System.Drawing.Point(4, 4);
             this.elementHost1.Name = "elementHost1";
-            this.elementHost1.Size = new System.Drawing.Size(1872, 810);
+            this.elementHost1.Size = new System.Drawing.Size(1707, 810);
             this.elementHost1.TabIndex = 0;
             this.elementHost1.Text = "elementHost1";
             this.elementHost1.Child = null;
@@ -543,39 +604,6 @@
             this.timer5.Interval = 1000;
             this.timer5.Tick += new System.EventHandler(this.isMaximized);
             // 
-            // button1
-            // 
-            this.button1.BackColor = System.Drawing.SystemColors.ActiveCaptionText;
-            this.button1.BackgroundImage = global::IDE.Properties.Resources.help2;
-            this.button1.BackgroundImageLayout = System.Windows.Forms.ImageLayout.Stretch;
-            this.button1.FlatAppearance.BorderSize = 0;
-            this.button1.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
-            this.button1.Location = new System.Drawing.Point(1860, 0);
-            this.button1.Name = "button1";
-            this.button1.Size = new System.Drawing.Size(30, 30);
-            this.button1.TabIndex = 5;
-            this.button1.UseVisualStyleBackColor = false;
-            this.button1.Click += new System.EventHandler(this.help);
-            // 
-            // toolStripButton1
-            // 
-            this.toolStripButton1.DisplayStyle = System.Windows.Forms.ToolStripItemDisplayStyle.Image;
-            this.toolStripButton1.Image = global::IDE.Properties.Resources.Debug_Color;
-            this.toolStripButton1.ImageTransparentColor = System.Drawing.Color.Magenta;
-            this.toolStripButton1.Name = "toolStripButton1";
-            this.toolStripButton1.Size = new System.Drawing.Size(29, 25);
-            this.toolStripButton1.Text = "调试";
-            // 
-            // toolStripButton2
-            // 
-            this.toolStripButton2.DisplayStyle = System.Windows.Forms.ToolStripItemDisplayStyle.Image;
-            this.toolStripButton2.Image = global::IDE.Properties.Resources.Run;
-            this.toolStripButton2.ImageTransparentColor = System.Drawing.Color.Magenta;
-            this.toolStripButton2.Name = "toolStripButton2";
-            this.toolStripButton2.Size = new System.Drawing.Size(29, 25);
-            this.toolStripButton2.Text = "运行";
-            this.toolStripButton2.Click += new System.EventHandler(this.RunFile);
-            // 
             // toolStripComboBox2
             // 
             this.toolStripComboBox2.BackColor = System.Drawing.SystemColors.ControlText;
@@ -602,12 +630,92 @@
             this.toolStrip1.Size = new System.Drawing.Size(1902, 28);
             this.toolStrip1.TabIndex = 6;
             // 
+            // toolStripButton1
+            // 
+            this.toolStripButton1.DisplayStyle = System.Windows.Forms.ToolStripItemDisplayStyle.Image;
+            this.toolStripButton1.Image = global::IDE.Properties.Resources.Debug_Color;
+            this.toolStripButton1.ImageTransparentColor = System.Drawing.Color.Magenta;
+            this.toolStripButton1.Name = "toolStripButton1";
+            this.toolStripButton1.Size = new System.Drawing.Size(29, 25);
+            this.toolStripButton1.Text = "调试";
+            // 
+            // toolStripButton2
+            // 
+            this.toolStripButton2.DisplayStyle = System.Windows.Forms.ToolStripItemDisplayStyle.Image;
+            this.toolStripButton2.Image = global::IDE.Properties.Resources.Run;
+            this.toolStripButton2.ImageTransparentColor = System.Drawing.Color.Magenta;
+            this.toolStripButton2.Name = "toolStripButton2";
+            this.toolStripButton2.Size = new System.Drawing.Size(29, 25);
+            this.toolStripButton2.Text = "运行";
+            this.toolStripButton2.Click += new System.EventHandler(this.RunFile);
+            // 
+            // button1
+            // 
+            this.button1.BackColor = System.Drawing.SystemColors.ActiveCaptionText;
+            this.button1.BackgroundImage = global::IDE.Properties.Resources.help2;
+            this.button1.BackgroundImageLayout = System.Windows.Forms.ImageLayout.Stretch;
+            this.button1.FlatAppearance.BorderSize = 0;
+            this.button1.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
+            this.button1.Location = new System.Drawing.Point(1860, 0);
+            this.button1.Name = "button1";
+            this.button1.Size = new System.Drawing.Size(30, 30);
+            this.button1.TabIndex = 5;
+            this.button1.UseVisualStyleBackColor = false;
+            this.button1.Click += new System.EventHandler(this.help);
+            // 
+            // SyntaxErrorChecker
+            // 
+            this.SyntaxErrorChecker.Tick += new System.EventHandler(this.CheckSyntaxError);
+            // 
+            // uiGroupBox1
+            // 
+            this.uiGroupBox1.Controls.Add(this.uiListBox1);
+            this.uiGroupBox1.FillColor = System.Drawing.Color.Black;
+            this.uiGroupBox1.FillColor2 = System.Drawing.Color.Black;
+            this.uiGroupBox1.Font = new System.Drawing.Font("微软雅黑", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(134)));
+            this.uiGroupBox1.ForeColor = System.Drawing.Color.WhiteSmoke;
+            this.uiGroupBox1.Location = new System.Drawing.Point(1729, 70);
+            this.uiGroupBox1.Margin = new System.Windows.Forms.Padding(4, 5, 4, 5);
+            this.uiGroupBox1.MinimumSize = new System.Drawing.Size(1, 1);
+            this.uiGroupBox1.Name = "uiGroupBox1";
+            this.uiGroupBox1.Padding = new System.Windows.Forms.Padding(0, 32, 0, 0);
+            this.uiGroupBox1.Radius = 10;
+            this.uiGroupBox1.RectColor = System.Drawing.Color.White;
+            this.uiGroupBox1.Size = new System.Drawing.Size(165, 848);
+            this.uiGroupBox1.Style = Sunny.UI.UIStyle.Custom;
+            this.uiGroupBox1.TabIndex = 7;
+            this.uiGroupBox1.Text = "错误和警告";
+            this.uiGroupBox1.TextAlignment = System.Drawing.ContentAlignment.MiddleCenter;
+            this.uiGroupBox1.ZoomScaleRect = new System.Drawing.Rectangle(0, 0, 0, 0);
+            // 
+            // uiListBox1
+            // 
+            this.uiListBox1.FillColor = System.Drawing.Color.White;
+            this.uiListBox1.Font = new System.Drawing.Font("微软雅黑", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(134)));
+            this.uiListBox1.Items.AddRange(new object[] {
+            "TestErr1",
+            "TestErr2"});
+            this.uiListBox1.Location = new System.Drawing.Point(4, 33);
+            this.uiListBox1.Margin = new System.Windows.Forms.Padding(4, 5, 4, 5);
+            this.uiListBox1.MinimumSize = new System.Drawing.Size(1, 1);
+            this.uiListBox1.Name = "uiListBox1";
+            this.uiListBox1.Padding = new System.Windows.Forms.Padding(2);
+            this.uiListBox1.RectSize = 2;
+            this.uiListBox1.ShowText = false;
+            this.uiListBox1.Size = new System.Drawing.Size(156, 811);
+            this.uiListBox1.Style = Sunny.UI.UIStyle.Custom;
+            this.uiListBox1.TabIndex = 0;
+            this.uiListBox1.Text = "uiListBox1";
+            this.uiListBox1.ZoomScaleRect = new System.Drawing.Rectangle(0, 0, 0, 0);
+            this.uiListBox1.SelectedIndexChanged += new System.EventHandler(this.CheckErr);
+            // 
             // Main
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(9F, 20F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.BackColor = System.Drawing.Color.Black;
             this.ClientSize = new System.Drawing.Size(1902, 973);
+            this.Controls.Add(this.uiGroupBox1);
             this.Controls.Add(this.toolStrip1);
             this.Controls.Add(this.button1);
             this.Controls.Add(this.statusStrip2);
@@ -625,7 +733,6 @@
             this.Text = "RYCB Py-CN Editor";
             this.FormClosing += new System.Windows.Forms.FormClosingEventHandler(this.ExitByClosing);
             this.Load += new System.EventHandler(this.Form1_Load);
-            this.KeyPress += new System.Windows.Forms.KeyPressEventHandler(this.RunFile);
             this.Resize += new System.EventHandler(this.Form1_Resize);
             this.menuStrip1.ResumeLayout(false);
             this.menuStrip1.PerformLayout();
@@ -639,6 +746,7 @@
             this.contextMenuStrip2.ResumeLayout(false);
             this.toolStrip1.ResumeLayout(false);
             this.toolStrip1.PerformLayout();
+            this.uiGroupBox1.ResumeLayout(false);
             this.ResumeLayout(false);
             this.PerformLayout();
 
@@ -667,8 +775,8 @@
         private System.Windows.Forms.ToolStripMenuItem 运行f5ToolStripMenuItem;
         private System.Windows.Forms.Timer timer1;
         private System.Windows.Forms.SaveFileDialog saveFileDialog1;
-        private System.Windows.Forms.TabControl tabControl1;
-        private System.Windows.Forms.TabPage tabPage1;
+        private MetroFramework.Controls.MetroTabControl tabControl1;
+        private MetroFramework.Controls.MetroTabPage tabPage1;
         private System.Windows.Forms.Integration.ElementHost elementHost1;
         public System.Windows.Forms.ToolStripComboBox toolStripComboBox1;
         private System.Windows.Forms.ToolStripTextBox toolStripTextBox1;
@@ -699,6 +807,13 @@
         private System.Windows.Forms.ToolStripMenuItem 全选AToolStripMenuItem;
         private System.Windows.Forms.ToolStripStatusLabel toolStripStatusLabel6;
         private System.Windows.Forms.ToolStripStatusLabel toolStripStatusLabel7;
+        private System.Windows.Forms.ToolStripMenuItem 项目ToolStripMenuItem;
+        private System.Windows.Forms.ToolStripMenuItem 文件ToolStripMenuItem;
+        private System.Windows.Forms.Timer SyntaxErrorChecker;
+        private Sunny.UI.UIGroupBox uiGroupBox1;
+        private Sunny.UI.UIListBox uiListBox1;
+        private System.Windows.Forms.ToolStripMenuItem 开发者选项DToolStripMenuItem;
+        private System.Windows.Forms.ToolStripMenuItem 崩溃测试ToolStripMenuItem;
     }
 }
 

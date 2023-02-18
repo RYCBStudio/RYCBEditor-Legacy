@@ -13,8 +13,8 @@ namespace IDE
     {
 
         private const int PROGRESS_BAR_MAX = 50;
-        LogUtil Logger;
-        int i = 0;
+        private LogUtil Logger;
+        private int i = 0;
 
         public Entry()
         {
@@ -39,7 +39,7 @@ namespace IDE
         /// <param name="interpreter">解释器</param>
         /// <param name="interpreter_params">解释器参数</param>
         /// <returns></returns>
-        string ExecuteCMDWithOutput(string command, string interpreter, string interpreter_params)
+        private string ExecuteCMDWithOutput(string command, string interpreter, string interpreter_params)
         {
             ProcessStartInfo processInfo = new(interpreter, $"{interpreter_params} " + command)
             {

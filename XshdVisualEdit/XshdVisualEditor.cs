@@ -8,15 +8,15 @@ using System.Xml;
 
 namespace IDE
 {
-    delegate string GetKey(string TagName);
+    internal delegate string GetKey(string TagName);
 
     public partial class XshdVisualEditor : Form
     {
-        int i = 0;
-        string path;
-        TreeNode main;
-        XmlDocument doc = new();
-        TextEditor editor;
+        private int i = 0;
+        private string path;
+        private TreeNode main;
+        private XmlDocument doc = new();
+        private TextEditor editor;
 
         public XshdVisualEditor(string path)
         {

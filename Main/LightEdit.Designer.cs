@@ -70,6 +70,7 @@
             this.配置ToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.timer4 = new System.Windows.Forms.Timer(this.components);
             this.button1 = new System.Windows.Forms.Button();
+            this.memRecord = new System.Windows.Forms.Timer(this.components);
             this.menuStrip1.SuspendLayout();
             this.contextMenuStrip1.SuspendLayout();
             this.statusStrip1.SuspendLayout();
@@ -299,11 +300,10 @@
             this.tabControl1.Location = new System.Drawing.Point(0, 31);
             this.tabControl1.Multiline = true;
             this.tabControl1.Name = "tabControl1";
-            this.tabControl1.Size = new System.Drawing.Size(1395, 702);
-            this.tabControl1.Style = MetroFramework.MetroColorStyle.Black;
+            this.tabControl1.Size = new System.Drawing.Size(1395, 704);
+            this.tabControl1.Style = MetroFramework.MetroColorStyle.Blue;
             this.tabControl1.TabIndex = 2;
             this.tabControl1.Theme = MetroFramework.MetroThemeStyle.Dark;
-            this.tabControl1.UseCustomForeColor = true;
             this.tabControl1.UseSelectable = true;
             this.tabControl1.UseStyleColors = true;
             this.tabControl1.DragDrop += new System.Windows.Forms.DragEventHandler(this.tabControl1_DragDrop);
@@ -459,6 +459,12 @@
             this.button1.UseVisualStyleBackColor = false;
             this.button1.Click += new System.EventHandler(this.help);
             // 
+            // memRecord
+            // 
+            this.memRecord.Enabled = true;
+            this.memRecord.Interval = 60000;
+            this.memRecord.Tick += new System.EventHandler(this.RecordMem);
+            // 
             // LightEdit
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(9F, 20F);
@@ -479,7 +485,6 @@
             this.Margin = new System.Windows.Forms.Padding(3, 4, 3, 4);
             this.MaximizeBox = false;
             this.Name = "LightEdit";
-            this.StartPosition = System.Windows.Forms.FormStartPosition.CenterScreen;
             this.Text = "RYCB Py-CN Editor - LightEdit模式";
             this.FormClosing += new System.Windows.Forms.FormClosingEventHandler(this.ExitByClosing);
             this.Load += new System.EventHandler(this.Form1_Load);
@@ -540,6 +545,7 @@
         private System.Windows.Forms.ToolStripStatusLabel toolStripStatusLabel7;
         private System.Windows.Forms.ToolStripStatusLabel toolStripStatusLabel4;
         private MetroFramework.Controls.MetroTabControl tabControl1;
+        private System.Windows.Forms.Timer memRecord;
     }
 }
 

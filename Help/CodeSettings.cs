@@ -7,11 +7,10 @@ namespace IDE
 {
     public partial class CodeSettings : Form
     {
-
-        int i = 1;
-        int addY = 35;
-        bool ReadOnly = true;
-        Main main;
+        private int i = 1;
+        private int addY = 35;
+        private bool ReadOnly = true;
+        private Main main;
         public RegistryKey HKLM, software, IDE, IDE_cfg;
 
         public CodeSettings()

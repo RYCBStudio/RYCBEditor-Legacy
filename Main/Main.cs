@@ -18,35 +18,35 @@ using ICSharpCode.AvalonEdit.CodeCompletion;
 using System.Windows.Input;
 using static IDE.FileTypeRegistryFactory;
 using ICSharpCode.AvalonEdit.Editing;
+using System.Reflection;
+using MetroFramework.Controls;
+using Sunny.UI;
 #endregion
 
 namespace IDE
 {
     public partial class Main : Form
     {
-        #region 一堆变量
-        private readonly Stopwatch stopwatch = new();
+        #region 一堆变量和常量
+        private static readonly Stopwatch stopwatch = new();
         public const string VERSION = "0.0.1";
-        internal static readonly LogUtil LOGGER = new(Environment.CurrentDirectory + $"\\logs\\{DateTime.Now.Year}-{DateTime.Now.Month}-{DateTime.Now.Day}.log");
+        public const string FRIENDLY_VER = "0.0.1a_dev+4";
+        public static readonly LogUtil LOGGER = new(Environment.CurrentDirectory + $"\\logs\\{DateTime.Now.Year}-{DateTime.Now.Month}-{DateTime.Now.Day}.log");
         private static StreamWriter keepFile;
         private const string title = "选择文件：";
         private const string field_a1 = "警告：用户取消了选择文件。";
         private const string field_a2 = "警告";
         private bool NoTip, isModified = false;
-        TextEditor edit;
-        int tmp_;
+        private TextEditor edit;
+        private int tmp_;
         int i = 1;
         public string text_tsl2;
         private string[] paths = new string[] { };
-        RegistryKey IDE_CFG, IDE_cfg;
+        private RegistryKey IDE_CFG, IDE_cfg;
         private static readonly System.Drawing.Size NO_CONSOLE_SIZE = new(957, 646);
-        private static readonly System.Drawing.Size WITH_CONSOLE_SIZE = NO_CONSOLE_SIZE;
-        const int originX = 957;
-        const int originY = 682;
-        int originEditX, originEditY, originTabPageX, originTabPageY, originTabControlX, originTabControlY;
-        [DllImport("user32")]
-        private static extern int SendMessage(IntPtr hwnd, int wMsg, int wParam, IntPtr lParam);
-        private const int WM_SETREDRAW = 0xB;
+        private const int originX = 957;
+        private const int originY = 682;
+        private int originEditX, originEditY, originMetroTabPageX, originMetroTabPageY, originTabControlX, originTabControlY;
         #endregion
         #region 一堆方法
         #region 构造函数
@@ -91,7 +91,7 @@ namespace IDE
                 LOGGER.WriteLog("正在注册文件关联...", EnumMsgLevel.INFO, EnumPort.CLIENT, EnumModule.INIT);
                 try
                 {
-                    FileTypeRegInfo fileTypeRegInfo = new(".pycn")
+                    IDE.FileTypeRegistryFactory.FileTypeRegInfo fileTypeRegInfo = new(".pycn")
                     {
                         Description = "The Py-CN Project项目文件",
                         ExePath = Application.ExecutablePath,
@@ -111,8 +111,8 @@ namespace IDE
             keepFile.Flush();
             this.Size = new System.Drawing.Size(1920, 1020);
             this.Location = new System.Drawing.Point(1, 1);
-            originTabPageX = this.tabPage1.Width;
-            originTabPageY = this.tabPage1.Height;
+            originMetroTabPageX = this.tabPage1.Width;
+            originMetroTabPageY = this.tabPage1.Height;
             originTabControlX = this.tabControl1.Width;
             originTabControlY = this.tabControl1.Height;
             NoTip = (bool)IDE_cfg.GetValue("NoTip", false);
@@ -132,7 +132,7 @@ namespace IDE
             text_tsl2 = toolStripStatusLabel2.Text;
             //快速搜索功能
             SearchPanel.Install(edit.TextArea);
-            System.Reflection.Assembly assembly = System.Reflection.Assembly.GetExecutingAssembly();
+            System.Reflection.Assembly assembly = Assembly.GetExecutingAssembly();
             //设置语法规则
             string name = assembly.GetName().Name + ".Py-CN.xshd";
             using (Stream s = assembly.GetManifestResourceStream(name))
@@ -153,6 +153,17 @@ namespace IDE
             }
             LOGGER.WriteLog("查找完毕。", EnumMsgLevel.INFO, EnumPort.CLIENT, EnumModule.INIT);
             LOGGER.WriteLog("初始化成功！", EnumMsgLevel.INFO, EnumPort.CLIENT, EnumModule.INIT);
+            File.WriteAllText(Environment.GetFolderPath(Environment.SpecialFolder.ApplicationData) + "\\RYCB\\IDE\\SoftInfo",
+                $"""
+                [Version]
+                Version={VERSION}
+                friendly={FRIENDLY_VER}
+
+                [Startup]
+                param_count=0
+                params=None
+                path={Application.StartupPath}
+                """);
             stopwatch.Stop();
             TimeSpan time = stopwatch.Elapsed;
             double end_time = time.TotalSeconds;
@@ -288,7 +299,7 @@ namespace IDE
                 #region 普通文件
                 else
                 {
-                    foreach (TabPage tab in tabControl1.TabPages)
+                    foreach (MetroTabPage tab in tabControl1.TabPages)
                     {
                         if (tab.Text == tmp)
                         {
@@ -296,7 +307,7 @@ namespace IDE
                             return;
                         }
                     }
-                    TabPage newTab = new(tmp);
+                    MetroTabPage newTab = new() { Text = tmp, ToolTipText = @openFileDialog1.FileName };
                     ElementHost tmpEHost = new()
                     {
                         Size = elementHost1.Size,
@@ -348,7 +359,7 @@ namespace IDE
         private void New(object sender, EventArgs e)
         {
             var tmp_ = toolStripComboBox1.Text.Split(new string[] { "(内置) " }, StringSplitOptions.RemoveEmptyEntries)[0];
-            TabPage tab = new($"新建{tmp_}文件" + i);
+            MetroTabPage tab = new() { Text = $"新建{tmp_}文件" + i };
             tabControl1.TabPages.Add(tab);
             i++;
             ElementHost tmpEHost = new()
@@ -372,11 +383,9 @@ namespace IDE
             string name = assembly.GetName().Name + $".{tmp_}.xshd";
             using (Stream s = assembly.GetManifestResourceStream(name))
             {
-                using (XmlTextReader reader = new(s))
-                {
-                    var xshd = HighlightingLoader.LoadXshd(reader);
-                    tmpEditor.SyntaxHighlighting = HighlightingLoader.Load(xshd, HighlightingManager.Instance);
-                }
+                using XmlTextReader reader = new(s);
+                var xshd = HighlightingLoader.LoadXshd(reader);
+                tmpEditor.SyntaxHighlighting = HighlightingLoader.Load(xshd, HighlightingManager.Instance);
             }
             tmpEHost.Child = tmpEditor;
             tab.Controls.Add(tmpEHost);
@@ -405,7 +414,7 @@ namespace IDE
                     tabControl1.SelectedTab.Text = saveFileDialog1.FileName.Split('\\')[saveFileDialog1.FileName.Split('\\').Length - 1];
                 else
                 {
-                    TabPage tab = new(saveFileDialog1.FileName.Split('\\')[saveFileDialog1.FileName.Split('\\').Length - 1]);
+                    MetroTabPage tab = new() { Text = saveFileDialog1.FileName.Split('\\')[saveFileDialog1.FileName.Split('\\').Length - 1], ToolTipText = @saveFileDialog1.FileName };
                     tabControl1.TabPages.Add(tab);
                     i++;
                     ElementHost tmpEHost = new()
@@ -427,11 +436,9 @@ namespace IDE
                     string name = assembly.GetName().Name + $".Py-CN.xshd";
                     using (Stream s = assembly.GetManifestResourceStream(name))
                     {
-                        using (XmlTextReader reader = new(s))
-                        {
-                            var xshd = HighlightingLoader.LoadXshd(reader);
-                            tmpEditor.SyntaxHighlighting = HighlightingLoader.Load(xshd, HighlightingManager.Instance);
-                        }
+                        using XmlTextReader reader = new(s);
+                        var xshd = HighlightingLoader.LoadXshd(reader);
+                        tmpEditor.SyntaxHighlighting = HighlightingLoader.Load(xshd, HighlightingManager.Instance);
                     }
                     tmpEHost.Child = tmpEditor;
                     tab.Controls.Add(tmpEHost);
@@ -483,7 +490,7 @@ namespace IDE
         /// <param name="interpreter">解释器</param>
         /// <param name="interpreter_params">解释器参数</param>
         /// <returns></returns>
-        string ExecuteCMDWithOutput(string command, string interpreter, string interpreter_params)
+        private string ExecuteCMDWithOutput(string command, string interpreter, string interpreter_params)
         {
             ProcessStartInfo processInfo = new(interpreter, $"{interpreter_params} " + command)
             {
@@ -596,9 +603,9 @@ namespace IDE
         }
         #endregion
         #region <FUNC> 占位方法
-        void func_0a1(string tmp)
+        private void func_0a1(string tmp)
         {
-            foreach (TabPage tab in tabControl1.TabPages)
+            foreach (MetroTabPage tab in tabControl1.TabPages)
             {
                 if (tab.Text == tmp)
                 {
@@ -606,7 +613,7 @@ namespace IDE
                     return;
                 }
             }
-            TabPage newTab = new(tmp);
+            MetroTabPage newTab = new() { Text = tmp, ToolTipText = @openFileDialog1.FileName };
             ElementHost tmpEHost = new()
             {
                 Size = elementHost1.Size,
@@ -628,11 +635,9 @@ namespace IDE
             string name = assembly.GetName().Name + $".{AutoGetLanguage(_)}.xshd";
             using (Stream s = assembly.GetManifestResourceStream(name))
             {
-                using (XmlTextReader reader = new(s))
-                {
-                    var xshd = HighlightingLoader.LoadXshd(reader);
-                    tmpEditor.SyntaxHighlighting = HighlightingLoader.Load(xshd, HighlightingManager.Instance);
-                }
+                using XmlTextReader reader = new(s);
+                var xshd = HighlightingLoader.LoadXshd(reader);
+                tmpEditor.SyntaxHighlighting = HighlightingLoader.Load(xshd, HighlightingManager.Instance);
             }
             tmpEHost.Child = tmpEditor;
             newTab.Controls.Add(tmpEHost);
@@ -642,7 +647,7 @@ namespace IDE
         }
         #endregion
         #region <FUNC> 占位方法
-        void func_0a2(string tssl2Text, string fileDesc)
+        private void func_0a2(string tssl2Text, string fileDesc)
         {
             toolStripStatusLabel2.Text = tssl2Text + text_tsl2;
             string agreeText = $"检测到您正在打开 {fileDesc} 文件，该操作或将引起IDE未响应、内存溢出等不确定行为，请确认是否继续打开：";
@@ -654,7 +659,7 @@ namespace IDE
         #region 关闭选项卡
         private void CloseFile(object sender, EventArgs e)
         {
-            TabPage tab = tabControl1.SelectedTab;
+            MetroTabPage tab = (MetroTabPage)tabControl1.TabPages[tabControl1.SelectedIndex];
             if (tab.Equals(tabPage1))
             {
                 if (!NoTip)
@@ -708,7 +713,7 @@ namespace IDE
         #region 运行文件
         private void RunFile(object sender, EventArgs e)
         {
-            // RegistryKey cc;
+            //// RegistryKey cc;
             if (toolStripComboBox2.Items.Count != 0)
             {
                 if (toolStripComboBox2.SelectedItem != null)
@@ -728,11 +733,6 @@ namespace IDE
                         Arguments = $"{interpreter_params} {executePath} {param}",
                     };
                     Process.Start(tmp).WaitForExit();
-                    //    label2.Text = $" 当前使用：[{interpreter}]";
-                    //    textBox1.Text += $"> {(interpreter.Contains("\\") ? ($"\"{interpreter}\"") : (interpreter))} {interpreter_params} \"{executePath}\" {param} \r\n";
-                    //    panel1_isHiding = false;
-                    //    panel1.Show();
-                    //    textBox1.Text += ExecuteCMDWithOutput($"{(interpreter.Contains("\\") ? ($"\"{interpreter}\"") : (interpreter))} {interpreter_params} \"{executePath}\" {param}", interpreter, interpreter_params) + "\r\n";
                 }
             }
         }
@@ -803,6 +803,30 @@ namespace IDE
         {
             new LicenseAndCopyrights().Show();
         }
+
+        private void CheckSyntaxError(object sender, EventArgs e)
+        {
+            TextEditor editor = (tabControl1.SelectedTab.Controls[0] as ElementHost).Child as TextEditor;
+            if (tabControl1.SelectedTab.ToolTipText != null)
+            {
+                string ret = RunPythonSrcipt(tabControl1.SelectedTab.ToolTipText)[1];
+                foreach (var item in ret.Split(Environment.NewLine))
+                {
+                    if (item.Contains("Traceback (most recent call last):"))
+                    {
+
+                    }
+                }
+            }
+        }
+
+        private void CheckErr(object sender, EventArgs e)
+        {
+            if (((UIListBox)sender).SelectedIndex >= 0)
+            {
+                MessageBox.Show("选择了" + ((UIListBox)sender).SelectedItem, "", MessageBoxButtons.OK, MessageBoxIcon.Exclamation);
+            }
+        }
         #endregion
         #region 循环判断：窗体是否处于最大化状态
         private void isMaximized(object sender, EventArgs e)
@@ -821,8 +845,8 @@ namespace IDE
                     /*
                     this.tabControl1.Width = originTabControlX + differenceX;
                     this.tabControl1.Height = originTabControlY + differenceY;
-                    this.tabPage1.Width = originTabPageX + differenceX;
-                    this.tabPage1.Height = originTabPageY + differenceY;
+                    this.tabPage1.Width = originMetroTabPageX + differenceX;
+                    this.tabPage1.Height = originMetroTabPageY + differenceY;
                     this.edit.Width = originEditX + differenceX;
                     this.edit.Height = originEditY + differenceY;
                     foreach (TextEditor ctrl in this.Controls)
@@ -840,7 +864,7 @@ namespace IDE
                             }
                         }
                     }
-                    foreach (TabPage ctrl in this.tabControl1.TabPages)
+                    foreach (MetroTabPage ctrl in this.tabControl1.MetroTabPages)
                     {
                         if (ctrl is not null)
                         {
@@ -888,7 +912,13 @@ namespace IDE
                 button1.Location = tmp;
             }
         }
+
+        private void TestCrash(object sender, EventArgs e)
+        {
+            throw new Exception("测试异常", new UnauthorizedAccessException("测试内部错误"));
+        }
         #endregion
+
         #region 退出
         private void ExitByClosing(object sender, FormClosingEventArgs e)
         {
@@ -953,7 +983,7 @@ namespace IDE
         #endregion
         #region 代码提示
         private CompletionWindow _codeSense;
-        string tmpCompletionStr = "";
+        private string tmpCompletionStr = "";
         private void TextAreaOnTextEntered(object sender, TextCompositionEventArgs e)
         {
             /*
@@ -1322,6 +1352,25 @@ namespace IDE
             RYCBCodeSense.Clear(ref tmpCompletionStr);
             RYCBCodeSense._completed = false;
             toolStripStatusLabel7.Text = tmpCompletionStr;
+        }
+        #endregion
+        #region 后台运行Python代码 (Copyright © 2023 RYCBStudio by CC 2.0 License)
+        static string[] RunPythonSrcipt(string path, string python = "python.exe")
+        {
+            Process pythonSrcipt = new Process()
+            {
+                StartInfo = new ProcessStartInfo
+                {
+                    FileName = python,
+                    Arguments = path,
+                    UseShellExecute = false,
+                    RedirectStandardOutput = true,
+                    RedirectStandardError = true,
+                    RedirectStandardInput = true,
+                }
+            };
+            pythonSrcipt.Start();
+            return new string[] { pythonSrcipt.StandardOutput.ReadToEnd(), pythonSrcipt.StandardError.ReadToEnd() };
         }
         #endregion
         #endregion

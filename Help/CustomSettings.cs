@@ -12,9 +12,9 @@ namespace IDE
 {
     public partial class CustomSettings : Form
     {
-        Main MainWindow;
-        List<string> files = new() { };
-        List<ElementHost> hosts = new() { };
+        private Main MainWindow;
+        private List<string> files = new() { };
+        private List<ElementHost> hosts = new() { };
 
         public CustomSettings()
         {
@@ -41,11 +41,9 @@ namespace IDE
                 string name = item.ToString();
                 using (Stream s = new FileStream(name, FileMode.Open, FileAccess.ReadWrite, FileShare.ReadWrite))
                 {
-                    using (XmlTextReader reader = new(s))
-                    {
-                        var xshd = HighlightingLoader.LoadXshd(reader);
-                        txtEditor.SyntaxHighlighting = HighlightingLoader.Load(xshd, HighlightingManager.Instance);
-                    }
+                    using XmlTextReader reader = new(s);
+                    var xshd = HighlightingLoader.LoadXshd(reader);
+                    txtEditor.SyntaxHighlighting = HighlightingLoader.Load(xshd, HighlightingManager.Instance);
                 }
                 ElementHost tmpEHost = new()
                 {
