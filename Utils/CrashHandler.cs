@@ -3,15 +3,18 @@ using Sunny.UI;
 using System;
 using System.Collections.Generic;
 using System.Globalization;
+using System.IO;
 using System.Management;
 
 namespace IDE.Utils
 {
     public class CrashHandler
     {
-        private Exception _ex;
+        private static Exception _ex;
+        private static string _path;
         private readonly static string[] _jokes =
-            {"我们都有不顺利的时候。",
+            {
+            "我们都有不顺利的时候。",
             "滚回功率，坐和放宽。",
             "好东西就要来了",
             "你好。正在为你作准备。",
@@ -20,6 +23,7 @@ namespace IDE.Utils
             "你已完成30%",
             "做！轰！",
             "免 费 花 分 文",
+            "幸福倒计时",
             "Windows 10 不是面向我们所有人，而是面向我们每一个人。",
             "您和您的电脑需要重新启动。",
             "头抬起",
@@ -54,13 +58,18 @@ namespace IDE.Utils
             时间：{1}
             错误类型：{2}
             描述：{3}
+            HResult：{18}
             {4}
 
             详细信息如下：
             -----------------------
             == 主线程 ==
             堆栈调用：
-                {4}
+            {4}
+
+            == 内部错误 ==
+            是否有内部错误：{16}
+            {17}
 
             == 系统信息 ==
             软件版本：{5}
@@ -76,9 +85,10 @@ namespace IDE.Utils
             """;
         private IniFileEx IniFile = new(Environment.GetFolderPath(Environment.SpecialFolder.ApplicationData) + "\\RYCB\\IDE\\SoftInfo");
 
-        public CrashHandler(Exception ex)
+        public CrashHandler(Exception ex, string path)
         {
             _ex = ex;
+            _path = path+$"\\崩溃报告_{DateTime.Now.Year}-{DateTime.Now.Month}-{DateTime.Now.Day}_{DateTime.Now.Hour}-{DateTime.Now.Minute}-{DateTime.Now.Second}+{DateTime.Now.Millisecond}*Client.txt";
         }
 
         public void CollectCrashInfo()
@@ -94,27 +104,48 @@ namespace IDE.Utils
                 IniFile.Read("Startup", "param_count", "Unknown"),
                 IniFile.Read("Startup", "params", "Unknown"),
                 System.IO.File.ReadAllText(Environment.GetFolderPath(Environment.SpecialFolder.ApplicationData) + "\\RYCB\\IDE\\protect\\time"),
-                () => { return System.IO.File.ReadAllText(Main.LOGGER.logPath).Contains("初始化成功！"); },
+                System.IO.File.ReadAllText(Main.LOGGER.logPath).Contains("初始化成功！"),
                 IniFile.Read("Startup", "path", "Unknown"),
                 "客户端",
                 CultureInfo.CurrentCulture.DisplayName,
                 System.IO.File.ReadAllText(Environment.GetFolderPath(Environment.SpecialFolder.ApplicationData) + "\\RYCB\\IDE\\protect\\memory"),
-                () =>
-                {
-                    List<string> CPUs = new();
-                    {
-                        var CPUName = "";
-                        var management = new ManagementObjectSearcher("Select * from Win32_Processor");
-                        foreach (var baseObject in management.Get())
-                        {
-                            var managementObject = (ManagementObject)baseObject;
-                            CPUName = managementObject["Name"].ToString();
-                        }
-                        CPUs.Add(CPUName);
-                    }
-                    return CPUs;
-                }
+                foo(),
+                _ex.InnerException != null,
+                _ex.InnerException != null ? $"""
+                    错误类型：{_ex.InnerException.GetType()}
+                    HResult：{_ex.InnerException.HResult}
+                    堆栈调用：
+                    {_ex.InnerException.StackTrace}
+                    """
+                : "",
+                _ex.HResult
                 );
+        }
+
+        public bool WriteDumpFile()
+        {
+            try
+            {
+                File.WriteAllText(_path, _res);
+            }
+            catch { return false; }
+            return true;
+        }
+
+        private string foo()
+        {
+            string CPUs = "";
+            {
+                var CPUName = "";
+                var management = new ManagementObjectSearcher("Select * from Win32_Processor");
+                foreach (var baseObject in management.Get())
+                {
+                    var managementObject = (ManagementObject)baseObject;
+                    CPUName = managementObject["Name"].ToString();
+                    CPUs += CPUName;
+                }
+            }
+            return CPUs;
         }
     }
 }

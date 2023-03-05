@@ -15,6 +15,21 @@
     <Deterministic>true</Deterministic>
     <NuGetPackageImportStamp>
     </NuGetPackageImportStamp>
+    <PublishUrl>publish\</PublishUrl>
+    <Install>true</Install>
+    <InstallFrom>Disk</InstallFrom>
+    <UpdateEnabled>false</UpdateEnabled>
+    <UpdateMode>Foreground</UpdateMode>
+    <UpdateInterval>7</UpdateInterval>
+    <UpdateIntervalUnits>Days</UpdateIntervalUnits>
+    <UpdatePeriodically>false</UpdatePeriodically>
+    <UpdateRequired>false</UpdateRequired>
+    <MapFileExtensions>true</MapFileExtensions>
+    <ApplicationRevision>0</ApplicationRevision>
+    <ApplicationVersion>1.0.0.%2a</ApplicationVersion>
+    <IsWebBootstrapper>false</IsWebBootstrapper>
+    <UseApplicationTrust>false</UseApplicationTrust>
+    <BootstrapperEnabled>true</BootstrapperEnabled>
   </PropertyGroup>
   <PropertyGroup Condition=" '$(Configuration)|$(Platform)' == 'Debug|AnyCPU' ">
     <PlatformTarget>AnyCPU</PlatformTarget>
@@ -26,6 +41,7 @@
     <ErrorReport>prompt</ErrorReport>
     <WarningLevel>4</WarningLevel>
     <LangVersion>preview</LangVersion>
+    <Prefer32Bit>false</Prefer32Bit>
   </PropertyGroup>
   <PropertyGroup Condition=" '$(Configuration)|$(Platform)' == 'Release|AnyCPU' ">
     <PlatformTarget>AnyCPU</PlatformTarget>
@@ -42,6 +58,15 @@
   </PropertyGroup>
   <PropertyGroup>
     <ApplicationManifest>IDE.manifest</ApplicationManifest>
+  </PropertyGroup>
+  <PropertyGroup>
+    <SignManifests>false</SignManifests>
+  </PropertyGroup>
+  <PropertyGroup>
+    <TargetZone>LocalIntranet</TargetZone>
+  </PropertyGroup>
+  <PropertyGroup>
+    <GenerateManifests>false</GenerateManifests>
   </PropertyGroup>
   <ItemGroup>
     <Reference Include="Azure.Core, Version=1.24.0.0, Culture=neutral, PublicKeyToken=92742159e12e44c8, processorArchitecture=MSIL">
@@ -439,11 +464,15 @@
     <Reference Include="WindowsFormsIntegration" />
   </ItemGroup>
   <ItemGroup>
+    <Compile Include="Init\Initializer.cs" />
     <Compile Include="Main\LightEdit.cs">
       <SubType>Form</SubType>
     </Compile>
     <Compile Include="Main\LightEdit.Designer.cs">
       <DependentUpon>LightEdit.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Main\Main.Initializer.cs">
+      <SubType>Form</SubType>
     </Compile>
     <Compile Include="Utils\CodeSenseType.cs" />
     <Compile Include="Help\CodeSettings.cs">
@@ -458,10 +487,10 @@
     <Compile Include="Help\CustomSettings.Designer.cs">
       <DependentUpon>CustomSettings.cs</DependentUpon>
     </Compile>
-    <Compile Include="Main\Entry.cs">
+    <Compile Include="Init\Entry.cs">
       <SubType>Form</SubType>
     </Compile>
-    <Compile Include="Main\Entry.Designer.cs">
+    <Compile Include="Init\Entry.Designer.cs">
       <DependentUpon>Entry.cs</DependentUpon>
     </Compile>
     <Compile Include="GlobalSuppressions.cs" />
@@ -478,6 +507,7 @@
       <DependentUpon>LicenseAndCopyrights.cs</DependentUpon>
     </Compile>
     <Compile Include="Utils\CrashHandler.cs" />
+    <Compile Include="Utils\I18nHandler.cs" />
     <Compile Include="Utils\LogUtil.cs" />
     <Compile Include="Main\Main.cs">
       <SubType>Form</SubType>
@@ -495,6 +525,7 @@
     <Compile Include="Program.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
     <Compile Include="Utils\RYCBCodeSense.cs" />
+    <Compile Include="Utils\SettingsHandler.cs" />
     <Compile Include="Utils\Utils.cs" />
     <Compile Include="XshdVisualEdit\XshdVisualEditor.cs">
       <SubType>Form</SubType>
@@ -511,7 +542,7 @@
     <EmbeddedResource Include="Help\CustomSettings.resx">
       <DependentUpon>CustomSettings.cs</DependentUpon>
     </EmbeddedResource>
-    <EmbeddedResource Include="Main\Entry.resx">
+    <EmbeddedResource Include="Init\Entry.resx">
       <DependentUpon>Entry.cs</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="Main\Help.resx">
@@ -612,6 +643,7 @@
     <None Include="Resources\ColorPicker.png" />
     <None Include="Resources\Window.png" />
     <None Include="Resources\file_common.png" />
+    <None Include="Resources\Run1.png" />
     <Content Include="语法说明.html" />
     <None Include="Resources\help.png" />
     <None Include="Resources\Google Translate%28Large%29.png" />
@@ -621,7 +653,18 @@
     <None Include="Resources\%2848x48%29Warn1.ico" />
     <None Include="Resources\%2848x48%29Warn.ico" />
   </ItemGroup>
-  <ItemGroup />
+  <ItemGroup>
+    <BootstrapperPackage Include=".NETFramework,Version=v4.8">
+      <Visible>False</Visible>
+      <ProductName>Microsoft .NET Framework 4.8 %28x86 和 x64%29</ProductName>
+      <Install>true</Install>
+    </BootstrapperPackage>
+    <BootstrapperPackage Include="Microsoft.Net.Framework.3.5.SP1">
+      <Visible>False</Visible>
+      <ProductName>.NET Framework 3.5 SP1</ProductName>
+      <Install>false</Install>
+    </BootstrapperPackage>
+  </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
   <Target Name="EnsureNuGetPackageBuildImports" BeforeTargets="PrepareForBuild">
     <PropertyGroup>

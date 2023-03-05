@@ -1,25 +1,33 @@
-﻿using Microsoft.VisualBasic.Devices;
+﻿using IDE.Utils;
+using Microsoft.VisualBasic.Devices;
 using System;
+using System.Diagnostics;
 using System.Windows.Forms;
 
 namespace IDE
 {
-    internal static class Program
+    static class Program
     {
         private static Form class_;
+        private static readonly Stopwatch w = new();
         /// <summary>
         /// 应用程序的主入口点。
         /// </summary>
         [STAThread]
-        public static void Main(String[] args)
+        static void Main(string[] args)
         {
             Application.EnableVisualStyles();
             Application.SetCompatibleTextRenderingDefault(false);
+            w.Start();
             //Form class_ = new XshdVisualEditor("F:\\VS 2022\\repos\\IDE\\Py-CN.xshd");
             #region 判断参数
             if (args.Length == 0)
             {
                 class_ = new Main();
+            }
+            else if (args.Length == 1)
+            {
+                class_ = new LightEdit(args[0]);
             }
             else if (args.Length == 2)
             {
@@ -37,11 +45,12 @@ namespace IDE
                 class_ = new Main();
             }
             #endregion
+            //class_ = new CustomSettings("D:\\Desktop\\config");
             Application.ThreadException += Application_ThreadException;
             AppDomain.CurrentDomain.UnhandledException += CurrentDomain_UnhandledException;
             string sys = new ComputerInfo().OSFullName;
             bool sysInfo = sys.Contains("Microsoft Windows");
-            if (!(sysInfo)) { }
+            if (!sysInfo) { return; }
             else
             {
                 if (sys.Contains("10"))
@@ -61,25 +70,54 @@ namespace IDE
                     func_1a1(class_);
                 }
                 else { MessageBox.Show("您的计算机版本过低，请升级系统后打开此程序！"); }
+                end();
             }
         }
 
-        static void Application_ThreadException(object sender, System.Threading.ThreadExceptionEventArgs e)
-
+        private static void Application_ThreadException(object sender, System.Threading.ThreadExceptionEventArgs e)
         {
             Exception ex = e.Exception;
             IDE.Main.LOGGER.WriteErrLog(ex, EnumMsgLevel.ERROR, EnumPort.CLIENT);
+            end(ex);
         }
 
-        static void CurrentDomain_UnhandledException(object sender, UnhandledExceptionEventArgs e)
+        private static void CurrentDomain_UnhandledException(object sender, UnhandledExceptionEventArgs e)
         {
             Exception ex = e.ExceptionObject as Exception;
-            IDE.Main.LOGGER.WriteErrLog(ex, (e.IsTerminating ? EnumMsgLevel.FATAL : EnumMsgLevel.ERROR), EnumPort.CLIENT);
+            IDE.Main.LOGGER.WriteErrLog(ex, e.IsTerminating ? EnumMsgLevel.FATAL : EnumMsgLevel.ERROR, EnumPort.CLIENT);
+            if (e.IsTerminating)
+            {
+                end(ex);
+            }
         }
 
-        static void func_1a1(Form form)
+        private static void func_1a1(Form form)
         {
+            Initializer.Init();
             Application.Run(form);
+        }
+
+        private static void end(Exception ex)
+        {
+            w.Stop();
+            TimeSpan time = w.Elapsed;
+            System.IO.File.WriteAllText(
+                Environment.GetFolderPath(Environment.SpecialFolder.ApplicationData)
+                + "\\RYCB\\IDE\\protect\\time",
+                time.TotalSeconds.ToString());
+            CrashHandler crashHandler = new(ex, $"D:\\Desktop");
+            crashHandler.CollectCrashInfo();
+            crashHandler.WriteDumpFile();
+        }
+
+        private static void end()
+        {
+            w.Stop();
+            TimeSpan time = w.Elapsed;
+            System.IO.File.WriteAllText(
+                Environment.GetFolderPath(Environment.SpecialFolder.ApplicationData)
+                + "\\RYCB\\IDE\\protect\\time",
+                time.TotalSeconds.ToString());
         }
     }
 }

@@ -12,18 +12,16 @@ namespace IDE
     {
         #region 变量声明
         internal string logPath;
-        private RegistryKey IDE_CFG = Registry.LocalMachine
-            .OpenSubKey(@"SOFTWARE", true)
-            .OpenSubKey("RYCB", true)
-            .OpenSubKey("IDE", true)
-            .CreateSubKey("global_cfg", true);
         private string lang;
         #endregion
         #region 构造方法
         public LogUtil(string logPath)
         {
             this.logPath = logPath;
-            lang = (string)(IDE_CFG.GetValue("lang") != null ? IDE_CFG.GetValue("lang") : "en");
+            string _ = Main.reConf.Read("General", "LogLanguage", "en");
+            if (_ == "" || _ == "asLang")
+                _ = Main.reConf.Read("General", "Language", "zh").Split('-')[0];
+            this.lang = _;
         }
         #endregion
         #region 写日志
@@ -111,7 +109,7 @@ namespace IDE
                 ex.HResult,
                 ex.InnerException != null ? ex.InnerException.HResult : "Null",
                 ex.ToString().Split(new string[] { ": " }, StringSplitOptions.RemoveEmptyEntries)[0],
-                ex.InnerException != null ? ex.InnerException.ToString().Split(new string[] { ": " }, StringSplitOptions.RemoveEmptyEntries)[0] : "Null", 
+                ex.InnerException != null ? ex.InnerException.ToString().Split(new string[] { ": " }, StringSplitOptions.RemoveEmptyEntries)[0] : "Null",
                 ex.GetType());
             sw.WriteLine("[{3}:{4}:{5}:{6}] [{0}|{1}] ======== 堆栈跟踪如下 ======== \n\t\t\t\t[Outer Exception] {7}\n\t\t\t\t[Inner Exception] {8}",
                 I18n.Translate((int)port, "port", lang),
