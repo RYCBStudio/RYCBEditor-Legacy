@@ -15,6 +15,21 @@
     <Deterministic>true</Deterministic>
     <NuGetPackageImportStamp>
     </NuGetPackageImportStamp>
+    <PublishUrl>publish\</PublishUrl>
+    <Install>true</Install>
+    <InstallFrom>Disk</InstallFrom>
+    <UpdateEnabled>false</UpdateEnabled>
+    <UpdateMode>Foreground</UpdateMode>
+    <UpdateInterval>7</UpdateInterval>
+    <UpdateIntervalUnits>Days</UpdateIntervalUnits>
+    <UpdatePeriodically>false</UpdatePeriodically>
+    <UpdateRequired>false</UpdateRequired>
+    <MapFileExtensions>true</MapFileExtensions>
+    <ApplicationRevision>0</ApplicationRevision>
+    <ApplicationVersion>1.0.0.%2a</ApplicationVersion>
+    <IsWebBootstrapper>false</IsWebBootstrapper>
+    <UseApplicationTrust>false</UseApplicationTrust>
+    <BootstrapperEnabled>true</BootstrapperEnabled>
   </PropertyGroup>
   <PropertyGroup Condition=" '$(Configuration)|$(Platform)' == 'Debug|AnyCPU' ">
     <PlatformTarget>AnyCPU</PlatformTarget>
@@ -26,6 +41,7 @@
     <ErrorReport>prompt</ErrorReport>
     <WarningLevel>4</WarningLevel>
     <LangVersion>preview</LangVersion>
+    <Prefer32Bit>false</Prefer32Bit>
   </PropertyGroup>
   <PropertyGroup Condition=" '$(Configuration)|$(Platform)' == 'Release|AnyCPU' ">
     <PlatformTarget>AnyCPU</PlatformTarget>
@@ -42,6 +58,15 @@
   </PropertyGroup>
   <PropertyGroup>
     <ApplicationManifest>IDE.manifest</ApplicationManifest>
+  </PropertyGroup>
+  <PropertyGroup>
+    <SignManifests>false</SignManifests>
+  </PropertyGroup>
+  <PropertyGroup>
+    <TargetZone>LocalIntranet</TargetZone>
+  </PropertyGroup>
+  <PropertyGroup>
+    <GenerateManifests>false</GenerateManifests>
   </PropertyGroup>
   <ItemGroup>
     <Reference Include="Azure.Core, Version=1.24.0.0, Culture=neutral, PublicKeyToken=92742159e12e44c8, processorArchitecture=MSIL">
@@ -439,11 +464,15 @@
     <Reference Include="WindowsFormsIntegration" />
   </ItemGroup>
   <ItemGroup>
+    <Compile Include="Init\Initializer.cs" />
     <Compile Include="Main\LightEdit.cs">
       <SubType>Form</SubType>
     </Compile>
     <Compile Include="Main\LightEdit.Designer.cs">
       <DependentUpon>LightEdit.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Main\Main.Initializer.cs">
+      <SubType>Form</SubType>
     </Compile>
     <Compile Include="Utils\CodeSenseType.cs" />
     <Compile Include="Help\CodeSettings.cs">
@@ -458,10 +487,10 @@
     <Compile Include="Help\CustomSettings.Designer.cs">
       <DependentUpon>CustomSettings.cs</DependentUpon>
     </Compile>
-    <Compile Include="Main\Entry.cs">
+    <Compile Include="Init\Entry.cs">
       <SubType>Form</SubType>
     </Compile>
-    <Compile Include="Main\Entry.Designer.cs">
+    <Compile Include="Init\Entry.Designer.cs">
       <DependentUpon>Entry.cs</DependentUpon>
     </Compile>
     <Compile Include="GlobalSuppressions.cs" />
@@ -478,6 +507,8 @@
       <DependentUpon>LicenseAndCopyrights.cs</DependentUpon>
     </Compile>
     <Compile Include="Utils\CrashHandler.cs" />
+    <Compile Include="Utils\ErrorAnalysiser.cs" />
+    <Compile Include="Utils\I18nHandler.cs" />
     <Compile Include="Utils\LogUtil.cs" />
     <Compile Include="Main\Main.cs">
       <SubType>Form</SubType>
@@ -494,7 +525,20 @@
     <Compile Include="Utils\MessageBoxEX.cs" />
     <Compile Include="Program.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
+    <Compile Include="Utils\NewFile.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="Utils\NewFile.Designer.cs">
+      <DependentUpon>NewFile.cs</DependentUpon>
+    </Compile>
     <Compile Include="Utils\RYCBCodeSense.cs" />
+    <Compile Include="Utils\SettingsHandler.cs" />
+    <Compile Include="Utils\TextEnterBox.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="Utils\TextEnterBox.Designer.cs">
+      <DependentUpon>TextEnterBox.cs</DependentUpon>
+    </Compile>
     <Compile Include="Utils\Utils.cs" />
     <Compile Include="XshdVisualEdit\XshdVisualEditor.cs">
       <SubType>Form</SubType>
@@ -511,7 +555,7 @@
     <EmbeddedResource Include="Help\CustomSettings.resx">
       <DependentUpon>CustomSettings.cs</DependentUpon>
     </EmbeddedResource>
-    <EmbeddedResource Include="Main\Entry.resx">
+    <EmbeddedResource Include="Init\Entry.resx">
       <DependentUpon>Entry.cs</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="Main\Help.resx">
@@ -534,10 +578,98 @@
       <SubType>Designer</SubType>
       <LastGenOutput>Resources.Designer.cs</LastGenOutput>
     </EmbeddedResource>
+    <EmbeddedResource Include="Utils\NewFile.resx">
+      <DependentUpon>NewFile.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Utils\TextEnterBox.resx">
+      <DependentUpon>TextEnterBox.cs</DependentUpon>
+    </EmbeddedResource>
     <EmbeddedResource Include="XshdVisualEdit\XshdVisualEditor.resx">
       <DependentUpon>XshdVisualEditor.cs</DependentUpon>
     </EmbeddedResource>
     <None Include=".editorconfig" />
+    <None Include="IDE.config" />
+    <None Include="Init\FirstBoot\Fonts\EXO-MEDIUM.TTF" />
+    <None Include="Init\FirstBoot\Fonts\GENERICTECHNO.OTF" />
+    <None Include="Init\FirstBoot\Fonts\HARMONYOS_SANS_BLACK.TTF" />
+    <None Include="Init\FirstBoot\Fonts\HARMONYOS_SANS_BLACK_ITALIC.TTF" />
+    <None Include="Init\FirstBoot\Fonts\HARMONYOS_SANS_BOLD.TTF" />
+    <None Include="Init\FirstBoot\Fonts\HARMONYOS_SANS_BOLD_ITALIC.TTF" />
+    <None Include="Init\FirstBoot\Fonts\HARMONYOS_SANS_CONDENSED_BLACK.TTF" />
+    <None Include="Init\FirstBoot\Fonts\HARMONYOS_SANS_CONDENSED_BLACK_ITALIC.TTF" />
+    <None Include="Init\FirstBoot\Fonts\HARMONYOS_SANS_CONDENSED_BOLD.TTF" />
+    <None Include="Init\FirstBoot\Fonts\HARMONYOS_SANS_CONDENSED_BOLD_ITALIC.TTF" />
+    <None Include="Init\FirstBoot\Fonts\HARMONYOS_SANS_CONDENSED_LIGHT.TTF" />
+    <None Include="Init\FirstBoot\Fonts\HARMONYOS_SANS_CONDENSED_LIGHT_ITALIC.TTF" />
+    <None Include="Init\FirstBoot\Fonts\HARMONYOS_SANS_CONDENSED_MEDIUM.TTF" />
+    <None Include="Init\FirstBoot\Fonts\HARMONYOS_SANS_CONDENSED_MEDIUM_ITALIC.TTF" />
+    <None Include="Init\FirstBoot\Fonts\HARMONYOS_SANS_CONDENSED_REGULAR.TTF" />
+    <None Include="Init\FirstBoot\Fonts\HARMONYOS_SANS_CONDENSED_REGULAR_ITALIC.TTF" />
+    <None Include="Init\FirstBoot\Fonts\HARMONYOS_SANS_CONDENSED_THIN.TTF" />
+    <None Include="Init\FirstBoot\Fonts\HARMONYOS_SANS_CONDENSED_THIN_ITALIC.TTF" />
+    <None Include="Init\FirstBoot\Fonts\HARMONYOS_SANS_LIGHT.TTF" />
+    <None Include="Init\FirstBoot\Fonts\HARMONYOS_SANS_LIGHT_ITALIC.TTF" />
+    <None Include="Init\FirstBoot\Fonts\HARMONYOS_SANS_MEDIUM.TTF" />
+    <None Include="Init\FirstBoot\Fonts\HARMONYOS_SANS_MEDIUM_ITALIC.TTF" />
+    <None Include="Init\FirstBoot\Fonts\HARMONYOS_SANS_REGULAR.TTF" />
+    <None Include="Init\FirstBoot\Fonts\HARMONYOS_SANS_REGULAR_ITALIC.TTF" />
+    <None Include="Init\FirstBoot\Fonts\HARMONYOS_SANS_SC_BLACK.TTF" />
+    <None Include="Init\FirstBoot\Fonts\HARMONYOS_SANS_SC_BOLD.TTF" />
+    <None Include="Init\FirstBoot\Fonts\HARMONYOS_SANS_SC_LIGHT.TTF" />
+    <None Include="Init\FirstBoot\Fonts\HARMONYOS_SANS_SC_MEDIUM.TTF" />
+    <None Include="Init\FirstBoot\Fonts\HARMONYOS_SANS_SC_REGULAR.TTF" />
+    <None Include="Init\FirstBoot\Fonts\HARMONYOS_SANS_SC_THIN.TTF" />
+    <None Include="Init\FirstBoot\Fonts\HARMONYOS_SANS_TC_BLACK.TTF" />
+    <None Include="Init\FirstBoot\Fonts\HARMONYOS_SANS_TC_BOLD.TTF" />
+    <None Include="Init\FirstBoot\Fonts\HARMONYOS_SANS_TC_LIGHT.TTF" />
+    <None Include="Init\FirstBoot\Fonts\HARMONYOS_SANS_TC_MEDIUM.TTF" />
+    <None Include="Init\FirstBoot\Fonts\HARMONYOS_SANS_TC_REGULAR.TTF" />
+    <None Include="Init\FirstBoot\Fonts\HARMONYOS_SANS_TC_THIN.TTF" />
+    <None Include="Init\FirstBoot\Fonts\HARMONYOS_SANS_THIN.TTF" />
+    <None Include="Init\FirstBoot\Fonts\HARMONYOS_SANS_THIN_ITALIC.TTF" />
+    <None Include="Init\FirstBoot\Fonts\HPSIMPLIFIED.TTF" />
+    <None Include="Init\FirstBoot\Fonts\HPSIMPLIFIEDHANS-LIGHT.TTF" />
+    <None Include="Init\FirstBoot\Fonts\HPSIMPLIFIEDHANS-REGULAR.TTF" />
+    <None Include="Init\FirstBoot\Fonts\HPSIMPLIFIED_BDIT.TTF" />
+    <None Include="Init\FirstBoot\Fonts\HPSIMPLIFIED_IT.TTF" />
+    <None Include="Init\FirstBoot\Fonts\HPSIMPLIFIED_LT.TTF" />
+    <None Include="Init\FirstBoot\Fonts\HPSIMPLIFIED_LTIT.TTF" />
+    <None Include="Init\FirstBoot\Fonts\HPSIMPLIFIED_RG.TTF" />
+    <None Include="Init\FirstBoot\Fonts\JETBRAINSMONO-BOLD.TTF" />
+    <None Include="Init\FirstBoot\Fonts\JETBRAINSMONO-BOLDITALIC.TTF" />
+    <None Include="Init\FirstBoot\Fonts\JETBRAINSMONO-EXTRABOLD.TTF" />
+    <None Include="Init\FirstBoot\Fonts\JETBRAINSMONO-EXTRABOLDITALIC.TTF" />
+    <None Include="Init\FirstBoot\Fonts\JETBRAINSMONO-EXTRALIGHT.TTF" />
+    <None Include="Init\FirstBoot\Fonts\JETBRAINSMONO-EXTRALIGHTITALIC.TTF" />
+    <None Include="Init\FirstBoot\Fonts\JETBRAINSMONO-ITALIC.TTF" />
+    <None Include="Init\FirstBoot\Fonts\JETBRAINSMONO-LIGHT.TTF" />
+    <None Include="Init\FirstBoot\Fonts\JETBRAINSMONO-LIGHTITALIC.TTF" />
+    <None Include="Init\FirstBoot\Fonts\JETBRAINSMONO-MEDIUM.TTF" />
+    <None Include="Init\FirstBoot\Fonts\JETBRAINSMONO-MEDIUMITALIC.TTF" />
+    <None Include="Init\FirstBoot\Fonts\JETBRAINSMONO-REGULAR.TTF" />
+    <None Include="Init\FirstBoot\Fonts\JETBRAINSMONO-SEMIBOLD.TTF" />
+    <None Include="Init\FirstBoot\Fonts\JETBRAINSMONO-SEMIBOLDITALIC.TTF" />
+    <None Include="Init\FirstBoot\Fonts\JETBRAINSMONO-THIN.TTF" />
+    <None Include="Init\FirstBoot\Fonts\JETBRAINSMONO-THINITALIC.TTF" />
+    <None Include="Init\FirstBoot\Fonts\JETBRAINSMONONL-BOLD.TTF" />
+    <None Include="Init\FirstBoot\Fonts\JETBRAINSMONONL-BOLDITALIC.TTF" />
+    <None Include="Init\FirstBoot\Fonts\JETBRAINSMONONL-EXTRABOLD.TTF" />
+    <None Include="Init\FirstBoot\Fonts\JETBRAINSMONONL-EXTRABOLDITALIC.TTF" />
+    <None Include="Init\FirstBoot\Fonts\JETBRAINSMONONL-EXTRALIGHT.TTF" />
+    <None Include="Init\FirstBoot\Fonts\JETBRAINSMONONL-EXTRALIGHTITALIC.TTF" />
+    <None Include="Init\FirstBoot\Fonts\JETBRAINSMONONL-ITALIC.TTF" />
+    <None Include="Init\FirstBoot\Fonts\JETBRAINSMONONL-LIGHT.TTF" />
+    <None Include="Init\FirstBoot\Fonts\JETBRAINSMONONL-LIGHTITALIC.TTF" />
+    <None Include="Init\FirstBoot\Fonts\JETBRAINSMONONL-MEDIUM.TTF" />
+    <None Include="Init\FirstBoot\Fonts\JETBRAINSMONONL-MEDIUMITALIC.TTF" />
+    <None Include="Init\FirstBoot\Fonts\JETBRAINSMONONL-REGULAR.TTF" />
+    <None Include="Init\FirstBoot\Fonts\JETBRAINSMONONL-SEMIBOLD.TTF" />
+    <None Include="Init\FirstBoot\Fonts\JETBRAINSMONONL-SEMIBOLDITALIC.TTF" />
+    <None Include="Init\FirstBoot\Fonts\JETBRAINSMONONL-THIN.TTF" />
+    <None Include="Init\FirstBoot\Fonts\JETBRAINSMONONL-THINITALIC.TTF" />
+    <None Include="Init\FirstBoot\Fonts\SAIRA-BLACK.TTF" />
+    <None Include="Init\FirstBoot\Fonts\SAIRA-BOLD-ITALIC.TTF" />
+    <None Include="Init\FirstBoot\Fonts\SAIRA-REGULAR.TTF" />
     <None Include="Main\help.md" />
     <None Include="IDE.manifest" />
     <None Include="packages.config" />
@@ -612,6 +744,10 @@
     <None Include="Resources\ColorPicker.png" />
     <None Include="Resources\Window.png" />
     <None Include="Resources\file_common.png" />
+    <None Include="Resources\Run1.png" />
+    <None Include="Resources\Update-normal.png" />
+    <Content Include="Init\FirstBoot\InstallFont.vbs" />
+    <None Include="Resources\IDE_splash_new.png" />
     <Content Include="语法说明.html" />
     <None Include="Resources\help.png" />
     <None Include="Resources\Google Translate%28Large%29.png" />
@@ -621,7 +757,18 @@
     <None Include="Resources\%2848x48%29Warn1.ico" />
     <None Include="Resources\%2848x48%29Warn.ico" />
   </ItemGroup>
-  <ItemGroup />
+  <ItemGroup>
+    <BootstrapperPackage Include=".NETFramework,Version=v4.8">
+      <Visible>False</Visible>
+      <ProductName>Microsoft .NET Framework 4.8 %28x86 和 x64%29</ProductName>
+      <Install>true</Install>
+    </BootstrapperPackage>
+    <BootstrapperPackage Include="Microsoft.Net.Framework.3.5.SP1">
+      <Visible>False</Visible>
+      <ProductName>.NET Framework 3.5 SP1</ProductName>
+      <Install>false</Install>
+    </BootstrapperPackage>
+  </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
   <Target Name="EnsureNuGetPackageBuildImports" BeforeTargets="PrepareForBuild">
     <PropertyGroup>

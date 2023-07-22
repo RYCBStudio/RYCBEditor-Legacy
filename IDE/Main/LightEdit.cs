@@ -42,12 +42,12 @@ namespace IDE
         private const string field_a1 = "警告：用户取消了选择文件。";
         private const string field_a2 = "警告";
         private bool NoTip, isModified = false;
-        TextEditor edit;
-        int tmp_;
-        int i = 1;
+        private TextEditor edit;
+        private int tmp_;
+        private int i = 1;
         public string text_tsl2;
         private string[] paths = new string[] { };
-        RegistryKey IDE_CFG, IDE_cfg;
+        private RegistryKey IDE_CFG, IDE_cfg;
         #endregion
         #region 一堆方法
         #region 构造函数
@@ -130,7 +130,7 @@ namespace IDE
             {
                 Child = edit,
                 Location = new Point(4, 4),
-                Size = new Size(1375, 813)
+                Size = new Size(1390, 698)
             };
             text_tsl2 = toolStripStatusLabel2.Text;
             //快速搜索功能
@@ -401,11 +401,9 @@ namespace IDE
                     string name = assembly.GetName().Name + $".Py-CN.xshd";
                     using (Stream s = assembly.GetManifestResourceStream(name))
                     {
-                        using (XmlTextReader reader = new(s))
-                        {
-                            var xshd = HighlightingLoader.LoadXshd(reader);
-                            tmpEditor.SyntaxHighlighting = HighlightingLoader.Load(xshd, HighlightingManager.Instance);
-                        }
+                        using XmlTextReader reader = new(s);
+                        var xshd = HighlightingLoader.LoadXshd(reader);
+                        tmpEditor.SyntaxHighlighting = HighlightingLoader.Load(xshd, HighlightingManager.Instance);
                     }
                     tmpEHost.Child = tmpEditor;
                     tab.Controls.Add(tmpEHost);
@@ -417,7 +415,7 @@ namespace IDE
         #region 自定义设置
         private void CustomSet(object sender, EventArgs e)
         {
-            Form cs = new CustomSettings
+            Form cs = new CustomSettings(Application.StartupPath+"\\config")
             {
                 Owner = this
             };
@@ -432,7 +430,7 @@ namespace IDE
         /// <param name="interpreter">解释器</param>
         /// <param name="interpreter_params">解释器参数</param>
         /// <returns></returns>
-        string ExecuteCMDWithOutput(string command, string interpreter, string interpreter_params)
+        private string ExecuteCMDWithOutput(string command, string interpreter, string interpreter_params)
         {
             ProcessStartInfo processInfo = new(interpreter, $"{interpreter_params} " + command)
             {
@@ -545,7 +543,7 @@ namespace IDE
         }
         #endregion
         #region <FUNC> 占位方法
-        void func_0a1(string tmp)
+        private void func_0a1(string tmp)
         {
             foreach (MetroTabPage tab in tabControl1.TabPages)
             {
@@ -581,11 +579,9 @@ namespace IDE
             string name = assembly.GetName().Name + $".{AutoGetLanguage(_)}.xshd";
             using (Stream s = assembly.GetManifestResourceStream(name))
             {
-                using (XmlTextReader reader = new(s))
-                {
-                    var xshd = HighlightingLoader.LoadXshd(reader);
-                    tmpEditor.SyntaxHighlighting = HighlightingLoader.Load(xshd, HighlightingManager.Instance);
-                }
+                using XmlTextReader reader = new(s);
+                var xshd = HighlightingLoader.LoadXshd(reader);
+                tmpEditor.SyntaxHighlighting = HighlightingLoader.Load(xshd, HighlightingManager.Instance);
             }
             tmpEHost.Child = tmpEditor;
             newTab.Controls.Add(tmpEHost);
@@ -595,7 +591,7 @@ namespace IDE
         }
         #endregion
         #region <FUNC> 占位方法
-        void func_0a2(string tssl2Text, string fileDesc)
+        private void func_0a2(string tssl2Text, string fileDesc)
         {
             toolStripStatusLabel2.Text = tssl2Text + text_tsl2;
             string agreeText = $"检测到您正在打开 {fileDesc} 文件，该操作或将引起IDE未响应、内存溢出等不确定行为，请确认是否继续打开：";
@@ -1023,7 +1019,7 @@ namespace IDE
             }
             else if (tabControl1.SelectedTab.Text.EndsWith("pycn"))
             {
-                Process.Start("Compiler.exe", tabControl1.SelectedTab.ToolTipText);
+                Process.Start(".\\Compiler.exe", tabControl1.SelectedTab.ToolTipText);
                 psi = new ProcessStartInfo()
                 {
                     FileName = ".\\Runner.exe",
@@ -1041,7 +1037,9 @@ namespace IDE
             Process.Start(psi);
         }
 
-        string tmpCompletionStr = "";
+        private void RecordMem(object sender, EventArgs e) => File.WriteAllText(Environment.GetFolderPath(Environment.SpecialFolder.ApplicationData) + "\\RYCB\\IDE\\protect\\memory", GetMemory());
+
+        private string tmpCompletionStr = "";
         private void TextAreaOnTextEntered(object sender, TextCompositionEventArgs e)
         {
             /*

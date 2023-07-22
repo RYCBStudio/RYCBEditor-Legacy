@@ -1,58 +1,56 @@
-﻿using ICSharpCode.AvalonEdit;
-using ICSharpCode.AvalonEdit.Highlighting.Xshd;
-using ICSharpCode.AvalonEdit.Highlighting;
-using ICSharpCode.AvalonEdit.Search;
-using System.Collections.Generic;
+﻿using Sunny.UI;
+using System;
 using System.IO;
 using System.Windows.Forms;
-using System.Xml;
-using System.Windows.Forms.Integration;
 
 namespace IDE
 {
-    public partial class CustomSettings : Form
+    public partial class CustomSettings : UIForm
     {
-        Main MainWindow;
-        List<string> files = new() { };
-        List<ElementHost> hosts = new() { };
+        private static string _path, _path_oringin;
 
-        public CustomSettings()
+        public CustomSettings(string path)
         {
             InitializeComponent();
-            MainWindow = (Main) this.Owner;
+            _path = path + "\\Xshd";
+            _path_oringin = path + "\\Xshd";
+            //SettingsHandler.SetSettings(path, 0);
         }
 
-        private void FindFile(object sender, System.EventArgs e)
+        private void ChooseXshdFile(object sender, System.EventArgs e)
         {
             if (XshdFileFinder.ShowDialog() == DialogResult.OK)
             {
-                XshdCBox.Items.Add($"[语言：{XshdFileFinder.FileName.Split('\\')[XshdFileFinder.FileName.Split('\\').Length - 1].Split('.')[0]}] "+XshdFileFinder.FileName);
-                files.Add(XshdFileFinder.FileName);
+                CBoxXshdFile.Items.Add(XshdFileFinder.FileName);
+                File.Copy(XshdFileFinder.FileName, _path + XshdFileFinder.FileName.SplitLast("\\"), true);
             }
         }
 
-        private void addXshdToIDE(object sender, System.EventArgs e)
+        private void PickDiretory(object sender, System.EventArgs e)
         {
-            foreach (var item in files)
+            if (folderBrowserDialog1.ShowDialog() == DialogResult.OK)
             {
-                TextEditor txtEditor = new();
-                SearchPanel.Install(txtEditor.TextArea);
-                //设置语法规则
-                string name = item.ToString();
-                using (Stream s = new FileStream(name, FileMode.Open, FileAccess.ReadWrite, FileShare.ReadWrite))
-                {
-                    using (XmlTextReader reader = new(s))
-                    {
-                        var xshd = HighlightingLoader.LoadXshd(reader);
-                        txtEditor.SyntaxHighlighting = HighlightingLoader.Load(xshd, HighlightingManager.Instance);
-                    }
-                }
-                ElementHost tmpEHost = new()
-                {
-                    Child = txtEditor
-                };
-                hosts.Add(tmpEHost);
+                ChangeCachePath(sender, e);
             }
+        }
+
+        private void ChangeCachePath(object sender, System.EventArgs e)
+        {
+            try
+            {
+                foreach (var item in Directory.EnumerateFiles(_path_oringin))
+                {
+                    File.Copy(item,
+                        folderBrowserDialog1.SelectedPath + '\\' + item.Split('\\')[item.Split('\\').Length - 1],
+                        true);
+                }
+            }
+            catch (Exception ex)
+            {
+                Main.LOGGER.WriteErrLog(ex, EnumMsgLevel.ERROR, EnumPort.CLIENT);
+                return;
+            }
+            txtBoxXshdCache.Text = folderBrowserDialog1.SelectedPath;
         }
     }
 }
