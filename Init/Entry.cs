@@ -13,22 +13,16 @@ namespace IDE
     {
 
         private const int PROGRESS_BAR_MAX = 50;
-        private LogUtil Logger;
         private int i = 0;
 
         public Entry()
         {
             InitializeComponent();
-            label3.Text = string.Concat(Enumerable.Repeat("■", PROGRESS_BAR_MAX));
         }
 
         private void Entry_Load(object sender, EventArgs e)
         {
-            progressBar1.Text = string.Concat(Enumerable.Repeat("■", 25));
-            Logger = Main.LOGGER;
-            progressBar1.Text = string.Concat(Enumerable.Repeat("■", PROGRESS_BAR_MAX));
-            Thread.Sleep(2000);
-            //this.Close();
+            
         }
 
         #region 执行CMD
@@ -75,27 +69,22 @@ namespace IDE
         }
         #endregion
 
-        #region Overrided function ProgressBar PerformStep
-        private void progressBar1_PerformStep()
-        {
-            if (i > PROGRESS_BAR_MAX)
-                throw new IndexOutOfRangeException();
-            progressBar1.Text += "■";
-            i++;
-        }
-
-        private void progressBar1_PerformStep(int step)
-        {
-            if (i > PROGRESS_BAR_MAX)
-                throw new IndexOutOfRangeException();
-            progressBar1.Text += string.Concat(Enumerable.Repeat("■", step));
-            i += step;
-        }
-        #endregion
-
         private void Entry_FormClosing(object sender, FormClosingEventArgs e)
         {
-            progressBar1.Text = string.Concat(Enumerable.Repeat("■", PROGRESS_BAR_MAX));
+            timer1.Start();
+        }
+
+        private void Exit(object sender, System.ComponentModel.CancelEventArgs e)
+        {
+            if (metroProgressBar1.Value == metroProgressBar1.Maximum)
+            {
+                Close();
+            }
+        }
+
+        private void Delay(object sender, EventArgs e)
+        {
+            timer1.Stop();
         }
     }
 }

@@ -28,21 +28,14 @@
         /// </summary>
         private void InitializeComponent()
         {
-            this.progressBar1 = new System.Windows.Forms.Label();
+            this.components = new System.ComponentModel.Container();
             this.elementHost1 = new System.Windows.Forms.Integration.ElementHost();
-            this.label3 = new System.Windows.Forms.Label();
+            this.metroProgressBar1 = new MetroFramework.Controls.MetroProgressBar();
+            this.uiLabel1 = new Sunny.UI.UILabel();
+            this.uiLabel2 = new Sunny.UI.UILabel();
+            this.uiLabel3 = new Sunny.UI.UILabel();
+            this.timer1 = new System.Windows.Forms.Timer(this.components);
             this.SuspendLayout();
-            // 
-            // progressBar1
-            // 
-            this.progressBar1.AutoSize = true;
-            this.progressBar1.BackColor = System.Drawing.Color.Transparent;
-            this.progressBar1.Font = new System.Drawing.Font("Consolas", 9F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.progressBar1.ForeColor = System.Drawing.Color.Orange;
-            this.progressBar1.Location = new System.Drawing.Point(12, 266);
-            this.progressBar1.Name = "progressBar1";
-            this.progressBar1.Size = new System.Drawing.Size(0, 18);
-            this.progressBar1.TabIndex = 3;
             // 
             // elementHost1
             // 
@@ -53,28 +46,78 @@
             this.elementHost1.Text = "elementHost1";
             this.elementHost1.Child = null;
             // 
-            // label3
+            // metroProgressBar1
             // 
-            this.label3.AutoSize = true;
-            this.label3.BackColor = System.Drawing.Color.Transparent;
-            this.label3.Font = new System.Drawing.Font("Consolas", 9F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.label3.ForeColor = System.Drawing.Color.DimGray;
-            this.label3.Location = new System.Drawing.Point(12, 266);
-            this.label3.Name = "label3";
-            this.label3.Size = new System.Drawing.Size(0, 18);
-            this.label3.TabIndex = 6;
+            this.metroProgressBar1.Location = new System.Drawing.Point(8, 424);
+            this.metroProgressBar1.Maximum = 8;
+            this.metroProgressBar1.Name = "metroProgressBar1";
+            this.metroProgressBar1.Size = new System.Drawing.Size(836, 10);
+            this.metroProgressBar1.Step = 1;
+            this.metroProgressBar1.TabIndex = 5;
+            this.metroProgressBar1.Validating += new System.ComponentModel.CancelEventHandler(this.Exit);
+            // 
+            // uiLabel1
+            // 
+            this.uiLabel1.BackColor = System.Drawing.Color.Transparent;
+            this.uiLabel1.Font = new System.Drawing.Font("Exo", 83F);
+            this.uiLabel1.ForeColor = System.Drawing.Color.White;
+            this.uiLabel1.Location = new System.Drawing.Point(12, 25);
+            this.uiLabel1.Name = "uiLabel1";
+            this.uiLabel1.Size = new System.Drawing.Size(826, 198);
+            this.uiLabel1.Style = Sunny.UI.UIStyle.Custom;
+            this.uiLabel1.TabIndex = 6;
+            this.uiLabel1.Text = "RYCB Editor";
+            this.uiLabel1.TextAlign = System.Drawing.ContentAlignment.MiddleCenter;
+            this.uiLabel1.ZoomScaleRect = new System.Drawing.Rectangle(0, 0, 0, 0);
+            // 
+            // uiLabel2
+            // 
+            this.uiLabel2.BackColor = System.Drawing.Color.Transparent;
+            this.uiLabel2.Font = new System.Drawing.Font("Exo", 15F);
+            this.uiLabel2.ForeColor = System.Drawing.Color.White;
+            this.uiLabel2.Location = new System.Drawing.Point(595, 393);
+            this.uiLabel2.Name = "uiLabel2";
+            this.uiLabel2.Size = new System.Drawing.Size(176, 28);
+            this.uiLabel2.Style = Sunny.UI.UIStyle.Custom;
+            this.uiLabel2.TabIndex = 7;
+            this.uiLabel2.Text = "© RYCB Studio";
+            this.uiLabel2.TextAlign = System.Drawing.ContentAlignment.MiddleLeft;
+            this.uiLabel2.ZoomScaleRect = new System.Drawing.Rectangle(0, 0, 0, 0);
+            // 
+            // uiLabel3
+            // 
+            this.uiLabel3.BackColor = System.Drawing.Color.Transparent;
+            this.uiLabel3.Font = new System.Drawing.Font("Exo", 15F);
+            this.uiLabel3.ForeColor = System.Drawing.Color.White;
+            this.uiLabel3.Location = new System.Drawing.Point(762, 393);
+            this.uiLabel3.Name = "uiLabel3";
+            this.uiLabel3.Size = new System.Drawing.Size(82, 28);
+            this.uiLabel3.Style = Sunny.UI.UIStyle.Custom;
+            this.uiLabel3.TabIndex = 8;
+            this.uiLabel3.Text = "2023";
+            this.uiLabel3.TextAlign = System.Drawing.ContentAlignment.MiddleRight;
+            this.uiLabel3.ZoomScaleRect = new System.Drawing.Rectangle(0, 0, 0, 0);
+            // 
+            // timer1
+            // 
+            this.timer1.Interval = 5000;
+            this.timer1.Tick += new System.EventHandler(this.Delay);
             // 
             // Entry
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(9F, 20F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(37)))), ((int)(((byte)(37)))), ((int)(((byte)(38)))));
-            this.BackgroundImage = global::IDE.Properties.Resources.IDE_splash;
-            this.ClientSize = new System.Drawing.Size(550, 293);
+            this.BackgroundImage = global::IDE.Properties.Resources.IDE_splash_new;
+            this.BackgroundImageLayout = System.Windows.Forms.ImageLayout.Stretch;
+            this.ClientSize = new System.Drawing.Size(850, 443);
             this.ControlBox = false;
-            this.Controls.Add(this.progressBar1);
-            this.Controls.Add(this.label3);
+            this.Controls.Add(this.uiLabel2);
+            this.Controls.Add(this.uiLabel3);
+            this.Controls.Add(this.uiLabel1);
+            this.Controls.Add(this.metroProgressBar1);
             this.Controls.Add(this.elementHost1);
+            this.DoubleBuffered = true;
             this.Font = new System.Drawing.Font("Microsoft YaHei UI", 9F);
             this.ForeColor = System.Drawing.SystemColors.Control;
             this.FormBorderStyle = System.Windows.Forms.FormBorderStyle.None;
@@ -88,16 +131,18 @@
             this.Text = "Entry";
             this.TopMost = true;
             this.FormClosing += new System.Windows.Forms.FormClosingEventHandler(this.Entry_FormClosing);
-            this.Load += new System.EventHandler(this.Entry_Load);
+            this.Shown += new System.EventHandler(this.Entry_Load);
             this.MouseDown += new System.Windows.Forms.MouseEventHandler(this.DragNoFrameWindow_MouseDown);
             this.ResumeLayout(false);
-            this.PerformLayout();
 
         }
 
         #endregion
-        private System.Windows.Forms.Label progressBar1;
         private System.Windows.Forms.Integration.ElementHost elementHost1;
-        private System.Windows.Forms.Label label3;
+        internal MetroFramework.Controls.MetroProgressBar metroProgressBar1;
+        private Sunny.UI.UILabel uiLabel1;
+        private Sunny.UI.UILabel uiLabel2;
+        private Sunny.UI.UILabel uiLabel3;
+        private System.Windows.Forms.Timer timer1;
     }
 }
