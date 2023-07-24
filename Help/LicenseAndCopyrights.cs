@@ -9,6 +9,7 @@ namespace IDE
         public LicenseAndCopyrights()
         {
             InitializeComponent();
+            InitializeTranslation();
         }
 
         private void startAvalonGithub(object sender, LinkLabelLinkClickedEventArgs e)

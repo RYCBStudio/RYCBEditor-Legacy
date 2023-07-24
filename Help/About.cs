@@ -1,13 +1,16 @@
 ﻿using System;
 using System.Windows.Forms;
+using Sunny.UI;
 
 namespace IDE
 {
-    public partial class About : Form
+    public partial class About : UIForm
     {
+        IniFile _I18nFile = new(Application.StartupPath + $"\\Languages\\{GlobalSuppressions.language}\\main.relang", System.Text.Encoding.UTF8);
         public About()
         {
             InitializeComponent();
+            this.Text = _I18nFile.ReadString("I18n", "text.help.window.title.about", "text.help.window.title.about");
         }
 
 

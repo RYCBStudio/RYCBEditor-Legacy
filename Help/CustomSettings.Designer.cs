@@ -28,23 +28,30 @@
         /// </summary>
         private void InitializeComponent()
         {
+            this.components = new System.ComponentModel.Container();
             System.ComponentModel.ComponentResourceManager resources = new System.ComponentModel.ComponentResourceManager(typeof(CustomSettings));
             this.XshdFileFinder = new System.Windows.Forms.OpenFileDialog();
             this.MainTabCtrl = new Sunny.UI.UITabControlMenu();
             this.General = new System.Windows.Forms.TabPage();
+            this.uiTitlePanel1 = new Sunny.UI.UITitlePanel();
+            this.uiComboBox1 = new Sunny.UI.UIComboBox();
+            this.uiLabel2 = new Sunny.UI.UILabel();
             this.XshdFilePanel = new Sunny.UI.UITitlePanel();
+            this.txtBoxXshdCache = new Sunny.UI.UITextBox();
+            this.uiLabel1 = new Sunny.UI.UILabel();
+            this.XshdCachePathChooser = new Sunny.UI.UIButton();
             this.XshdFileChooser = new Sunny.UI.UIButton();
             this.CBoxXshdFile = new Sunny.UI.UIComboBox();
             this.ShortCutKeys = new System.Windows.Forms.TabPage();
             this.button1 = new System.Windows.Forms.Button();
             this.button2 = new System.Windows.Forms.Button();
-            this.XshdCachePathChooser = new Sunny.UI.UIButton();
-            this.uiLabel1 = new Sunny.UI.UILabel();
             this.folderBrowserDialog1 = new System.Windows.Forms.FolderBrowserDialog();
-            this.txtBoxXshdCache = new Sunny.UI.UITextBox();
+            this.errorProvider1 = new System.Windows.Forms.ErrorProvider(this.components);
             this.MainTabCtrl.SuspendLayout();
             this.General.SuspendLayout();
+            this.uiTitlePanel1.SuspendLayout();
             this.XshdFilePanel.SuspendLayout();
+            ((System.ComponentModel.ISupportInitialize)(this.errorProvider1)).BeginInit();
             this.SuspendLayout();
             // 
             // XshdFileFinder
@@ -73,12 +80,79 @@
             // General
             // 
             this.General.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(56)))), ((int)(((byte)(56)))), ((int)(((byte)(56)))));
+            this.General.Controls.Add(this.uiTitlePanel1);
             this.General.Controls.Add(this.XshdFilePanel);
             this.General.Location = new System.Drawing.Point(201, 0);
             this.General.Name = "General";
             this.General.Size = new System.Drawing.Size(635, 358);
             this.General.TabIndex = 0;
             this.General.Text = "常规";
+            // 
+            // uiTitlePanel1
+            // 
+            this.uiTitlePanel1.Controls.Add(this.uiComboBox1);
+            this.uiTitlePanel1.Controls.Add(this.uiLabel2);
+            this.uiTitlePanel1.FillColor = System.Drawing.Color.FromArgb(((int)(((byte)(56)))), ((int)(((byte)(56)))), ((int)(((byte)(56)))));
+            this.uiTitlePanel1.FillColor2 = System.Drawing.Color.FromArgb(((int)(((byte)(56)))), ((int)(((byte)(56)))), ((int)(((byte)(56)))));
+            this.uiTitlePanel1.Font = new System.Drawing.Font("Microsoft YaHei UI", 12F);
+            this.uiTitlePanel1.ForeColor = System.Drawing.Color.White;
+            this.uiTitlePanel1.Location = new System.Drawing.Point(4, 9);
+            this.uiTitlePanel1.Margin = new System.Windows.Forms.Padding(4, 5, 4, 5);
+            this.uiTitlePanel1.MinimumSize = new System.Drawing.Size(1, 1);
+            this.uiTitlePanel1.Name = "uiTitlePanel1";
+            this.uiTitlePanel1.Padding = new System.Windows.Forms.Padding(0, 35, 0, 0);
+            this.uiTitlePanel1.ShowText = false;
+            this.uiTitlePanel1.Size = new System.Drawing.Size(627, 118);
+            this.uiTitlePanel1.Style = Sunny.UI.UIStyle.Custom;
+            this.uiTitlePanel1.StyleCustomMode = true;
+            this.uiTitlePanel1.TabIndex = 8;
+            this.uiTitlePanel1.Text = "基础设置";
+            this.uiTitlePanel1.TextAlignment = System.Drawing.ContentAlignment.MiddleCenter;
+            this.uiTitlePanel1.ZoomScaleRect = new System.Drawing.Rectangle(0, 0, 0, 0);
+            // 
+            // uiComboBox1
+            // 
+            this.uiComboBox1.DataSource = null;
+            this.errorProvider1.SetError(this.uiComboBox1, "重启应用程序后生效。");
+            this.uiComboBox1.FillColor = System.Drawing.Color.FromArgb(((int)(((byte)(56)))), ((int)(((byte)(56)))), ((int)(((byte)(56)))));
+            this.uiComboBox1.Font = new System.Drawing.Font("微软雅黑", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(134)));
+            this.uiComboBox1.ForeColor = System.Drawing.Color.Silver;
+            this.errorProvider1.SetIconPadding(this.uiComboBox1, 10);
+            this.uiComboBox1.ItemFillColor = System.Drawing.Color.FromArgb(((int)(((byte)(56)))), ((int)(((byte)(56)))), ((int)(((byte)(56)))));
+            this.uiComboBox1.ItemForeColor = System.Drawing.Color.Silver;
+            this.uiComboBox1.Items.AddRange(new object[] {
+            "简体中文(中国)",
+            "繁體中文(香港)",
+            "English",
+            "日本語"});
+            this.uiComboBox1.Location = new System.Drawing.Point(58, 40);
+            this.uiComboBox1.Margin = new System.Windows.Forms.Padding(4, 5, 4, 5);
+            this.uiComboBox1.MaxDropDownItems = 5;
+            this.uiComboBox1.MinimumSize = new System.Drawing.Size(63, 0);
+            this.uiComboBox1.Name = "uiComboBox1";
+            this.uiComboBox1.Padding = new System.Windows.Forms.Padding(0, 0, 30, 2);
+            this.uiComboBox1.Size = new System.Drawing.Size(185, 35);
+            this.uiComboBox1.Style = Sunny.UI.UIStyle.Custom;
+            this.uiComboBox1.StyleCustomMode = true;
+            this.uiComboBox1.TabIndex = 3;
+            this.uiComboBox1.TextAlignment = System.Drawing.ContentAlignment.MiddleLeft;
+            this.uiComboBox1.Watermark = "";
+            this.uiComboBox1.ZoomScaleRect = new System.Drawing.Rectangle(0, 0, 0, 0);
+            this.uiComboBox1.SelectedValueChanged += new System.EventHandler(this.ChangeLanguage);
+            // 
+            // uiLabel2
+            // 
+            this.uiLabel2.Font = new System.Drawing.Font("微软雅黑", 10F);
+            this.uiLabel2.ForeColor = System.Drawing.Color.Silver;
+            this.uiLabel2.Location = new System.Drawing.Point(3, 43);
+            this.uiLabel2.Name = "uiLabel2";
+            this.uiLabel2.Size = new System.Drawing.Size(63, 32);
+            this.uiLabel2.Style = Sunny.UI.UIStyle.Custom;
+            this.uiLabel2.StyleCustomMode = true;
+            this.uiLabel2.TabIndex = 7;
+            this.uiLabel2.Text = "语言：";
+            this.uiLabel2.TextAlign = System.Drawing.ContentAlignment.MiddleLeft;
+            this.uiLabel2.ZoomScaleRect = new System.Drawing.Rectangle(0, 0, 0, 0);
             // 
             // XshdFilePanel
             // 
@@ -91,7 +165,7 @@
             this.XshdFilePanel.FillColor2 = System.Drawing.Color.FromArgb(((int)(((byte)(56)))), ((int)(((byte)(56)))), ((int)(((byte)(56)))));
             this.XshdFilePanel.Font = new System.Drawing.Font("Microsoft YaHei UI", 12F);
             this.XshdFilePanel.ForeColor = System.Drawing.Color.White;
-            this.XshdFilePanel.Location = new System.Drawing.Point(4, 5);
+            this.XshdFilePanel.Location = new System.Drawing.Point(4, 137);
             this.XshdFilePanel.Margin = new System.Windows.Forms.Padding(4, 5, 4, 5);
             this.XshdFilePanel.MinimumSize = new System.Drawing.Size(1, 1);
             this.XshdFilePanel.Name = "XshdFilePanel";
@@ -104,6 +178,55 @@
             this.XshdFilePanel.Text = "Xshd文件设置";
             this.XshdFilePanel.TextAlignment = System.Drawing.ContentAlignment.MiddleCenter;
             this.XshdFilePanel.ZoomScaleRect = new System.Drawing.Rectangle(0, 0, 0, 0);
+            // 
+            // txtBoxXshdCache
+            // 
+            this.txtBoxXshdCache.Cursor = System.Windows.Forms.Cursors.IBeam;
+            this.txtBoxXshdCache.FillColor = System.Drawing.Color.FromArgb(((int)(((byte)(56)))), ((int)(((byte)(56)))), ((int)(((byte)(56)))));
+            this.txtBoxXshdCache.Font = new System.Drawing.Font("微软雅黑", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(134)));
+            this.txtBoxXshdCache.ForeColor = System.Drawing.Color.WhiteSmoke;
+            this.txtBoxXshdCache.Location = new System.Drawing.Point(165, 40);
+            this.txtBoxXshdCache.Margin = new System.Windows.Forms.Padding(4, 5, 4, 5);
+            this.txtBoxXshdCache.MinimumSize = new System.Drawing.Size(1, 16);
+            this.txtBoxXshdCache.Name = "txtBoxXshdCache";
+            this.txtBoxXshdCache.ShowText = false;
+            this.txtBoxXshdCache.Size = new System.Drawing.Size(325, 34);
+            this.txtBoxXshdCache.Style = Sunny.UI.UIStyle.Custom;
+            this.txtBoxXshdCache.StyleCustomMode = true;
+            this.txtBoxXshdCache.TabIndex = 7;
+            this.txtBoxXshdCache.TextAlignment = System.Drawing.ContentAlignment.MiddleLeft;
+            this.txtBoxXshdCache.Watermark = "";
+            this.txtBoxXshdCache.ZoomScaleRect = new System.Drawing.Rectangle(0, 0, 0, 0);
+            this.txtBoxXshdCache.TextChanged += new System.EventHandler(this.ChangeCachePath);
+            // 
+            // uiLabel1
+            // 
+            this.uiLabel1.Font = new System.Drawing.Font("微软雅黑", 10F);
+            this.uiLabel1.ForeColor = System.Drawing.Color.Silver;
+            this.uiLabel1.Location = new System.Drawing.Point(3, 40);
+            this.uiLabel1.Name = "uiLabel1";
+            this.uiLabel1.Size = new System.Drawing.Size(178, 32);
+            this.uiLabel1.Style = Sunny.UI.UIStyle.Custom;
+            this.uiLabel1.StyleCustomMode = true;
+            this.uiLabel1.TabIndex = 6;
+            this.uiLabel1.Text = "Xshd文件缓存路径：";
+            this.uiLabel1.TextAlign = System.Drawing.ContentAlignment.MiddleLeft;
+            this.uiLabel1.ZoomScaleRect = new System.Drawing.Rectangle(0, 0, 0, 0);
+            // 
+            // XshdCachePathChooser
+            // 
+            this.XshdCachePathChooser.Cursor = System.Windows.Forms.Cursors.Hand;
+            this.XshdCachePathChooser.Font = new System.Drawing.Font("微软雅黑", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(134)));
+            this.XshdCachePathChooser.Location = new System.Drawing.Point(497, 40);
+            this.XshdCachePathChooser.MinimumSize = new System.Drawing.Size(1, 1);
+            this.XshdCachePathChooser.Name = "XshdCachePathChooser";
+            this.XshdCachePathChooser.Size = new System.Drawing.Size(127, 35);
+            this.XshdCachePathChooser.Style = Sunny.UI.UIStyle.Custom;
+            this.XshdCachePathChooser.TabIndex = 5;
+            this.XshdCachePathChooser.Text = "选择文件夹";
+            this.XshdCachePathChooser.TipsFont = new System.Drawing.Font("微软雅黑", 9F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(134)));
+            this.XshdCachePathChooser.ZoomScaleRect = new System.Drawing.Rectangle(0, 0, 0, 0);
+            this.XshdCachePathChooser.Click += new System.EventHandler(this.PickDiretory);
             // 
             // XshdFileChooser
             // 
@@ -179,54 +302,12 @@
             this.button2.Text = "取消(Esc)";
             this.button2.UseVisualStyleBackColor = false;
             // 
-            // XshdCachePathChooser
+            // errorProvider1
             // 
-            this.XshdCachePathChooser.Cursor = System.Windows.Forms.Cursors.Hand;
-            this.XshdCachePathChooser.Font = new System.Drawing.Font("微软雅黑", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(134)));
-            this.XshdCachePathChooser.Location = new System.Drawing.Point(497, 40);
-            this.XshdCachePathChooser.MinimumSize = new System.Drawing.Size(1, 1);
-            this.XshdCachePathChooser.Name = "XshdCachePathChooser";
-            this.XshdCachePathChooser.Size = new System.Drawing.Size(127, 35);
-            this.XshdCachePathChooser.Style = Sunny.UI.UIStyle.Custom;
-            this.XshdCachePathChooser.TabIndex = 5;
-            this.XshdCachePathChooser.Text = "选择文件夹";
-            this.XshdCachePathChooser.TipsFont = new System.Drawing.Font("微软雅黑", 9F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(134)));
-            this.XshdCachePathChooser.ZoomScaleRect = new System.Drawing.Rectangle(0, 0, 0, 0);
-            this.XshdCachePathChooser.Click += new System.EventHandler(this.PickDiretory);
-            // 
-            // uiLabel1
-            // 
-            this.uiLabel1.Font = new System.Drawing.Font("微软雅黑", 10F);
-            this.uiLabel1.ForeColor = System.Drawing.Color.Silver;
-            this.uiLabel1.Location = new System.Drawing.Point(3, 40);
-            this.uiLabel1.Name = "uiLabel1";
-            this.uiLabel1.Size = new System.Drawing.Size(178, 32);
-            this.uiLabel1.Style = Sunny.UI.UIStyle.Custom;
-            this.uiLabel1.StyleCustomMode = true;
-            this.uiLabel1.TabIndex = 6;
-            this.uiLabel1.Text = "Xshd文件缓存路径：";
-            this.uiLabel1.TextAlign = System.Drawing.ContentAlignment.MiddleLeft;
-            this.uiLabel1.ZoomScaleRect = new System.Drawing.Rectangle(0, 0, 0, 0);
-            // 
-            // txtBoxXshdCache
-            // 
-            this.txtBoxXshdCache.Cursor = System.Windows.Forms.Cursors.IBeam;
-            this.txtBoxXshdCache.FillColor = System.Drawing.Color.FromArgb(((int)(((byte)(56)))), ((int)(((byte)(56)))), ((int)(((byte)(56)))));
-            this.txtBoxXshdCache.Font = new System.Drawing.Font("微软雅黑", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(134)));
-            this.txtBoxXshdCache.ForeColor = System.Drawing.Color.WhiteSmoke;
-            this.txtBoxXshdCache.Location = new System.Drawing.Point(165, 40);
-            this.txtBoxXshdCache.Margin = new System.Windows.Forms.Padding(4, 5, 4, 5);
-            this.txtBoxXshdCache.MinimumSize = new System.Drawing.Size(1, 16);
-            this.txtBoxXshdCache.Name = "txtBoxXshdCache";
-            this.txtBoxXshdCache.ShowText = false;
-            this.txtBoxXshdCache.Size = new System.Drawing.Size(325, 34);
-            this.txtBoxXshdCache.Style = Sunny.UI.UIStyle.Custom;
-            this.txtBoxXshdCache.StyleCustomMode = true;
-            this.txtBoxXshdCache.TabIndex = 7;
-            this.txtBoxXshdCache.TextAlignment = System.Drawing.ContentAlignment.MiddleLeft;
-            this.txtBoxXshdCache.Watermark = "";
-            this.txtBoxXshdCache.ZoomScaleRect = new System.Drawing.Rectangle(0, 0, 0, 0);
-            this.txtBoxXshdCache.TextChanged += new System.EventHandler(this.ChangeCachePath);
+            this.errorProvider1.BlinkRate = 100;
+            this.errorProvider1.BlinkStyle = System.Windows.Forms.ErrorBlinkStyle.NeverBlink;
+            this.errorProvider1.ContainerControl = this;
+            this.errorProvider1.Icon = ((System.Drawing.Icon)(resources.GetObject("errorProvider1.Icon")));
             // 
             // CustomSettings
             // 
@@ -255,7 +336,9 @@
             this.ZoomScaleRect = new System.Drawing.Rectangle(19, 19, 842, 400);
             this.MainTabCtrl.ResumeLayout(false);
             this.General.ResumeLayout(false);
+            this.uiTitlePanel1.ResumeLayout(false);
             this.XshdFilePanel.ResumeLayout(false);
+            ((System.ComponentModel.ISupportInitialize)(this.errorProvider1)).EndInit();
             this.ResumeLayout(false);
 
         }
@@ -274,5 +357,9 @@
         private Sunny.UI.UIButton XshdCachePathChooser;
         private System.Windows.Forms.FolderBrowserDialog folderBrowserDialog1;
         private Sunny.UI.UITextBox txtBoxXshdCache;
+        private Sunny.UI.UITitlePanel uiTitlePanel1;
+        private Sunny.UI.UIComboBox uiComboBox1;
+        private Sunny.UI.UILabel uiLabel2;
+        private System.Windows.Forms.ErrorProvider errorProvider1;
     }
 }

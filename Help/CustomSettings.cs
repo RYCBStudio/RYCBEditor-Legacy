@@ -1,4 +1,5 @@
 ﻿using Sunny.UI;
+using System.Linq;
 using System;
 using System.IO;
 using System.Windows.Forms;
@@ -15,6 +16,9 @@ namespace IDE
             _path = path + "\\Xshd";
             _path_oringin = path + "\\Xshd";
             //SettingsHandler.SetSettings(path, 0);
+            var language = GlobalSuppressions.language_set.FirstOrDefault(q => q.Value == GlobalSuppressions.language).Key;
+            uiComboBox1.SelectedItem = language;
+            uiComboBox1.Text = language;
         }
 
         private void ChooseXshdFile(object sender, System.EventArgs e)
@@ -33,6 +37,18 @@ namespace IDE
                 ChangeCachePath(sender, e);
             }
         }
+
+        private void ChangeLanguage(object sender, EventArgs e)
+        {
+            string selectedLanguage = uiComboBox1.Text;
+            if (selectedLanguage != GlobalSuppressions.language)
+            {
+                GlobalSuppressions.language = GlobalSuppressions.language_set[selectedLanguage];
+                Program.reConf.Write("general", "language", GlobalSuppressions.language_set[selectedLanguage]);
+                errorProvider1.SetError(uiComboBox1, "重启应用程序后生效");
+            }
+        }
+
 
         private void ChangeCachePath(object sender, System.EventArgs e)
         {

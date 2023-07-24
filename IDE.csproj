@@ -464,6 +464,18 @@
     <Reference Include="WindowsFormsIntegration" />
   </ItemGroup>
   <ItemGroup>
+    <Compile Include="Help\LicenseAndCopyrights.Initializer.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="Help\Thanks.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="Help\Thanks.Designer.cs">
+      <DependentUpon>Thanks.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Help\Thanks.Initializer.cs">
+      <SubType>Form</SubType>
+    </Compile>
     <Compile Include="Init\Initializer.cs" />
     <Compile Include="Main\LightEdit.cs">
       <SubType>Form</SubType>
@@ -507,6 +519,7 @@
       <DependentUpon>LicenseAndCopyrights.cs</DependentUpon>
     </Compile>
     <Compile Include="Utils\CrashHandler.cs" />
+    <Compile Include="Utils\ErrorAnalysiser.cs" />
     <Compile Include="Utils\I18nHandler.cs" />
     <Compile Include="Utils\LogUtil.cs" />
     <Compile Include="Main\Main.cs">
@@ -524,8 +537,26 @@
     <Compile Include="Utils\MessageBoxEX.cs" />
     <Compile Include="Program.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
+    <Compile Include="Utils\NewFile.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="Utils\NewFile.Designer.cs">
+      <DependentUpon>NewFile.cs</DependentUpon>
+    </Compile>
     <Compile Include="Utils\RYCBCodeSense.cs" />
     <Compile Include="Utils\SettingsHandler.cs" />
+    <Compile Include="Utils\TBox.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="Utils\TBox.Designer.cs">
+      <DependentUpon>TBox.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Utils\TextEnterBox.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="Utils\TextEnterBox.Designer.cs">
+      <DependentUpon>TextEnterBox.cs</DependentUpon>
+    </Compile>
     <Compile Include="Utils\Utils.cs" />
     <Compile Include="XshdVisualEdit\XshdVisualEditor.cs">
       <SubType>Form</SubType>
@@ -541,6 +572,9 @@
     </EmbeddedResource>
     <EmbeddedResource Include="Help\CustomSettings.resx">
       <DependentUpon>CustomSettings.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Help\Thanks.resx">
+      <DependentUpon>Thanks.cs</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="Init\Entry.resx">
       <DependentUpon>Entry.cs</DependentUpon>
@@ -565,10 +599,101 @@
       <SubType>Designer</SubType>
       <LastGenOutput>Resources.Designer.cs</LastGenOutput>
     </EmbeddedResource>
+    <EmbeddedResource Include="Utils\NewFile.resx">
+      <DependentUpon>NewFile.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Utils\TBox.resx">
+      <DependentUpon>TBox.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Utils\TextEnterBox.resx">
+      <DependentUpon>TextEnterBox.cs</DependentUpon>
+    </EmbeddedResource>
     <EmbeddedResource Include="XshdVisualEdit\XshdVisualEditor.resx">
       <DependentUpon>XshdVisualEditor.cs</DependentUpon>
     </EmbeddedResource>
     <None Include=".editorconfig" />
+    <None Include="IDE.config" />
+    <None Include="Init\FirstBoot\Fonts\EXO-MEDIUM.TTF" />
+    <None Include="Init\FirstBoot\Fonts\GENERICTECHNO.OTF" />
+    <None Include="Init\FirstBoot\Fonts\HARMONYOS_SANS_BLACK.TTF" />
+    <None Include="Init\FirstBoot\Fonts\HARMONYOS_SANS_BLACK_ITALIC.TTF" />
+    <None Include="Init\FirstBoot\Fonts\HARMONYOS_SANS_BOLD.TTF" />
+    <None Include="Init\FirstBoot\Fonts\HARMONYOS_SANS_BOLD_ITALIC.TTF" />
+    <None Include="Init\FirstBoot\Fonts\HARMONYOS_SANS_CONDENSED_BLACK.TTF" />
+    <None Include="Init\FirstBoot\Fonts\HARMONYOS_SANS_CONDENSED_BLACK_ITALIC.TTF" />
+    <None Include="Init\FirstBoot\Fonts\HARMONYOS_SANS_CONDENSED_BOLD.TTF" />
+    <None Include="Init\FirstBoot\Fonts\HARMONYOS_SANS_CONDENSED_BOLD_ITALIC.TTF" />
+    <None Include="Init\FirstBoot\Fonts\HARMONYOS_SANS_CONDENSED_LIGHT.TTF" />
+    <None Include="Init\FirstBoot\Fonts\HARMONYOS_SANS_CONDENSED_LIGHT_ITALIC.TTF" />
+    <None Include="Init\FirstBoot\Fonts\HARMONYOS_SANS_CONDENSED_MEDIUM.TTF" />
+    <None Include="Init\FirstBoot\Fonts\HARMONYOS_SANS_CONDENSED_MEDIUM_ITALIC.TTF" />
+    <None Include="Init\FirstBoot\Fonts\HARMONYOS_SANS_CONDENSED_REGULAR.TTF" />
+    <None Include="Init\FirstBoot\Fonts\HARMONYOS_SANS_CONDENSED_REGULAR_ITALIC.TTF" />
+    <None Include="Init\FirstBoot\Fonts\HARMONYOS_SANS_CONDENSED_THIN.TTF" />
+    <None Include="Init\FirstBoot\Fonts\HARMONYOS_SANS_CONDENSED_THIN_ITALIC.TTF" />
+    <None Include="Init\FirstBoot\Fonts\HARMONYOS_SANS_LIGHT.TTF" />
+    <None Include="Init\FirstBoot\Fonts\HARMONYOS_SANS_LIGHT_ITALIC.TTF" />
+    <None Include="Init\FirstBoot\Fonts\HARMONYOS_SANS_MEDIUM.TTF" />
+    <None Include="Init\FirstBoot\Fonts\HARMONYOS_SANS_MEDIUM_ITALIC.TTF" />
+    <None Include="Init\FirstBoot\Fonts\HARMONYOS_SANS_REGULAR.TTF" />
+    <None Include="Init\FirstBoot\Fonts\HARMONYOS_SANS_REGULAR_ITALIC.TTF" />
+    <None Include="Init\FirstBoot\Fonts\HARMONYOS_SANS_SC_BLACK.TTF" />
+    <None Include="Init\FirstBoot\Fonts\HARMONYOS_SANS_SC_BOLD.TTF" />
+    <None Include="Init\FirstBoot\Fonts\HARMONYOS_SANS_SC_LIGHT.TTF" />
+    <None Include="Init\FirstBoot\Fonts\HARMONYOS_SANS_SC_MEDIUM.TTF" />
+    <None Include="Init\FirstBoot\Fonts\HARMONYOS_SANS_SC_REGULAR.TTF" />
+    <None Include="Init\FirstBoot\Fonts\HARMONYOS_SANS_SC_THIN.TTF" />
+    <None Include="Init\FirstBoot\Fonts\HARMONYOS_SANS_TC_BLACK.TTF" />
+    <None Include="Init\FirstBoot\Fonts\HARMONYOS_SANS_TC_BOLD.TTF" />
+    <None Include="Init\FirstBoot\Fonts\HARMONYOS_SANS_TC_LIGHT.TTF" />
+    <None Include="Init\FirstBoot\Fonts\HARMONYOS_SANS_TC_MEDIUM.TTF" />
+    <None Include="Init\FirstBoot\Fonts\HARMONYOS_SANS_TC_REGULAR.TTF" />
+    <None Include="Init\FirstBoot\Fonts\HARMONYOS_SANS_TC_THIN.TTF" />
+    <None Include="Init\FirstBoot\Fonts\HARMONYOS_SANS_THIN.TTF" />
+    <None Include="Init\FirstBoot\Fonts\HARMONYOS_SANS_THIN_ITALIC.TTF" />
+    <None Include="Init\FirstBoot\Fonts\HPSIMPLIFIED.TTF" />
+    <None Include="Init\FirstBoot\Fonts\HPSIMPLIFIEDHANS-LIGHT.TTF" />
+    <None Include="Init\FirstBoot\Fonts\HPSIMPLIFIEDHANS-REGULAR.TTF" />
+    <None Include="Init\FirstBoot\Fonts\HPSIMPLIFIED_BDIT.TTF" />
+    <None Include="Init\FirstBoot\Fonts\HPSIMPLIFIED_IT.TTF" />
+    <None Include="Init\FirstBoot\Fonts\HPSIMPLIFIED_LT.TTF" />
+    <None Include="Init\FirstBoot\Fonts\HPSIMPLIFIED_LTIT.TTF" />
+    <None Include="Init\FirstBoot\Fonts\HPSIMPLIFIED_RG.TTF" />
+    <None Include="Init\FirstBoot\Fonts\JETBRAINSMONO-BOLD.TTF" />
+    <None Include="Init\FirstBoot\Fonts\JETBRAINSMONO-BOLDITALIC.TTF" />
+    <None Include="Init\FirstBoot\Fonts\JETBRAINSMONO-EXTRABOLD.TTF" />
+    <None Include="Init\FirstBoot\Fonts\JETBRAINSMONO-EXTRABOLDITALIC.TTF" />
+    <None Include="Init\FirstBoot\Fonts\JETBRAINSMONO-EXTRALIGHT.TTF" />
+    <None Include="Init\FirstBoot\Fonts\JETBRAINSMONO-EXTRALIGHTITALIC.TTF" />
+    <None Include="Init\FirstBoot\Fonts\JETBRAINSMONO-ITALIC.TTF" />
+    <None Include="Init\FirstBoot\Fonts\JETBRAINSMONO-LIGHT.TTF" />
+    <None Include="Init\FirstBoot\Fonts\JETBRAINSMONO-LIGHTITALIC.TTF" />
+    <None Include="Init\FirstBoot\Fonts\JETBRAINSMONO-MEDIUM.TTF" />
+    <None Include="Init\FirstBoot\Fonts\JETBRAINSMONO-MEDIUMITALIC.TTF" />
+    <None Include="Init\FirstBoot\Fonts\JETBRAINSMONO-REGULAR.TTF" />
+    <None Include="Init\FirstBoot\Fonts\JETBRAINSMONO-SEMIBOLD.TTF" />
+    <None Include="Init\FirstBoot\Fonts\JETBRAINSMONO-SEMIBOLDITALIC.TTF" />
+    <None Include="Init\FirstBoot\Fonts\JETBRAINSMONO-THIN.TTF" />
+    <None Include="Init\FirstBoot\Fonts\JETBRAINSMONO-THINITALIC.TTF" />
+    <None Include="Init\FirstBoot\Fonts\JETBRAINSMONONL-BOLD.TTF" />
+    <None Include="Init\FirstBoot\Fonts\JETBRAINSMONONL-BOLDITALIC.TTF" />
+    <None Include="Init\FirstBoot\Fonts\JETBRAINSMONONL-EXTRABOLD.TTF" />
+    <None Include="Init\FirstBoot\Fonts\JETBRAINSMONONL-EXTRABOLDITALIC.TTF" />
+    <None Include="Init\FirstBoot\Fonts\JETBRAINSMONONL-EXTRALIGHT.TTF" />
+    <None Include="Init\FirstBoot\Fonts\JETBRAINSMONONL-EXTRALIGHTITALIC.TTF" />
+    <None Include="Init\FirstBoot\Fonts\JETBRAINSMONONL-ITALIC.TTF" />
+    <None Include="Init\FirstBoot\Fonts\JETBRAINSMONONL-LIGHT.TTF" />
+    <None Include="Init\FirstBoot\Fonts\JETBRAINSMONONL-LIGHTITALIC.TTF" />
+    <None Include="Init\FirstBoot\Fonts\JETBRAINSMONONL-MEDIUM.TTF" />
+    <None Include="Init\FirstBoot\Fonts\JETBRAINSMONONL-MEDIUMITALIC.TTF" />
+    <None Include="Init\FirstBoot\Fonts\JETBRAINSMONONL-REGULAR.TTF" />
+    <None Include="Init\FirstBoot\Fonts\JETBRAINSMONONL-SEMIBOLD.TTF" />
+    <None Include="Init\FirstBoot\Fonts\JETBRAINSMONONL-SEMIBOLDITALIC.TTF" />
+    <None Include="Init\FirstBoot\Fonts\JETBRAINSMONONL-THIN.TTF" />
+    <None Include="Init\FirstBoot\Fonts\JETBRAINSMONONL-THINITALIC.TTF" />
+    <None Include="Init\FirstBoot\Fonts\SAIRA-BLACK.TTF" />
+    <None Include="Init\FirstBoot\Fonts\SAIRA-BOLD-ITALIC.TTF" />
+    <None Include="Init\FirstBoot\Fonts\SAIRA-REGULAR.TTF" />
     <None Include="Main\help.md" />
     <None Include="IDE.manifest" />
     <None Include="packages.config" />
@@ -588,6 +713,9 @@
     </Compile>
     <EmbeddedResource Include="Python.xshd" />
     <EmbeddedResource Include="Py-CN.xshd" />
+    <Compile Include="Utils\NewFile.Initializer.cs">
+      <SubType>Form</SubType>
+    </Compile>
   </ItemGroup>
   <ItemGroup>
     <None Include="App.config" />
@@ -644,6 +772,35 @@
     <None Include="Resources\Window.png" />
     <None Include="Resources\file_common.png" />
     <None Include="Resources\Run1.png" />
+    <None Include="Resources\Update-normal.png" />
+    <Content Include="Init\FirstBoot\InstallFont.vbs" />
+    <None Include="Resources\IDE_splash_new.png" />
+    <None Include="Resources\ender_pearl.png" />
+    <None Include="Resources\steve.gif" />
+    <None Include="Resources\ender_pearl1.png" />
+    <None Include="Resources\notch_square.gif" />
+    <None Include="Resources\Linux.ico" />
+    <None Include="Resources\Update-can_update.ico" />
+    <None Include="Resources\IDE_ico%281024x%291.png" />
+    <None Include="Resources\ingot.png" />
+    <None Include="Resources\Android.png" />
+    <None Include="Resources\google.png" />
+    <None Include="Resources\azure.png" />
+    <None Include="Resources\Google-Translate%28Small%29%28ICON%29.png.ico" />
+    <None Include="Resources\Microsoft徽标.png" />
+    <None Include="Resources\Visual Studio.ico" />
+    <None Include="Resources\Windows徽标%2811版%29.png" />
+    <None Include="Resources\Windows徽标%2810版%29.png" />
+    <None Include="Resources\Mail_light.png" />
+    <None Include="Resources\docx.png" />
+    <None Include="Resources\Settings.png" />
+    <None Include="Resources\AppIcon.altform-unplated_targetsize-256.png" />
+    <None Include="Resources\Bug.png" />
+    <None Include="Resources\regedit.ico" />
+    <None Include="Resources\1.ico" />
+    <None Include="Resources\Java.ico" />
+    <None Include="Resources\Mojang.jpg" />
+    <None Include="Resources\30856_48_1682238911.png" />
     <Content Include="语法说明.html" />
     <None Include="Resources\help.png" />
     <None Include="Resources\Google Translate%28Large%29.png" />
