@@ -9,3 +9,7 @@ Report the bugs you met in the program at [here](https://github.com/RYCBStudio/R
 
 ## Mirror Repository🪞
 The address of the mirror repository: &emsp;&emsp;&emsp;&emsp;&emsp;[![](https://gitee.com/static/images/logo.svg)](https://gitee.com/RYCBStudio/RYCB-Editor)
+
+## Donate💴
+Donate Address：[![](https://static.afdiancdn.com/static/img/logo/logo.png)](https://afdian.net/a/RYCBstudio)
+## &emsp;&emsp;&emsp;&emsp;AFDian.net (AiFaDian)
