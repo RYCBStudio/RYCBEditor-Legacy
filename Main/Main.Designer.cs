@@ -89,6 +89,7 @@ namespace IDE
             this.鸣谢ToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.许可与版权声明ToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.百宝箱ToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
+            this.捐助ToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.配置ToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.menuStrip1.SuspendLayout();
             this.tabControl1.SuspendLayout();
@@ -177,6 +178,7 @@ namespace IDE
             this.全选AToolStripMenuItem.Name = "全选AToolStripMenuItem";
             this.全选AToolStripMenuItem.Size = new System.Drawing.Size(271, 26);
             this.全选AToolStripMenuItem.Text = "text.ts.edit.selectall";
+            this.全选AToolStripMenuItem.Click += new System.EventHandler(this.SelectAll);
             // 
             // 运行RToolStripMenuItem
             // 
@@ -212,7 +214,8 @@ namespace IDE
             this.关于AToolStripMenuItem,
             this.鸣谢ToolStripMenuItem,
             this.许可与版权声明ToolStripMenuItem,
-            this.百宝箱ToolStripMenuItem});
+            this.百宝箱ToolStripMenuItem,
+            this.捐助ToolStripMenuItem});
             this.帮助HToolStripMenuItem.ForeColor = System.Drawing.Color.White;
             this.帮助HToolStripMenuItem.Name = "帮助HToolStripMenuItem";
             this.帮助HToolStripMenuItem.Size = new System.Drawing.Size(105, 28);
@@ -295,7 +298,6 @@ namespace IDE
             this.tabControl1.Controls.Add(this.tabPage1);
             this.tabControl1.DrawMode = System.Windows.Forms.TabDrawMode.OwnerDrawFixed;
             this.tabControl1.Font = new System.Drawing.Font("微软雅黑", 10.5F);
-            this.tabControl1.Frame = null;
             this.tabControl1.ItemSize = new System.Drawing.Size(100, 30);
             this.tabControl1.Location = new System.Drawing.Point(0, 35);
             this.tabControl1.MainPage = "";
@@ -310,7 +312,6 @@ namespace IDE
             this.tabControl1.TabBackColor = System.Drawing.Color.Black;
             this.tabControl1.TabIndex = 2;
             this.tabControl1.TipsFont = new System.Drawing.Font("微软雅黑", 9F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(134)));
-            this.tabControl1.ZoomScaleRect = new System.Drawing.Rectangle(0, 0, 0, 0);
             this.tabControl1.BeforeRemoveTabPage += new Sunny.UI.UITabControl.OnBeforeRemoveTabPage(this.TabControl1_BeforeRemoveTabPage);
             this.tabControl1.Selected += new System.Windows.Forms.TabControlEventHandler(this.Layout);
             this.tabControl1.Validating += new System.ComponentModel.CancelEventHandler(this.Validating_Layout);
@@ -658,6 +659,16 @@ namespace IDE
             this.百宝箱ToolStripMenuItem.Text = "text.ts.help.treasurebox";
             this.百宝箱ToolStripMenuItem.Click += new System.EventHandler(this.OpenTheTBox);
             // 
+            // 捐助ToolStripMenuItem
+            // 
+            this.捐助ToolStripMenuItem.BackColor = System.Drawing.SystemColors.ActiveCaptionText;
+            this.捐助ToolStripMenuItem.ForeColor = System.Drawing.SystemColors.Control;
+            this.捐助ToolStripMenuItem.Image = global::IDE.Properties.Resources.donate;
+            this.捐助ToolStripMenuItem.Name = "捐助ToolStripMenuItem";
+            this.捐助ToolStripMenuItem.Size = new System.Drawing.Size(326, 26);
+            this.捐助ToolStripMenuItem.Text = "text.ts.help.donate";
+            this.捐助ToolStripMenuItem.Click += new System.EventHandler(this.DonateLink);
+            // 
             // 配置ToolStripMenuItem
             // 
             this.配置ToolStripMenuItem.BackColor = System.Drawing.Color.Black;
@@ -766,6 +777,7 @@ namespace IDE
         private ToolStripMenuItem 应用程序ToolStripMenuItem;
         private ToolStripMenuItem 退出ToolStripMenuItem;
         private ToolStripMenuItem 重启ToolStripMenuItem;
+        private ToolStripMenuItem 捐助ToolStripMenuItem;
     }
 }
 

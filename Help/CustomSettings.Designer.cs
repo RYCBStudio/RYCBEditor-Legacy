@@ -86,7 +86,7 @@
             this.General.Name = "General";
             this.General.Size = new System.Drawing.Size(635, 358);
             this.General.TabIndex = 0;
-            this.General.Text = "常规";
+            this.General.Text = "text.settings.page.general.title";
             // 
             // uiTitlePanel1
             // 
@@ -106,7 +106,7 @@
             this.uiTitlePanel1.Style = Sunny.UI.UIStyle.Custom;
             this.uiTitlePanel1.StyleCustomMode = true;
             this.uiTitlePanel1.TabIndex = 8;
-            this.uiTitlePanel1.Text = "基础设置";
+            this.uiTitlePanel1.Text = "text.settings.page.general.basicsettings.title";
             this.uiTitlePanel1.TextAlignment = System.Drawing.ContentAlignment.MiddleCenter;
             this.uiTitlePanel1.ZoomScaleRect = new System.Drawing.Rectangle(0, 0, 0, 0);
             // 
@@ -125,7 +125,7 @@
             "繁體中文(香港)",
             "English",
             "日本語"});
-            this.uiComboBox1.Location = new System.Drawing.Point(58, 40);
+            this.uiComboBox1.Location = new System.Drawing.Point(112, 40);
             this.uiComboBox1.Margin = new System.Windows.Forms.Padding(4, 5, 4, 5);
             this.uiComboBox1.MaxDropDownItems = 5;
             this.uiComboBox1.MinimumSize = new System.Drawing.Size(63, 0);
@@ -146,11 +146,11 @@
             this.uiLabel2.ForeColor = System.Drawing.Color.Silver;
             this.uiLabel2.Location = new System.Drawing.Point(3, 43);
             this.uiLabel2.Name = "uiLabel2";
-            this.uiLabel2.Size = new System.Drawing.Size(63, 32);
+            this.uiLabel2.Size = new System.Drawing.Size(102, 32);
             this.uiLabel2.Style = Sunny.UI.UIStyle.Custom;
             this.uiLabel2.StyleCustomMode = true;
             this.uiLabel2.TabIndex = 7;
-            this.uiLabel2.Text = "语言：";
+            this.uiLabel2.Text = "text.settings.page.general.basicsettings.lang";
             this.uiLabel2.TextAlign = System.Drawing.ContentAlignment.MiddleLeft;
             this.uiLabel2.ZoomScaleRect = new System.Drawing.Rectangle(0, 0, 0, 0);
             // 
@@ -175,7 +175,7 @@
             this.XshdFilePanel.Style = Sunny.UI.UIStyle.Custom;
             this.XshdFilePanel.StyleCustomMode = true;
             this.XshdFilePanel.TabIndex = 4;
-            this.XshdFilePanel.Text = "Xshd文件设置";
+            this.XshdFilePanel.Text = "text.settings.page.general.xshdfilesettings.title";
             this.XshdFilePanel.TextAlignment = System.Drawing.ContentAlignment.MiddleCenter;
             this.XshdFilePanel.ZoomScaleRect = new System.Drawing.Rectangle(0, 0, 0, 0);
             // 
@@ -331,7 +331,7 @@
             this.StartPosition = System.Windows.Forms.FormStartPosition.CenterParent;
             this.Style = Sunny.UI.UIStyle.Custom;
             this.StyleCustomMode = true;
-            this.Text = "自定义";
+            this.Text = "text.settings.window.title";
             this.TitleColor = System.Drawing.Color.FromArgb(((int)(((byte)(21)))), ((int)(((byte)(21)))), ((int)(((byte)(21)))));
             this.ZoomScaleRect = new System.Drawing.Rectangle(19, 19, 842, 400);
             this.MainTabCtrl.ResumeLayout(false);

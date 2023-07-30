@@ -25,15 +25,15 @@ namespace IDE
 
             foreach (Control control in controls)
             {
-                control.Text = _I18nFile.ReadString("I18n", control.Text, control.Text).Split('\t', ' ')[0];
+                control.Text = _I18nFile.ReadString("I18n", control.Text, control.Text);
             }
 
             foreach (ToolStripItem item in toolStripItems)
             {
-                item.Text = _I18nFile.ReadString("I18n", item.Text, item.Text).Split('\t', ' ')[0];
+                item.Text = _I18nFile.ReadString("I18n", item.Text, item.Text);
             }
 
-            this.openFileDialog1.Title = _I18nFile.ReadString("I18n", "this.openFileDialog1.Title", "this.openFileDialog1.Title").Split('\t', ' ')[0];
+            this.openFileDialog1.Title = _I18nFile.ReadString("I18n", "this.openFileDialog1.Title", "this.openFileDialog1.Title");
             this.文件ToolStripMenuItem.Text = _I18nFile.ReadString("I18n", this.文件ToolStripMenuItem.Text, this.文件ToolStripMenuItem.Text);
             this.项目ToolStripMenuItem.Text = _I18nFile.ReadString("I18n", this.项目ToolStripMenuItem.Text, this.项目ToolStripMenuItem.Text);
             this.tabPage1.Text = _I18nFile.ReadString("I18n", tabPage1.Text, tabPage1.Text);
@@ -45,6 +45,7 @@ namespace IDE
                 items.Add(_I18nFile.ReadString("List_lang", item, item));
             }
             SetCobBoxItems(this.toolStripComboBox1, items);
+            title = _I18nFile.ReadString("I18n", "text.main.selectfile.title", "text.main.selectfile.title");
         }
 
         private List<Control> GetAllControls(Control control)

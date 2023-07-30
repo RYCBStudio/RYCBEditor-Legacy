@@ -30,9 +30,7 @@ namespace IDE
         private static readonly Stopwatch stopwatch = new();
         public const string VERSION = "0.0.1";
         public const string FRIENDLY_VER = "0.0.1a_dev+4";
-        private const string title = "选择文件：";
-        private const string field_a1 = "警告：用户取消了选择文件。";
-        private const string field_a2 = "警告";
+        private string title = "选择文件：";
         public static readonly LogUtil LOGGER = new(Environment.CurrentDirectory + $"\\logs\\{DateTime.Now.Year}-{DateTime.Now.Month}-{DateTime.Now.Day}.log");
         private static StreamWriter keepFile;
         private bool NoTip, isModified = false;
@@ -125,7 +123,6 @@ namespace IDE
             {
                 if (openFileDialog1.FileName == null || openFileDialog1.FileName == "")
                 {
-                    MessageBox.Show(field_a1, field_a2, MessageBoxButtons.OK, MessageBoxIcon.Warning);
                     return;
                 }
                 string tmp = @openFileDialog1.FileName.Split('\\')[@openFileDialog1.FileName.Split('\\').Length - 1];
@@ -144,10 +141,7 @@ namespace IDE
                     CheckFileTypeAndAlert(_, tmp);
                 }
             }
-            else
-            {
-                MessageBox.Show(field_a1, field_a2, MessageBoxButtons.OK, MessageBoxIcon.Warning);
-            }
+            else { }
         }
         #endregion
         #region 关于
@@ -164,9 +158,13 @@ namespace IDE
         private void New(object sender, EventArgs e)
         {
             var nf = new NewFile("输入文件名");
+            LOGGER.WriteLog("新建文件", EnumMsgLevel.INFO, EnumPort.CLIENT, EnumModule.MAIN);
             DialogResult _ds = nf.ShowDialog(this);
             if (nf.GetFileName() == "" | nf.GetFileName() == null | nf.GetStatus() == NewFile.FileStatus.Failed)
+            {
+                LOGGER.WriteLog("已取消新建文件。", EnumMsgLevel.INFO, EnumPort.CLIENT, EnumModule.MAIN);
                 return;
+            }
             else
             {
                 TabPage tab = new()
@@ -175,6 +173,7 @@ namespace IDE
                     BackColor = tabPage1.BackColor,
                     ForeColor = tabPage1.ForeColor,
                 };
+                LOGGER.WriteLog($"TabPage已准备就绪。\n文件名: {tab.Text}", EnumMsgLevel.INFO, EnumPort.CLIENT, EnumModule.MAIN);
                 ElementHost tmpEHost = new()
                 {
                     Size = elementHost1.Size,
@@ -182,6 +181,7 @@ namespace IDE
                     BackColor = elementHost1.BackColor,
                     ForeColor = elementHost1.ForeColor,
                 };
+                LOGGER.WriteLog("ElementHost已准备就绪。", EnumMsgLevel.INFO, EnumPort.CLIENT, EnumModule.MAIN);
                 TextEditor tmpEditor = new()
                 {
                     Width = elementHost1.Width,
@@ -191,46 +191,51 @@ namespace IDE
                     Foreground = new SolidColorBrush(System.Windows.Media.Color.FromRgb(0xA9, 0xB7, 0xC6)),
                     ShowLineNumbers = true,
                 };
+                LOGGER.WriteLog($"编辑器控件已准备就绪。\n字体: {tmpEditor.FontFamily}", EnumMsgLevel.INFO, EnumPort.CLIENT, EnumModule.MAIN);
                 tmpEditor.TextArea.TextEntered += new TextCompositionEventHandler(this.TextAreaOnTextEntered);
                 tmpEditor.TextArea.TextEntering += new TextCompositionEventHandler(this.TextArea_TextEntering);
+                LOGGER.WriteLog("编辑器控件方法入口已准备就绪。", EnumMsgLevel.INFO, EnumPort.CLIENT, EnumModule.MAIN);
                 //快速搜索功能
                 SearchPanel.Install(tmpEditor.TextArea);
                 System.Reflection.Assembly assembly = System.Reflection.Assembly.GetExecutingAssembly();
                 //设置语法规则
+                LOGGER.WriteLog("正在获取语法规则信息..");
                 var tmp_ = AutoGetLanguage(tab.Text);
                 if (tmp_.Contains("纯文本")) tmp_ = "PlainText";
                 if (tmp_.Contains("C#")) tmp_ = "C-Sharp";
                 string name = assembly.GetName().Name + $".{tmp_}.xshd";
+                LOGGER.WriteLog("语法规则信息获取成功。");
+                LOGGER.WriteLog($"语法规则: {tmp_}\t\t对应文件名: {name}");
                 using (Stream s = assembly.GetManifestResourceStream(name))
                 {
                     using XmlTextReader reader = new(s);
                     var xshd = HighlightingLoader.LoadXshd(reader);
                     tmpEditor.SyntaxHighlighting = HighlightingLoader.Load(xshd, HighlightingManager.Instance);
                 }
+                LOGGER.WriteLog("语法规则已成功设置。");
                 tmpEHost.Child = tmpEditor;
                 tab.Controls.Add(tmpEHost);
                 tabControl1.TabPages.Add(tab);
+                LOGGER.WriteLog("所有设置均已完成。");
             }
         }
         #endregion
         #region 实时保存
         private void Save(object sender, EventArgs e)
         {
-            var _editor = (tabControl1.SelectedTab.Controls[2] as ElementHost).Child as TextEditor;
+            var _editor = (tabControl1.SelectedTab.Controls[0] as ElementHost).Child as TextEditor;
             if (tabControl1.SelectedTab.ToolTipText != null & tabControl1.SelectedTab.ToolTipText != "")
             {
-
                 StreamWriter streamWriter = new(tabControl1.SelectedTab.ToolTipText, false, Encoding.UTF8);
                 streamWriter.Write(_editor.Text);
                 streamWriter.Close();
             }
-            ((MetroTabPage)tabControl1.SelectedTab).Style = MetroFramework.MetroColorStyle.Blue;
         }
         #endregion
         #region 另存为
         private void SaveFile(object sender, EventArgs e)
         {
-            var _editor = (tabControl1.SelectedTab.Controls[2] as ElementHost).Child as TextEditor;
+            var _editor = (tabControl1.SelectedTab.Controls[0] as ElementHost).Child as TextEditor;
             if (saveFileDialog1.ShowDialog() == DialogResult.OK)
             {
                 if (saveFileDialog1.FileName == null || saveFileDialog1.FileName == "")
@@ -605,19 +610,20 @@ namespace IDE
         /// <returns>语言类型</returns>
         public static string AutoGetLanguage(string SuffixName)
         {
-            if (SuffixName.Equals("cs"))
+            LOGGER.WriteLog($"已获取文件名: {SuffixName}");
+            if (SuffixName.Contains(".cs"))
             {
                 return "C-Sharp";
             }
-            else if (SuffixName.Equals("py") | SuffixName.Equals("pyw") | SuffixName.Equals("pyi"))
-            {
-                return "Python";
-            }
-            else if (SuffixName.Equals("pycn") | SuffixName.Equals("pyCN"))
+            else if (SuffixName.Contains(".pycn") | SuffixName.Contains(".pyCN"))
             {
                 return "Py-CN";
             }
-            else if (SuffixName.Equals("xml") | SuffixName.Equals("xshd"))
+            else if (SuffixName.Contains(".py") | SuffixName.Contains(".pyw") | SuffixName.Contains(".pyi"))
+            {
+                return "Python";
+            }  
+            else if (SuffixName.Contains(".xml") | SuffixName.Contains(".xshd"))
             {
                 return "XML";
             }
@@ -755,63 +761,63 @@ namespace IDE
         #region 生成I18n示例文件
         private void GenerateI18nExampleFile(object sender, EventArgs e)
         {
-            StreamWriter sw = new(new FileStream(STARTUP_PATH + "\\zh-CN.relang", FileMode.Create, FileAccess.ReadWrite, FileShare.ReadWrite));
-            sw.WriteLine("[LangSet]");
-            sw.WriteLine("Name=简体中文（中国）");
-            sw.WriteLine();
-            sw.WriteLine("[I18n]");
-            foreach (Control item in this.Controls)
-            {
-                sw.WriteLine($"{item.Name}={item.Text}");
-            }
-            sw.WriteLine(@"######StatusStrip1#######");
-            foreach (ToolStripItem item in this.statusStrip1.Items)
-            {
-                sw.WriteLine($"{item.Name}={item.Text}");
-            }
-            sw.WriteLine(@"######StatusStrip2#######");
-            foreach (ToolStripItem item in this.statusStrip2.Items)
-            {
-                sw.WriteLine($"{item.Name}={item.Text}");
-            }
-            sw.WriteLine(@"######ToolStrip1#######");
-            sw.WriteLine(@"######ContextMenuStrip1#######");
-            foreach (ToolStripItem item in this.contextMenuStrip1.Items)
-            {
-                sw.WriteLine($"{item.Name}={item.Text}");
-            }
-            sw.WriteLine(@"######MenuStrip1#######");
-            foreach (ToolStripItem item in this.menuStrip1.Items)
-            {
-                sw.WriteLine($"{item.Name}={item.Text}");
-            }
-            sw.WriteLine(@"######文件FToolStripMenuItem#######");
-            foreach (ToolStripItem item in this.文件FToolStripMenuItem.DropDownItems)
-            {
-                sw.WriteLine($"{item.Name}={item.Text}");
-            }
-            sw.WriteLine(@"######编辑EToolStripMenuItem#######");
-            foreach (ToolStripItem item in this.编辑EToolStripMenuItem.DropDownItems)
-            {
-                sw.WriteLine($"{item.Name}={item.Text}");
-            }
-            sw.WriteLine(@"######运行RToolStripMenuItem#######");
-            foreach (ToolStripItem item in this.运行RToolStripMenuItem.DropDownItems)
-            {
-                sw.WriteLine($"{item.Name}={item.Text}");
-            }
-            sw.WriteLine(@"######工具TToolStripMenuItem#######");
-            foreach (ToolStripItem item in this.工具TToolStripMenuItem.DropDownItems)
-            {
-                sw.WriteLine($"{item.Name}={item.Text}");
-            }
-            sw.WriteLine(@"######帮助HToolStripMenuItem#######");
-            foreach (ToolStripItem item in this.帮助HToolStripMenuItem.DropDownItems)
-            {
-                sw.WriteLine($"{item.Name}={item.Text}");
-            }
-            sw.WriteLine($"this.openFileDialog1.Title={this.openFileDialog1.Title}");
-            sw.Close();
+            //StreamWriter sw = new(new FileStream(STARTUP_PATH + "\\zh-CN.relang", FileMode.Create, FileAccess.ReadWrite, FileShare.ReadWrite));
+            //sw.WriteLine("[LangSet]");
+            //sw.WriteLine("Name=简体中文（中国）");
+            //sw.WriteLine();
+            //sw.WriteLine("[I18n]");
+            //foreach (Control item in this.Controls)
+            //{
+            //    sw.WriteLine($"{item.Name}={item.Text}");
+            //}
+            //sw.WriteLine(@"######StatusStrip1#######");
+            //foreach (ToolStripItem item in this.statusStrip1.Items)
+            //{
+            //    sw.WriteLine($"{item.Name}={item.Text}");
+            //}
+            //sw.WriteLine(@"######StatusStrip2#######");
+            //foreach (ToolStripItem item in this.statusStrip2.Items)
+            //{
+            //    sw.WriteLine($"{item.Name}={item.Text}");
+            //}
+            //sw.WriteLine(@"######ToolStrip1#######");
+            //sw.WriteLine(@"######ContextMenuStrip1#######");
+            //foreach (ToolStripItem item in this.contextMenuStrip1.Items)
+            //{
+            //    sw.WriteLine($"{item.Name}={item.Text}");
+            //}
+            //sw.WriteLine(@"######MenuStrip1#######");
+            //foreach (ToolStripItem item in this.menuStrip1.Items)
+            //{
+            //    sw.WriteLine($"{item.Name}={item.Text}");
+            //}
+            //sw.WriteLine(@"######文件FToolStripMenuItem#######");
+            //foreach (ToolStripItem item in this.文件FToolStripMenuItem.DropDownItems)
+            //{
+            //    sw.WriteLine($"{item.Name}={item.Text}");
+            //}
+            //sw.WriteLine(@"######编辑EToolStripMenuItem#######");
+            //foreach (ToolStripItem item in this.编辑EToolStripMenuItem.DropDownItems)
+            //{
+            //    sw.WriteLine($"{item.Name}={item.Text}");
+            //}
+            //sw.WriteLine(@"######运行RToolStripMenuItem#######");
+            //foreach (ToolStripItem item in this.运行RToolStripMenuItem.DropDownItems)
+            //{
+            //    sw.WriteLine($"{item.Name}={item.Text}");
+            //}
+            //sw.WriteLine(@"######工具TToolStripMenuItem#######");
+            //foreach (ToolStripItem item in this.工具TToolStripMenuItem.DropDownItems)
+            //{
+            //    sw.WriteLine($"{item.Name}={item.Text}");
+            //}
+            //sw.WriteLine(@"######帮助HToolStripMenuItem#######");
+            //foreach (ToolStripItem item in this.帮助HToolStripMenuItem.DropDownItems)
+            //{
+            //    sw.WriteLine($"{item.Name}={item.Text}");
+            //}
+            //sw.WriteLine($"this.openFileDialog1.Title={this.openFileDialog1.Title}");
+            //sw.Close();
         }
         #endregion
         #region 退出
@@ -1395,22 +1401,26 @@ namespace IDE
             pythonSrcipt.Start();
             return new string[] { pythonSrcipt.StandardOutput.ReadToEnd(), pythonSrcipt.StandardError.ReadToEnd() };
         }
-
+        #endregion
+        #region 打开百宝箱
         private void OpenTheTBox(object sender, EventArgs e)
         {
             new TBox().Show();
         }
-
+        #endregion
+        #region 界面调整
         private void Validating_Layout(object sender, System.ComponentModel.CancelEventArgs e)
         {
             Layout(sender, new TabControlEventArgs(tabPage1, 0, TabControlAction.Selecting));
         }
-
+        #endregion
+        #region 退出
         private void Exit(object sender, EventArgs e)
         {
             ExitByClosing(sender, new FormClosingEventArgs(CloseReason.UserClosing, false));
         }
-
+        #endregion
+        #region 重启
         private void Restart(object sender, EventArgs e)
         {
             string programpath = Application.ExecutablePath;
@@ -1424,12 +1434,27 @@ namespace IDE
             System.Diagnostics.Process.Start(startinfo);
             Application.Exit();
         }
-
+        #endregion
+        #region “鸣谢”模块
         private void Thanks(object sender, EventArgs e)
         {
             new Thanks().Show();
         }
-
+        #endregion
+        #region 全选
+        private void SelectAll(object sender, EventArgs e)
+        {
+            var _editor = (tabControl1.SelectedTab.Controls[0] as ElementHost).Child as TextEditor;
+            _editor.SelectAll();
+        }
+        #endregion
+        #region 捐助
+        private void DonateLink(object sender, EventArgs e)
+        {
+            Process.Start("https://afdian.net/a/RYCBStudio");
+        }
+        #endregion
+        #region 检查文件类型并发出警告
         private void CheckFileTypeAndAlert(string fileExtension, string tmp)
         {
             #region 特殊文件
@@ -1586,7 +1611,6 @@ namespace IDE
             }
             #endregion
         }
-
         #endregion
         #endregion
     }

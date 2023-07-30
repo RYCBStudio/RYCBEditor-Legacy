@@ -98,7 +98,7 @@
             this.textBox2.CustomButton.Visible = false;
             this.textBox2.FontSize = MetroFramework.MetroTextBoxSize.Medium;
             this.textBox2.Lines = new string[] {
-        "6.2.0.78"};
+        "6.3.0.90"};
             this.textBox2.Location = new System.Drawing.Point(171, 51);
             this.textBox2.MaxLength = 32767;
             this.textBox2.Name = "textBox2";
@@ -111,7 +111,7 @@
             this.textBox2.ShortcutsEnabled = true;
             this.textBox2.Size = new System.Drawing.Size(235, 27);
             this.textBox2.TabIndex = 5;
-            this.textBox2.Text = "6.2.0.78";
+            this.textBox2.Text = "6.3.0.90";
             this.textBox2.Theme = MetroFramework.MetroThemeStyle.Dark;
             this.textBox2.UseSelectable = true;
             this.textBox2.WaterMarkColor = System.Drawing.Color.FromArgb(((int)(((byte)(109)))), ((int)(((byte)(109)))), ((int)(((byte)(109)))));
@@ -395,7 +395,7 @@
             this.metroTextBox1.CustomButton.Visible = false;
             this.metroTextBox1.FontSize = MetroFramework.MetroTextBoxSize.Medium;
             this.metroTextBox1.Lines = new string[] {
-        "3.3.2.1"};
+        "3.4.1"};
             this.metroTextBox1.Location = new System.Drawing.Point(138, 51);
             this.metroTextBox1.MaxLength = 32767;
             this.metroTextBox1.Name = "metroTextBox1";
@@ -408,7 +408,7 @@
             this.metroTextBox1.ShortcutsEnabled = true;
             this.metroTextBox1.Size = new System.Drawing.Size(268, 27);
             this.metroTextBox1.TabIndex = 5;
-            this.metroTextBox1.Text = "3.3.2.1";
+            this.metroTextBox1.Text = "3.4.1";
             this.metroTextBox1.Theme = MetroFramework.MetroThemeStyle.Dark;
             this.metroTextBox1.UseSelectable = true;
             this.metroTextBox1.WaterMarkColor = System.Drawing.Color.FromArgb(((int)(((byte)(109)))), ((int)(((byte)(109)))), ((int)(((byte)(109)))));

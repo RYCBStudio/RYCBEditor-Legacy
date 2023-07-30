@@ -8,7 +8,8 @@ namespace IDE
 {
     public partial class CustomSettings : UIForm
     {
-        private static string _path, _path_oringin;
+        private static string _path, _path_oringin, tip_1;
+        private bool isInitialized = false;
 
         public CustomSettings(string path)
         {
@@ -19,6 +20,7 @@ namespace IDE
             var language = GlobalSuppressions.language_set.FirstOrDefault(q => q.Value == GlobalSuppressions.language).Key;
             uiComboBox1.SelectedItem = language;
             uiComboBox1.Text = language;
+            isInitialized = true;
         }
 
         private void ChooseXshdFile(object sender, System.EventArgs e)
@@ -40,12 +42,15 @@ namespace IDE
 
         private void ChangeLanguage(object sender, EventArgs e)
         {
-            string selectedLanguage = uiComboBox1.Text;
-            if (selectedLanguage != GlobalSuppressions.language)
+            if (isInitialized)
             {
-                GlobalSuppressions.language = GlobalSuppressions.language_set[selectedLanguage];
-                Program.reConf.Write("general", "language", GlobalSuppressions.language_set[selectedLanguage]);
-                errorProvider1.SetError(uiComboBox1, "重启应用程序后生效");
+                string selectedLanguage = uiComboBox1.Text;
+                if (selectedLanguage != GlobalSuppressions.language)
+                {
+                    GlobalSuppressions.language = GlobalSuppressions.language_set[selectedLanguage];
+                    Program.reConf.Write("general", "language", GlobalSuppressions.language_set[selectedLanguage]);
+                    errorProvider1.SetError(uiComboBox1, tip_1);
+                }
             }
         }
 
