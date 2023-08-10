@@ -1,4 +1,5 @@
 ﻿using Sunny.UI;
+using System.Linq;
 using System;
 using System.IO;
 using System.Windows.Forms;
@@ -7,7 +8,8 @@ namespace IDE
 {
     public partial class CustomSettings : UIForm
     {
-        private static string _path, _path_oringin;
+        private static string _path, _path_oringin, tip_1;
+        private bool isInitialized = false;
 
         public CustomSettings(string path)
         {
@@ -15,6 +17,11 @@ namespace IDE
             _path = path + "\\Xshd";
             _path_oringin = path + "\\Xshd";
             //SettingsHandler.SetSettings(path, 0);
+            var language = GlobalSettings.language_set.FirstOrDefault(q => q.Value == GlobalSettings.language).Key;
+            uiComboBox1.SelectedItem = language;
+            uiComboBox1.Text = language;
+            isInitialized = true;
+            errorProvider1.SetError(uiComboBox1, "");
         }
 
         private void ChooseXshdFile(object sender, System.EventArgs e)
@@ -33,6 +40,26 @@ namespace IDE
                 ChangeCachePath(sender, e);
             }
         }
+
+        private void CustomSettings_Load(object sender, EventArgs e)
+        {
+            isInitialized = true;
+        }
+
+        private void ChangeLanguage(object sender, EventArgs e)
+        {
+            if (isInitialized)
+            {
+                string selectedLanguage = uiComboBox1.Text;
+                if (selectedLanguage != GlobalSettings.language)
+                {
+                    GlobalSettings.language = GlobalSettings.language_set[selectedLanguage];
+                    Program.reConf.Write("General", "Language", GlobalSettings.language_set[selectedLanguage]);
+                    errorProvider1.SetError(uiComboBox1, tip_1);
+                }
+            }
+        }
+
 
         private void ChangeCachePath(object sender, System.EventArgs e)
         {

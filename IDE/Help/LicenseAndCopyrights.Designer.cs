@@ -53,12 +53,12 @@
             this.linkLabel5 = new System.Windows.Forms.LinkLabel();
             this.linkLabel6 = new System.Windows.Forms.LinkLabel();
             this.groupBox4 = new System.Windows.Forms.GroupBox();
+            this.linkLabel7 = new System.Windows.Forms.LinkLabel();
             this.metroTextBox3 = new MetroFramework.Controls.MetroTextBox();
             this.metroLabel3 = new MetroFramework.Controls.MetroLabel();
             this.metroTextBox4 = new MetroFramework.Controls.MetroTextBox();
             this.metroLabel4 = new MetroFramework.Controls.MetroLabel();
             this.linkLabel8 = new System.Windows.Forms.LinkLabel();
-            this.linkLabel7 = new System.Windows.Forms.LinkLabel();
             this.groupBox1.SuspendLayout();
             this.statusStrip1.SuspendLayout();
             this.groupBox2.SuspendLayout();
@@ -80,7 +80,7 @@
             this.groupBox1.Size = new System.Drawing.Size(423, 124);
             this.groupBox1.TabIndex = 0;
             this.groupBox1.TabStop = false;
-            this.groupBox1.Text = "AvalonEdit (编辑器控件)";
+            this.groupBox1.Text = "text.LAC.gb1.AE";
             // 
             // textBox2
             // 
@@ -88,7 +88,7 @@
             // 
             // 
             this.textBox2.CustomButton.Image = null;
-            this.textBox2.CustomButton.Location = new System.Drawing.Point(242, 1);
+            this.textBox2.CustomButton.Location = new System.Drawing.Point(209, 1);
             this.textBox2.CustomButton.Name = "";
             this.textBox2.CustomButton.Size = new System.Drawing.Size(25, 25);
             this.textBox2.CustomButton.Style = MetroFramework.MetroColorStyle.Blue;
@@ -98,8 +98,8 @@
             this.textBox2.CustomButton.Visible = false;
             this.textBox2.FontSize = MetroFramework.MetroTextBoxSize.Medium;
             this.textBox2.Lines = new string[] {
-        "6.2.0.78"};
-            this.textBox2.Location = new System.Drawing.Point(138, 51);
+        "6.3.0.90"};
+            this.textBox2.Location = new System.Drawing.Point(171, 51);
             this.textBox2.MaxLength = 32767;
             this.textBox2.Name = "textBox2";
             this.textBox2.PasswordChar = '\0';
@@ -109,9 +109,9 @@
             this.textBox2.SelectionLength = 0;
             this.textBox2.SelectionStart = 0;
             this.textBox2.ShortcutsEnabled = true;
-            this.textBox2.Size = new System.Drawing.Size(268, 27);
+            this.textBox2.Size = new System.Drawing.Size(235, 27);
             this.textBox2.TabIndex = 5;
-            this.textBox2.Text = "6.2.0.78";
+            this.textBox2.Text = "6.3.0.90";
             this.textBox2.Theme = MetroFramework.MetroThemeStyle.Dark;
             this.textBox2.UseSelectable = true;
             this.textBox2.WaterMarkColor = System.Drawing.Color.FromArgb(((int)(((byte)(109)))), ((int)(((byte)(109)))), ((int)(((byte)(109)))));
@@ -120,11 +120,11 @@
             // label2
             // 
             this.label2.AutoSize = true;
-            this.label2.Location = new System.Drawing.Point(51, 52);
+            this.label2.Location = new System.Drawing.Point(6, 51);
             this.label2.Name = "label2";
-            this.label2.Size = new System.Drawing.Size(54, 20);
+            this.label2.Size = new System.Drawing.Size(132, 20);
             this.label2.TabIndex = 4;
-            this.label2.Text = "版本：";
+            this.label2.Text = "text.LAC.gb1.version";
             this.label2.Theme = MetroFramework.MetroThemeStyle.Dark;
             // 
             // textBox1
@@ -133,7 +133,7 @@
             // 
             // 
             this.textBox1.CustomButton.Image = null;
-            this.textBox1.CustomButton.Location = new System.Drawing.Point(242, 1);
+            this.textBox1.CustomButton.Location = new System.Drawing.Point(209, 1);
             this.textBox1.CustomButton.Name = "";
             this.textBox1.CustomButton.Size = new System.Drawing.Size(25, 25);
             this.textBox1.CustomButton.Style = MetroFramework.MetroColorStyle.Blue;
@@ -144,7 +144,7 @@
             this.textBox1.FontSize = MetroFramework.MetroTextBoxSize.Medium;
             this.textBox1.Lines = new string[] {
         "ICSharpCode.AvalonEdit.TextEditor"};
-            this.textBox1.Location = new System.Drawing.Point(138, 21);
+            this.textBox1.Location = new System.Drawing.Point(171, 21);
             this.textBox1.MaxLength = 32767;
             this.textBox1.Name = "textBox1";
             this.textBox1.PasswordChar = '\0';
@@ -154,7 +154,7 @@
             this.textBox1.SelectionLength = 0;
             this.textBox1.SelectionStart = 0;
             this.textBox1.ShortcutsEnabled = true;
-            this.textBox1.Size = new System.Drawing.Size(268, 27);
+            this.textBox1.Size = new System.Drawing.Size(235, 27);
             this.textBox1.TabIndex = 3;
             this.textBox1.Text = "ICSharpCode.AvalonEdit.TextEditor";
             this.textBox1.Theme = MetroFramework.MetroThemeStyle.Dark;
@@ -167,23 +167,23 @@
             this.label1.AutoSize = true;
             this.label1.Location = new System.Drawing.Point(6, 23);
             this.label1.Name = "label1";
-            this.label1.Size = new System.Drawing.Size(99, 20);
+            this.label1.Size = new System.Drawing.Size(159, 20);
             this.label1.TabIndex = 2;
-            this.label1.Text = "完整控件名：";
+            this.label1.Text = "text.LAC.gb1.fullctrlname";
             this.label1.Theme = MetroFramework.MetroThemeStyle.Dark;
             // 
             // linkLabel2
             // 
             this.linkLabel2.AutoSize = true;
             this.linkLabel2.Font = new System.Drawing.Font("Microsoft YaHei UI", 12F);
-            this.linkLabel2.LinkArea = new System.Windows.Forms.LinkArea(5, 27);
+            this.linkLabel2.LinkArea = new System.Windows.Forms.LinkArea(0, 100);
             this.linkLabel2.LinkColor = System.Drawing.Color.DeepSkyBlue;
             this.linkLabel2.Location = new System.Drawing.Point(138, 85);
             this.linkLabel2.Name = "linkLabel2";
-            this.linkLabel2.Size = new System.Drawing.Size(272, 31);
+            this.linkLabel2.Size = new System.Drawing.Size(223, 31);
             this.linkLabel2.TabIndex = 1;
             this.linkLabel2.TabStop = true;
-            this.linkLabel2.Text = "(官网) http://avalonedit.net";
+            this.linkLabel2.Text = "text.LAC.gb1.website\r\n";
             this.linkLabel2.UseCompatibleTextRendering = true;
             this.linkLabel2.VisitedLinkColor = System.Drawing.Color.Tomato;
             this.linkLabel2.LinkClicked += new System.Windows.Forms.LinkLabelLinkClickedEventHandler(this.startAvalonOfficalWebsite);
@@ -237,7 +237,7 @@
             this.groupBox2.Size = new System.Drawing.Size(423, 124);
             this.groupBox2.TabIndex = 6;
             this.groupBox2.TabStop = false;
-            this.groupBox2.Text = "MetroMedernUI (UI组件)";
+            this.groupBox2.Text = "text.LAC.gb3.MMUI";
             // 
             // textBox3
             // 
@@ -277,11 +277,11 @@
             // label3
             // 
             this.label3.AutoSize = true;
-            this.label3.Location = new System.Drawing.Point(36, 51);
+            this.label3.Location = new System.Drawing.Point(6, 51);
             this.label3.Name = "label3";
-            this.label3.Size = new System.Drawing.Size(54, 20);
+            this.label3.Size = new System.Drawing.Size(132, 20);
             this.label3.TabIndex = 4;
-            this.label3.Text = "版本：";
+            this.label3.Text = "text.LAC.gb1.version";
             this.label3.Theme = MetroFramework.MetroThemeStyle.Dark;
             // 
             // textBox4
@@ -324,9 +324,9 @@
             this.label4.AutoSize = true;
             this.label4.Location = new System.Drawing.Point(6, 23);
             this.label4.Name = "label4";
-            this.label4.Size = new System.Drawing.Size(84, 20);
+            this.label4.Size = new System.Drawing.Size(161, 20);
             this.label4.TabIndex = 2;
-            this.label4.Text = "命名空间：";
+            this.label4.Text = "text.LAC.gb2.namespace";
             this.label4.Theme = MetroFramework.MetroThemeStyle.Dark;
             // 
             // linkLabel3
@@ -334,14 +334,14 @@
             this.linkLabel3.AutoSize = true;
             this.linkLabel3.Font = new System.Drawing.Font("Microsoft YaHei UI", 12F);
             this.linkLabel3.ForeColor = System.Drawing.SystemColors.ControlDark;
-            this.linkLabel3.LinkArea = new System.Windows.Forms.LinkArea(9, 27);
+            this.linkLabel3.LinkArea = new System.Windows.Forms.LinkArea(0, 100);
             this.linkLabel3.LinkColor = System.Drawing.Color.DeepSkyBlue;
             this.linkLabel3.Location = new System.Drawing.Point(138, 85);
             this.linkLabel3.Name = "linkLabel3";
-            this.linkLabel3.Size = new System.Drawing.Size(176, 31);
+            this.linkLabel3.Size = new System.Drawing.Size(204, 31);
             this.linkLabel3.TabIndex = 1;
             this.linkLabel3.TabStop = true;
-            this.linkLabel3.Text = "(Github) 点击前往";
+            this.linkLabel3.Text = "text.LAC.gb3.Github";
             this.linkLabel3.UseCompatibleTextRendering = true;
             this.linkLabel3.VisitedLinkColor = System.Drawing.Color.Tomato;
             this.linkLabel3.LinkClicked += new System.Windows.Forms.LinkLabelLinkClickedEventHandler(this.StartMetroUIOnGithub);
@@ -377,7 +377,7 @@
             this.groupBox3.Size = new System.Drawing.Size(423, 122);
             this.groupBox3.TabIndex = 6;
             this.groupBox3.TabStop = false;
-            this.groupBox3.Text = "SunnyUI (UI组件) (GVP项目)";
+            this.groupBox3.Text = "text.LAC.gb2.SUI";
             // 
             // metroTextBox1
             // 
@@ -395,7 +395,7 @@
             this.metroTextBox1.CustomButton.Visible = false;
             this.metroTextBox1.FontSize = MetroFramework.MetroTextBoxSize.Medium;
             this.metroTextBox1.Lines = new string[] {
-        "3.3.2.1"};
+        "3.4.1"};
             this.metroTextBox1.Location = new System.Drawing.Point(138, 51);
             this.metroTextBox1.MaxLength = 32767;
             this.metroTextBox1.Name = "metroTextBox1";
@@ -408,7 +408,7 @@
             this.metroTextBox1.ShortcutsEnabled = true;
             this.metroTextBox1.Size = new System.Drawing.Size(268, 27);
             this.metroTextBox1.TabIndex = 5;
-            this.metroTextBox1.Text = "3.3.2.1";
+            this.metroTextBox1.Text = "3.4.1";
             this.metroTextBox1.Theme = MetroFramework.MetroThemeStyle.Dark;
             this.metroTextBox1.UseSelectable = true;
             this.metroTextBox1.WaterMarkColor = System.Drawing.Color.FromArgb(((int)(((byte)(109)))), ((int)(((byte)(109)))), ((int)(((byte)(109)))));
@@ -417,11 +417,11 @@
             // metroLabel1
             // 
             this.metroLabel1.AutoSize = true;
-            this.metroLabel1.Location = new System.Drawing.Point(36, 51);
+            this.metroLabel1.Location = new System.Drawing.Point(6, 51);
             this.metroLabel1.Name = "metroLabel1";
-            this.metroLabel1.Size = new System.Drawing.Size(54, 20);
+            this.metroLabel1.Size = new System.Drawing.Size(132, 20);
             this.metroLabel1.TabIndex = 4;
-            this.metroLabel1.Text = "版本：";
+            this.metroLabel1.Text = "text.LAC.gb1.version";
             this.metroLabel1.Theme = MetroFramework.MetroThemeStyle.Dark;
             // 
             // metroTextBox2
@@ -464,23 +464,23 @@
             this.metroLabel2.AutoSize = true;
             this.metroLabel2.Location = new System.Drawing.Point(6, 23);
             this.metroLabel2.Name = "metroLabel2";
-            this.metroLabel2.Size = new System.Drawing.Size(84, 20);
+            this.metroLabel2.Size = new System.Drawing.Size(161, 20);
             this.metroLabel2.TabIndex = 2;
-            this.metroLabel2.Text = "命名空间：";
+            this.metroLabel2.Text = "text.LAC.gb2.namespace";
             this.metroLabel2.Theme = MetroFramework.MetroThemeStyle.Dark;
             // 
             // linkLabel5
             // 
             this.linkLabel5.AutoSize = true;
             this.linkLabel5.Font = new System.Drawing.Font("Microsoft YaHei UI", 12F);
-            this.linkLabel5.LinkArea = new System.Windows.Forms.LinkArea(8, 27);
+            this.linkLabel5.LinkArea = new System.Windows.Forms.LinkArea(0, 100);
             this.linkLabel5.LinkColor = System.Drawing.Color.DeepSkyBlue;
             this.linkLabel5.Location = new System.Drawing.Point(188, 85);
             this.linkLabel5.Name = "linkLabel5";
-            this.linkLabel5.Size = new System.Drawing.Size(161, 31);
+            this.linkLabel5.Size = new System.Drawing.Size(186, 31);
             this.linkLabel5.TabIndex = 1;
             this.linkLabel5.TabStop = true;
-            this.linkLabel5.Text = "(Gitee) 点击前往";
+            this.linkLabel5.Text = "text.LAC.gb2.gitee";
             this.linkLabel5.UseCompatibleTextRendering = true;
             this.linkLabel5.VisitedLinkColor = System.Drawing.Color.Tomato;
             this.linkLabel5.LinkClicked += new System.Windows.Forms.LinkLabelLinkClickedEventHandler(this.StartSunnyOffical);
@@ -515,7 +515,24 @@
             this.groupBox4.Size = new System.Drawing.Size(423, 124);
             this.groupBox4.TabIndex = 7;
             this.groupBox4.TabStop = false;
-            this.groupBox4.Text = "MessagePack (MsgPack序列化程序)";
+            this.groupBox4.Text = "text.LAC.gb4.MsgPack";
+            // 
+            // linkLabel7
+            // 
+            this.linkLabel7.AutoSize = true;
+            this.linkLabel7.Font = new System.Drawing.Font("Microsoft YaHei UI", 12F);
+            this.linkLabel7.ForeColor = System.Drawing.SystemColors.ControlDark;
+            this.linkLabel7.LinkArea = new System.Windows.Forms.LinkArea(0, 100);
+            this.linkLabel7.LinkColor = System.Drawing.Color.DeepSkyBlue;
+            this.linkLabel7.Location = new System.Drawing.Point(149, 81);
+            this.linkLabel7.Name = "linkLabel7";
+            this.linkLabel7.Size = new System.Drawing.Size(204, 31);
+            this.linkLabel7.TabIndex = 6;
+            this.linkLabel7.TabStop = true;
+            this.linkLabel7.Text = "text.LAC.gb3.Github";
+            this.linkLabel7.UseCompatibleTextRendering = true;
+            this.linkLabel7.VisitedLinkColor = System.Drawing.Color.Tomato;
+            this.linkLabel7.LinkClicked += new System.Windows.Forms.LinkLabelLinkClickedEventHandler(this.StartMsgPackOnGithub);
             // 
             // metroTextBox3
             // 
@@ -555,11 +572,11 @@
             // metroLabel3
             // 
             this.metroLabel3.AutoSize = true;
-            this.metroLabel3.Location = new System.Drawing.Point(36, 51);
+            this.metroLabel3.Location = new System.Drawing.Point(6, 51);
             this.metroLabel3.Name = "metroLabel3";
-            this.metroLabel3.Size = new System.Drawing.Size(54, 20);
+            this.metroLabel3.Size = new System.Drawing.Size(132, 20);
             this.metroLabel3.TabIndex = 4;
-            this.metroLabel3.Text = "版本：";
+            this.metroLabel3.Text = "text.LAC.gb1.version";
             this.metroLabel3.Theme = MetroFramework.MetroThemeStyle.Dark;
             // 
             // metroTextBox4
@@ -602,9 +619,9 @@
             this.metroLabel4.AutoSize = true;
             this.metroLabel4.Location = new System.Drawing.Point(6, 23);
             this.metroLabel4.Name = "metroLabel4";
-            this.metroLabel4.Size = new System.Drawing.Size(84, 20);
+            this.metroLabel4.Size = new System.Drawing.Size(161, 20);
             this.metroLabel4.TabIndex = 2;
-            this.metroLabel4.Text = "命名空间：";
+            this.metroLabel4.Text = "text.LAC.gb2.namespace";
             this.metroLabel4.Theme = MetroFramework.MetroThemeStyle.Dark;
             // 
             // linkLabel8
@@ -623,23 +640,6 @@
             this.linkLabel8.VisitedLinkColor = System.Drawing.Color.Tomato;
             this.linkLabel8.LinkClicked += new System.Windows.Forms.LinkLabelLinkClickedEventHandler(this.StartMsgPackLicense);
             // 
-            // linkLabel7
-            // 
-            this.linkLabel7.AutoSize = true;
-            this.linkLabel7.Font = new System.Drawing.Font("Microsoft YaHei UI", 12F);
-            this.linkLabel7.ForeColor = System.Drawing.SystemColors.ControlDark;
-            this.linkLabel7.LinkArea = new System.Windows.Forms.LinkArea(9, 27);
-            this.linkLabel7.LinkColor = System.Drawing.Color.DeepSkyBlue;
-            this.linkLabel7.Location = new System.Drawing.Point(149, 81);
-            this.linkLabel7.Name = "linkLabel7";
-            this.linkLabel7.Size = new System.Drawing.Size(176, 31);
-            this.linkLabel7.TabIndex = 6;
-            this.linkLabel7.TabStop = true;
-            this.linkLabel7.Text = "(Github) 点击前往";
-            this.linkLabel7.UseCompatibleTextRendering = true;
-            this.linkLabel7.VisitedLinkColor = System.Drawing.Color.Tomato;
-            this.linkLabel7.LinkClicked += new System.Windows.Forms.LinkLabelLinkClickedEventHandler(this.StartMsgPackOnGithub);
-            // 
             // LicenseAndCopyrights
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(9F, 20F);
@@ -656,7 +656,7 @@
             this.MaximizeBox = false;
             this.MinimizeBox = false;
             this.Name = "LicenseAndCopyrights";
-            this.Text = "许可与版权声明";
+            this.Text = "text.LAC.title";
             this.Theme = MetroFramework.MetroThemeStyle.Dark;
             this.Load += new System.EventHandler(this.LicenseAndCopyrights_Load);
             this.groupBox1.ResumeLayout(false);

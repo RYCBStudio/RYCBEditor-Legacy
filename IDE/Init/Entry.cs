@@ -71,11 +71,20 @@ namespace IDE
 
         private void Entry_FormClosing(object sender, FormClosingEventArgs e)
         {
+            timer1.Start();
         }
 
-        private void Init(object sender, System.ComponentModel.CancelEventArgs e)
+        private void Exit(object sender, System.ComponentModel.CancelEventArgs e)
         {
-            Thread.Sleep(3000);
+            if (metroProgressBar1.Value == metroProgressBar1.Maximum)
+            {
+                Close();
+            }
+        }
+
+        private void Delay(object sender, EventArgs e)
+        {
+            timer1.Stop();
         }
     }
 }

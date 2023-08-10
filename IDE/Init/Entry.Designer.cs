@@ -28,11 +28,13 @@
         /// </summary>
         private void InitializeComponent()
         {
+            this.components = new System.ComponentModel.Container();
             this.elementHost1 = new System.Windows.Forms.Integration.ElementHost();
             this.metroProgressBar1 = new MetroFramework.Controls.MetroProgressBar();
             this.uiLabel1 = new Sunny.UI.UILabel();
             this.uiLabel2 = new Sunny.UI.UILabel();
             this.uiLabel3 = new Sunny.UI.UILabel();
+            this.timer1 = new System.Windows.Forms.Timer(this.components);
             this.SuspendLayout();
             // 
             // elementHost1
@@ -47,11 +49,12 @@
             // metroProgressBar1
             // 
             this.metroProgressBar1.Location = new System.Drawing.Point(8, 424);
-            this.metroProgressBar1.Maximum = 5;
+            this.metroProgressBar1.Maximum = 8;
             this.metroProgressBar1.Name = "metroProgressBar1";
             this.metroProgressBar1.Size = new System.Drawing.Size(836, 10);
             this.metroProgressBar1.Step = 1;
             this.metroProgressBar1.TabIndex = 5;
+            this.metroProgressBar1.Validating += new System.ComponentModel.CancelEventHandler(this.Exit);
             // 
             // uiLabel1
             // 
@@ -95,6 +98,11 @@
             this.uiLabel3.TextAlign = System.Drawing.ContentAlignment.MiddleRight;
             this.uiLabel3.ZoomScaleRect = new System.Drawing.Rectangle(0, 0, 0, 0);
             // 
+            // timer1
+            // 
+            this.timer1.Interval = 5000;
+            this.timer1.Tick += new System.EventHandler(this.Delay);
+            // 
             // Entry
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(9F, 20F);
@@ -125,7 +133,6 @@
             this.FormClosing += new System.Windows.Forms.FormClosingEventHandler(this.Entry_FormClosing);
             this.Shown += new System.EventHandler(this.Entry_Load);
             this.MouseDown += new System.Windows.Forms.MouseEventHandler(this.DragNoFrameWindow_MouseDown);
-            this.Validating += new System.ComponentModel.CancelEventHandler(this.Init);
             this.ResumeLayout(false);
 
         }
@@ -136,5 +143,6 @@
         private Sunny.UI.UILabel uiLabel1;
         private Sunny.UI.UILabel uiLabel2;
         private Sunny.UI.UILabel uiLabel3;
+        private System.Windows.Forms.Timer timer1;
     }
 }

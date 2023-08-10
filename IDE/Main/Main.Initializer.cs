@@ -1,161 +1,144 @@
-﻿using System.Windows.Forms;
+﻿using System.Collections.Generic;
+using System.Windows.Forms;
 using Sunny.UI;
 
 namespace IDE
 {
     partial class Main
     {
+        private IniFile _I18nFile = new(Application.StartupPath + $"\\Languages\\{GlobalSettings.language}\\main.relang", System.Text.Encoding.UTF8);
+
         private void InitializeTranslation()
         {
-            IniFile _I18nFile = new(Application.StartupPath + ".\\zh-CN.relang", System.Text.Encoding.UTF8);
-            foreach (Control item in this.Controls)
-            {
-                item.Text = _I18nFile.ReadString("I18n", item.Name, item.Name).Split('\t', ' ')[0];
-            }
-            foreach (ToolStripItem item in this.statusStrip1.Items)
-            {
+            var controls = GetAllControls(this);
+            var toolStripItems = GetAllToolStripItems(this.statusStrip1.Items);
+            toolStripItems.AddRange(GetAllToolStripItems(this.statusStrip2.Items));
+            toolStripItems.AddRange(GetAllToolStripItems(this.menuStrip1.Items));
+            toolStripItems.AddRange(GetAllToolStripItems(this.contextMenuStrip1.Items));
+            toolStripItems.AddRange(GetAllToolStripItems(this.menuStrip1.Items));
+            toolStripItems.AddRange(GetAllToolStripItems(this.文件FToolStripMenuItem.DropDownItems));
+            toolStripItems.AddRange(GetAllToolStripItems(this.编辑EToolStripMenuItem.DropDownItems));
+            toolStripItems.AddRange(GetAllToolStripItems(this.运行RToolStripMenuItem.DropDownItems));
+            toolStripItems.AddRange(GetAllToolStripItems(this.工具TToolStripMenuItem.DropDownItems));
+            toolStripItems.AddRange(GetAllToolStripItems(this.帮助HToolStripMenuItem.DropDownItems));
+            toolStripItems.AddRange(GetAllToolStripItems(this.开发者选项DToolStripMenuItem.DropDownItems));
 
-                item.Text = _I18nFile.ReadString("I18n", item.Name, item.Name).Split('\t', ' ')[0];
-            }
-            foreach (ToolStripItem item in this.statusStrip2.Items)
+            foreach (Control control in controls)
             {
-
-                item.Text = _I18nFile.ReadString("I18n", item.Name, item.Name).Split('\t', ' ')[0];
+                control.Text = _I18nFile.ReadString("I18n", control.Text, control.Text);
             }
-            foreach (ToolStripItem item in this.toolStrip1.Items)
+
+            foreach (ToolStripItem item in toolStripItems)
             {
-
-                item.Text = _I18nFile.ReadString("I18n", item.Name, item.Name).Split('\t', ' ')[0];
+                item.Text = _I18nFile.ReadString("I18n", item.Text, item.Text);
             }
-            foreach (ToolStripItem item in this.menuStrip1.Items)
+
+            this.openFileDialog1.Title = _I18nFile.ReadString("I18n", "this.openFileDialog1.Title", "this.openFileDialog1.Title");
+            this.文件ToolStripMenuItem.Text = _I18nFile.ReadString("I18n", this.文件ToolStripMenuItem.Text, this.文件ToolStripMenuItem.Text);
+            this.项目ToolStripMenuItem.Text = _I18nFile.ReadString("I18n", this.项目ToolStripMenuItem.Text, this.项目ToolStripMenuItem.Text);
+            this.tabPage1.Text = _I18nFile.ReadString("I18n", tabPage1.Text, tabPage1.Text);
+
+            string[] keys = _I18nFile.GetKeys("List_lang");
+            List<string> items = new List<string>();
+            foreach (var item in keys)
             {
-
-                item.Text = _I18nFile.ReadString("I18n", item.Name, item.Name).Split('\t', ' ')[0];
+                items.Add(_I18nFile.ReadString("List_lang", item, item));
             }
-            foreach (ToolStripItem item in this.contextMenuStrip1.Items)
-            {
-
-                item.Text = _I18nFile.ReadString("I18n", item.Name, item.Name).Split('\t', ' ')[0];
-            }
-            foreach (ToolStripItem item in this.contextMenuStrip2.Items)
-            {
-
-                item.Text = _I18nFile.ReadString("I18n", item.Name, item.Name).Split('\t', ' ')[0];
-            }
-            foreach (ToolStripItem item in this.menuStrip1.Items)
-            {
-
-                item.Text = _I18nFile.ReadString("I18n", item.Name, item.Name).Split('\t', ' ')[0];
-            }
-            foreach (ToolStripItem item in this.文件FToolStripMenuItem.DropDownItems)
-            {
-
-                item.Text = _I18nFile.ReadString("I18n", item.Name, item.Name).Split('\t', ' ')[0];
-            }
-            foreach (ToolStripItem item in this.编辑EToolStripMenuItem.DropDownItems)
-            {
-
-                item.Text = _I18nFile.ReadString("I18n", item.Name, item.Name).Split('\t', ' ')[0];
-            }
-            foreach (ToolStripItem item in this.运行RToolStripMenuItem.DropDownItems)
-            {
-
-                item.Text = _I18nFile.ReadString("I18n", item.Name, item.Name).Split('\t', ' ')[0];
-            }
-            foreach (ToolStripItem item in this.工具TToolStripMenuItem.DropDownItems)
-            {
-
-                item.Text = _I18nFile.ReadString("I18n", item.Name, item.Name).Split('\t', ' ')[0];
-            }
-            foreach (ToolStripItem item in this.帮助HToolStripMenuItem.DropDownItems)
-            {
-
-                item.Text = _I18nFile.ReadString("I18n", item.Name, item.Name).Split('\t', ' ')[0];
-            }
-            this.openFileDialog1.Title = _I18nFile.ReadString("I18n", "this.openFileDialog1.Title", "this.openFileDialog1.Title").Split('\t', ' ')[0];
+            SetCobBoxItems(this.toolStripComboBox1, items);
+            title = _I18nFile.ReadString("I18n", "text.main.selectfile.title", "text.main.selectfile.title");
         }
+
+        private List<Control> GetAllControls(Control control)
+        {
+            List<Control> controls = new List<Control>();
+            foreach (Control c in control.Controls)
+            {
+                controls.Add(c);
+                controls.AddRange(GetAllControls(c));
+            }
+            return controls;
+        }
+
+        private List<ToolStripItem> GetAllToolStripItems(ToolStripItemCollection items)
+        {
+            List<ToolStripItem> toolStripItems = new List<ToolStripItem>();
+            foreach (ToolStripItem item in items)
+            {
+                toolStripItems.Add(item);
+                if (item is ToolStripDropDownItem dropDownItem)
+                {
+                    toolStripItems.AddRange(GetAllToolStripItems(dropDownItem.DropDownItems));
+                }
+            }
+            return toolStripItems;
+        }
+
+        #region ComboBox Items设定
         /// <summary>
-        /// 
+        /// ComboBox Items设定
         /// </summary>
-        /// <param name="langType">语言类型</param>
-        private void InitializeTranslation(string langType)
+        /// <param name="CobBox">ComboBox 名称</param>
+        /// <param name="ItemsValue">要添加的Items(各项目之间用;隔开)</param>
+        public static void SetCobBoxItems(ComboBox CobBox, string ItemsValue)
         {
-            IniFile _I18nFile = new(Application.StartupPath + $".\\{langType}.relang", System.Text.Encoding.UTF8);
-            foreach (Control item in this.Controls)
+            CobBox.Items.Clear();
+            CobBox.Text = "";
+            if (ItemsValue == null) { return; }
+            string[] s = ItemsValue.Split(new char[] { ';' });
+            for (int i = 0; i <= s.Length - 1; i++)
             {
-                item.Text = _I18nFile.ReadString("I18n", item.Name, item.Name).Split('\t', ' ')[0];
+                CobBox.Items.Add(s[i].ToString());
             }
-            foreach (ToolStripItem item in this.statusStrip1.Items)
-            {
-
-                item.Text = _I18nFile.ReadString("I18n", item.Name, item.Name).Split('\t', ' ')[0];
-            }
-            foreach (ToolStripItem item in this.statusStrip2.Items)
-            {
-
-                item.Text = _I18nFile.ReadString("I18n", item.Name, item.Name).Split('\t', ' ')[0];
-            }
-            foreach (ToolStripItem item in this.toolStrip1.Items)
-            {
-
-                item.Text = _I18nFile.ReadString("I18n", item.Name, item.Name).Split('\t', ' ')[0];
-            }
-            foreach (ToolStripItem item in this.menuStrip1.Items)
-            {
-
-                item.Text = _I18nFile.ReadString("I18n", item.Name, item.Name).Split('\t', ' ')[0];
-            }
-            foreach (ToolStripItem item in this.contextMenuStrip1.Items)
-            {
-
-                item.Text = _I18nFile.ReadString("I18n", item.Name, item.Name).Split('\t', ' ')[0];
-            }
-            foreach (ToolStripItem item in this.contextMenuStrip2.Items)
-            {
-
-                item.Text = _I18nFile.ReadString("I18n", item.Name, item.Name).Split('\t', ' ')[0];
-            }
-            foreach (ToolStripItem item in this.menuStrip1.Items)
-            {
-
-                item.Text = _I18nFile.ReadString("I18n", item.Name, item.Name).Split('\t', ' ')[0];
-            }
-            foreach (ToolStripItem item in this.文件FToolStripMenuItem.DropDownItems)
-            {
-
-                item.Text = _I18nFile.ReadString("I18n", item.Name, item.Name).Split('\t', ' ')[0];
-            }
-            foreach (ToolStripItem item in this.编辑EToolStripMenuItem.DropDownItems)
-            {
-
-                item.Text = _I18nFile.ReadString("I18n", item.Name, item.Name).Split('\t', ' ')[0];
-            }
-            foreach (ToolStripItem item in this.运行RToolStripMenuItem.DropDownItems)
-            {
-
-                item.Text = _I18nFile.ReadString("I18n", item.Name, item.Name).Split('\t', ' ')[0];
-            }
-            foreach (ToolStripItem item in this.工具TToolStripMenuItem.DropDownItems)
-            {
-
-                item.Text = _I18nFile.ReadString("I18n", item.Name, item.Name).Split('\t', ' ')[0];
-            }
-            foreach (ToolStripItem item in this.帮助HToolStripMenuItem.DropDownItems)
-            {
-
-                item.Text = _I18nFile.ReadString("I18n", item.Name, item.Name).Split('\t', ' ')[0];
-            }
-            this.openFileDialog1.Title = _I18nFile.ReadString("I18n", "this.openFileDialog1.Title", "this.openFileDialog1.Title").Split('\t', ' ')[0];
         }
-        private enum LangType
+
+        /// <summary>
+        /// ComboBox Items设定
+        /// </summary>
+        /// <param name="CobBox">ComboBox 名称</param>
+        /// <param name="ItemsList">List</param>
+        public static void SetCobBoxItems(ComboBox CobBox, List<string> ItemsList)
         {
-            zh_CN,
-            en_US,
+            CobBox.Items.Clear();
+            CobBox.Text = "";
+            if (ItemsList.Count == 0) { return; }
+            for (int i = 0; i <= ItemsList.Count - 1; i++)
+            {
+                CobBox.Items.Add(ItemsList[i].ToString());
+            }
         }
-        private string GetLangType(LangType langType)
+
+        /// <summary>
+        /// ComboBox Items设定
+        /// </summary>
+        /// <param name="CobBox">ComboBox 名称</param>
+        /// <param name="ItemsValue">要添加的Items(各项目之间用;隔开)</param>
+        public static void SetCobBoxItems(ToolStripComboBox CobBox, string ItemsValue)
         {
-            string[] langs = { "zh-CN", "en-US" };
-            return langs[(int)langType];
+            CobBox.Items.Clear();
+            CobBox.Text = "";
+            if (ItemsValue == null) { return; }
+            string[] s = ItemsValue.Split(new char[] { ';' });
+            for (int i = 0; i <= s.Length - 1; i++)
+            {
+                CobBox.Items.Add(s[i].ToString());
+            }
         }
+
+        /// <summary>
+        /// ComboBox Items设定
+        /// </summary>
+        /// <param name="CobBox">ComboBox 名称</param>
+        /// <param name="ItemsList">List</param>
+        public static void SetCobBoxItems(ToolStripComboBox CobBox, List<string> ItemsList)
+        {
+            CobBox.Items.Clear();
+            CobBox.Text = "";
+            if (ItemsList.Count == 0) { return; }
+            for (int i = 0; i <= ItemsList.Count - 1; i++)
+            {
+                CobBox.Items.Add(ItemsList[i].ToString());
+            }
+        }
+        #endregion 
     }
 }
