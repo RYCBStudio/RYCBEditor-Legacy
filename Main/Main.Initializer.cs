@@ -6,10 +6,13 @@ namespace IDE
 {
     partial class Main
     {
+        private IniFile _I18nFile = new(Application.StartupPath + $"\\Languages\\{GlobalSettings.language}\\main.relang", System.Text.Encoding.UTF8);
+
         private void InitializeTranslation()
         {
-            IniFile _I18nFile = new(Application.StartupPath + $"\\Languages\\{GlobalSuppressions.language}\\main.relang", System.Text.Encoding.UTF8);
-
+            var theme = GlobalSettings.theme.Item1;
+            var Fore = GlobalSettings.theme.Item2;
+            var Back = GlobalSettings.theme.Item3;
             var controls = GetAllControls(this);
             var toolStripItems = GetAllToolStripItems(this.statusStrip1.Items);
             toolStripItems.AddRange(GetAllToolStripItems(this.statusStrip2.Items));
@@ -26,25 +29,34 @@ namespace IDE
             foreach (Control control in controls)
             {
                 control.Text = _I18nFile.ReadString("I18n", control.Text, control.Text);
+                control.BackColor = Back;
+                control.ForeColor = Fore;
             }
 
             foreach (ToolStripItem item in toolStripItems)
             {
                 item.Text = _I18nFile.ReadString("I18n", item.Text, item.Text);
+                item.BackColor = Back;
+                item.ForeColor = Fore;
             }
-
+            this.tabControl1.FillColor = Fore;
+            this.tabControl1.TabBackColor = Back;
+            if (theme == "Light")
+            {
+                this.tabControl1.MenuStyle = UIMenuStyle.White;
+                this.tabControl1.StyleCustomMode = false;
+            }
+            this.tabPage1.ForeColor = Fore;
+            this.tabPage1.BackColor = Back;
             this.openFileDialog1.Title = _I18nFile.ReadString("I18n", "this.openFileDialog1.Title", "this.openFileDialog1.Title");
             this.文件ToolStripMenuItem.Text = _I18nFile.ReadString("I18n", this.文件ToolStripMenuItem.Text, this.文件ToolStripMenuItem.Text);
+            this.文件ToolStripMenuItem.ForeColor = Fore;
+            this.文件ToolStripMenuItem.BackColor = Back;
+            this.项目ToolStripMenuItem.BackColor = Back;
+            this.项目ToolStripMenuItem.ForeColor = Fore;
             this.项目ToolStripMenuItem.Text = _I18nFile.ReadString("I18n", this.项目ToolStripMenuItem.Text, this.项目ToolStripMenuItem.Text);
-            this.tabPage1.Text = _I18nFile.ReadString("I18n", tabPage1.Text, tabPage1.Text);
+            this.崩溃测试ToolStripMenuItem.ForeColor = System.Drawing.Color.Red;
 
-            string[] keys = _I18nFile.GetKeys("List_lang");
-            List<string> items = new List<string>();
-            foreach (var item in keys)
-            {
-                items.Add(_I18nFile.ReadString("List_lang", item, item));
-            }
-            SetCobBoxItems(this.toolStripComboBox1, items);
             title = _I18nFile.ReadString("I18n", "text.main.selectfile.title", "text.main.selectfile.title");
         }
 
@@ -72,85 +84,5 @@ namespace IDE
             }
             return toolStripItems;
         }
-
-        private enum LangType
-        {
-            zh_CN,
-            en_US,
-        }
-
-        private string GetLangType(LangType langType)
-        {
-            string[] langs = { "zh-CN", "en-US" };
-            return langs[(int)langType];
-        }
-
-        #region ComboBox Items设定
-        /// <summary>
-        /// ComboBox Items设定
-        /// </summary>
-        /// <param name="CobBox">ComboBox 名称</param>
-        /// <param name="ItemsValue">要添加的Items(各项目之间用;隔开)</param>
-        public static void SetCobBoxItems(ComboBox CobBox, string ItemsValue)
-        {
-            CobBox.Items.Clear();
-            CobBox.Text = "";
-            if (ItemsValue == null) { return; }
-            string[] s = ItemsValue.Split(new char[] { ';' });
-            for (int i = 0; i <= s.Length - 1; i++)
-            {
-                CobBox.Items.Add(s[i].ToString());
-            }
-        }
-
-        /// <summary>
-        /// ComboBox Items设定
-        /// </summary>
-        /// <param name="CobBox">ComboBox 名称</param>
-        /// <param name="ItemsList">List</param>
-        public static void SetCobBoxItems(ComboBox CobBox, List<string> ItemsList)
-        {
-            CobBox.Items.Clear();
-            CobBox.Text = "";
-            if (ItemsList.Count == 0) { return; }
-            for (int i = 0; i <= ItemsList.Count - 1; i++)
-            {
-                CobBox.Items.Add(ItemsList[i].ToString());
-            }
-        }
-
-        /// <summary>
-        /// ComboBox Items设定
-        /// </summary>
-        /// <param name="CobBox">ComboBox 名称</param>
-        /// <param name="ItemsValue">要添加的Items(各项目之间用;隔开)</param>
-        public static void SetCobBoxItems(ToolStripComboBox CobBox, string ItemsValue)
-        {
-            CobBox.Items.Clear();
-            CobBox.Text = "";
-            if (ItemsValue == null) { return; }
-            string[] s = ItemsValue.Split(new char[] { ';' });
-            for (int i = 0; i <= s.Length - 1; i++)
-            {
-                CobBox.Items.Add(s[i].ToString());
-            }
-        }
-
-        /// <summary>
-        /// ComboBox Items设定
-        /// </summary>
-        /// <param name="CobBox">ComboBox 名称</param>
-        /// <param name="ItemsList">List</param>
-        public static void SetCobBoxItems(ToolStripComboBox CobBox, List<string> ItemsList)
-        {
-            CobBox.Items.Clear();
-            CobBox.Text = "";
-            if (ItemsList.Count == 0) { return; }
-            for (int i = 0; i <= ItemsList.Count - 1; i++)
-            {
-                CobBox.Items.Add(ItemsList[i].ToString());
-            }
-        }
-        #endregion 
     }
 }

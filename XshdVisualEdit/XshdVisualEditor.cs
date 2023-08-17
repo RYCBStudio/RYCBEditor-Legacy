@@ -71,6 +71,7 @@ namespace IDE
 
         private void XshdVisualEditor_Load(object sender, EventArgs e)
         {
+            Program.splash.Close();
             elementHost1.Child = editor;
             GetXshdKeys(path, "Color", 0);
             GetKey get = (str) =>

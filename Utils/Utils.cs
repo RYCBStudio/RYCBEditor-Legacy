@@ -1,4 +1,12 @@
 ﻿using Microsoft.Win32;
+using System.Text;
+using System.Text.RegularExpressions;
+using Microsoft.International.Converters.PinYinConverter;
+using System.Linq;
+using System.Collections.Generic;
+using System;
+using System.Drawing;
+using Sunny.UI;
 
 namespace IDE
 {
@@ -154,6 +162,92 @@ namespace IDE
             public static readonly string[] pycn = new string[] { "__dir__", "__getattr__", "__abs__", "__del__", "__hex__", "__int__", "__len__", "__add__", "__aenter__", "__aexit__", "__aiter__", "__await__", "__bool__", "__bytes__", "__call__", "__ceil__", "__class_getitem__", "__cmp__", "__coerce__", "__complex__", "__contains__", "__copy__", "__deepcopy__" };
             public static readonly string[] python = pycn;
             public static readonly string[] cs = new string[] { "#define", "#undef", "#if", "#else", "#elif", "#endif", "#line", "#error", "#warning", "#region", "#endregion" };
+        }
+    }
+
+    public static class ChinsesePinYinHelper
+    {
+        ///<summary>
+        /// 汉字
+        /// </summary>
+        private static string ChineseReg = "^[\\u4E00-\\u9FA5]+$";
+
+        public static string GetPinYinFull(string str)
+        {
+            var pySb = new StringBuilder();
+            foreach (var itemChar in str)
+            {
+                //过滤非汉字的字符，直接返回
+                var reg = new Regex(ChineseReg);
+                if (!reg.IsMatch(itemChar.ToString()))
+                {
+                    pySb.Append(itemChar);
+                }
+                else
+                {
+                    var chineseChar = new ChineseChar(itemChar);
+                    var pyStr = chineseChar.Pinyins.First().ToLower();
+                    pySb.Append(pyStr.Substring(0, pyStr.Length - 1));
+                }
+            }
+            return pySb.ToString();
+        }
+    }
+
+    public static class GlobalSettings
+    {
+        /// <summary>
+        /// 程序主语言
+        /// </summary>
+        public static string language = Program.reConf.ReadString("General", "Language", "zh-CN");
+
+        public static int CrashAttempts = Program.reConf.ReadInt("CrashHanding", "CrashAttempts");
+
+        internal static Tuple<string, Color, Color> theme = Themes.GetTheme(Program.reConf.ReadString("General", "Theme", "Dark"));
+
+        public static Dictionary<string, string> language_set = new()
+        {
+            { "简体中文", "zh-CN" },
+            { "繁體中文", "zh-TD" },
+            { "English", "en-US" },
+            { "日本語", "ja-JP" },
+        };
+
+    }
+
+    internal class Themes
+    {
+        /// <summary>
+        /// Themes.Dark
+        /// </summary>
+        internal static Tuple<string, Color, Color> Dark =
+            new("Dark", Color.WhiteSmoke, Color.Black);
+        /// <summary>
+        /// Themes.Light
+        /// </summary>
+        internal static Tuple<string, Color, Color> Light =
+            new("Light", SystemColors.ControlText, SystemColors.Control);
+        /// <summary>
+        /// Themes.IDEA
+        /// </summary>
+        internal static Tuple<string, Color, Color> IDEA_Dark =
+            new("IDEA_Dark", ColorTranslator.FromHtml("#DFE1E5"), ColorTranslator.FromHtml("#2B2D30"));
+        /// <summary>
+        /// Themes.Custom
+        /// </summary>
+        internal static Tuple<string, Color, Color> Custom =
+            new("Custom", ColorTranslator.FromHtml(Program.reConf.ReadString("Theme", "Custom.ForeGround", "#FFF5F5F5")),
+            ColorTranslator.FromHtml(Program.reConf.ReadString("Theme", "Custom.BackGround", "#FF000000")));
+
+        internal static Tuple<string, Color, Color> GetTheme(string themeText)
+        {
+            return themeText switch
+            {
+                "Dark" => Dark,
+                "Light" => Light,
+                "IDEA" or "idea" or "IDEA_Dark" => IDEA_Dark,
+                _ => Custom,
+            };
         }
     }
 }
