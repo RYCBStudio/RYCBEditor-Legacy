@@ -4,7 +4,7 @@ using Sunny.UI;
 namespace IDE;
 public partial class Thanks
 {
-    IniFile _I18nFile = new(Application.StartupPath + $"\\Languages\\{GlobalSuppressions.language}\\thanks.relang", System.Text.Encoding.UTF8);
+    IniFile _I18nFile = new(Application.StartupPath + $"\\Languages\\{GlobalSettings.language}\\thanks.relang", System.Text.Encoding.UTF8);
 
     private void InitializeLocalization()
     {

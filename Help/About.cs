@@ -6,7 +6,7 @@ namespace IDE
 {
     public partial class About : UIForm
     {
-        IniFile _I18nFile = new(Application.StartupPath + $"\\Languages\\{GlobalSuppressions.language}\\main.relang", System.Text.Encoding.UTF8);
+        IniFile _I18nFile = new(Application.StartupPath + $"\\Languages\\{GlobalSettings.language}\\main.relang", System.Text.Encoding.UTF8);
         public About()
         {
             InitializeComponent();

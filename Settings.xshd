@@ -1,8 +1,5 @@
 <?xml version="1.0"?>
-<SyntaxDefinition name="SharpPythom" extensions=".py;.pyw"
-	xmlns="http://icsharpcode.net/sharpdevelop/syntaxdefinition/2008">
-	<!-- The named colors 'Comment' and 'String' are used in SharpDevelop to detect if a line is
-	inside a multiline string/comment -->
+<SyntaxDefinition name="SharpSettingsForRYCBEditor" extensions="" xmlns="http://icsharpcode.net/sharpdevelop/syntaxdefinition/2008">
 	<Color name="Comment" foreground="#ff808080" exampleText="#comment" />
 	<Color name="String" foreground="#ff6A8759" />
 	<Color name="Punctuation" />
@@ -58,11 +55,11 @@
 		</Keywords>
 
 		<Keywords foreground="#ff8888C6">
-			<Word>str</Word>
-			<Word>int</Word>
-			<Word>byte</Word>
-			<Word>len</Word>
-			<Word>str</Word>
+			<Word>str</Word>	
+			<Word>int</Word>	 
+			<Word>byte</Word>	
+			<Word>len</Word>	
+			<Word>str</Word>	
 		</Keywords>
 
 		<Keywords foreground="#ffB200B2">
@@ -130,6 +127,8 @@
 			<Word>yield</Word>
 			<Word>keyword</Word>
 		</Keywords>
+
+		
 
 		<!-- Mark previous rule-->
 		<Rule color="MethodCall">

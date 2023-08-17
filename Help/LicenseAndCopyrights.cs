@@ -4,7 +4,7 @@ using System.Windows.Forms;
 
 namespace IDE
 {
-    public partial class LicenseAndCopyrights : MetroFramework.Forms.MetroForm
+    public partial class LicenseAndCopyrights : Sunny.UI.UIForm
     {
         public LicenseAndCopyrights()
         {

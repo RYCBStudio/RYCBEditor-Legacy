@@ -233,6 +233,16 @@ namespace IDE.Properties {
         /// <summary>
         ///   查找 System.Drawing.Bitmap 类型的本地化资源。
         /// </summary>
+        public static System.Drawing.Bitmap donate {
+            get {
+                object obj = ResourceManager.GetObject("donate", resourceCulture);
+                return ((System.Drawing.Bitmap)(obj));
+            }
+        }
+        
+        /// <summary>
+        ///   查找 System.Drawing.Bitmap 类型的本地化资源。
+        /// </summary>
         public static System.Drawing.Bitmap edit {
             get {
                 object obj = ResourceManager.GetObject("edit", resourceCulture);
@@ -406,6 +416,26 @@ namespace IDE.Properties {
         public static System.Drawing.Bitmap help2 {
             get {
                 object obj = ResourceManager.GetObject("help2", resourceCulture);
+                return ((System.Drawing.Bitmap)(obj));
+            }
+        }
+        
+        /// <summary>
+        ///   查找 System.Drawing.Bitmap 类型的本地化资源。
+        /// </summary>
+        public static System.Drawing.Bitmap iconredo_2x {
+            get {
+                object obj = ResourceManager.GetObject("iconredo@2x", resourceCulture);
+                return ((System.Drawing.Bitmap)(obj));
+            }
+        }
+        
+        /// <summary>
+        ///   查找 System.Drawing.Bitmap 类型的本地化资源。
+        /// </summary>
+        public static System.Drawing.Bitmap iconundo_2x {
+            get {
+                object obj = ResourceManager.GetObject("iconundo@2x", resourceCulture);
                 return ((System.Drawing.Bitmap)(obj));
             }
         }
@@ -653,6 +683,16 @@ namespace IDE.Properties {
         /// <summary>
         ///   查找 System.Drawing.Bitmap 类型的本地化资源。
         /// </summary>
+        public static System.Drawing.Bitmap select {
+            get {
+                object obj = ResourceManager.GetObject("select", resourceCulture);
+                return ((System.Drawing.Bitmap)(obj));
+            }
+        }
+        
+        /// <summary>
+        ///   查找 System.Drawing.Bitmap 类型的本地化资源。
+        /// </summary>
         public static System.Drawing.Bitmap Settings {
             get {
                 object obj = ResourceManager.GetObject("Settings", resourceCulture);
@@ -675,7 +715,7 @@ namespace IDE.Properties {
         /// </summary>
         public static System.Drawing.Bitmap Update_can_update {
             get {
-                object obj = ResourceManager.GetObject("Update-can_update", resourceCulture);
+                object obj = ResourceManager.GetObject("FormUpdate-can_update", resourceCulture);
                 return ((System.Drawing.Bitmap)(obj));
             }
         }
@@ -685,7 +725,7 @@ namespace IDE.Properties {
         /// </summary>
         public static System.Drawing.Bitmap Update_normal {
             get {
-                object obj = ResourceManager.GetObject("Update-normal", resourceCulture);
+                object obj = ResourceManager.GetObject("FormUpdate-normal", resourceCulture);
                 return ((System.Drawing.Bitmap)(obj));
             }
         }

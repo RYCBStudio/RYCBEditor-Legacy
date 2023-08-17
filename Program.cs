@@ -14,13 +14,20 @@ namespace IDE
         private static Form class_;
         private static readonly Stopwatch w = new();
         private static readonly Stopwatch startTimer = new();
+        private static int CrashAttempts = 0;
         internal static Entry splash;
         internal static TimeSpan startTime;
-        internal static IniFileEx reConf = new(STARTUP_PATH + "\\Config\\.reconf");
+        internal static IniFile reConf = new(STARTUP_PATH + "\\Config\\.reconf");
 
         [STAThread]
         static void Main(string[] args)
         {
+            GlobalSettings.CrashAttempts = reConf.ReadInt("CrashHanding", "CrashAttempts", 3);
+            reConf.Write("Editor", "XshdFilePath", STARTUP_PATH + "\\Config\\Highlighting");
+            if (GlobalSettings.CrashAttempts == 0)
+            {
+                GlobalSettings.CrashAttempts = int.MaxValue;
+            }
             Application.ThreadException += Application_ThreadException;
             AppDomain.CurrentDomain.UnhandledException += CurrentDomain_UnhandledException;
             Application.EnableVisualStyles();
@@ -36,7 +43,7 @@ namespace IDE
             switch (args.Length)
             {
                 case 1:
-                    class_ = new LightEdit(args[0]);
+                    class_ = new Main(args[0]);
                     break;
                 case 2:
                     switch (args[0])
@@ -45,7 +52,7 @@ namespace IDE
                         case "-le":
                         case "-lightedit":
                         case "-LightEdit":
-                            class_ = new LightEdit(args[1]);
+                            class_ = new Main(args[1]);
                             break;
                         case "-XSHD":
                         case "-xshd":
@@ -62,11 +69,12 @@ namespace IDE
             #endregion
 
             splash.metroProgressBar1.PerformStep();
-            GlobalSuppressions.language = reConf.Read("general", "language", "zh-CN");
+            GlobalSettings.language = reConf.Read("General", "Language", "zh-CN");
             string sys = new ComputerInfo().OSFullName;
             bool sysInfo = sys.Contains("Microsoft Windows");
             splash.metroProgressBar1.PerformStep();
 
+            #region 判断系统类型
             if (!sysInfo)
             {
                 return;
@@ -89,6 +97,7 @@ namespace IDE
 
                 End();
             }
+            #endregion 
         }
 
         private static void Application_ThreadException(object sender, System.Threading.ThreadExceptionEventArgs e)
@@ -118,15 +127,27 @@ namespace IDE
 
         private static void End(Exception ex)
         {
-            w.Stop();
-            TimeSpan time = w.Elapsed;
-            string filePath = Environment.GetFolderPath(Environment.SpecialFolder.ApplicationData) + "\\RYCB\\IDE\\protect\\time";
-            File.WriteAllText(filePath, time.TotalSeconds.ToString());
-            CrashHandler crashHandler = new(ex, "D:\\Desktop");
-            crashHandler.CollectCrashInfo();
-            crashHandler.WriteDumpFile();
-            ErrorAnalysiser EA = new(ex);
-            EA.GetExceptions();
+            if (CrashAttempts == GlobalSettings.CrashAttempts - 1)
+            {
+                IDE.Main.LOGGER.WriteLog("RYCB Editor 已崩溃。崩溃尝试次数：" + (CrashAttempts + 1).ToString());
+
+                w.Stop();
+                TimeSpan time = w.Elapsed;
+                string filePath = Environment.GetFolderPath(Environment.SpecialFolder.ApplicationData) + "\\RYCB\\IDE\\protect\\time";
+                File.WriteAllText(filePath, time.TotalSeconds.ToString());
+                CrashHandler crashHandler = new(ex, "D:\\Desktop");
+                crashHandler.CollectCrashInfo();
+                crashHandler.WriteDumpFile();
+                ErrorAnalysiser EA = new(ex);
+                EA.GetExceptions();
+
+                Process.GetCurrentProcess().Kill();
+            }
+            else
+            {
+                CrashAttempts++;
+                IDE.Main.LOGGER.WriteLog($"捕获异常：{{Type={ex.GetType()}, Message={ex.Message}}}\t尝试次数：{CrashAttempts}(距离崩溃还剩{GlobalSettings.CrashAttempts - CrashAttempts}次异常)");
+            }
         }
 
         private static void End()

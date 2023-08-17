@@ -1,5 +1,6 @@
 ﻿#region 导入命名空间
 using Microsoft.Win32;
+using Sunny.UI;
 using System;
 using System.Diagnostics;
 using System.IO;
@@ -11,16 +12,26 @@ namespace IDE
     public class LogUtil
     {
         #region 变量声明
+        /// <summary>
+        ///  日志文件路径
+        /// </summary>
         internal string logPath;
+        /// <summary>
+        /// 语言类型
+        /// </summary>
         private string lang;
         #endregion
         #region 构造方法
         public LogUtil(string logPath)
         {
             this.logPath = logPath;
-            string _ = Main.reConf.Read("General", "LogLanguage", "en");
+            string _ = Program.reConf.Read("General", "LogLanguage", "en");
             if (_ == "" || _ == "asLang")
-                _ = Main.reConf.Read("General", "Language", "zh").Split('-')[0];
+                _ = Program.reConf.Read("General", "Language", "zh").RemoveRight(3);
+            if (_ != "zh" && _ != "en")
+            {
+                _ = "en";
+            }
             this.lang = _;
         }
         #endregion
@@ -62,7 +73,7 @@ namespace IDE
         /// <param name="msgLevel">消息级别</param>
         /// <param name="port">端口</param>
         /// <param name="module">模块名</param>
-        public void WriteLog(string data, EnumMsgLevel msgLevel, EnumPort port, EnumModule module)
+        public void WriteLog(string data, EnumMsgLevel msgLevel = EnumMsgLevel.INFO, EnumPort port = EnumPort.CLIENT, EnumModule module = EnumModule.MAIN)
         {
             FileStream tmpStream;
             try

@@ -139,8 +139,14 @@
   <data name="plus" type="System.Resources.ResXFileRef, System.Windows.Forms">
     <value>..\Resources\plus.png;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
   </data>
+  <data name="donate" type="System.Resources.ResXFileRef, System.Windows.Forms">
+    <value>..\Resources\donate.png;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
+  </data>
   <data name="edit_cut" type="System.Resources.ResXFileRef, System.Windows.Forms">
     <value>..\Resources\edit_cut.png;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
+  </data>
+  <data name="30856_48_1682238911" type="System.Resources.ResXFileRef, System.Windows.Forms">
+    <value>..\Resources\30856_48_1682238911.png;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
   </data>
   <data name="AppIcon.altform-unplated_targetsize-256" type="System.Resources.ResXFileRef, System.Windows.Forms">
     <value>..\Resources\AppIcon.altform-unplated_targetsize-256.png;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
@@ -199,6 +205,9 @@
   <data name="docx" type="System.Resources.ResXFileRef, System.Windows.Forms">
     <value>..\Resources\docx.png;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
   </data>
+  <data name="Info" type="System.Resources.ResXFileRef, System.Windows.Forms">
+    <value>..\Resources\Info.png;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
+  </data>
   <data name="IDE_splash" type="System.Resources.ResXFileRef, System.Windows.Forms">
     <value>..\Resources\IDE_splash.png;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
   </data>
@@ -250,9 +259,6 @@
   <data name="(48x48)check" type="System.Resources.ResXFileRef, System.Windows.Forms">
     <value>..\Resources\(48x48)check.ico;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
   </data>
-  <data name="Mojang" type="System.Resources.ResXFileRef, System.Windows.Forms">
-    <value>..\Resources\Mojang.jpg;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
-  </data>
   <data name="darkBG" type="System.Resources.ResXFileRef, System.Windows.Forms">
     <value>..\Resources\darkBG.png;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
   </data>
@@ -295,8 +301,14 @@
   <data name="Windows徽标(10版)" type="System.Resources.ResXFileRef, System.Windows.Forms">
     <value>..\Resources\Windows徽标(10版).png;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
   </data>
-  <data name="Info" type="System.Resources.ResXFileRef, System.Windows.Forms">
-    <value>..\Resources\Info.png;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
+  <data name="iconredo@2x" type="System.Resources.ResXFileRef, System.Windows.Forms">
+    <value>..\Resources\iconredo@2x.png;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
+  </data>
+  <data name="iconundo@2x" type="System.Resources.ResXFileRef, System.Windows.Forms">
+    <value>..\Resources\iconundo@2x.png;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
+  </data>
+  <data name="Mojang" type="System.Resources.ResXFileRef, System.Windows.Forms">
+    <value>..\Resources\Mojang.jpg;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
   </data>
   <data name="Settings" type="System.Resources.ResXFileRef, System.Windows.Forms">
     <value>..\Resources\Settings.png;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
@@ -316,7 +328,7 @@
   <data name="Google Translate(Small)(ICON)" type="System.Resources.ResXFileRef, System.Windows.Forms">
     <value>..\Resources\Google Translate(Small)(ICON).png;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
   </data>
-  <data name="30856_48_1682238911" type="System.Resources.ResXFileRef, System.Windows.Forms">
-    <value>..\Resources\30856_48_1682238911.png;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
+  <data name="select" type="System.Resources.ResXFileRef, System.Windows.Forms">
+    <value>..\Resources\select.png;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
   </data>
 </root>

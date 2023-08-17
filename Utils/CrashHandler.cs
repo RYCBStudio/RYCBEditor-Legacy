@@ -1,7 +1,6 @@
 ﻿using Microsoft.VisualBasic.Devices;
 using Sunny.UI;
 using System;
-using System.Collections.Generic;
 using System.Globalization;
 using System.IO;
 using System.Management;
@@ -12,7 +11,7 @@ namespace IDE.Utils
     {
         private static Exception _ex;
         private static string _path;
-        private readonly static string[] _jokes =
+        private static readonly string[] _jokes =
             {
             "我们都有不顺利的时候。",
             "滚回功率，坐和放宽。",
@@ -47,12 +46,14 @@ namespace IDE.Utils
             "您正在成功！ 头抬起，全新的窗11来了！您可以在窗11中做完全一样的事，如轰、嚓嚓嚓、推推。您可以和家人分享美妙的内存，分了又分。",
                 "全新的界面和分屏功能使Windows Tablet使用便捷。升级到窗11完全免费花分文，您只需要在内部集线器中找到预览体验计划，并点击升级，电脑会自动滚回功率。" +
                 "请坐和放宽。",
+            "你永远可以相信BugJump的更新速度！",
+            "Never Gonna Give the Minecraft Up",
             };
         private static string _res =
             """
-            ======================
+            =======================
             = RYCB Editor 崩溃报告 =
-            ======================
+            =======================
             //{0}
 
             时间：{1}
@@ -75,24 +76,33 @@ namespace IDE.Utils
             软件版本：{5}
             操作系统：{6}
             启动参数：(合计{7}) {8}
-            正常运行时间：{9}
-            初始化成功：{10}
+            正常运行时间：{9}s
             文件路径：{11}
             类型：{12}
             当前语言：{13}
             最后一次内存占用查询：{14}
-            CPU：{15}
+            CPU：{15}{10}
             """;
         private IniFileEx IniFile = new(Environment.GetFolderPath(Environment.SpecialFolder.ApplicationData) + "\\RYCB\\IDE\\SoftInfo");
 
         public CrashHandler(Exception ex, string path)
         {
             _ex = ex;
-            _path = path+$"\\崩溃报告_{DateTime.Now.Year}-{DateTime.Now.Month}-{DateTime.Now.Day}_{DateTime.Now.Hour}-{DateTime.Now.Minute}-{DateTime.Now.Second}+{DateTime.Now.Millisecond}*Client.txt";
+            _path = path + $"\\崩溃报告_{DateTime.Now.Year}-{DateTime.Now.Month}-{DateTime.Now.Day}_{DateTime.Now.Hour}-{DateTime.Now.Minute}-{DateTime.Now.Second}+{DateTime.Now.Millisecond}*Client.txt";
         }
 
         public void CollectCrashInfo()
         {
+            var LogPath = Main.LOGGER.logPath;
+            string path = Environment.GetFolderPath(Environment.SpecialFolder.ApplicationData) + $"\\Temp\\RYCB\\IDE\\{Main.LOGGER.logPath.Split('\\')[Main.LOGGER.logPath.Split('\\').Length - 1]}";
+            var ret_foo = foo();
+            var InnerExceptionProcess = _ex.InnerException != null ? $"""
+                    错误类型：{_ex.InnerException.GetType()}
+                    HResult：{_ex.InnerException.HResult}
+                    堆栈调用：
+                    {_ex.InnerException.StackTrace}
+                    """
+                : "";
             _res = string.Format(_res,
                 _jokes[new Random().Next(0, _jokes.Length - 1)],
                 DateTime.Now.TimeOfDay,
@@ -104,20 +114,14 @@ namespace IDE.Utils
                 IniFile.Read("Startup", "param_count", "Unknown"),
                 IniFile.Read("Startup", "params", "Unknown"),
                 System.IO.File.ReadAllText(Environment.GetFolderPath(Environment.SpecialFolder.ApplicationData) + "\\RYCB\\IDE\\protect\\time"),
-                System.IO.File.ReadAllText(Main.LOGGER.logPath).Contains("初始化成功！"),
+                "",//满足兼容
                 IniFile.Read("Startup", "path", "Unknown"),
                 "客户端",
                 CultureInfo.CurrentCulture.DisplayName,
                 System.IO.File.ReadAllText(Environment.GetFolderPath(Environment.SpecialFolder.ApplicationData) + "\\RYCB\\IDE\\protect\\memory"),
-                foo(),
+                ret_foo,
                 _ex.InnerException != null,
-                _ex.InnerException != null ? $"""
-                    错误类型：{_ex.InnerException.GetType()}
-                    HResult：{_ex.InnerException.HResult}
-                    堆栈调用：
-                    {_ex.InnerException.StackTrace}
-                    """
-                : "",
+                InnerExceptionProcess,
                 _ex.HResult
                 );
         }
@@ -136,12 +140,11 @@ namespace IDE.Utils
         {
             string CPUs = "";
             {
-                var CPUName = "";
                 var management = new ManagementObjectSearcher("Select * from Win32_Processor");
                 foreach (var baseObject in management.Get())
                 {
                     var managementObject = (ManagementObject)baseObject;
-                    CPUName = managementObject["Name"].ToString();
+                    var CPUName = managementObject["Name"].ToString();
                     CPUs += CPUName;
                 }
             }
