@@ -50,11 +50,10 @@
             this.Font = new System.Drawing.Font("Microsoft YaHei UI", 9F);
             this.Icon = ((System.Drawing.Icon)(resources.GetObject("$this.Icon")));
             this.Margin = new System.Windows.Forms.Padding(3, 4, 3, 4);
-            this.MaximizeBox = false;
-            this.MinimizeBox = false;
             this.Name = "Help";
             this.Text = "帮助";
             this.FormClosed += new System.Windows.Forms.FormClosedEventHandler(this.Help_FormClosed);
+            this.Resize += new System.EventHandler(this.Help_Resize);
             this.ResumeLayout(false);
 
         }

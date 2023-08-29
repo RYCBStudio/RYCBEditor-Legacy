@@ -1,0 +1,10 @@
+[I18n]
+text.window.cachecleaner.title=缓存清理
+text.window.cc.ok=确定
+text.window.cc.cancel=取消
+text.window.cc.start=开始
+text.window.cc.clearprogress=清理进度
+text.window.cc.clearchoices=清理选项
+text.window.cc.choices.tmpcodefile=临时代码文件
+text.window.cc.choices.pycnfile=The Py-CN Project编译后文件
+text.window.cc.choices.logfile=日志文件

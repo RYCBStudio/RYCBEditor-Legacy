@@ -119,6 +119,27 @@
 			<Word>假</Word>
 		</Keywords>
 
+		<Keywords foreground="#ff94558D">
+			<Word>self</Word>
+			<Word>自身</Word>
+		</Keywords>
+
+		<Keywords foreground="#ff8888C6">
+			<Word>str</Word>
+			<Word>int</Word>
+			<Word>byte</Word>
+			<Word>len</Word>
+			<Word>字符串</Word>
+			<Word>整数</Word>
+			<Word>字节</Word>
+			<Word>测量类型长度</Word>
+			<Word>获取长度</Word>
+			<Word>长度</Word>
+			<Word>转换为字符串</Word>
+			<Word>转换为整数</Word>
+			<Word>转化为字节</Word>
+		</Keywords>
+
 		<Keywords color="SpecDef">
 			<Word>__dir__</Word>
 			<Word>__getattr__</Word>
@@ -266,7 +287,7 @@
 			<!-- is -->
 			<Word>匿名函数</Word>
 			<!-- lambda -->
-			<Word>-></Word>
+			<Word>-&gt;</Word>
 			<!-- lambda -->
 			<Word>非本地变量</Word>
 			<!-- nonlocal -->

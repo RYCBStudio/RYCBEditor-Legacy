@@ -1,0 +1,8 @@
+[LangSet]
+Name=繁體中文
+
+[I18n]
+text.newfile.filename=檔案名稱: 
+text.newfile.filetype=檔案類型: 
+text.newfile.yes=確定
+text.newfile.no=取消

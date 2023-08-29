@@ -71,6 +71,7 @@ namespace IDE
 
         private void XshdVisualEditor_Load(object sender, EventArgs e)
         {
+            Program.splash.Close();
             elementHost1.Child = editor;
             GetXshdKeys(path, "Color", 0);
             GetKey get = (str) =>
@@ -112,18 +113,27 @@ namespace IDE
                         if (tmpAttribute != null)
                         {
                             if (!tmpAttribute.Value.StartsWith("#ff"))
+                            {
                                 TxtBox_Edit_Foreground.Text = tmpAttribute.Value.Insert(1, "ff");
+                            }
                             else
+                            {
                                 TxtBox_Edit_Foreground.Text = tmpAttribute.Value;
+                            }
+
                             colorDialog1.Color = ColorTranslator.FromHtml(tmpAttribute.Value);
                         }
                         tmpAttribute = item.Attributes["background"];
                         if (tmpAttribute != null)
                         {
                             if (!tmpAttribute.Value.StartsWith("#ff"))
+                            {
                                 TxtBox_Edit_Background.Text = tmpAttribute.Value.Insert(1, "ff");
+                            }
                             else
+                            {
                                 TxtBox_Edit_Foreground.Text = tmpAttribute.Value;
+                            }
                         }
                         tmpAttribute = item.Attributes["fontWeight"];
                         if (tmpAttribute != null) { CBBox_Edit_FontProperties.Text = tmpAttribute.Value; }

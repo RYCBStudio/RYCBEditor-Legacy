@@ -1,15 +1,17 @@
 <?xml version="1.0"?>
-<SyntaxDefinition name="SharpPython" extensions=".py;.pyw" xmlns="http://icsharpcode.net/sharpdevelop/syntaxdefinition/2008">
-	<!-- The named colors 'Comment' and 'String' are used in SharpDevelop to detect if a line is inside a multiline string/comment -->
+<SyntaxDefinition name="SharpPythom" extensions=".py;.pyw"
+	xmlns="http://icsharpcode.net/sharpdevelop/syntaxdefinition/2008">
+	<!-- The named colors 'Comment' and 'String' are used in SharpDevelop to detect if a line is
+	inside a multiline string/comment -->
 	<Color name="Comment" foreground="#ff808080" exampleText="#comment" />
 	<Color name="String" foreground="#ff6A8759" />
 	<Color name="Punctuation" />
-	<Color name="MethodCall" foreground="#ffffcc66"/>
-	<Color name="NumberLiteral" foreground="#ff99cc99"/>
-	<Color name="NilKeyword" fontWeight="bold"/>
+	<Color name="MethodCall" foreground="#ffffcc66" />
+	<Color name="NumberLiteral" foreground="#ff99cc99" />
+	<Color name="NilKeyword" fontWeight="bold" />
 	<Color name="Keywords" fontWeight="bold" foreground="#ffCC7832" />
 	<Color name="GotoKeywords" foreground="#ffCC7832" />
-	<Color name="Visibility" fontWeight="bold" foreground="#fff99157"/>
+	<Color name="Visibility" fontWeight="bold" foreground="#fff99157" />
 	<Color name="TrueFalse" fontWeight="bold" foreground="#ffCC7832" />
 
 
@@ -23,7 +25,47 @@
 	<!-- This is the main ruleset. -->
 	<RuleSet>
 
-		<Keywords foreground="#ffA8C023">
+		<Span color="Comment" begin="#" />
+
+		<Span color="String">
+			<Begin>"</Begin>
+			<End>"</End>
+			<RuleSet>
+				<!-- span for escape sequences -->
+				<Span begin="\\" end="." />
+			</RuleSet>
+		</Span>
+
+		<Span color="String">
+			<Begin>'</Begin>
+			<End>'</End>
+			<RuleSet>
+				<!-- span for escape sequences -->
+				<Span begin="\\" end="." />
+			</RuleSet>
+		</Span>
+
+		<Span color="String" multiline="true" begin='["""].+' end='.+["""]' />
+		<Span color="String" multiline="true" begin="['''].+'" end=".+[''']" />
+
+		<Keywords color="TrueFalse">
+			<Word>True</Word>
+			<Word>False</Word>
+		</Keywords>
+
+		<Keywords foreground="#ff94558D">
+			<Word>self</Word>
+		</Keywords>
+
+		<Keywords foreground="#ff8888C6">
+			<Word>str</Word>
+			<Word>int</Word>
+			<Word>byte</Word>
+			<Word>len</Word>
+			<Word>str</Word>
+		</Keywords>
+
+		<Keywords foreground="#ffB200B2">
 			<Word>__dir__</Word>
 			<Word>__getattr__</Word>
 			<Word>__abs__</Word>
@@ -47,34 +89,7 @@
 			<Word>__contains__</Word>
 			<Word>__copy__</Word>
 			<Word>__deepcopy__</Word>
-		</Keywords>
-
-		<Span color="Comment" begin="#" />
-
-		<Span color="String">
-			<Begin>"</Begin>
-			<End>"</End>
-			<RuleSet>
-				<!-- span for escape sequences -->
-				<Span begin="\\" end="."/>
-			</RuleSet>
-		</Span>
-
-		<Span color="String">
-			<Begin>'</Begin>
-			<End>'</End>
-			<RuleSet>
-				<!-- span for escape sequences -->
-				<Span begin="\\" end="."/>
-			</RuleSet>
-		</Span>
-
-		<Span color="String" multiline="true" begin='["""].+' end='.+["""]'/>
-		<Span color="String" multiline="true" begin="['''].+'" end=".+[''']"/>
-
-		<Keywords color="TrueFalse">
-			<Word>True</Word>
-			<Word>False</Word>
+			<Word>__specialdef__</Word>
 		</Keywords>
 
 		<Keywords color="Keywords">
@@ -113,41 +128,42 @@
 			<Word>while</Word>
 			<Word>with</Word>
 			<Word>yield</Word>
+			<Word>keyword</Word>
 		</Keywords>
 
 		<!-- Mark previous rule-->
 		<Rule color="MethodCall">
 			\b
-			[\d\w_]+  # an identifier
+			[\d\w_]+ # an identifier
 			(?=\s*\() # followed by (
 		</Rule>
 		<Rule color="MethodCall">
 			\b
-			[\d\w_]+  # an identifier
+			[\d\w_]+ # an identifier
 			(?=\s*\") # followed by "
 		</Rule>
 		<Rule color="MethodCall">
 			\b
-			[\d\w_]+  # an identifier
+			[\d\w_]+ # an identifier
 			(?=\s*\') # followed by '
 		</Rule>
 		<Rule color="MethodCall">
 			\b
-			[\d\w_]+  # an identifier
+			[\d\w_]+ # an identifier
 			(?=\s*\{) # followed by {
 		</Rule>
 		<Rule color="MethodCall">
 			\b
-			[\d\w_]+  # an identifier
+			[\d\w_]+ # an identifier
 			(?=\s*\[) # followed by [
 		</Rule>
 
 		<!-- Digits -->
 		<Rule color="NumberLiteral">
-			\b0[xX][0-9a-fA-F]+  # hex number
+			\b0[xX][0-9a-fA-F]+ # hex number
 			|
-			( \b\d+(\.[0-9]+)?   #number with optional floating point
-			| \.[0-9]+           #or just starting with floating point
+			( \b\d+(\.[0-9]+)? #number with optional floating point
+			| \.[0-9]+ #or just starting with floating point
 			)
 			([eE][+-]?[0-9]+)? # optional exponent
 		</Rule>

@@ -1,5 +1,6 @@
 ﻿#region 导入命名空间
 using Microsoft.Win32;
+using Sunny.UI;
 using System;
 using System.Diagnostics;
 using System.IO;
@@ -11,19 +12,30 @@ namespace IDE
     public class LogUtil
     {
         #region 变量声明
+        /// <summary>
+        ///  日志文件路径
+        /// </summary>
         internal string logPath;
-        private RegistryKey IDE_CFG = Registry.LocalMachine
-            .OpenSubKey(@"SOFTWARE", true)
-            .OpenSubKey("RYCB", true)
-            .OpenSubKey("IDE", true)
-            .CreateSubKey("global_cfg", true);
+        /// <summary>
+        /// 语言类型
+        /// </summary>
         private string lang;
         #endregion
         #region 构造方法
         public LogUtil(string logPath)
         {
             this.logPath = logPath;
-            lang = (string)(IDE_CFG.GetValue("lang") != null ? IDE_CFG.GetValue("lang") : "en");
+            var _ = Program.reConf.Read("General", "LogLanguage", "en");
+            if (_ == "" || _ == "asLang")
+            {
+                _ = Program.reConf.Read("General", "Language", "zh").RemoveRight(3);
+            }
+
+            if (_ != "zh" && _ != "en")
+            {
+                _ = "en";
+            }
+            this.lang = _;
         }
         #endregion
         #region 写日志
@@ -64,7 +76,7 @@ namespace IDE
         /// <param name="msgLevel">消息级别</param>
         /// <param name="port">端口</param>
         /// <param name="module">模块名</param>
-        public void WriteLog(string data, EnumMsgLevel msgLevel, EnumPort port, EnumModule module)
+        public void WriteLog(string data, EnumMsgLevel msgLevel = EnumMsgLevel.INFO, EnumPort port = EnumPort.CLIENT, EnumModule module = EnumModule.MAIN)
         {
             FileStream tmpStream;
             try
@@ -98,7 +110,7 @@ namespace IDE
         /// <param name="port">端口</param>
         public void WriteErrLog(Exception ex, EnumMsgLevel msgLevel, EnumPort port)
         {
-            string data = ex.Message;
+            var data = ex.Message;
             FileStream tmpStream = new(logPath, FileMode.OpenOrCreate, FileAccess.ReadWrite, FileShare.ReadWrite);
             StreamWriter sw = new(tmpStream);
             sw.BaseStream.Seek(0, SeekOrigin.End);
@@ -111,7 +123,7 @@ namespace IDE
                 ex.HResult,
                 ex.InnerException != null ? ex.InnerException.HResult : "Null",
                 ex.ToString().Split(new string[] { ": " }, StringSplitOptions.RemoveEmptyEntries)[0],
-                ex.InnerException != null ? ex.InnerException.ToString().Split(new string[] { ": " }, StringSplitOptions.RemoveEmptyEntries)[0] : "Null", 
+                ex.InnerException != null ? ex.InnerException.ToString().Split(new string[] { ": " }, StringSplitOptions.RemoveEmptyEntries)[0] : "Null",
                 ex.GetType());
             sw.WriteLine("[{3}:{4}:{5}:{6}] [{0}|{1}] ======== 堆栈跟踪如下 ======== \n\t\t\t\t[Outer Exception] {7}\n\t\t\t\t[Inner Exception] {8}",
                 I18n.Translate((int)port, "port", lang),
@@ -177,7 +189,7 @@ namespace IDE
 
             Process process = new() { StartInfo = processInfo };
             process.Start();
-            string outpup = process.StandardOutput.ReadToEnd();
+            var outpup = process.StandardOutput.ReadToEnd();
             process.WaitForExit();
             return outpup;
         }
@@ -270,7 +282,7 @@ namespace IDE
             }
             catch (Exception ex)
             {
-                LogUtil LOGGER = Main.LOGGER;
+                var LOGGER = Main.LOGGER;
                 LOGGER.WriteErrLog($"An/Some Exception(s) are caught：{ex.Message}", ex, EnumMsgLevel.FATAL, EnumPort.CLIENT);
             }
             return "invalid param";

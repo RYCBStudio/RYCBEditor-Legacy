@@ -4,11 +4,12 @@ using System.Windows.Forms;
 
 namespace IDE
 {
-    public partial class LicenseAndCopyrights : MetroFramework.Forms.MetroForm
+    public partial class LicenseAndCopyrights : Sunny.UI.UIForm
     {
         public LicenseAndCopyrights()
         {
             InitializeComponent();
+            InitializeTranslation();
         }
 
         private void startAvalonGithub(object sender, LinkLabelLinkClickedEventArgs e)
