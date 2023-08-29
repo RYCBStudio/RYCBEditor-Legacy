@@ -32,6 +32,7 @@ namespace IDE
         private void InitializeComponent()
         {
             this.components = new System.ComponentModel.Container();
+            System.Windows.Forms.ListViewItem listViewItem1 = new System.Windows.Forms.ListViewItem(";;;;;");
             System.ComponentModel.ComponentResourceManager resources = new System.ComponentModel.ComponentResourceManager(typeof(Main));
             this.menuStrip1 = new System.Windows.Forms.MenuStrip();
             this.文件FToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
@@ -95,6 +96,10 @@ namespace IDE
             this.elementHost1 = new System.Windows.Forms.Integration.ElementHost();
             this.HelpButton = new System.Windows.Forms.Button();
             this.配置ToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
+            this.uiTabControl1 = new Sunny.UI.UITabControl();
+            this.ErrorAndExceptionsPage = new System.Windows.Forms.TabPage();
+            this.listView1 = new System.Windows.Forms.ListView();
+            this.columnHeader1 = ((System.Windows.Forms.ColumnHeader)(new System.Windows.Forms.ColumnHeader()));
             this.menuStrip1.SuspendLayout();
             this.contextMenuStrip1.SuspendLayout();
             this.statusStrip1.SuspendLayout();
@@ -103,6 +108,8 @@ namespace IDE
             this.tabControl1.SuspendLayout();
             this.tabPage1.SuspendLayout();
             this.tableLayoutPanel2.SuspendLayout();
+            this.uiTabControl1.SuspendLayout();
+            this.ErrorAndExceptionsPage.SuspendLayout();
             this.SuspendLayout();
             // 
             // menuStrip1
@@ -118,7 +125,7 @@ namespace IDE
             this.开发者选项DToolStripMenuItem});
             this.menuStrip1.Location = new System.Drawing.Point(0, 0);
             this.menuStrip1.Name = "menuStrip1";
-            this.menuStrip1.Size = new System.Drawing.Size(864, 28);
+            this.menuStrip1.Size = new System.Drawing.Size(972, 28);
             this.menuStrip1.TabIndex = 0;
             this.menuStrip1.Text = "menuStrip1";
             // 
@@ -552,9 +559,9 @@ namespace IDE
             this.toolStripStatusLabel1,
             this.toolStripStatusLabel2,
             this.toolStripStatusLabel4});
-            this.statusStrip1.Location = new System.Drawing.Point(0, 389);
+            this.statusStrip1.Location = new System.Drawing.Point(0, 515);
             this.statusStrip1.Name = "statusStrip1";
-            this.statusStrip1.Size = new System.Drawing.Size(864, 26);
+            this.statusStrip1.Size = new System.Drawing.Size(972, 26);
             this.statusStrip1.TabIndex = 3;
             this.statusStrip1.Text = "statusStrip1";
             // 
@@ -591,9 +598,9 @@ namespace IDE
             this.toolStripStatusLabel7,
             this.toolStripStatusLabel8,
             this.toolStripStatusLabel9});
-            this.statusStrip2.Location = new System.Drawing.Point(0, 363);
+            this.statusStrip2.Location = new System.Drawing.Point(0, 489);
             this.statusStrip2.Name = "statusStrip2";
-            this.statusStrip2.Size = new System.Drawing.Size(864, 26);
+            this.statusStrip2.Size = new System.Drawing.Size(972, 26);
             this.statusStrip2.TabIndex = 4;
             this.statusStrip2.Text = "statusStrip2";
             // 
@@ -645,14 +652,16 @@ namespace IDE
             // tableLayoutPanel1
             // 
             this.tableLayoutPanel1.ColumnCount = 1;
-            this.tableLayoutPanel1.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Percent, 50F));
+            this.tableLayoutPanel1.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Percent, 100F));
             this.tableLayoutPanel1.Controls.Add(this.tabControl1, 0, 0);
+            this.tableLayoutPanel1.Controls.Add(this.uiTabControl1, 0, 1);
             this.tableLayoutPanel1.Dock = System.Windows.Forms.DockStyle.Fill;
             this.tableLayoutPanel1.Location = new System.Drawing.Point(0, 28);
             this.tableLayoutPanel1.Name = "tableLayoutPanel1";
-            this.tableLayoutPanel1.RowCount = 1;
-            this.tableLayoutPanel1.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Percent, 50F));
-            this.tableLayoutPanel1.Size = new System.Drawing.Size(864, 335);
+            this.tableLayoutPanel1.RowCount = 2;
+            this.tableLayoutPanel1.RowStyles.Add(new System.Windows.Forms.RowStyle());
+            this.tableLayoutPanel1.RowStyles.Add(new System.Windows.Forms.RowStyle());
+            this.tableLayoutPanel1.Size = new System.Drawing.Size(972, 461);
             this.tableLayoutPanel1.TabIndex = 6;
             // 
             // tabControl1
@@ -666,13 +675,13 @@ namespace IDE
             this.tabControl1.Font = new System.Drawing.Font("微软雅黑", 10.5F);
             this.tabControl1.ItemSize = new System.Drawing.Size(100, 30);
             this.tabControl1.Location = new System.Drawing.Point(3, 3);
-            this.tabControl1.MainPage = "";
+            this.tabControl1.MainPage = "tabPage1";
             this.tabControl1.MenuStyle = Sunny.UI.UIMenuStyle.Custom;
             this.tabControl1.Multiline = true;
             this.tabControl1.Name = "tabControl1";
             this.tabControl1.SelectedIndex = 0;
             this.tabControl1.ShowCloseButton = true;
-            this.tabControl1.Size = new System.Drawing.Size(858, 329);
+            this.tabControl1.Size = new System.Drawing.Size(966, 329);
             this.tabControl1.SizeMode = System.Windows.Forms.TabSizeMode.Fixed;
             this.tabControl1.StyleCustomMode = true;
             this.tabControl1.TabBackColor = System.Drawing.Color.Black;
@@ -687,7 +696,7 @@ namespace IDE
             this.tabPage1.Controls.Add(this.tableLayoutPanel2);
             this.tabPage1.Location = new System.Drawing.Point(0, 30);
             this.tabPage1.Name = "tabPage1";
-            this.tabPage1.Size = new System.Drawing.Size(858, 299);
+            this.tabPage1.Size = new System.Drawing.Size(966, 299);
             this.tabPage1.TabIndex = 0;
             this.tabPage1.Text = "text.tc.tp.tmp";
             // 
@@ -701,7 +710,7 @@ namespace IDE
             this.tableLayoutPanel2.Name = "tableLayoutPanel2";
             this.tableLayoutPanel2.RowCount = 1;
             this.tableLayoutPanel2.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Percent, 50F));
-            this.tableLayoutPanel2.Size = new System.Drawing.Size(858, 299);
+            this.tableLayoutPanel2.Size = new System.Drawing.Size(966, 299);
             this.tableLayoutPanel2.TabIndex = 0;
             // 
             // elementHost1
@@ -711,7 +720,7 @@ namespace IDE
             | System.Windows.Forms.AnchorStyles.Right)));
             this.elementHost1.Location = new System.Drawing.Point(3, 3);
             this.elementHost1.Name = "elementHost1";
-            this.elementHost1.Size = new System.Drawing.Size(852, 293);
+            this.elementHost1.Size = new System.Drawing.Size(960, 293);
             this.elementHost1.TabIndex = 1;
             this.elementHost1.Child = null;
             // 
@@ -739,12 +748,71 @@ namespace IDE
             this.配置ToolStripMenuItem.Text = "...配置";
             this.配置ToolStripMenuItem.Click += new System.EventHandler(this.CodeConfig);
             // 
+            // uiTabControl1
+            // 
+            this.uiTabControl1.Alignment = System.Windows.Forms.TabAlignment.Bottom;
+            this.uiTabControl1.Controls.Add(this.ErrorAndExceptionsPage);
+            this.uiTabControl1.Dock = System.Windows.Forms.DockStyle.Fill;
+            this.uiTabControl1.DrawMode = System.Windows.Forms.TabDrawMode.OwnerDrawFixed;
+            this.uiTabControl1.FillColor = System.Drawing.Color.FromArgb(((int)(((byte)(248)))), ((int)(((byte)(248)))), ((int)(((byte)(248)))));
+            this.uiTabControl1.Font = new System.Drawing.Font("微软雅黑", 9F);
+            this.uiTabControl1.ItemSize = new System.Drawing.Size(150, 25);
+            this.uiTabControl1.Location = new System.Drawing.Point(3, 338);
+            this.uiTabControl1.MainPage = "";
+            this.uiTabControl1.MenuStyle = Sunny.UI.UIMenuStyle.Custom;
+            this.uiTabControl1.Name = "uiTabControl1";
+            this.uiTabControl1.SelectedIndex = 0;
+            this.uiTabControl1.Size = new System.Drawing.Size(966, 120);
+            this.uiTabControl1.SizeMode = System.Windows.Forms.TabSizeMode.Fixed;
+            this.uiTabControl1.Style = Sunny.UI.UIStyle.Custom;
+            this.uiTabControl1.StyleCustomMode = true;
+            this.uiTabControl1.TabBackColor = System.Drawing.Color.Black;
+            this.uiTabControl1.TabIndex = 4;
+            this.uiTabControl1.TabSelectedForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(248)))), ((int)(((byte)(248)))), ((int)(((byte)(248)))));
+            this.uiTabControl1.TabSelectedHighColor = System.Drawing.Color.Gray;
+            this.uiTabControl1.TipsFont = new System.Drawing.Font("微软雅黑", 9F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(134)));
+            // 
+            // ErrorAndExceptionsPage
+            // 
+            this.ErrorAndExceptionsPage.BackColor = System.Drawing.Color.Black;
+            this.ErrorAndExceptionsPage.Controls.Add(this.listView1);
+            this.ErrorAndExceptionsPage.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(243)))), ((int)(((byte)(249)))), ((int)(((byte)(255)))));
+            this.ErrorAndExceptionsPage.Location = new System.Drawing.Point(0, 0);
+            this.ErrorAndExceptionsPage.Name = "ErrorAndExceptionsPage";
+            this.ErrorAndExceptionsPage.Size = new System.Drawing.Size(966, 95);
+            this.ErrorAndExceptionsPage.TabIndex = 1;
+            this.ErrorAndExceptionsPage.Text = "text.bottom.errors";
+            // 
+            // listView1
+            // 
+            this.listView1.BackColor = System.Drawing.Color.Black;
+            this.listView1.BorderStyle = System.Windows.Forms.BorderStyle.None;
+            this.listView1.Columns.AddRange(new System.Windows.Forms.ColumnHeader[] {
+            this.columnHeader1});
+            this.listView1.Dock = System.Windows.Forms.DockStyle.Fill;
+            this.listView1.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(248)))), ((int)(((byte)(248)))), ((int)(((byte)(248)))));
+            this.listView1.HideSelection = false;
+            listViewItem1.StateImageIndex = 0;
+            this.listView1.Items.AddRange(new System.Windows.Forms.ListViewItem[] {
+            listViewItem1});
+            this.listView1.Location = new System.Drawing.Point(0, 0);
+            this.listView1.MultiSelect = false;
+            this.listView1.Name = "listView1";
+            this.listView1.Size = new System.Drawing.Size(966, 95);
+            this.listView1.Sorting = System.Windows.Forms.SortOrder.Ascending;
+            this.listView1.TabIndex = 0;
+            this.listView1.UseCompatibleStateImageBehavior = false;
+            // 
+            // columnHeader1
+            // 
+            this.columnHeader1.Text = "text.bottom.errors.sub.type";
+            // 
             // Main
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(9F, 20F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.BackColor = System.Drawing.Color.Black;
-            this.ClientSize = new System.Drawing.Size(864, 415);
+            this.ClientSize = new System.Drawing.Size(972, 541);
             this.Controls.Add(this.HelpButton);
             this.Controls.Add(this.tableLayoutPanel1);
             this.Controls.Add(this.statusStrip2);
@@ -775,6 +843,8 @@ namespace IDE
             this.tabControl1.ResumeLayout(false);
             this.tabPage1.ResumeLayout(false);
             this.tableLayoutPanel2.ResumeLayout(false);
+            this.uiTabControl1.ResumeLayout(false);
+            this.ErrorAndExceptionsPage.ResumeLayout(false);
             this.ResumeLayout(false);
             this.PerformLayout();
 
@@ -844,6 +914,10 @@ namespace IDE
         private ToolStripStatusLabel toolStripStatusLabel9;
         private ToolStripMenuItem 快速工具ToolStripMenuItem;
         private ToolStripMenuItem 清理缓存ToolStripMenuItem;
+        private Sunny.UI.UITabControl uiTabControl1;
+        private TabPage ErrorAndExceptionsPage;
+        private ListView listView1;
+        private ColumnHeader columnHeader1;
     }
 }
 
