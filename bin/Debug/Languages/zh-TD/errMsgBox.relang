@@ -1,7 +1,0 @@
-[LangSet]
-Name=繁體中文
-
-[I18n]
-text.errmsgbox.err.type=類型
-text.errmsgbox.err.line=行數
-text.errmsgbox.err.content=异常資訊
