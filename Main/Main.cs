@@ -1,10 +1,13 @@
 ﻿#region 导入命名空间
 using System;
+using System.Collections.Generic;
 using System.Diagnostics;
 using System.IO;
 using System.Linq;
+using System.Runtime.InteropServices;
 using System.Text;
 using System.Text.RegularExpressions;
+using System.Threading;
 using System.Windows.Forms;
 using System.Windows.Forms.Integration;
 using System.Windows.Input;
@@ -18,24 +21,29 @@ using ICSharpCode.AvalonEdit.Search;
 using Microsoft.Scripting.Utils;
 using Sunny.UI;
 using TextEditor = ICSharpCode.AvalonEdit.TextEditor;
+using Engines = IDE.ErrorMessageBox.Engines;
+using Markdig;
+using Microsoft.Web.WebView2.WinForms;
 #endregion
 
 namespace IDE
 {
+
     public partial class Main : Form
     {
+
         #region 一堆变量和常量
         private static readonly string STARTUP_PATH = Program.STARTUP_PATH;
         private static readonly IniFile reConf = Program.reConf;
         private static readonly Stopwatch stopwatch = new();
         private string title = "选择文件：", filter = "Py-CN文件|*.pycn|Py-CN编译后文件(Python 文件)|*.py|所有文件|*.*";
-        private static StreamWriter keepFile;
+        private static StreamWriter keepFile, markdownFileConverter;
         private string LightEdit_File;
         private bool NoTip, isModified = false, LightEdit = false;
         private TextEditor edit;
-        private int tmp_;
+        private int tmp_, _i;
         private static string CachePath = Application.StartupPath + "\\Cache\\";
-        private static readonly Process proc = Process.GetCurrentProcess();
+        private static Process proc;
         //private static StreamWriter CacheWriter;
         //private struct elementHost1
         //{
@@ -47,6 +55,13 @@ namespace IDE
         //}
         private static ErrorMessageBox errMsgBox;
         internal static string XshdFilePath;
+        internal static readonly Dictionary<Engines, string> SearchEngines = new()
+        {
+            { Engines.SIMPLIFIED_CHINESE, "https://cn.bing.com/search?q=Python+{text}+{desc}"},
+            { Engines.TRADITIONAL_CHINESE_CHINA, "https://www.bing.com/search?q=Python+{text}+{desc}"},
+            { Engines.TRADITIONAL_CHINESE_GLOBAL, "https://www.google.com/search?q=Python+{text}+{desc}"},
+            { Engines.JAPANESE, "https://www.google.com/search?q=Python+{text}+{desc}"},
+        };
         public const string VERSION = "0.0.2";
         public const string FRIENDLY_VER = "0.0.2-Beta.64";
         public static readonly LogUtil LOGGER = new(Environment.CurrentDirectory + $"\\logs\\{DateTime.Now.Year}-{DateTime.Now.Month}-{DateTime.Now.Day}.log");
@@ -63,6 +78,7 @@ namespace IDE
             {
                 InitializeComponent();
                 InitializeTranslation();
+                proc = Process.GetCurrentProcess();
                 Program.splash.metroProgressBar1.PerformStep();
             }
             catch (Exception ex)
@@ -198,31 +214,37 @@ namespace IDE
         }
         #endregion
         #region 新建文件
-        private void New(object sender, EventArgs e)
+        private async void TextAreaMarkdownEntered(object sender, EventArgs e)
         {
-            var nf = new NewFile("输入文件名");
+            var editor = GetCurrentTextEditor();
+            if (editor != null)
+            {
+                var text = editor.Text;
+                if (text != null)
+                {
+                    var mdDoc = Markdown.ToHtml(text);
+                    var webView = (tabControl1.SelectedTab.Tag as Dictionary<WebView2, TextEditor>).Keys.ToList()[0];
+                    var textEditor = (tabControl1.SelectedTab.Tag as Dictionary<WebView2, TextEditor>).Values.ToList()[0];
+                    await webView.ExecuteScriptAsync($"document.body.style.backgroundColor = '{tabPage1.BackColor.ToHTML()}';");
+                    await webView.ExecuteScriptAsync($"document.body.style.foregroundColor = '{tabPage1.ForeColor.ToHTML()}';");
+                    webView.CoreWebView2.NavigateToString(mdDoc);
+                    textEditor.Text = mdDoc;
+                    
+                }
+            }
+        }
+
+        private async void New(object sender, EventArgs e)
+        {
+            var nf = new NewFileBox("输入文件名");
             LOGGER.WriteLog("新建文件", EnumMsgLevel.INFO, EnumPort.CLIENT, EnumModule.MAIN);
             var _ds = nf.ShowDialog(this);
             var fileName = nf.GetFileName();
-            if (string.IsNullOrEmpty(fileName) || nf.GetStatus() == NewFile.FileStatus.Failed)
+            if (string.IsNullOrEmpty(fileName) || nf.GetStatus() == NewFileBox.FileStatus.Failed)
             {
                 LOGGER.WriteLog("已取消新建文件。", EnumMsgLevel.INFO, EnumPort.CLIENT, EnumModule.MAIN);
                 return;
             }
-
-            TableLayoutPanel table = new()
-            {
-                ColumnCount = 1,
-                Dock = DockStyle.Fill,
-                Location = new System.Drawing.Point(0, 0),
-                Name = "tableLayoutPanel2",
-                RowCount = 1,
-                Size = new System.Drawing.Size(858, 299),
-                TabIndex = 0,
-            };
-            table.RowStyles.Add(new System.Windows.Forms.RowStyle(SizeType.Percent, 50F));
-            table.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle(SizeType.Percent, 50F));
-
             var tab = new TabPage
             {
                 Text = fileName,
@@ -231,53 +253,162 @@ namespace IDE
             };
             LOGGER.WriteLog($"TabPage已准备就绪。\n文件名: {tab.Text}", EnumMsgLevel.INFO, EnumPort.CLIENT, EnumModule.MAIN);
 
-            var tmpEHost = new ElementHost
+            if (fileName.EndsWith(".md", StringComparison.CurrentCultureIgnoreCase))
             {
-                Size = elementHost1.Size,
-                Location = elementHost1.Location,
-                BackColor = elementHost1.BackColor,
-                ForeColor = elementHost1.ForeColor
-            };
-            table.Controls.Add(tmpEHost, 0, 0);
-            LOGGER.WriteLog("ElementHost已准备就绪。", EnumMsgLevel.INFO, EnumPort.CLIENT, EnumModule.MAIN);
+                WBBox bBox = new(0, false, 5);
+                bBox.Show();
+                TableLayoutPanel tableMd = new()
+                {
+                    ColumnCount = 3,
+                    Dock = DockStyle.Fill,
+                    Location = new System.Drawing.Point(0, 0),
+                    Name = "tableLayoutPanel2",
+                    RowCount = 1,
+                    Size = new System.Drawing.Size(858, 299),
+                    TabIndex = 0,
+                };
+                bBox.uiProcessBar1.Value += 1;
+                tableMd.RowStyles.Add(new RowStyle(SizeType.Percent, 50F));
+                tableMd.ColumnStyles.Add(new ColumnStyle(SizeType.Percent, 33F));
+                tableMd.ColumnStyles.Add(new ColumnStyle(SizeType.Percent, 33F));
+                tableMd.ColumnStyles.Add(new ColumnStyle(SizeType.Percent, 34F));
+                bBox.uiProcessBar1.Value += 1;
+                var tmpEHostMd = new ElementHost
+                {
+                    Size = elementHost1.Size,
+                    Location = elementHost1.Location,
+                    BackColor = elementHost1.BackColor,
+                    ForeColor = elementHost1.ForeColor
+                };var tmpEHostHtml = new ElementHost
+                {
+                    Size = elementHost1.Size,
+                    Location = elementHost1.Location,
+                    BackColor = elementHost1.BackColor,
+                    ForeColor = elementHost1.ForeColor
+                };
+                LOGGER.WriteLog("ElementHostForMarkdown已准备就绪。", EnumMsgLevel.INFO, EnumPort.CLIENT, EnumModule.MAIN);
+                bBox.uiProcessBar1.Value += 1;
+                var tmpEditorMd = new TextEditor
+                {
+                    Width = elementHost1.Width,
+                    Height = elementHost1.Height,
+                    FontFamily = new FontFamily(reConf.ReadString("Editor", "Font", "Consolas")),
+                    Background = new SolidColorBrush(Editor.Back),
+                    Foreground = new SolidColorBrush(Editor.Fore),
+                    FontSize = reConf.ReadInt("Editor", "Size"),
+                    ShowLineNumbers = bool.Parse(reConf.ReadString("Editor", "ShowLineNum", "true")),
+                    VerticalScrollBarVisibility = System.Windows.Controls.ScrollBarVisibility.Auto,
+                    HorizontalScrollBarVisibility = System.Windows.Controls.ScrollBarVisibility.Auto,
+                };
+                var tmpEditorHtml = new TextEditor
+                {
+                    Width = elementHost1.Width,
+                    Height = elementHost1.Height,
+                    FontFamily = new FontFamily(reConf.ReadString("Editor", "Font", "Consolas")),
+                    Background = new SolidColorBrush(Editor.Back),
+                    Foreground = new SolidColorBrush(Editor.Fore),
+                    FontSize = reConf.ReadInt("Editor", "Size"),
+                    ShowLineNumbers = bool.Parse(reConf.ReadString("Editor", "ShowLineNum", "true")),
+                    VerticalScrollBarVisibility = System.Windows.Controls.ScrollBarVisibility.Auto,
+                    HorizontalScrollBarVisibility = System.Windows.Controls.ScrollBarVisibility.Auto,
+                    IsReadOnly = true,
+                };
+                bBox.uiProcessBar1.Value += 1;
+                LOGGER.WriteLog($"编辑器控件已准备就绪。\n字体: {tmpEditorHtml.FontFamily}", EnumMsgLevel.INFO, EnumPort.CLIENT, EnumModule.MAIN);
+                tmpEditorMd.TextChanged += new EventHandler(this.TextAreaMarkdownEntered);
+                LOGGER.WriteLog("编辑器控件方法入口已准备就绪。", EnumMsgLevel.INFO, EnumPort.CLIENT, EnumModule.MAIN);
+                tmpEHostHtml.Child = tmpEditorHtml;
+                tmpEHostMd.Child = tmpEditorMd;
+                var resourceName = XshdFilePath + "\\HTML.xshd";
+                using (Stream s = new FileStream(resourceName, FileMode.Open, FileAccess.Read, FileShare.ReadWrite | FileShare.Delete))
+                {
+                    using XmlTextReader reader = new(s);
+                    var xshd = HighlightingLoader.LoadXshd(reader);
+                    tmpEditorHtml.SyntaxHighlighting = HighlightingLoader.Load(xshd, HighlightingManager.Instance);
+                }
+                bBox.uiProcessBar1.Value += 1;
+                Microsoft.Web.WebView2.WinForms.WebView2 webView = new();
+                webView.SuspendLayout();
+                webView.Size = elementHost1.Size;
+                await webView.EnsureCoreWebView2Async();
+                webView.BackColor = this.BackColor;
+                webView.ForeColor = this.ForeColor;
+                webView.ResumeLayout(false);
+                webView.PerformLayout();
+                bBox.uiProcessBar1.Value += 1;
 
-            var tmpEditor = new TextEditor
-            {
-                Width = elementHost1.Width,
-                Height = elementHost1.Height,
-                FontFamily = new FontFamily(reConf.ReadString("Editor", "Font", "Consolas")),
-                Background = new SolidColorBrush(Editor.Back),
-                Foreground = new SolidColorBrush(Editor.Fore),
-                FontSize = reConf.ReadInt("Editor", "Size"),
-                ShowLineNumbers = bool.Parse(reConf.ReadString("Editor", "ShowLineNum", "true")),
-                VerticalScrollBarVisibility = System.Windows.Controls.ScrollBarVisibility.Auto,
-                HorizontalScrollBarVisibility = System.Windows.Controls.ScrollBarVisibility.Auto,
-
-            };
-            LOGGER.WriteLog($"编辑器控件已准备就绪。\n字体: {tmpEditor.FontFamily}", EnumMsgLevel.INFO, EnumPort.CLIENT, EnumModule.MAIN);
-            tmpEditor.TextArea.TextEntered += new TextCompositionEventHandler(this.TextAreaOnTextEntered);
-            tmpEditor.TextArea.TextEntering += new TextCompositionEventHandler(this.TextArea_TextEntering);
-            LOGGER.WriteLog("编辑器控件方法入口已准备就绪。", EnumMsgLevel.INFO, EnumPort.CLIENT, EnumModule.MAIN);
-
-            // 快速搜索功能
-            SearchPanel.Install(tmpEditor.TextArea);
-
-            // 设置语法规则
-            LOGGER.WriteLog("正在获取语法规则信息..");
-            var tmpLanguage = AutoGetLanguage(tab.Text);
-            var resourceName = XshdFilePath + $"\\{tmpLanguage}.xshd";
-            LOGGER.WriteLog("语法规则信息获取成功。");
-            LOGGER.WriteLog($"语法规则: {tmpLanguage}\t\t对应文件名: {resourceName}");
-            using (Stream s = new FileStream(resourceName, FileMode.Open, FileAccess.Read, FileShare.ReadWrite | FileShare.Delete))
-            {
-                using XmlTextReader reader = new(s);
-                var xshd = HighlightingLoader.LoadXshd(reader);
-                tmpEditor.SyntaxHighlighting = HighlightingLoader.Load(xshd, HighlightingManager.Instance);
+                tab.Tag = new Dictionary<WebView2, TextEditor>() { { webView, tmpEditorHtml } };
+                tableMd.Controls.Add(tmpEHostMd);
+                tableMd.Controls.Add(tmpEHostHtml);
+                tableMd.Controls.Add(webView);
+                tab.Controls.Add(tableMd);
+                bBox.Close();
             }
-            LOGGER.WriteLog("语法规则已成功设置。");
+            else
+            {
 
-            tmpEHost.Child = tmpEditor;
-            tab.Controls.Add(table);
+                TableLayoutPanel table = new()
+                {
+                    ColumnCount = 1,
+                    Dock = DockStyle.Fill,
+                    Location = new System.Drawing.Point(0, 0),
+                    Name = "tableLayoutPanel2",
+                    RowCount = 1,
+                    Size = new System.Drawing.Size(858, 299),
+                    TabIndex = 0,
+                };
+                table.RowStyles.Add(new RowStyle(SizeType.Percent, 50F));
+                table.ColumnStyles.Add(new ColumnStyle(SizeType.Percent, 50F));
+
+
+                var tmpEHost = new ElementHost
+                {
+                    Size = table.PreferredSize,
+                    Location = elementHost1.Location,
+                    BackColor = elementHost1.BackColor,
+                    ForeColor = elementHost1.ForeColor
+                };
+                table.Controls.Add(tmpEHost, 0, 0);
+                LOGGER.WriteLog("ElementHost已准备就绪。", EnumMsgLevel.INFO, EnumPort.CLIENT, EnumModule.MAIN);
+
+                var tmpEditor = new TextEditor
+                {
+                    Width = elementHost1.Width,
+                    Height = elementHost1.Height,
+                    FontFamily = new FontFamily(reConf.ReadString("Editor", "Font", "Consolas")),
+                    Background = new SolidColorBrush(Editor.Back),
+                    Foreground = new SolidColorBrush(Editor.Fore),
+                    FontSize = reConf.ReadInt("Editor", "Size"),
+                    ShowLineNumbers = bool.Parse(reConf.ReadString("Editor", "ShowLineNum", "true")),
+                    VerticalScrollBarVisibility = System.Windows.Controls.ScrollBarVisibility.Auto,
+                    HorizontalScrollBarVisibility = System.Windows.Controls.ScrollBarVisibility.Auto,
+
+                };
+                LOGGER.WriteLog($"编辑器控件已准备就绪。\n字体: {tmpEditor.FontFamily}", EnumMsgLevel.INFO, EnumPort.CLIENT, EnumModule.MAIN);
+                tmpEditor.TextArea.TextEntered += new TextCompositionEventHandler(this.TextAreaOnTextEntered);
+                tmpEditor.TextArea.TextEntering += new TextCompositionEventHandler(this.TextArea_TextEntering);
+                LOGGER.WriteLog("编辑器控件方法入口已准备就绪。", EnumMsgLevel.INFO, EnumPort.CLIENT, EnumModule.MAIN);
+
+                // 快速搜索功能
+                SearchPanel.Install(tmpEditor.TextArea);
+
+                // 设置语法规则
+                LOGGER.WriteLog("正在获取语法规则信息..");
+                var tmpLanguage = AutoGetLanguage(tab.Text);
+                var resourceName = XshdFilePath + $"\\{tmpLanguage}.xshd";
+                LOGGER.WriteLog("语法规则信息获取成功。");
+                LOGGER.WriteLog($"语法规则: {tmpLanguage}\t\t对应文件名: {resourceName}");
+                using (Stream s = new FileStream(resourceName, FileMode.Open, FileAccess.Read, FileShare.ReadWrite | FileShare.Delete))
+                {
+                    using XmlTextReader reader = new(s);
+                    var xshd = HighlightingLoader.LoadXshd(reader);
+                    tmpEditor.SyntaxHighlighting = HighlightingLoader.Load(xshd, HighlightingManager.Instance);
+                }
+                LOGGER.WriteLog("语法规则已成功设置。");
+
+                tmpEHost.Child = tmpEditor;
+                tab.Controls.Add(table);
+            }
             tabControl1.TabPages.Add(tab);
             LOGGER.WriteLog("所有设置均已完成。");
         }
@@ -287,7 +418,7 @@ namespace IDE
         {
             toolStripStatusLabel8.Visible = false;
             toolStripStatusLabel9.Visible = false;
-            var _editor = ((tabControl1.SelectedTab.Controls[0] as TableLayoutPanel).Controls[0] as ElementHost).Child as TextEditor;
+            var _editor = GetCurrentTextEditor();
             if (tabControl1.SelectedTab != tabPage1 & tabControl1.SelectedTab.ToolTipText != null & tabControl1.SelectedTab.ToolTipText != "")
             {
                 try
@@ -446,7 +577,7 @@ namespace IDE
                         var error = RunPythonSrcipt(@tabControl1.SelectedTab.ToolTipText)[1];
                         if (error != "")
                         {
-                            errMsgBox = new(error, ((tabControl1.SelectedTab.Controls[0] as TableLayoutPanel).Controls[0] as ElementHost).Child as TextEditor, this);
+                            errMsgBox = new(error, GetCurrentTextEditor(), this);
                             errMsgBox.Show();
                             return;
                         }
@@ -457,7 +588,7 @@ namespace IDE
                         var error = RunPythonSrcipt(tabControl1.SelectedTab.ToolTipText)[1];
                         if (error != "")
                         {
-                            errMsgBox = new(error, ((tabControl1.SelectedTab.Controls[0] as TableLayoutPanel).Controls[0] as ElementHost).Child as TextEditor, this);
+                            errMsgBox = new(error, GetCurrentTextEditor(), this);
                             errMsgBox.Show();
                             return;
                         }
@@ -474,12 +605,12 @@ namespace IDE
                         {
                             tmpPath = Application.StartupPath + "\\$tmp_code\\tmp.pycn";
                             StreamWriter sw = new(tabPage1.ToolTipText, false, Encoding.UTF8);
-                            sw.Write((((tabControl1.SelectedTab.Controls[0] as TableLayoutPanel).Controls[0] as ElementHost).Child as TextEditor).Text);
+                            sw.Write((GetCurrentTextEditor()).Text);
                             sw.Close();
                         }
                         tmpPath = Application.StartupPath + "\\$tmp_code\\" + tabControl1.SelectedTab.Text.Split('*')[0];
                         StreamWriter streamWriter = new(tmpPath, false, Encoding.UTF8);
-                        streamWriter.Write((((tabControl1.SelectedTab.Controls[0] as TableLayoutPanel).Controls[0] as ElementHost).Child as TextEditor).Text);
+                        streamWriter.Write((GetCurrentTextEditor()).Text);
                         streamWriter.Close();
                         tabControl1.SelectedTab.Tag = tmpPath;
                         if (tmpPath.Contains(".pycn"))
@@ -495,7 +626,7 @@ namespace IDE
                             var error = RunPythonSrcipt(@tmpPath)[1];
                             if (error != "")
                             {
-                                errMsgBox = new(error, ((tabControl1.SelectedTab.Controls[0] as TableLayoutPanel).Controls[0] as ElementHost).Child as TextEditor, this);
+                                errMsgBox = new(error, GetCurrentTextEditor(), this);
                                 errMsgBox.Show();
                                 return;
                             }
@@ -506,7 +637,7 @@ namespace IDE
                             var error = RunPythonSrcipt(tmpPath)[1];
                             if (error != "")
                             {
-                                errMsgBox = new(error, ((tabControl1.SelectedTab.Controls[0] as TableLayoutPanel).Controls[0] as ElementHost).Child as TextEditor, this);
+                                errMsgBox = new(error, GetCurrentTextEditor(), this);
                                 errMsgBox.Show();
                                 return;
                             }
@@ -531,7 +662,7 @@ namespace IDE
                         var error = RunPythonSrcipt(@tabControl1.SelectedTab.ToolTipText.Replace(".pycn", ".py"))[1];
                         if (error != "")
                         {
-                            errMsgBox = new(error, ((tabControl1.SelectedTab.Controls[0] as TableLayoutPanel).Controls[0] as ElementHost).Child as TextEditor, this);
+                            errMsgBox = new(error, GetCurrentTextEditor(), this);
                             errMsgBox.Show();
                             return;
                         }
@@ -542,17 +673,61 @@ namespace IDE
                         var error = RunPythonSrcipt(@tabControl1.SelectedTab.ToolTipText)[1];
                         if (error != "")
                         {
-                            errMsgBox = new(error, ((tabControl1.SelectedTab.Controls[0] as TableLayoutPanel).Controls[0] as ElementHost).Child as TextEditor, this);
+                            errMsgBox = new(error, GetCurrentTextEditor(), this);
                             errMsgBox.Show();
                             return;
                         }
-                        Process.Start(".\\Runner.exe", @tabControl1.SelectedTab.ToolTipText);
+                        var ps = new ProcessStartInfo()
+                        {
+                            FileName = "Runner.exe",
+                            Arguments = @tabControl1.SelectedTab.ToolTipText,
+                            WindowStyle = ProcessWindowStyle.Minimized,
+                            ErrorDialog = true,
+                        };
+                        LOGGER.WriteLog("ProcessStartInfo对象已创建。", EnumMsgLevel.DEBUG, EnumPort.CLIENT, EnumModule.MAIN);
+                        LOGGER.WriteLog(string.Format("ProcessStartInfo对象属性：FileName={0}, Arguments={1}", ps.FileName, ps.Arguments), EnumMsgLevel.DEBUG, EnumPort.CLIENT, EnumModule.MAIN);
+                        Process p = new() { StartInfo = ps };
+                        LOGGER.WriteLog("Process对象已创建。", EnumMsgLevel.DEBUG, EnumPort.CLIENT, EnumModule.MAIN);
+                        //LOGGER.WriteLog("Process对象是否已运行：" + p.Start(), EnumMsgLevel.DEBUG, EnumPort.CLIENT, EnumModule.MAIN);
+                        //p.WaitForInputIdle();
+                        //var p_name = p.MainWindowTitle;
+                        //LOGGER.WriteLog("Process对象标题名称：" + p_name, EnumMsgLevel.DEBUG, EnumPort.CLIENT, EnumModule.MAIN);
+                        appContainer1.AppProcess = p;
+
+                        appContainer1.Start();
+                        LOGGER.WriteLog("Process对象是否已运行：" + (p.StartTime != null), EnumMsgLevel.DEBUG, EnumPort.CLIENT, EnumModule.MAIN);
+                        //    Task.Run(() =>
+                        //    {
+                        //        if (SetWindow.FindWindow(p_name))
+                        //        {
+                        //            LOGGER.WriteLog("找到窗体。" + p_name, EnumMsgLevel.DEBUG, EnumPort.CLIENT, EnumModule.MAIN);
+                        //            LOGGER.WriteLog("程序路径：" + p.MainModule.FileName, EnumMsgLevel.DEBUG, EnumPort.CLIENT, EnumModule.MAIN);
+                        //            //Process[] processes = Process.GetProcessesByName("Runner.exe");
+                        //            //if (processes.Length > 0)
+                        //            //{
+                        //            //    IntPtr handle = processes[0].MainWindowHandle;
+                        //            //    SendMessage(handle, WM_SYSCOMMAND2, new IntPtr(SC_MAXIMIZE2), IntPtr.Zero); // 最大化
+                        //            //    SwitchToThisWindow(handle, true);   // 激活
+                        //            //}
+                        //            this.Invoke(new Action(() =>
+                        //            {
+                        //                //SetWindow.SetParent(panel1.Handle, p_name);  //设置父容器
+                        //                appContainer1.AppProcess = p;
+                        //                appContainer1.Start();
+                        //            }));
+                        //        }
+                        //        else
+                        //        {
+                        //            p.Kill();
+                        //            LOGGER.WriteErrLog(new InvalidOperationException("未查找到窗体。"), EnumMsgLevel.ERROR, EnumPort.CLIENT);
+                        //        }
+                        //    });
                     }
                 }
             }
             catch (Exception ex)
             {
-                LOGGER.WriteErrLog(ex, EnumMsgLevel.FATAL, EnumPort.CLIENT);
+                LOGGER.WriteErrLog(ex, EnumMsgLevel.ERROR, EnumPort.CLIENT);
             }
         }
         #endregion
@@ -693,8 +868,8 @@ namespace IDE
                 Size = new System.Drawing.Size(858, 299),
                 TabIndex = 0,
             };
-            table.RowStyles.Add(new System.Windows.Forms.RowStyle(SizeType.Percent, 50F));
-            table.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle(SizeType.Percent, 50F));
+            table.RowStyles.Add(new RowStyle(SizeType.Percent, 50F));
+            table.ColumnStyles.Add(new ColumnStyle(SizeType.Percent, 50F));
 
             TabPage newTab = new() { Text = tmp, ToolTipText = @openFileDialog1.FileName };
             ElementHost tmpEHost = new()
@@ -752,6 +927,12 @@ namespace IDE
             }
             else
             {
+                try
+                {
+                    var webView = (tabControl1.SelectedTab.Tag as Dictionary<WebView2, TextEditor>).Keys.ToList()[0];
+                    webView?.Dispose();
+                }
+                catch { }
                 tab.Controls[0].Dispose();
                 tab.Controls.Clear();
                 tab.Dispose();
@@ -862,110 +1043,59 @@ namespace IDE
         {
             new LicenseAndCopyrights().Show();
         }
-
+        #endregion
+        #region 检查语法错误
         private void CheckSyntaxError(object sender, EventArgs e)
         {
-            var editor = (tabControl1.SelectedTab.Controls[2] as ElementHost).Child as TextEditor;
+            var editor = GetCurrentTextEditor();
+            var content = editor.Text;
             if (tabControl1.SelectedTab.ToolTipText != null)
             {
-                var ret = RunPythonSrcipt(tabControl1.SelectedTab.ToolTipText)[1];
-                foreach (var item in ret.Split(Environment.NewLine))
+                //var ret = RunPythonSrcipt(tabControl1.SelectedTab.ToolTipText)[1];
+                if (content.IsNullOrEmpty()) return;
+                var res = PythonSyntaxErrorChecker.SyntaxCheck(content).Split("\r\n");
+                //var res = PythonErrorAnalyzer.AnalyzePythonFile(content);
+                //var types = (List<string>)res["Type"];
+                //var desc = new List<string>()/*(List<string>)res["Description"]*/;
+                //var lines = new List<int>()/*(List<int>)res["Line"]*/;
+                var tmpExs = new List<ListViewItem>();
+                for (; _i < res.Length; _i++)
                 {
-                    if (item.Contains("Traceback (most recent call last):"))
+                    var tmpEx = new ListViewItem("[ERROR]", imageKey: "EII")
                     {
-
-                    }
+                        Text = "   ",
+                    };
+                    tmpExs.Add(tmpEx);
                 }
-            }
-        }
-
-        private void CheckErr(object sender, EventArgs e)
-        {
-            if (((UIListBox)sender).SelectedIndex >= 0)
-            {
-                MessageBox.Show("选择了" + ((UIListBox)sender).SelectedItem, "", MessageBoxButtons.OK, MessageBoxIcon.Exclamation);
+                for (int i = 0; i <= tmpExs.Count; ++i)
+                {
+                    tmpExs[i].SubItems.Add(new ListViewItem.ListViewSubItem() { Text = "" });
+                    tmpExs[i].SubItems.Add(new ListViewItem.ListViewSubItem() { Text = res[i].Between("|Ls-", "-Le|") });
+                    tmpExs[i].SubItems.Add(new ListViewItem.ListViewSubItem() { Text = res[i].Between("|Ds-", "-De|") });
+                }
+                foreach (var item in tmpExs)
+                {
+                    listView1.Items.Add(item);
+                }
+                //foreach (var item in types)
+                //{
+                //    listView1.Items[types.IndexOf(item)].SubItems.Add(new ListViewItem.ListViewSubItem() { Text = item });
+                //}
+                //foreach (var item in desc)
+                //{
+                //    listView1.Items[desc.IndexOf(item)].SubItems.Add(new ListViewItem.ListViewSubItem() { Text = item });
+                //}
+                //foreach (var item in lines)
+                //{
+                //    listView1.Items[lines.IndexOf(item)].SubItems.Add(new ListViewItem.ListViewSubItem() { Text = item.ToString() });
+                //}
             }
         }
         #endregion
         #region 循环判断：窗体是否处于最大化状态
         private void IsMaximized(object sender, EventArgs e)
         {
-            System.Drawing.Point tmp = new(1860, 0);
-            if (this.WindowState == FormWindowState.Maximized)
-            {
-                LOGGER.WriteLog("已点击最大化按钮", EnumMsgLevel.INFO, EnumPort.CLIENT, EnumModule.MAIN);
-                try
-                {
-                    #region 注释
-                    /*
-                    this.tabControl1.Width = originTabControlX + differenceX;
-                    this.tabControl1.Height = originTabControlY + differenceY;
-                    this.tabPage1.Width = originMetroTabPageX + differenceX;
-                    this.tabPage1.Height = originMetroTabPageY + differenceY;
-                    this.edit.Width = originEditX + differenceX;
-                    this.edit.Height = originEditY + differenceY;
-                    foreach (TextEditor ctrl in this.Controls)
-                    {
-                        if (ctrl is not null)
-                        {
-                            try
-                            {
-                                ctrl.Width = originEditX + differenceX;
-                                ctrl.Height = originEditY + differenceY;
-                            }
-                            catch (Exception ex)
-                            {
-                                LOGGER.WriteErrLog(ex, EnumMsgLevel.ERROR, EnumPort.CLIENT);
-                            }
-                        }
-                    }
-                    foreach (TabPage ctrl in this.tabControl1.MetroTabPages)
-                    {
-                        if (ctrl is not null)
-                        {
-                            try
-                            {
-                                foreach (TextEditor txt in ctrl.Controls)
-                                {
-                                    if (ctrl is not null)
-                                    {
-                                        try
-                                        {
-                                            ctrl.Width = originEditX + differenceX;
-                                            ctrl.Height = originEditY + differenceY;
-                                        }
-                                        catch (Exception ex)
-                                        {
-                                            LOGGER.WriteErrLog(ex, EnumMsgLevel.ERROR, EnumPort.CLIENT);
-                                        }
-                                    }
-                                }
-                            }
-                            catch (Exception ex)
-                            {
-                                LOGGER.WriteErrLog(ex, EnumMsgLevel.ERROR, EnumPort.CLIENT);
-                            }
-                        }
-                    }
-                    */
-                    #endregion
-                    this.Size = new System.Drawing.Size(1920, 1020);
-                    this.Location = new System.Drawing.Point(1, 1);
-                    var _ = tmp;
-                    _.X = 1860 + 20;
-                    HelpButton.Location = _;
-                }
-                catch (Exception ex)
-                {
-                    LOGGER.WriteErrLog(ex, EnumMsgLevel.ERROR, EnumPort.CLIENT);
-                    this.WindowState = FormWindowState.Normal;
-                }
-            }
-            else
-            {
-                //this.WindowState = FormWindowState.Normal;
-                HelpButton.Location = tmp;
-            }
+
         }
         #endregion
         #region 测试崩溃
@@ -999,7 +1129,7 @@ namespace IDE
             try
             {
                 var result = tabControl1.SelectedTab.ToolTipText;
-                var tmpEditor = ((tabControl1.SelectedTab.Controls[0] as TableLayoutPanel).Controls[0] as ElementHost).Child as TextEditor;
+                var tmpEditor = GetCurrentTextEditor();
                 if (result != "" | result != string.Empty)
                 {
                     StreamWriter sw = new(result, false, Encoding.UTF8);
@@ -1163,21 +1293,18 @@ namespace IDE
         private void ResizeControls(object sender, EventArgs e)
         {
             HelpButton.Location = new System.Drawing.Point(this.Width - 44, 7);
+            SizeController.Start();
         }
 
         private bool TabControl1_BeforeRemoveTabPage(object sender, int index)
         {
-            var tab = tabControl1.TabPages[tabControl1.SelectedIndex];
-            if (tab.Equals(tabPage1))
+            var tab_count = tabControl1.TabPages.Count;
+            var tab = tabControl1.SelectedTab;
+            if (tab_count == 1)
             {
-                if (!NoTip)
-                {
-                    if (MessageBoxEX.Show("无法关闭临时页面！", "提示", MessageBoxButtons.OKCancel, new string[] { "不再显示", "我已知晓" }) == DialogResult.OK)
-                    {
-                        NoTip = true;
-                        reConf.Write("General", "NoTipForClosingTempPage", NoTip);
-                    }
-                }
+                var editor = GetCurrentTextEditor();
+                tab.Text = _I18nFile.Read("I18n", "text.tc.tp.tmp", "text.tc.tp.tmp");
+                editor.Text = "";
                 return false;
             }
             else
@@ -1219,7 +1346,7 @@ namespace IDE
                 params=None
                 path={STARTUP_PATH}
                 """);
-            this.Resize += new System.EventHandler(this.ResizeControls);
+            this.Resize += new EventHandler(this.ResizeControls);
             Program.splash.metroProgressBar1.PerformStep();
             stopwatch.Stop();
             if (reConf.ReadBool("DevMode", "DevMode"))
@@ -1322,7 +1449,7 @@ namespace IDE
                 keepFile.Close();
                 var programpath = Application.ExecutablePath;
                 var arguments = Environment.GetCommandLineArgs().Skip(1).ToArray();
-                System.Diagnostics.ProcessStartInfo startinfo = new()
+                ProcessStartInfo startinfo = new()
                 {
                     FileName = programpath,
                     UseShellExecute = true,
@@ -1359,7 +1486,27 @@ namespace IDE
         #region 查找
         private void Find(object sender, EventArgs e)
         {
-            //new RYCBSearchPanel(((tabControl1.SelectedTab.Controls[0] as TableLayoutPanel).Controls[0] as ElementHost).Child as TextEditor).Show();
+            //new RYCBSearchPanel(GetCurrentTextEditor()).Show();
+        }
+
+        private void LayoutForConsole(object sender, EventArgs e)
+        {
+            if (SetWindow.intPtr != IntPtr.Zero)
+            {
+                var t = new Thread(SetWindow.ResizeWindow);
+                t.Start();  //开线程刷新第三方窗体大小
+                Thread.Sleep(50); //略加延时
+                timer2.Stop();  //停止定时器
+            }
+        }
+
+        private void GotoLine(object sender, EventArgs e)
+        {
+            var editor = GetCurrentTextEditor();
+            if (editor != null)
+            {
+                editor.ScrollToLine(Convert.ToInt32(listView1.CheckedItems[0].SubItems[3].Text));
+            }
         }
         #endregion
         #region 清理缓存
@@ -1506,8 +1653,8 @@ namespace IDE
                     Size = new System.Drawing.Size(858, 299),
                     TabIndex = 0,
                 };
-                table.RowStyles.Add(new System.Windows.Forms.RowStyle(SizeType.Percent, 50F));
-                table.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle(SizeType.Percent, 50F));
+                table.RowStyles.Add(new RowStyle(SizeType.Percent, 50F));
+                table.ColumnStyles.Add(new ColumnStyle(SizeType.Percent, 50F));
 
                 TabPage newTab = new() { Text = tmp, ToolTipText = @openFileDialog1.FileName, BackColor = tabPage1.BackColor };
                 ElementHost tmpEHost = new()
@@ -1569,6 +1716,75 @@ namespace IDE
         {
             //CacheWriter.WriteLine(fileName);
         }
+        #endregion
+        #region
+        private void GetExceptionHelp(object sender, EventArgs e)
+        {
+            if (listView1.CheckedItems.Count != 0)
+            {
+                var SelectedItem = listView1.SelectedItems[0];
+                if (SelectedItem != null)
+                {
+                    var SelectedSubItems = SelectedItem.SubItems;
+                    if (SelectedSubItems != null)
+                    {
+                        var lang = GlobalSettings.language;
+                        switch (lang)
+                        {
+                            case "zh-CN":
+                                Process.Start(SearchEngines[Engines.SIMPLIFIED_CHINESE].Replace("{text}", SelectedSubItems[0].Text).Replace("{desc}", SelectedSubItems[1].Text));
+                                break;
+                            case "zh-TD":
+                                if (MessageBoxEX.Show("Please select the search engine: ", "Info", MessageBoxButtons.OKCancel, new string[] { "Google", "Bing" }) == DialogResult.OK)
+                                {
+                                    Process.Start(SearchEngines[Engines.TRADITIONAL_CHINESE_GLOBAL].Replace("{text}", SelectedSubItems[0].Text).Replace("{desc}", SelectedSubItems[1].Text));
+                                }
+                                else
+                                {
+                                    Process.Start(SearchEngines[Engines.TRADITIONAL_CHINESE_CHINA].Replace("{text}", SelectedSubItems[0].Text).Replace("{desc}", SelectedSubItems[1].Text));
+                                }
+                                break;
+                            case "ja-JP":
+                                Process.Start(SearchEngines[Engines.JAPANESE].Replace("{text}", SelectedSubItems[0].Text).Replace("{desc}", SelectedSubItems[1].Text));
+                                break;
+                            default:
+                                break;
+                        }
+                    }
+                    else
+                    {
+                        LOGGER.WriteErrLog(new NullReferenceException("SelectedSubItems为null。"), EnumMsgLevel.WARN, EnumPort.CLIENT);
+                    }
+                }
+                else
+                {
+                    LOGGER.WriteErrLog(new NullReferenceException("SelectedItem为null。"), EnumMsgLevel.WARN, EnumPort.CLIENT);
+                }
+            }
+        }
+        #endregion
+        #region 获取当前所呈现的TextEditor
+        private TextEditor GetCurrentTextEditor()
+        {
+            return ((tabControl1.SelectedTab.Controls[0] as TableLayoutPanel).Controls[0] as ElementHost).Child as TextEditor;
+        }
+        #endregion
+        #region extern模块
+        [DllImport("user32.dll", EntryPoint = "PostMessage")]
+        public static extern int PostMessage(IntPtr hwnd, int wMsg, int wParam, int lParam);
+        [DllImport("User32.dll ", EntryPoint = "FindWindow")]
+        private static extern IntPtr FindWindow(string lpClassName, string lpWindowName);//关键方法
+        [DllImport("user32.dll", SetLastError = true)]
+        private static extern int SendMessage(IntPtr HWnd, uint Msg, int WParam, int LParam);
+        public const int WM_SYSCOMMAND = 0x112;
+        public const int SC_MINIMIZE = 0xF020;
+        public const int SC_MAXIMIZE = 0xF030;
+        public const uint WM_SYSCOMMAND2 = 0x0112;
+        public const uint SC_MAXIMIZE2 = 0xF030;
+        [DllImport("user32.dll")]
+        public static extern int SendMessage(IntPtr hWnd, uint Msg, IntPtr wParam, IntPtr lParam);
+        [DllImport("user32.dll")]
+        public static extern void SwitchToThisWindow(IntPtr hWnd, bool fAltTab);
         #endregion
         #endregion
     }

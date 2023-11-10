@@ -49,6 +49,14 @@ namespace IDE
                 }
                 control.BackColor = Back;
                 control.ForeColor = Fore;
+
+                if (control is ListView view)
+                {
+                    foreach (ColumnHeader item in view.Columns)
+                    {
+                        item.Text = _I18nFile.ReadString("I18n", item.Text, item.Text);
+                    }
+                }
             }
 
             foreach (var item in toolStripItems)

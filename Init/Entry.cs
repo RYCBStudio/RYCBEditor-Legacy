@@ -11,6 +11,13 @@ namespace IDE
 {
     public partial class Entry : Form
     {
+        private bool light = false;
+        public Entry(bool light)
+        {
+            InitializeComponent();
+            this.light = light;
+        }
+
         public Entry()
         {
             InitializeComponent();
@@ -18,6 +25,10 @@ namespace IDE
 
         private void Entry_Load(object sender, EventArgs e)
         {
+            if (light)
+            {
+                uiLabel4.Show();
+            }
         }
 
         #region 执行CMD

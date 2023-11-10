@@ -32,7 +32,6 @@ namespace IDE
         private void InitializeComponent()
         {
             this.components = new System.ComponentModel.Container();
-            System.Windows.Forms.ListViewItem listViewItem1 = new System.Windows.Forms.ListViewItem(";;;;;");
             System.ComponentModel.ComponentResourceManager resources = new System.ComponentModel.ComponentResourceManager(typeof(Main));
             this.menuStrip1 = new System.Windows.Forms.MenuStrip();
             this.文件FToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
@@ -94,12 +93,20 @@ namespace IDE
             this.tabPage1 = new System.Windows.Forms.TabPage();
             this.tableLayoutPanel2 = new System.Windows.Forms.TableLayoutPanel();
             this.elementHost1 = new System.Windows.Forms.Integration.ElementHost();
-            this.HelpButton = new System.Windows.Forms.Button();
-            this.配置ToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
+            this.webView1 = new Microsoft.Web.WebView2.WinForms.WebView2();
             this.uiTabControl1 = new Sunny.UI.UITabControl();
             this.ErrorAndExceptionsPage = new System.Windows.Forms.TabPage();
             this.listView1 = new System.Windows.Forms.ListView();
+            this.columnHeader5 = ((System.Windows.Forms.ColumnHeader)(new System.Windows.Forms.ColumnHeader()));
             this.columnHeader1 = ((System.Windows.Forms.ColumnHeader)(new System.Windows.Forms.ColumnHeader()));
+            this.columnHeader2 = ((System.Windows.Forms.ColumnHeader)(new System.Windows.Forms.ColumnHeader()));
+            this.columnHeader4 = ((System.Windows.Forms.ColumnHeader)(new System.Windows.Forms.ColumnHeader()));
+            this.imageList1 = new System.Windows.Forms.ImageList(this.components);
+            this.tabPage2 = new System.Windows.Forms.TabPage();
+            this.appContainer1 = new SmileWei.EmbeddedApp.AppContainer(this.components);
+            this.panel1 = new System.Windows.Forms.Panel();
+            this.HelpButton = new System.Windows.Forms.Button();
+            this.配置ToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.menuStrip1.SuspendLayout();
             this.contextMenuStrip1.SuspendLayout();
             this.statusStrip1.SuspendLayout();
@@ -108,8 +115,10 @@ namespace IDE
             this.tabControl1.SuspendLayout();
             this.tabPage1.SuspendLayout();
             this.tableLayoutPanel2.SuspendLayout();
+            ((System.ComponentModel.ISupportInitialize)(this.webView1)).BeginInit();
             this.uiTabControl1.SuspendLayout();
             this.ErrorAndExceptionsPage.SuspendLayout();
+            this.tabPage2.SuspendLayout();
             this.SuspendLayout();
             // 
             // menuStrip1
@@ -125,7 +134,7 @@ namespace IDE
             this.开发者选项DToolStripMenuItem});
             this.menuStrip1.Location = new System.Drawing.Point(0, 0);
             this.menuStrip1.Name = "menuStrip1";
-            this.menuStrip1.Size = new System.Drawing.Size(972, 28);
+            this.menuStrip1.Size = new System.Drawing.Size(1064, 28);
             this.menuStrip1.TabIndex = 0;
             this.menuStrip1.Text = "menuStrip1";
             // 
@@ -559,9 +568,9 @@ namespace IDE
             this.toolStripStatusLabel1,
             this.toolStripStatusLabel2,
             this.toolStripStatusLabel4});
-            this.statusStrip1.Location = new System.Drawing.Point(0, 515);
+            this.statusStrip1.Location = new System.Drawing.Point(0, 650);
             this.statusStrip1.Name = "statusStrip1";
-            this.statusStrip1.Size = new System.Drawing.Size(972, 26);
+            this.statusStrip1.Size = new System.Drawing.Size(1064, 26);
             this.statusStrip1.TabIndex = 3;
             this.statusStrip1.Text = "statusStrip1";
             // 
@@ -598,9 +607,9 @@ namespace IDE
             this.toolStripStatusLabel7,
             this.toolStripStatusLabel8,
             this.toolStripStatusLabel9});
-            this.statusStrip2.Location = new System.Drawing.Point(0, 489);
+            this.statusStrip2.Location = new System.Drawing.Point(0, 624);
             this.statusStrip2.Name = "statusStrip2";
-            this.statusStrip2.Size = new System.Drawing.Size(972, 26);
+            this.statusStrip2.Size = new System.Drawing.Size(1064, 26);
             this.statusStrip2.TabIndex = 4;
             this.statusStrip2.Text = "statusStrip2";
             // 
@@ -643,25 +652,28 @@ namespace IDE
             // SizeController
             // 
             this.SizeController.Interval = 1000;
-            this.SizeController.Tick += new System.EventHandler(this.IsMaximized);
+            this.SizeController.Tick += new System.EventHandler(this.LayoutForConsole);
             // 
             // SyntaxErrorChecker
             // 
+            this.SyntaxErrorChecker.Interval = 1000;
             this.SyntaxErrorChecker.Tick += new System.EventHandler(this.CheckSyntaxError);
             // 
             // tableLayoutPanel1
             // 
+            this.tableLayoutPanel1.Anchor = ((System.Windows.Forms.AnchorStyles)((((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Bottom) 
+            | System.Windows.Forms.AnchorStyles.Left) 
+            | System.Windows.Forms.AnchorStyles.Right)));
             this.tableLayoutPanel1.ColumnCount = 1;
             this.tableLayoutPanel1.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Percent, 100F));
             this.tableLayoutPanel1.Controls.Add(this.tabControl1, 0, 0);
             this.tableLayoutPanel1.Controls.Add(this.uiTabControl1, 0, 1);
-            this.tableLayoutPanel1.Dock = System.Windows.Forms.DockStyle.Fill;
-            this.tableLayoutPanel1.Location = new System.Drawing.Point(0, 28);
+            this.tableLayoutPanel1.Location = new System.Drawing.Point(0, 35);
             this.tableLayoutPanel1.Name = "tableLayoutPanel1";
             this.tableLayoutPanel1.RowCount = 2;
-            this.tableLayoutPanel1.RowStyles.Add(new System.Windows.Forms.RowStyle());
-            this.tableLayoutPanel1.RowStyles.Add(new System.Windows.Forms.RowStyle());
-            this.tableLayoutPanel1.Size = new System.Drawing.Size(972, 461);
+            this.tableLayoutPanel1.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Percent, 75F));
+            this.tableLayoutPanel1.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Percent, 25F));
+            this.tableLayoutPanel1.Size = new System.Drawing.Size(1064, 596);
             this.tableLayoutPanel1.TabIndex = 6;
             // 
             // tabControl1
@@ -681,12 +693,13 @@ namespace IDE
             this.tabControl1.Name = "tabControl1";
             this.tabControl1.SelectedIndex = 0;
             this.tabControl1.ShowCloseButton = true;
-            this.tabControl1.Size = new System.Drawing.Size(966, 329);
+            this.tabControl1.Size = new System.Drawing.Size(1058, 441);
             this.tabControl1.SizeMode = System.Windows.Forms.TabSizeMode.Fixed;
             this.tabControl1.StyleCustomMode = true;
             this.tabControl1.TabBackColor = System.Drawing.Color.Black;
             this.tabControl1.TabIndex = 3;
             this.tabControl1.TipsFont = new System.Drawing.Font("微软雅黑", 9F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(134)));
+            this.tabControl1.BeforeRemoveTabPage += new Sunny.UI.UITabControl.OnBeforeRemoveTabPage(this.TabControl1_BeforeRemoveTabPage);
             this.tabControl1.SelectedIndexChanged += new System.EventHandler(this.Layout);
             this.tabControl1.Validating += new System.ComponentModel.CancelEventHandler(this.Validating_Layout);
             // 
@@ -694,9 +707,10 @@ namespace IDE
             // 
             this.tabPage1.BackColor = System.Drawing.Color.Black;
             this.tabPage1.Controls.Add(this.tableLayoutPanel2);
+            this.tabPage1.Controls.Add(this.webView1);
             this.tabPage1.Location = new System.Drawing.Point(0, 30);
             this.tabPage1.Name = "tabPage1";
-            this.tabPage1.Size = new System.Drawing.Size(966, 299);
+            this.tabPage1.Size = new System.Drawing.Size(1058, 411);
             this.tabPage1.TabIndex = 0;
             this.tabPage1.Text = "text.tc.tp.tmp";
             // 
@@ -710,7 +724,7 @@ namespace IDE
             this.tableLayoutPanel2.Name = "tableLayoutPanel2";
             this.tableLayoutPanel2.RowCount = 1;
             this.tableLayoutPanel2.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Percent, 50F));
-            this.tableLayoutPanel2.Size = new System.Drawing.Size(966, 299);
+            this.tableLayoutPanel2.Size = new System.Drawing.Size(1058, 411);
             this.tableLayoutPanel2.TabIndex = 0;
             // 
             // elementHost1
@@ -720,9 +734,138 @@ namespace IDE
             | System.Windows.Forms.AnchorStyles.Right)));
             this.elementHost1.Location = new System.Drawing.Point(3, 3);
             this.elementHost1.Name = "elementHost1";
-            this.elementHost1.Size = new System.Drawing.Size(960, 293);
+            this.elementHost1.Size = new System.Drawing.Size(1052, 405);
             this.elementHost1.TabIndex = 1;
             this.elementHost1.Child = null;
+            // 
+            // webView1
+            // 
+            this.webView1.AllowExternalDrop = true;
+            this.webView1.CreationProperties = null;
+            this.webView1.DefaultBackgroundColor = System.Drawing.Color.White;
+            this.webView1.Location = new System.Drawing.Point(11, 11);
+            this.webView1.Name = "webView1";
+            this.webView1.Size = new System.Drawing.Size(1044, 405);
+            this.webView1.TabIndex = 1;
+            this.webView1.ZoomFactor = 1D;
+            // 
+            // uiTabControl1
+            // 
+            this.uiTabControl1.Alignment = System.Windows.Forms.TabAlignment.Bottom;
+            this.uiTabControl1.Controls.Add(this.ErrorAndExceptionsPage);
+            this.uiTabControl1.Controls.Add(this.tabPage2);
+            this.uiTabControl1.Dock = System.Windows.Forms.DockStyle.Fill;
+            this.uiTabControl1.DrawMode = System.Windows.Forms.TabDrawMode.OwnerDrawFixed;
+            this.uiTabControl1.FillColor = System.Drawing.Color.FromArgb(((int)(((byte)(248)))), ((int)(((byte)(248)))), ((int)(((byte)(248)))));
+            this.uiTabControl1.Font = new System.Drawing.Font("微软雅黑", 9F);
+            this.uiTabControl1.ItemSize = new System.Drawing.Size(150, 25);
+            this.uiTabControl1.Location = new System.Drawing.Point(3, 450);
+            this.uiTabControl1.MainPage = "";
+            this.uiTabControl1.MenuStyle = Sunny.UI.UIMenuStyle.Custom;
+            this.uiTabControl1.Name = "uiTabControl1";
+            this.uiTabControl1.SelectedIndex = 0;
+            this.uiTabControl1.Size = new System.Drawing.Size(1058, 143);
+            this.uiTabControl1.SizeMode = System.Windows.Forms.TabSizeMode.Fixed;
+            this.uiTabControl1.Style = Sunny.UI.UIStyle.Custom;
+            this.uiTabControl1.StyleCustomMode = true;
+            this.uiTabControl1.TabBackColor = System.Drawing.Color.Black;
+            this.uiTabControl1.TabIndex = 4;
+            this.uiTabControl1.TabSelectedForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(248)))), ((int)(((byte)(248)))), ((int)(((byte)(248)))));
+            this.uiTabControl1.TabSelectedHighColor = System.Drawing.Color.Gray;
+            this.uiTabControl1.TipsFont = new System.Drawing.Font("微软雅黑", 9F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(134)));
+            // 
+            // ErrorAndExceptionsPage
+            // 
+            this.ErrorAndExceptionsPage.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(248)))), ((int)(((byte)(248)))), ((int)(((byte)(248)))));
+            this.ErrorAndExceptionsPage.Controls.Add(this.listView1);
+            this.ErrorAndExceptionsPage.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(243)))), ((int)(((byte)(249)))), ((int)(((byte)(255)))));
+            this.ErrorAndExceptionsPage.Location = new System.Drawing.Point(0, 0);
+            this.ErrorAndExceptionsPage.Name = "ErrorAndExceptionsPage";
+            this.ErrorAndExceptionsPage.Size = new System.Drawing.Size(1058, 118);
+            this.ErrorAndExceptionsPage.TabIndex = 1;
+            this.ErrorAndExceptionsPage.Text = "text.bottom.errors";
+            // 
+            // listView1
+            // 
+            this.listView1.BackColor = System.Drawing.Color.Black;
+            this.listView1.BorderStyle = System.Windows.Forms.BorderStyle.None;
+            this.listView1.Columns.AddRange(new System.Windows.Forms.ColumnHeader[] {
+            this.columnHeader5,
+            this.columnHeader1,
+            this.columnHeader2,
+            this.columnHeader4});
+            this.listView1.Dock = System.Windows.Forms.DockStyle.Fill;
+            this.listView1.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(248)))), ((int)(((byte)(248)))), ((int)(((byte)(248)))));
+            this.listView1.HideSelection = false;
+            this.listView1.Location = new System.Drawing.Point(0, 0);
+            this.listView1.MultiSelect = false;
+            this.listView1.Name = "listView1";
+            this.listView1.Size = new System.Drawing.Size(1058, 118);
+            this.listView1.SmallImageList = this.imageList1;
+            this.listView1.Sorting = System.Windows.Forms.SortOrder.Ascending;
+            this.listView1.TabIndex = 0;
+            this.listView1.UseCompatibleStateImageBehavior = false;
+            this.listView1.View = System.Windows.Forms.View.Details;
+            this.listView1.ItemActivate += new System.EventHandler(this.GotoLine);
+            this.listView1.DoubleClick += new System.EventHandler(this.GetExceptionHelp);
+            // 
+            // columnHeader5
+            // 
+            this.columnHeader5.Text = "                 ";
+            this.columnHeader5.Width = 127;
+            // 
+            // columnHeader1
+            // 
+            this.columnHeader1.Text = "text.bottom.errors.sub.type";
+            this.columnHeader1.Width = 147;
+            // 
+            // columnHeader2
+            // 
+            this.columnHeader2.Text = "text.bottom.errors.sub.description";
+            this.columnHeader2.Width = 473;
+            // 
+            // columnHeader4
+            // 
+            this.columnHeader4.Text = "text.bottom.errors.sub.line";
+            this.columnHeader4.Width = 47;
+            // 
+            // imageList1
+            // 
+            this.imageList1.ImageStream = ((System.Windows.Forms.ImageListStreamer)(resources.GetObject("imageList1.ImageStream")));
+            this.imageList1.TransparentColor = System.Drawing.Color.Transparent;
+            this.imageList1.Images.SetKeyName(0, "exception");
+            this.imageList1.Images.SetKeyName(1, "warning");
+            this.imageList1.Images.SetKeyName(2, "EII");
+            // 
+            // tabPage2
+            // 
+            this.tabPage2.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(248)))), ((int)(((byte)(248)))), ((int)(((byte)(248)))));
+            this.tabPage2.Controls.Add(this.appContainer1);
+            this.tabPage2.Location = new System.Drawing.Point(0, 0);
+            this.tabPage2.Name = "tabPage2";
+            this.tabPage2.Size = new System.Drawing.Size(200, 60);
+            this.tabPage2.TabIndex = 2;
+            this.tabPage2.Text = "text.bottom.console";
+            // 
+            // appContainer1
+            // 
+            this.appContainer1.AppFilename = "";
+            this.appContainer1.AppProcess = null;
+            this.appContainer1.BackColor = System.Drawing.SystemColors.ActiveCaptionText;
+            this.appContainer1.Dock = System.Windows.Forms.DockStyle.Fill;
+            this.appContainer1.Location = new System.Drawing.Point(0, 0);
+            this.appContainer1.Name = "appContainer1";
+            this.appContainer1.Size = new System.Drawing.Size(200, 60);
+            this.appContainer1.TabIndex = 0;
+            // 
+            // panel1
+            // 
+            this.panel1.BackColor = System.Drawing.SystemColors.ActiveCaptionText;
+            this.panel1.Dock = System.Windows.Forms.DockStyle.Fill;
+            this.panel1.Location = new System.Drawing.Point(0, 0);
+            this.panel1.Name = "panel1";
+            this.panel1.Size = new System.Drawing.Size(1058, 118);
+            this.panel1.TabIndex = 0;
             // 
             // HelpButton
             // 
@@ -731,7 +874,7 @@ namespace IDE
             this.HelpButton.BackgroundImageLayout = System.Windows.Forms.ImageLayout.Stretch;
             this.HelpButton.FlatAppearance.BorderSize = 0;
             this.HelpButton.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
-            this.HelpButton.Location = new System.Drawing.Point(838, 7);
+            this.HelpButton.Location = new System.Drawing.Point(1023, 9);
             this.HelpButton.Name = "HelpButton";
             this.HelpButton.Size = new System.Drawing.Size(20, 20);
             this.HelpButton.TabIndex = 5;
@@ -748,71 +891,11 @@ namespace IDE
             this.配置ToolStripMenuItem.Text = "...配置";
             this.配置ToolStripMenuItem.Click += new System.EventHandler(this.CodeConfig);
             // 
-            // uiTabControl1
-            // 
-            this.uiTabControl1.Alignment = System.Windows.Forms.TabAlignment.Bottom;
-            this.uiTabControl1.Controls.Add(this.ErrorAndExceptionsPage);
-            this.uiTabControl1.Dock = System.Windows.Forms.DockStyle.Fill;
-            this.uiTabControl1.DrawMode = System.Windows.Forms.TabDrawMode.OwnerDrawFixed;
-            this.uiTabControl1.FillColor = System.Drawing.Color.FromArgb(((int)(((byte)(248)))), ((int)(((byte)(248)))), ((int)(((byte)(248)))));
-            this.uiTabControl1.Font = new System.Drawing.Font("微软雅黑", 9F);
-            this.uiTabControl1.ItemSize = new System.Drawing.Size(150, 25);
-            this.uiTabControl1.Location = new System.Drawing.Point(3, 338);
-            this.uiTabControl1.MainPage = "";
-            this.uiTabControl1.MenuStyle = Sunny.UI.UIMenuStyle.Custom;
-            this.uiTabControl1.Name = "uiTabControl1";
-            this.uiTabControl1.SelectedIndex = 0;
-            this.uiTabControl1.Size = new System.Drawing.Size(966, 120);
-            this.uiTabControl1.SizeMode = System.Windows.Forms.TabSizeMode.Fixed;
-            this.uiTabControl1.Style = Sunny.UI.UIStyle.Custom;
-            this.uiTabControl1.StyleCustomMode = true;
-            this.uiTabControl1.TabBackColor = System.Drawing.Color.Black;
-            this.uiTabControl1.TabIndex = 4;
-            this.uiTabControl1.TabSelectedForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(248)))), ((int)(((byte)(248)))), ((int)(((byte)(248)))));
-            this.uiTabControl1.TabSelectedHighColor = System.Drawing.Color.Gray;
-            this.uiTabControl1.TipsFont = new System.Drawing.Font("微软雅黑", 9F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(134)));
-            // 
-            // ErrorAndExceptionsPage
-            // 
-            this.ErrorAndExceptionsPage.BackColor = System.Drawing.Color.Black;
-            this.ErrorAndExceptionsPage.Controls.Add(this.listView1);
-            this.ErrorAndExceptionsPage.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(243)))), ((int)(((byte)(249)))), ((int)(((byte)(255)))));
-            this.ErrorAndExceptionsPage.Location = new System.Drawing.Point(0, 0);
-            this.ErrorAndExceptionsPage.Name = "ErrorAndExceptionsPage";
-            this.ErrorAndExceptionsPage.Size = new System.Drawing.Size(966, 95);
-            this.ErrorAndExceptionsPage.TabIndex = 1;
-            this.ErrorAndExceptionsPage.Text = "text.bottom.errors";
-            // 
-            // listView1
-            // 
-            this.listView1.BackColor = System.Drawing.Color.Black;
-            this.listView1.BorderStyle = System.Windows.Forms.BorderStyle.None;
-            this.listView1.Columns.AddRange(new System.Windows.Forms.ColumnHeader[] {
-            this.columnHeader1});
-            this.listView1.Dock = System.Windows.Forms.DockStyle.Fill;
-            this.listView1.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(248)))), ((int)(((byte)(248)))), ((int)(((byte)(248)))));
-            this.listView1.HideSelection = false;
-            listViewItem1.StateImageIndex = 0;
-            this.listView1.Items.AddRange(new System.Windows.Forms.ListViewItem[] {
-            listViewItem1});
-            this.listView1.Location = new System.Drawing.Point(0, 0);
-            this.listView1.MultiSelect = false;
-            this.listView1.Name = "listView1";
-            this.listView1.Size = new System.Drawing.Size(966, 95);
-            this.listView1.Sorting = System.Windows.Forms.SortOrder.Ascending;
-            this.listView1.TabIndex = 0;
-            this.listView1.UseCompatibleStateImageBehavior = false;
-            // 
-            // columnHeader1
-            // 
-            this.columnHeader1.Text = "text.bottom.errors.sub.type";
-            // 
             // Main
             // 
-            this.AutoScaleDimensions = new System.Drawing.SizeF(9F, 20F);
-            this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
+            this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.None;
             this.BackColor = System.Drawing.Color.Black;
-            this.ClientSize = new System.Drawing.Size(972, 541);
+            this.ClientSize = new System.Drawing.Size(1064, 676);
             this.Controls.Add(this.HelpButton);
             this.Controls.Add(this.tableLayoutPanel1);
             this.Controls.Add(this.statusStrip2);
@@ -825,7 +908,6 @@ namespace IDE
             this.MainMenuStrip = this.menuStrip1;
             this.Margin = new System.Windows.Forms.Padding(3, 4, 3, 4);
             this.Name = "Main";
-            this.StartPosition = System.Windows.Forms.FormStartPosition.CenterScreen;
             this.Text = "RYCB Editor";
             this.FormClosing += new System.Windows.Forms.FormClosingEventHandler(this.ExitByClosing);
             this.FormClosed += new System.Windows.Forms.FormClosedEventHandler(this.ForceExit);
@@ -843,8 +925,10 @@ namespace IDE
             this.tabControl1.ResumeLayout(false);
             this.tabPage1.ResumeLayout(false);
             this.tableLayoutPanel2.ResumeLayout(false);
+            ((System.ComponentModel.ISupportInitialize)(this.webView1)).EndInit();
             this.uiTabControl1.ResumeLayout(false);
             this.ErrorAndExceptionsPage.ResumeLayout(false);
+            this.tabPage2.ResumeLayout(false);
             this.ResumeLayout(false);
             this.PerformLayout();
 
@@ -918,6 +1002,14 @@ namespace IDE
         private TabPage ErrorAndExceptionsPage;
         private ListView listView1;
         private ColumnHeader columnHeader1;
+        private ColumnHeader columnHeader2;
+        private ColumnHeader columnHeader4;
+        private ColumnHeader columnHeader5;
+        private ImageList imageList1;
+        private TabPage tabPage2;
+        private Panel panel1;
+        private SmileWei.EmbeddedApp.AppContainer appContainer1;
+        private Microsoft.Web.WebView2.WinForms.WebView2 webView1;
     }
 }
 

@@ -35,6 +35,7 @@
             this.uiLabel2 = new Sunny.UI.UILabel();
             this.uiLabel3 = new Sunny.UI.UILabel();
             this.timer1 = new System.Windows.Forms.Timer(this.components);
+            this.uiLabel4 = new Sunny.UI.UILabel();
             this.SuspendLayout();
             // 
             // elementHost1
@@ -49,7 +50,7 @@
             // metroProgressBar1
             // 
             this.metroProgressBar1.Location = new System.Drawing.Point(8, 424);
-            this.metroProgressBar1.Maximum = 8;
+            this.metroProgressBar1.Maximum = 7;
             this.metroProgressBar1.Name = "metroProgressBar1";
             this.metroProgressBar1.Size = new System.Drawing.Size(836, 10);
             this.metroProgressBar1.Step = 1;
@@ -68,7 +69,6 @@
             this.uiLabel1.TabIndex = 6;
             this.uiLabel1.Text = "RYCB Editor";
             this.uiLabel1.TextAlign = System.Drawing.ContentAlignment.MiddleCenter;
-            this.uiLabel1.ZoomScaleRect = new System.Drawing.Rectangle(0, 0, 0, 0);
             // 
             // uiLabel2
             // 
@@ -82,7 +82,6 @@
             this.uiLabel2.TabIndex = 7;
             this.uiLabel2.Text = "© RYCB Studio";
             this.uiLabel2.TextAlign = System.Drawing.ContentAlignment.MiddleLeft;
-            this.uiLabel2.ZoomScaleRect = new System.Drawing.Rectangle(0, 0, 0, 0);
             // 
             // uiLabel3
             // 
@@ -96,12 +95,25 @@
             this.uiLabel3.TabIndex = 8;
             this.uiLabel3.Text = "2023";
             this.uiLabel3.TextAlign = System.Drawing.ContentAlignment.MiddleRight;
-            this.uiLabel3.ZoomScaleRect = new System.Drawing.Rectangle(0, 0, 0, 0);
             // 
             // timer1
             // 
             this.timer1.Interval = 5000;
             this.timer1.Tick += new System.EventHandler(this.Delay);
+            // 
+            // uiLabel4
+            // 
+            this.uiLabel4.BackColor = System.Drawing.Color.Transparent;
+            this.uiLabel4.Font = new System.Drawing.Font("Exo", 15F);
+            this.uiLabel4.ForeColor = System.Drawing.Color.White;
+            this.uiLabel4.Location = new System.Drawing.Point(12, 382);
+            this.uiLabel4.Name = "uiLabel4";
+            this.uiLabel4.Size = new System.Drawing.Size(113, 39);
+            this.uiLabel4.Style = Sunny.UI.UIStyle.Custom;
+            this.uiLabel4.TabIndex = 9;
+            this.uiLabel4.Text = "LightEdit";
+            this.uiLabel4.TextAlign = System.Drawing.ContentAlignment.MiddleLeft;
+            this.uiLabel4.Visible = false;
             // 
             // Entry
             // 
@@ -112,6 +124,7 @@
             this.BackgroundImageLayout = System.Windows.Forms.ImageLayout.Stretch;
             this.ClientSize = new System.Drawing.Size(850, 443);
             this.ControlBox = false;
+            this.Controls.Add(this.uiLabel4);
             this.Controls.Add(this.uiLabel2);
             this.Controls.Add(this.uiLabel3);
             this.Controls.Add(this.uiLabel1);
@@ -144,5 +157,6 @@
         private Sunny.UI.UILabel uiLabel2;
         private Sunny.UI.UILabel uiLabel3;
         private System.Windows.Forms.Timer timer1;
+        private Sunny.UI.UILabel uiLabel4;
     }
 }
