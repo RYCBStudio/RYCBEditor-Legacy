@@ -49,7 +49,7 @@ namespace IDE
             errorProvider1.SetError(CBoxLanguage, "");
         }
 
-        private void PickDiretory(object sender, System.EventArgs e)
+        private void PickDiretory(object sender, EventArgs e)
         {
             if (folderBrowserDialog1.ShowDialog() == DialogResult.OK)
             {
@@ -303,7 +303,7 @@ namespace IDE
             errorProvider1.SetError((Control)sender, tip_1);
         }
 
-        private void ChangeCachePath(object sender, System.EventArgs e)
+        private void ChangeCachePath(object sender, EventArgs e)
         {
             if (!(folderBrowserDialog1.ShowDialog() == DialogResult.OK))
             {
