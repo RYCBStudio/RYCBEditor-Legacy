@@ -1,4 +1,3 @@
-<<<<<<< Updated upstream
 ﻿using System;
 using System.Windows.Forms;
 using Sunny.UI;

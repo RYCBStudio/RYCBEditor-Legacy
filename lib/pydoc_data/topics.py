@@ -5059,8 +5059,7 @@ topics = {'assert': '\n'
                   "   ...     '{0:{fill}{align}16}'.format(text, fill=align, "
                   'align=align)\n'
                   '   ...\n'
-                  "   'left<<<<<<<<<<<<'\n"
-                  "   '^^^^^center^^^^^'\n"
+                  "   'left                  "   '^^^^^center^^^^^'\n"
                   "   '>>>>>>>>>>>right'\n"
                   '   >>>\n'
                   '   >>> octets = [192, 168, 0, 1]\n'

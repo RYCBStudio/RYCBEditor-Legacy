@@ -1,4 +1,3 @@
-<<<<<<< Updated upstream
 ﻿using Sunny.UI;
 using System;
 using System.Diagnostics;

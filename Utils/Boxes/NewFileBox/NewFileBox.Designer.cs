@@ -1,4 +1,3 @@
-<<<<<<< Updated upstream
 ﻿namespace IDE
 {
     partial class NewFileBox
