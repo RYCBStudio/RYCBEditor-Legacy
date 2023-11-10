@@ -1,0 +1,68 @@
+[Display]
+# This sets the main display font of IDE.
+DisplayFont=HarmonyOS Sans SC
+
+[General]
+# This sets the update channel of IDE(Under development)
+UpdateChannel=Normal
+# This sets the display language of IDE.
+# Format: xx-XX
+# Accepted Value(Now): zh-CN(Simplified Chinese), zh-TD(Traditional Chinese), en-US(English), ja-JP(Japanese)
+Language=zh-CN
+# This sets the log language of IDE.
+# Format: xx
+# Accepted Value(Now): zh(Simplified Chinese), td(Traditional Chinese), en(English), ja(Japanese)
+# If leave a blank or "asLang", it will be the same as the display language.
+LogLanguage=zh
+# This sets if IDE should use some experimental settings.
+# Accepted Value: true,false
+# WARNING: When you set this setting to "true", that means that you have agreed IDE to collect crash infomation.
+UseExperimentalSettings=false
+# This sets if IDE should notice you when you close the temporary tab.
+# Accepted Value: true,false
+# WARNING: this setting will be **removed** after a while.
+NoTipForClosingTempPage=true
+# This sets the theme of the IDE.
+# Accepted Value(Now): Dark, Light, IDEA_Dark, Custom
+# Notice: If you leave "Custom", you should also set two properties in the "Theme" section
+Theme=IDEA_Dark
+
+[Editor]
+# This sets the editor font of IDE.
+Font=JetBrains Mono
+# This sets the editor font size of IDE.
+Size=12
+# This sets the editor should show line numbers.
+# Accepted Value: true,false
+ShowLineNum=true
+# This sets the directory path of the Xshd file the editor control uses. 
+# *Notice: It is recommended to leave this setting blank. 
+#   The IDE will automatically inject this content during runtime.
+# Accepted Value: An existing directory.(e.g. C:\Program Files\RYCB Editor\Config\Highlighting)
+XshdFilePath=F:\VS 2022\repos\IDE\bin\Debug\Config\Highlighting
+
+[DevMode]
+# This sets if IDE should enable developer mode.
+# Accepted Value: true,false
+# WARNING: When you set this setting to "true", that means that you have agreed IDE to collect crash infomation.
+DevMode=true
+
+[CrashHanding]
+# This sets if IDE should use some experimental settings.
+# AcceptedValue: true,false
+# WARNING: When you set this setting to "false", that means that you gave up two settings(Use experimental settings and developer mode), 
+#          and you can't get any help from the developer if the program crashes because you don't have any useful infomation.
+CollectCrashInfomation=true
+# This sets count of crash attempts of the IDE.
+# Min Vaule: 1
+# Notice: If you leave "0", the IDE will not crash, but will write down each error to log file.
+# Recommend Value: 3~5
+CrashAttempts=2147483647
+
+[Theme]
+# This sets the foreground color of IDE.
+# Accepted Value: HEX Color Value(e.g. #FF000000 or #000000)
+Custom.ForeGround=
+# This sets the background color of IDE.
+# Accepted Value: HEX Color Value(e.g. #FF000000 or #000000)
+Custom.BackGround=
