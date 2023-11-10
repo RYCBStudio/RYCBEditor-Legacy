@@ -46,7 +46,7 @@ public partial class CacheCleaner : UIForm
 
     private void GetFiles()
     {
-        int total = 0;
+        var total = 0;
         if (ClearChoices.LogFile)
         {
             total += System.IO.Directory.EnumerateFiles(Program.STARTUP_PATH + "\\logs").Count();

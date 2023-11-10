@@ -26,14 +26,14 @@ internal partial class ErrorMessageBox : UIForm
     private List<int> lines = new();
     private List<string> contents = new();
 
-    private static readonly Dictionary<Engines, string> TranslateEngines = new()
+    internal static readonly Dictionary<Engines, string> TranslateEngines = new()
     {
         { Engines.SIMPLIFIED_CHINESE, "https://fanyi.baidu.com/#en/zh/{text}"},
         { Engines.TRADITIONAL_CHINESE_CHINA, "https://fanyi.baidu.com/#en/zht/{text}"},
         { Engines.TRADITIONAL_CHINESE_GLOBAL, "https://translate.google.com/?sl=auto&tl=zh-TW&text={text}&op=translate"},
         { Engines.JAPANESE, "https://translate.google.com/?sl=auto&tl=ja&text={text}&op=translate"},
     };
-    private static readonly Dictionary<Engines, string> SearchEngines = new()
+    internal static readonly Dictionary<Engines, string> SearchEngines = new()
     {
         { Engines.SIMPLIFIED_CHINESE, "https://cn.bing.com/search?q=Python+{text}"},
         { Engines.TRADITIONAL_CHINESE_CHINA, "https://www.bing.com/search?q=Python+{text}"},
@@ -79,7 +79,7 @@ internal partial class ErrorMessageBox : UIForm
         }
     }
 
-    private void GetErrorsLinesAndFunctions()
+    internal void GetErrorsLinesAndFunctions()
     {
         foreach (var item in errors)
         {
@@ -173,11 +173,11 @@ internal partial class ErrorMessageBox : UIForm
             newTxtBox3.FillColor2 = System.Drawing.Color.FromArgb((int)(byte)238, (int)(byte)251, (int)(byte)250);
             newTxtBox3.Font = new System.Drawing.Font("微软雅黑", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, (byte)134);
             newTxtBox3.Location = new System.Drawing.Point(85, 109);
-            newTxtBox3.Margin = new System.Windows.Forms.Padding(4, 5, 4, 5);
+            newTxtBox3.Margin = new Padding(4, 5, 4, 5);
             newTxtBox3.MinimumSize = new System.Drawing.Size(1, 16);
             newTxtBox3.Multiline = true;
             newTxtBox3.Name = "uiTextBox3";
-            newTxtBox3.Padding = new System.Windows.Forms.Padding(5);
+            newTxtBox3.Padding = new Padding(5);
             newTxtBox3.ReadOnly = true;
             newTxtBox3.RectColor = System.Drawing.Color.FromArgb((int)(byte)0, (int)(byte)190, (int)(byte)172);
             newTxtBox3.RectSides = System.Windows.Forms.ToolStripStatusLabelBorderSides.None;
@@ -203,10 +203,10 @@ internal partial class ErrorMessageBox : UIForm
             newTxtBox2.FillColor2 = System.Drawing.Color.FromArgb((int)(byte)238, (int)(byte)251, (int)(byte)250);
             newTxtBox2.Font = new System.Drawing.Font("微软雅黑", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, (byte)134);
             newTxtBox2.Location = new System.Drawing.Point(85, 54);
-            newTxtBox2.Margin = new System.Windows.Forms.Padding(4, 5, 4, 5);
+            newTxtBox2.Margin = new Padding(4, 5, 4, 5);
             newTxtBox2.MinimumSize = new System.Drawing.Size(1, 16);
             newTxtBox2.Name = "uiTextBox2";
-            newTxtBox2.Padding = new System.Windows.Forms.Padding(5);
+            newTxtBox2.Padding = new Padding(5);
             newTxtBox2.ReadOnly = true;
             newTxtBox2.RectColor = System.Drawing.Color.FromArgb((int)(byte)0, (int)(byte)190, (int)(byte)172);
             newTxtBox2.RectSides = System.Windows.Forms.ToolStripStatusLabelBorderSides.None;
@@ -233,10 +233,10 @@ internal partial class ErrorMessageBox : UIForm
             newTxtBox1.FillColor2 = System.Drawing.Color.FromArgb((int)(byte)238, (int)(byte)251, (int)(byte)250);
             newTxtBox1.Font = new System.Drawing.Font("微软雅黑", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, (byte)134);
             newTxtBox1.Location = new System.Drawing.Point(85, 9);
-            newTxtBox1.Margin = new System.Windows.Forms.Padding(4, 5, 4, 5);
+            newTxtBox1.Margin = new Padding(4, 5, 4, 5);
             newTxtBox1.MinimumSize = new System.Drawing.Size(1, 16);
             newTxtBox1.Name = "uiTextBox1";
-            newTxtBox1.Padding = new System.Windows.Forms.Padding(5);
+            newTxtBox1.Padding = new Padding(5);
             newTxtBox1.ReadOnly = true;
             newTxtBox1.RectColor = System.Drawing.Color.FromArgb((int)(byte)0, (int)(byte)190, (int)(byte)172);
             newTxtBox1.RectSides = System.Windows.Forms.ToolStripStatusLabelBorderSides.None;
@@ -294,7 +294,7 @@ internal partial class ErrorMessageBox : UIForm
             btn1.TabIndex = 2;
             btn1.Text = "?";
             btn1.TipsFont = new System.Drawing.Font("微软雅黑", 9F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, (byte)134);
-            btn1.Click += new System.EventHandler(this.GetHelp);
+            btn1.Click += new EventHandler(this.GetHelp);
             #endregion
             #region btn2
             btn2.Cursor = System.Windows.Forms.Cursors.Hand;
@@ -310,7 +310,7 @@ internal partial class ErrorMessageBox : UIForm
             btn2.TabIndex = 5;
             btn2.Text = "⇱";
             btn2.TipsFont = new System.Drawing.Font("微软雅黑", 9F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, (byte)134);
-            btn2.Click += new System.EventHandler(this.GoToLine);
+            btn2.Click += new EventHandler(this.GoToLine);
             #endregion
             #region newBtn
             newBtn.BackgroundImage = Properties.Resources.translate;
@@ -320,7 +320,7 @@ internal partial class ErrorMessageBox : UIForm
             newBtn.Size = new System.Drawing.Size(36, 36);
             newBtn.TabIndex = 8;
             newBtn.UseVisualStyleBackColor = true;
-            newBtn.Click += new System.EventHandler(this.Translate);
+            newBtn.Click += new EventHandler(this.Translate);
             #endregion
             #region newBtn2
             newBtn2.BackgroundImage = global::IDE.Properties.Resources.seek;
@@ -330,7 +330,7 @@ internal partial class ErrorMessageBox : UIForm
             newBtn2.Size = new System.Drawing.Size(36, 36);
             newBtn2.TabIndex = 9;
             newBtn2.UseVisualStyleBackColor = true;
-            newBtn2.Click += new System.EventHandler(this.GetWebHelp);
+            newBtn2.Click += new EventHandler(this.GetWebHelp);
             #endregion
             #region newTab
             newTab.Controls.Add(newBtn);
@@ -374,7 +374,7 @@ internal partial class ErrorMessageBox : UIForm
                 Process.Start(SearchEngines[Engines.SIMPLIFIED_CHINESE].Replace("{text}", uiTabControlMenu1.SelectedTab.Controls["uiTextBox1"].Text));
                 break;
             case "zh-TD":
-                if (MessageBoxEX.Show("Please select the translate engine: ", "Info", MessageBoxButtons.OKCancel, new string[] { "Google", "Baidu" }) == DialogResult.OK)
+                if (MessageBoxEX.Show("Please select the search engine: ", "Info", MessageBoxButtons.OKCancel, new string[] { "Google", "Baidu" }) == DialogResult.OK)
                 {
                     Process.Start(SearchEngines[Engines.TRADITIONAL_CHINESE_GLOBAL].Replace("{text}", uiTabControlMenu1.SelectedTab.Controls["uiTextBox1"].Text));
                 }

@@ -8,9 +8,11 @@ using System;
 using System.Drawing;
 using Sunny.UI;
 using IronPython.Hosting;
-using Microsoft.Scripting.Hosting;
 using System.IO;
 using System.Windows.Forms;
+using System.Runtime.InteropServices;
+using System.Threading;
+using System.Diagnostics;
 
 namespace IDE
 {
@@ -282,7 +284,7 @@ namespace IDE
         {
             var engine = Python.CreateEngine();
             var paths = engine.GetSearchPaths();
-            paths.Add(Environment.GetEnvironmentVariable("PATH").Split(';').FindIfContains("python").FindIfNotContains("Scripts")+"\\Libs");
+            paths.Add(Environment.GetEnvironmentVariable("PATH").Split(';').FindFirstIfContains("python").FindIfNotContains("Scripts") + "\\Libs");
             engine.SetSearchPaths(paths);
             dynamic script = engine.CreateScriptSourceFromFile(Path.Combine(pythonFilePath), Encoding.UTF8, Microsoft.Scripting.SourceCodeKind.File).Execute();
             dynamic scope = engine.GetSysModule().GetVariable("modules")["<module>"].__dict__;
@@ -358,7 +360,7 @@ namespace IDE
         /// 指示指定的Unicode字符是香属于字母或十进制数字类别。
         /// </summary>
         /// <param name="c">要计算的Unicode字符。</param>
-        /// <returns>如果<paramref name="c"/>是字母或十进制数，则为true; 否则为false。</returns>
+        /// <returns>如果<paramref name="c"/>是字母或十进制数，则为<see langword="true"/>; 否则为<see langword="false"/>。</returns>
         public static bool IsLetterOrDigit(this char c)
         {
             return char.IsLetterOrDigit(c) || c == '_';
@@ -368,7 +370,7 @@ namespace IDE
         /// 检查指定字符串所对应的字体是否存在。
         /// </summary>
         /// <param name="fontName">字体名称</param>
-        /// <returns>如果计算机中存在<paramref name="fontName"/>，则为true；否则为false。</returns>
+        /// <returns>如果计算机中存在<paramref name="fontName"/>，则为<see langword="true"/>；否则为<see langword="false"/>。</returns>
         public static bool FontExists(this string fontName)
         {
             using var font = new Font(fontName, 12);
@@ -403,7 +405,7 @@ namespace IDE
         /// <returns><code>string.split('\n')的值。</code></returns>
         public static string[] GetLines(this string str)
         {
-            return str.Split('\n');
+            return str.Split('\n', '\r');
         }
 
         /// <summary>
@@ -415,7 +417,13 @@ namespace IDE
             ctrl.Enabled = true;
         }
 
-        public static string FindIfContains(this string[] array, string findstr)
+        /// <summary>
+        /// 在字符串数组中查找第一个包含指定字符串的项。
+        /// </summary>
+        /// <param name="array">指定字符串数组</param>
+        /// <param name="findstr">需要查找的字符串</param>
+        /// <returns>若找到，返回项值；否则返回<see cref="string.Empty"/>。</returns>
+        public static string FindFirstIfContains(this string[] array, string findstr)
         {
             foreach (var item in array)
             {
@@ -427,6 +435,12 @@ namespace IDE
             return string.Empty;
         }
 
+        /// <summary>
+        /// 在字符串中查找不包含指定字符串。
+        /// </summary>
+        /// <param name="str">指定查找字符串</param>
+        /// <param name="findstr">需要查找的字符串</param>
+        /// <returns>若找到，返回<paramref name="str"/>；否则返回<see cref="string.Empty"/>。</returns>
         public static string FindIfNotContains(this string str, string findstr)
         {
             if (!str.Contains(findstr))
@@ -435,6 +449,69 @@ namespace IDE
             }
             return string.Empty;
         }
+
+        /// <summary>
+        /// 确定指定项是否位于<see cref="ListView.ListViewItemCollection"/>集合内。
+        /// </summary>
+        /// <param name="lc"></param>
+        /// <param name="item">需要确定的项</param>
+        /// <param name="sign">扩展标志</param>
+        /// <returns>如果集合中包含该项，则为<see langword="true"/>；否则为<see langword="false"/>。</returns>
+        public static bool Contains(this ListView.ListViewItemCollection lc, ListViewItem item, int sign)
+        {
+            if (sign <= -1) { return lc.Contains(item); }
+            foreach (ListViewItem _item in lc)
+            {
+                if (_item.EqualsPrivate(item))
+                {
+                    return true;
+                }
+            }
+            return false;
+        }
+
+        /// <summary>
+        /// 确定集合内是否全是<see langword="true"/>。
+        /// </summary>
+        /// <returns>如果集合中全是<see langword="true"/>，则为<see langword="true"/>；否则为<see langword="false"/>。</returns>
+        public static bool AllIsTrue(this IEnumerable<bool> e)
+        {
+            foreach (var _item in e)
+            {
+                if (!_item)
+                {
+                    return false;
+                }
+            }
+            return true;
+        }
+
+        /// <summary>
+        /// 尝试将一个<see langword="object"/>类型转换为<typeparamref name="T"/>所指的类型。
+        /// </summary>
+        /// <typeparam name="T">需转换为的类型。</typeparam>
+        /// <param name="o">传入的<see langword="object"/>类型。</param>
+        /// <returns>转换的类型。</returns>
+        public static T TryConvertToAny<T>(this object o)
+        {
+            var result = Convert.ChangeType(o, typeof(T));
+            return (T)result;
+        }
+
+        private static bool EqualsPrivate(this ListViewItem item, ListViewItem item1)
+        {
+            bool[] signs = { false, false, false };
+            if (item.Text == item1.Text) { signs[0] = true; }
+            if (item.ImageIndex == item1.ImageIndex) { signs[1] = true; }
+            if (item.SubItems.Equals(item1.SubItems)) { signs[2] = true; }
+            if (signs.AllIsTrue()) { return true; }
+            return false;
+        }
+    }
+
+    public class OverridedMethods
+    {
+
     }
 
     public class Dictionaries
@@ -480,8 +557,234 @@ namespace IDE
                 {"RuntimeException", "运行时错误"},
                 {"ImportException", "导入模块失败"},
                 {"ModuleNotFoundException", "模块未找到"},
-                {"KeyboardInterrupt", "用户中断执行程序s"}
+                {"KeyboardInterrupt", "用户中断执行程序"}
             };
         }
+    }
+
+    public class PythonErrorAnalyzer
+    {
+        //public static Dictionary<string, object> AnalyzePythonFile(string content)
+        //{
+        //    //var result = new Dictionary<string, object>();
+        //    //if (content.IsNullOrEmpty()) {
+        //    //    return result;
+        //    //}
+        //    //Directory.CreateDirectory(Path.GetTempPath() + "\\RYCB\\IDE\\code_analyze\\");
+        //    //var filePath = Path.GetTempPath() + "\\RYCB\\IDE\\code_analyze\\" + (content.Substring(0, 5).Contains(" ") ? "abcdefghijk" : content.Substring(0, 5)).GetHashCode() + ".py";
+        //    //File.WriteAllText(filePath, content);
+
+        //    //// 使用 python 解释器运行文件，并获取输出结果和错误信息
+        //    //var psi = new ProcessStartInfo("python", $"-m py_compile \"{filePath}\"")
+        //    //{
+        //    //    RedirectStandardOutput = true,
+        //    //    RedirectStandardError = true,
+        //    //    CreateNoWindow = true,
+        //    //    UseShellExecute = false
+        //    //};
+
+        //    //var process = new Process
+        //    //{
+        //    //    StartInfo = psi
+        //    //};
+        //    //var succeeded = process.Start();
+
+        //    //var output = process.StandardOutput.ReadToEnd();
+        //    //var error = process.StandardError.ReadToEnd();
+
+        //    //if (!string.IsNullOrEmpty(error))
+        //    //{
+        //    //    // 如果出现错误，处理错误信息，提取错误行号和错误描述
+        //    //    var errorType = new List<string>();
+        //    //    var errorLines = new List<int>();
+        //    //    var errorDescriptions = new List<string>();
+
+        //    //    var errorLinesString = error.Split(new[] { "\r\n", "\r", "\n" }, StringSplitOptions.RemoveEmptyEntries);
+        //    //    foreach (var lineString in errorLinesString)
+        //    //    {
+
+        //    //    }
+
+        //    //    result["Type"] = "exceptions";
+        //    //    result["Line"] = errorLines;
+        //    //    result["Description"] = errorDescriptions;
+        //    //}
+        //    //else
+        //    //{
+        //    //    // 如果没有错误，返回空结果
+        //    //    result["Type"] = "success";
+        //    //}
+
+        //    //return result;
+        //}
+    }
+
+    public class PythonSyntaxErrorChecker
+    {
+        public static string SyntaxCheck(string pyhonScript)
+        {
+            pyhonScript = pyhonScript.Replace("\r", "").Replace("\t", "    ");
+            var lines = pyhonScript.Split('\n');
+            int LastSpaceCount = 0, NextSpaceCount = 0, CurrentCount = 0;
+            string temStart = "", temEnd = "", msg = "";
+            var MustEqual = false;
+            for (var i = 0; i < lines.Length; i++)
+            {
+                CurrentCount = SpaceCount(lines[i]);
+                temEnd = lines[i].TrimEnd(new char[] { ' ' });
+                temStart = lines[i].TrimStart(new char[] { ' ' });
+                if (string.IsNullOrEmpty(temEnd))
+                    continue;
+                if (temStart.StartsWith("#"))
+                    continue;
+
+                if (CurrentCount < NextSpaceCount)
+                {
+                    if (temStart.StartsWith("def ") || temStart.StartsWith("class "))
+                    {
+                        MustEqual = true;
+                        NextSpaceCount = 4;
+                    }
+                    else if (temStart.StartsWith("else:") || temStart.StartsWith("else ") || temStart.StartsWith("elif "))
+                    {
+                        if (CurrentCount < NextSpaceCount - 4 && MustEqual)
+                        {
+                            msg += "|Ls-" + (i + 1) + "-Le|" + "|Ds-expect new line\r\n-De|";
+                        }
+                    }
+                    else if (MustEqual)
+                        msg += "|Ls-" + (i + 1) + "-Le|" + "|Ds-expect new line\r\n-De|";
+                }
+                else if (CurrentCount > NextSpaceCount)
+                {
+                    msg += "|Ls-" + (i + 1) + "-Le|" + "|Ds-unexpected indent\r\n-De|";
+                }
+                else if (CurrentCount == NextSpaceCount)
+                {
+                    MustEqual = false;
+                }
+                if (temStart.StartsWith("def ") || temStart.StartsWith("class "))
+                {
+                    if (CurrentCount != 0)
+                        msg += "|Ls-" + (i + 1) + "-Le|" + "|Ds-unexpected space in front of the line\r\n-De|";
+                    if (!temEnd.EndsWith(":"))
+                    {
+                        msg += "|Ls-" + (i + 1) + "-Le|" + "|Ds-should end with ':'\r\n-De|";
+                    }
+                    MustEqual = true;
+                    NextSpaceCount = 4;
+                }
+                else if (temEnd.EndsWith(":"))
+                {
+                    MustEqual = true;
+                    NextSpaceCount = CurrentCount + 4;
+                }
+                else if (CurrentCount != 0)
+                {
+                    NextSpaceCount = CurrentCount;
+                }
+                LastSpaceCount = CurrentCount;
+            }
+            if (msg == "")
+                msg = "Find No Error.";
+            return msg;
+        }
+
+
+        static int SpaceCount(string line)
+        {
+            for (var i = 0; i < line.Length; i++)
+            {
+                if (line[i] != ' ')
+                    return i;
+            }
+            return 0;
+        }
+    }
+
+    public static class SetWindow
+    {
+        public static IntPtr intPtr;         //第三方应用窗口的句柄
+
+        /// <summary>
+        /// 调整第三方应用窗体大小
+        /// </summary>
+        public static void ResizeWindow()
+        {
+            ShowWindow(intPtr, 0);  //先将窗口隐藏
+            ShowWindow(intPtr, 3);  //再将窗口最大化，可以让第三方窗口自适应容器的大小
+        }
+
+        /// <summary>
+        /// 循环查找第三方窗体
+        /// </summary>
+        /// <returns></returns>
+        public static bool FindWindow(string formName)
+        {
+            for (var i = 0; i < 100; i++)
+            {
+                //按照窗口标题查找Python窗口
+                var vHandle = FindWindow(null, formName);
+                if (vHandle == IntPtr.Zero)
+                {
+                    Thread.Sleep(100);  //每100ms查找一次，直到找到，最多查找10s
+                    continue;
+                }
+                else      //找到返回True
+                {
+                    intPtr = vHandle;
+                    return true;
+                }
+            }
+            intPtr = IntPtr.Zero;
+            return false;
+        }
+
+
+        /// <summary>
+        /// 将第三方窗体嵌入到容器内
+        /// </summary>
+        /// <param name="hWndNewParent">父容器句柄</param>
+        /// <param name="windowName">窗体名</param>
+        public static void SetParent(IntPtr hWndNewParent, string windowName)
+        {
+            ShowWindow(intPtr, 0);                 //先将窗体隐藏，防止出现闪烁
+            SetParent(intPtr, hWndNewParent);      //将第三方窗体嵌入父容器                    
+            Thread.Sleep(100);                      //略加延时
+            ShowWindow(intPtr, 3);                 //让第三方窗体在容器中最大化显示
+            RemoveWindowTitle(intPtr);             // 去除窗体标题
+        }
+
+
+        /// <summary>
+        /// 去除窗体标题
+        /// </summary>
+        /// <param name="vHandle">窗口句柄</param>
+        public static void RemoveWindowTitle(IntPtr vHandle)
+        {
+            var style = GetWindowLong(vHandle, -16);
+            style &= ~0x00C00000;
+            SetWindowLong(vHandle, -16, style);
+        }
+
+
+        #region API 需要using System.Runtime.InteropServices;
+
+        [DllImport("user32.dll ", EntryPoint = "SetParent")]
+        private static extern IntPtr SetParent(IntPtr hWndChild, IntPtr hWndNewParent);   //将外部窗体嵌入程序
+
+        [DllImport("user32.dll")]
+        public static extern IntPtr FindWindow(string lpszClass, string lpszWindow);      //按照窗体类名或窗体标题查找窗体
+
+        [DllImport("user32.dll", EntryPoint = "ShowWindow", CharSet = CharSet.Auto)]
+        private static extern int ShowWindow(IntPtr hwnd, int nCmdShow);                  //设置窗体属性
+
+        [DllImport("user32.dll", EntryPoint = "SetWindowLong", CharSet = CharSet.Auto)]
+        public static extern IntPtr SetWindowLong(IntPtr hWnd, int nIndex, long dwNewLong);
+
+        [DllImport("user32.dll", EntryPoint = "GetWindowLong", CharSet = CharSet.Auto)]
+        public static extern long GetWindowLong(IntPtr hWnd, int nIndex);
+
+        #endregion
     }
 }

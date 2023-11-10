@@ -22,7 +22,7 @@ public partial class TBox : UIForm
         DiskModel.Text = diskInfo.model;
     }
 
-    private void ChangeStyle(object sender, System.EventArgs e)
+    private void ChangeStyle(object sender, EventArgs e)
     {
         uiStyleManager1.Style = Styles[new Random().Next(Styles.Length)];
         if (successful)

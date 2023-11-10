@@ -12,6 +12,8 @@ Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "Solution Items", "Solution 
 EndProject
 Project("{54435603-DBB4-11D2-8724-00A0C9A8B90C}") = "IDE_Setup", "..\IDE_Setup\IDE_Setup.vdproj", "{5B2F98B2-384D-4E46-83D2-BDFAAB1CDBC6}"
 EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "IDE_Test", "..\IDE_Test\IDE_Test.csproj", "{460FB965-4F47-406B-8335-2A5FA5264CBB}"
+EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
 		Debug|Any CPU = Debug|Any CPU
@@ -40,6 +42,18 @@ Global
 		{5B2F98B2-384D-4E46-83D2-BDFAAB1CDBC6}.Release|Any CPU.ActiveCfg = Release
 		{5B2F98B2-384D-4E46-83D2-BDFAAB1CDBC6}.Release|x64.ActiveCfg = Release
 		{5B2F98B2-384D-4E46-83D2-BDFAAB1CDBC6}.Release|x86.ActiveCfg = Release
+		{460FB965-4F47-406B-8335-2A5FA5264CBB}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{460FB965-4F47-406B-8335-2A5FA5264CBB}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{460FB965-4F47-406B-8335-2A5FA5264CBB}.Debug|x64.ActiveCfg = Debug|Any CPU
+		{460FB965-4F47-406B-8335-2A5FA5264CBB}.Debug|x64.Build.0 = Debug|Any CPU
+		{460FB965-4F47-406B-8335-2A5FA5264CBB}.Debug|x86.ActiveCfg = Debug|Any CPU
+		{460FB965-4F47-406B-8335-2A5FA5264CBB}.Debug|x86.Build.0 = Debug|Any CPU
+		{460FB965-4F47-406B-8335-2A5FA5264CBB}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{460FB965-4F47-406B-8335-2A5FA5264CBB}.Release|Any CPU.Build.0 = Release|Any CPU
+		{460FB965-4F47-406B-8335-2A5FA5264CBB}.Release|x64.ActiveCfg = Release|Any CPU
+		{460FB965-4F47-406B-8335-2A5FA5264CBB}.Release|x64.Build.0 = Release|Any CPU
+		{460FB965-4F47-406B-8335-2A5FA5264CBB}.Release|x86.ActiveCfg = Release|Any CPU
+		{460FB965-4F47-406B-8335-2A5FA5264CBB}.Release|x86.Build.0 = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE

@@ -12,7 +12,10 @@ namespace IDE
     static class Program
     {
         internal static readonly string STARTUP_PATH = Application.StartupPath;
+        internal static bool isInitialized = false;
         private static Form class_;
+        private static bool isLightEdit = false;
+        private static string param = "";
         private static readonly Stopwatch w = new();
         private static readonly Stopwatch startTimer = new();
         private static int CrashAttempts = 0;
@@ -36,15 +39,12 @@ namespace IDE
             w.Start();
             startTimer.Start();
 
-            splash = new();
-            splash.Show();
-            splash.metroProgressBar1.PerformStep();
-
             #region 判断参数
             switch (args.Length)
             {
                 case 1:
-                    class_ = new Main(args[0]);
+                    isLightEdit = true;
+                    param = args[0];
                     break;
                 case 2:
                     switch (args[0])
@@ -53,7 +53,8 @@ namespace IDE
                         case "-le":
                         case "-lightedit":
                         case "-LightEdit":
-                            class_ = new Main(args[1]);
+                            isLightEdit = true;
+                            param = args[1];
                             break;
                         case "-XSHD":
                         case "-xshd":
@@ -64,10 +65,14 @@ namespace IDE
                     }
                     break;
                 default:
-                    class_ = new Main();
                     break;
             }
             #endregion
+
+            splash = new(isLightEdit);
+            splash.Show();
+            if (param == "") { class_ = new Main(); }
+            else { class_ = new Main(param); }
 
             splash.metroProgressBar1.PerformStep();
             GlobalSettings.language = reConf.Read("General", "Language", "zh-CN");
@@ -99,9 +104,11 @@ namespace IDE
                 End();
             }
             #endregion 
+
+            isInitialized = true;
         }
 
-        private static void Application_ThreadException(object sender, System.Threading.ThreadExceptionEventArgs e)
+        private static void Application_ThreadException(object sender, ThreadExceptionEventArgs e)
         {
             var ex = e.Exception;
             IDE.Main.LOGGER.WriteErrLog(ex, EnumMsgLevel.ERROR, EnumPort.CLIENT);
@@ -129,7 +136,7 @@ namespace IDE
 
         private static void End(Exception ex)
         {
-            if (CrashAttempts == GlobalSettings.CrashAttempts - 1)
+            if (CrashAttempts == GlobalSettings.CrashAttempts - 1 || !isInitialized)
             {
                 IDE.Main.LOGGER.WriteLog("RYCB Editor 已崩溃。崩溃尝试次数：" + (CrashAttempts + 1).ToString());
 
@@ -137,7 +144,7 @@ namespace IDE
                 var time = w.Elapsed;
                 var filePath = Environment.GetFolderPath(Environment.SpecialFolder.ApplicationData) + "\\RYCB\\IDE\\protect\\time";
                 File.WriteAllText(filePath, time.TotalSeconds.ToString());
-                CrashHandler crashHandler = new(ex, "D:\\Desktop\\");
+                CrashHandler crashHandler = new(ex, Environment.GetFolderPath(Environment.SpecialFolder.Desktop)); ;
                 crashHandler.CollectCrashInfo();
                 crashHandler.WriteDumpFile();
                 ErrorAnalysiser EA = new(ex);
@@ -148,7 +155,7 @@ namespace IDE
             else
             {
                 CrashAttempts++;
-                IDE.Main.LOGGER.WriteLog($"捕获异常：{{Type={ex.GetType()}, Message={ex.Message}}}\t尝试次数：{CrashAttempts}(距离崩溃还剩{GlobalSettings.CrashAttempts - CrashAttempts}次异常)");
+                IDE.Main.LOGGER.WriteLog($"捕获异常：{{Type={ex.GetType()}, Message={ex.Message}}}\t尝试次数：{CrashAttempts}(距离崩溃还剩{GlobalSettings.CrashAttempts - CrashAttempts}次异常)", EnumMsgLevel.FATAL, EnumPort.CLIENT, EnumModule.MAIN); ;
             }
         }
 

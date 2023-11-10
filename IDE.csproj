@@ -34,7 +34,7 @@
     <BootstrapperEnabled>true</BootstrapperEnabled>
   </PropertyGroup>
   <PropertyGroup Condition=" '$(Configuration)|$(Platform)' == 'Debug|AnyCPU' ">
-    <PlatformTarget>AnyCPU</PlatformTarget>
+    <PlatformTarget>x64</PlatformTarget>
     <DebugSymbols>true</DebugSymbols>
     <DebugType>full</DebugType>
     <Optimize>false</Optimize>
@@ -54,6 +54,7 @@
     <ErrorReport>prompt</ErrorReport>
     <WarningLevel>4</WarningLevel>
     <LangVersion>preview</LangVersion>
+    <Prefer32Bit>false</Prefer32Bit>
   </PropertyGroup>
   <PropertyGroup>
     <ApplicationIcon>IDE.ico</ApplicationIcon>
@@ -109,6 +110,9 @@
     <Reference Include="IronPython.Wpf, Version=3.4.1.0, Culture=neutral, PublicKeyToken=7f709c5b713576e1, processorArchitecture=MSIL">
       <HintPath>packages\IronPython.3.4.1\lib\net462\IronPython.Wpf.dll</HintPath>
       <Private>False</Private>
+    </Reference>
+    <Reference Include="Markdig, Version=0.33.0.0, Culture=neutral, processorArchitecture=MSIL">
+      <HintPath>packages\Markdig.0.33.0\lib\net462\Markdig.dll</HintPath>
     </Reference>
     <Reference Include="MessagePack, Version=2.3.0.0, Culture=neutral, PublicKeyToken=b4a0369545f0a1be, processorArchitecture=MSIL">
       <HintPath>packages\MessagePack.2.3.85\lib\netstandard2.0\MessagePack.dll</HintPath>
@@ -327,6 +331,7 @@
       <Private>False</Private>
     </Reference>
     <Reference Include="Microsoft.VisualBasic" />
+    <Reference Include="Microsoft.VisualBasic.Compatibility" />
     <Reference Include="Microsoft.VisualStudio.CoreUtility, Version=17.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a, processorArchitecture=MSIL">
       <HintPath>packages\Microsoft.VisualStudio.CoreUtility.17.3.198\lib\net472\Microsoft.VisualStudio.CoreUtility.dll</HintPath>
       <Private>False</Private>
@@ -399,6 +404,15 @@
       <HintPath>packages\Microsoft.VisualStudio.Validation.17.0.64\lib\netstandard2.0\Microsoft.VisualStudio.Validation.dll</HintPath>
       <Private>False</Private>
     </Reference>
+    <Reference Include="Microsoft.Web.WebView2.Core, Version=1.0.2045.28, Culture=neutral, PublicKeyToken=2a8ab48044d2601e, processorArchitecture=MSIL">
+      <HintPath>packages\Microsoft.Web.WebView2.1.0.2045.28\lib\net45\Microsoft.Web.WebView2.Core.dll</HintPath>
+    </Reference>
+    <Reference Include="Microsoft.Web.WebView2.WinForms, Version=1.0.2045.28, Culture=neutral, PublicKeyToken=2a8ab48044d2601e, processorArchitecture=MSIL">
+      <HintPath>packages\Microsoft.Web.WebView2.1.0.2045.28\lib\net45\Microsoft.Web.WebView2.WinForms.dll</HintPath>
+    </Reference>
+    <Reference Include="Microsoft.Web.WebView2.Wpf, Version=1.0.2045.28, Culture=neutral, PublicKeyToken=2a8ab48044d2601e, processorArchitecture=MSIL">
+      <HintPath>packages\Microsoft.Web.WebView2.1.0.2045.28\lib\net45\Microsoft.Web.WebView2.Wpf.dll</HintPath>
+    </Reference>
     <Reference Include="Microsoft.Win32.Registry, Version=5.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a, processorArchitecture=MSIL">
       <HintPath>packages\Microsoft.Win32.Registry.5.0.0\lib\net461\Microsoft.Win32.Registry.dll</HintPath>
       <Private>False</Private>
@@ -414,6 +428,15 @@
     </Reference>
     <Reference Include="PresentationCore" />
     <Reference Include="PresentationFramework" />
+    <Reference Include="SmileWei.EmbeddedApp">
+      <HintPath>bin\Debug\Libs\SmileWei.EmbeddedApp.dll</HintPath>
+      <Private>False</Private>
+    </Reference>
+    <Reference Include="SmileWei.EmbeddedEXE">
+      <HintPath>bin\Debug\Libs\SmileWei.EmbeddedEXE.dll</HintPath>
+      <Private>False</Private>
+    </Reference>
+    <Reference Include="stdole, Version=7.0.3300.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a" />
     <Reference Include="StreamJsonRpc, Version=2.12.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a, processorArchitecture=MSIL">
       <HintPath>packages\StreamJsonRpc.2.12.27\lib\netstandard2.0\StreamJsonRpc.dll</HintPath>
       <Private>False</Private>
@@ -598,6 +621,7 @@
       <HintPath>packages\System.ValueTuple.4.5.0\lib\net47\System.ValueTuple.dll</HintPath>
       <Private>False</Private>
     </Reference>
+    <Reference Include="System.Web" />
     <Reference Include="System.Web.Extensions" />
     <Reference Include="System.Xaml" />
     <Reference Include="System.Xml.Linq" />
@@ -650,6 +674,24 @@
     <Compile Include="Utils\Boxes\ErrorMessageBox\ErrorMessageBox.Initializer.cs">
       <SubType>Form</SubType>
     </Compile>
+    <Compile Include="Utils\Boxes\MsgInIDE\MsgBox.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="Utils\Boxes\MsgInIDE\MsgBox.Designer.cs">
+      <DependentUpon>MsgBox.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Utils\Boxes\PlugInHandler\PlugInHandlerMainWindow.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="Utils\Boxes\PlugInHandler\PlugInHandlerMainWindow.Designer.cs">
+      <DependentUpon>PlugInHandlerMainWindow.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Utils\Boxes\WaitingBar\WBBox.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="Utils\Boxes\WaitingBar\WBBox.Designer.cs">
+      <DependentUpon>WBBox.cs</DependentUpon>
+    </Compile>
     <Compile Include="Utils\RYCBCodeSense\CodeSenseBase.cs" />
     <Compile Include="Settings\CodeSettings.cs">
       <SubType>Form</SubType>
@@ -682,8 +724,8 @@
     <Compile Include="Help\LicenseAndCopyrights.Designer.cs">
       <DependentUpon>LicenseAndCopyrights.cs</DependentUpon>
     </Compile>
-    <Compile Include="Utils\CrashHandler.cs" />
-    <Compile Include="Utils\ErrorAnalysiser.cs" />
+    <Compile Include="Utils\CrashHanding\CrashHandler.cs" />
+    <Compile Include="Utils\CrashHanding\ErrorAnalysiser.cs" />
     <Compile Include="Utils\Boxes\ErrorMessageBox\ErrorMessageBox.cs">
       <SubType>Form</SubType>
     </Compile>
@@ -707,11 +749,11 @@
     <Compile Include="Utils\Boxes\MessageBoxEX.cs" />
     <Compile Include="Program.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
-    <Compile Include="Utils\Boxes\NewFile\NewFile.cs">
+    <Compile Include="Utils\Boxes\NewFileBox\NewFileBox.cs">
       <SubType>Form</SubType>
     </Compile>
-    <Compile Include="Utils\Boxes\NewFile\NewFile.Designer.cs">
-      <DependentUpon>NewFile.cs</DependentUpon>
+    <Compile Include="Utils\Boxes\NewFileBox\NewFileBox.Designer.cs">
+      <DependentUpon>NewFileBox.cs</DependentUpon>
     </Compile>
     <Compile Include="Utils\RYCBCodeSense\RYCBCodeSense.cs" />
     <Compile Include="Utils\Boxes\RYCBSearchPanel.cs">
@@ -778,8 +820,14 @@
     <EmbeddedResource Include="Utils\Boxes\ErrorMessageBox\ErrorMessageBox.resx">
       <DependentUpon>ErrorMessageBox.cs</DependentUpon>
     </EmbeddedResource>
-    <EmbeddedResource Include="Utils\Boxes\NewFile\NewFile.resx">
-      <DependentUpon>NewFile.cs</DependentUpon>
+    <EmbeddedResource Include="Utils\Boxes\MsgInIDE\MsgBox.resx">
+      <DependentUpon>MsgBox.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Utils\Boxes\NewFileBox\NewFileBox.resx">
+      <DependentUpon>NewFileBox.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Utils\Boxes\PlugInHandler\PlugInHandlerMainWindow.resx">
+      <DependentUpon>PlugInHandlerMainWindow.cs</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="Utils\Boxes\RYCBSearchPanel.resx">
       <DependentUpon>RYCBSearchPanel.cs</DependentUpon>
@@ -789,6 +837,9 @@
     </EmbeddedResource>
     <EmbeddedResource Include="Utils\Boxes\TextEnterBox.resx">
       <DependentUpon>TextEnterBox.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Utils\Boxes\WaitingBar\WBBox.resx">
+      <DependentUpon>WBBox.cs</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="XshdVisualEdit\XshdVisualEditor.resx">
       <DependentUpon>XshdVisualEditor.cs</DependentUpon>
@@ -910,7 +961,7 @@
     </Compile>
     <EmbeddedResource Include="Python.xshd" />
     <EmbeddedResource Include="Py-CN.xshd" />
-    <Compile Include="Utils\Boxes\NewFile\NewFile.Initializer.cs">
+    <Compile Include="Utils\Boxes\NewFileBox\NewFileBox.Initializer.cs">
       <SubType>Form</SubType>
     </Compile>
     <EmbeddedResource Include="Settings.xshd" />
@@ -1663,9 +1714,7 @@
       <Install>false</Install>
     </BootstrapperPackage>
   </ItemGroup>
-  <ItemGroup>
-    <Folder Include="Utils\CrashHanding\" />
-  </ItemGroup>
+  <ItemGroup />
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
   <Target Name="EnsureNuGetPackageBuildImports" BeforeTargets="PrepareForBuild">
     <PropertyGroup>
@@ -1683,6 +1732,7 @@
     <Error Condition="!Exists('packages\Microsoft.CodeAnalysis.Analyzers.3.3.2\build\Microsoft.CodeAnalysis.Analyzers.props')" Text="$([System.String]::Format('$(ErrorText)', 'packages\Microsoft.CodeAnalysis.Analyzers.3.3.2\build\Microsoft.CodeAnalysis.Analyzers.props'))" />
     <Error Condition="!Exists('packages\Microsoft.CodeAnalysis.Analyzers.3.3.2\build\Microsoft.CodeAnalysis.Analyzers.targets')" Text="$([System.String]::Format('$(ErrorText)', 'packages\Microsoft.CodeAnalysis.Analyzers.3.3.2\build\Microsoft.CodeAnalysis.Analyzers.targets'))" />
     <Error Condition="!Exists('packages\Avalonia.11.0.3\build\Avalonia.props')" Text="$([System.String]::Format('$(ErrorText)', 'packages\Avalonia.11.0.3\build\Avalonia.props'))" />
+    <Error Condition="!Exists('packages\Microsoft.Web.WebView2.1.0.2045.28\build\Microsoft.Web.WebView2.targets')" Text="$([System.String]::Format('$(ErrorText)', 'packages\Microsoft.Web.WebView2.1.0.2045.28\build\Microsoft.Web.WebView2.targets'))" />
   </Target>
   <Import Project="packages\Microsoft.CodeAnalysis.BannedApiAnalyzers.3.3.2\build\Microsoft.CodeAnalysis.BannedApiAnalyzers.targets" Condition="Exists('packages\Microsoft.CodeAnalysis.BannedApiAnalyzers.3.3.2\build\Microsoft.CodeAnalysis.BannedApiAnalyzers.targets')" />
   <Import Project="packages\Microsoft.VisualStudio.Setup.Configuration.Interop.3.0.4492\build\Microsoft.VisualStudio.Setup.Configuration.Interop.targets" Condition="Exists('packages\Microsoft.VisualStudio.Setup.Configuration.Interop.3.0.4492\build\Microsoft.VisualStudio.Setup.Configuration.Interop.targets')" />
@@ -1693,4 +1743,5 @@
   <Import Project="packages\Avalonia.BuildServices.0.0.29\build\Avalonia.BuildServices.targets" Condition="Exists('packages\Avalonia.BuildServices.0.0.29\build\Avalonia.BuildServices.targets')" />
   <Import Project="packages\Avalonia.11.0.3\build\Avalonia.targets" Condition="Exists('packages\Avalonia.11.0.3\build\Avalonia.targets')" />
   <Import Project="packages\Microsoft.CodeAnalysis.Analyzers.3.3.2\build\Microsoft.CodeAnalysis.Analyzers.targets" Condition="Exists('packages\Microsoft.CodeAnalysis.Analyzers.3.3.2\build\Microsoft.CodeAnalysis.Analyzers.targets')" />
+  <Import Project="packages\Microsoft.Web.WebView2.1.0.2045.28\build\Microsoft.Web.WebView2.targets" Condition="Exists('packages\Microsoft.Web.WebView2.1.0.2045.28\build\Microsoft.Web.WebView2.targets')" />
 </Project>
