@@ -112,6 +112,9 @@ namespace IDE
         {
             var ex = e.Exception;
             IDE.Main.LOGGER.WriteErrLog(ex, EnumMsgLevel.ERROR, EnumPort.CLIENT);
+            ((Main)class_).msgBox.MarkdownText =
+                "## Error\nMessage:" + ex.Message + "\nStacktrace(s):\n==============" + ex.StackTrace + "Error has written into the log file.";
+            ((Main)class_).msgBox.Show();
             End(ex);
         }
 
@@ -119,6 +122,10 @@ namespace IDE
         {
             var ex = e.ExceptionObject as Exception;
             IDE.Main.LOGGER.WriteErrLog(ex, e.IsTerminating ? EnumMsgLevel.FATAL : EnumMsgLevel.ERROR, EnumPort.CLIENT);
+            ((Main)class_).msgBox.MarkdownText =
+    "## Error\nMessage:" + ex.Message + "\nStacktrace(s):\n==============" + ex.StackTrace + "Error has written into the log file.";
+            ((Main)class_).msgBox.Show();
+
             if (e.IsTerminating)
             {
                 End(ex);

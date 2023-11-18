@@ -1,0 +1,7 @@
+[LangSet]
+Name=日本語
+
+[I18n]
+text.errmsgbox.err.type=種類
+text.errmsgbox.err.line=行数
+text.errmsgbox.err.content=例外情報

@@ -54,6 +54,7 @@ namespace IDE
         //    Size Size = new Size(852, 293);
         //}
         private static ErrorMessageBox errMsgBox;
+        internal MsgBox msgBox;
         internal static string XshdFilePath;
         internal static readonly Dictionary<Engines, string> SearchEngines = new()
         {
@@ -79,6 +80,7 @@ namespace IDE
                 InitializeComponent();
                 InitializeTranslation();
                 proc = Process.GetCurrentProcess();
+                msgBox = new(MsgBox.MsgType.Normal, "");
                 Program.splash.metroProgressBar1.PerformStep();
             }
             catch (Exception ex)
