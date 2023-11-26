@@ -93,19 +93,22 @@ namespace IDE
                     case bool _ when sys.Contains("11"):
                     case bool _ when sys.Contains("8"):
                     case bool _ when sys.Contains("8.1"):
+                    {
                         splash.metroProgressBar1.PerformStep();
                         func_1a1(class_);
                         break;
+                    }
                     default:
+                    {
                         MessageBox.Show("您的计算机版本过低，请升级系统后打开此程序！");
                         break;
+                    }
                 }
 
                 End();
             }
             #endregion 
-
-            isInitialized = true;
+            
         }
 
         private static void Application_ThreadException(object sender, ThreadExceptionEventArgs e)
@@ -115,7 +118,7 @@ namespace IDE
             ((Main)class_).msgBox.MarkdownText =
                 "## Error\nMessage:" + ex.Message + "\nStacktrace(s):\n==============" + ex.StackTrace + "Error has written into the log file.";
             ((Main)class_).msgBox.Show();
-            End(ex);
+            
         }
 
         private static void CurrentDomain_UnhandledException(object sender, UnhandledExceptionEventArgs e)
@@ -139,6 +142,7 @@ namespace IDE
             startTime = startTimer.Elapsed;
             splash.metroProgressBar1.PerformStep();
             Application.Run(form);
+            isInitialized = true;
         }
 
         private static void End(Exception ex)

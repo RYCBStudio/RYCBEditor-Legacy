@@ -1,5 +1,7 @@
 using System;
+using System.Threading.Tasks;
 using Markdig;
+using Microsoft.Web.WebView2.Core;
 using Sunny.UI;
 
 namespace IDE;
@@ -9,6 +11,7 @@ public partial class MsgBox : UIForm
     private MsgType CurrentMsgType { get; set; }
     public string MarkdownText { get; set; }
     private string htmlText;
+    private bool webView2Initialized;
 
     public MsgBox(MsgType type, string markdownText)
     {
@@ -25,9 +28,10 @@ public partial class MsgBox : UIForm
         Fatal,
     }
 
-    private async void PreInit(object sender, EventArgs e)
+    
+
+    private void PreInit(object sender, EventArgs e)
     {
-        await webView21.EnsureCoreWebView2Async();
         if (!MarkdownText.IsNullOrEmpty())
         {
             switch (CurrentMsgType)
@@ -52,7 +56,8 @@ public partial class MsgBox : UIForm
     {
         try
         {
-            htmlText = Markdown.ToHtml(MarkdownText);
+            var pipeline = new MarkdownPipelineBuilder().UseAdvancedExtensions().Build();
+            htmlText = Markdown.ToHtml(MarkdownText, pipeline);
             return true;
         }
         catch { return false; }
@@ -60,9 +65,17 @@ public partial class MsgBox : UIForm
 
     private void PostInit(object sender, EventArgs e)
     {
-        if (GetHtmlText())
-        {
-            webView21.CoreWebView2.NavigateToString(htmlText);
-        }
+        
+    }
+
+    private void MsgBox_FormClosing(object sender, System.Windows.Forms.FormClosingEventArgs e)
+    {
+        e.Cancel = true;
+        this.Hide();
+    }
+
+    private void Next(object sender, CoreWebView2InitializationCompletedEventArgs e)
+    {
+        webView2Initialized = true;
     }
 }

@@ -1,15 +1,9 @@
 <?xml version="1.0"?>
-<site-list version="55">
- <site url="aqdyfi.com">
-  <open-in allow-redirect="true">IE11</open-in>
- </site>
+<site-list version="58">
  <site url="cpc.geely.com">
   <open-in allow-redirect="true">IE11</open-in>
  </site>
  <site url="crm.milkt.co.kr">
-  <open-in allow-redirect="true">IE11</open-in>
- </site>
- <site url="ebank.abchina.com.cn">
   <open-in allow-redirect="true">IE11</open-in>
  </site>
  <site url="ebank.fudian-bank.com">
@@ -18,16 +12,10 @@
  <site url="ebank.gx966888.com/pb_jump.html">
   <open-in allow-redirect="true">IE11</open-in>
  </site>
- <site url="ebank.njcb.com.cn">
-  <open-in allow-redirect="true">IE11</open-in>
- </site>
  <site url="ebank.tzbank.com">
   <open-in allow-redirect="true">IE11</open-in>
  </site>
  <site url="erp.samsungfire.com">
-  <open-in allow-redirect="true">IE11</open-in>
- </site>
- <site url="erp.smics.com">
   <open-in allow-redirect="true">IE11</open-in>
  </site>
  <site url="genesis.tempstaff.co.jp">
@@ -50,9 +38,6 @@
   <compat-mode>IE8</compat-mode>
   <open-in allow-redirect="true">IE11</open-in>
  </site>
- <site url="kf.vivo.xyz">
-  <open-in allow-redirect="true">IE11</open-in>
- </site>
  <site url="kms.chamc.com.cn">
   <open-in allow-redirect="true">IE11</open-in>
  </site>
@@ -63,9 +48,6 @@
   <open-in allow-redirect="true">IE11</open-in>
  </site>
  <site url="neis.goe.go.kr">
-  <open-in allow-redirect="true">IE11</open-in>
- </site>
- <site url="oa.zjyy.com.cn">
   <open-in allow-redirect="true">IE11</open-in>
  </site>
  <site url="paperless.quantatw.com">
@@ -80,16 +62,7 @@
  <site url="skynet.skhynix.com">
   <open-in allow-redirect="true">IE11</open-in>
  </site>
- <site url="u-channel.p.samsunglife.kr">
-  <open-in allow-redirect="true">IE11</open-in>
- </site>
- <site url="vpn.gzln.cn">
-  <open-in allow-redirect="true">IE11</open-in>
- </site>
  <site url="whsggzy.wuhu.gov.cn">
-  <open-in allow-redirect="true">IE11</open-in>
- </site>
- <site url="www.abchina.com">
   <open-in allow-redirect="true">IE11</open-in>
  </site>
  <site url="www.apollon.local">
@@ -102,9 +75,6 @@
   <open-in allow-redirect="true">IE11</open-in>
  </site>
  <site url="www.w4c.go.kr">
-  <open-in allow-redirect="true">IE11</open-in>
- </site>
- <site url="yc.xygmed.com">
   <open-in allow-redirect="true">IE11</open-in>
  </site>
  <site url="zcoas.zoomx.net/zcoas">
@@ -129,9 +99,6 @@
  <site url="http://ipos.naivee.com/ipos">
   <open-in allow-redirect="true">IE11</open-in>
  </site>
- <site url="http://js.cisc.cn">
-  <open-in allow-redirect="true">IE11</open-in>
- </site>
  <site url="http://jzsgl.coc.gov.cn">
   <open-in allow-redirect="true">IE11</open-in>
  </site>
@@ -141,19 +108,13 @@
  <site url="http://oa.crsg.cn:8888/portal">
   <open-in allow-redirect="true">IE11</open-in>
  </site>
- <site url="http://oa.csalc.cn/oa">
-  <open-in allow-redirect="true">IE11</open-in>
- </site>
  <site url="http://oa.djtu.edu.cn">
-  <open-in allow-redirect="true">IE11</open-in>
- </site>
- <site url="http://oa.linuo.com">
   <open-in allow-redirect="true">IE11</open-in>
  </site>
  <site url="http://oa.ranken.com.cn/services">
   <open-in allow-redirect="true">IE11</open-in>
  </site>
- <site url="http://oa.zgysqy.com:8888/portal">
+ <site url="http://oa.zgysqy.com:8888/services">
   <open-in allow-redirect="true">IE11</open-in>
  </site>
  <site url="http://pmzq.auction.artron.net/pmzq/christies2012">
@@ -177,17 +138,8 @@
  <site url="https://corporatebank.bjrcb.com">
   <open-in allow-redirect="true">IE11</open-in>
  </site>
- <site url="https://corporatebank.cib.com.cn">
-  <open-in allow-redirect="true">IE11</open-in>
- </site>
  <site url="https://corporbank-simp.icbc.com.cn">
   <compat-mode>IE8</compat-mode>
-  <open-in allow-redirect="true">IE11</open-in>
- </site>
- <site url="https://corporbank.abchina.com">
-  <open-in allow-redirect="true">IE11</open-in>
- </site>
- <site url="https://corporbank.abchina.com.cn">
   <open-in allow-redirect="true">IE11</open-in>
  </site>
  <site url="https://corporbank.icbc.com.cn">
@@ -199,32 +151,11 @@
  <site url="https://dm.ynby.cn">
   <open-in allow-redirect="true">IE11</open-in>
  </site>
- <site url="https://e.cebbank.com">
-  <compat-mode>IE7</compat-mode>
-  <open-in allow-redirect="true">IE11</open-in>
- </site>
- <site url="https://ebank.abchina.com">
-  <open-in allow-redirect="true">IE11</open-in>
- </site>
- <site url="https://ebank.cebbank.com">
-  <open-in allow-redirect="true">IE11</open-in>
- </site>
  <site url="https://ebank.sdb.com.cn">
   <compat-mode>IE7</compat-mode>
   <open-in allow-redirect="true">IE11</open-in>
  </site>
  <site url="https://ebank.ynrcc.com">
-  <open-in allow-redirect="true">IE11</open-in>
- </site>
- <site url="https://ebanks.bankofshanghai.com">
-  <compat-mode>IE8</compat-mode>
-  <open-in allow-redirect="true">IE11</open-in>
- </site>
- <site url="https://ebanks.bosc.cn">
-  <compat-mode>IE8</compat-mode>
-  <open-in allow-redirect="true">IE11</open-in>
- </site>
- <site url="https://etax.beijing.chinatax.gov.cn">
   <open-in allow-redirect="true">IE11</open-in>
  </site>
  <site url="https://firmadigital.scba.gov.ar">
@@ -245,16 +176,7 @@
  <site url="https://ibank.bankofdl.com">
   <open-in allow-redirect="true">IE11</open-in>
  </site>
- <site url="https://ibsbjstar.ccb.com.cn">
-  <open-in allow-redirect="true">IE11</open-in>
- </site>
- <site url="https://intra.gov.kr">
-  <open-in allow-redirect="true">IE11</open-in>
- </site>
  <site url="https://jy.sdada.edu.cn">
-  <open-in allow-redirect="true">IE11</open-in>
- </site>
- <site url="https://kasp.nanfu.com">
   <open-in allow-redirect="true">IE11</open-in>
  </site>
  <site url="https://klef.gbe.kr">
@@ -269,16 +191,7 @@
  <site url="https://klef.sen.go.kr">
   <open-in allow-redirect="true">IE11</open-in>
  </site>
- <site url="https://mybank.icbc.com.cn">
-  <open-in allow-redirect="true">IE11</open-in>
- </site>
  <site url="https://os.ezca.org">
-  <open-in allow-redirect="true">IE11</open-in>
- </site>
- <site url="https://perbank.abchina.com">
-  <open-in allow-redirect="true">IE11</open-in>
- </site>
- <site url="https://personalbank.cib.com.cn">
   <open-in allow-redirect="true">IE11</open-in>
  </site>
  <site url="https://rfid.chowtaifook.sz">
@@ -294,25 +207,10 @@
   <compat-mode>IE8</compat-mode>
   <open-in allow-redirect="true">IE11</open-in>
  </site>
- <site url="https://uni.agrix.go.kr">
-  <open-in allow-redirect="true">IE11</open-in>
- </site>
  <site url="https://v.beeb.com.cn">
   <open-in allow-redirect="true">IE11</open-in>
  </site>
- <site url="https://www.abchina.com.cn">
-  <open-in allow-redirect="true">IE11</open-in>
- </site>
- <site url="https://www.gvpn.go.kr">
-  <open-in allow-redirect="true">IE11</open-in>
- </site>
- <site url="https://www.plexonline.com">
-  <open-in allow-redirect="true">IE11</open-in>
- </site>
  <site url="https://www.zj96596.com">
-  <open-in allow-redirect="true">IE11</open-in>
- </site>
- <site url="https://zq.zj96596.com">
   <open-in allow-redirect="true">IE11</open-in>
  </site>
 </site-list>

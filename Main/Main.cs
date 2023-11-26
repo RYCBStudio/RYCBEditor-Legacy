@@ -231,7 +231,6 @@ namespace IDE
                     await webView.ExecuteScriptAsync($"document.body.style.foregroundColor = '{tabPage1.ForeColor.ToHTML()}';");
                     webView.CoreWebView2.NavigateToString(mdDoc);
                     textEditor.Text = mdDoc;
-                    
                 }
             }
         }
