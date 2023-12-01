@@ -1,5 +1,7 @@
 using System;
 using System.Threading.Tasks;
+using System.Windows.Controls;
+using System.Windows.Forms;
 using Markdig;
 using Microsoft.Web.WebView2.Core;
 using Sunny.UI;
@@ -8,16 +10,37 @@ namespace IDE;
 public partial class MsgBox : UIForm
 {
 
-    private MsgType CurrentMsgType { get; set; }
-    public string MarkdownText { get; set; }
+    public MsgType CurrentMsgType
+    {
+        get; set;
+    }
+    public string MarkdownText
+    {
+        get; set;
+    }
+    public Exception CurrentException
+    {
+        get; set;
+    }
     private string htmlText;
     private bool webView2Initialized;
+    public Form MainForm;
 
-    public MsgBox(MsgType type, string markdownText)
+
+    public MsgBox(MsgType type, string markdownText, Form form)
     {
         InitializeComponent();
         CurrentMsgType = type;
         MarkdownText = markdownText;
+        MainForm = form;
+    }
+
+    public MsgBox(Exception ex, Form form, MsgType type = MsgType.Error)
+    {
+        InitializeComponent();
+        CurrentException = ex;
+        CurrentMsgType = type;
+        MainForm = form;
     }
 
     public enum MsgType
@@ -28,11 +51,47 @@ public partial class MsgBox : UIForm
         Fatal,
     }
 
-    
+    private void webBrowser1_DocumentCompleted(object sender, WebBrowserDocumentCompletedEventArgs e)
+    {
+        // 设置字体样式和大小
+        webBrowser1.Document.Body.SetAttribute($"style", "font-family: Microsoft YaHei UI; font-size: 14px;");
+    }
 
     private void PreInit(object sender, EventArgs e)
     {
-        if (!MarkdownText.IsNullOrEmpty())
+        if (CurrentException is not null)
+        {
+            var StackTrace = CurrentException.StackTrace.GetLines();
+            var ExName = CurrentException.GetType().ToString();
+            var ExMsg = CurrentException.Message;
+            var Msg_Pre =
+                $"""
+                <h3>Error</h3> 
+                <hr />
+                <h4>Type:{ExName}</h4>
+                <h4>Message:{ExMsg}</h4>
+                <h4>Stacktrace(s):</h4>
+                """;
+            var Msg_Mid = "<p>";
+            foreach (var item in StackTrace)
+            {
+                Msg_Mid += item;
+                Msg_Mid += "<br />";
+            }
+            Msg_Mid += "</p>";
+            var Msg_Suf =
+                """
+                <h3>Error has been written into the log file.</h3>
+                """;
+            var Msg = 
+                $"""
+                {Msg_Pre}
+                {Msg_Mid}
+                {Msg_Suf}
+                """;
+            htmlText = Msg;
+        }
+        if (!MarkdownText.IsNullOrEmpty() || !htmlText.IsNullOrEmpty())
         {
             switch (CurrentMsgType)
             {
@@ -50,12 +109,26 @@ public partial class MsgBox : UIForm
                     break;
             }
         }
+        if (!MainForm.IsNull())
+        {
+            this.StartPosition = FormStartPosition.Manual;
+            this.Location = new(MainForm.Size.Width - this.Width - 25, MainForm.Size.Height - this.Height - 25);
+        }
+        if (GetHtmlText())
+        {
+            webBrowser1.DocumentText = htmlText;
+        }
     }
 
     private bool GetHtmlText()
     {
         try
         {
+            if (MarkdownText.IsNullOrEmpty())
+            {
+                webBrowser1.DocumentText = htmlText;
+                return true;
+            }
             var pipeline = new MarkdownPipelineBuilder().UseAdvancedExtensions().Build();
             htmlText = Markdown.ToHtml(MarkdownText, pipeline);
             return true;
@@ -65,7 +138,10 @@ public partial class MsgBox : UIForm
 
     private void PostInit(object sender, EventArgs e)
     {
-        
+        if (GetHtmlText())
+        {
+            webBrowser1.DocumentText = htmlText;
+        }
     }
 
     private void MsgBox_FormClosing(object sender, System.Windows.Forms.FormClosingEventArgs e)
@@ -74,8 +150,8 @@ public partial class MsgBox : UIForm
         this.Hide();
     }
 
-    private void Next(object sender, CoreWebView2InitializationCompletedEventArgs e)
+    private void HideProcess(object sender, EventArgs e)
     {
-        webView2Initialized = true;
+        webBrowser1.DocumentText = string.Empty;
     }
 }

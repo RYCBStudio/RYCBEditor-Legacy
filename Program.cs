@@ -26,6 +26,17 @@ namespace IDE
         [STAThread]
         static void Main(string[] args)
         {
+            bool createdNew;
+            var CurrentMutexForRE = new Mutex(true, "RYCB_Editor_Running", out createdNew);
+            if (!createdNew)
+            {
+                MessageBox.Show("F You");
+                return;
+            }
+            else
+            {
+                CurrentMutexForRE.ReleaseMutex();
+            }
             GlobalSettings.CrashAttempts = reConf.ReadInt("CrashHanding", "CrashAttempts", 3);
             reConf.Write("Editor", "XshdFilePath", STARTUP_PATH + "\\Config\\Highlighting");
             if (GlobalSettings.CrashAttempts == 0)
@@ -115,8 +126,12 @@ namespace IDE
         {
             var ex = e.Exception;
             IDE.Main.LOGGER.WriteErrLog(ex, EnumMsgLevel.ERROR, EnumPort.CLIENT);
-            ((Main)class_).msgBox.MarkdownText =
-                "## Error\nMessage:" + ex.Message + "\nStacktrace(s):\n==============" + ex.StackTrace + "Error has written into the log file.";
+            ((Main)class_).msgBox.MainForm = class_;
+            //((Main)class_).msgBox.MarkdownText =
+            //    "<h3> Error</h3> <hr /> <p>Message:" + ex.Message + "</p><h5>Stacktrace(s):</h5><p>" + ex.StackTrace + "</p><h3>Error has written into the log file.</h3>";
+            ((Main)class_).msgBox.CurrentMsgType = MsgBox.MsgType.Error;
+            ((Main)class_).msgBox.CurrentException = ex;
+            //((Main)class_).msgBox.Invalidate();
             ((Main)class_).msgBox.Show();
             
         }
@@ -125,9 +140,9 @@ namespace IDE
         {
             var ex = e.ExceptionObject as Exception;
             IDE.Main.LOGGER.WriteErrLog(ex, e.IsTerminating ? EnumMsgLevel.FATAL : EnumMsgLevel.ERROR, EnumPort.CLIENT);
-            ((Main)class_).msgBox.MarkdownText =
-    "## Error\nMessage:" + ex.Message + "\nStacktrace(s):\n==============" + ex.StackTrace + "Error has written into the log file.";
-            ((Main)class_).msgBox.Show();
+            //((Main)class_).msgBox.MarkdownText =
+            //    "## Error <hr /> <h5>Message:" + ex.Message + "</h5><h5>Stacktrace(s):</h5><h5>==============</h5><h5>" + ex.StackTrace + "</h5><h5>Error has written into the log file.</h5>";
+            //((Main)class_).msgBox.Show();
 
             if (e.IsTerminating)
             {

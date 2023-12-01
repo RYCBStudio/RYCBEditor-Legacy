@@ -80,7 +80,7 @@ namespace IDE
                 InitializeComponent();
                 InitializeTranslation();
                 proc = Process.GetCurrentProcess();
-                msgBox = new(MsgBox.MsgType.Normal, "");
+                msgBox = new(MsgBox.MsgType.Normal, "", this);
                 Program.splash.metroProgressBar1.PerformStep();
             }
             catch (Exception ex)
@@ -1068,7 +1068,7 @@ namespace IDE
                     };
                     tmpExs.Add(tmpEx);
                 }
-                for (int i = 0; i <= tmpExs.Count; ++i)
+                for (var i = 0; i <= tmpExs.Count; ++i)
                 {
                     tmpExs[i].SubItems.Add(new ListViewItem.ListViewSubItem() { Text = "" });
                     tmpExs[i].SubItems.Add(new ListViewItem.ListViewSubItem() { Text = res[i].Between("|Ls-", "-Le|") });
