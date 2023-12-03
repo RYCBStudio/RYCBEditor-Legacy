@@ -126,6 +126,7 @@ namespace IDE
         {
             var ex = e.Exception;
             IDE.Main.LOGGER.WriteErrLog(ex, EnumMsgLevel.ERROR, EnumPort.CLIENT);
+            Infrastructure.MiniDump.TryDump(STARTUP_PATH + $"\\Crash\\{DateTime.Now.Year}-{DateTime.Now.Month}-{DateTime.Now.Day}_{DateTime.Now.Hour}-{DateTime.Now.Minute}-{DateTime.Now.Second}+{DateTime.Now.Millisecond}.dmp");
             ((Main)class_).msgBox.MainForm = class_;
             //((Main)class_).msgBox.MarkdownText =
             //    "<h3> Error</h3> <hr /> <p>Message:" + ex.Message + "</p><h5>Stacktrace(s):</h5><p>" + ex.StackTrace + "</p><h3>Error has written into the log file.</h3>";
@@ -139,11 +140,10 @@ namespace IDE
         private static void CurrentDomain_UnhandledException(object sender, UnhandledExceptionEventArgs e)
         {
             var ex = e.ExceptionObject as Exception;
-            IDE.Main.LOGGER.WriteErrLog(ex, e.IsTerminating ? EnumMsgLevel.FATAL : EnumMsgLevel.ERROR, EnumPort.CLIENT);
+            //IDE.Main.LOGGER.WriteErrLog(ex, e.IsTerminating ? EnumMsgLevel.FATAL : EnumMsgLevel.ERROR, EnumPort.CLIENT);
             //((Main)class_).msgBox.MarkdownText =
             //    "## Error <hr /> <h5>Message:" + ex.Message + "</h5><h5>Stacktrace(s):</h5><h5>==============</h5><h5>" + ex.StackTrace + "</h5><h5>Error has written into the log file.</h5>";
             //((Main)class_).msgBox.Show();
-
             if (e.IsTerminating)
             {
                 End(ex);
@@ -175,7 +175,7 @@ namespace IDE
                 crashHandler.WriteDumpFile();
                 ErrorAnalysiser EA = new(ex);
                 EA.GetExceptions();
-
+                Infrastructure.MiniDump.TryDump(STARTUP_PATH + $"\\Crash\\{DateTime.Now.Year}-{DateTime.Now.Month}-{DateTime.Now.Day}_{DateTime.Now.Hour}-{DateTime.Now.Minute}-{DateTime.Now.Second}+{DateTime.Now.Millisecond}.dmp");
                 Process.GetCurrentProcess().Kill();
             }
             else

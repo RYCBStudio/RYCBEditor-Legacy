@@ -54,10 +54,11 @@ DevMode=true
 #          and you can't get any help from the developer if the program crashes because you don't have any useful infomation.
 CollectCrashInfomation=true
 # This sets count of crash attempts of the IDE.
-# Min Vaule: 1
+# Min Value: 1
+# Max Value: 2147483647
 # Notice: If you leave "0", the IDE will not crash, but will write down each error to log file.
 # Recommend Value: 3~5
-CrashAttempts=2147483647
+CrashAttempts=1
 
 [Theme]
 # This sets the foreground color of IDE.

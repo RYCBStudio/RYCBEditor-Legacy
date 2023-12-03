@@ -51,6 +51,7 @@ text.bottom.errors=エラー
 text.bottom.errors.sub.type=タイプ
 text.bottom.errors.sub.description=異常の説明
 text.bottom.errors.sub.line=行番号
+text.inprogram.fileex.dmp=メモリダンプファイル
 
 text.inprogram.bootfile=ブートファイル
 text.inprogram.bootfile.0=開いていることを検出しました

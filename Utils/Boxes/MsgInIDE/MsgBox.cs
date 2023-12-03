@@ -1,9 +1,6 @@
 using System;
-using System.Threading.Tasks;
-using System.Windows.Controls;
 using System.Windows.Forms;
 using Markdig;
-using Microsoft.Web.WebView2.Core;
 using Sunny.UI;
 
 namespace IDE;
@@ -117,6 +114,7 @@ public partial class MsgBox : UIForm
         if (GetHtmlText())
         {
             webBrowser1.DocumentText = htmlText;
+            webBrowser1.Invalidate();
         }
     }
 

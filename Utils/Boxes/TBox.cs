@@ -91,7 +91,7 @@ public partial class TBox : UIForm
                 c = a - q * c; a = t; t = u;
                 u = v - q * u; v = t;
             } while (u != 0);
-            a = a % y;
+            a %= y;
             if (a < 0) { a = y + a; }
             return a;
         }
@@ -106,7 +106,7 @@ public partial class TBox : UIForm
             while (true)
             {
                 if ((b & 1) != 0) { r = MultiplyModule(r, aa, m); }
-                b = b >> 1;
+                b >>= 1;
                 if (b == 0) { break; }
                 aa = MultiplyModule(aa, aa, m);
             }
@@ -142,7 +142,7 @@ public partial class TBox : UIForm
                 var av = 1;
                 for (var i = 0; i < vmax; i++)
                 {
-                    av = av * a;
+                    av *= a;
                 }
                 var s = 0;
                 var num = 1;
@@ -158,7 +158,7 @@ public partial class TBox : UIForm
                     {
                         do
                         {
-                            t = t / a; v--;
+                            t /= a; v--;
                         } while ((t % a) == 0);
                         kq = 0;
                     }
@@ -171,7 +171,7 @@ public partial class TBox : UIForm
                         {
                             do
                             {
-                                t = t / a; v++;
+                                t /= a; v++;
                             } while ((t % a) == 0);
                         }
                         kq2 -= a;

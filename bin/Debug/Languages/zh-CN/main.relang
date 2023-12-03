@@ -76,6 +76,7 @@ ext.inprogram.fileex.vmdk=VMWare® 虚拟磁盘文件
 text.inprogram.fileex.vmdk.warn=，该操作将引起IDE未响应和内存溢出，从而导致程序崩溃且极有可能使您的计算机卡死、崩溃甚至蓝屏，请确认是否继续打开：
 text.inprogram.fileex.sb=Scratch 文件
 text.inprogram.fileex.sb.intro=Scratch 文件可以使用其官方编辑器打开。
+text.inprogram.fileex.dmp=(小型)内存转储文件
 
 
 text.inprogram.title.warning=警告

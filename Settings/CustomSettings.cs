@@ -11,8 +11,6 @@ using ICSharpCode.AvalonEdit.Highlighting.Xshd;
 using ICSharpCode.AvalonEdit.Highlighting;
 using System.Xml;
 using System.Reflection;
-using static IronPython.Modules._ast;
-using static IronPython.Modules.PythonCsvModule;
 
 namespace IDE
 {

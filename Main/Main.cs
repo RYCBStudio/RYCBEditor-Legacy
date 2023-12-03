@@ -199,7 +199,7 @@ namespace IDE
                 }
                 else
                 {
-                    CheckFileTypeAndAlert(_, tmp);
+                    CheckFileTypeAndAlert(_, tmp, openFileDialog1.FileName);
                 }
             }
             else { }
@@ -227,6 +227,7 @@ namespace IDE
                     var mdDoc = Markdown.ToHtml(text);
                     var webView = (tabControl1.SelectedTab.Tag as Dictionary<WebView2, TextEditor>).Keys.ToList()[0];
                     var textEditor = (tabControl1.SelectedTab.Tag as Dictionary<WebView2, TextEditor>).Values.ToList()[0];
+                    webView.DoubleBuffered();
                     await webView.ExecuteScriptAsync($"document.body.style.backgroundColor = '{tabPage1.BackColor.ToHTML()}';");
                     await webView.ExecuteScriptAsync($"document.body.style.foregroundColor = '{tabPage1.ForeColor.ToHTML()}';");
                     webView.CoreWebView2.NavigateToString(mdDoc);
@@ -280,7 +281,7 @@ namespace IDE
                     Location = elementHost1.Location,
                     BackColor = elementHost1.BackColor,
                     ForeColor = elementHost1.ForeColor
-                };var tmpEHostHtml = new ElementHost
+                }; var tmpEHostHtml = new ElementHost
                 {
                     Size = elementHost1.Size,
                     Location = elementHost1.Location,
@@ -420,6 +421,7 @@ namespace IDE
             toolStripStatusLabel8.Visible = false;
             toolStripStatusLabel9.Visible = false;
             var _editor = GetCurrentTextEditor();
+            if (_editor is null) { return; }
             if (tabControl1.SelectedTab != tabPage1 & tabControl1.SelectedTab.ToolTipText != null & tabControl1.SelectedTab.ToolTipText != "")
             {
                 try
@@ -873,31 +875,129 @@ namespace IDE
             table.ColumnStyles.Add(new ColumnStyle(SizeType.Percent, 50F));
 
             TabPage newTab = new() { Text = tmp, ToolTipText = @openFileDialog1.FileName };
-            ElementHost tmpEHost = new()
+            if (tmp != "md" || tmp != "dmp" || tmp != "dump" || tmp != "minidump")
             {
-                Size = elementHost1.Size,
-                Location = elementHost1.Location
-            };
-            table.Controls.Add(tmpEHost, 0, 0);
-            var tmpEditor = edit;
-            tmpEditor.Text = "";
-            //快速搜索功能
-            SearchPanel.Install(tmpEditor.TextArea);
-            tmpEditor.TextArea.TextEntered += new TextCompositionEventHandler(this.TextAreaOnTextEntered);
-            tmpEditor.TextArea.TextEntering += new TextCompositionEventHandler(this.TextArea_TextEntering);
-            var file = AutoGetLanguage(newTab.Text);
-            using (Stream s = new FileStream(XshdFilePath + $"\\{file}.xshd", FileMode.Open, FileAccess.Read, FileShare.ReadWrite | FileShare.Delete))
-            {
-                using XmlTextReader reader = new(s);
-                var xshd = HighlightingLoader.LoadXshd(reader);
-                tmpEditor.SyntaxHighlighting = HighlightingLoader.Load(xshd, HighlightingManager.Instance);
+
+                ElementHost tmpEHost = new()
+                {
+                    Size = elementHost1.Size,
+                    Location = elementHost1.Location
+                };
+                table.Controls.Add(tmpEHost, 0, 0);
+                var tmpEditor = edit;
+                tmpEditor.Text = "";
+                //快速搜索功能
+                SearchPanel.Install(tmpEditor.TextArea);
+                tmpEditor.TextArea.TextEntered += new TextCompositionEventHandler(this.TextAreaOnTextEntered);
+                tmpEditor.TextArea.TextEntering += new TextCompositionEventHandler(this.TextArea_TextEntering);
+                var file = AutoGetLanguage(newTab.Text);
+                using (Stream s = new FileStream(XshdFilePath + $"\\{file}.xshd", FileMode.Open, FileAccess.Read, FileShare.ReadWrite | FileShare.Delete))
+                {
+                    using XmlTextReader reader = new(s);
+                    var xshd = HighlightingLoader.LoadXshd(reader);
+                    tmpEditor.SyntaxHighlighting = HighlightingLoader.Load(xshd, HighlightingManager.Instance);
+                }
+                tmpEHost.Child = tmpEditor;
+                newTab.Controls.Add(table);
+                tabControl1.TabPages.Add(newTab);
+                newTab.ToolTipText = openFileDialog1.FileName;
+                tmpEditor.Load(@openFileDialog1.FileName);
+                tabControl1.SelectedTab = newTab;
             }
-            tmpEHost.Child = tmpEditor;
-            newTab.Controls.Add(table);
-            tabControl1.TabPages.Add(newTab);
-            newTab.ToolTipText = openFileDialog1.FileName;
-            tmpEditor.Load(@openFileDialog1.FileName);
-            tabControl1.SelectedTab = newTab;
+            //else if (tmp == "md")
+            //{
+            //    WBBox bBox = new(0, false, 5);
+            //    bBox.Show();
+            //    TableLayoutPanel tableMd = new()
+            //    {
+            //        ColumnCount = 3,
+            //        Dock = DockStyle.Fill,
+            //        Location = new System.Drawing.Point(0, 0),
+            //        Name = "tableLayoutPanel2",
+            //        RowCount = 1,
+            //        Size = new System.Drawing.Size(858, 299),
+            //        TabIndex = 0,
+            //    };
+            //    bBox.uiProcessBar1.Value += 1;
+            //    tableMd.RowStyles.Add(new RowStyle(SizeType.Percent, 50F));
+            //    tableMd.ColumnStyles.Add(new ColumnStyle(SizeType.Percent, 33F));
+            //    tableMd.ColumnStyles.Add(new ColumnStyle(SizeType.Percent, 33F));
+            //    tableMd.ColumnStyles.Add(new ColumnStyle(SizeType.Percent, 34F));
+            //    bBox.uiProcessBar1.Value += 1;
+            //    var tmpEHostMd = new ElementHost
+            //    {
+            //        Size = elementHost1.Size,
+            //        Location = elementHost1.Location,
+            //        BackColor = elementHost1.BackColor,
+            //        ForeColor = elementHost1.ForeColor
+            //    }; var tmpEHostHtml = new ElementHost
+            //    {
+            //        Size = elementHost1.Size,
+            //        Location = elementHost1.Location,
+            //        BackColor = elementHost1.BackColor,
+            //        ForeColor = elementHost1.ForeColor
+            //    };
+            //    LOGGER.WriteLog("ElementHostForMarkdown已准备就绪。", EnumMsgLevel.INFO, EnumPort.CLIENT, EnumModule.MAIN);
+            //    bBox.uiProcessBar1.Value += 1;
+            //    var tmpEditorMd = new TextEditor
+            //    {
+            //        Width = elementHost1.Width,
+            //        Height = elementHost1.Height,
+            //        FontFamily = new FontFamily(reConf.ReadString("Editor", "Font", "Consolas")),
+            //        Background = new SolidColorBrush(Editor.Back),
+            //        Foreground = new SolidColorBrush(Editor.Fore),
+            //        FontSize = reConf.ReadInt("Editor", "Size"),
+            //        ShowLineNumbers = bool.Parse(reConf.ReadString("Editor", "ShowLineNum", "true")),
+            //        VerticalScrollBarVisibility = System.Windows.Controls.ScrollBarVisibility.Auto,
+            //        HorizontalScrollBarVisibility = System.Windows.Controls.ScrollBarVisibility.Auto,
+            //    };
+            //    var tmpEditorHtml = new TextEditor
+            //    {
+            //        Width = elementHost1.Width,
+            //        Height = elementHost1.Height,
+            //        FontFamily = new FontFamily(reConf.ReadString("Editor", "Font", "Consolas")),
+            //        Background = new SolidColorBrush(Editor.Back),
+            //        Foreground = new SolidColorBrush(Editor.Fore),
+            //        FontSize = reConf.ReadInt("Editor", "Size"),
+            //        ShowLineNumbers = bool.Parse(reConf.ReadString("Editor", "ShowLineNum", "true")),
+            //        VerticalScrollBarVisibility = System.Windows.Controls.ScrollBarVisibility.Auto,
+            //        HorizontalScrollBarVisibility = System.Windows.Controls.ScrollBarVisibility.Auto,
+            //        IsReadOnly = true,
+            //    };
+            //    bBox.uiProcessBar1.Value += 1;
+            //    LOGGER.WriteLog($"编辑器控件已准备就绪。\n字体: {tmpEditorHtml.FontFamily}", EnumMsgLevel.INFO, EnumPort.CLIENT, EnumModule.MAIN);
+            //    tmpEditorMd.TextChanged += new EventHandler(this.TextAreaMarkdownEntered);
+            //    LOGGER.WriteLog("编辑器控件方法入口已准备就绪。", EnumMsgLevel.INFO, EnumPort.CLIENT, EnumModule.MAIN);
+            //    tmpEHostHtml.Child = tmpEditorHtml;
+            //    tmpEHostMd.Child = tmpEditorMd;
+            //    var resourceName = XshdFilePath + "\\HTML.xshd";
+            //    using (Stream s = new FileStream(resourceName, FileMode.Open, FileAccess.Read, FileShare.ReadWrite | FileShare.Delete))
+            //    {
+            //        using XmlTextReader reader = new(s);
+            //        var xshd = HighlightingLoader.LoadXshd(reader);
+            //        tmpEditorHtml.SyntaxHighlighting = HighlightingLoader.Load(xshd, HighlightingManager.Instance);
+            //    }
+            //    bBox.uiProcessBar1.Value += 1;
+            //    Microsoft.Web.WebView2.WinForms.WebView2 webView = new();
+            //    webView.SuspendLayout();
+            //    webView.Size = elementHost1.Size;
+            //    await webView.EnsureCoreWebView2Async();
+            //    webView.BackColor = this.BackColor;
+            //    webView.ForeColor = this.ForeColor;
+            //    webView.ResumeLayout(false);
+            //    webView.PerformLayout();
+            //    bBox.uiProcessBar1.Value += 1;
+
+            //    newTab.Tag = new Dictionary<WebView2, TextEditor>() { { webView, tmpEditorHtml } };
+            //    tableMd.Controls.Add(tmpEHostMd);
+            //    tableMd.Controls.Add(tmpEHostHtml);
+            //    tableMd.Controls.Add(webView);
+            //    newTab.Controls.Add(tableMd);
+            //    tmpEditorMd.Load(MdFilePath);
+            //    bBox.Close();
+            //    tabControl1.TabPages.Add(newTab);
+            //    tabControl1.SelectedTab = newTab;
+            //}
         }
         #endregion
         #region <FUNC> 占位方法
@@ -1049,6 +1149,7 @@ namespace IDE
         private void CheckSyntaxError(object sender, EventArgs e)
         {
             var editor = GetCurrentTextEditor();
+            if (editor is null) { return; }
             var content = editor.Text;
             if (tabControl1.SelectedTab.ToolTipText != null)
             {
@@ -1517,7 +1618,7 @@ namespace IDE
         }
         #endregion
         #region 检查文件类型并发出警告
-        private void CheckFileTypeAndAlert(string fileExtension, string tmp)
+        private async void CheckFileTypeAndAlert(string fileExtension, string tmp, string fileName)
         {
             #region 特殊文件
             if (fileExtension.Equals("exe"))
@@ -1590,8 +1691,8 @@ namespace IDE
             else if (fileExtension.Equals("e"))
             {
                 toolStripStatusLabel2.Text = _I18nFile.ReadString("I18n", "text.inprogram.fileex.e", "text.inprogram.fileex.e") + "(.e)" + text_tsl2;
-                string agreeText = _I18nFile.ReadString("I18n", "text.inprogram.bootfile.0", "text.inprogram.bootfile.0") + _I18nFile.ReadString("I18n", "text.inprogram.fileex.e", "text.inprogram.fileex.e") + "(.e)" + _I18nFile.ReadString("I18n", "text.inprogram.bootfile.1", "text.inprogram.bootfile.1");
-                DialogResult dResult = MessageBox.Show(agreeText, _I18nFile.ReadString("I18n", "text.inprogram.title.info", "text.inprogram.title.info"), MessageBoxButtons.YesNo, MessageBoxIcon.Information);
+                var agreeText = _I18nFile.ReadString("I18n", "text.inprogram.bootfile.0", "text.inprogram.bootfile.0") + _I18nFile.ReadString("I18n", "text.inprogram.fileex.e", "text.inprogram.fileex.e") + "(.e)" + _I18nFile.ReadString("I18n", "text.inprogram.bootfile.1", "text.inprogram.bootfile.1");
+                var dResult = MessageBox.Show(agreeText, _I18nFile.ReadString("I18n", "text.inprogram.title.info", "text.inprogram.title.info"), MessageBoxButtons.YesNo, MessageBoxIcon.Information);
                 MessageBox.Show(_I18nFile.ReadString("I18n", "text.inprogram.fileex.e", "text.inprogram.fileex.e") + "(.e)" + _I18nFile.ReadString("I18n", "text.inprogram.fileex.e.0", "text.inprogram.fileex.e.0"), _I18nFile.ReadString("I18n", "text.inprogram.title.info", "text.inprogram.title.info"), MessageBoxButtons.OK, MessageBoxIcon.Information);
                 if (dResult != DialogResult.Yes) { return; }
                 statusStrip1.Show();
@@ -1600,8 +1701,8 @@ namespace IDE
             else if (fileExtension.Equals("xltd"))
             {//迅雷临时数据文件
                 toolStripStatusLabel2.Text = _I18nFile.ReadString("I18n", "text.inprogram.fileex.xltd", "text.inprogram.fileex.xltd") + "(.xltd)" + text_tsl2;
-                string agreeText = _I18nFile.ReadString("I18n", "text.inprogram.bootfile.0", "text.inprogram.bootfile.0") + _I18nFile.ReadString("I18n", "text.inprogram.fileex.xltd", "text.inprogram.fileex.xltd") + "(.xltd)" + _I18nFile.ReadString("I18n", "text.inprogram.bootfile.1", "text.inprogram.bootfile.1");
-                DialogResult dResult = MessageBoxEX.Show(agreeText, _I18nFile.ReadString("I18n", "text.inprogram.title.warning", "text.inprogram.title.warning"), MessageBoxButtons.YesNo, new string[] { _I18nFile.ReadString("I18n", "text.inprogram.bootfile.2", "text.inprogram.bootfile.2"), _I18nFile.ReadString("I18n", "text.inprogram.bootfile.3", "text.inprogram.bootfile.3") });
+                var agreeText = _I18nFile.ReadString("I18n", "text.inprogram.bootfile.0", "text.inprogram.bootfile.0") + _I18nFile.ReadString("I18n", "text.inprogram.fileex.xltd", "text.inprogram.fileex.xltd") + "(.xltd)" + _I18nFile.ReadString("I18n", "text.inprogram.bootfile.1", "text.inprogram.bootfile.1");
+                var dResult = MessageBoxEX.Show(agreeText, _I18nFile.ReadString("I18n", "text.inprogram.title.warning", "text.inprogram.title.warning"), MessageBoxButtons.YesNo, new string[] { _I18nFile.ReadString("I18n", "text.inprogram.bootfile.2", "text.inprogram.bootfile.2"), _I18nFile.ReadString("I18n", "text.inprogram.bootfile.3", "text.inprogram.bootfile.3") });
                 if (dResult != DialogResult.Yes) { return; }
                 statusStrip1.Show();
                 func_0a1(tmp);
@@ -1616,8 +1717,8 @@ namespace IDE
             else if (fileExtension.Equals("vmdk"))
             {
                 toolStripStatusLabel2.Text = _I18nFile.ReadString("I18n", "text.inprogram.fileex.vmdk", "text.inprogram.fileex.vmdk") + "(.vmdk)" + text_tsl2;
-                string agreeText = _I18nFile.ReadString("I18n", "text.inprogram.bootfile.0", "text.inprogram.bootfile.0") + _I18nFile.ReadString("I18n", "text.inprogram.fileex.vmdk", "text.inprogram.fileex.vmdk") + "(.vmdk)" + _I18nFile.ReadString("I18n", "text.inprogram.fileex.vmdk.warn", "text.inprogram.fileex.vmdk.warn");//"文件，该操作将引起IDE未响应和内存溢出，从而导致程序崩溃且极有可能使您的计算机卡死、崩溃甚至蓝屏，请确认是否继续打开：";
-                DialogResult dResult = MessageBoxEX.Show(agreeText, _I18nFile.ReadString("I18n", "text.inprogram.title.warning", "text.inprogram.title.warning"), MessageBoxButtons.YesNo, new string[] { _I18nFile.ReadString("I18n", "text.inprogram.bootfile.2", "text.inprogram.bootfile.2"), _I18nFile.ReadString("I18n", "text.inprogram.bootfile.3", "text.inprogram.bootfile.3") });
+                var agreeText = _I18nFile.ReadString("I18n", "text.inprogram.bootfile.0", "text.inprogram.bootfile.0") + _I18nFile.ReadString("I18n", "text.inprogram.fileex.vmdk", "text.inprogram.fileex.vmdk") + "(.vmdk)" + _I18nFile.ReadString("I18n", "text.inprogram.fileex.vmdk.warn", "text.inprogram.fileex.vmdk.warn");//"文件，该操作将引起IDE未响应和内存溢出，从而导致程序崩溃且极有可能使您的计算机卡死、崩溃甚至蓝屏，请确认是否继续打开：";
+                var dResult = MessageBoxEX.Show(agreeText, _I18nFile.ReadString("I18n", "text.inprogram.title.warning", "text.inprogram.title.warning"), MessageBoxButtons.YesNo, new string[] { _I18nFile.ReadString("I18n", "text.inprogram.bootfile.2", "text.inprogram.bootfile.2"), _I18nFile.ReadString("I18n", "text.inprogram.bootfile.3", "text.inprogram.bootfile.3") });
                 if (dResult != DialogResult.Yes) { return; }
                 statusStrip1.Show();
                 func_0a1(tmp);
@@ -1625,12 +1726,184 @@ namespace IDE
             else if (fileExtension.Equals("sb2") | fileExtension.Equals("sb3"))
             {
                 toolStripStatusLabel2.Text = _I18nFile.ReadString("I18n", "text.inprogram.fileex.sb", "text.inprogram.fileex.sb") + "(.sb2|.sb3)" + text_tsl2;
-                string agreeText = _I18nFile.ReadString("I18n", "text.inprogram.bootfile.0", "text.inprogram.bootfile.0") + _I18nFile.ReadString("I18n", "text.inprogram.fileex.sb", "text.inprogram.fileex.sb") + "(.sb2|.sb3)" + _I18nFile.ReadString("I18n", "text.inprogram.bootfile.1", "text.inprogram.bootfile.1");
-                DialogResult dResult = MessageBox.Show(agreeText, _I18nFile.ReadString("I18n", "text.inprogram.title.info", "text.inprogram.title.info"), MessageBoxButtons.YesNo, MessageBoxIcon.Information);
+                var agreeText = _I18nFile.ReadString("I18n", "text.inprogram.bootfile.0", "text.inprogram.bootfile.0") + _I18nFile.ReadString("I18n", "text.inprogram.fileex.sb", "text.inprogram.fileex.sb") + "(.sb2|.sb3)" + _I18nFile.ReadString("I18n", "text.inprogram.bootfile.1", "text.inprogram.bootfile.1");
+                var dResult = MessageBox.Show(agreeText, _I18nFile.ReadString("I18n", "text.inprogram.title.info", "text.inprogram.title.info"), MessageBoxButtons.YesNo, MessageBoxIcon.Information);
                 MessageBox.Show(_I18nFile.ReadString("I18n", "text.inprogram.fileex.sb.intro", "text.inprogram.fileex.sb.intro"), _I18nFile.ReadString("I18n", "text.inprogram.title.info", "text.inprogram.title.info"), MessageBoxButtons.OK, MessageBoxIcon.Information);
                 if (dResult != DialogResult.Yes) { return; }
                 statusStrip1.Show();
                 func_0a1(tmp);
+            }
+            else if (fileExtension.Equals("dmp", StringComparison.CurrentCultureIgnoreCase) | fileExtension.Equals("dump", StringComparison.CurrentCultureIgnoreCase) | fileExtension.ToLower().Equals("minidump"))
+            {
+                toolStripStatusLabel2.Text = _I18nFile.ReadString("I18n", "text.inprogram.fileex.dmp", "text.inprogram.fileex.dmp") + "(.dmp|.dump|.minidump)" + text_tsl2;
+                var agreeText = _I18nFile.ReadString("I18n", "text.inprogram.bootfile.0", "text.inprogram.bootfile.0") + _I18nFile.ReadString("I18n", "text.inprogram.fileex.dmp", "text.inprogram.fileex.dmp") + "(.dmp|.dump|.minidump)" + _I18nFile.ReadString("I18n", "text.inprogram.bootfile.1", "text.inprogram.bootfile.1");
+                var dResult = MessageBox.Show(agreeText, _I18nFile.ReadString("I18n", "text.inprogram.title.info", "text.inprogram.title.info"), MessageBoxButtons.YesNo, MessageBoxIcon.Information);
+                if (dResult != DialogResult.Yes) { return; }
+                statusStrip1.Show();
+
+                TabPage newTab = new() { Text = tmp, ToolTipText = @openFileDialog1.FileName };
+                WBBox bBox = new(0, false, 5);
+                bBox.Show();
+                TableLayoutPanel table = new()
+                {
+                    ColumnCount = 1,
+                    Dock = DockStyle.Fill,
+                    Location = new System.Drawing.Point(0, 0),
+                    Name = "tableLayoutPanel"+DateTime.Now.Millisecond,
+                    RowCount = 1,
+                    Size = new System.Drawing.Size(858, 299),
+                    TabIndex = 0,
+                };
+                bBox.uiProcessBar1.Value += 1;
+                table.RowStyles.Add(new RowStyle(SizeType.Percent, 50F));
+                table.ColumnStyles.Add(new ColumnStyle(SizeType.Percent, 50F));
+                ElementHost tmpEHost = new()
+                {
+                    Size = elementHost1.Size,
+                    Location = elementHost1.Location
+                };
+                table.Controls.Add(tmpEHost, 0, 0);
+                bBox.uiProcessBar1.Value += 1;
+                var tmpEditor = new TextEditor
+                {
+                    Width = elementHost1.Width,
+                    Height = elementHost1.Height,
+                    FontFamily = new FontFamily(reConf.ReadString("Editor", "Font", "Consolas")),
+                    Background = new SolidColorBrush(Editor.Back),
+                    Foreground = new SolidColorBrush(Editor.Fore),
+                    FontSize = reConf.ReadInt("Editor", "Size"),
+                    ShowLineNumbers = bool.Parse(reConf.ReadString("Editor", "ShowLineNum", "true")),
+                    VerticalScrollBarVisibility = System.Windows.Controls.ScrollBarVisibility.Auto,
+                    HorizontalScrollBarVisibility = System.Windows.Controls.ScrollBarVisibility.Auto,
+
+                };
+                bBox.uiProcessBar1.Value += 1;
+                tmpEditor.Text = "";
+                tmpEHost.Child = tmpEditor;
+                newTab.Controls.Add(table);
+                tabControl1.TabPages.Add(newTab);
+                bBox.uiProcessBar1.Value += 1;
+                newTab.ToolTipText = openFileDialog1.FileName;
+                tmpEditor.Text = MiniDumpReader.ReadDumpFile(@openFileDialog1.FileName);
+                bBox.uiProcessBar1.Value += 1;
+                tabControl1.SelectedTab = newTab;
+                bBox.Close();
+
+            }
+            else if (fileExtension.Equals("md"))
+            {
+                TableLayoutPanel table = new()
+                {
+                    ColumnCount = 1,
+                    Dock = DockStyle.Fill,
+                    Location = new System.Drawing.Point(0, 0),
+                    Name = "tableLayoutPanel2",
+                    RowCount = 1,
+                    Size = new System.Drawing.Size(858, 299),
+                    TabIndex = 0,
+                };
+                table.RowStyles.Add(new RowStyle(SizeType.Percent, 50F));
+                table.ColumnStyles.Add(new ColumnStyle(SizeType.Percent, 50F));
+
+                TabPage newTab = new() { Text = tmp, ToolTipText = @openFileDialog1.FileName };
+                WBBox bBox = new(0, false, 5);
+                bBox.Show();
+                TableLayoutPanel tableMd = new()
+                {
+                    ColumnCount = 3,
+                    Dock = DockStyle.Fill,
+                    Location = new System.Drawing.Point(0, 0),
+                    Name = "tableLayoutPanel2",
+                    RowCount = 1,
+                    Size = new System.Drawing.Size(858, 299),
+                    TabIndex = 0,
+                };
+                bBox.uiProcessBar1.Value += 1;
+                tableMd.RowStyles.Add(new RowStyle(SizeType.Percent, 50F));
+                tableMd.ColumnStyles.Add(new ColumnStyle(SizeType.Percent, 33F));
+                tableMd.ColumnStyles.Add(new ColumnStyle(SizeType.Percent, 33F));
+                tableMd.ColumnStyles.Add(new ColumnStyle(SizeType.Percent, 34F));
+                bBox.uiProcessBar1.Value += 1;
+                var tmpEHostMd = new ElementHost
+                {
+                    Size = elementHost1.Size,
+                    Location = elementHost1.Location,
+                    BackColor = elementHost1.BackColor,
+                    ForeColor = elementHost1.ForeColor
+                }; var tmpEHostHtml = new ElementHost
+                {
+                    Size = elementHost1.Size,
+                    Location = elementHost1.Location,
+                    BackColor = elementHost1.BackColor,
+                    ForeColor = elementHost1.ForeColor
+                };
+                LOGGER.WriteLog("ElementHostForMarkdown已准备就绪。", EnumMsgLevel.INFO, EnumPort.CLIENT, EnumModule.MAIN);
+                bBox.uiProcessBar1.Value += 1;
+                var tmpEditorMd = new TextEditor
+                {
+                    Width = elementHost1.Width,
+                    Height = elementHost1.Height,
+                    FontFamily = new FontFamily(reConf.ReadString("Editor", "Font", "Consolas")),
+                    Background = new SolidColorBrush(Editor.Back),
+                    Foreground = new SolidColorBrush(Editor.Fore),
+                    FontSize = reConf.ReadInt("Editor", "Size"),
+                    ShowLineNumbers = bool.Parse(reConf.ReadString("Editor", "ShowLineNum", "true")),
+                    VerticalScrollBarVisibility = System.Windows.Controls.ScrollBarVisibility.Auto,
+                    HorizontalScrollBarVisibility = System.Windows.Controls.ScrollBarVisibility.Auto,
+                };
+                var tmpEditorHtml = new TextEditor
+                {
+                    Width = elementHost1.Width,
+                    Height = elementHost1.Height,
+                    FontFamily = new FontFamily(reConf.ReadString("Editor", "Font", "Consolas")),
+                    Background = new SolidColorBrush(Editor.Back),
+                    Foreground = new SolidColorBrush(Editor.Fore),
+                    FontSize = reConf.ReadInt("Editor", "Size"),
+                    ShowLineNumbers = bool.Parse(reConf.ReadString("Editor", "ShowLineNum", "true")),
+                    VerticalScrollBarVisibility = System.Windows.Controls.ScrollBarVisibility.Auto,
+                    HorizontalScrollBarVisibility = System.Windows.Controls.ScrollBarVisibility.Auto,
+                    IsReadOnly = true,
+                };
+                bBox.uiProcessBar1.Value += 1;
+                LOGGER.WriteLog($"编辑器控件已准备就绪。\n字体: {tmpEditorHtml.FontFamily}", EnumMsgLevel.INFO, EnumPort.CLIENT, EnumModule.MAIN);
+                LOGGER.WriteLog("编辑器控件方法入口已准备就绪。", EnumMsgLevel.INFO, EnumPort.CLIENT, EnumModule.MAIN);
+                tmpEHostHtml.Child = tmpEditorHtml;
+                tmpEHostMd.Child = tmpEditorMd;
+                var resourceName = XshdFilePath + "\\HTML.xshd";
+                using (Stream s = new FileStream(resourceName, FileMode.Open, FileAccess.Read, FileShare.ReadWrite | FileShare.Delete))
+                {
+                    using XmlTextReader reader = new(s);
+                    var xshd = HighlightingLoader.LoadXshd(reader);
+                    tmpEditorHtml.SyntaxHighlighting = HighlightingLoader.Load(xshd, HighlightingManager.Instance);
+                }
+                bBox.uiProcessBar1.Value += 1;
+                Microsoft.Web.WebView2.WinForms.WebView2 webView = new();
+                webView.SuspendLayout();
+                webView.Size = elementHost1.Size;
+                await webView.EnsureCoreWebView2Async();
+                webView.BackColor = this.BackColor;
+                webView.ForeColor = this.ForeColor;
+                webView.ResumeLayout(false);
+                webView.PerformLayout();
+                bBox.uiProcessBar1.Value += 1;
+
+                newTab.Tag = new Dictionary<WebView2, TextEditor>() { { webView, tmpEditorHtml } };
+                tableMd.Controls.Add(tmpEHostMd);
+                tableMd.Controls.Add(tmpEHostHtml);
+                tableMd.Controls.Add(webView);
+                newTab.Controls.Add(tableMd);
+                tmpEditorMd.Load(fileName);
+                tmpEditorMd.TextChanged += new EventHandler(this.TextAreaMarkdownEntered);
+                var mdDoc = Markdown.ToHtml(tmpEditorMd.Text);
+                await webView.ExecuteScriptAsync($"document.body.style.backgroundColor = '{tabPage1.BackColor.ToHTML()}';");
+                await webView.ExecuteScriptAsync($"document.body.style.foregroundColor = '{tabPage1.ForeColor.ToHTML()}';");
+                webView.CoreWebView2.NavigateToString(mdDoc);
+                webView.DoubleBuffered();
+                tmpEditorHtml.Text = mdDoc;
+                bBox.Close();
+                tmpEditorMd.Text.Append<char>('\n');
+                tabControl1.TabPages.Add(newTab);
+                tabControl1.SelectedTab = newTab;
             }
             #endregion
             #region 普通文件
@@ -1767,7 +2040,19 @@ namespace IDE
         #region 获取当前所呈现的TextEditor
         private TextEditor GetCurrentTextEditor()
         {
-            return ((tabControl1.SelectedTab.Controls[0] as TableLayoutPanel).Controls[0] as ElementHost).Child as TextEditor;
+            try
+            {
+                var tmpETable = (tabControl1.SelectedTab.Controls[0] as TableLayoutPanel).Controls[0];
+                if (tmpETable.Controls[0] is not null)
+                {
+                    return ((tmpETable.Controls[0] as ElementHost).Child as TextEditor);
+                }
+                return null;
+            }
+            catch
+            {
+                return null;
+            }
         }
         #endregion
         #region extern模块

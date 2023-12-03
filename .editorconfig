@@ -5,3 +5,6 @@ dotnet_diagnostic.IDE0040.severity = suggestion
 
 # IDE0044: 添加只读修饰符
 dotnet_diagnostic.IDE0044.severity = none
+
+# VSTHRD100: Avoid async void methods
+dotnet_diagnostic.VSTHRD100.severity = none

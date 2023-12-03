@@ -76,6 +76,7 @@ text.inprogram.fileex.vmdk=VMWare® virtual disk file
 text.inprogram.fileex.vmdk.warn=This operation will cause the IDE to become unresponsive, memory overflow, program crashes, and it is highly likely to freeze, crash, or even cause a blue screen on your computer. Please confirm if you want to continue opening:
 text.inprogram.fileex.sb=Scratch file
 text.inprogram.fileex.sb.intro=Scratch files can be opened using their official editor.
+text.inprogram.fileex.dmp=Mini Dump file
 
 text.inprogram.title.warning=Warning
 text.inprogram.title.info=Information
