@@ -1,0 +1,15 @@
+[LangSet]
+Name=繁體中文
+
+[I18n]
+text.LAC.title=許可與版權聲明
+text.LAC.gb1.AE=AvalonEdit(編輯器控件)
+text.LAC.gb1.fullctrlname=完整控制項名稱：
+text.LAC.gb1.version=版本：
+text.LAC.gb1.website=官方網站
+text.LAC.gb2.SUI=Sunny UI(UI組件)
+text.LAC.gb2.namespace=命名空間：
+text.LAC.gb2.gitee=Gitee存儲庫
+text.LAC.gb3.MMUI=Metro Modern UI(UI組件)
+text.LAC.gb3.Github=Github存儲庫
+text.LAC.gb4.MsgPack=Message Pack(MsgPack序列化程序)

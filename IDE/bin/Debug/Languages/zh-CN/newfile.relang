@@ -1,0 +1,8 @@
+[LangSet]
+Name=简体中文（中国）
+
+[I18n]
+text.newfile.filename=文件名: 
+text.newfile.filetype=文件类型: 
+text.newfile.yes=确定
+text.newfile.no=取消

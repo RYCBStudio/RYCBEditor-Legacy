@@ -1,0 +1,7 @@
+[LangSet]
+Name=English
+
+[I18n]
+text.errmsgbox.err.type=Type
+text.errmsgbox.err.line=Line
+text.errmsgbox.err.content=Error Message
