@@ -30,7 +30,7 @@ namespace IDE
             var CurrentMutexForRE = new Mutex(true, "RYCB_Editor_Running", out createdNew);
             if (!createdNew)
             {
-                MessageBox.Show("F You");
+                MessageBox.Show("Another instance of this program is running, please close the instance and try again.");
                 return;
             }
             else

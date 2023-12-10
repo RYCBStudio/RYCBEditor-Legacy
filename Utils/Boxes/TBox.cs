@@ -407,5 +407,15 @@ public partial class TBox : UIForm
         Process.Start("https://hsr.hoyoverse.com");
         timer1.Start();
     }
+
+    private void StartRFR(object sender, EventArgs e)
+    {
+        Process.Start(Program.STARTUP_PATH + "\\Tools\\RandomRenamer.exe");
+    }
+
+    private void StartFSMEV(object sender, EventArgs e)
+    {
+        new FileSHAorMD5Checker().Show();
+    }
 }
 
