@@ -843,7 +843,7 @@ namespace IDE
             this.tabPage2.Controls.Add(this.appContainer1);
             this.tabPage2.Location = new System.Drawing.Point(0, 0);
             this.tabPage2.Name = "tabPage2";
-            this.tabPage2.Size = new System.Drawing.Size(200, 60);
+            this.tabPage2.Size = new System.Drawing.Size(1058, 118);
             this.tabPage2.TabIndex = 2;
             this.tabPage2.Text = "text.bottom.console";
             // 
@@ -855,7 +855,7 @@ namespace IDE
             this.appContainer1.Dock = System.Windows.Forms.DockStyle.Fill;
             this.appContainer1.Location = new System.Drawing.Point(0, 0);
             this.appContainer1.Name = "appContainer1";
-            this.appContainer1.Size = new System.Drawing.Size(200, 60);
+            this.appContainer1.Size = new System.Drawing.Size(1058, 118);
             this.appContainer1.TabIndex = 0;
             // 
             // panel1

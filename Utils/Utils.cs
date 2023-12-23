@@ -7,14 +7,12 @@ using System.Collections.Generic;
 using System;
 using System.Drawing;
 using Sunny.UI;
-using IronPython.Hosting;
 using System.IO;
 using System.Windows.Forms;
 using System.Runtime.InteropServices;
 using System.Threading;
 using System.Diagnostics;
 using Microsoft.Diagnostics.Runtime;
-using static Microsoft.VisualStudio.Utilities.Internal.MacNativeMethods;
 
 namespace IDE
 {
@@ -280,79 +278,33 @@ namespace IDE
         }
     }
 
-    public class PythonVariableAnalyzer
+    public static class PythonVariableAnalyzer
     {
-        public static Dictionary<string, List<string>> AnalyzeVariables(string pythonFilePath)
+        public static List<string> Analyze(string content)
         {
-            var engine = Python.CreateEngine();
-            var paths = engine.GetSearchPaths();
-            paths.Add(Environment.GetEnvironmentVariable("PATH").Split(';').FindFirstIfContains("python").FindIfNotContains("Scripts") + "\\Libs");
-            engine.SetSearchPaths(paths);
-            dynamic script = engine.CreateScriptSourceFromFile(Path.Combine(pythonFilePath), Encoding.UTF8, Microsoft.Scripting.SourceCodeKind.File).Execute();
-            dynamic scope = engine.GetSysModule().GetVariable("modules")["<module>"].__dict__;
+            // 去除注释和字符串字面量，只保留代码行
+            string[] lines = Regex.Split(content, @"(?:#[^\n]*|'[^']*'|""[^""]*"")*\n");
 
-            var variables = new Dictionary<string, List<string>>
+            // 匹配所有以字母或下划线开头的标识符
+            Regex pattern = new Regex(@"\b\w+\b");
+
+            HashSet<string> variables = new HashSet<string>();
+
+            // 逐行扫描，提取所有标识符
+            foreach (string line in lines)
             {
-                { "Global", new List<string>() },
-                { "Private", new List<string>() },
-                { "Func", new List<string>() },
-                { "FuncName", new List<string>() }
-            };
-
-            AnalyzeGlobalVariables(scope, variables["Global"]);
-            AnalyzeFunctions(script, variables["FuncName"], variables["Func"]);
-
-            return variables;
-        }
-
-        private static void AnalyzeGlobalVariables(dynamic scope, List<string> globalVariables)
-        {
-            try
-            {
-                foreach (string variableName in scope)
+                MatchCollection matches = pattern.Matches(line);
+                foreach (Match match in matches)
                 {
-                    dynamic variableValue = scope[variableName];
-
-                    if (!IsSystemVariable(variableName) && !IsFunction(variableValue))
+                    string identifier = match.Value;
+                    if (!char.IsDigit(identifier[0]))
                     {
-                        globalVariables.Add(variableName);
+                        variables.Add(identifier);
                     }
                 }
             }
-            catch (Exception ex)
-            {
-                Main.LOGGER.WriteErrLog(ex, EnumMsgLevel.FATAL, EnumPort.CLIENT);
-            }
-        }
 
-        private static void AnalyzeFunctions(dynamic script, List<string> functionNames, List<string> functionParameters)
-        {
-            try
-            {
-                foreach (var member in script.GetMembers())
-                {
-                    if (member.MemberType.ToString() == "Method")
-                    {
-                        functionNames.Add(member.Name);
-                        functionParameters.AddRange(member.GetVariableNames());
-                    }
-                }
-            }
-            catch (Exception ex)
-            {
-                Main.LOGGER.WriteErrLog(ex, EnumMsgLevel.FATAL, EnumPort.CLIENT);
-            }
-        }
-
-        private static bool IsSystemVariable(string variableName)
-        {
-            string[] systemVariables = { "__name__", "__file__", "__doc__", "__package__", "__spec__", "__builtins__" };
-            return Array.IndexOf(systemVariables, variableName) >= 0;
-        }
-
-        private static bool IsFunction(dynamic variableValue)
-        {
-            return variableValue is Delegate;
+            return new List<string>(variables);
         }
     }
 
@@ -926,4 +878,5 @@ namespace IDE
             }
         }
     }
+
 }

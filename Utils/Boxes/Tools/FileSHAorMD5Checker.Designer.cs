@@ -28,9 +28,9 @@ partial class FileSHAorMD5Checker
     /// </summary>
     private void InitializeComponent()
     {
-            this.tableLayoutPanel1 = new System.Windows.Forms.TableLayoutPanel();
-            this.uiLabel1 = new Sunny.UI.UILabel();
+            this.openFileDialog1 = new System.Windows.Forms.OpenFileDialog();
             this.txtBoxFilePath = new System.Windows.Forms.TextBox();
+            this.uiLabel1 = new Sunny.UI.UILabel();
             this.uiLabel2 = new Sunny.UI.UILabel();
             this.txtBoxFileName = new System.Windows.Forms.TextBox();
             this.uiLabel3 = new Sunny.UI.UILabel();
@@ -39,39 +39,35 @@ partial class FileSHAorMD5Checker
             this.txtBoxFileSHA1 = new System.Windows.Forms.TextBox();
             this.uiLabel5 = new Sunny.UI.UILabel();
             this.txtBoxFileSHA256 = new System.Windows.Forms.TextBox();
+            this.pictureBox3 = new System.Windows.Forms.PictureBox();
+            this.txtBoxGivenMD5Value = new System.Windows.Forms.TextBox();
+            this.pictureBox4 = new System.Windows.Forms.PictureBox();
+            this.txtBoxGivenSHA1Value = new System.Windows.Forms.TextBox();
+            this.pictureBox5 = new System.Windows.Forms.PictureBox();
+            this.txtBoxGivenSHA256Value = new System.Windows.Forms.TextBox();
+            this.tableLayoutPanel1 = new System.Windows.Forms.TableLayoutPanel();
             this.uiButton1 = new Sunny.UI.UIButton();
-            this.openFileDialog1 = new System.Windows.Forms.OpenFileDialog();
+            ((System.ComponentModel.ISupportInitialize)(this.pictureBox3)).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)(this.pictureBox4)).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)(this.pictureBox5)).BeginInit();
             this.tableLayoutPanel1.SuspendLayout();
             this.SuspendLayout();
             // 
-            // tableLayoutPanel1
+            // openFileDialog1
             // 
-            this.tableLayoutPanel1.ColumnCount = 3;
-            this.tableLayoutPanel1.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Percent, 20F));
-            this.tableLayoutPanel1.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Percent, 75F));
-            this.tableLayoutPanel1.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Percent, 5F));
-            this.tableLayoutPanel1.Controls.Add(this.txtBoxFileSHA256, 1, 4);
-            this.tableLayoutPanel1.Controls.Add(this.uiLabel5, 0, 4);
-            this.tableLayoutPanel1.Controls.Add(this.txtBoxFileSHA1, 1, 3);
-            this.tableLayoutPanel1.Controls.Add(this.uiLabel4, 0, 3);
-            this.tableLayoutPanel1.Controls.Add(this.txtBoxFileMD5, 1, 2);
-            this.tableLayoutPanel1.Controls.Add(this.uiLabel3, 0, 2);
-            this.tableLayoutPanel1.Controls.Add(this.txtBoxFileName, 1, 1);
-            this.tableLayoutPanel1.Controls.Add(this.uiLabel2, 0, 1);
-            this.tableLayoutPanel1.Controls.Add(this.uiLabel1, 0, 0);
-            this.tableLayoutPanel1.Controls.Add(this.txtBoxFilePath, 1, 0);
-            this.tableLayoutPanel1.Controls.Add(this.uiButton1, 2, 0);
-            this.tableLayoutPanel1.Dock = System.Windows.Forms.DockStyle.Fill;
-            this.tableLayoutPanel1.Location = new System.Drawing.Point(0, 35);
-            this.tableLayoutPanel1.Name = "tableLayoutPanel1";
-            this.tableLayoutPanel1.RowCount = 5;
-            this.tableLayoutPanel1.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Percent, 20F));
-            this.tableLayoutPanel1.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Percent, 20F));
-            this.tableLayoutPanel1.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Percent, 20F));
-            this.tableLayoutPanel1.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Percent, 20F));
-            this.tableLayoutPanel1.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Percent, 20F));
-            this.tableLayoutPanel1.Size = new System.Drawing.Size(513, 202);
-            this.tableLayoutPanel1.TabIndex = 0;
+            this.openFileDialog1.SupportMultiDottedExtensions = true;
+            // 
+            // txtBoxFilePath
+            // 
+            this.txtBoxFilePath.Anchor = ((System.Windows.Forms.AnchorStyles)((((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Bottom) 
+            | System.Windows.Forms.AnchorStyles.Left) 
+            | System.Windows.Forms.AnchorStyles.Right)));
+            this.tableLayoutPanel1.SetColumnSpan(this.txtBoxFilePath, 3);
+            this.txtBoxFilePath.Location = new System.Drawing.Point(105, 3);
+            this.txtBoxFilePath.Name = "txtBoxFilePath";
+            this.txtBoxFilePath.Size = new System.Drawing.Size(369, 34);
+            this.txtBoxFilePath.TabIndex = 1;
+            this.txtBoxFilePath.TextChanged += new System.EventHandler(this.FileChanged);
             // 
             // uiLabel1
             // 
@@ -83,15 +79,6 @@ partial class FileSHAorMD5Checker
             this.uiLabel1.TabIndex = 0;
             this.uiLabel1.Text = "Path";
             this.uiLabel1.TextAlign = System.Drawing.ContentAlignment.MiddleCenter;
-            // 
-            // txtBoxFilePath
-            // 
-            this.txtBoxFilePath.Dock = System.Windows.Forms.DockStyle.Fill;
-            this.txtBoxFilePath.Location = new System.Drawing.Point(105, 3);
-            this.txtBoxFilePath.Name = "txtBoxFilePath";
-            this.txtBoxFilePath.Size = new System.Drawing.Size(378, 34);
-            this.txtBoxFilePath.TabIndex = 1;
-            this.txtBoxFilePath.TextChanged += new System.EventHandler(this.FileChanged);
             // 
             // uiLabel2
             // 
@@ -106,8 +93,10 @@ partial class FileSHAorMD5Checker
             // 
             // txtBoxFileName
             // 
-            this.tableLayoutPanel1.SetColumnSpan(this.txtBoxFileName, 2);
-            this.txtBoxFileName.Dock = System.Windows.Forms.DockStyle.Fill;
+            this.txtBoxFileName.Anchor = ((System.Windows.Forms.AnchorStyles)((((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Bottom) 
+            | System.Windows.Forms.AnchorStyles.Left) 
+            | System.Windows.Forms.AnchorStyles.Right)));
+            this.tableLayoutPanel1.SetColumnSpan(this.txtBoxFileName, 4);
             this.txtBoxFileName.Location = new System.Drawing.Point(105, 43);
             this.txtBoxFileName.Name = "txtBoxFileName";
             this.txtBoxFileName.Size = new System.Drawing.Size(405, 34);
@@ -126,11 +115,13 @@ partial class FileSHAorMD5Checker
             // 
             // txtBoxFileMD5
             // 
+            this.txtBoxFileMD5.Anchor = ((System.Windows.Forms.AnchorStyles)((((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Bottom) 
+            | System.Windows.Forms.AnchorStyles.Left) 
+            | System.Windows.Forms.AnchorStyles.Right)));
             this.tableLayoutPanel1.SetColumnSpan(this.txtBoxFileMD5, 2);
-            this.txtBoxFileMD5.Dock = System.Windows.Forms.DockStyle.Fill;
             this.txtBoxFileMD5.Location = new System.Drawing.Point(105, 83);
             this.txtBoxFileMD5.Name = "txtBoxFileMD5";
-            this.txtBoxFileMD5.Size = new System.Drawing.Size(405, 34);
+            this.txtBoxFileMD5.Size = new System.Drawing.Size(198, 34);
             this.txtBoxFileMD5.TabIndex = 5;
             // 
             // uiLabel4
@@ -146,11 +137,13 @@ partial class FileSHAorMD5Checker
             // 
             // txtBoxFileSHA1
             // 
+            this.txtBoxFileSHA1.Anchor = ((System.Windows.Forms.AnchorStyles)((((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Bottom) 
+            | System.Windows.Forms.AnchorStyles.Left) 
+            | System.Windows.Forms.AnchorStyles.Right)));
             this.tableLayoutPanel1.SetColumnSpan(this.txtBoxFileSHA1, 2);
-            this.txtBoxFileSHA1.Dock = System.Windows.Forms.DockStyle.Fill;
             this.txtBoxFileSHA1.Location = new System.Drawing.Point(105, 123);
             this.txtBoxFileSHA1.Name = "txtBoxFileSHA1";
-            this.txtBoxFileSHA1.Size = new System.Drawing.Size(405, 34);
+            this.txtBoxFileSHA1.Size = new System.Drawing.Size(198, 34);
             this.txtBoxFileSHA1.TabIndex = 7;
             // 
             // uiLabel5
@@ -166,30 +159,130 @@ partial class FileSHAorMD5Checker
             // 
             // txtBoxFileSHA256
             // 
+            this.txtBoxFileSHA256.Anchor = ((System.Windows.Forms.AnchorStyles)((((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Bottom) 
+            | System.Windows.Forms.AnchorStyles.Left) 
+            | System.Windows.Forms.AnchorStyles.Right)));
             this.tableLayoutPanel1.SetColumnSpan(this.txtBoxFileSHA256, 2);
-            this.txtBoxFileSHA256.Dock = System.Windows.Forms.DockStyle.Fill;
             this.txtBoxFileSHA256.Location = new System.Drawing.Point(105, 163);
             this.txtBoxFileSHA256.Name = "txtBoxFileSHA256";
-            this.txtBoxFileSHA256.Size = new System.Drawing.Size(405, 34);
+            this.txtBoxFileSHA256.Size = new System.Drawing.Size(198, 34);
             this.txtBoxFileSHA256.TabIndex = 9;
+            // 
+            // pictureBox3
+            // 
+            this.pictureBox3.Dock = System.Windows.Forms.DockStyle.Fill;
+            this.pictureBox3.Image = global::IDE.Properties.Resources.delete;
+            this.pictureBox3.Location = new System.Drawing.Point(480, 83);
+            this.pictureBox3.Name = "pictureBox3";
+            this.pictureBox3.Size = new System.Drawing.Size(30, 34);
+            this.pictureBox3.TabIndex = 15;
+            this.pictureBox3.TabStop = false;
+            // 
+            // txtBoxGivenMD5Value
+            // 
+            this.txtBoxGivenMD5Value.Anchor = ((System.Windows.Forms.AnchorStyles)((((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Bottom) 
+            | System.Windows.Forms.AnchorStyles.Left) 
+            | System.Windows.Forms.AnchorStyles.Right)));
+            this.txtBoxGivenMD5Value.Location = new System.Drawing.Point(309, 83);
+            this.txtBoxGivenMD5Value.Name = "txtBoxGivenMD5Value";
+            this.txtBoxGivenMD5Value.Size = new System.Drawing.Size(165, 34);
+            this.txtBoxGivenMD5Value.TabIndex = 16;
+            this.txtBoxGivenMD5Value.TextChanged += new System.EventHandler(this.Judge_MD5);
+            // 
+            // pictureBox4
+            // 
+            this.pictureBox4.Dock = System.Windows.Forms.DockStyle.Fill;
+            this.pictureBox4.Image = global::IDE.Properties.Resources.delete;
+            this.pictureBox4.Location = new System.Drawing.Point(480, 123);
+            this.pictureBox4.Name = "pictureBox4";
+            this.pictureBox4.Size = new System.Drawing.Size(30, 34);
+            this.pictureBox4.TabIndex = 17;
+            this.pictureBox4.TabStop = false;
+            // 
+            // txtBoxGivenSHA1Value
+            // 
+            this.txtBoxGivenSHA1Value.Anchor = ((System.Windows.Forms.AnchorStyles)((((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Bottom) 
+            | System.Windows.Forms.AnchorStyles.Left) 
+            | System.Windows.Forms.AnchorStyles.Right)));
+            this.txtBoxGivenSHA1Value.Location = new System.Drawing.Point(309, 123);
+            this.txtBoxGivenSHA1Value.Name = "txtBoxGivenSHA1Value";
+            this.txtBoxGivenSHA1Value.Size = new System.Drawing.Size(165, 34);
+            this.txtBoxGivenSHA1Value.TabIndex = 18;
+            this.txtBoxGivenSHA1Value.TextChanged += new System.EventHandler(this.Judge_SHA1);
+            // 
+            // pictureBox5
+            // 
+            this.pictureBox5.Dock = System.Windows.Forms.DockStyle.Fill;
+            this.pictureBox5.Image = global::IDE.Properties.Resources.delete;
+            this.pictureBox5.Location = new System.Drawing.Point(480, 163);
+            this.pictureBox5.Name = "pictureBox5";
+            this.pictureBox5.Size = new System.Drawing.Size(30, 36);
+            this.pictureBox5.TabIndex = 19;
+            this.pictureBox5.TabStop = false;
+            // 
+            // txtBoxGivenSHA256Value
+            // 
+            this.txtBoxGivenSHA256Value.Anchor = ((System.Windows.Forms.AnchorStyles)((((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Bottom) 
+            | System.Windows.Forms.AnchorStyles.Left) 
+            | System.Windows.Forms.AnchorStyles.Right)));
+            this.txtBoxGivenSHA256Value.Location = new System.Drawing.Point(309, 163);
+            this.txtBoxGivenSHA256Value.Name = "txtBoxGivenSHA256Value";
+            this.txtBoxGivenSHA256Value.Size = new System.Drawing.Size(165, 34);
+            this.txtBoxGivenSHA256Value.TabIndex = 20;
+            this.txtBoxGivenSHA256Value.TextChanged += new System.EventHandler(this.Judge_SHA256);
+            // 
+            // tableLayoutPanel1
+            // 
+            this.tableLayoutPanel1.ColumnCount = 5;
+            this.tableLayoutPanel1.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Percent, 20F));
+            this.tableLayoutPanel1.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Percent, 35F));
+            this.tableLayoutPanel1.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Percent, 5F));
+            this.tableLayoutPanel1.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Percent, 33.5F));
+            this.tableLayoutPanel1.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Percent, 6.5F));
+            this.tableLayoutPanel1.Controls.Add(this.uiButton1, 4, 0);
+            this.tableLayoutPanel1.Controls.Add(this.txtBoxGivenSHA256Value, 3, 4);
+            this.tableLayoutPanel1.Controls.Add(this.pictureBox5, 4, 4);
+            this.tableLayoutPanel1.Controls.Add(this.txtBoxGivenSHA1Value, 3, 3);
+            this.tableLayoutPanel1.Controls.Add(this.pictureBox4, 4, 3);
+            this.tableLayoutPanel1.Controls.Add(this.txtBoxGivenMD5Value, 3, 2);
+            this.tableLayoutPanel1.Controls.Add(this.pictureBox3, 4, 2);
+            this.tableLayoutPanel1.Controls.Add(this.txtBoxFileSHA256, 1, 4);
+            this.tableLayoutPanel1.Controls.Add(this.uiLabel5, 0, 4);
+            this.tableLayoutPanel1.Controls.Add(this.txtBoxFileSHA1, 1, 3);
+            this.tableLayoutPanel1.Controls.Add(this.uiLabel4, 0, 3);
+            this.tableLayoutPanel1.Controls.Add(this.txtBoxFileMD5, 1, 2);
+            this.tableLayoutPanel1.Controls.Add(this.uiLabel3, 0, 2);
+            this.tableLayoutPanel1.Controls.Add(this.txtBoxFileName, 1, 1);
+            this.tableLayoutPanel1.Controls.Add(this.uiLabel2, 0, 1);
+            this.tableLayoutPanel1.Controls.Add(this.uiLabel1, 0, 0);
+            this.tableLayoutPanel1.Controls.Add(this.txtBoxFilePath, 1, 0);
+            this.tableLayoutPanel1.Dock = System.Windows.Forms.DockStyle.Fill;
+            this.tableLayoutPanel1.Location = new System.Drawing.Point(0, 35);
+            this.tableLayoutPanel1.Name = "tableLayoutPanel1";
+            this.tableLayoutPanel1.RowCount = 5;
+            this.tableLayoutPanel1.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Percent, 20F));
+            this.tableLayoutPanel1.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Percent, 20F));
+            this.tableLayoutPanel1.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Percent, 20F));
+            this.tableLayoutPanel1.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Percent, 20F));
+            this.tableLayoutPanel1.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Percent, 20F));
+            this.tableLayoutPanel1.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Absolute, 20F));
+            this.tableLayoutPanel1.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Absolute, 20F));
+            this.tableLayoutPanel1.Size = new System.Drawing.Size(513, 202);
+            this.tableLayoutPanel1.TabIndex = 0;
             // 
             // uiButton1
             // 
+            this.uiButton1.Anchor = System.Windows.Forms.AnchorStyles.None;
             this.uiButton1.Cursor = System.Windows.Forms.Cursors.Hand;
-            this.uiButton1.Dock = System.Windows.Forms.DockStyle.Fill;
             this.uiButton1.Font = new System.Drawing.Font("微软雅黑", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(134)));
-            this.uiButton1.Location = new System.Drawing.Point(489, 3);
+            this.uiButton1.Location = new System.Drawing.Point(480, 3);
             this.uiButton1.MinimumSize = new System.Drawing.Size(1, 1);
             this.uiButton1.Name = "uiButton1";
-            this.uiButton1.Size = new System.Drawing.Size(21, 34);
-            this.uiButton1.TabIndex = 10;
+            this.uiButton1.Size = new System.Drawing.Size(30, 34);
+            this.uiButton1.TabIndex = 25;
             this.uiButton1.Text = "...";
             this.uiButton1.TipsFont = new System.Drawing.Font("微软雅黑", 9F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(134)));
             this.uiButton1.Click += new System.EventHandler(this.OpenFile);
-            // 
-            // openFileDialog1
-            // 
-            this.openFileDialog1.SupportMultiDottedExtensions = true;
             // 
             // FileSHAorMD5Checker
             // 
@@ -199,6 +292,9 @@ partial class FileSHAorMD5Checker
             this.Name = "FileSHAorMD5Checker";
             this.Text = "File SHA or MD5 Encoding Validator";
             this.ZoomScaleRect = new System.Drawing.Rectangle(19, 19, 800, 450);
+            ((System.ComponentModel.ISupportInitialize)(this.pictureBox3)).EndInit();
+            ((System.ComponentModel.ISupportInitialize)(this.pictureBox4)).EndInit();
+            ((System.ComponentModel.ISupportInitialize)(this.pictureBox5)).EndInit();
             this.tableLayoutPanel1.ResumeLayout(false);
             this.tableLayoutPanel1.PerformLayout();
             this.ResumeLayout(false);
@@ -206,10 +302,16 @@ partial class FileSHAorMD5Checker
     }
 
     #endregion
-
-    private System.Windows.Forms.TableLayoutPanel tableLayoutPanel1;
-    private Sunny.UI.UILabel uiLabel1;
+    private System.Windows.Forms.OpenFileDialog openFileDialog1;
     private System.Windows.Forms.TextBox txtBoxFilePath;
+    private System.Windows.Forms.TableLayoutPanel tableLayoutPanel1;
+    private Sunny.UI.UIButton uiButton1;
+    private System.Windows.Forms.TextBox txtBoxGivenSHA256Value;
+    private System.Windows.Forms.PictureBox pictureBox5;
+    private System.Windows.Forms.TextBox txtBoxGivenSHA1Value;
+    private System.Windows.Forms.PictureBox pictureBox4;
+    private System.Windows.Forms.TextBox txtBoxGivenMD5Value;
+    private System.Windows.Forms.PictureBox pictureBox3;
     private System.Windows.Forms.TextBox txtBoxFileSHA256;
     private Sunny.UI.UILabel uiLabel5;
     private System.Windows.Forms.TextBox txtBoxFileSHA1;
@@ -218,6 +320,5 @@ partial class FileSHAorMD5Checker
     private Sunny.UI.UILabel uiLabel3;
     private System.Windows.Forms.TextBox txtBoxFileName;
     private Sunny.UI.UILabel uiLabel2;
-    private Sunny.UI.UIButton uiButton1;
-    private System.Windows.Forms.OpenFileDialog openFileDialog1;
+    private Sunny.UI.UILabel uiLabel1;
 }

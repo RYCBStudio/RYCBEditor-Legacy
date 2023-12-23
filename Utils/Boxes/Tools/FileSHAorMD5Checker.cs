@@ -82,4 +82,40 @@ public partial class FileSHAorMD5Checker : UIForm
             }
         }
     }
+
+    private void Judge_MD5(object sender, EventArgs e)
+    {
+        if (txtBoxFileMD5.Text.ToLower() == txtBoxGivenMD5Value.Text.ToLower())
+        {
+            pictureBox3.Image = IDE.Properties.Resources.save;
+        }
+        else
+        {
+            pictureBox3.Image = IDE.Properties.Resources.delete;
+        }
+    }
+
+    private void Judge_SHA1(object sender, EventArgs e)
+    {
+        if (txtBoxFileSHA1.Text.ToLower() == txtBoxGivenSHA1Value.Text.ToLower())
+        {
+            pictureBox4.Image = IDE.Properties.Resources.save;
+        }
+        else
+        {
+            pictureBox4.Image = IDE.Properties.Resources.delete;
+        }
+    }
+
+    private void Judge_SHA256(object sender, EventArgs e)
+    {
+        if (txtBoxFileSHA256.Text.ToLower() == txtBoxGivenSHA256Value.Text.ToLower())
+        {
+            pictureBox5.Image = IDE.Properties.Resources.save;
+        }
+        else
+        {
+            pictureBox5.Image = IDE.Properties.Resources.delete;
+        }
+    }
 }

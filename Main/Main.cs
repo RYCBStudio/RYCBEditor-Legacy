@@ -356,11 +356,11 @@ namespace IDE
                     Location = new System.Drawing.Point(0, 0),
                     Name = "tableLayoutPanel2",
                     RowCount = 1,
-                    Size = new System.Drawing.Size(858, 299),
+                    Size = tab.Size,
                     TabIndex = 0,
                 };
-                table.RowStyles.Add(new RowStyle(SizeType.Percent, 50F));
-                table.ColumnStyles.Add(new ColumnStyle(SizeType.Percent, 50F));
+                table.RowStyles.Add(new RowStyle(SizeType.Percent, 100F));
+                table.ColumnStyles.Add(new ColumnStyle(SizeType.Percent, 100F));
 
 
                 var tmpEHost = new ElementHost
@@ -692,7 +692,7 @@ namespace IDE
                         Process p = new() { StartInfo = ps };
                         LOGGER.WriteLog("Process对象已创建。", EnumMsgLevel.DEBUG, EnumPort.CLIENT, EnumModule.MAIN);
                         //LOGGER.WriteLog("Process对象是否已运行：" + p.Start(), EnumMsgLevel.DEBUG, EnumPort.CLIENT, EnumModule.MAIN);
-                        //p.WaitForInputIdle();
+                        p.WaitForInputIdle();
                         //var p_name = p.MainWindowTitle;
                         //LOGGER.WriteLog("Process对象标题名称：" + p_name, EnumMsgLevel.DEBUG, EnumPort.CLIENT, EnumModule.MAIN);
                         appContainer1.AppProcess = p;
@@ -1317,8 +1317,7 @@ namespace IDE
                         _builtins = LangKeywords.BulitIns.py;
                         if (!_tmpfilepath.IsNullOrEmpty())
                         {
-                            _fields = PythonVariableAnalyzer.AnalyzeVariables(_tmpfilepath)["Global"].ToArray();
-                            _fields.AddRange(PythonVariableAnalyzer.AnalyzeVariables(_tmpfilepath)["Private"]);
+                            _fields.AddRange(PythonVariableAnalyzer.Analyze(GetCurrentTextEditor().Text));
                         }
                         break;
                     case "Py-CN":
@@ -1327,8 +1326,8 @@ namespace IDE
                         _builtins = LangKeywords.BulitIns.pycn;
                         if (!_tmpfilepath.IsNullOrEmpty())
                         {
-                            _fields = PythonVariableAnalyzer.AnalyzeVariables(_tmpfilepath)["Global"].ToArray();
-                            _fields.AddRange(PythonVariableAnalyzer.AnalyzeVariables(_tmpfilepath)["Private"]);
+                            //_fields = PythonVariableAnalyzer.AnalyzeVariables(_tmpfilepath)["Global"].ToArray();
+                            //_fields.AddRange(PythonVariableAnalyzer.AnalyzeVariables(_tmpfilepath)["Private"]);
                         }
                         break;
                     case "C-Sharp":
@@ -2042,7 +2041,7 @@ namespace IDE
         {
             try
             {
-                var tmpETable = (tabControl1.SelectedTab.Controls[0] as TableLayoutPanel).Controls[0];
+                var tmpETable = tabControl1.SelectedTab.Controls[0] as TableLayoutPanel;
                 if (tmpETable.Controls[0] is not null)
                 {
                     return ((tmpETable.Controls[0] as ElementHost).Child as TextEditor);

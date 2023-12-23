@@ -48,12 +48,6 @@ public partial class MsgBox : UIForm
         Fatal,
     }
 
-    private void webBrowser1_DocumentCompleted(object sender, WebBrowserDocumentCompletedEventArgs e)
-    {
-        // 设置字体样式和大小
-        webBrowser1.Document.Body.SetAttribute($"style", "font-family: Microsoft YaHei UI; font-size: 14px;");
-    }
-
     private void PreInit(object sender, EventArgs e)
     {
         if (CurrentException is not null)
@@ -113,8 +107,7 @@ public partial class MsgBox : UIForm
         }
         if (GetHtmlText())
         {
-            webBrowser1.DocumentText = htmlText;
-            webBrowser1.Invalidate();
+            htmlLabel1.Text = htmlText;
         }
     }
 
@@ -124,7 +117,7 @@ public partial class MsgBox : UIForm
         {
             if (MarkdownText.IsNullOrEmpty())
             {
-                webBrowser1.DocumentText = htmlText;
+                htmlLabel1.Text = htmlText;
                 return true;
             }
             var pipeline = new MarkdownPipelineBuilder().UseAdvancedExtensions().Build();
@@ -138,7 +131,7 @@ public partial class MsgBox : UIForm
     {
         if (GetHtmlText())
         {
-            webBrowser1.DocumentText = htmlText;
+            htmlLabel1.Text = htmlText;
         }
     }
 
@@ -150,6 +143,6 @@ public partial class MsgBox : UIForm
 
     private void HideProcess(object sender, EventArgs e)
     {
-        webBrowser1.DocumentText = string.Empty;
+        htmlLabel1.Text = string.Empty;
     }
 }

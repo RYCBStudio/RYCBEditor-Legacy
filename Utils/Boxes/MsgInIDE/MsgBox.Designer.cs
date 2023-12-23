@@ -29,27 +29,26 @@ partial class MsgBox
     /// </summary>
     private void InitializeComponent()
     {
-            this.webBrowser1 = new System.Windows.Forms.WebBrowser();
+            this.htmlLabel1 = new MetroFramework.Drawing.Html.HtmlLabel();
             this.SuspendLayout();
             // 
-            // webBrowser1
+            // htmlLabel1
             // 
-            this.webBrowser1.AllowNavigation = false;
-            this.webBrowser1.AllowWebBrowserDrop = false;
-            this.webBrowser1.Dock = System.Windows.Forms.DockStyle.Fill;
-            this.webBrowser1.IsWebBrowserContextMenuEnabled = false;
-            this.webBrowser1.Location = new System.Drawing.Point(0, 35);
-            this.webBrowser1.MinimumSize = new System.Drawing.Size(20, 20);
-            this.webBrowser1.Name = "webBrowser1";
-            this.webBrowser1.Size = new System.Drawing.Size(416, 170);
-            this.webBrowser1.TabIndex = 0;
-            this.webBrowser1.DocumentCompleted += new System.Windows.Forms.WebBrowserDocumentCompletedEventHandler(this.webBrowser1_DocumentCompleted);
+            this.htmlLabel1.AutoScroll = true;
+            this.htmlLabel1.AutoScrollMinSize = new System.Drawing.Size(10, 10);
+            this.htmlLabel1.AutoSize = false;
+            this.htmlLabel1.BackColor = System.Drawing.SystemColors.Window;
+            this.htmlLabel1.Dock = System.Windows.Forms.DockStyle.Fill;
+            this.htmlLabel1.Location = new System.Drawing.Point(0, 35);
+            this.htmlLabel1.Name = "htmlLabel1";
+            this.htmlLabel1.Size = new System.Drawing.Size(416, 170);
+            this.htmlLabel1.TabIndex = 0;
             // 
             // MsgBox
             // 
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.None;
             this.ClientSize = new System.Drawing.Size(416, 205);
-            this.Controls.Add(this.webBrowser1);
+            this.Controls.Add(this.htmlLabel1);
             this.Name = "MsgBox";
             this.Text = "MsgBox";
             this.ZoomScaleRect = new System.Drawing.Rectangle(19, 19, 800, 450);
@@ -64,5 +63,5 @@ partial class MsgBox
 
     #endregion
 
-    private System.Windows.Forms.WebBrowser webBrowser1;
+    private MetroFramework.Drawing.Html.HtmlLabel htmlLabel1;
 }
