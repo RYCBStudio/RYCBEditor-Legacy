@@ -33,7 +33,7 @@
             <param name="circularBufferMB">The size of the runtime's buffer for collecting events in MB</param>
             <returns>
             An EventPipeSession object representing the EventPipe session that just started.
-            </returns> 
+            </returns>
         </member>
         <member name="M:Microsoft.Diagnostics.NETCore.Client.DiagnosticsClient.StartEventPipeSession(Microsoft.Diagnostics.NETCore.Client.EventPipeProvider,System.Boolean,System.Int32)">
             <summary>
@@ -44,7 +44,7 @@
             <param name="circularBufferMB">The size of the runtime's buffer for collecting events in MB</param>
             <returns>
             An EventPipeSession object representing the EventPipe session that just started.
-            </returns> 
+            </returns>
         </member>
         <member name="M:Microsoft.Diagnostics.NETCore.Client.DiagnosticsClient.StartEventPipeSessionAsync(System.Collections.Generic.IEnumerable{Microsoft.Diagnostics.NETCore.Client.EventPipeProvider},System.Boolean,System.Int32,System.Threading.CancellationToken)">
             <summary>
@@ -56,7 +56,7 @@
             <param name="token">The token to monitor for cancellation requests.</param>
             <returns>
             An EventPipeSession object representing the EventPipe session that just started.
-            </returns> 
+            </returns>
         </member>
         <member name="M:Microsoft.Diagnostics.NETCore.Client.DiagnosticsClient.StartEventPipeSessionAsync(Microsoft.Diagnostics.NETCore.Client.EventPipeProvider,System.Boolean,System.Int32,System.Threading.CancellationToken)">
             <summary>
@@ -73,7 +73,7 @@
         <member name="M:Microsoft.Diagnostics.NETCore.Client.DiagnosticsClient.WriteDump(Microsoft.Diagnostics.NETCore.Client.DumpType,System.String,System.Boolean)">
             <summary>
             Trigger a core dump generation.
-            </summary> 
+            </summary>
             <param name="dumpType">Type of the dump to be generated</param>
             <param name="dumpPath">Full path to the dump to be generated. By default it is /tmp/coredump.{pid}</param>
             <param name="logDumpGeneration">When set to true, display the dump generation debug log to the console.</param>
@@ -81,7 +81,7 @@
         <member name="M:Microsoft.Diagnostics.NETCore.Client.DiagnosticsClient.WriteDump(Microsoft.Diagnostics.NETCore.Client.DumpType,System.String,Microsoft.Diagnostics.NETCore.Client.WriteDumpFlags)">
             <summary>
             Trigger a core dump generation.
-            </summary> 
+            </summary>
             <param name="dumpType">Type of the dump to be generated</param>
             <param name="dumpPath">Full path to the dump to be generated. By default it is /tmp/coredump.{pid}</param>
             <param name="flags">logging and crash report flags. On runtimes less than 6.0, only LoggingEnabled is supported.</param>
@@ -89,7 +89,7 @@
         <member name="M:Microsoft.Diagnostics.NETCore.Client.DiagnosticsClient.WriteDumpAsync(Microsoft.Diagnostics.NETCore.Client.DumpType,System.String,System.Boolean,System.Threading.CancellationToken)">
             <summary>
             Trigger a core dump generation.
-            </summary> 
+            </summary>
             <param name="dumpType">Type of the dump to be generated</param>
             <param name="dumpPath">Full path to the dump to be generated. By default it is /tmp/coredump.{pid}</param>
             <param name="logDumpGeneration">When set to true, display the dump generation debug log to the console.</param>
@@ -98,7 +98,7 @@
         <member name="M:Microsoft.Diagnostics.NETCore.Client.DiagnosticsClient.WriteDumpAsync(Microsoft.Diagnostics.NETCore.Client.DumpType,System.String,Microsoft.Diagnostics.NETCore.Client.WriteDumpFlags,System.Threading.CancellationToken)">
             <summary>
             Trigger a core dump generation.
-            </summary> 
+            </summary>
             <param name="dumpType">Type of the dump to be generated</param>
             <param name="dumpPath">Full path to the dump to be generated. By default it is /tmp/coredump.{pid}</param>
             <param name="flags">logging and crash report flags. On runtimes less than 6.0, only LoggingEnabled is supported.</param>
@@ -139,6 +139,17 @@
             </summary>
             <returns>A dictionary containing all of the environment variables defined in the target process.</returns>
         </member>
+        <member name="M:Microsoft.Diagnostics.NETCore.Client.DiagnosticsClient.EnablePerfMap(Microsoft.Diagnostics.NETCore.Client.PerfMapType)">
+             <summary>
+            
+             </summary>
+             <param name="type"></param>
+        </member>
+        <member name="M:Microsoft.Diagnostics.NETCore.Client.DiagnosticsClient.DisablePerfMap">
+             <summary>
+            
+             </summary>
+        </member>
         <member name="M:Microsoft.Diagnostics.NETCore.Client.DiagnosticsClient.GetPublishedProcesses">
             <summary>
             Get all the active processes that can be attached to.
@@ -153,16 +164,16 @@
             </summary>
         </member>
         <member name="T:Microsoft.Diagnostics.NETCore.Client.IpcAdvertise">
-            ==ADVERTISE PROTOCOL==
-            Before standard IPC Protocol communication can occur on a client-mode connection
-            the runtime must advertise itself over the connection. ALL SUBSEQUENT COMMUNICATION 
-            IS STANDARD DIAGNOSTICS IPC PROTOCOL COMMUNICATION.
+             ==ADVERTISE PROTOCOL==
+             Before standard IPC Protocol communication can occur on a client-mode connection
+             the runtime must advertise itself over the connection. ALL SUBSEQUENT COMMUNICATION
+             IS STANDARD DIAGNOSTICS IPC PROTOCOL COMMUNICATION.
             
-            The flow for Advertise is a one-way burst of 34 bytes consisting of
-            8 bytes  - "ADVR_V1\0" (ASCII chars + null byte)
-            16 bytes - CLR Instance Cookie (little-endian)
-            8 bytes  - PID (little-endian)
-            2 bytes  - future
+             The flow for Advertise is a one-way burst of 34 bytes consisting of
+             8 bytes  - "ADVR_V1\0" (ASCII chars + null byte)
+             16 bytes - CLR Instance Cookie (little-endian)
+             8 bytes  - PID (little-endian)
+             2 bytes  - future
         </member>
         <member name="M:Microsoft.Diagnostics.NETCore.Client.IpcClient.SendMessage(Microsoft.Diagnostics.NETCore.Client.IpcEndpoint,Microsoft.Diagnostics.NETCore.Client.IpcMessage)">
             <summary>
@@ -210,7 +221,7 @@
         </member>
         <member name="F:Microsoft.Diagnostics.NETCore.Client.DiagnosticsMessageType.GenerateCoreDump">
             <summary>
-            Initiates core dump generation 
+            Initiates core dump generation
             </summary>
         </member>
         <member name="F:Microsoft.Diagnostics.NETCore.Client.DiagnosticsMessageType.StartEventPipeTracing">
@@ -295,31 +306,31 @@
             <returns>A reference to the IPC Transport</returns>
         </member>
         <member name="T:Microsoft.Diagnostics.NETCore.Client.ProcessInfo">
-            ==ProcessInfo==
-            The response payload to issuing the GetProcessInfo command.
+             ==ProcessInfo==
+             The response payload to issuing the GetProcessInfo command.
             
-            8 bytes  - PID (little-endian)
-            16 bytes - CLR Runtime Instance Cookie (little-endian)
-            # bytes  - Command line string length and data
-            # bytes  - Operating system string length and data
-            # bytes  - Process architecture string length and data
+             8 bytes  - PID (little-endian)
+             16 bytes - CLR Runtime Instance Cookie (little-endian)
+             # bytes  - Command line string length and data
+             # bytes  - Operating system string length and data
+             # bytes  - Process architecture string length and data
             
-            ==ProcessInfo2==
-            The response payload to issuing the GetProcessInfo2 command.
+             ==ProcessInfo2==
+             The response payload to issuing the GetProcessInfo2 command.
             
-            8 bytes  - PID (little-endian)
-            16 bytes - CLR Runtime Instance Cookie (little-endian)
-            # bytes  - Command line string length and data
-            # bytes  - Operating system string length and data
-            # bytes  - Process architecture string length and data
-            # bytes  - Managed entrypoint assembly name
-            # bytes  - CLR product version string (may include prerelease labels)
+             8 bytes  - PID (little-endian)
+             16 bytes - CLR Runtime Instance Cookie (little-endian)
+             # bytes  - Command line string length and data
+             # bytes  - Operating system string length and data
+             # bytes  - Process architecture string length and data
+             # bytes  - Managed entrypoint assembly name
+             # bytes  - CLR product version string (may include prerelease labels)
             
             
-            The "string length and data" fields are variable length:
-            4 bytes            - Length of string data in UTF-16 characters
-            (2 * length) bytes - The data of the string encoded using Unicode
-                                 (includes null terminating character)
+             The "string length and data" fields are variable length:
+             4 bytes            - Length of string data in UTF-16 characters
+             (2 * length) bytes - The data of the string encoded using Unicode
+                                  (includes null terminating character)
         </member>
         <member name="M:Microsoft.Diagnostics.NETCore.Client.ProcessInfo.ParseV1(System.Byte[])">
             <summary>
@@ -329,6 +340,11 @@
         <member name="M:Microsoft.Diagnostics.NETCore.Client.ProcessInfo.ParseV2(System.Byte[])">
             <summary>
             Parses a ProcessInfo2 payload.
+            </summary>
+        </member>
+        <member name="M:Microsoft.Diagnostics.NETCore.Client.ProcessInfo.ParseV3(System.Byte[])">
+            <summary>
+            Parses a ProcessInfo3 payload.
             </summary>
         </member>
         <member name="T:Microsoft.Diagnostics.NETCore.Client.DiagnosticsServerRouterFactory">

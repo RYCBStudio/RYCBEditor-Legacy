@@ -6133,7 +6133,7 @@
             <param name="assembly">source assembly</param>
         </member>
         <member name="M:Microsoft.SqlServer.Management.Facets.FacetRepository.BuildAdapterLookup(System.Reflection.Assembly)">
-            <summary>
+            <summary> 
             Scans Assembly for Adapters.
             Adapter inherits a management facet.
             Adapter is bound to {Interface; ObjectType} key pairs. 

@@ -5265,6 +5265,10 @@
             <summary>
              Enum containing all possible DatabasePermissions
              use sys.fn_builtin_permissions to see the latest values on new versions of SQL
+            
+             IMPORTANT: When adding enums here, you must also update permissionOptions.cs with the getters and setters for the permission objects.
+             The ContainsPermissionType methods in DatabasePrincipal.cs must also be updated when adding database and object permissions.
+             The DatabasePermissionType enum used in those functions are derived from SqlParser.
             </summary>
         </member>
         <member name="T:Microsoft.SqlServer.Management.Smo.ObjectPermissionSetValue">
@@ -5281,7 +5285,7 @@
             Used to cache the Permission Type -> enum values mappings. We're only caching this mapping because this one
             requires iterating through all of the values of the specified enum type and so can get expensive with all
             the reflection lookups. The other methods in this class work on a single instance of an enum value so the
-            cost is much smaller and not worth the overhead of the caching. 
+            cost is much smaller and not worth the overhead of the caching.
             </summary>
         </member>
         <member name="M:Microsoft.SqlServer.Management.Smo.PermissionDecode.ToPermissionSetValueEnum``1(System.String)">

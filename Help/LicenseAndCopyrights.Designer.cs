@@ -33,8 +33,15 @@
             this.statusStrip1 = new System.Windows.Forms.StatusStrip();
             this.TS_L_Copyright = new System.Windows.Forms.ToolStripStatusLabel();
             this.uiStyleManager1 = new Sunny.UI.UIStyleManager(this.components);
-            this.htmlLabel1 = new MetroFramework.Drawing.Html.HtmlLabel();
+            this.webView21 = new Microsoft.Web.WebView2.WinForms.WebView2();
+            this.toolStrip1 = new System.Windows.Forms.ToolStrip();
+            this.toolStripButton1 = new System.Windows.Forms.ToolStripButton();
+            this.toolStripButton2 = new System.Windows.Forms.ToolStripButton();
+            this.toolStripButton3 = new System.Windows.Forms.ToolStripButton();
+            this.toolStripButton4 = new System.Windows.Forms.ToolStripButton();
             this.statusStrip1.SuspendLayout();
+            ((System.ComponentModel.ISupportInitialize)(this.webView21)).BeginInit();
+            this.toolStrip1.SuspendLayout();
             this.SuspendLayout();
             // 
             // statusStrip1
@@ -56,39 +63,103 @@
             this.TS_L_Copyright.Size = new System.Drawing.Size(379, 20);
             this.TS_L_Copyright.Text = "Copyright © 2023 RYCB Studio, All rights reserved.";
             // 
-            // htmlLabel1
+            // uiStyleManager1
             // 
-            this.htmlLabel1.AutoScroll = true;
-            this.htmlLabel1.AutoScrollMinSize = new System.Drawing.Size(10, 10);
-            this.htmlLabel1.AutoSize = false;
-            this.htmlLabel1.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(243)))), ((int)(((byte)(249)))), ((int)(((byte)(255)))));
-            this.htmlLabel1.Dock = System.Windows.Forms.DockStyle.Fill;
-            this.htmlLabel1.Font = new System.Drawing.Font("微软雅黑", 9F);
-            this.htmlLabel1.ForeColor = System.Drawing.Color.Black;
-            this.htmlLabel1.Location = new System.Drawing.Point(0, 35);
-            this.htmlLabel1.Name = "htmlLabel1";
-            this.htmlLabel1.Size = new System.Drawing.Size(875, 313);
-            this.htmlLabel1.TabIndex = 2;
+            this.uiStyleManager1.GlobalFont = true;
+            this.uiStyleManager1.GlobalFontName = "微软雅黑";
+            // 
+            // webView21
+            // 
+            this.webView21.AllowExternalDrop = true;
+            this.webView21.CreationProperties = null;
+            this.webView21.DefaultBackgroundColor = System.Drawing.Color.White;
+            this.webView21.Dock = System.Windows.Forms.DockStyle.Fill;
+            this.webView21.Location = new System.Drawing.Point(0, 62);
+            this.webView21.Name = "webView21";
+            this.webView21.Size = new System.Drawing.Size(875, 286);
+            this.webView21.TabIndex = 2;
+            this.webView21.ZoomFactor = 1D;
+            // 
+            // toolStrip1
+            // 
+            this.toolStrip1.ImageScalingSize = new System.Drawing.Size(20, 20);
+            this.toolStrip1.Items.AddRange(new System.Windows.Forms.ToolStripItem[] {
+            this.toolStripButton1,
+            this.toolStripButton2,
+            this.toolStripButton3,
+            this.toolStripButton4});
+            this.toolStrip1.Location = new System.Drawing.Point(0, 35);
+            this.toolStrip1.Name = "toolStrip1";
+            this.toolStrip1.Size = new System.Drawing.Size(875, 27);
+            this.toolStrip1.TabIndex = 3;
+            this.toolStrip1.Text = "toolStrip1";
+            // 
+            // toolStripButton1
+            // 
+            this.toolStripButton1.DisplayStyle = System.Windows.Forms.ToolStripItemDisplayStyle.Image;
+            this.toolStripButton1.Image = global::IDE.Properties.Resources.back;
+            this.toolStripButton1.ImageTransparentColor = System.Drawing.Color.Magenta;
+            this.toolStripButton1.Name = "toolStripButton1";
+            this.toolStripButton1.Size = new System.Drawing.Size(29, 24);
+            this.toolStripButton1.Text = "toolStripButton1";
+            this.toolStripButton1.ToolTipText = "Back";
+            this.toolStripButton1.Click += new System.EventHandler(this.Back);
+            // 
+            // toolStripButton2
+            // 
+            this.toolStripButton2.DisplayStyle = System.Windows.Forms.ToolStripItemDisplayStyle.Image;
+            this.toolStripButton2.Image = global::IDE.Properties.Resources.forward;
+            this.toolStripButton2.ImageTransparentColor = System.Drawing.Color.Magenta;
+            this.toolStripButton2.Name = "toolStripButton2";
+            this.toolStripButton2.Size = new System.Drawing.Size(29, 24);
+            this.toolStripButton2.Text = "toolStripButton2";
+            this.toolStripButton2.ToolTipText = "Forward";
+            this.toolStripButton2.Click += new System.EventHandler(this.Previous);
+            // 
+            // toolStripButton3
+            // 
+            this.toolStripButton3.DisplayStyle = System.Windows.Forms.ToolStripItemDisplayStyle.Image;
+            this.toolStripButton3.Image = global::IDE.Properties.Resources.refresh;
+            this.toolStripButton3.ImageTransparentColor = System.Drawing.Color.Magenta;
+            this.toolStripButton3.Name = "toolStripButton3";
+            this.toolStripButton3.Size = new System.Drawing.Size(29, 24);
+            this.toolStripButton3.Text = "toolStripButton3";
+            this.toolStripButton3.ToolTipText = "Reload";
+            this.toolStripButton3.Click += new System.EventHandler(this.Refresh);
+            // 
+            // toolStripButton4
+            // 
+            this.toolStripButton4.DisplayStyle = System.Windows.Forms.ToolStripItemDisplayStyle.Image;
+            this.toolStripButton4.Image = global::IDE.Properties.Resources.Home;
+            this.toolStripButton4.ImageTransparentColor = System.Drawing.Color.Magenta;
+            this.toolStripButton4.Name = "toolStripButton4";
+            this.toolStripButton4.Size = new System.Drawing.Size(29, 24);
+            this.toolStripButton4.Text = "toolStripButton4";
+            this.toolStripButton4.ToolTipText = "Go to home page";
+            this.toolStripButton4.Click += new System.EventHandler(this.Home);
             // 
             // LicenseAndCopyrights
             // 
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.None;
-            this.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(243)))), ((int)(((byte)(249)))), ((int)(((byte)(255)))));
             this.ClientSize = new System.Drawing.Size(875, 374);
-            this.Controls.Add(this.htmlLabel1);
+            this.Controls.Add(this.webView21);
+            this.Controls.Add(this.toolStrip1);
             this.Controls.Add(this.statusStrip1);
-            this.Font = new System.Drawing.Font("微软雅黑", 9F);
+            this.EscClose = true;
+            this.Font = new System.Drawing.Font("微软雅黑", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(134)));
             this.Icon = ((System.Drawing.Icon)(resources.GetObject("$this.Icon")));
             this.Margin = new System.Windows.Forms.Padding(3, 4, 3, 4);
-            this.MaximizeBox = false;
-            this.MinimizeBox = false;
             this.Name = "LicenseAndCopyrights";
             this.StyleCustomMode = true;
             this.Text = "text.LAC.title";
+            this.TitleFont = new System.Drawing.Font("微软雅黑", 12F);
             this.ZoomScaleRect = new System.Drawing.Rectangle(19, 19, 875, 374);
             this.Load += new System.EventHandler(this.LicenseAndCopyrights_Load);
             this.statusStrip1.ResumeLayout(false);
             this.statusStrip1.PerformLayout();
+            ((System.ComponentModel.ISupportInitialize)(this.webView21)).EndInit();
+            this.toolStrip1.ResumeLayout(false);
+            this.toolStrip1.PerformLayout();
             this.ResumeLayout(false);
             this.PerformLayout();
 
@@ -98,6 +169,11 @@
         private System.Windows.Forms.StatusStrip statusStrip1;
         private System.Windows.Forms.ToolStripStatusLabel TS_L_Copyright;
         private Sunny.UI.UIStyleManager uiStyleManager1;
-        private MetroFramework.Drawing.Html.HtmlLabel htmlLabel1;
+        private Microsoft.Web.WebView2.WinForms.WebView2 webView21;
+        private System.Windows.Forms.ToolStrip toolStrip1;
+        private System.Windows.Forms.ToolStripButton toolStripButton1;
+        private System.Windows.Forms.ToolStripButton toolStripButton2;
+        private System.Windows.Forms.ToolStripButton toolStripButton3;
+        private System.Windows.Forms.ToolStripButton toolStripButton4;
     }
 }

@@ -268,7 +268,7 @@
             </summary>
             <param name="processStartInfo">The process start info to add the controller environment variables to.</param>
             <param name="controllerEnvironment">The controller environment variables.</param>
-            <param name="logger">A logger to log the variabels and their values to.</param>
+            <param name="logger">A logger to log the variables and their values to.</param>
             <remarks>
             The process start info's environment variables already contains the process' environment variables.
             </remarks>
@@ -310,7 +310,7 @@
         </member>
         <member name="P:Microsoft.ServiceHub.Client.ServiceDescriptor.IsServiceNameOnly">
             <summary>
-            Gets a value indicating whether service name only is enougth to request the service.
+            Gets a value indicating whether service name only is enough to request the service.
             </summary>
         </member>
         <member name="M:Microsoft.ServiceHub.Client.ServiceDescriptor.ToString">
@@ -501,17 +501,17 @@
             </remarks>
         </member>
         <member name="F:Microsoft.ServiceHub.Utility.ExitCode.InvalidArgument">
-            <summary> Invalid command line argument for ServiceHub process </summary>
+            <summary> Invalid command line argument for ServiceHub process.</summary>
         </member>
         <member name="F:Microsoft.ServiceHub.Utility.ExitCode.ErrorStartingServerPipeInUse">
             <summary>
             Cannot start a new pipe server because the supplied pipe address is already in use.
-            This may happen when starting a controller where there is already a controller running
+            This may happen when starting a controller where there is already a controller running.
             </summary>
         </member>
         <member name="F:Microsoft.ServiceHub.Utility.ExitCode.ErrorStartingServer">
             <summary>
-            Cannot start a new pipe server due to some error
+            Cannot start a new pipe server due to some error.
             </summary>
         </member>
         <member name="F:Microsoft.ServiceHub.Utility.ExitCode.ShutdownError">
@@ -524,6 +524,33 @@
             <summary>
             Cannot start a new controller process because one is already running.
             </summary>
+        </member>
+        <member name="T:Microsoft.ServiceHub.Utility.HostCrashException">
+            <summary>
+            Exception that is thrown when a ServiceHub Host process exits with a non-zero exit code.
+            </summary>
+        </member>
+        <member name="P:Microsoft.ServiceHub.Utility.HostCrashException.HostExitCode">
+            <summary>
+            Gets the exit code of the host process if it has exited.
+            </summary>
+        </member>
+        <member name="P:Microsoft.ServiceHub.Utility.HostCrashException.StandardError">
+            <summary>
+            Gets the text written to the Host process's standard error stream.
+            </summary>
+        </member>
+        <member name="M:Microsoft.ServiceHub.Utility.HostCrashException.#ctor(System.String,System.Nullable{System.Int32},System.String)">
+            <summary>
+            Initializes a new instance of the <see cref="T:Microsoft.ServiceHub.Utility.HostCrashException" /> class.
+            </summary>
+            <param name="message">The exception message.</param>
+            <param name="hostExitCode">The exit code of the host process if it has exited.</param>
+            <param name="standardError">The output of the Host's standard error stream.</param>
+            <remarks>
+            The <paramref name="standardError" /> is set as the message of the InnerException to allow that data to be provided
+            to the remote client in the case of this being wrapped in a <see cref="T:StreamJsonRpc.RemoteInvocationException" />.
+            </remarks>
         </member>
         <member name="T:Microsoft.ServiceHub.Utility.HostRemoteException">
             <summary>
@@ -540,16 +567,6 @@
         <member name="T:Microsoft.ServiceHub.Utility.HostStartUpException">
             <summary>
             Exception that is thrown when a ServiceHub Host process fails to start properly.
-            </summary>
-        </member>
-        <member name="P:Microsoft.ServiceHub.Utility.HostStartUpException.HostExitCode">
-            <summary>
-            Gets the exit code of the host process if it has exited.
-            </summary>
-        </member>
-        <member name="P:Microsoft.ServiceHub.Utility.HostStartUpException.StandardError">
-            <summary>
-            Gets the text written to the Host process's standard error stream.
             </summary>
         </member>
         <member name="M:Microsoft.ServiceHub.Utility.HostStartUpException.#ctor(System.String,System.Nullable{System.Int32},System.String)">
@@ -663,7 +680,7 @@
             </code>
             </summary>
         </member>
-        <member name="M:Microsoft.ServiceHub.Utility.TelemetryLogger.DisposeCurrentTelemetrySession">
+        <member name="M:Microsoft.ServiceHub.Utility.TelemetryLogger.DisposeCurrentTelemetrySessionAsync">
             <summary>
             Dispose only when current telemetry session is available.
             </summary>
@@ -738,25 +755,7 @@
             Parses the string into a VersionRange object.
             </summary>
             <param name="version">string representing version range.</param>
-            <returns>A vrsionRange object.</returns>
-        </member>
-        <member name="T:Microsoft.ServiceHub.Utility.ChannelConnectionFlags">
-            <summary>
-            Flags that can modify how an IPC channel connection is made.
-            </summary>
-        </member>
-        <member name="F:Microsoft.ServiceHub.Utility.ChannelConnectionFlags.None">
-            <summary>
-            No modifier flags.
-            </summary>
-        </member>
-        <member name="F:Microsoft.ServiceHub.Utility.ChannelConnectionFlags.WaitForServerToConnect">
-            <summary>
-            Continuously retry or wait for the server to listen for and respond to connection requests
-            until it is canceled.
-            Without this flag, the connection will be attempted only once and immediately fail if the
-            server is not online and responsive.
-            </summary>
+            <returns>A versionRange object.</returns>
         </member>
         <member name="T:Microsoft.ServiceHub.Utility.DeterministicLifetimeMarshalByRefObject">
             <summary>
@@ -789,7 +788,7 @@
             <param name="pipeHandle">The handle of the PipeStream to validate.</param>
             <param name="traceSource">TraceSource to log errors to.</param>
             <param name="logErrors">Indicates whether or not errors should be logged to the TraceSource provided.</param>
-            <param name="clientProcessId">The PID of the process connecitng to the pipe.</param>
+            <param name="clientProcessId">The PID of the process connecting to the pipe.</param>
             <param name="allowedParentPaths">The paths that the process who connected to the pipe must be a child of.</param>
             <returns>True if the process who connected to the pipe is a child of the provided directory.</returns>
         </member>
@@ -855,12 +854,75 @@
             <param name="name">The name of the parameter to include in any thrown exception.</param>
             <param name="errorMessage">The error message to us if the condition is false.</param>
         </member>
+        <member name="M:Microsoft.ServiceHub.Utility.IsolatedUtilities.CombineRelativePath(System.String,System.String)">
+            <summary>
+            Combines the provided baseDirectory path with the relativePath, or return null if the relativePath is null.
+            </summary>
+            <param name="baseDirectory">The directory to be used as the root.</param>
+            <param name="relativePath">A relative path, or null.</param>
+            <returns>A combination of the baseDirectory and relativePath, or null if the relativePath is null.</returns>
+        </member>
         <member name="M:Microsoft.ServiceHub.Utility.IsolatedUtilities.GetSHA256Hash(System.String)">
             <summary>
             Given an input calculates the SHA256 hash of it.
             </summary>
             <param name="input">The string to hash.</param>
             <returns>A hash of the input string.</returns>
+        </member>
+        <member name="M:Microsoft.ServiceHub.Utility.IsolatedUtilities.IsWindowsPlatform">
+            <summary>
+            Gets whether or not the current platform is Windows.
+            </summary>
+            <returns>True if the current platform is Windows, false otherwise.</returns>
+        </member>
+        <member name="M:Microsoft.ServiceHub.Utility.IsolatedUtilities.IsMacPlatform">
+            <summary>
+            Gets whether or not the current platform is OSX.
+            </summary>
+            <returns>True if the current platform is OSX, false otherwise.</returns>
+        </member>
+        <member name="M:Microsoft.ServiceHub.Utility.IsolatedUtilities.IsLinuxPlatform">
+            <summary>
+            Gets whether or not the current platform is Linux.
+            </summary>
+            <returns>True if the current platform is Linux, false otherwise.</returns>
+        </member>
+        <member name="M:Microsoft.ServiceHub.Utility.IsolatedUtilities.IsWindows7Or2008R2">
+            <summary>
+            Gets whether or not the current platform is Windows 7 or 2008 R2.
+            </summary>
+            <returns>True if the current platform is Windows 7 or 2008 R2, false otherwise.</returns>
+        </member>
+        <member name="M:Microsoft.ServiceHub.Utility.IsolatedUtilities.GetDevHubBaseDirForUnix">
+            <summary>
+            Gets the base directory to be used by ServiceHub on *nix platforms.
+            </summary>
+            <returns>"{userhomedir}/.ServiceHub" for *nix platforms.</returns>
+        </member>
+        <member name="M:Microsoft.ServiceHub.Utility.IsolatedUtilities.GetUnixSocketDir(System.String)">
+            <summary>
+            Gets a Unix socket directory.
+            </summary>
+            <param name="locationServiceChannelName">The channel to be used for the socket.</param>
+            <returns>The socket directory.</returns>
+        </member>
+        <member name="M:Microsoft.ServiceHub.Utility.IsolatedUtilities.GetUnixSocketDir(System.String,System.String)">
+            <summary>
+            Gets a Unix socket directory.
+            </summary>
+            <param name="channelName">The multiplexing channel to be used for the socket.</param>
+            <param name="locationServiceChannelName">The base channel to be used for the socket.</param>
+            <returns>The socket directory.</returns>
+        </member>
+        <member name="T:Microsoft.ServiceHub.Utility.Linux.NativeMethods">
+            <summary>
+            NativeMethods to be used on Linux platforms.
+            </summary>
+        </member>
+        <member name="F:Microsoft.ServiceHub.Utility.Linux.NativeMethods.RootUserId">
+            <summary>
+            The root user id.
+            </summary>
         </member>
         <member name="M:Microsoft.ServiceHub.Utility.Linux.NativeMethods.getuid">
             <summary>
@@ -878,7 +940,7 @@
             <param name="source">Tracing source of the stream. Not null or empty.</param>
             <returns>
             A wrapper stream if tracing is enabled, or the original <paramref name="stream" /> if not.
-            If the wrapper is returned, it'll propogate dispose to the <paramref name="stream" />.
+            If the wrapper is returned, it'll propagate dispose to the <paramref name="stream" />.
             </returns>
         </member>
         <member name="M:Microsoft.ServiceHub.Utility.DevHubTraceSource.TraceStreamIfEnabled(System.IO.Stream,System.String,System.Text.Encoding)">
@@ -892,7 +954,7 @@
             <param name="encoding">Stream encoding.</param>
             <returns>
             A wrapper stream if tracing is enabled, or the original <paramref name="stream" /> if not.
-            If the wrapper is returned, it'll propogate dispose to the <paramref name="stream" />.
+            If the wrapper is returned, it'll propagate dispose to the <paramref name="stream" />.
             </returns>
         </member>
         <member name="M:Microsoft.ServiceHub.Utility.DevHubTraceSource.TraceStream(System.IO.Stream,System.Text.Encoding,System.String,System.String)">
@@ -902,10 +964,10 @@
             </summary>
             <param name="stream">Stream to trace. Not null or empty.</param>
             <param name="encoding">Stream encoding.</param>
-            <param name="readPrefix">Prefix to add before eash read entry in the log.</param>
+            <param name="readPrefix">Prefix to add before each read entry in the log.</param>
             <param name="writePrefix">Prefix to add before each write entry in the log.</param>
             <returns>
-            Stream tracer inteface. Disposing of it will stop tracing but won't dispose the <paramref name="stream" />.
+            Stream tracer interface. Disposing of it will stop tracing but won't dispose the <paramref name="stream" />.
             </returns>
         </member>
         <member name="M:Microsoft.ServiceHub.Utility.DevHubTraceSource.TraceStreamIfEnabled(Microsoft.ServiceHub.Utility.WrappedStream,System.String)">
@@ -918,7 +980,7 @@
             <param name="source">Tracing source of the stream. Not null or empty.</param>
             <returns>
             A wrapper stream if tracing is enabled, or the original <paramref name="stream" /> if not.
-            If the wrapper is returned, it'll propogate dispose to the <paramref name="stream" />.
+            If the wrapper is returned, it'll propagate dispose to the <paramref name="stream" />.
             </returns>
         </member>
         <member name="M:Microsoft.ServiceHub.Utility.DevHubTraceSource.TraceStreamIfEnabled(Microsoft.ServiceHub.Utility.WrappedStream,System.String,System.Text.Encoding)">
@@ -932,7 +994,7 @@
             <param name="encoding">Stream encoding.</param>
             <returns>
             A wrapper stream if tracing is enabled, or the original <paramref name="stream" /> if not.
-            If the wrapper is returned, it'll propogate dispose to the <paramref name="stream" />.
+            If the wrapper is returned, it'll propagate dispose to the <paramref name="stream" />.
             </returns>
         </member>
         <member name="M:Microsoft.ServiceHub.Utility.DevHubTraceSource.TraceStream(Microsoft.ServiceHub.Utility.WrappedStream,System.Text.Encoding,System.String,System.String)">
@@ -942,19 +1004,112 @@
             </summary>
             <param name="stream">Stream to trace. Not null or empty.</param>
             <param name="encoding">Stream encoding.</param>
-            <param name="readPrefix">Prefix to add before eash read entry in the log.</param>
+            <param name="readPrefix">Prefix to add before each read entry in the log.</param>
             <param name="writePrefix">Prefix to add before each write entry in the log.</param>
             <returns>
-            Stream tracer inteface. Disposing of it will stop tracing but won't dispose the <paramref name="stream" />.
+            Stream tracer interface. Disposing of it will stop tracing but won't dispose the <paramref name="stream" />.
             </returns>
+        </member>
+        <member name="T:Microsoft.ServiceHub.Utility.ExceptionFormatter">
+            <summary>
+            Extension methods that help convert exceptions to formatted strings.
+            </summary>
+        </member>
+        <member name="M:Microsoft.ServiceHub.Utility.ExceptionFormatter.ToStringWithInnerExceptions(System.Exception)">
+            <summary>
+            Converts the exception to a string, recursively expanding inner exceptions.
+            </summary>
+            <param name="exception">The exception to convert.</param>
+            <returns>The string representation fo the exception.</returns>
+        </member>
+        <member name="M:Microsoft.ServiceHub.Utility.ExceptionFormatter.GetMessageWithInnerExceptions(System.Exception)">
+            <summary>
+            Gets the exception messages from an exception recursively looking into the inner exceptions.
+            </summary>
+            <param name="exception">An exception.</param>
+            <returns>A formatted string with the exception messages.</returns>
         </member>
         <member name="T:Microsoft.ServiceHub.Utility.TraceEventId">
             <summary>
             Class containing trace event ID constants.
             We use a class with int members instead of an enum
             because then we don't have to typecast the enum to
-            an int everytime we want to trace an event.
+            an int every time we want to trace an event.
             </summary>
+        </member>
+        <member name="F:Microsoft.ServiceHub.Utility.TraceEventId.Unknown">
+            <summary>
+            An unknown trace event.
+            </summary>
+        </member>
+        <member name="T:Microsoft.ServiceHub.Utility.TraceSourceExtensions">
+            <summary>
+            A class containing extension methods for <see cref="T:System.Diagnostics.TraceSource" />.
+            </summary>
+        </member>
+        <member name="M:Microsoft.ServiceHub.Utility.TraceSourceExtensions.TraceException(System.Diagnostics.TraceSource,System.Exception)">
+            <summary>
+            Traces an exception to the trace source as an error level message.
+            </summary>
+            <param name="logger">A trace source.</param>
+            <param name="exception">An exception.</param>
+        </member>
+        <member name="M:Microsoft.ServiceHub.Utility.TraceSourceExtensions.TraceException(System.Diagnostics.TraceSource,System.Exception,System.String,System.Object[])">
+            <summary>
+            Traces an exception to the trace source as an error level message.
+            </summary>
+            <param name="logger">A trace source.</param>
+            <param name="exception">An exception.</param>
+            <param name="format">Additional string to write out.</param>
+            <param name="args">Arguments to be used in the format string.</param>
+        </member>
+        <member name="M:Microsoft.ServiceHub.Utility.TraceSourceExtensions.TraceExceptionAsInformation(System.Diagnostics.TraceSource,System.Exception,System.String,System.Object[])">
+            <summary>
+            Traces an exception to the trace source as an information level message.
+            </summary>
+            <param name="logger">A trace source.</param>
+            <param name="exception">An exception.</param>
+            <param name="format">Additional string to trace.</param>
+            <param name="args">Arguments to be used in the format string.</param>
+        </member>
+        <member name="M:Microsoft.ServiceHub.Utility.TraceSourceExtensions.TraceError(System.Diagnostics.TraceSource,System.String)">
+            <summary>
+            Traces an error to the trace source.
+            </summary>
+            <param name="logger">A trace source.</param>
+            <param name="message">The message to trace.</param>
+        </member>
+        <member name="M:Microsoft.ServiceHub.Utility.TraceSourceExtensions.TraceError(System.Diagnostics.TraceSource,System.String,System.Object[])">
+            <summary>
+            Traces an error to the trace source.
+            </summary>
+            <param name="logger">A trace source.</param>
+            <param name="format">String to trace.</param>
+            <param name="args">Arguments to be used in the format string.</param>
+        </member>
+        <member name="M:Microsoft.ServiceHub.Utility.TraceSourceExtensions.TraceWarning(System.Diagnostics.TraceSource,System.String)">
+            <summary>
+            Traces a warning to the trace source.
+            </summary>
+            <param name="logger">A trace source.</param>
+            <param name="message">The message to trace.</param>
+        </member>
+        <member name="M:Microsoft.ServiceHub.Utility.TraceSourceExtensions.TraceWarning(System.Diagnostics.TraceSource,System.String,System.Object[])">
+            <summary>
+            Traces a warning to the trace source.
+            </summary>
+            <param name="logger">A trace source.</param>
+            <param name="format">String to trace.</param>
+            <param name="args">Arguments to be used in the format string.</param>
+        </member>
+        <member name="M:Microsoft.ServiceHub.Utility.TraceSourceExtensions.FormatException(System.Exception,System.String,System.Object[])">
+            <summary>
+            Format an exception into a readable string.
+            </summary>
+            <param name="exception">The exception to format.</param>
+            <param name="format">An additional string message to include in the string.</param>
+            <param name="args">Arguments to be used in the format string.</param>
+            <returns>A formatted string representing the exception.</returns>
         </member>
         <member name="T:Microsoft.ServiceHub.Utility.MarshalledTask`1">
             <summary>
@@ -962,11 +1117,56 @@
             </summary>
             <typeparam name="T">Return type of async work.</typeparam>
         </member>
+        <member name="T:Microsoft.ServiceHub.Utility.OSX.NativeMethods">
+            <summary>
+            NativeMethods to be used on OSX platforms.
+            </summary>
+        </member>
+        <member name="F:Microsoft.ServiceHub.Utility.OSX.NativeMethods.RootUserId">
+            <summary>
+            The root user id.
+            </summary>
+        </member>
         <member name="M:Microsoft.ServiceHub.Utility.OSX.NativeMethods.getuid">
             <summary>
             Get the real user ID of the calling process.
             </summary>
             <returns>the real user ID of the calling process.</returns>
+        </member>
+        <member name="T:Microsoft.ServiceHub.Utility.ChannelConnectionFlags">
+            <summary>
+            Flags that can modify how an IPC channel connection is made.
+            </summary>
+        </member>
+        <member name="F:Microsoft.ServiceHub.Utility.ChannelConnectionFlags.None">
+            <summary>
+            No modifier flags.
+            </summary>
+        </member>
+        <member name="F:Microsoft.ServiceHub.Utility.ChannelConnectionFlags.WaitForServerToConnect">
+            <summary>
+            Continuously retry or wait for the server to listen for and respond to connection requests
+            until it is canceled.
+            Without this flag, the connection will be attempted only once and immediately fail if the
+            server is not online and responsive.
+            </summary>
+        </member>
+        <member name="T:Microsoft.ServiceHub.Utility.ClientConnectionCanceledException">
+            <summary>
+            The exception that is thrown when a client connection is canceled.
+            </summary>
+        </member>
+        <member name="M:Microsoft.ServiceHub.Utility.ClientConnectionCanceledException.#ctor(System.String,System.Exception)">
+            <summary>
+            Initializes a new instance of the <see cref="T:Microsoft.ServiceHub.Utility.ClientConnectionCanceledException" /> class.
+            </summary>
+            <param name="message">The exception message.</param>
+            <param name="innerException">The inner exception.</param>
+        </member>
+        <member name="T:Microsoft.ServiceHub.Utility.NamedPipeServer">
+            <summary>
+            A server whose backing streams are based on named pipes. Invokes a callback when a client connects to the server.
+            </summary>
         </member>
         <member name="F:Microsoft.ServiceHub.Utility.NamedPipeServer.TransmissionMode">
             <summary>
@@ -980,28 +1180,274 @@
             So instead, we simply don't offer that unique behavior.
             </remarks>
         </member>
-        <member name="F:Microsoft.ServiceHub.Utility.Server.Disposed">
+        <member name="M:Microsoft.ServiceHub.Utility.NamedPipeServer.#ctor(System.String,System.Diagnostics.TraceSource,System.Func{Microsoft.ServiceHub.Utility.WrappedStream,System.Threading.Tasks.Task})">
             <summary>
-            Used for Unit Testing.
+            Initializes a new instance of the <see cref="T:Microsoft.ServiceHub.Utility.NamedPipeServer" /> class.
+            </summary>
+            <param name="channelName">The name of the named pipe.</param>
+            <param name="logger">A trace source to be used for logging.</param>
+            <param name="createAndConfigureService">The callback that is invoked when a client connects to the server.</param>
+        </member>
+        <member name="M:Microsoft.ServiceHub.Utility.NamedPipeServer.DisposeAsyncCore">
+            <inheritdoc />
+        </member>
+        <member name="T:Microsoft.ServiceHub.Utility.Server">
+            <summary>
+            A server that invokes a callback whenever a client connects to it.
             </summary>
         </member>
-        <member name="M:Microsoft.ServiceHub.Utility.ServerFactory.Create(System.String,System.Diagnostics.TraceSource,System.Func{System.IO.Stream,System.Threading.Tasks.Task},System.Boolean)">
+        <member name="M:Microsoft.ServiceHub.Utility.Server.#ctor(System.Diagnostics.TraceSource,System.Func{Microsoft.ServiceHub.Utility.WrappedStream,System.Threading.Tasks.Task})">
+            <summary>
+            Initializes a new instance of the <see cref="T:Microsoft.ServiceHub.Utility.Server" /> class.
+            </summary>
+            <param name="logger">A trace source to be used for logging.</param>
+            <param name="createAndConfigureService">The callback to be invoked when a client connects to the server.</param>
+        </member>
+        <member name="P:Microsoft.ServiceHub.Utility.Server.IsDisposed">
+            <summary>
+            Gets a value indicating whether or not server is disposed. Used for Unit Testing.
+            </summary>
+        </member>
+        <member name="P:Microsoft.ServiceHub.Utility.Server.Logger">
+            <summary>
+            Gets a trace source used for logging.
+            </summary>
+        </member>
+        <member name="P:Microsoft.ServiceHub.Utility.Server.HasClients">
+            <summary>
+            Gets a value indicating whether or not clients are currently connected to the server.
+            </summary>
+        </member>
+        <member name="M:Microsoft.ServiceHub.Utility.Server.Dispose">
+            <inheritdoc />
+        </member>
+        <member name="M:Microsoft.ServiceHub.Utility.Server.DisposeAsync">
+            <summary>
+            Performs application-defined tasks associated with freeing, releasing, or resetting unmanaged resources.
+            </summary>
+            <returns>A task tracking the work.</returns>
+        </member>
+        <member name="M:Microsoft.ServiceHub.Utility.Server.DisposeAsyncCore">
+            <summary>
+            Implements the core disposal logic to be used by the class.
+            </summary>
+            <returns>A task tracking the work.</returns>
+        </member>
+        <member name="M:Microsoft.ServiceHub.Utility.Server.ClientDisconnected(System.IO.Stream)">
+            <summary>
+            Method that is called when a client disconnects from the server.
+            </summary>
+            <param name="stream">The stream that was disconnected from.</param>
+        </member>
+        <member name="M:Microsoft.ServiceHub.Utility.Server.ClientConnected(Microsoft.ServiceHub.Utility.WrappedStream)">
+            <summary>
+            Method that is called when a client connects to the server.
+            </summary>
+            <param name="stream">The stream that was connected to.</param>
+            <returns>A task tracking the work.</returns>
+        </member>
+        <member name="T:Microsoft.ServiceHub.Utility.ServerFactoryCore">
+            <summary>
+            Static class containing the core implementations for a server factory. This exists so that we don't run into any type errors with types that are
+            shared between assemblies within DevCore. Internally in DevCore the "Core" implementation should be used while externally the public implementations are used instead.
+            </summary>
+        </member>
+        <member name="M:Microsoft.ServiceHub.Utility.ServerFactoryCore.Create(System.String,System.Diagnostics.TraceSource,System.Func{System.IO.Stream,System.Threading.Tasks.Task})">
             <summary>
             Creates a named pipe server.
             </summary>
             <param name="pipeName">The name of the server.</param>
             <param name="logger">The logger for the server.</param>
             <param name="createAndConfigureService">Callback function to be run whenever a client connects to the server.</param>
-            <param name="setLowIntegrity">This property no longer does anything and will be removed in future versions of the API.</param>
             <returns>
             A disposable server that should be disposed of when it is no longer needed.
             This object is also castable to <see cref="T:System.IAsyncDisposable" /> except if this method is referenced from Microsoft.ServiceHub.HostStub.dll.
             </returns>
             <remarks>This method should only ever be used on Windows platforms.</remarks>
         </member>
-        <member name="M:Microsoft.ServiceHub.Utility.ServerFactory.CreateOnNonWindowsAsync(System.String,System.String,System.Diagnostics.TraceSource,System.Func{System.IO.Stream,System.Threading.Tasks.Task})">
+        <member name="M:Microsoft.ServiceHub.Utility.ServerFactoryCore.CreateOnNonWindowsAsync(System.String,System.String,System.Diagnostics.TraceSource,System.Func{System.IO.Stream,System.Threading.Tasks.Task})">
             <summary>
             Creates a named pipe server on a linux or mac machine.
+            </summary>
+            <param name="channelName">The multiplexed channel name to be used for the socket.</param>
+            <param name="locationServiceChannelName">The base channel name to be used for the socket.</param>
+            <param name="logger">The logger for the server.</param>
+            <param name="createAndConfigureService">Callback function to be run whenever a client connects to the server.</param>
+            <returns>The server that is to be disposed when it is no longer needed.</returns>
+        </member>
+        <member name="T:Microsoft.ServiceHub.Utility.UnixDomainSocketServer">
+            <summary>
+            A socket server to be used on Unix machines that invokes a callback whenever it is connected to.
+            </summary>
+        </member>
+        <member name="M:Microsoft.ServiceHub.Utility.UnixDomainSocketServer.CreateAsync(System.String,System.Diagnostics.TraceSource,System.Func{Microsoft.ServiceHub.Utility.WrappedStream,System.Threading.Tasks.Task})">
+            <summary>
+            Creates an instance of a <see cref="T:Microsoft.ServiceHub.Utility.UnixDomainSocketServer" />.
+            </summary>
+            <param name="path">The path on disk to the socket file.</param>
+            <param name="logger">The trace source to be used for logging.</param>
+            <param name="createAndConfigureService">Callback function to be run whenever a client connects to the server.</param>
+            <returns>The <see cref="T:Microsoft.ServiceHub.Utility.UnixDomainSocketServer" /> that was created.</returns>
+        </member>
+        <member name="M:Microsoft.ServiceHub.Utility.UnixDomainSocketServer.DisposeAsyncCore">
+            <inheritdoc />
+        </member>
+        <member name="M:Microsoft.ServiceHub.Utility.UnixDomainSocketServer.ClientDisconnected(System.IO.Stream)">
+            <inheritdoc />
+        </member>
+        <member name="T:Microsoft.ServiceHub.Utility.WrappedStream">
+            <summary>
+            Wraps a <see cref="P:Microsoft.ServiceHub.Utility.WrappedStream.Stream" /> making it simpler to interact with it.
+            </summary>
+        </member>
+        <member name="M:Microsoft.ServiceHub.Utility.WrappedStream.#ctor(System.IO.Stream)">
+            <summary>
+            Initializes a new instance of the <see cref="T:Microsoft.ServiceHub.Utility.WrappedStream" /> class.
+            </summary>
+            <param name="stream">The Stream to be wrapped.</param>
+        </member>
+        <member name="E:Microsoft.ServiceHub.Utility.WrappedStream.DataRead">
+            <summary>
+            Event that is triggered when data is read from the stream.
+            </summary>
+        </member>
+        <member name="E:Microsoft.ServiceHub.Utility.WrappedStream.ByteRead">
+            <summary>
+            Event that is triggered when a byte is read from the stream.
+            </summary>
+        </member>
+        <member name="E:Microsoft.ServiceHub.Utility.WrappedStream.DataWrite">
+            <summary>
+            Event that is triggered when data is written to the stream.
+            </summary>
+        </member>
+        <member name="E:Microsoft.ServiceHub.Utility.WrappedStream.ByteWrite">
+            <summary>
+            Event that is triggered when a byte is written to the stream.
+            </summary>
+        </member>
+        <member name="E:Microsoft.ServiceHub.Utility.WrappedStream.Disconnected">
+            <summary>
+            Event that is triggered when the stream has disconnected.
+            </summary>
+        </member>
+        <member name="P:Microsoft.ServiceHub.Utility.WrappedStream.CanRead">
+            <inheritdoc />
+        </member>
+        <member name="P:Microsoft.ServiceHub.Utility.WrappedStream.CanSeek">
+            <inheritdoc />
+        </member>
+        <member name="P:Microsoft.ServiceHub.Utility.WrappedStream.CanTimeout">
+            <inheritdoc />
+        </member>
+        <member name="P:Microsoft.ServiceHub.Utility.WrappedStream.CanWrite">
+            <inheritdoc />
+        </member>
+        <member name="P:Microsoft.ServiceHub.Utility.WrappedStream.Length">
+            <inheritdoc />
+        </member>
+        <member name="P:Microsoft.ServiceHub.Utility.WrappedStream.Position">
+            <inheritdoc />
+        </member>
+        <member name="P:Microsoft.ServiceHub.Utility.WrappedStream.ReadTimeout">
+            <inheritdoc />
+        </member>
+        <member name="P:Microsoft.ServiceHub.Utility.WrappedStream.WriteTimeout">
+            <inheritdoc />
+        </member>
+        <member name="P:Microsoft.ServiceHub.Utility.WrappedStream.IsConnected">
+            <summary>
+            Gets a value indicating whether or not the stream has been connected to.
+            </summary>
+        </member>
+        <member name="P:Microsoft.ServiceHub.Utility.WrappedStream.IsEndReached">
+            <summary>
+            Gets a value indicating whether or not the end of the stream has been reached.
+            </summary>
+        </member>
+        <member name="P:Microsoft.ServiceHub.Utility.WrappedStream.IsDisposed">
+            <summary>
+            Gets a value indicating whether the stream has been disposed.
+            </summary>
+        </member>
+        <member name="P:Microsoft.ServiceHub.Utility.WrappedStream.Stream">
+            <summary>
+            Gets the stream that is wrapped.
+            </summary>
+        </member>
+        <member name="M:Microsoft.ServiceHub.Utility.WrappedStream.CopyToAsync(System.IO.Stream,System.Int32,System.Threading.CancellationToken)">
+            <inheritdoc />
+        </member>
+        <member name="M:Microsoft.ServiceHub.Utility.WrappedStream.Flush">
+            <inheritdoc />
+        </member>
+        <member name="M:Microsoft.ServiceHub.Utility.WrappedStream.FlushAsync(System.Threading.CancellationToken)">
+            <inheritdoc />
+        </member>
+        <member name="M:Microsoft.ServiceHub.Utility.WrappedStream.Read(System.Byte[],System.Int32,System.Int32)">
+            <inheritdoc />
+        </member>
+        <member name="M:Microsoft.ServiceHub.Utility.WrappedStream.ReadAsync(System.Byte[],System.Int32,System.Int32,System.Threading.CancellationToken)">
+            <inheritdoc />
+        </member>
+        <member name="M:Microsoft.ServiceHub.Utility.WrappedStream.ReadByte">
+            <inheritdoc />
+        </member>
+        <member name="M:Microsoft.ServiceHub.Utility.WrappedStream.Seek(System.Int64,System.IO.SeekOrigin)">
+            <inheritdoc />
+        </member>
+        <member name="M:Microsoft.ServiceHub.Utility.WrappedStream.SetLength(System.Int64)">
+            <inheritdoc />
+        </member>
+        <member name="M:Microsoft.ServiceHub.Utility.WrappedStream.Write(System.Byte[],System.Int32,System.Int32)">
+            <inheritdoc />
+        </member>
+        <member name="M:Microsoft.ServiceHub.Utility.WrappedStream.WriteAsync(System.Byte[],System.Int32,System.Int32,System.Threading.CancellationToken)">
+            <inheritdoc />
+        </member>
+        <member name="M:Microsoft.ServiceHub.Utility.WrappedStream.WriteByte(System.Byte)">
+            <inheritdoc />
+        </member>
+        <member name="M:Microsoft.ServiceHub.Utility.WrappedStream.GetConnected">
+            <summary>
+            Gets a value indicating whether or not the stream has been connected to.
+            </summary>
+            <returns>True if the stream is connected to, false otherwise.</returns>
+        </member>
+        <member name="M:Microsoft.ServiceHub.Utility.WrappedStream.Dispose(System.Boolean)">
+            <inheritdoc />
+        </member>
+        <member name="M:Microsoft.ServiceHub.Utility.WrappedStream.OnDataRead(System.Byte[],System.Int32,System.Int32)">
+            <summary>
+            Method that is called when data is read from the stream.
+            </summary>
+            <param name="buffer">An array of bytes. When this method returns, the buffer contains the specified byte array with the values between offset and (offset + count - 1) replaced by the bytes read from the current source.</param>
+            <param name="offset">The zero-based byte offset in buffer at which to begin storing the data read from the current stream.</param>
+            <param name="count">The maximum number of bytes to be read from the current stream.</param>
+        </member>
+        <member name="M:Microsoft.ServiceHub.Utility.WrappedStream.OnDataRead(System.Byte)">
+            <summary>
+            Method that is called when a byte is read from the stream.
+            </summary>
+            <param name="charCode">The byte that was read.</param>
+        </member>
+        <member name="M:Microsoft.ServiceHub.Utility.WrappedStream.OnDataWrite(System.Byte[],System.Int32,System.Int32)">
+            <summary>
+            Method that is called when data is written to the stream.
+            </summary>
+            <param name="buffer">An array of bytes. When this method returns, the buffer contains the specified byte array with the values between offset and (offset + count - 1) replaced by the bytes read from the current source.</param>
+            <param name="offset">The zero-based byte offset in buffer at which to begin storing the data read from the current stream.</param>
+            <param name="count">The maximum number of bytes to be read from the current stream.</param>
+        </member>
+        <member name="M:Microsoft.ServiceHub.Utility.WrappedStream.OnDataWrite(System.Byte)">
+            <summary>
+            Method that is called when a byte is written to the stream.
+            </summary>
+            <param name="charCode">The byte that was written.</param>
+        </member>
+        <member name="M:Microsoft.ServiceHub.Utility.WrappedStream.UpdateConnectedState">
+            <summary>
+            Updates the connected state of the <see cref="T:Microsoft.ServiceHub.Utility.WrappedStream" />.
             </summary>
         </member>
         <member name="P:Microsoft.ServiceHub.Utility.ServiceEntryPoint.AssemblyPath">
@@ -1014,6 +1460,12 @@
             <summary>
             Gets or sets the name of the service end point class that will be instantiated for each new client connection.
             </summary>
+        </member>
+        <member name="M:Microsoft.ServiceHub.Utility.ServiceEntryPoint.WithBaseDirectory(System.String)">
+            <summary>
+            Updates the <see cref="T:Microsoft.ServiceHub.Utility.ServiceEntryPoint" /> so that all relative paths in the will be combined with the supplied baseDirectory.
+            </summary>
+            <param name="baseDirectory">The base directory to be used as the root of all relative paths.</param>
         </member>
         <member name="P:Microsoft.ServiceHub.Utility.ServiceEntryPoint.IsNodeService">
             <summary>
@@ -1035,10 +1487,10 @@
         </member>
         <member name="P:Microsoft.ServiceHub.Utility.ServiceEntryPoint.AssemblySearchPathsConfig">
             <summary>
-            Gets or sets the path to a config JSON file used for adding additonal assembly search paths.
+            Gets or sets the path to a config JSON file used for adding additional assembly search paths.
             </summary>
             <remarks>
-            This file should contain an array of paths that are to be used to resolve assemblies if neither this service's AssemblyLoadContext,
+            This file should contain an array of paths to directories and/or assemblies that are to be used to resolve assemblies if neither this service's AssemblyLoadContext,
             or one of its friends can resolve the assembly. The paths can either be relative to the location of this file, or absolute. This property is only applicable for services
             running inside dotnet Host processes.
             </remarks>
@@ -1110,6 +1562,31 @@
             This property is only applicable to services running inside of dotnet Host processes.
             </summary>
         </member>
+        <member name="M:Microsoft.ServiceHub.Utility.ServiceModuleInfo.WithBaseDirectory(System.String)">
+            <summary>
+            Updates the <see cref="T:Microsoft.ServiceHub.Utility.ServiceModuleInfo" /> so that all relative paths in the will be combined with the supplied baseDirectory.
+            </summary>
+            <param name="baseDirectory">The base directory to be used as the root of all relative paths.</param>
+        </member>
+        <member name="T:Microsoft.ServiceHub.Utility.ServiceHubPipeStream">
+            <summary>
+            Wraps a stream to augment its capabilities.
+            </summary>
+        </member>
+        <member name="M:Microsoft.ServiceHub.Utility.ServiceHubPipeStream.#ctor(System.IO.Pipes.PipeStream)">
+            <summary>
+            Initializes a new instance of the <see cref="T:Microsoft.ServiceHub.Utility.ServiceHubPipeStream" /> class.
+            </summary>
+            <param name="stream">The stream to be wrapped.</param>
+        </member>
+        <member name="P:Microsoft.ServiceHub.Utility.ServiceHubPipeStream.SafePipeHandle">
+            <summary>
+            Gets the stream's <see cref="P:Microsoft.ServiceHub.Utility.ServiceHubPipeStream.SafePipeHandle" />.
+            </summary>
+        </member>
+        <member name="M:Microsoft.ServiceHub.Utility.ServiceHubPipeStream.GetConnected">
+            <inheritdoc />
+        </member>
         <member name="T:Microsoft.ServiceHub.Utility.SocketClient">
             <summary>
             Provides socket client services at a higher level
@@ -1150,6 +1627,25 @@
             After accepting a connection, clientConnected event is fired.
             Code taken from <see href="https://msdn.microsoft.com/en-us/library/system.net.sockets.socketasynceventargs.aspx" />.
             </summary>
+        </member>
+        <member name="M:Microsoft.ServiceHub.Utility.SocketServer.CreateAsync(System.Net.EndPoint,System.Net.Sockets.SocketType,System.Net.Sockets.ProtocolType,System.Func{System.Net.Sockets.Socket,System.Threading.Tasks.Task})">
+            <summary>
+            Creates an instance of <see cref="T:Microsoft.ServiceHub.Utility.SocketServer" />.
+            </summary>
+            <param name="endPoint">The socket server's network address.</param>
+            <param name="socketType">Indicates the type of socket.</param>
+            <param name="protocolType">The protocol to be used by the socket.</param>
+            <param name="clientConnected">Callback function to be run whenever a client connects to the socket.</param>
+            <returns>The <see cref="T:Microsoft.ServiceHub.Utility.SocketServer" /> instance that was created.</returns>
+        </member>
+        <member name="M:Microsoft.ServiceHub.Utility.SocketServer.Dispose">
+            <inheritdoc />
+        </member>
+        <member name="M:Microsoft.ServiceHub.Utility.SocketServer.Dispose(System.Boolean)">
+            <summary>
+            Performs application-defined tasks associated with freeing, releasing, or resetting resources.
+            </summary>
+            <param name="disposing">Indicated whether or not managed resources should be disposed. Should be false when called from a finalizer.</param>
         </member>
         <member name="M:Microsoft.ServiceHub.Utility.SocketServer.StartAcceptAsync(System.Net.Sockets.SocketAsyncEventArgs)">
             <summary>
@@ -1197,7 +1693,7 @@
         </member>
         <member name="P:Microsoft.ServiceHub.Utility.UnixDomainSocketEndPoint.IsSupported">
             <summary>
-            Gets a value indicating whether unix domain sockets are supported on the current operating system.
+            Gets a value indicating whether Unix domain sockets are supported on the current operating system.
             </summary>
         </member>
         <member name="P:Microsoft.ServiceHub.Utility.UnixDomainSocketEndPoint.Path">
@@ -1214,12 +1710,32 @@
         <member name="M:Microsoft.ServiceHub.Utility.UnixDomainSocketEndPoint.ToString">
             <inheritdoc />
         </member>
-        <member name="M:Microsoft.ServiceHub.Utility.StreamExtensions.TryGetHandle(System.IO.Stream,Microsoft.Win32.SafeHandles.SafePipeHandle@)">
+        <member name="T:Microsoft.ServiceHub.Utility.UnixDomainSocketStream">
+            <summary>
+            A wrapper for a socket stream to augment its capabilities.
+            </summary>
+        </member>
+        <member name="M:Microsoft.ServiceHub.Utility.UnixDomainSocketStream.#ctor(System.Net.Sockets.Socket)">
+            <summary>
+            Initializes a new instance of the <see cref="T:Microsoft.ServiceHub.Utility.UnixDomainSocketStream" /> class.
+            </summary>
+            <param name="socket">The socket to be wrapped.</param>
+        </member>
+        <member name="M:Microsoft.ServiceHub.Utility.UnixDomainSocketStream.GetConnected">
+            <inheritdoc />
+        </member>
+        <member name="T:Microsoft.ServiceHub.Utility.StreamExtensionsCore">
+            <summary>
+            A class containing the core implementations for stream extensions. This exists so that we don't run into any type errors with types that are
+            shared between assemblies within DevCore. Internally in DevCore the "Core" implementation should be used while externally the public implementations are used instead.
+            </summary>
+        </member>
+        <member name="M:Microsoft.ServiceHub.Utility.StreamExtensionsCore.TryGetHandleCore(System.IO.Stream,Microsoft.Win32.SafeHandles.SafePipeHandle@)">
             <summary>
             Attempts to get the handle of ServiceHub stream.
             </summary>
             <param name="stream">The stream to get the handle of.</param>
-            <param name="handle">The handle of the stream if it exists, null otherweise.</param>
+            <param name="handle">The handle of the stream if it exists, null otherwise.</param>
             <returns>True if the stream has a <see cref="T:Microsoft.Win32.SafeHandles.SafePipeHandle" />, false otherwise.</returns>
         </member>
         <member name="T:Windows.Win32.Foundation.PCWSTR">
@@ -1255,13 +1771,13 @@
         </member>
         <member name="T:Windows.Win32.PInvoke">
             <content>
-            Contains extern methods from "AdvApi32.dll".
+            Contains extern methods from "ADVAPI32.dll".
             </content>
             <content>
-            Contains extern methods from "Kernel32.dll".
+            Contains extern methods from "KERNEL32.dll".
             </content>
             <content>
-            Contains extern methods from "ShlwApi.dll".
+            Contains extern methods from "SHLWAPI.dll".
             </content>
         </member>
         <member name="M:Windows.Win32.PInvoke.GetSidSubAuthority(Windows.Win32.Foundation.PSID,System.UInt32)">
@@ -1885,4 +2401,4 @@
             <summary>A <a href="https://docs.microsoft.com/windows/desktop/api/winnt/ns-winnt-sid_and_attributes">SID_AND_ATTRIBUTES</a> structure that specifies the mandatory integrity level of the token.</summary>
         </member>
     </members>
-<Signature xmlns="http://www.w3.org/2000/09/xmldsig#"><SignedInfo><CanonicalizationMethod Algorithm="http://www.w3.org/TR/2001/REC-xml-c14n-20010315" /><SignatureMethod Algorithm="http://www.w3.org/2001/04/xmldsig-more#rsa-sha256" /><Reference URI=""><Transforms><Transform Algorithm="http://www.w3.org/2000/09/xmldsig#enveloped-signature" /><Transform Algorithm="http://www.w3.org/TR/2001/REC-xml-c14n-20010315" /></Transforms><DigestMethod Algorithm="http://www.w3.org/2001/04/xmlenc#sha256" /><DigestValue>i7Et9PZ+eO0feT9km/OaQbSF5UQ8wDufvG05eDBBzjY=</DigestValue></Reference></SignedInfo><SignatureValue>YmU7V8sqOB0fUYgaKuswcTRys+c2FAQyTdeMMSmX6oCWmWiFGerC985YiqMNc0iWHxNaU+quI0mtqUCllrKaQnBetdxTMIXozmEW+YsqO4ZWA4Q8d+TH3cJ1NZ4ejV7akEMBnxEeo57nFrNoPZfoLvEzE1Q1KMSoZyl6T3sy5+acks+CjAkX8nq/NPSVZHTLdUNoNyIszNV1M1c9wtMZjbM2saLT0XdunkoyIaMeApmNXZMGzZq2vWx5e/XFdU4K3R0soJqnSEuG7LorhDz0PDr1dmDmGOhxAkknOAYSMMV/eYN+tarc3mtpQc8IIWC98lmPneA7/rWR49oFMfOCVw==</SignatureValue><KeyInfo><KeyValue><RSAKeyValue><Modulus>0OTPj7P1+wTbr+Qf9COrqA8I9DSTqNSq1UKju4IEV3HJJck61i+MTEoYyKLtiLG2Jxeu8F81QKuTpuKHvi380gzs43G+prNNIAaNDkGqsENQYo8iezbw3/NCNX1vTi++irdFqXNs6xoc3B3W+7qT678b0jTVL8St7IMO2E7d9eNdL6RKfMnwRJf4XfGcwL+OwwoCeY9c5tvebNUVWRzaejKIkBVThApuAMCtpdvIvmBEdSTuCKZUx+OLr81/aEZyR2jL1s2RKaMz8uIzTtgw6m3DbOM4ewFjIRNT1hVQPghyPxJ+ZwErwry5rkf7fKuG3PF0fECGSUEqftlOptpXTQ==</Modulus><Exponent>AQAB</Exponent></RSAKeyValue></KeyValue><X509Data><X509Certificate>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</X509Certificate><X509Certificate>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</X509Certificate><X509Certificate>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</X509Certificate></X509Data></KeyInfo><Object Id="ts-countersig"><X509Data><X509Certificate>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</X509Certificate><X509Certificate>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</X509Certificate></X509Data><CounterSignature ts-format="cms-timestamp-message" xmlns="http://schemas.microsoft.com/xmldsig/timestamp/2003">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</CounterSignature></Object></Signature></doc>
+<Signature xmlns="http://www.w3.org/2000/09/xmldsig#"><SignedInfo><CanonicalizationMethod Algorithm="http://www.w3.org/TR/2001/REC-xml-c14n-20010315" /><SignatureMethod Algorithm="http://www.w3.org/2001/04/xmldsig-more#rsa-sha256" /><Reference URI=""><Transforms><Transform Algorithm="http://www.w3.org/2000/09/xmldsig#enveloped-signature" /><Transform Algorithm="http://www.w3.org/TR/2001/REC-xml-c14n-20010315" /></Transforms><DigestMethod Algorithm="http://www.w3.org/2001/04/xmlenc#sha256" /><DigestValue>ZSpF7o6oKLHDK2Z/NX7KRYdGUKXgx/u82ryGMV7RV5k=</DigestValue></Reference></SignedInfo><SignatureValue>qPjVJGsvrH0lGXfRIVZmi/6Xk2ESeqsRjSosMkQ9H2lBbTaY7+grJcqwkpVBPhxBcnJebHeC6JZZinztmJxxifs8hN17SyC1404rZ6ha1rZ1MYcgUTPs6n6raJs9ZxqRJS/6BgI3y+jaJUxVTcWpWJPN4IfCH6KG2BirK6t/oM+ggf4RGrwngYeY2ZwCvBt7/pLHuH3YVTSZlpDWrql10QNgi6Lo7YbZviPXTVGpdZJljDkGaRIMyunohEphk7LB8btwv0KkUZoHdZdOZVDAlYhcpTy3YJYqYCfuXBgv5lHyHV22m3hfnZlPwbCHKpUTSine3r/D4DuznPH7YTYkZQ==</SignatureValue><KeyInfo><KeyValue><RSAKeyValue><Modulus>6yM7GOtjJiq83q4Ju1HJ7vg7kh3YM0WVQiBovQmpRa4cLYivtxSA85TmG7P88x8Liwt4Yq+ecFYB6GguJYkMEOtMFckdexGT2uAUNvAuQEZcan7Xadx/Ea11m1cr0GlJwUFWTO91w8hldaFD2RhxlrYHarQVHetFY5xTyAkn/KZxYoreob0sR+SFViNIjp36nV2KD1lLVVDJlaltcgV9DbW0JUhyFOoZT76Pf7qir5IxVBQNi2wvQFkGyZh/tbjNJeJw0inwqnHL3SOZd84xJPclElJodSEIQxZ/uUi9iZpwhdI2RGeH+RxO8pAz/qIgN0Pn4SgrHoPtGhB4vg0T2Q==</Modulus><Exponent>AQAB</Exponent></RSAKeyValue></KeyValue><X509Data><X509Certificate>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</X509Certificate><X509Certificate>MIIHejCCBWKgAwIBAgIKYQ6Q0gAAAAAAAzANBgkqhkiG9w0BAQsFADCBiDELMAkGA1UEBhMCVVMxEzARBgNVBAgTCldhc2hpbmd0b24xEDAOBgNVBAcTB1JlZG1vbmQxHjAcBgNVBAoTFU1pY3Jvc29mdCBDb3Jwb3JhdGlvbjEyMDAGA1UEAxMpTWljcm9zb2Z0IFJvb3QgQ2VydGlmaWNhdGUgQXV0aG9yaXR5IDIwMTEwHhcNMTEwNzA4MjA1OTA5WhcNMjYwNzA4MjEwOTA5WjB+MQswCQYDVQQGEwJVUzETMBEGA1UECBMKV2FzaGluZ3RvbjEQMA4GA1UEBxMHUmVkbW9uZDEeMBwGA1UEChMVTWljcm9zb2Z0IENvcnBvcmF0aW9uMSgwJgYDVQQDEx9NaWNyb3NvZnQgQ29kZSBTaWduaW5nIFBDQSAyMDExMIICIjANBgkqhkiG9w0BAQEFAAOCAg8AMIICCgKCAgEAq/D6chAcLq3YbqqCEE00uvK2WCGfQhsqa+laUKq4BjgaBEm6f8MMHt03a8YS2AvwOMKZBrDIOdUBFDFC04kNeWSHfpRgJGyvnkmc6Whe0t+bU7IKLMOv2akrrnoJr9eWWcpgGgXpZnboMlImEi/nqwhQz7NEt13YxC4Ddato88tt8zpcoRb0RrrgOGSsbmQ1eKagYw8t00CT+OPeBw3VXHmlSSnnDb6gE3e+lD3v++MrWhAfTVYoonpy4BI6t0le2O3tQ5GD2Xuye4Yb2T6xjF3oiU+EGvKhL1nkkDstrjNYxbc+/jLTswM9sbKvkjh+0p2ALPVOVpEhNSXDOW5kf1O6nA+tGSOEy/S6A4aN91/w0FK/jJSHvMAhdCVfGCi2zCcoOCWYOUo2z3yxkq4cI6epZuxhH2rhKEmdX4jiJV3TIUs+UsS1Vz8kA/DRelsv1SPjcF0PUUZ3s/gA4bysAoJf28AVs70b1FVL5zmhD+kjSbwYuER8ReTBw3J64HLnJN+/RpnF78IcV9uDjexNSTCnq47f7Fufr/zdsGbiwZeBe+3W7UvnSSmnEyimp31ngOaKYnhfsi+E11ecXL93KCjx7W3DKI8sj0A3T8HhhUSJxAlMxdSlQy90lfdu+HggWCwTXWCVmj5PM4TasIgX3p5O9JawvEagbJjS4NaIjAsCAwEAAaOCAe0wggHpMBAGCSsGAQQBgjcVAQQDAgEAMB0GA1UdDgQWBBRIbmTlUAXTgqoXNzcitW2oynUClTAZBgkrBgEEAYI3FAIEDB4KAFMAdQBiAEMAQTALBgNVHQ8EBAMCAYYwDwYDVR0TAQH/BAUwAwEB/zAfBgNVHSMEGDAWgBRyLToCMZBDuRQFTuHqp8cx0SOJNDBaBgNVHR8EUzBRME+gTaBLhklodHRwOi8vY3JsLm1pY3Jvc29mdC5jb20vcGtpL2NybC9wcm9kdWN0cy9NaWNSb29DZXJBdXQyMDExXzIwMTFfMDNfMjIuY3JsMF4GCCsGAQUFBwEBBFIwUDBOBggrBgEFBQcwAoZCaHR0cDovL3d3dy5taWNyb3NvZnQuY29tL3BraS9jZXJ0cy9NaWNSb29DZXJBdXQyMDExXzIwMTFfMDNfMjIuY3J0MIGfBgNVHSAEgZcwgZQwgZEGCSsGAQQBgjcuAzCBgzA/BggrBgEFBQcCARYzaHR0cDovL3d3dy5taWNyb3NvZnQuY29tL3BraW9wcy9kb2NzL3ByaW1hcnljcHMuaHRtMEAGCCsGAQUFBwICMDQeMiAdAEwAZQBnAGEAbABfAHAAbwBsAGkAYwB5AF8AcwB0AGEAdABlAG0AZQBuAHQALiAdMA0GCSqGSIb3DQEBCwUAA4ICAQBn8oalmOBUeRou09h0ZyKbC5YR4WOSmUKWfdJ5DJDBZV8uLD74w3LRbYP+vj/oCso7v0epo/Np22O/IjWll11lhJB9i0ZQVdgMknzSGksc8zxCi1LQsP1r4z4HLimb5j0bpdS1HXeUOeLpZMlEPXh6I/MTfaaQdION9MsmAkYqwooQu6SpBQyb7Wj6aC6VoCo/KmtYSWMfCWluWpiW5IP0wI/zRive/DvQvTXvbiWu5a8n7dDd8w6vmSiXmE0OPQvyCInWH8MyGOLwxS3OW560STkKxgrCxq2u5bLZ2xWIUUVYODJxJxp/sfQn+N4sOiBpmLJZiWhub6e3dMNABQamASooPoI/E01mC8CzTfXhj38cbxV9Rad25UAqZaPDXVJihsMdYzaXht/a8/jyFqGaJ+HNpZfQ7l1jQeNbB5yHPgZ3BtEGsXUfFL5hYbXw3MYbBL7fQccOKO7eZS/sl/ahXJbYANahRr1Z85elCUtIEJmAH9AAKcWxm6U/RXceNcbSoqKfenoi+kiVH6v7RyOA9Z74v2u3S5fi63V4GuzqN5l5GEv/1rMjaHXmr/r8i+sLgOppO6/8MO0ETI7f33VtY5E90Z1WTk+/gFcioXgRMiF670EKsT/7qMykXcGhiJtXcVZOSEXAQsmbdlsKgEhr/Xmfwb1tbWrJUnMTDXpQzQ==</X509Certificate><X509Certificate>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</X509Certificate></X509Data></KeyInfo><Object Id="ts-countersig"><X509Data><X509Certificate>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</X509Certificate><X509Certificate>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</X509Certificate></X509Data><CounterSignature ts-format="cms-timestamp-message" xmlns="http://schemas.microsoft.com/xmldsig/timestamp/2003">MIAGCSqGSIb3DQEHAqCAMIIW1QIBAzEPMA0GCWCGSAFlAwQCAQUAMIIBUQYLKoZIhvcNAQkQAQSgggFABIIBPDCCATgCAQEGCisGAQQBhFkKAwEwMTANBglghkgBZQMEAgEFAAQg4byBKQtJlgusgP8RHrRJjeAhocjakhD8caLiT4MSUWUCBmPud7g5nBgTMjAyMzAyMjQxNzQ1NDQuNzU0WjAEgAIB9KCB0KSBzTCByjELMAkGA1UEBhMCVVMxEzARBgNVBAgTCldhc2hpbmd0b24xEDAOBgNVBAcTB1JlZG1vbmQxHjAcBgNVBAoTFU1pY3Jvc29mdCBDb3Jwb3JhdGlvbjElMCMGA1UECxMcTWljcm9zb2Z0IEFtZXJpY2EgT3BlcmF0aW9uczEmMCQGA1UECxMdVGhhbGVzIFRTUyBFU046NDlCQy1FMzdBLTIzM0MxJTAjBgNVBAMTHE1pY3Jvc29mdCBUaW1lLVN0YW1wIFNlcnZpY2WgghFXMIIHDDCCBPSgAwIBAgITMwAAAcBVpI3DZBXFSwABAAABwDANBgkqhkiG9w0BAQsFADB8MQswCQYDVQQGEwJVUzETMBEGA1UECBMKV2FzaGluZ3RvbjEQMA4GA1UEBxMHUmVkbW9uZDEeMBwGA1UEChMVTWljcm9zb2Z0IENvcnBvcmF0aW9uMSYwJAYDVQQDEx1NaWNyb3NvZnQgVGltZS1TdGFtcCBQQ0EgMjAxMDAeFw0yMjExMDQxOTAxMjVaFw0yNDAyMDIxOTAxMjVaMIHKMQswCQYDVQQGEwJVUzETMBEGA1UECBMKV2FzaGluZ3RvbjEQMA4GA1UEBxMHUmVkbW9uZDEeMBwGA1UEChMVTWljcm9zb2Z0IENvcnBvcmF0aW9uMSUwIwYDVQQLExxNaWNyb3NvZnQgQW1lcmljYSBPcGVyYXRpb25zMSYwJAYDVQQLEx1UaGFsZXMgVFNTIEVTTjo0OUJDLUUzN0EtMjMzQzElMCMGA1UEAxMcTWljcm9zb2Z0IFRpbWUtU3RhbXAgU2VydmljZTCCAiIwDQYJKoZIhvcNAQEBBQADggIPADCCAgoCggIBALztYPtjYYZgUL5RpQkzjGhcN42yIVHQ06pGkIUaXR1W/oblP9BzYS5qEWL66e8+byKC9TDwJFQRViSJK3Bu7Eq3nZ8mcK3mNtOwvZ/F4ry/WQTkHolHi/0zJSelYp63Gn24XZ5DTuSQ5T6MwvXRskorm68nbORirbuvQ9cDWrfQyEJempRTuqZ3GSuESM37/is5DO0ZGN7x6YVdAvBBVKRfpcrGhiVxX/ULFFB8I/Vylh33PQX4S6AkXl1M74K7KXRZlZwPQE2F5onUo67IX/APhNPxaU3YVzyPV16rGQxwaq+w5WKEglN5b61Q0btaeaRx3+7N5DNeh6Sumqw7WN2otbKAEphKb9wtjf8uTAwQKQ3eEqUpCzGu/unrP3Wnku83R9anQmtkaCTzOhIf+mJgX6H4Xy0KHyjyZd+AC5WViuQM1bRUTTl2nKI+jABtnU/EXOX6Sgh9RN5+2Y3tHStuEFX0r/2DscOdhAmjC5VuT4R092SDTWgpkYHBwkwpTiswthTq9N2AXNszzlumyFXV5aD5gTFWhPrYV6j5gDQcNGLJ3GjpFYIIw2+TuVajqffDJJR6SaCSOqZOcwJcfPzrQuxbra3bWDVAuspF8zADxbmJFhoMf1uwNIrSlvFs2M8Dt2wIaa8M56LhmZkYsNpPKXp/NAc6s3cj72808ULDAgMBAAGjggE2MIIBMjAdBgNVHQ4EFgQUAETGePNI8KStz+qrlVlBCdHN9IUwHwYDVR0jBBgwFoAUn6cVXQBeYl2D9OXSZacbUzUZ6XIwXwYDVR0fBFgwVjBUoFKgUIZOaHR0cDovL3d3dy5taWNyb3NvZnQuY29tL3BraW9wcy9jcmwvTWljcm9zb2Z0JTIwVGltZS1TdGFtcCUyMFBDQSUyMDIwMTAoMSkuY3JsMGwGCCsGAQUFBwEBBGAwXjBcBggrBgEFBQcwAoZQaHR0cDovL3d3dy5taWNyb3NvZnQuY29tL3BraW9wcy9jZXJ0cy9NaWNyb3NvZnQlMjBUaW1lLVN0YW1wJTIwUENBJTIwMjAxMCgxKS5jcnQwDAYDVR0TAQH/BAIwADATBgNVHSUEDDAKBggrBgEFBQcDCDANBgkqhkiG9w0BAQsFAAOCAgEArU4dBEJ9epCkMgnlZPVXNdJui9BMC0aNwE0aLj+2HdoVnhAdmOGReAiSnvan11hiSs1e7TFJugwLASmB/50/vMmyPLiYhxp351Yukoe4BY506X4dY9U/dB/7i3qBY6Tp//nqAqCZqK1uRm9ns5U5aOSNJDQLm8bQsamy4s7jzT6G/JEQCkIL/uPwgtSZolBRtLiiDZSo/UrB3K1ngQUB1+tpzYM4iME+OCah6wNNiOnJkAIvQWXLH+ezji6UWJc6Dx98f/pXUsklwJsi6trkm1rULg/OCP9GYEvweS93sKk3YhNSmyl/PTFuSagiv8iP5gCEGppgJRz6lPXmWUzDzh0LNF66Qoo5ZPqsqNiWh4sksMOp7j6l81N7BI91VtNGIlUmsihLtSK0c819y2vKnujqi07yv+oLuV3Squ00/OdpweiD9EDPgbnba+BW8eP7L6ShxqSvf8wbmhxw11+QKEpLIf5Eg2Cn3n0CISH0CSc6BN1/jIpjCa4K8GV5bW+o9SC9B2N6gqWtNxoYItCE86n5MNzGp9xvJAdUJfknjXIj1I+9yp9r3iXpxi7U/CZFDPUVItMKDtIrmOLSZ2Lkvknqmr11DlqlGFWNfRSK9Ty6qZlpG6zucSo5Mjh6AJi8YzWyozp5AMH7ftRtNJLpSqs6j25vkp/uOybBkBYTRm0wggdxMIIFWaADAgECAhMzAAAAFcXna54Cm0mZAAAAAAAVMA0GCSqGSIb3DQEBCwUAMIGIMQswCQYDVQQGEwJVUzETMBEGA1UECBMKV2FzaGluZ3RvbjEQMA4GA1UEBxMHUmVkbW9uZDEeMBwGA1UEChMVTWljcm9zb2Z0IENvcnBvcmF0aW9uMTIwMAYDVQQDEylNaWNyb3NvZnQgUm9vdCBDZXJ0aWZpY2F0ZSBBdXRob3JpdHkgMjAxMDAeFw0yMTA5MzAxODIyMjVaFw0zMDA5MzAxODMyMjVaMHwxCzAJBgNVBAYTAlVTMRMwEQYDVQQIEwpXYXNoaW5ndG9uMRAwDgYDVQQHEwdSZWRtb25kMR4wHAYDVQQKExVNaWNyb3NvZnQgQ29ycG9yYXRpb24xJjAkBgNVBAMTHU1pY3Jvc29mdCBUaW1lLVN0YW1wIFBDQSAyMDEwMIICIjANBgkqhkiG9w0BAQEFAAOCAg8AMIICCgKCAgEA5OGmTOe0ciELeaLL1yR5vQ7VgtP97pwHB9KpbE51yMo1V/YBf2xK4OK9uT4XYDP/XE/HZveVU3Fa4n5KWv64NmeFRiMMtY0Tz3cywBAY6GB9alKDRLemjkZrBxTzxXb1hlDcwUTIcVxRMTegCjhuje3XD9gmU3w5YQJ6xKr9cmmvHaus9ja+NSZk2pg7uhp7M62AW36MEBydUv626GIl3GoPz130/o5Tz9bshVZN7928jaTjkY+yOSxRnOlwaQ3KNi1wjjHINSi947SHJMPgyY9+tVSP3PoFVZhtaDuaRr3tpK56KTesy+uDRedGbsoy1cCGMFxPLOJiss254o2I5JasAUq7vnGpF1tnYN74kpEeHT39IM9zfUGaRnXNxF803RKJ1v2lIH1+/NmeRd+2ci/bfV+AutuqfjbsNkz2K26oElHovwUDo9Fzpk03dJQcNIIP8BDyt0cY7afomXw/TNuvXsLz1dhzPUNOwTM5TI4CvEJoLhDqhFFG4tG9ahhaYQFzymeiXtcodgLiMxhy16cg8ML6EgrXY28MyTZki1ugpoMhXV8wdJGUlNi5UPkLiWHzNgY1GIRH29wb0f2y1BzFa/ZcUlFdEtsluq9QBXpsxREdcu+N+VLEhReTwDwV2xo3xwgVGD94q0W29R6HXtqPnhZyacaue7e3PmriLq0CAwEAAaOCAd0wggHZMBIGCSsGAQQBgjcVAQQFAgMBAAEwIwYJKwYBBAGCNxUCBBYEFCqnUv5kxJq+gpE8RjUpzxD/LwTuMB0GA1UdDgQWBBSfpxVdAF5iXYP05dJlpxtTNRnpcjBcBgNVHSAEVTBTMFEGDCsGAQQBgjdMg30BATBBMD8GCCsGAQUFBwIBFjNodHRwOi8vd3d3Lm1pY3Jvc29mdC5jb20vcGtpb3BzL0RvY3MvUmVwb3NpdG9yeS5odG0wEwYDVR0lBAwwCgYIKwYBBQUHAwgwGQYJKwYBBAGCNxQCBAweCgBTAHUAYgBDAEEwCwYDVR0PBAQDAgGGMA8GA1UdEwEB/wQFMAMBAf8wHwYDVR0jBBgwFoAU1fZWy4/oolxiaNE9lJBb186aGMQwVgYDVR0fBE8wTTBLoEmgR4ZFaHR0cDovL2NybC5taWNyb3NvZnQuY29tL3BraS9jcmwvcHJvZHVjdHMvTWljUm9vQ2VyQXV0XzIwMTAtMDYtMjMuY3JsMFoGCCsGAQUFBwEBBE4wTDBKBggrBgEFBQcwAoY+aHR0cDovL3d3dy5taWNyb3NvZnQuY29tL3BraS9jZXJ0cy9NaWNSb29DZXJBdXRfMjAxMC0wNi0yMy5jcnQwDQYJKoZIhvcNAQELBQADggIBAJ1VffwqreEsH2cBMSRb4Z5yS/ypb+pcFLY+TkdkeLEGk5c9MTO1OdfCcTY/2mRsfNB1OW27DzHkwo/7bNGhlBgi7ulmZzpTTd2YurYeeNg2LpypglYAA7AFvonoaeC6Ce5732pvvinLbtg/SHUB2RjebYIM9W0jVOR4U3UkV7ndn/OOPcbzaN9l9qRWqveVtihVJ9AkvUCgvxm2EhIRXT0n4ECWOKz3+SmJw7wXsFSFQrP8DJ6LGYnn8AtqgcKBGUIZUnWKNsIdw2FzLixre24/LAl4FOmRsqlb30mjdAy87JGA0j3mSj5mO0+7hvoyGtmW9I/2kQH2zsZ0/fZMcm8Qq3UwxTSwethQ/gpY3UA8x1RtnWN0SCyxTkctwRQEcb9k+SS+c23Kjgm9swFXSVRk2XPXfx5bRAGOWhmRaw2fpCjcZxkoJLo4S5pu+yFUa2pFEUep8beuyOiJXk+d0tBMdrVXVAmxaQFEfnyhYWxz/gq77EFmPWn9y8FBSX5+k77L+DvktxW/tM4+pTFRhLy/AsGConsXHRWJjXD+57XQKBqJC4822rpM+Zv/Cuk0+CQ1ZyvgDbjmjJnW4SLq8CdCPSWU5nR0W2rRnj7tfqAxM328y+l7vzhwRNGQ8cirOoo6CGJ/2XBjU02N7oJtpQUQwXEGahC0HVUzWLOhcGbyoYICzjCCAjcCAQEwgfihgdCkgc0wgcoxCzAJBgNVBAYTAlVTMRMwEQYDVQQIEwpXYXNoaW5ndG9uMRAwDgYDVQQHEwdSZWRtb25kMR4wHAYDVQQKExVNaWNyb3NvZnQgQ29ycG9yYXRpb24xJTAjBgNVBAsTHE1pY3Jvc29mdCBBbWVyaWNhIE9wZXJhdGlvbnMxJjAkBgNVBAsTHVRoYWxlcyBUU1MgRVNOOjQ5QkMtRTM3QS0yMzNDMSUwIwYDVQQDExxNaWNyb3NvZnQgVGltZS1TdGFtcCBTZXJ2aWNloiMKAQEwBwYFKw4DAhoDFQAQEOxMRdfSpMFS9RNwHfJND3m+naCBgzCBgKR+MHwxCzAJBgNVBAYTAlVTMRMwEQYDVQQIEwpXYXNoaW5ndG9uMRAwDgYDVQQHEwdSZWRtb25kMR4wHAYDVQQKExVNaWNyb3NvZnQgQ29ycG9yYXRpb24xJjAkBgNVBAMTHU1pY3Jvc29mdCBUaW1lLVN0YW1wIFBDQSAyMDEwMA0GCSqGSIb3DQEBBQUAAgUA56LY4DAiGA8yMDIzMDIyNDE0MzQwOFoYDzIwMjMwMjI1MTQzNDA4WjB3MD0GCisGAQQBhFkKBAExLzAtMAoCBQDnotjgAgEAMAoCAQACAhNPAgH/MAcCAQACAhG3MAoCBQDnpCpgAgEAMDYGCisGAQQBhFkKBAIxKDAmMAwGCisGAQQBhFkKAwKgCjAIAgEAAgMHoSChCjAIAgEAAgMBhqAwDQYJKoZIhvcNAQEFBQADgYEADPzT+Frf0TwmTDM7J9pvcc1ojAgkmw9l8LxHpy6BZ3azM4cxXog5i18jGD+In+V22iCzjl7m3fY6G3j5fMzx2mXFGqBxKSKZnrONzwHvrRKF6Kx8CsLbNETzGfqosgisMCLo0YXcoaZXTRJwkv+xxN9VbIL+UjQVmGJHVS78r6sxggQNMIIECQIBATCBkzB8MQswCQYDVQQGEwJVUzETMBEGA1UECBMKV2FzaGluZ3RvbjEQMA4GA1UEBxMHUmVkbW9uZDEeMBwGA1UEChMVTWljcm9zb2Z0IENvcnBvcmF0aW9uMSYwJAYDVQQDEx1NaWNyb3NvZnQgVGltZS1TdGFtcCBQQ0EgMjAxMAITMwAAAcBVpI3DZBXFSwABAAABwDANBglghkgBZQMEAgEFAKCCAUowGgYJKoZIhvcNAQkDMQ0GCyqGSIb3DQEJEAEEMC8GCSqGSIb3DQEJBDEiBCD2SDgul7p3UZG3cg3IP2AArYDcGvEwpUaXuVRi4qZDVzCB+gYLKoZIhvcNAQkQAi8xgeowgecwgeQwgb0EIFrxWKJSCFzBNMyv1ul7ApJGF+5WDW/cgPCccGNOD5NPMIGYMIGApH4wfDELMAkGA1UEBhMCVVMxEzARBgNVBAgTCldhc2hpbmd0b24xEDAOBgNVBAcTB1JlZG1vbmQxHjAcBgNVBAoTFU1pY3Jvc29mdCBDb3Jwb3JhdGlvbjEmMCQGA1UEAxMdTWljcm9zb2Z0IFRpbWUtU3RhbXAgUENBIDIwMTACEzMAAAHAVaSNw2QVxUsAAQAAAcAwIgQgrEy8OUB5B+XXXefDa0cOVeTTfxRDoIF0qJl5hcSz7c8wDQYJKoZIhvcNAQELBQAEggIAdRDA0WWBXwSAFx8AKsWSWl2R3JHUkGxDuo6FwALQkCc9jBED0drmLiNVJeJA+vgiFGR3vxp9tl4svBw8BwNeo9TXX++IUrDT0H3Ng4MaEofP8iHDaixfUZjuuw4/jgDkTDwFuUFeRitdVNFbuLceUABYU7f5qDN55aP1CBayfp0lx4thkjzJoHcb2J85O42rz+lvsrofgLSM6gdFDDZSUrjb3oa5JUWh5XAi3njeNVv5xyG1LcV7aLuM4DS7FC0gAVu96yJUWzfj+Xxyxu3B2vk0/c+qvfaRU5/BFUsRQjUUeJw5CGhF9vbOoj5gr+Ya3XTfQ5bj4eiZt8fBL+e6HbpCIOzEeM2WaTnr+i190PeGy5W6laEiHNboH0vkXhYOKkDplxaBr7igpVmo6jnwjMacr9/1lg/vZ5X5vDdapH4m2NjSNuGD6YUIR3JxXBFhvyRIGCijS/h1XoPiLJZKORW/qLkdC20uyT9+8rfJrwZ+MQalfdUoFSOf70oHtM7pDE5QwbnB1oeCuMHMY/w5XcF5RDRfZUNUWi/FwPAWvE5GlNwRYXk6mqecvePygzL6oeAmZI+FXBmf2LmJlj88siYXj5CVxEwZCuXd5dFZabiA59xwUiQ61+Sa30KFU4OpvPYV/egmzmrgnpEUnozuMvs9KLlM01gcisWxLCWsI8wAAAAA</CounterSignature></Object></Signature></doc>

@@ -1571,6 +1571,15 @@ namespace IDE
             new Thanks().Show();
         }
         #endregion
+        #region 强制停止
+        private void ForceStop(object sender, EventArgs e)
+        {
+            foreach (var RunnerProcess in Process.GetProcessesByName("Runner.exe"))
+            {
+                RunnerProcess.Kill();
+            }
+        }
+        #endregion
         #region 全选
         private void SelectAll(object sender, EventArgs e)
         {
@@ -2063,6 +2072,7 @@ namespace IDE
         private static extern int SendMessage(IntPtr HWnd, uint Msg, int WParam, int LParam);
         public const int WM_SYSCOMMAND = 0x112;
         public const int SC_MINIMIZE = 0xF020;
+
         public const int SC_MAXIMIZE = 0xF030;
         public const uint WM_SYSCOMMAND2 = 0x0112;
         public const uint SC_MAXIMIZE2 = 0xF030;

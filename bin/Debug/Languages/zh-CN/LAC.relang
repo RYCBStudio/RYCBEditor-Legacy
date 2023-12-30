@@ -3,13 +3,3 @@ Name=简体中文（中国）
 
 [I18n]
 text.LAC.title=许可与版权声明
-text.LAC.gb1.AE=AvalonEdit(编辑器控件)
-text.LAC.gb1.fullctrlname=完整控件名:
-text.LAC.gb1.version=版本: 
-text.LAC.gb1.website=官网
-text.LAC.gb2.SUI=Sunny UI(UI组件)
-text.LAC.gb2.namespace=命名空间: 
-text.LAC.gb2.gitee=Gitee存储库
-text.LAC.gb3.MMUI=Metro Modern UI(UI组件)
-text.LAC.gb3.Github=Github存储库
-text.LAC.gb4.MsgPack=Message Pack(MsgPack序列化程序)

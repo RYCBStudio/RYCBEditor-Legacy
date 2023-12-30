@@ -104,25 +104,25 @@ The <see langword="version" /> attribute for the given <paramref name="securityE
       <returns>An object that implements <see cref="T:System.Security.IPermission" />.</returns>
     </member>
     <member name="T:System.Data.Common.DBDataPermission">
-      <summary>Enables a .NET Framework data provider to help ensure that a user has a security level adequate for accessing data.</summary>
+      <summary>Enables a .NET data provider to help ensure that a user has a security level adequate for accessing data.</summary>
     </member>
     <member name="M:System.Data.Common.DBDataPermission.#ctor">
-      <summary>Initializes a new instance of a <see langword="DBDataPermission" /> class.</summary>
+      <summary>Initializes a new instance of the <see langword="DBDataPermission" /> class.</summary>
     </member>
     <member name="M:System.Data.Common.DBDataPermission.#ctor(System.Data.Common.DBDataPermission)">
-      <summary>Initializes a new instance of a <see langword="DBDataPermission" /> class using an existing <see langword="DBDataPermission" />.</summary>
+      <summary>Initializes a new instance of the <see langword="DBDataPermission" /> class using an existing <see langword="DBDataPermission" />.</summary>
       <param name="permission">An existing <see langword="DBDataPermission" /> used to create a new <see langword="DBDataPermission" />.</param>
     </member>
     <member name="M:System.Data.Common.DBDataPermission.#ctor(System.Data.Common.DBDataPermissionAttribute)">
-      <summary>Initializes a new instance of a <see langword="DBDataPermission" /> class with the specified <see langword="DBDataPermissionAttribute" />.</summary>
+      <summary>Initializes a new instance of the <see langword="DBDataPermission" /> class with the specified <see langword="DBDataPermissionAttribute" />.</summary>
       <param name="permissionAttribute">A security action associated with a custom security attribute.</param>
     </member>
     <member name="M:System.Data.Common.DBDataPermission.#ctor(System.Security.Permissions.PermissionState)">
-      <summary>Initializes a new instance of a <see langword="DBDataPermission" /> class with the specified <see cref="T:System.Security.Permissions.PermissionState" /> value.</summary>
+      <summary>Initializes a new instance of the <see langword="DBDataPermission" /> class with the specified <see cref="T:System.Security.Permissions.PermissionState" /> value.</summary>
       <param name="state">One of the <see cref="T:System.Security.Permissions.PermissionState" /> values.</param>
     </member>
     <member name="M:System.Data.Common.DBDataPermission.#ctor(System.Security.Permissions.PermissionState,System.Boolean)">
-      <summary>Initializes a new instance of a <see langword="DBDataPermission" /> class with the specified <see cref="T:System.Security.Permissions.PermissionState" /> value, and a value indicating whether a blank password is allowed.</summary>
+      <summary>Initializes a new instance of the <see langword="DBDataPermission" /> class with the specified <see cref="T:System.Security.Permissions.PermissionState" /> value, and a value indicating whether a blank password is allowed.</summary>
       <param name="state">One of the <see cref="T:System.Security.Permissions.PermissionState" /> values.</param>
       <param name="allowBlankPassword">
         <see langword="true" /> to indicate that a blank password is allowed; otherwise, <see langword="false" />.</param>
@@ -134,7 +134,7 @@ The <see langword="version" /> attribute for the given <paramref name="securityE
       <param name="behavior">One of the <see cref="T:System.Data.KeyRestrictionBehavior" /> properties.</param>
     </member>
     <member name="M:System.Data.Common.DBDataPermission.Clear">
-      <summary>Removes all permissions that were previous added using the <see cref="M:System.Data.Common.DBDataPermission.Add(System.String,System.String,System.Data.KeyRestrictionBehavior)" /> method.</summary>
+      <summary>Removes all permissions that were previously added using the <see cref="M:System.Data.Common.DBDataPermission.Add(System.String,System.String,System.Data.KeyRestrictionBehavior)" /> method.</summary>
     </member>
     <member name="M:System.Data.Common.DBDataPermission.Copy">
       <summary>Creates and returns an identical copy of the current permission object.</summary>
@@ -742,6 +742,145 @@ The <see langword="version" /> attribute for the given <paramref name="securityE
       <param name="index">The zero-based index into the collection.</param>
       <returns>The <see cref="T:System.Diagnostics.PerformanceCounterPermissionEntry" /> object that exists at the specified index.</returns>
     </member>
+    <member name="T:System.DirectoryServices.DirectoryServicesPermission">
+      <summary>The <see cref="T:System.DirectoryServices.DirectoryServicesPermission" /> class allows you to control code access security permissions for <see cref="N:System.DirectoryServices" />.</summary>
+    </member>
+    <member name="M:System.DirectoryServices.DirectoryServicesPermission.#ctor">
+      <summary>Initializes a new instance of the <see cref="T:System.DirectoryServices.DirectoryServicesPermission" /> class.</summary>
+    </member>
+    <member name="M:System.DirectoryServices.DirectoryServicesPermission.#ctor(System.DirectoryServices.DirectoryServicesPermissionAccess,System.String)">
+      <summary>Initializes a new instance of the <see cref="T:System.DirectoryServices.DirectoryServicesPermission" /> class with the specified access levels and specified path to an Active Directory Domain Services node.</summary>
+      <param name="permissionAccess">One of the <see cref="T:System.DirectoryServices.DirectoryServicesPermissionAccess" /> values.</param>
+      <param name="path">The path of the Active Directory Domain Services object, otherwise known as the ADsPath, to which the permissions apply.</param>
+    </member>
+    <member name="M:System.DirectoryServices.DirectoryServicesPermission.#ctor(System.DirectoryServices.DirectoryServicesPermissionEntry[])">
+      <summary>Initializes a new instance of the <see cref="T:System.DirectoryServices.DirectoryServicesPermission" /> class with the specified permission access level entries.</summary>
+      <param name="permissionAccessEntries">An array of <see cref="T:System.DirectoryServices.DirectoryServicesPermissionEntry" /> objects. The <see cref="P:System.DirectoryServices.DirectoryServicesPermission.PermissionEntries" /> property is set to this value.</param>
+      <exception cref="T:System.ArgumentNullException">The specified value for the <paramref name="permissionAccessEntries" /> parameter is <see langword="null" />.</exception>
+    </member>
+    <member name="M:System.DirectoryServices.DirectoryServicesPermission.#ctor(System.Security.Permissions.PermissionState)">
+      <summary>Initializes a new instance of the <see cref="T:System.DirectoryServices.DirectoryServicesPermission" /> class with the specified permission state.</summary>
+      <param name="state">One of the <see cref="T:System.Security.Permissions.PermissionState" /> values.</param>
+      <exception cref="T:System.ArgumentException">The <paramref name="State" /> parameter is not a valid value of <see cref="T:System.Security.Permissions.PermissionState" />.</exception>
+    </member>
+    <member name="P:System.DirectoryServices.DirectoryServicesPermission.PermissionEntries">
+      <summary>Gets the collection of permission entries for this permission.</summary>
+      <returns>A <see cref="T:System.DirectoryServices.DirectoryServicesPermissionEntryCollection" /> object that contains the permission entries for this permission.</returns>
+    </member>
+    <member name="T:System.DirectoryServices.DirectoryServicesPermissionAccess">
+      <summary>The <see cref="T:System.DirectoryServices.DirectoryServicesPermissionAccess" /> enumeration defines access levels that are used by <see cref="N:System.DirectoryServices" /> permission classes. This enumeration has a <see cref="T:System.FlagsAttribute" /> attribute that allows a bitwise combination of its member values.</summary>
+    </member>
+    <member name="F:System.DirectoryServices.DirectoryServicesPermissionAccess.Browse">
+      <summary>Reading the Active Directory Domain Services tree is allowed.</summary>
+    </member>
+    <member name="F:System.DirectoryServices.DirectoryServicesPermissionAccess.None">
+      <summary>No permissions are allowed.</summary>
+    </member>
+    <member name="F:System.DirectoryServices.DirectoryServicesPermissionAccess.Write">
+      <summary>Reading, writing, deleting, changing, and adding to the Active Directory Domain Services tree are allowed.</summary>
+    </member>
+    <member name="T:System.DirectoryServices.DirectoryServicesPermissionAttribute">
+      <summary>Allows declarative <see cref="N:System.DirectoryServices" /> permission checks.</summary>
+    </member>
+    <member name="M:System.DirectoryServices.DirectoryServicesPermissionAttribute.#ctor(System.Security.Permissions.SecurityAction)">
+      <summary>Initializes a new instance of the <see cref="M:System.DirectoryServices.DirectoryServicesPermissionAttribute.#ctor(System.Security.Permissions.SecurityAction)" /> class.</summary>
+      <param name="action">One of the <see cref="T:System.Security.Permissions.SecurityAction" /> values.</param>
+    </member>
+    <member name="M:System.DirectoryServices.DirectoryServicesPermissionAttribute.CreatePermission">
+      <summary>Creates permissions based on the attribute's specifications.</summary>
+      <returns>An <see cref="T:System.Security.IPermission" /> that represents the created permission.</returns>
+    </member>
+    <member name="P:System.DirectoryServices.DirectoryServicesPermissionAttribute.Path">
+      <summary>Gets or sets a path to an Active Directory Domain Services node to which the permissions apply.</summary>
+      <exception cref="T:System.ArgumentNullException">The property value is a null reference (<see langword="Nothing" /> in Visual Basic).</exception>
+      <returns>The path to an Active Directory Domain Services node. The default is "*".</returns>
+    </member>
+    <member name="P:System.DirectoryServices.DirectoryServicesPermissionAttribute.PermissionAccess">
+      <summary>Gets or sets the access levels that are used in creating permissions.</summary>
+      <returns>One of the <see cref="T:System.DirectoryServices.DirectoryServicesPermissionAccess" /> values. The default is Browse.</returns>
+    </member>
+    <member name="T:System.DirectoryServices.DirectoryServicesPermissionEntry">
+      <summary>The <see cref="T:System.DirectoryServices.DirectoryServicesPermissionEntry" /> class defines the smallest unit of a code access security permission set for <see cref="N:System.DirectoryServices" />.</summary>
+    </member>
+    <member name="M:System.DirectoryServices.DirectoryServicesPermissionEntry.#ctor(System.DirectoryServices.DirectoryServicesPermissionAccess,System.String)">
+      <summary>The <see cref="M:System.DirectoryServices.DirectoryServicesPermissionEntry.#ctor(System.DirectoryServices.DirectoryServicesPermissionAccess,System.String)" /> constructor initializes a new instance of the <see cref="M:System.DirectoryServices.DirectoryServicesPermissionEntry.#ctor(System.DirectoryServices.DirectoryServicesPermissionAccess,System.String)" /> class.</summary>
+      <param name="permissionAccess">One of the <see cref="T:System.DirectoryServices.DirectoryServicesPermissionAccess" /> values.</param>
+      <param name="path">The path of the Active Directory Domain Services node to which the permissions apply.</param>
+    </member>
+    <member name="P:System.DirectoryServices.DirectoryServicesPermissionEntry.Path">
+      <summary>The <see cref="P:System.DirectoryServices.DirectoryServicesPermissionEntry.Path" /> property gets a path to an Active Directory Domain Services node to which the permissions apply.</summary>
+      <returns>The path to an Active Directory Domain Services node.</returns>
+    </member>
+    <member name="P:System.DirectoryServices.DirectoryServicesPermissionEntry.PermissionAccess">
+      <summary>The <see cref="P:System.DirectoryServices.DirectoryServicesPermissionEntry.PermissionAccess" /> property gets the access levels used in creating permissions.</summary>
+      <returns>One of the <see cref="T:System.DirectoryServices.DirectoryServicesPermissionAccess" /> values.</returns>
+    </member>
+    <member name="T:System.DirectoryServices.DirectoryServicesPermissionEntryCollection">
+      <summary>Contains a strongly-typed collection of <see cref="T:System.DirectoryServices.DirectoryServicesPermissionEntry" /> objects.</summary>
+    </member>
+    <member name="M:System.DirectoryServices.DirectoryServicesPermissionEntryCollection.Add(System.DirectoryServices.DirectoryServicesPermissionEntry)">
+      <summary>Appends the specified <see cref="T:System.DirectoryServices.DirectoryServicesPermissionEntry" /> object to this collection.</summary>
+      <param name="value">The <see cref="T:System.DirectoryServices.DirectoryServicesPermissionEntry" /> object to add to this collection.</param>
+      <returns>The zero-based index of the added <see cref="T:System.DirectoryServices.DirectoryServicesPermissionEntry" /> object that is appended to this collection.</returns>
+    </member>
+    <member name="M:System.DirectoryServices.DirectoryServicesPermissionEntryCollection.AddRange(System.DirectoryServices.DirectoryServicesPermissionEntry[])">
+      <summary>Appends the contents of the specified <see cref="T:System.DirectoryServices.DirectoryServicesPermissionEntry" /> array to this collection.</summary>
+      <param name="value">
+        <see cref="T:System.DirectoryServices.DirectoryServicesPermissionEntry" /> array that contains the objects to append to this collection.</param>
+    </member>
+    <member name="M:System.DirectoryServices.DirectoryServicesPermissionEntryCollection.AddRange(System.DirectoryServices.DirectoryServicesPermissionEntryCollection)">
+      <summary>Appends the contents of the specified <see cref="T:System.DirectoryServices.DirectoryServicesPermissionEntryCollection" /> object to this collection.</summary>
+      <param name="value">The <see cref="T:System.DirectoryServices.DirectoryServicesPermissionEntryCollection" /> object that contains the objects to append to this collection.</param>
+    </member>
+    <member name="M:System.DirectoryServices.DirectoryServicesPermissionEntryCollection.Contains(System.DirectoryServices.DirectoryServicesPermissionEntry)">
+      <summary>Determines if the specified <see cref="T:System.DirectoryServices.DirectoryServicesPermissionEntry" /> object is in this collection.</summary>
+      <param name="value">The <see cref="T:System.DirectoryServices.DirectoryServicesPermissionEntry" /> object to search for in this collection.</param>
+      <returns>
+        <see langword="true" /> if the specified <see cref="T:System.DirectoryServices.DirectoryServicesPermissionEntry" /> object is in this collection; otherwise, <see langword="false" />.</returns>
+    </member>
+    <member name="M:System.DirectoryServices.DirectoryServicesPermissionEntryCollection.CopyTo(System.DirectoryServices.DirectoryServicesPermissionEntry[],System.Int32)">
+      <summary>Copies all <see cref="T:System.DirectoryServices.DirectoryServicesPermissionEntry" /> objects in this collection to the specified array, starting at the specified index in the target array.</summary>
+      <param name="array">The array of <see cref="T:System.DirectoryServices.DirectoryServicesPermissionEntry" /> objects that receives the elements of this collection.</param>
+      <param name="index">The zero-based index in the array where this method starts copying this collection.</param>
+    </member>
+    <member name="M:System.DirectoryServices.DirectoryServicesPermissionEntryCollection.IndexOf(System.DirectoryServices.DirectoryServicesPermissionEntry)">
+      <summary>Returns the index of the first occurrence of the specified <see cref="T:System.DirectoryServices.DirectoryServicesPermissionEntry" /> object in this collection.</summary>
+      <param name="value">The <see cref="T:System.DirectoryServices.DirectoryServicesPermissionEntry" /> object to search for in this collection.</param>
+      <returns>The zero-based index of the first matching object.  Returns -1 if no member of this collection is identical to the <see cref="T:System.DirectoryServices.DirectoryServicesPermissionEntry" /> object.</returns>
+    </member>
+    <member name="M:System.DirectoryServices.DirectoryServicesPermissionEntryCollection.Insert(System.Int32,System.DirectoryServices.DirectoryServicesPermissionEntry)">
+      <summary>Inserts the specified <see cref="T:System.DirectoryServices.DirectoryServicesPermissionEntry" /> into this collection at the specified index.</summary>
+      <param name="index">The zero-based index in this collection where the object is inserted.</param>
+      <param name="value">The <see cref="T:System.DirectoryServices.DirectoryServicesPermissionEntry" /> object to insert into this collection.</param>
+    </member>
+    <member name="M:System.DirectoryServices.DirectoryServicesPermissionEntryCollection.OnClear">
+      <summary>Overrides the <see cref="M:System.Collections.CollectionBase.OnClear" /> method.</summary>
+    </member>
+    <member name="M:System.DirectoryServices.DirectoryServicesPermissionEntryCollection.OnInsert(System.Int32,System.Object)">
+      <summary>Overrides the <see cref="M:System.Collections.CollectionBase.OnInsert(System.Int32,System.Object)" /> method.</summary>
+      <param name="index">The zero-based index at which to insert <paramref name="value" />.</param>
+      <param name="value">The new value of the element at <paramref name="index" />.</param>
+    </member>
+    <member name="M:System.DirectoryServices.DirectoryServicesPermissionEntryCollection.OnRemove(System.Int32,System.Object)">
+      <summary>Overrides the <see cref="M:System.Collections.CollectionBase.OnRemove(System.Int32,System.Object)" /> method.</summary>
+      <param name="index">The zero-based index at which <paramref name="value" /> can be found.</param>
+      <param name="value">The value of the element to remove from <paramref name="index" />.</param>
+    </member>
+    <member name="M:System.DirectoryServices.DirectoryServicesPermissionEntryCollection.OnSet(System.Int32,System.Object,System.Object)">
+      <summary>Overrides the <see cref="M:System.Collections.CollectionBase.OnSet(System.Int32,System.Object,System.Object)" /> method.</summary>
+      <param name="index">The zero-based index at which <paramref name="oldValue" /> can be found.</param>
+      <param name="oldValue">The value to replace with <paramref name="newValue" />.</param>
+      <param name="newValue">The new value of the element at <paramref name="index" />.</param>
+    </member>
+    <member name="M:System.DirectoryServices.DirectoryServicesPermissionEntryCollection.Remove(System.DirectoryServices.DirectoryServicesPermissionEntry)">
+      <summary>Removes the first occurrence of an object in this collection that is identical to the specified <see cref="T:System.DirectoryServices.DirectoryServicesPermissionEntry" /> object.</summary>
+      <param name="value">The specified <see cref="T:System.DirectoryServices.DirectoryServicesPermissionEntry" /> object to remove from this collection.</param>
+    </member>
+    <member name="P:System.DirectoryServices.DirectoryServicesPermissionEntryCollection.Item(System.Int32)">
+      <summary>Gets or sets a <see cref="T:System.DirectoryServices.DirectoryServicesPermissionEntry" /> object in this collection.</summary>
+      <param name="index">The zero-based index of the <see cref="T:System.DirectoryServices.DirectoryServicesPermissionEntry" /> object to get or set.</param>
+      <returns>The <see cref="T:System.DirectoryServices.DirectoryServicesPermissionEntry" /> object that exists at the specified index.</returns>
+    </member>
     <member name="T:System.Drawing.Printing.PrintingPermission">
       <summary>Controls access to printers. This class cannot be inherited.</summary>
     </member>
@@ -1056,11 +1195,11 @@ The <see langword="version" /> attribute for the given <paramref name="securityE
     </member>
     <member name="M:System.Net.NetworkInformation.NetworkInformationPermission.Copy">
       <summary>Creates and returns an identical copy of this permission.</summary>
-      <returns>A <see cref="T:System.Net.NetworkInformation.NetworkInformationPermission" /> that is identical to the current permission</returns>
+      <returns>A <see cref="T:System.Net.NetworkInformation.NetworkInformationPermission" /> that is identical to the current permission.</returns>
     </member>
     <member name="M:System.Net.NetworkInformation.NetworkInformationPermission.FromXml(System.Security.SecurityElement)">
       <summary>Sets the state of this permission using the specified XML encoding.</summary>
-      <param name="securityElement">A <see cref="T:System.Security.SecurityElement" /> that contains the XML encoding to use to set the state of the current permission</param>
+      <param name="securityElement">A <see cref="T:System.Security.SecurityElement" /> that contains the XML encoding to use to set the state of the current permission.</param>
       <exception cref="T:System.ArgumentNullException">
         <paramref name="securityElement" /> is <see langword="null" />.</exception>
       <exception cref="T:System.ArgumentException">
@@ -1083,7 +1222,7 @@ The <see langword="version" /> attribute for the given <paramref name="securityE
     </member>
     <member name="M:System.Net.NetworkInformation.NetworkInformationPermission.IsSubsetOf(System.Security.IPermission)">
       <summary>Determines whether the current permission is a subset of the specified permission.</summary>
-      <param name="target">An <see cref="T:System.Security.IPermission" /> that is to be tested for the subset relationship. This permission must be of the same type as the current permission</param>
+      <param name="target">An <see cref="T:System.Security.IPermission" /> that is to be tested for the subset relationship. This permission must be of the same type as the current permission.</param>
       <returns>
         <see langword="true" /> if the current permission is a subset of the specified permission; otherwise, <see langword="false" />.</returns>
     </member>
@@ -1644,6 +1783,13 @@ The parameter's version number is not supported.</exception>
       <param name="message">The error message that explains the reason for the exception.</param>
       <param name="protectedResources">A bitwise combination of the enumeration values that specify the host resources that are inaccessible to partially trusted code.</param>
       <param name="demandedResources">A bitwise combination of the enumeration values that specify the demanded host resources.</param>
+    </member>
+    <member name="M:System.Security.HostProtectionException.GetObjectData(System.Runtime.Serialization.SerializationInfo,System.Runtime.Serialization.StreamingContext)">
+      <summary>Sets the specified <see cref="T:System.Runtime.Serialization.SerializationInfo" /> object with information about the host protection exception.</summary>
+      <param name="info">The serialized object data about the exception being thrown.</param>
+      <param name="context">The contextual information about the source or destination.</param>
+      <exception cref="T:System.ArgumentNullException">
+        <paramref name="info" /> is <see langword="null" />.</exception>
     </member>
     <member name="M:System.Security.HostProtectionException.ToString">
       <summary>Returns a string representation of the current host protection exception.</summary>
@@ -2892,7 +3038,9 @@ The parameter's version number is not supported.</exception>
     <member name="T:System.Security.Permissions.KeyContainerPermissionAccessEntryCollection">
       <summary>Represents a collection of <see cref="T:System.Security.Permissions.KeyContainerPermissionAccessEntry" /> objects. This class cannot be inherited.</summary>
     </member>
-    <member name="M:System.Security.Permissions.KeyContainerPermissionAccessEntryCollection.#ctor" />
+    <member name="M:System.Security.Permissions.KeyContainerPermissionAccessEntryCollection.#ctor">
+      <summary>Initializes a new instance of the KeyContainerPermissionAccessEntryCollection class.</summary>
+    </member>
     <member name="M:System.Security.Permissions.KeyContainerPermissionAccessEntryCollection.Add(System.Security.Permissions.KeyContainerPermissionAccessEntry)">
       <summary>Adds a <see cref="T:System.Security.Permissions.KeyContainerPermissionAccessEntry" /> object to the collection.</summary>
       <param name="accessEntry">The <see cref="T:System.Security.Permissions.KeyContainerPermissionAccessEntry" /> object to add.</param>
@@ -2967,7 +3115,9 @@ The parameter's version number is not supported.</exception>
     <member name="T:System.Security.Permissions.KeyContainerPermissionAccessEntryEnumerator">
       <summary>Represents the enumerator for <see cref="T:System.Security.Permissions.KeyContainerPermissionAccessEntry" /> objects in a <see cref="T:System.Security.Permissions.KeyContainerPermissionAccessEntryCollection" />.</summary>
     </member>
-    <member name="M:System.Security.Permissions.KeyContainerPermissionAccessEntryEnumerator.#ctor" />
+    <member name="M:System.Security.Permissions.KeyContainerPermissionAccessEntryEnumerator.#ctor">
+      <summary>Initializes a new instance of the KeyContainerPermissionAccessEntryEnumerator class.</summary>
+    </member>
     <member name="M:System.Security.Permissions.KeyContainerPermissionAccessEntryEnumerator.MoveNext">
       <summary>Moves to the next element in the collection.</summary>
       <returns>
@@ -3291,7 +3441,7 @@ The parameter's version number is not supported.</exception>
     </member>
     <member name="M:System.Security.Permissions.PrincipalPermission.Equals(System.Object)">
       <summary>Determines whether the specified <see cref="T:System.Security.Permissions.PrincipalPermission" /> object is equal to the current <see cref="T:System.Security.Permissions.PrincipalPermission" />.</summary>
-      <param name="o">The <see cref="T:System.Security.Permissions.PrincipalPermission" /> object to compare with the current <see cref="T:System.Security.Permissions.PrincipalPermission" />.</param>
+      <param name="obj">The <see cref="T:System.Security.Permissions.PrincipalPermission" /> object to compare with the current <see cref="T:System.Security.Permissions.PrincipalPermission" />.</param>
       <returns>
         <see langword="true" /> if the specified <see cref="T:System.Security.Permissions.PrincipalPermission" /> is equal to the current <see cref="T:System.Security.Permissions.PrincipalPermission" /> object; otherwise, <see langword="false" />.</returns>
     </member>
@@ -5265,144 +5415,6 @@ The parameter's version number is not supported.</exception>
       <summary>Gets or sets the policy statement associated with the code group.</summary>
       <returns>The policy statement for the code group.</returns>
     </member>
-    <member name="T:System.Security.Policy.Evidence">
-      <summary>Defines the set of information that constitutes input to security policy decisions. This class cannot be inherited.</summary>
-    </member>
-    <member name="M:System.Security.Policy.Evidence.#ctor">
-      <summary>Initializes a new empty instance of the <see cref="T:System.Security.Policy.Evidence" /> class.</summary>
-    </member>
-    <member name="M:System.Security.Policy.Evidence.#ctor(System.Object[],System.Object[])">
-      <summary>Initializes a new instance of the <see cref="T:System.Security.Policy.Evidence" /> class from multiple sets of host and assembly evidence.</summary>
-      <param name="hostEvidence">The host evidence from which to create the new instance.</param>
-      <param name="assemblyEvidence">The assembly evidence from which to create the new instance.</param>
-    </member>
-    <member name="M:System.Security.Policy.Evidence.#ctor(System.Security.Policy.Evidence)">
-      <summary>Initializes a new instance of the <see cref="T:System.Security.Policy.Evidence" /> class from a shallow copy of an existing one.</summary>
-      <param name="evidence">The <see cref="T:System.Security.Policy.Evidence" /> instance from which to create the new instance. This instance is not deep-copied.</param>
-      <exception cref="T:System.ArgumentException">The <paramref name="evidence" /> parameter is not a valid instance of <see cref="T:System.Security.Policy.Evidence" />.</exception>
-    </member>
-    <member name="M:System.Security.Policy.Evidence.#ctor(System.Security.Policy.EvidenceBase[],System.Security.Policy.EvidenceBase[])">
-      <summary>Initializes a new instance of the <see cref="T:System.Security.Policy.Evidence" /> class from multiple sets of host and assembly evidence.</summary>
-      <param name="hostEvidence">The host evidence from which to create the new instance.</param>
-      <param name="assemblyEvidence">The assembly evidence from which to create the new instance.</param>
-    </member>
-    <member name="M:System.Security.Policy.Evidence.AddAssembly(System.Object)">
-      <summary>Adds the specified assembly evidence to the evidence set.</summary>
-      <param name="id">Any evidence object.</param>
-      <exception cref="T:System.ArgumentNullException">
-        <paramref name="id" /> is null.</exception>
-      <exception cref="T:System.ArgumentException">
-        <paramref name="id" /> is not serializable.</exception>
-    </member>
-    <member name="M:System.Security.Policy.Evidence.AddAssemblyEvidence``1(``0)">
-      <summary>Adds an evidence object of the specified type to the assembly-supplied evidence list.</summary>
-      <param name="evidence">The assembly evidence to add.</param>
-      <typeparam name="T">The type of the object in <paramref name="evidence" />.</typeparam>
-      <exception cref="T:System.ArgumentNullException">
-        <paramref name="evidence" /> is <see langword="null" />.</exception>
-      <exception cref="T:System.InvalidOperationException">Evidence of type <paramref name="T" /> is already in the list.</exception>
-      <exception cref="T:System.ArgumentException">
-        <paramref name="evidence" /> is not serializable.</exception>
-    </member>
-    <member name="M:System.Security.Policy.Evidence.AddHost(System.Object)">
-      <summary>Adds the specified evidence supplied by the host to the evidence set.</summary>
-      <param name="id">Any evidence object.</param>
-      <exception cref="T:System.ArgumentNullException">
-        <paramref name="id" /> is null.</exception>
-      <exception cref="T:System.ArgumentException">
-        <paramref name="id" /> is not serializable.</exception>
-    </member>
-    <member name="M:System.Security.Policy.Evidence.AddHostEvidence``1(``0)">
-      <summary>Adds host evidence of the specified type to the host evidence collection.</summary>
-      <param name="evidence">The host evidence to add.</param>
-      <typeparam name="T">The type of the object in <paramref name="evidence" />.</typeparam>
-      <exception cref="T:System.ArgumentNullException">
-        <paramref name="evidence" /> is <see langword="null" />.</exception>
-      <exception cref="T:System.InvalidOperationException">Evidence of type <paramref name="T" /> is already in the list.</exception>
-    </member>
-    <member name="M:System.Security.Policy.Evidence.Clear">
-      <summary>Removes the host and assembly evidence from the evidence set.</summary>
-    </member>
-    <member name="M:System.Security.Policy.Evidence.Clone">
-      <summary>Returns a duplicate copy of this evidence object.</summary>
-      <returns>A duplicate copy of this evidence object.</returns>
-    </member>
-    <member name="M:System.Security.Policy.Evidence.CopyTo(System.Array,System.Int32)">
-      <summary>Copies evidence objects to an <see cref="T:System.Array" />.</summary>
-      <param name="array">The target array to which to copy evidence objects.</param>
-      <param name="index">The zero-based position in the array to which to begin copying evidence objects.</param>
-      <exception cref="T:System.ArgumentNullException">
-        <paramref name="array" /> is null.</exception>
-      <exception cref="T:System.ArgumentOutOfRangeException">
-        <paramref name="index" /> is outside the range of the target array.</exception>
-    </member>
-    <member name="M:System.Security.Policy.Evidence.GetAssemblyEnumerator">
-      <summary>Enumerates evidence provided by the assembly.</summary>
-      <returns>An enumerator for evidence added by the <see cref="M:System.Security.Policy.Evidence.AddAssembly(System.Object)" /> method.</returns>
-    </member>
-    <member name="M:System.Security.Policy.Evidence.GetAssemblyEvidence``1">
-      <summary>Gets assembly evidence of the specified type from the collection.</summary>
-      <typeparam name="T">The type of the evidence to get.</typeparam>
-      <returns>Evidence of type <paramref name="T" /> in the assembly evidence collection.</returns>
-    </member>
-    <member name="M:System.Security.Policy.Evidence.GetEnumerator">
-      <summary>Enumerates all evidence in the set, both that provided by the host and that provided by the assembly.</summary>
-      <returns>An enumerator for evidence added by both the <see cref="M:System.Security.Policy.Evidence.AddHost(System.Object)" /> method and the <see cref="M:System.Security.Policy.Evidence.AddAssembly(System.Object)" /> method.</returns>
-    </member>
-    <member name="M:System.Security.Policy.Evidence.GetHostEnumerator">
-      <summary>Enumerates evidence supplied by the host.</summary>
-      <returns>An enumerator for evidence added by the <see cref="M:System.Security.Policy.Evidence.AddHost(System.Object)" /> method.</returns>
-    </member>
-    <member name="M:System.Security.Policy.Evidence.GetHostEvidence``1">
-      <summary>Gets host evidence of the specified type from the collection.</summary>
-      <typeparam name="T">The type of the evidence to get.</typeparam>
-      <returns>Evidence of type <paramref name="T" /> in the host evidence collection.</returns>
-    </member>
-    <member name="M:System.Security.Policy.Evidence.Merge(System.Security.Policy.Evidence)">
-      <summary>Merges the specified evidence set into the current evidence set.</summary>
-      <param name="evidence">The evidence set to be merged into the current evidence set.</param>
-      <exception cref="T:System.ArgumentException">The <paramref name="evidence" /> parameter is not a valid instance of <see cref="T:System.Security.Policy.Evidence" />.</exception>
-      <exception cref="T:System.Security.SecurityException">
-        <see cref="P:System.Security.Policy.Evidence.Locked" /> is <see langword="true" />, the code that calls this method does not have <see cref="F:System.Security.Permissions.SecurityPermissionFlag.ControlEvidence" />, and the <paramref name="evidence" /> parameter has a host list that is not empty.</exception>
-    </member>
-    <member name="M:System.Security.Policy.Evidence.RemoveType(System.Type)">
-      <summary>Removes the evidence for a given type from the host and assembly enumerations.</summary>
-      <param name="t">The type of the evidence to be removed.</param>
-      <exception cref="T:System.ArgumentNullException">
-        <paramref name="t" /> is null.</exception>
-    </member>
-    <member name="P:System.Security.Policy.Evidence.Count">
-      <summary>Gets the number of evidence objects in the evidence set.</summary>
-      <returns>The number of evidence objects in the evidence set.</returns>
-    </member>
-    <member name="P:System.Security.Policy.Evidence.IsReadOnly">
-      <summary>Gets a value indicating whether the evidence set is read-only.</summary>
-      <returns>Always <see langword="false" />, because read-only evidence sets are not supported.</returns>
-    </member>
-    <member name="P:System.Security.Policy.Evidence.IsSynchronized">
-      <summary>Gets a value indicating whether the evidence set is thread-safe.</summary>
-      <returns>Always <see langword="false" /> because thread-safe evidence sets are not supported.</returns>
-    </member>
-    <member name="P:System.Security.Policy.Evidence.Locked">
-      <summary>Gets or sets a value indicating whether the evidence is locked.</summary>
-      <returns>
-        <see langword="true" /> if the evidence is locked; otherwise, <see langword="false" />. The default is <see langword="false" />.</returns>
-    </member>
-    <member name="P:System.Security.Policy.Evidence.SyncRoot">
-      <summary>Gets the synchronization root.</summary>
-      <returns>Always <see langword="this" /> (<see langword="Me" /> in Visual Basic), because synchronization of evidence sets is not supported.</returns>
-    </member>
-    <member name="T:System.Security.Policy.EvidenceBase">
-      <summary>Provides a base class from which all objects to be used as evidence must derive.</summary>
-    </member>
-    <member name="M:System.Security.Policy.EvidenceBase.#ctor">
-      <summary>Initializes a new instance of the <see cref="T:System.Security.Policy.EvidenceBase" /> class.</summary>
-      <exception cref="T:System.InvalidOperationException">An object to be used as evidence is not serializable.</exception>
-    </member>
-    <member name="M:System.Security.Policy.EvidenceBase.Clone">
-      <summary>Creates a new object that is a complete copy of the current instance.</summary>
-      <returns>A duplicate copy of this evidence object.</returns>
-    </member>
     <member name="T:System.Security.Policy.FileCodeGroup">
       <summary>Grants permission to manipulate files located in the code assemblies to code assemblies that match the membership condition. This class cannot be inherited.</summary>
     </member>
@@ -6366,7 +6378,7 @@ The parameter's version number is not supported.</exception>
     </member>
     <member name="M:System.Security.Policy.StrongNameMembershipCondition.Copy">
       <summary>Creates an equivalent copy of the current <see cref="T:System.Security.Policy.StrongNameMembershipCondition" />.</summary>
-      <returns>A new, identical copy of the current <see cref="T:System.Security.Policy.StrongNameMembershipCondition" /></returns>
+      <returns>A new, identical copy of the current <see cref="T:System.Security.Policy.StrongNameMembershipCondition" />.</returns>
     </member>
     <member name="M:System.Security.Policy.StrongNameMembershipCondition.Equals(System.Object)">
       <summary>Determines whether the <see cref="T:System.Security.Policy.StrongName" /> from the specified object is equivalent to the <see cref="T:System.Security.Policy.StrongName" /> contained in the current <see cref="T:System.Security.Policy.StrongNameMembershipCondition" />.</summary>
@@ -6565,7 +6577,7 @@ The parameter's version number is not supported.</exception>
     </member>
     <member name="M:System.Security.Policy.UrlMembershipCondition.Equals(System.Object)">
       <summary>Determines whether the URL from the specified object is equivalent to the URL contained in the current <see cref="T:System.Security.Policy.UrlMembershipCondition" />.</summary>
-      <param name="o">The object to compare to the current <see cref="T:System.Security.Policy.UrlMembershipCondition" />.</param>
+      <param name="obj">The object to compare to the current <see cref="T:System.Security.Policy.UrlMembershipCondition" />.</param>
       <exception cref="T:System.ArgumentNullException">The <see cref="P:System.Security.Policy.UrlMembershipCondition.Url" /> property of the current object or the specified object is <see langword="null" />.</exception>
       <returns>
         <see langword="true" /> if the URL from the specified object is equivalent to the URL contained in the current <see cref="T:System.Security.Policy.UrlMembershipCondition" />; otherwise, <see langword="false" />.</returns>
@@ -6745,29 +6757,35 @@ The parameter's version number is not supported.</exception>
     </member>
     <member name="M:System.Security.SecurityContext.Capture">
       <summary>Captures the security context for the current thread.</summary>
+      <exception cref="T:System.PlatformNotSupportedException">.NET 5+ (including .NET Core): In all cases.</exception>
       <returns>The security context for the current thread.</returns>
     </member>
     <member name="M:System.Security.SecurityContext.CreateCopy">
       <summary>Creates a copy of the current security context.</summary>
       <exception cref="T:System.InvalidOperationException">The current security context has been previously used, was marshaled across application domains, or was not acquired through the <see cref="M:System.Security.SecurityContext.Capture" /> method.</exception>
+      <exception cref="T:System.PlatformNotSupportedException">.NET 5+ (including .NET Core): In all cases.</exception>
       <returns>The security context for the current thread.</returns>
     </member>
     <member name="M:System.Security.SecurityContext.Dispose">
       <summary>Releases all resources used by the current instance of the <see cref="T:System.Security.SecurityContext" /> class.</summary>
+      <exception cref="T:System.PlatformNotSupportedException">.NET 5+ (including .NET Core): In all cases.</exception>
     </member>
     <member name="M:System.Security.SecurityContext.IsFlowSuppressed">
       <summary>Determines whether the flow of the security context has been suppressed.</summary>
+      <exception cref="T:System.PlatformNotSupportedException">.NET 5+ (including .NET Core): In all cases.</exception>
       <returns>
         <see langword="true" /> if the flow has been suppressed; otherwise, <see langword="false" />.</returns>
     </member>
     <member name="M:System.Security.SecurityContext.IsWindowsIdentityFlowSuppressed">
       <summary>Determines whether the flow of the Windows identity portion of the current security context has been suppressed.</summary>
+      <exception cref="T:System.PlatformNotSupportedException">.NET 5+ (including .NET Core): In all cases.</exception>
       <returns>
         <see langword="true" /> if the flow has been suppressed; otherwise, <see langword="false" />.</returns>
     </member>
     <member name="M:System.Security.SecurityContext.RestoreFlow">
       <summary>Restores the flow of the security context across asynchronous threads.</summary>
       <exception cref="T:System.InvalidOperationException">The security context is <see langword="null" /> or an empty string.</exception>
+      <exception cref="T:System.PlatformNotSupportedException">.NET 5+ (including .NET Core): In all cases.</exception>
     </member>
     <member name="M:System.Security.SecurityContext.Run(System.Security.SecurityContext,System.Threading.ContextCallback,System.Object)">
       <summary>Runs the specified method in the specified security context on the current thread.</summary>
@@ -6784,13 +6802,16 @@ The parameter's version number is not supported.</exception>
  -or-  
   
  <paramref name="securityContext" /> has already been used as the argument to a <see cref="M:System.Security.SecurityContext.Run(System.Security.SecurityContext,System.Threading.ContextCallback,System.Object)" /> method call.</exception>
+      <exception cref="T:System.PlatformNotSupportedException">.NET 5+ (including .NET Core): In all cases.</exception>
     </member>
     <member name="M:System.Security.SecurityContext.SuppressFlow">
       <summary>Suppresses the flow of the security context across asynchronous threads.</summary>
+      <exception cref="T:System.PlatformNotSupportedException">.NET 5+ (including .NET Core): In all cases.</exception>
       <returns>An <see cref="T:System.Threading.AsyncFlowControl" /> structure for restoring the flow.</returns>
     </member>
     <member name="M:System.Security.SecurityContext.SuppressFlowWindowsIdentity">
       <summary>Suppresses the flow of the Windows identity portion of the current security context across asynchronous threads.</summary>
+      <exception cref="T:System.PlatformNotSupportedException">.NET 5+ (including .NET Core): In all cases.</exception>
       <returns>A structure for restoring the flow.</returns>
     </member>
     <member name="T:System.Security.SecurityContextSource">
@@ -7120,6 +7141,25 @@ The parameter's version number is not supported.</exception>
       <summary>Inserts a permission entry into this collection at a specified index.</summary>
       <param name="index">The zero-based index of the collection at which to insert the permission entry.</param>
       <param name="value">The permission entry to insert into this collection.</param>
+    </member>
+    <member name="M:System.ServiceProcess.ServiceControllerPermissionEntryCollection.OnClear">
+      <summary>Performs additional custom processes after clearing the contents of the collection.</summary>
+    </member>
+    <member name="M:System.ServiceProcess.ServiceControllerPermissionEntryCollection.OnInsert(System.Int32,System.Object)">
+      <summary>Performs additional custom processes before a new permission entry is inserted into the collection.</summary>
+      <param name="index">The zero-based index at which to insert <paramref name="value" />.</param>
+      <param name="value">The new value of the permission entry at <paramref name="index" />.</param>
+    </member>
+    <member name="M:System.ServiceProcess.ServiceControllerPermissionEntryCollection.OnRemove(System.Int32,System.Object)">
+      <summary>Performs additional custom processes when removing a new permission entry from the collection.</summary>
+      <param name="index">The zero-based index at which <paramref name="value" /> can be found.</param>
+      <param name="value">The permission entry to remove from <paramref name="index" />.</param>
+    </member>
+    <member name="M:System.ServiceProcess.ServiceControllerPermissionEntryCollection.OnSet(System.Int32,System.Object,System.Object)">
+      <summary>Performs additional custom processes before setting a value in the collection.</summary>
+      <param name="index">The zero-based index at which <paramref name="oldValue" /> can be found.</param>
+      <param name="oldValue">The value to replace with <paramref name="newValue" />.</param>
+      <param name="newValue">The new value of the permission entry at <paramref name="index" />.</param>
     </member>
     <member name="M:System.ServiceProcess.ServiceControllerPermissionEntryCollection.Remove(System.ServiceProcess.ServiceControllerPermissionEntry)">
       <summary>Removes a specified permission entry from this collection.</summary>

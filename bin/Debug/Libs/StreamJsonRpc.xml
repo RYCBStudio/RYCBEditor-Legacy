@@ -4,11 +4,32 @@
         <name>StreamJsonRpc</name>
     </assembly>
     <members>
+        <member name="T:System.Runtime.CompilerServices.IsExternalInit">
+            <summary>
+                Reserved to be used by the compiler for tracking metadata.
+                This class should not be used by developers in source code.
+            </summary>
+            <remarks>
+                This definition is provided by the <i>IsExternalInit</i> NuGet package (https://www.nuget.org/packages/IsExternalInit).
+                Please see https://github.com/manuelroemer/IsExternalInit for more information.
+            </remarks>
+        </member>
         <member name="T:StreamJsonRpc.ActivityTracingStrategy">
             <summary>
             Synchronizes activities as set by the <see cref="T:System.Diagnostics.Activity" /> class over RPC.
             </summary>
             <seealso cref="T:StreamJsonRpc.CorrelationManagerTracingStrategy" />
+        </member>
+        <member name="M:StreamJsonRpc.ActivityTracingStrategy.#ctor">
+            <summary>
+            Initializes a new instance of the <see cref="T:StreamJsonRpc.ActivityTracingStrategy" /> class.
+            </summary>
+        </member>
+        <member name="M:StreamJsonRpc.ActivityTracingStrategy.#ctor(System.Diagnostics.ActivitySource)">
+            <summary>
+            Initializes a new instance of the <see cref="T:StreamJsonRpc.ActivityTracingStrategy" /> class.
+            </summary>
+            <param name="activitySource">The <see cref="T:System.Diagnostics.ActivitySource" /> to use for creating activities.</param>
         </member>
         <member name="M:StreamJsonRpc.ActivityTracingStrategy.ApplyOutboundActivity(StreamJsonRpc.Protocol.JsonRpcRequest)">
             <inheritdoc />
@@ -49,7 +70,7 @@
             Gets a value indicating whether the caller is already on the desired context.
             </summary>
             <remarks>
-            We always return <c>false</c> because we use this to invoke server methods and we *always* want to
+            We always return <see langword="false" /> because we use this to invoke server methods and we *always* want to
             yield before invoking them, even if this is the default SynchronizationContext that the caller is on.
             </remarks>
         </member>
@@ -604,7 +625,7 @@
             Gets the name of the argument from the JSON-RPC request that failed to deserialize, if available.
             </summary>
             <remarks>
-            This value will be <c>null</c> when the JSON-RPC request uses positional arguments.
+            This value will be <see langword="null" /> when the JSON-RPC request uses positional arguments.
             </remarks>
         </member>
         <member name="P:StreamJsonRpc.RpcArgumentDeserializationException.ArgumentPosition">
@@ -612,7 +633,7 @@
             Gets the 0-based index of the argument from the JSON-RPC request that failed to deserialize, if available.
             </summary>
             <remarks>
-            This value will be <c>null</c> when the JSON-RPC request uses named arguments.
+            This value will be <see langword="null" /> when the JSON-RPC request uses named arguments.
             </remarks>
         </member>
         <member name="P:StreamJsonRpc.RpcArgumentDeserializationException.DeserializedType">
@@ -664,6 +685,263 @@
             </summary>
             <param name="info">Serialization info.</param>
             <param name="context">Streaming context.</param>
+        </member>
+        <member name="T:StreamJsonRpc.FormatterBase">
+            <summary>
+            A base class for <see cref="T:StreamJsonRpc.IJsonRpcMessageFormatter" /> implementations
+            that support exotic types.
+            </summary>
+        </member>
+        <member name="F:StreamJsonRpc.FormatterBase.multiplexingStream">
+            <summary>
+            Backing field for the <see cref="T:Nerdbank.Streams.MultiplexingStream" /> property.
+            </summary>
+        </member>
+        <member name="F:StreamJsonRpc.FormatterBase.formatterProgressTracker">
+            <summary>
+            The <see cref="T:StreamJsonRpc.Reflection.MessageFormatterProgressTracker" /> we use to support <see cref="T:System.IProgress`1" /> method arguments.
+            </summary>
+        </member>
+        <member name="F:StreamJsonRpc.FormatterBase.duplexPipeTracker">
+            <summary>
+            The helper for marshaling pipes as RPC method arguments.
+            </summary>
+        </member>
+        <member name="F:StreamJsonRpc.FormatterBase.enumerableTracker">
+            <summary>
+            The tracker we use to support transmission of <see cref="T:System.Collections.Generic.IAsyncEnumerable`1" /> types.
+            </summary>
+        </member>
+        <member name="F:StreamJsonRpc.FormatterBase.rpcMarshaledContextTracker">
+            <summary>
+            The helper for marshaling <see cref="T:StreamJsonRpc.IRpcMarshaledContext`1" /> in RPC method arguments or return values.
+            </summary>
+        </member>
+        <member name="M:StreamJsonRpc.FormatterBase.#ctor">
+            <summary>
+            Initializes a new instance of the <see cref="T:StreamJsonRpc.FormatterBase" /> class.
+            </summary>
+        </member>
+        <member name="T:StreamJsonRpc.FormatterBase.IMessageWithTopLevelPropertyBag">
+            <summary>
+            An interface implemented by all the <see cref="T:StreamJsonRpc.Protocol.JsonRpcMessage" />-derived nested types (<see cref="T:StreamJsonRpc.FormatterBase.JsonRpcRequestBase" />, <see cref="T:StreamJsonRpc.FormatterBase.JsonRpcResultBase" />, <see cref="T:StreamJsonRpc.FormatterBase.JsonRpcErrorBase" />) to allow them to carry arbitrary top-level properties on behalf of the application.
+            </summary>
+        </member>
+        <member name="P:StreamJsonRpc.FormatterBase.IMessageWithTopLevelPropertyBag.TopLevelPropertyBag">
+            <summary>
+            Gets or sets the top-level property bag for this message.
+            </summary>
+        </member>
+        <member name="P:StreamJsonRpc.FormatterBase.StreamJsonRpc#Reflection#IJsonRpcFormatterState#SerializingMessageWithId">
+            <inheritdoc />
+        </member>
+        <member name="P:StreamJsonRpc.FormatterBase.StreamJsonRpc#Reflection#IJsonRpcFormatterState#DeserializingMessageWithId">
+            <inheritdoc />
+        </member>
+        <member name="P:StreamJsonRpc.FormatterBase.StreamJsonRpc#Reflection#IJsonRpcFormatterState#SerializingRequest">
+            <inheritdoc />
+        </member>
+        <member name="P:StreamJsonRpc.FormatterBase.StreamJsonRpc#IJsonRpcInstanceContainer#Rpc">
+            <inheritdoc />
+        </member>
+        <member name="P:StreamJsonRpc.FormatterBase.MultiplexingStream">
+            <summary>
+            Gets or sets the <see cref="P:StreamJsonRpc.FormatterBase.MultiplexingStream" /> that may be used to establish out of band communication (e.g. marshal <see cref="T:System.IO.Pipelines.IDuplexPipe" /> arguments).
+            </summary>
+        </member>
+        <member name="P:StreamJsonRpc.FormatterBase.JsonRpc">
+            <summary>
+            Gets the <see cref="T:StreamJsonRpc.JsonRpc" /> that is associated with this formatter.
+            </summary>
+            <remarks>
+            This field is used to create the <see cref="T:System.IProgress`1" /> instance that will send the progress notifications when server reports it.
+            The <see cref="P:StreamJsonRpc.IJsonRpcInstanceContainer.Rpc" /> property helps to ensure that only one <see cref="P:StreamJsonRpc.FormatterBase.JsonRpc" /> instance is associated with this formatter.
+            </remarks>
+        </member>
+        <member name="P:StreamJsonRpc.FormatterBase.FormatterProgressTracker">
+            <summary>
+            Gets the <see cref="T:StreamJsonRpc.Reflection.MessageFormatterProgressTracker" /> instance containing useful methods to help on the implementation of message formatters.
+            </summary>
+        </member>
+        <member name="P:StreamJsonRpc.FormatterBase.DuplexPipeTracker">
+            <summary>
+            Gets the helper for marshaling pipes as RPC method arguments.
+            </summary>
+        </member>
+        <member name="P:StreamJsonRpc.FormatterBase.EnumerableTracker">
+            <summary>
+            Gets the helper for marshaling <see cref="T:System.Collections.Generic.IAsyncEnumerable`1" /> in RPC method arguments or return values.
+            </summary>
+        </member>
+        <member name="P:StreamJsonRpc.FormatterBase.ApplicableMethodAttributeOnDeserializingMethod">
+            <summary>
+            Gets the <see cref="T:StreamJsonRpc.JsonRpcMethodAttribute" /> that is present on the method that may be invoked to serve the incoming request, when applicable.
+            </summary>
+        </member>
+        <member name="P:StreamJsonRpc.FormatterBase.RpcMarshaledContextTracker">
+            <summary>
+            Gets the helper for marshaling <see cref="T:StreamJsonRpc.IRpcMarshaledContext`1" /> in RPC method arguments or return values.
+            </summary>
+        </member>
+        <member name="P:StreamJsonRpc.FormatterBase.DeserializingMessage">
+            <summary>
+            Gets the message whose arguments are being deserialized.
+            </summary>
+        </member>
+        <member name="M:StreamJsonRpc.FormatterBase.Dispose">
+            <inheritdoc />
+        </member>
+        <member name="M:StreamJsonRpc.FormatterBase.Dispose(System.Boolean)">
+            <summary>
+            Disposes managed and native resources held by this instance.
+            </summary>
+            <param name="disposing"><see langword="true" /> if being disposed; <see langword="false" /> if being finalized.</param>
+        </member>
+        <member name="M:StreamJsonRpc.FormatterBase.TrackDeserialization(StreamJsonRpc.Protocol.JsonRpcMessage,System.ReadOnlySpan{System.Reflection.ParameterInfo})">
+            <summary>
+            Sets up state to track deserialization of a message.
+            </summary>
+            <returns>A value to dispose of when deserialization has completed.</returns>
+            <inheritdoc cref="M:StreamJsonRpc.FormatterBase.DeserializationTracking.#ctor(StreamJsonRpc.FormatterBase,StreamJsonRpc.Protocol.JsonRpcMessage,System.ReadOnlySpan{System.Reflection.ParameterInfo})" />
+        </member>
+        <member name="M:StreamJsonRpc.FormatterBase.TrackSerialization(StreamJsonRpc.Protocol.JsonRpcMessage)">
+            <summary>
+            Sets up state to track serialization of a message.
+            </summary>
+            <param name="message">The message being serialized.</param>
+            <returns>A value to dispose of when serialization has completed.</returns>
+        </member>
+        <member name="T:StreamJsonRpc.FormatterBase.DeserializationTracking">
+            <summary>
+            Tracks deserialization of a message.
+            </summary>
+        </member>
+        <member name="M:StreamJsonRpc.FormatterBase.DeserializationTracking.#ctor(StreamJsonRpc.FormatterBase,StreamJsonRpc.Protocol.JsonRpcMessage,System.ReadOnlySpan{System.Reflection.ParameterInfo})">
+            <summary>
+            Initializes a new instance of the <see cref="T:StreamJsonRpc.FormatterBase.DeserializationTracking" /> struct.
+            </summary>
+            <param name="formatter">The formatter.</param>
+            <param name="message">The message being deserialized.</param>
+            <param name="parameters">The signature of the method that will be invoked for the incoming request, if applicable.</param>
+        </member>
+        <member name="M:StreamJsonRpc.FormatterBase.DeserializationTracking.Dispose">
+            <summary>
+            Clears deserialization state.
+            </summary>
+        </member>
+        <member name="T:StreamJsonRpc.FormatterBase.SerializationTracking">
+            <summary>
+            Tracks serialization of a message.
+            </summary>
+        </member>
+        <member name="M:StreamJsonRpc.FormatterBase.SerializationTracking.#ctor(StreamJsonRpc.FormatterBase,StreamJsonRpc.Protocol.JsonRpcMessage)">
+            <summary>
+            Initializes a new instance of the <see cref="T:StreamJsonRpc.FormatterBase.SerializationTracking" /> struct.
+            </summary>
+            <param name="formatter">The formatter.</param>
+            <param name="message">The message being serialized.</param>
+        </member>
+        <member name="M:StreamJsonRpc.FormatterBase.SerializationTracking.Dispose">
+            <summary>
+            Clears serialization state.
+            </summary>
+        </member>
+        <member name="T:StreamJsonRpc.FormatterBase.TopLevelPropertyBagBase">
+            <summary>
+            A base class for top-level property bags that should be declared in the derived formatter class.
+            </summary>
+        </member>
+        <member name="M:StreamJsonRpc.FormatterBase.TopLevelPropertyBagBase.#ctor(System.Boolean)">
+            <summary>
+            Initializes a new instance of the <see cref="T:StreamJsonRpc.FormatterBase.TopLevelPropertyBagBase" /> class.
+            </summary>
+            <param name="isOutbound">A value indicating whether this bag belongs to an outbound message.</param>
+        </member>
+        <member name="P:StreamJsonRpc.FormatterBase.TopLevelPropertyBagBase.OutboundProperties">
+            <summary>
+            Gets a dictionary of top-level properties that should be serialized.
+            </summary>
+            <exception cref="T:System.InvalidOperationException">Thrown if called on an inbound message.</exception>
+        </member>
+        <member name="M:StreamJsonRpc.FormatterBase.TopLevelPropertyBagBase.TryGetTopLevelProperty``1(System.String,``0@)">
+            <summary>
+            Deserializes the value of a top-level property.
+            </summary>
+            <typeparam name="T">The type of object expected by the caller.</typeparam>
+            <param name="name">The name of the top-level property.</param>
+            <param name="value">Receives the value of the property.</param>
+            <returns>A value indicating whether the property exists.</returns>
+            <exception cref="T:System.Exception">A formatter-specific exception may be thrown if the property exists but the value cannot be deserialized to a <typeparamref name="T" />.</exception>
+        </member>
+        <member name="T:StreamJsonRpc.FormatterBase.JsonRpcRequestBase">
+            <summary>
+            A base class for formatter-specific <see cref="T:StreamJsonRpc.Protocol.JsonRpcRequest" /> implementations.
+            </summary>
+        </member>
+        <member name="P:StreamJsonRpc.FormatterBase.JsonRpcRequestBase.TopLevelPropertyBag">
+            <summary>
+            Gets or sets the top-level property bag for this message.
+            </summary>
+        </member>
+        <member name="M:StreamJsonRpc.FormatterBase.JsonRpcRequestBase.TrySetTopLevelProperty``1(System.String,``0)">
+            <inheritdoc />
+        </member>
+        <member name="M:StreamJsonRpc.FormatterBase.JsonRpcRequestBase.TryGetTopLevelProperty``1(System.String,``0@)">
+            <inheritdoc />
+        </member>
+        <member name="M:StreamJsonRpc.FormatterBase.JsonRpcRequestBase.CreateTopLevelPropertyBag">
+            <summary>
+            Creates a new instance of the top-level property bag for this message.
+            </summary>
+        </member>
+        <member name="M:StreamJsonRpc.FormatterBase.JsonRpcRequestBase.ReleaseBuffers">
+            <summary>
+            When overridden by derived types, clears references to all buffers that may have been used for deserialization.
+            </summary>
+        </member>
+        <member name="T:StreamJsonRpc.FormatterBase.JsonRpcErrorBase">
+            <summary>
+            A base class for formatter-specific <see cref="T:StreamJsonRpc.Protocol.JsonRpcError" /> implementations.
+            </summary>
+        </member>
+        <member name="P:StreamJsonRpc.FormatterBase.JsonRpcErrorBase.TopLevelPropertyBag">
+            <summary>
+            Gets or sets the top-level property bag for this message.
+            </summary>
+        </member>
+        <member name="M:StreamJsonRpc.FormatterBase.JsonRpcErrorBase.TrySetTopLevelProperty``1(System.String,``0)">
+            <inheritdoc />
+        </member>
+        <member name="M:StreamJsonRpc.FormatterBase.JsonRpcErrorBase.TryGetTopLevelProperty``1(System.String,``0@)">
+            <inheritdoc />
+        </member>
+        <member name="M:StreamJsonRpc.FormatterBase.JsonRpcErrorBase.CreateTopLevelPropertyBag">
+            <inheritdoc cref="M:StreamJsonRpc.FormatterBase.JsonRpcRequestBase.CreateTopLevelPropertyBag" />
+        </member>
+        <member name="M:StreamJsonRpc.FormatterBase.JsonRpcErrorBase.ReleaseBuffers">
+            <inheritdoc cref="M:StreamJsonRpc.FormatterBase.JsonRpcRequestBase.ReleaseBuffers" />
+        </member>
+        <member name="T:StreamJsonRpc.FormatterBase.JsonRpcResultBase">
+            <summary>
+            A base class for formatter-specific <see cref="T:StreamJsonRpc.Protocol.JsonRpcResult" /> implementations.
+            </summary>
+        </member>
+        <member name="P:StreamJsonRpc.FormatterBase.JsonRpcResultBase.TopLevelPropertyBag">
+            <summary>
+            Gets or sets the top-level property bag for this message.
+            </summary>
+        </member>
+        <member name="M:StreamJsonRpc.FormatterBase.JsonRpcResultBase.TrySetTopLevelProperty``1(System.String,``0)">
+            <inheritdoc />
+        </member>
+        <member name="M:StreamJsonRpc.FormatterBase.JsonRpcResultBase.TryGetTopLevelProperty``1(System.String,``0@)">
+            <inheritdoc />
+        </member>
+        <member name="M:StreamJsonRpc.FormatterBase.JsonRpcResultBase.CreateTopLevelPropertyBag">
+            <inheritdoc cref="M:StreamJsonRpc.FormatterBase.JsonRpcRequestBase.CreateTopLevelPropertyBag" />
+        </member>
+        <member name="M:StreamJsonRpc.FormatterBase.JsonRpcResultBase.ReleaseBuffers">
+            <inheritdoc cref="M:StreamJsonRpc.FormatterBase.JsonRpcRequestBase.ReleaseBuffers" />
         </member>
         <member name="T:StreamJsonRpc.HeaderDelimitedMessageHandler">
             <summary>
@@ -776,7 +1054,7 @@
             Extracts the content encoding from a Content-Type header.
             </summary>
             <param name="contentTypeValue">The value of the Content-Type header.</param>
-            <returns>The Encoding, if the header specified one; otherwise <c>null</c>.</returns>
+            <returns>The Encoding, if the header specified one; otherwise <see langword="null" />.</returns>
         </member>
         <member name="T:StreamJsonRpc.IActivityTracingStrategy">
             <summary>
@@ -1007,8 +1285,8 @@
             Reads a distinct and complete message from the transport, waiting for one if necessary.
             </summary>
             <param name="cancellationToken">A token to cancel the read request.</param>
-            <returns>The received message, or <c>null</c> if the underlying transport ends before beginning another message.</returns>
-            <exception cref="T:System.InvalidOperationException">Thrown when <see cref="P:StreamJsonRpc.IJsonRpcMessageHandler.CanRead" /> returns <c>false</c>.</exception>
+            <returns>The received message, or <see langword="null" /> if the underlying transport ends before beginning another message.</returns>
+            <exception cref="T:System.InvalidOperationException">Thrown when <see cref="P:StreamJsonRpc.IJsonRpcMessageHandler.CanRead" /> returns <see langword="false" />.</exception>
             <exception cref="T:System.IO.EndOfStreamException">Thrown if the transport ends while reading a message.</exception>
             <exception cref="T:System.OperationCanceledException">Thrown if <paramref name="cancellationToken" /> is canceled before a new message is received.</exception>
             <remarks>
@@ -1023,7 +1301,7 @@
             <param name="jsonRpcMessage">The message to write.</param>
             <param name="cancellationToken">A token to cancel the write request.</param>
             <returns>A task that represents the asynchronous operation.</returns>
-            <exception cref="T:System.InvalidOperationException">Thrown when <see cref="P:StreamJsonRpc.IJsonRpcMessageHandler.CanWrite" /> returns <c>false</c>.</exception>
+            <exception cref="T:System.InvalidOperationException">Thrown when <see cref="P:StreamJsonRpc.IJsonRpcMessageHandler.CanWrite" /> returns <see langword="false" />.</exception>
             <exception cref="T:System.OperationCanceledException">Thrown if <paramref name="cancellationToken" /> is canceled before message transmission begins.</exception>
             <remarks>
             Implementations should expect this method to be invoked concurrently
@@ -1146,46 +1424,6 @@
             Object used to lock when running mutually exclusive operations related to this <see cref="T:StreamJsonRpc.JsonMessageFormatter" /> instance.
             </summary>
         </member>
-        <member name="F:StreamJsonRpc.JsonMessageFormatter.multiplexingStream">
-            <summary>
-            Backing field for the <see cref="P:StreamJsonRpc.JsonMessageFormatter.MultiplexingStream" /> property.
-            </summary>
-        </member>
-        <member name="F:StreamJsonRpc.JsonMessageFormatter.formatterProgressTracker">
-            <summary>
-            <see cref="T:StreamJsonRpc.Reflection.MessageFormatterProgressTracker" /> instance containing useful methods to help on the implementation of message formatters.
-            </summary>
-        </member>
-        <member name="F:StreamJsonRpc.JsonMessageFormatter.duplexPipeTracker">
-            <summary>
-            The helper for marshaling pipes as RPC method arguments.
-            </summary>
-        </member>
-        <member name="F:StreamJsonRpc.JsonMessageFormatter.enumerableTracker">
-            <summary>
-            The helper for marshaling <see cref="T:System.Collections.Generic.IAsyncEnumerable`1" /> in RPC method arguments or return values.
-            </summary>
-        </member>
-        <member name="F:StreamJsonRpc.JsonMessageFormatter.rpcMarshaledContextTracker">
-            <summary>
-            The helper for marshaling <see cref="T:StreamJsonRpc.IRpcMarshaledContext`1" /> in RPC method arguments or return values.
-            </summary>
-        </member>
-        <member name="F:StreamJsonRpc.JsonMessageFormatter.serializingMessageWithId">
-            <summary>
-            Backing field for the <see cref="P:StreamJsonRpc.Reflection.IJsonRpcFormatterState.SerializingMessageWithId" /> property.
-            </summary>
-        </member>
-        <member name="F:StreamJsonRpc.JsonMessageFormatter.deserializingMessageWithId">
-            <summary>
-            Backing field for the <see cref="P:StreamJsonRpc.Reflection.IJsonRpcFormatterState.DeserializingMessageWithId" /> property.
-            </summary>
-        </member>
-        <member name="F:StreamJsonRpc.JsonMessageFormatter.serializingRequest">
-            <summary>
-            Backing field for the <see cref="P:StreamJsonRpc.Reflection.IJsonRpcFormatterState.SerializingRequest" /> property.
-            </summary>
-        </member>
         <member name="F:StreamJsonRpc.JsonMessageFormatter.observedTransmittedRequestWithStringId">
             <summary>
             A value indicating whether a request where <see cref="P:StreamJsonRpc.Protocol.JsonRpcRequest.RequestId" /> is a <see cref="T:System.String" />
@@ -1194,7 +1432,7 @@
             <remarks>
             This is useful to detect whether <see cref="T:StreamJsonRpc.JsonRpc" /> is operating in its default mode of producing
             integer-based values for <see cref="P:StreamJsonRpc.Protocol.JsonRpcRequest.RequestId" />, which informs us whether we should
-            type coerce strings in response messages back to integers to accomodate JSON-RPC servers
+            type coerce strings in response messages back to integers to accommodate JSON-RPC servers
             that improperly convert our integers to strings.
             </remarks>
         </member>
@@ -1206,20 +1444,6 @@
         <member name="F:StreamJsonRpc.JsonMessageFormatter.encoding">
             <summary>
             Backing field for the <see cref="P:StreamJsonRpc.JsonMessageFormatter.Encoding" /> property.
-            </summary>
-        </member>
-        <member name="F:StreamJsonRpc.JsonMessageFormatter.rpc">
-            <summary>
-            Backing field for the <see cref="P:StreamJsonRpc.IJsonRpcInstanceContainer.Rpc" /> property.
-            </summary>
-            <remarks>
-            This field is used to create the <see cref="T:System.IProgress`1" /> instance that will send the progress notifications when server reports it.
-            The <see cref="P:StreamJsonRpc.IJsonRpcInstanceContainer.Rpc" /> property helps to ensure that only one <see cref="T:StreamJsonRpc.JsonRpc" /> instance is associated with this formatter.
-            </remarks>
-        </member>
-        <member name="F:StreamJsonRpc.JsonMessageFormatter.deserializingMessage">
-            <summary>
-            The message whose arguments are being deserialized.
             </summary>
         </member>
         <member name="F:StreamJsonRpc.JsonMessageFormatter.formatterInitializationChecked">
@@ -1256,41 +1480,7 @@
             </summary>
         </member>
         <member name="P:StreamJsonRpc.JsonMessageFormatter.MultiplexingStream">
-            <summary>
-            Gets or sets the <see cref="P:StreamJsonRpc.JsonMessageFormatter.MultiplexingStream" /> that may be used to establish out of band communication (e.g. marshal <see cref="T:System.IO.Pipelines.IDuplexPipe" /> arguments).
-            </summary>
-        </member>
-        <member name="P:StreamJsonRpc.JsonMessageFormatter.StreamJsonRpc#IJsonRpcInstanceContainer#Rpc">
-            <inheritdoc />
-        </member>
-        <member name="P:StreamJsonRpc.JsonMessageFormatter.StreamJsonRpc#Reflection#IJsonRpcFormatterState#SerializingMessageWithId">
-            <inheritdoc />
-        </member>
-        <member name="P:StreamJsonRpc.JsonMessageFormatter.StreamJsonRpc#Reflection#IJsonRpcFormatterState#DeserializingMessageWithId">
-            <inheritdoc />
-        </member>
-        <member name="P:StreamJsonRpc.JsonMessageFormatter.StreamJsonRpc#Reflection#IJsonRpcFormatterState#SerializingRequest">
-            <inheritdoc />
-        </member>
-        <member name="P:StreamJsonRpc.JsonMessageFormatter.FormatterProgressTracker">
-            <summary>
-            Gets the <see cref="T:StreamJsonRpc.Reflection.MessageFormatterProgressTracker" /> instance containing useful methods to help on the implementation of message formatters.
-            </summary>
-        </member>
-        <member name="P:StreamJsonRpc.JsonMessageFormatter.DuplexPipeTracker">
-            <summary>
-            Gets the helper for marshaling pipes as RPC method arguments.
-            </summary>
-        </member>
-        <member name="P:StreamJsonRpc.JsonMessageFormatter.EnumerableTracker">
-            <summary>
-            Gets the helper for marshaling <see cref="T:System.Collections.Generic.IAsyncEnumerable`1" /> in RPC method arguments or return values.
-            </summary>
-        </member>
-        <member name="P:StreamJsonRpc.JsonMessageFormatter.RpcMarshaledContextTracker">
-            <summary>
-            Gets the helper for marshaling <see cref="T:StreamJsonRpc.IRpcMarshaledContext`1" /> in RPC method arguments or return values.
-            </summary>
+            <inheritdoc cref="P:StreamJsonRpc.FormatterBase.MultiplexingStream" />
         </member>
         <member name="M:StreamJsonRpc.JsonMessageFormatter.Deserialize(System.Buffers.ReadOnlySequence{System.Byte})">
             <inheritdoc />
@@ -1338,14 +1528,8 @@
         <member name="M:StreamJsonRpc.JsonMessageFormatter.StreamJsonRpc#IJsonRpcMessageFactory#CreateResultMessage">
             <inheritdoc />
         </member>
-        <member name="M:StreamJsonRpc.JsonMessageFormatter.Dispose">
-            <inheritdoc />
-        </member>
         <member name="M:StreamJsonRpc.JsonMessageFormatter.Dispose(System.Boolean)">
-            <summary>
-            Disposes managed and native resources held by this instance.
-            </summary>
-            <param name="disposing"><c>true</c> if being disposed; <c>false</c> if being finalized.</param>
+            <inheritdoc />
         </member>
         <member name="M:StreamJsonRpc.JsonMessageFormatter.TokenizeUserData(StreamJsonRpc.Protocol.JsonRpcMessage)">
             <summary>
@@ -1368,9 +1552,9 @@
             </summary>
             <returns>The initialized instance of <see cref="T:Newtonsoft.Json.Linq.JTokenWriter" />.</returns>
         </member>
-        <member name="F:StreamJsonRpc.JsonMessageFormatter.TopLevelPropertyBag.envelope">
+        <member name="F:StreamJsonRpc.JsonMessageFormatter.TopLevelPropertyBag.incomingEnvelope">
             <summary>
-            The incoming message or the envelope used to store the top-level properties to add to the outbound message.
+            The incoming message.
             </summary>
         </member>
         <member name="M:StreamJsonRpc.JsonMessageFormatter.TopLevelPropertyBag.#ctor(Newtonsoft.Json.JsonSerializer,Newtonsoft.Json.Linq.JObject)">
@@ -1428,6 +1612,11 @@
             The <see cref="T:System.Threading.SynchronizationContext" /> to use to schedule work on the threadpool.
             </summary>
         </member>
+        <member name="F:StreamJsonRpc.JsonRpc.JoinableTaskTokenHeaderName">
+            <summary>
+            The name of the top-level field that we add to JSON-RPC messages to track JoinableTask context to mitigate deadlocks.
+            </summary>
+        </member>
         <member name="F:StreamJsonRpc.JsonRpc.dispatcherMapLock">
             <summary>
             The object to lock when accessing the <see cref="F:StreamJsonRpc.JsonRpc.resultDispatcherMap" />.
@@ -1469,6 +1658,11 @@
             Tracks RPC target objects.
             </summary>
         </member>
+        <member name="F:StreamJsonRpc.JsonRpc.joinableTaskTokenWithoutJtf">
+            <summary>
+            Carries the value from a <see cref="F:StreamJsonRpc.JsonRpc.JoinableTaskTokenHeaderName" /> when <see cref="P:StreamJsonRpc.JsonRpc.JoinableTaskFactory" /> has not been set.
+            </summary>
+        </member>
         <member name="F:StreamJsonRpc.JsonRpc.remoteRpcTargets">
             <summary>
             List of remote RPC targets to call if connection should be relayed.
@@ -1487,6 +1681,11 @@
         <member name="F:StreamJsonRpc.JsonRpc.synchronizationContext">
             <summary>
             Backing field for the <see cref="P:StreamJsonRpc.JsonRpc.SynchronizationContext" /> property.
+            </summary>
+        </member>
+        <member name="F:StreamJsonRpc.JsonRpc.joinableTaskFactory">
+            <summary>
+            Backing field for the <see cref="P:StreamJsonRpc.JsonRpc.JoinableTaskFactory" /> property.
             </summary>
         </member>
         <member name="F:StreamJsonRpc.JsonRpc.cancellationStrategy">
@@ -1721,6 +1920,12 @@
             When not specified, methods are invoked on the threadpool.
             </remarks>
         </member>
+        <member name="P:StreamJsonRpc.JsonRpc.JoinableTaskFactory">
+            <summary>
+            Gets or sets the <see cref="P:StreamJsonRpc.JsonRpc.JoinableTaskFactory" /> to participate in to mitigate deadlocks with the main thread.
+            </summary>
+            <value>Defaults to null.</value>
+        </member>
         <member name="P:StreamJsonRpc.JsonRpc.Completion">
             <summary>
             Gets a <see cref="T:System.Threading.Tasks.Task" /> that completes when this instance is disposed or when listening has stopped
@@ -1753,14 +1958,14 @@
             can be changed after <see cref="M:StreamJsonRpc.JsonRpc.StartListening" /> or <see cref="M:StreamJsonRpc.JsonRpc.Attach(System.IO.Stream,System.Object)" />
             has been called.
             </summary>
-            <value>The default is <c>false</c>.</value>
+            <value>The default is <see langword="false" />.</value>
             <remarks>
             By default, all configuration such as target objects and target methods must be set
             before listening starts to avoid a race condition whereby we receive a method invocation
             message before we have wired up a handler for it and must reject the call.
             But in some advanced scenarios, it may be necessary to add target methods after listening
             has started (e.g. in response to an invocation that enables additional functionality),
-            in which case setting this property to <c>true</c> is appropriate.
+            in which case setting this property to <see langword="true" /> is appropriate.
             </remarks>
         </member>
         <member name="P:StreamJsonRpc.JsonRpc.IsDisposed">
@@ -1892,7 +2097,7 @@
             </summary>
             <typeparam name="T">The interface that describes the functions available on the remote end.</typeparam>
             <param name="handler">The message handler to use.</param>
-            <param name="options">A set of customizations for how the client proxy is wired up. If <c>null</c>, default options will be used.</param>
+            <param name="options">A set of customizations for how the client proxy is wired up. If <see langword="null" />, default options will be used.</param>
             <returns>
             An instance of the generated proxy.
             In addition to implementing <typeparamref name="T" />, it also implements <see cref="T:System.IDisposable" />
@@ -1911,7 +2116,7 @@
             Creates a JSON-RPC client proxy that conforms to the specified server interface.
             </summary>
             <typeparam name="T">The interface that describes the functions available on the remote end.</typeparam>
-            <param name="options">A set of customizations for how the client proxy is wired up. If <c>null</c>, default options will be used.</param>
+            <param name="options">A set of customizations for how the client proxy is wired up. If <see langword="null" />, default options will be used.</param>
             <returns>An instance of the generated proxy.</returns>
         </member>
         <member name="M:StreamJsonRpc.JsonRpc.Attach(System.Type)">
@@ -1926,7 +2131,7 @@
             Creates a JSON-RPC client proxy that conforms to the specified server interface.
             </summary>
             <param name="interfaceType">The interface that describes the functions available on the remote end.</param>
-            <param name="options">A set of customizations for how the client proxy is wired up. If <c>null</c>, default options will be used.</param>
+            <param name="options">A set of customizations for how the client proxy is wired up. If <see langword="null" />, default options will be used.</param>
             <returns>An instance of the generated proxy.</returns>
         </member>
         <member name="M:StreamJsonRpc.JsonRpc.AddLocalRpcTarget(System.Object)">
@@ -1941,7 +2146,7 @@
         </member>
         <member name="M:StreamJsonRpc.JsonRpc.AddLocalRpcTarget(System.Type,System.Object,StreamJsonRpc.JsonRpcTargetOptions)">
             <inheritdoc cref="M:StreamJsonRpc.Reflection.RpcTargetInfo.AddLocalRpcTarget(System.Type,System.Object,StreamJsonRpc.JsonRpcTargetOptions,System.Boolean)" />
-            <exception cref="T:System.InvalidOperationException">Thrown if called after <see cref="M:StreamJsonRpc.JsonRpc.StartListening" /> is called and <see cref="P:StreamJsonRpc.JsonRpc.AllowModificationWhileListening" /> is <c>false</c>.</exception>
+            <exception cref="T:System.InvalidOperationException">Thrown if called after <see cref="M:StreamJsonRpc.JsonRpc.StartListening" /> is called and <see cref="P:StreamJsonRpc.JsonRpc.AllowModificationWhileListening" /> is <see langword="false" />.</exception>
         </member>
         <member name="M:StreamJsonRpc.JsonRpc.AddRemoteRpcTarget(StreamJsonRpc.JsonRpc)">
             <summary>
@@ -1961,7 +2166,7 @@
             The method or delegate to invoke when a matching RPC message arrives.
             This method may accept parameters from the incoming JSON-RPC message.
             </param>
-            <exception cref="T:System.InvalidOperationException">Thrown if called after <see cref="M:StreamJsonRpc.JsonRpc.StartListening" /> is called and <see cref="P:StreamJsonRpc.JsonRpc.AllowModificationWhileListening" /> is <c>false</c>.</exception>
+            <exception cref="T:System.InvalidOperationException">Thrown if called after <see cref="M:StreamJsonRpc.JsonRpc.StartListening" /> is called and <see cref="P:StreamJsonRpc.JsonRpc.AllowModificationWhileListening" /> is <see langword="false" />.</exception>
         </member>
         <member name="M:StreamJsonRpc.JsonRpc.AddLocalRpcMethod(System.String,System.Reflection.MethodInfo,System.Object)">
             <summary>
@@ -1976,7 +2181,7 @@
             This method may accept parameters from the incoming JSON-RPC message.
             </param>
             <param name="target">An instance of the type that defines <paramref name="handler" /> which should handle the invocation.</param>
-            <exception cref="T:System.InvalidOperationException">Thrown if called after <see cref="M:StreamJsonRpc.JsonRpc.StartListening" /> is called and <see cref="P:StreamJsonRpc.JsonRpc.AllowModificationWhileListening" /> is <c>false</c>.</exception>
+            <exception cref="T:System.InvalidOperationException">Thrown if called after <see cref="M:StreamJsonRpc.JsonRpc.StartListening" /> is called and <see cref="P:StreamJsonRpc.JsonRpc.AllowModificationWhileListening" /> is <see langword="false" />.</exception>
         </member>
         <member name="M:StreamJsonRpc.JsonRpc.AddLocalRpcMethod(System.Reflection.MethodInfo,System.Object,StreamJsonRpc.JsonRpcMethodAttribute)">
             <inheritdoc cref="M:StreamJsonRpc.JsonRpc.AddLocalRpcMethod(System.Reflection.MethodInfo,System.Object,StreamJsonRpc.JsonRpcMethodAttribute,System.Threading.SynchronizationContext)" />
@@ -2052,7 +2257,7 @@
             <param name="argument">An object whose properties match the names of parameters on the target method. Must be serializable using the selected <see cref="T:StreamJsonRpc.IJsonRpcMessageFormatter" />.</param>
             <param name="argumentDeclaredTypes">
             A dictionary of <see cref="T:System.Type" /> objects that describe how each entry in the <see cref="T:System.Collections.Generic.IReadOnlyDictionary`2" /> provided in <paramref name="argument" /> is expected by the server to be typed.
-            If specified, this must have exactly the same set of keys as <paramref name="argument" /> and contain no <c>null</c> values.
+            If specified, this must have exactly the same set of keys as <paramref name="argument" /> and contain no <see langword="null" /> values.
             </param>
             <param name="cancellationToken"><inheritdoc cref="M:StreamJsonRpc.JsonRpc.InvokeCoreAsync``1(StreamJsonRpc.RequestId,System.String,System.Collections.Generic.IReadOnlyList{System.Object},System.Collections.Generic.IReadOnlyList{System.Type},System.Collections.Generic.IReadOnlyDictionary{System.String,System.Type},System.Threading.CancellationToken,System.Boolean)" path="/param[@name='cancellationToken']" /></param>
             <inheritdoc cref="M:StreamJsonRpc.JsonRpc.InvokeCoreAsync``1(StreamJsonRpc.RequestId,System.String,System.Collections.Generic.IReadOnlyList{System.Object},System.Collections.Generic.IReadOnlyList{System.Type},System.Collections.Generic.IReadOnlyDictionary{System.String,System.Type},System.Threading.CancellationToken,System.Boolean)" path="/returns" />
@@ -2179,12 +2384,32 @@
             </para>
             </remarks>
         </member>
+        <member name="M:StreamJsonRpc.JsonRpc.Attach(System.Type,System.ValueTuple{System.Reflection.TypeInfo,System.Int32}[],StreamJsonRpc.JsonRpcProxyOptions)">
+            <summary>
+            Creates a JSON-RPC client proxy that implements a given set of interfaces.
+            </summary>
+            <param name="contractInterface">The interface that describes the functions available on the remote end.</param>
+            <param name="implementedOptionalInterfaces">Additional marshalable interfaces that the client proxy should implement.</param>
+            <param name="options">A set of customizations for how the client proxy is wired up. If <see langword="null" />, default options will be used.</param>
+            <returns>An instance of the generated proxy.</returns>
+        </member>
         <member name="M:StreamJsonRpc.JsonRpc.AddLocalRpcMethod(System.Reflection.MethodInfo,System.Object,StreamJsonRpc.JsonRpcMethodAttribute,System.Threading.SynchronizationContext)">
             <inheritdoc cref="M:StreamJsonRpc.Reflection.RpcTargetInfo.AddLocalRpcMethod(System.Reflection.MethodInfo,System.Object,StreamJsonRpc.JsonRpcMethodAttribute,System.Threading.SynchronizationContext)" />
-            <exception cref="T:System.InvalidOperationException">Thrown if called after <see cref="M:StreamJsonRpc.JsonRpc.StartListening" /> is called and <see cref="P:StreamJsonRpc.JsonRpc.AllowModificationWhileListening" /> is <c>false</c>.</exception>
+            <exception cref="T:System.InvalidOperationException">Thrown if called after <see cref="M:StreamJsonRpc.JsonRpc.StartListening" /> is called and <see cref="P:StreamJsonRpc.JsonRpc.AllowModificationWhileListening" /> is <see langword="false" />.</exception>
         </member>
         <member name="M:StreamJsonRpc.JsonRpc.AddLocalRpcTargetInternal(System.Type,System.Object,StreamJsonRpc.JsonRpcTargetOptions,System.Boolean)">
             <inheritdoc cref="M:StreamJsonRpc.Reflection.RpcTargetInfo.AddLocalRpcTarget(System.Type,System.Object,StreamJsonRpc.JsonRpcTargetOptions,System.Boolean)" />
+        </member>
+        <member name="M:StreamJsonRpc.JsonRpc.AddRpcInterfaceToTargetInternal(System.Type,System.Object,StreamJsonRpc.JsonRpcTargetOptions,StreamJsonRpc.Reflection.RpcTargetInfo.RevertAddLocalRpcTarget)">
+            <summary>
+            Adds a new RPC interface to an existing target registering additional RPC methods.
+            </summary>
+            <param name="exposingMembersOn">The interface type whose members define the RPC accessible members of the <paramref name="target" /> object.</param>
+            <param name="target">Target to invoke when incoming messages are received.</param>
+            <param name="options">A set of customizations for how the target object is registered. If <see langword="null" />, default options will be used.</param>
+            <param name="revertAddLocalRpcTarget">
+            An optional object that may be disposed of to revert the addition of the target object.
+            </param>
         </member>
         <member name="M:StreamJsonRpc.JsonRpc.LoadType(System.String,System.String)">
             <summary>
@@ -2208,7 +2433,7 @@
             <summary>
             Disposes managed and native resources held by this instance.
             </summary>
-            <param name="disposing"><c>true</c> if being disposed; <c>false</c> if being finalized.</param>
+            <param name="disposing"><see langword="true" /> if being disposed; <see langword="false" /> if being finalized.</param>
         </member>
         <member name="M:StreamJsonRpc.JsonRpc.IsFatalException(System.Exception)">
             <summary>
@@ -2228,7 +2453,7 @@
             </summary>
             <param name="request">The request that led to the invocation that ended up failing.</param>
             <param name="exception">The exception thrown from the RPC method.</param>
-            <returns>The error details to return to the client. Must not be <c>null</c>.</returns>
+            <returns>The error details to return to the client. Must not be <see langword="null" />.</returns>
             <remarks>
             This method may be overridden in a derived class to change the way error details are expressed.
             </remarks>
@@ -2251,7 +2476,7 @@
             </summary>
             <param name="error">The received error message.</param>
             <returns>
-            The type, or <c>null</c> if the type is unknown.
+            The type, or <see langword="null" /> if the type is unknown.
             </returns>
             <remarks>
             The default implementation matches what <see cref="M:StreamJsonRpc.JsonRpc.CreateErrorDetails(StreamJsonRpc.Protocol.JsonRpcRequest,System.Exception)" /> does
@@ -2303,15 +2528,15 @@
             <typeparam name="TResult">RPC method return type.</typeparam>
             <param name="id">An identifier established by the Client. If the default value is given, it is assumed to be a notification.</param>
             <param name="targetName">Name of the method to invoke. Must not be null or empty.</param>
-            <param name="arguments">Arguments to pass to the invoked method. They must be serializable using the selected <see cref="T:StreamJsonRpc.IJsonRpcMessageFormatter" />. If <c>null</c>, no arguments are passed.</param>
+            <param name="arguments">Arguments to pass to the invoked method. They must be serializable using the selected <see cref="T:StreamJsonRpc.IJsonRpcMessageFormatter" />. If <see langword="null" />, no arguments are passed.</param>
             <param name="positionalArgumentDeclaredTypes">
             A list of <see cref="T:System.Type" /> objects that describe how each element in <paramref name="arguments" /> is expected by the server to be typed.
-            If specified, this must have exactly the same length as <paramref name="arguments" /> and contain no <c>null</c> elements.
+            If specified, this must have exactly the same length as <paramref name="arguments" /> and contain no <see langword="null" /> elements.
             This value is ignored when <paramref name="isParameterObject" /> is true.
             </param>
             <param name="namedArgumentDeclaredTypes">
             A dictionary of <see cref="T:System.Type" /> objects that describe how each entry in the <see cref="T:System.Collections.Generic.IReadOnlyDictionary`2" /> provided in the only element of <paramref name="arguments" /> is expected by the server to be typed.
-            If specified, this must have exactly the same set of keys as the dictionary contained in the first element of <paramref name="arguments" />, and contain no <c>null</c> values.
+            If specified, this must have exactly the same set of keys as the dictionary contained in the first element of <paramref name="arguments" />, and contain no <see langword="null" /> values.
             </param>
             <param name="cancellationToken">The token whose cancellation should signal the server to stop processing this request.</param>
             <param name="isParameterObject">Value which indicates if parameter should be passed as an object.</param>
@@ -2404,15 +2629,15 @@
             </summary>
             <param name="taskTypeInfo">The original type of the value returned from an RPC-invoked method.</param>
             <param name="taskOfTTypeInfo">Receives the <see cref="T:System.Threading.Tasks.Task`1" /> type that is a base type of <paramref name="taskTypeInfo" />, if found.</param>
-            <returns><c>true</c> if <see cref="T:System.Threading.Tasks.Task`1" /> could be found in the type hierarchy; otherwise <c>false</c>.</returns>
+            <returns><see langword="true" /> if <see cref="T:System.Threading.Tasks.Task`1" /> could be found in the type hierarchy; otherwise <see langword="false" />.</returns>
         </member>
         <member name="M:StreamJsonRpc.JsonRpc.TryGetTaskFromValueTask(System.Object,System.Threading.Tasks.Task@)">
             <summary>
             Convert a <see cref="T:System.Threading.Tasks.ValueTask" /> or <see cref="T:System.Threading.Tasks.ValueTask`1" /> into a <see cref="T:System.Threading.Tasks.Task" /> if possible.
             </summary>
             <param name="result">The result from the RPC method invocation.</param>
-            <param name="task">Receives the converted <see cref="T:System.Threading.Tasks.Task" /> object, if conversion was possible; otherwise <c>null</c>.</param>
-            <returns><c>true</c> if conversion succeeded; <c>false</c> otherwise.</returns>
+            <param name="task">Receives the converted <see cref="T:System.Threading.Tasks.Task" /> object, if conversion was possible; otherwise <see langword="null" />.</param>
+            <returns><see langword="true" /> if conversion succeeded; <see langword="false" /> otherwise.</returns>
         </member>
         <member name="M:StreamJsonRpc.JsonRpc.ProcessResultBeforeSerializingAsync(System.Object,System.Threading.CancellationToken)">
             <summary>
@@ -2431,9 +2656,9 @@
         <member name="M:StreamJsonRpc.JsonRpc.ThrowIfConfigurationLocked">
             <summary>
             Throws an exception if we have already started listening,
-            unless <see cref="P:StreamJsonRpc.JsonRpc.AllowModificationWhileListening" /> is <c>true</c>.
+            unless <see cref="P:StreamJsonRpc.JsonRpc.AllowModificationWhileListening" /> is <see langword="true" />.
             </summary>
-            <exception cref="T:System.InvalidOperationException">Thrown if <see cref="P:StreamJsonRpc.JsonRpc.HasListeningStarted" /> is <c>true</c> and <see cref="P:StreamJsonRpc.JsonRpc.AllowModificationWhileListening" /> is <c>false</c>.</exception>
+            <exception cref="T:System.InvalidOperationException">Thrown if <see cref="P:StreamJsonRpc.JsonRpc.HasListeningStarted" /> is <see langword="true" /> and <see cref="P:StreamJsonRpc.JsonRpc.AllowModificationWhileListening" /> is <see langword="false" />.</exception>
         </member>
         <member name="T:StreamJsonRpc.JsonRpcEnumerableSettings">
             <summary>
@@ -2893,16 +3118,16 @@
             Gets or sets a value indicating whether events raised on the target object
             should be relayed to the client via a JSON-RPC notify message.
             </summary>
-            <value>The default is <c>true</c>.</value>
+            <value>The default is <see langword="true" />.</value>
         </member>
         <member name="P:StreamJsonRpc.JsonRpcTargetOptions.AllowNonPublicInvocation">
             <summary>
             Gets or sets a value indicating whether non-public methods/events on target objects can be invoked
             by remote clients.
             </summary>
-            <value>The default value is <c>false</c>.</value>
+            <value>The default value is <see langword="false" />.</value>
             <remarks>
-            The default for this property was <c>true</c> in the 1.x versions.
+            The default for this property was <see langword="true" /> in the 1.x versions.
             </remarks>
         </member>
         <member name="P:StreamJsonRpc.JsonRpcTargetOptions.UseSingleObjectParameterDeserialization">
@@ -3084,8 +3309,8 @@
             Reads a distinct and complete message from the transport, waiting for one if necessary.
             </summary>
             <param name="cancellationToken">A token to cancel the read request.</param>
-            <returns>The received message, or <c>null</c> if the underlying transport ends before beginning another message.</returns>
-            <exception cref="T:System.InvalidOperationException">Thrown when <see cref="P:StreamJsonRpc.MessageHandlerBase.CanRead" /> returns <c>false</c>.</exception>
+            <returns>The received message, or <see langword="null" /> if the underlying transport ends before beginning another message.</returns>
+            <exception cref="T:System.InvalidOperationException">Thrown when <see cref="P:StreamJsonRpc.MessageHandlerBase.CanRead" /> returns <see langword="false" />.</exception>
             <exception cref="T:System.IO.EndOfStreamException">Thrown if the transport ends while reading a message.</exception>
             <exception cref="T:System.OperationCanceledException">Thrown if <paramref name="cancellationToken" /> is canceled before a new message is received.</exception>
             <remarks>
@@ -3100,7 +3325,7 @@
             <param name="content">The message to write.</param>
             <param name="cancellationToken">A token to cancel the write request.</param>
             <returns>A task that represents the asynchronous operation.</returns>
-            <exception cref="T:System.InvalidOperationException">Thrown when <see cref="P:StreamJsonRpc.MessageHandlerBase.CanWrite" /> returns <c>false</c>.</exception>
+            <exception cref="T:System.InvalidOperationException">Thrown when <see cref="P:StreamJsonRpc.MessageHandlerBase.CanWrite" /> returns <see langword="false" />.</exception>
             <exception cref="T:System.OperationCanceledException">Thrown if <paramref name="cancellationToken" /> is canceled before message transmission begins.</exception>
             <exception cref="T:System.ObjectDisposedException">Thrown if this instance is disposed before or during transmission.</exception>
             <remarks>
@@ -3122,7 +3347,7 @@
             <summary>
             Disposes resources allocated by this instance that are common to both reading and writing.
             </summary>
-            <param name="disposing"><c>true</c> when being disposed; <c>false</c> when being finalized.</param>
+            <param name="disposing"><see langword="true" /> when being disposed; <see langword="false" /> when being finalized.</param>
             <remarks>
             <para>
             This method is called by <see cref="M:StreamJsonRpc.MessageHandlerBase.DisposeAsync" /> after both <see cref="M:StreamJsonRpc.MessageHandlerBase.DisposeReader" /> and <see cref="M:StreamJsonRpc.MessageHandlerBase.DisposeWriter" /> have completed.
@@ -3246,64 +3471,19 @@
             but for which MessagePack itself provides no formatter in the default resolver.
             </summary>
         </member>
+        <member name="F:StreamJsonRpc.MessagePackFormatter.StringInterningResolver">
+            <summary>
+            The resolver to include when we want to enable string interning.
+            </summary>
+        </member>
         <member name="F:StreamJsonRpc.MessagePackFormatter.messageSerializationOptions">
             <summary>
             The options to use for serializing top-level RPC messages.
             </summary>
         </member>
-        <member name="F:StreamJsonRpc.MessagePackFormatter.multiplexingStream">
-            <summary>
-            Backing field for the <see cref="P:StreamJsonRpc.MessagePackFormatter.MultiplexingStream" /> property.
-            </summary>
-        </member>
-        <member name="F:StreamJsonRpc.MessagePackFormatter.formatterProgressTracker">
-            <summary>
-            The <see cref="T:StreamJsonRpc.Reflection.MessageFormatterProgressTracker" /> we use to support <see cref="T:System.IProgress`1" /> method arguments.
-            </summary>
-        </member>
-        <member name="F:StreamJsonRpc.MessagePackFormatter.duplexPipeTracker">
-            <summary>
-            The helper for marshaling pipes as RPC method arguments.
-            </summary>
-        </member>
-        <member name="F:StreamJsonRpc.MessagePackFormatter.enumerableTracker">
-            <summary>
-            The tracker we use to support transmission of <see cref="T:System.Collections.Generic.IAsyncEnumerable`1" /> types.
-            </summary>
-        </member>
-        <member name="F:StreamJsonRpc.MessagePackFormatter.rpcMarshaledContextTracker">
-            <summary>
-            The helper for marshaling <see cref="T:StreamJsonRpc.IRpcMarshaledContext`1" /> in RPC method arguments or return values.
-            </summary>
-        </member>
-        <member name="F:StreamJsonRpc.MessagePackFormatter.serializingMessageWithId">
-            <summary>
-            Backing field for the <see cref="P:StreamJsonRpc.Reflection.IJsonRpcFormatterState.SerializingMessageWithId" /> property.
-            </summary>
-        </member>
-        <member name="F:StreamJsonRpc.MessagePackFormatter.deserializingMessageWithId">
-            <summary>
-            Backing field for the <see cref="P:StreamJsonRpc.Reflection.IJsonRpcFormatterState.DeserializingMessageWithId" /> property.
-            </summary>
-        </member>
-        <member name="F:StreamJsonRpc.MessagePackFormatter.deserializingMessage">
-            <summary>
-            The message whose arguments are being deserialized.
-            </summary>
-        </member>
-        <member name="F:StreamJsonRpc.MessagePackFormatter.serializingRequest">
-            <summary>
-            Backing field for the <see cref="P:StreamJsonRpc.Reflection.IJsonRpcFormatterState.SerializingRequest" /> property.
-            </summary>
-        </member>
         <member name="F:StreamJsonRpc.MessagePackFormatter.userDataSerializationOptions">
             <summary>
             The options to use for serializing user data (e.g. arguments, return values and errors).
-            </summary>
-        </member>
-        <member name="F:StreamJsonRpc.MessagePackFormatter.rpc">
-            <summary>
-            Backing field for the <see cref="P:StreamJsonRpc.IJsonRpcInstanceContainer.Rpc" /> property.
             </summary>
         </member>
         <member name="M:StreamJsonRpc.MessagePackFormatter.#ctor">
@@ -3329,42 +3509,8 @@
             modified to use the <see cref="F:MessagePack.MessagePackSecurity.UntrustedData" /> security setting.
             </value>
         </member>
-        <member name="P:StreamJsonRpc.MessagePackFormatter.StreamJsonRpc#IJsonRpcInstanceContainer#Rpc">
-            <inheritdoc />
-        </member>
         <member name="P:StreamJsonRpc.MessagePackFormatter.MultiplexingStream">
-            <summary>
-            Gets or sets the <see cref="P:StreamJsonRpc.MessagePackFormatter.MultiplexingStream" /> that may be used to establish out of band communication (e.g. marshal <see cref="T:System.IO.Pipelines.IDuplexPipe" /> arguments).
-            </summary>
-        </member>
-        <member name="P:StreamJsonRpc.MessagePackFormatter.StreamJsonRpc#Reflection#IJsonRpcFormatterState#SerializingMessageWithId">
-            <inheritdoc />
-        </member>
-        <member name="P:StreamJsonRpc.MessagePackFormatter.StreamJsonRpc#Reflection#IJsonRpcFormatterState#DeserializingMessageWithId">
-            <inheritdoc />
-        </member>
-        <member name="P:StreamJsonRpc.MessagePackFormatter.StreamJsonRpc#Reflection#IJsonRpcFormatterState#SerializingRequest">
-            <inheritdoc />
-        </member>
-        <member name="P:StreamJsonRpc.MessagePackFormatter.FormatterProgressTracker">
-            <summary>
-            Gets the <see cref="T:StreamJsonRpc.Reflection.MessageFormatterProgressTracker" /> instance containing useful methods to help on the implementation of message formatters.
-            </summary>
-        </member>
-        <member name="P:StreamJsonRpc.MessagePackFormatter.DuplexPipeTracker">
-            <summary>
-            Gets the helper for marshaling pipes as RPC method arguments.
-            </summary>
-        </member>
-        <member name="P:StreamJsonRpc.MessagePackFormatter.EnumerableTracker">
-            <summary>
-            Gets the helper for marshaling <see cref="T:System.Collections.Generic.IAsyncEnumerable`1" /> in RPC method arguments or return values.
-            </summary>
-        </member>
-        <member name="P:StreamJsonRpc.MessagePackFormatter.RpcMarshaledContextTracker">
-            <summary>
-            Gets the helper for marshaling <see cref="T:StreamJsonRpc.IRpcMarshaledContext`1" /> in RPC method arguments or return values.
-            </summary>
+            <inheritdoc cref="P:StreamJsonRpc.FormatterBase.MultiplexingStream" />
         </member>
         <member name="M:StreamJsonRpc.MessagePackFormatter.SetMessagePackSerializerOptions(MessagePack.MessagePackSerializerOptions)">
             <summary>
@@ -3392,21 +3538,12 @@
         <member name="M:StreamJsonRpc.MessagePackFormatter.StreamJsonRpc#IJsonRpcMessageFactory#CreateResultMessage">
             <inheritdoc />
         </member>
-        <member name="M:StreamJsonRpc.MessagePackFormatter.Dispose">
-            <inheritdoc />
-        </member>
-        <member name="M:StreamJsonRpc.MessagePackFormatter.Dispose(System.Boolean)">
-            <summary>
-            Disposes managed and native resources held by this instance.
-            </summary>
-            <param name="disposing"><c>true</c> if being disposed; <c>false</c> if being finalized.</param>
-        </member>
         <member name="M:StreamJsonRpc.MessagePackFormatter.GetParamsObjectDictionary(System.Object)">
             <summary>
             Extracts a dictionary of property names and values from the specified params object.
             </summary>
             <param name="paramsObject">The params object.</param>
-            <returns>A dictionary of argument values and another of declared argument types, or <c>null</c> if <paramref name="paramsObject" /> is null.</returns>
+            <returns>A dictionary of argument values and another of declared argument types, or <see langword="null" /> if <paramref name="paramsObject" /> is null.</returns>
             <remarks>
             This method supports DataContractSerializer-compliant types. This includes C# anonymous types.
             </remarks>
@@ -3471,7 +3608,7 @@
             Reads one raw messagepack token.
             </summary>
             <param name="reader">The reader to use.</param>
-            <param name="copy"><c>true</c> if the token must outlive the lifetime of the reader's underlying buffer; <c>false</c> otherwise.</param>
+            <param name="copy"><see langword="true" /> if the token must outlive the lifetime of the reader's underlying buffer; <see langword="false" /> otherwise.</param>
             <returns>The raw messagepack slice.</returns>
         </member>
         <member name="T:StreamJsonRpc.MessagePackFormatter.ToStringHelper">
@@ -3480,7 +3617,7 @@
             </summary>
             <remarks>
             In perf traces, creation of this object used to show up as one of the most allocated objects.
-            It is used even when tracing isn't active. So we changed its design it to be reused,
+            It is used even when tracing isn't active. So we changed its design to be reused,
             since its lifetime is only required during a synchronous call to a trace API.
             </remarks>
         </member>
@@ -3508,6 +3645,16 @@
             <summary>
             Converts an enumeration token to an <see cref="T:System.Collections.Generic.IAsyncEnumerable`1" />
             or an <see cref="T:System.Collections.Generic.IAsyncEnumerable`1" /> into an enumeration token.
+            </summary>
+        </member>
+        <member name="F:StreamJsonRpc.MessagePackFormatter.AsyncEnumerableFormatterResolver.PreciseTypeFormatter`1.TokenPropertyName">
+            <summary>
+            The constant "token", in its various forms.
+            </summary>
+        </member>
+        <member name="F:StreamJsonRpc.MessagePackFormatter.AsyncEnumerableFormatterResolver.PreciseTypeFormatter`1.ValuesPropertyName">
+            <summary>
+            The constant "values", in its various forms.
             </summary>
         </member>
         <member name="T:StreamJsonRpc.MessagePackFormatter.AsyncEnumerableFormatterResolver.GeneratorFormatter`2">
@@ -3566,7 +3713,7 @@
             </summary>
             <param name="serializerOptions">The serializer options to use for this data.</param>
         </member>
-        <member name="M:StreamJsonRpc.MessagePackFormatter.TopLevelPropertyBag.WritePropertiesAndClear(MessagePack.MessagePackWriter@)">
+        <member name="M:StreamJsonRpc.MessagePackFormatter.TopLevelPropertyBag.WriteProperties(MessagePack.MessagePackWriter@)">
             <summary>
             Writes the properties tracked by this collection to a messagepack writer.
             </summary>
@@ -3580,6 +3727,11 @@
             When reading messages, either \n or \r\n character sequences are permitted for new lines.
             When writing messages the <see cref="P:StreamJsonRpc.NewLineDelimitedMessageHandler.NewLine" /> property controls which character sequence is used to terminate each message.
             </remarks>
+        </member>
+        <member name="F:StreamJsonRpc.NewLineDelimitedMessageHandler.contentSequenceBuilder">
+            <summary>
+            The <see cref="T:System.Buffers.IBufferWriter`1" /> that buffers an outgoing message.
+            </summary>
         </member>
         <member name="F:StreamJsonRpc.NewLineDelimitedMessageHandler.newLine">
             <summary>
@@ -3744,13 +3896,13 @@
             Reads from the <see cref="P:StreamJsonRpc.PipeMessageHandler.Reader" /> until at least a specified number of bytes are available.
             </summary>
             <param name="requiredBytes">The number of bytes that must be available.</param>
-            <param name="allowEmpty"><c>true</c> to allow returning 0 bytes if the end of the stream is encountered before any bytes are read.</param>
+            <param name="allowEmpty"><see langword="true" /> to allow returning 0 bytes if the end of the stream is encountered before any bytes are read.</param>
             <param name="cancellationToken">A cancellation token.</param>
             <returns>The <see cref="T:System.IO.Pipelines.ReadResult" /> containing at least <paramref name="requiredBytes" /> bytes.</returns>
             <exception cref="T:System.OperationCanceledException">Thrown if <see cref="P:System.IO.Pipelines.ReadResult.IsCanceled" />.</exception>
             <exception cref="T:System.IO.EndOfStreamException">
             Thrown if <see cref="P:System.IO.Pipelines.ReadResult.IsCompleted" /> before we have <paramref name="requiredBytes" /> bytes.
-            Not thrown if 0 bytes were read and <paramref name="allowEmpty" /> is <c>true</c>.
+            Not thrown if 0 bytes were read and <paramref name="allowEmpty" /> is <see langword="true" />.
             </exception>
         </member>
         <member name="M:StreamJsonRpc.PipeMessageHandler.DeserializeMessageAsync(System.Int32,System.Threading.CancellationToken)">
@@ -3767,7 +3919,7 @@
             </summary>
             <param name="contentLength">The length of the JSON-RPC message.</param>
             <param name="specificEncoding">The encoding to use during deserialization, as specified in a header for this particular message.</param>
-            <param name="defaultEncoding">The encoding to use when <paramref name="specificEncoding" /> is <c>null</c> if the <see cref="P:StreamJsonRpc.MessageHandlerBase.Formatter" /> supports encoding.</param>
+            <param name="defaultEncoding">The encoding to use when <paramref name="specificEncoding" /> is <see langword="null" /> if the <see cref="P:StreamJsonRpc.MessageHandlerBase.Formatter" /> supports encoding.</param>
             <param name="cancellationToken">A cancellation token.</param>
             <returns>The deserialized message.</returns>
             <exception cref="T:System.NotSupportedException">Thrown if <paramref name="specificEncoding" /> is non-null and the formatter does not implement the appropriate interface to supply the encoding.</exception>
@@ -3815,7 +3967,7 @@
         </member>
         <member name="T:StreamJsonRpc.Protocol.IJsonRpcMessageWithId">
             <summary>
-            An interface found on JSON-RPC protocol messages that contain an <pre>id</pre> field.
+            An interface found on JSON-RPC protocol messages that contain an <c>id</c> field.
             </summary>
         </member>
         <member name="P:StreamJsonRpc.Protocol.IJsonRpcMessageWithId.RequestId">
@@ -3837,7 +3989,7 @@
             <summary>
             Gets or sets an identifier established by the client if a response to the request is expected.
             </summary>
-            <value>A <see cref="T:System.String" />, an <see cref="T:System.Int32" />, a <see cref="T:System.Int64" />, or <c>null</c>.</value>
+            <value>A <see cref="T:System.String" />, an <see cref="T:System.Int32" />, a <see cref="T:System.Int64" />, or <see langword="null" />.</value>
         </member>
         <member name="P:StreamJsonRpc.Protocol.JsonRpcError.RequestId">
             <summary>
@@ -4070,7 +4222,7 @@
             <summary>
             Gets or sets an identifier established by the client if a response to the request is expected.
             </summary>
-            <value>A <see cref="T:System.String" />, an <see cref="T:System.Int32" />, a <see cref="T:System.Int64" />, or <c>null</c>.</value>
+            <value>A <see cref="T:System.String" />, an <see cref="T:System.Int32" />, a <see cref="T:System.Int64" />, or <see langword="null" />.</value>
         </member>
         <member name="P:StreamJsonRpc.Protocol.JsonRpcRequest.RequestId">
             <summary>
@@ -4100,7 +4252,7 @@
         <member name="P:StreamJsonRpc.Protocol.JsonRpcRequest.NamedArgumentDeclaredTypes">
             <summary>
             Gets or sets a dictionary of <see cref="T:System.Type" /> objects indexed by the property name that describe how each element in <see cref="P:StreamJsonRpc.Protocol.JsonRpcRequest.NamedArguments" /> is expected by the server to be typed.
-            If specified, this must have exactly the same size as <see cref="P:StreamJsonRpc.Protocol.JsonRpcRequest.NamedArguments" /> and contain no <c>null</c> values.
+            If specified, this must have exactly the same size as <see cref="P:StreamJsonRpc.Protocol.JsonRpcRequest.NamedArguments" /> and contain no <see langword="null" /> values.
             </summary>
             <remarks>
             This property is *not* serialized into the JSON-RPC message.
@@ -4122,7 +4274,7 @@
         <member name="P:StreamJsonRpc.Protocol.JsonRpcRequest.ArgumentListDeclaredTypes">
             <summary>
             Gets or sets a list of <see cref="T:System.Type" /> objects that describe how each element in <see cref="P:StreamJsonRpc.Protocol.JsonRpcRequest.ArgumentsList" /> is expected by the server to be typed.
-            If specified, this must have exactly the same length as <see cref="P:StreamJsonRpc.Protocol.JsonRpcRequest.ArgumentsList" /> and contain no <c>null</c> elements.
+            If specified, this must have exactly the same length as <see cref="P:StreamJsonRpc.Protocol.JsonRpcRequest.ArgumentsList" /> and contain no <see langword="null" /> elements.
             </summary>
             <remarks>
             This property is *not* serialized into the JSON-RPC message.
@@ -4162,7 +4314,7 @@
             An array to initialize with arguments that can satisfy CLR type requirements for each of the <paramref name="parameters" />.
             The length of this span must equal the length of <paramref name="parameters" />.
             </param>
-            <returns><c>true</c> if all the arguments can conform to the types of the <paramref name="parameters" /> and <paramref name="typedArguments" /> is initialized; <c>false</c> otherwise.</returns>
+            <returns><see langword="true" /> if all the arguments can conform to the types of the <paramref name="parameters" /> and <paramref name="typedArguments" /> is initialized; <see langword="false" /> otherwise.</returns>
             <exception cref="T:StreamJsonRpc.RpcArgumentDeserializationException">Thrown if the argument exists, but cannot be deserialized.</exception>
         </member>
         <member name="M:StreamJsonRpc.Protocol.JsonRpcRequest.TryGetArgumentByNameOrIndex(System.String,System.Int32,System.Type,System.Object@)">
@@ -4173,7 +4325,7 @@
             <param name="position">The index of the parameter that requires an argument. May be -1 for an argument with no position.</param>
             <param name="typeHint">The type of the parameter that requires an argument. May be null if the type need not be coerced.</param>
             <param name="value">Receives the value of the argument, if it exists. It MAY be returned even if it does not conform to <paramref name="typeHint" />.</param>
-            <returns><c>true</c> if an argument is available for a parameter with the given name or position; <c>false</c> otherwise.</returns>
+            <returns><see langword="true" /> if an argument is available for a parameter with the given name or position; <see langword="false" /> otherwise.</returns>
             <remarks>
             A derived-type may override this method in order to consider the <paramref name="typeHint" />
             and deserialize the required argument on-demand such that it can satisfy the type requirement.
@@ -4205,7 +4357,7 @@
             <summary>
             Gets or sets an identifier established by the client if a response to the request is expected.
             </summary>
-            <value>A <see cref="T:System.String" />, an <see cref="T:System.Int32" />, a <see cref="T:System.Int64" />, or <c>null</c>.</value>
+            <value>A <see cref="T:System.String" />, an <see cref="T:System.Int32" />, a <see cref="T:System.Int64" />, or <see langword="null" />.</value>
         </member>
         <member name="P:StreamJsonRpc.Protocol.JsonRpcResult.RequestId">
             <summary>
@@ -4248,20 +4400,32 @@
             The parent is tracing their action.
             </summary>
         </member>
-        <member name="M:StreamJsonRpc.ProxyGeneration.Get(System.Reflection.TypeInfo)">
+        <member name="M:StreamJsonRpc.ProxyGeneration.Get(System.Reflection.TypeInfo,System.ValueTuple{System.Reflection.TypeInfo,System.Int32}[])">
             <summary>
             Gets a dynamically generated type that implements a given interface in terms of a <see cref="T:StreamJsonRpc.JsonRpc" /> instance.
             </summary>
-            <param name="serviceInterface">The interface that describes the RPC contract, and that the client proxy should implement.</param>
+            <param name="contractInterface">The interface that describes the RPC contract, and that the client proxy should implement.</param>
+            <param name="implementedOptionalInterfaces">Additional marshalable interfaces that the client proxy should implement.</param>
             <returns>The generated type.</returns>
+        </member>
+        <member name="M:StreamJsonRpc.ProxyGeneration.SortRpcInterfaces(System.Collections.Generic.List{System.ValueTuple{System.Reflection.TypeInfo,System.Nullable{System.Int32}}})">
+            <summary>
+            Sorts <paramref name="list" /> so that:
+            <list type="number">
+            <item><description>interfaces that are extending a lesser number of other interfaces in <paramref name="list" /> come first;</description></item>
+            <item><description>interfaces extending the same number of other interfaces in <paramref name="list" />, are ordered by optional interface code;
+            where a <see langword="null" /> code comes first.</description></item>
+            </list>
+            </summary>
+            <param name="list">The list of RPC interfaces to be sorted.</param>
         </member>
         <member name="M:StreamJsonRpc.ProxyGeneration.AdaptReturnType(System.Reflection.MethodInfo,System.Boolean,System.Boolean,System.Reflection.Emit.ILGenerator,System.Reflection.MethodInfo,System.Reflection.ParameterInfo)">
             <summary>
             Converts the value on the stack to one compatible with the method's return type.
             </summary>
             <param name="method">The interface method that we're generating code for.</param>
-            <param name="returnTypeIsValueTask"><c>true</c> if the return type is <see cref="T:System.Threading.Tasks.ValueTask" /> or <see cref="T:System.Threading.Tasks.ValueTask`1" />; <c>false</c> otherwise.</param>
-            <param name="returnTypeIsIAsyncEnumerable"><c>true</c> if the return type is <see cref="T:System.Collections.Generic.IAsyncEnumerable`1" />; <c>false</c> otherwise.</param>
+            <param name="returnTypeIsValueTask"><see langword="true" /> if the return type is <see cref="T:System.Threading.Tasks.ValueTask" /> or <see cref="T:System.Threading.Tasks.ValueTask`1" />; <see langword="false" /> otherwise.</param>
+            <param name="returnTypeIsIAsyncEnumerable"><see langword="true" /> if the return type is <see cref="T:System.Collections.Generic.IAsyncEnumerable`1" />; <see langword="false" /> otherwise.</param>
             <param name="il">The IL emitter for the method.</param>
             <param name="invokingMethod">The Invoke method on <see cref="T:StreamJsonRpc.JsonRpc" /> that IL was just emitted to invoke.</param>
             <param name="cancellationTokenParameter">The <see cref="T:System.Threading.CancellationToken" /> parameter in the proxy method, if there is one.</param>
@@ -4272,6 +4436,11 @@
             </summary>
             <param name="interfaceType">The type of the interface to generate a proxy for.</param>
             <returns>The <see cref="T:System.Reflection.Emit.ModuleBuilder" /> to use.</returns>
+        </member>
+        <member name="T:StreamJsonRpc.ProxyGeneration.GeneratedProxiesByInterfaceKey">
+            <summary>
+            Dictionary key for <see cref="F:StreamJsonRpc.ProxyGeneration.GeneratedProxiesByInterface" />.
+            </summary>
         </member>
         <member name="T:StreamJsonRpc.ProxyGeneration.AsyncEnumerableProxy`1">
             <summary>
@@ -4357,7 +4526,7 @@
             Gets a value indicating whether a <see cref="T:StreamJsonRpc.Protocol.JsonRpcRequest" /> is being serialized.
             </summary>
             <remarks>
-            A response is being serialized if this property's value is <c>false</c> while <see cref="P:StreamJsonRpc.Reflection.IJsonRpcFormatterState.SerializingMessageWithId" /> is non-empty.
+            A response is being serialized if this property's value is <see langword="false" /> while <see cref="P:StreamJsonRpc.Reflection.IJsonRpcFormatterState.SerializingMessageWithId" /> is non-empty.
             </remarks>
         </member>
         <member name="T:StreamJsonRpc.Reflection.IJsonRpcFormatterTracingCallbacks">
@@ -4508,7 +4677,7 @@
             Gets or sets the multiplexing stream used to create and accept channels.
             </summary>
             <remarks>
-            If this is <c>null</c>, some public methods will throw <see cref="T:System.NotSupportedException" />.
+            If this is <see langword="null" />, some public methods will throw <see cref="T:System.NotSupportedException" />.
             </remarks>
         </member>
         <member name="P:StreamJsonRpc.Reflection.MessageFormatterDuplexPipeTracker.Microsoft#IDisposableObservable#IsDisposed">
@@ -4532,7 +4701,7 @@
             Creates a token to represent an <see cref="T:System.IO.Pipelines.IDuplexPipe" /> as it is transmitted from the client to an RPC server as a method argument.
             </summary>
             <param name="duplexPipe">The client pipe that is to be shared with the RPC server. May be null.</param>
-            <returns>The token to use as the RPC method argument; or <c>null</c> if <paramref name="duplexPipe" /> was <c>null</c>.</returns>
+            <returns>The token to use as the RPC method argument; or <see langword="null" /> if <paramref name="duplexPipe" /> was <see langword="null" />.</returns>
             <exception cref="T:System.NotSupportedException">Thrown if no <see cref="P:StreamJsonRpc.Reflection.MessageFormatterDuplexPipeTracker.MultiplexingStream" /> was provided to the constructor or when serializing a message without an ID property.</exception>
         </member>
         <member name="M:StreamJsonRpc.Reflection.MessageFormatterDuplexPipeTracker.GetToken(System.IO.Pipelines.PipeReader)">
@@ -4543,7 +4712,7 @@
             Creates a token to represent a <see cref="T:System.IO.Pipelines.PipeReader" /> as it is transmitted from the client to an RPC server as a method argument.
             </summary>
             <param name="reader">The client pipe that is to be shared with the RPC server. May be null.</param>
-            <returns>The token to use as the RPC method argument; or <c>null</c> if <paramref name="reader" /> was <c>null</c>.</returns>
+            <returns>The token to use as the RPC method argument; or <see langword="null" /> if <paramref name="reader" /> was <see langword="null" />.</returns>
             <exception cref="T:System.NotSupportedException">Thrown if no <see cref="P:StreamJsonRpc.Reflection.MessageFormatterDuplexPipeTracker.MultiplexingStream" /> was provided to the constructor or when serializing a message without an ID property.</exception>
         </member>
         <member name="M:StreamJsonRpc.Reflection.MessageFormatterDuplexPipeTracker.GetToken(System.IO.Pipelines.PipeWriter)">
@@ -4554,7 +4723,7 @@
             Creates a token to represent a <see cref="T:System.IO.Pipelines.PipeWriter" /> as it is transmitted from the client to an RPC server as a method argument.
             </summary>
             <param name="writer">The client pipe that is to be shared with the RPC server. May be null.</param>
-            <returns>The token to use as the RPC method argument; or <c>null</c> if <paramref name="writer" /> was <c>null</c>.</returns>
+            <returns>The token to use as the RPC method argument; or <see langword="null" /> if <paramref name="writer" /> was <see langword="null" />.</returns>
             <exception cref="T:System.NotSupportedException">Thrown if no <see cref="P:StreamJsonRpc.Reflection.MessageFormatterDuplexPipeTracker.MultiplexingStream" /> was provided to the constructor or when serializing a message without an ID property.</exception>
         </member>
         <member name="M:StreamJsonRpc.Reflection.MessageFormatterDuplexPipeTracker.GetPipe(System.Nullable{System.Int32})">
@@ -4565,7 +4734,7 @@
             Creates an <see cref="T:System.IO.Pipelines.IDuplexPipe" /> from a given token as it is received at the RPC server as a method argument.
             </summary>
             <param name="token">The method argument, which was originally obtained by the client using the <see cref="M:StreamJsonRpc.Reflection.MessageFormatterDuplexPipeTracker.GetToken(System.IO.Pipelines.IDuplexPipe)" /> method.</param>
-            <returns>The <see cref="T:System.IO.Pipelines.IDuplexPipe" /> from the token; or <c>null</c> if <paramref name="token" /> was <c>null</c>.</returns>
+            <returns>The <see cref="T:System.IO.Pipelines.IDuplexPipe" /> from the token; or <see langword="null" /> if <paramref name="token" /> was <see langword="null" />.</returns>
             <exception cref="T:System.InvalidOperationException">Thrown if the token does not match up with an out of band channel offered by the client.</exception>
             <exception cref="T:System.NotSupportedException">Thrown if no <see cref="P:StreamJsonRpc.Reflection.MessageFormatterDuplexPipeTracker.MultiplexingStream" /> was provided to the constructor.</exception>
         </member>
@@ -4577,7 +4746,7 @@
             Creates a <see cref="T:System.IO.Pipelines.PipeReader" /> from a given token as it is received at the RPC server as a method argument.
             </summary>
             <param name="token">The method argument, which was originally obtained by the client using the <see cref="M:StreamJsonRpc.Reflection.MessageFormatterDuplexPipeTracker.GetToken(System.IO.Pipelines.IDuplexPipe)" /> method.</param>
-            <returns>The <see cref="T:System.IO.Pipelines.PipeReader" /> from the token; or <c>null</c> if <paramref name="token" /> was <c>null</c>.</returns>
+            <returns>The <see cref="T:System.IO.Pipelines.PipeReader" /> from the token; or <see langword="null" /> if <paramref name="token" /> was <see langword="null" />.</returns>
             <exception cref="T:System.InvalidOperationException">Thrown if the token does not match up with an out of band channel offered by the client.</exception>
             <exception cref="T:System.NotSupportedException">Thrown if no <see cref="P:StreamJsonRpc.Reflection.MessageFormatterDuplexPipeTracker.MultiplexingStream" /> was provided to the constructor.</exception>
         </member>
@@ -4589,7 +4758,7 @@
             Creates a <see cref="T:System.IO.Pipelines.PipeWriter" /> from a given token as it is received at the RPC server as a method argument.
             </summary>
             <param name="token">The method argument, which was originally obtained by the client using the <see cref="M:StreamJsonRpc.Reflection.MessageFormatterDuplexPipeTracker.GetToken(System.IO.Pipelines.IDuplexPipe)" /> method.</param>
-            <returns>The <see cref="T:System.IO.Pipelines.PipeWriter" /> from the token; or <c>null</c> if <paramref name="token" /> was <c>null</c>.</returns>
+            <returns>The <see cref="T:System.IO.Pipelines.PipeWriter" /> from the token; or <see langword="null" /> if <paramref name="token" /> was <see langword="null" />.</returns>
             <exception cref="T:System.InvalidOperationException">Thrown if the token does not match up with an out of band channel offered by the client.</exception>
             <exception cref="T:System.NotSupportedException">Thrown if no <see cref="P:StreamJsonRpc.Reflection.MessageFormatterDuplexPipeTracker.MultiplexingStream" /> was provided to the constructor.</exception>
         </member>
@@ -4600,11 +4769,11 @@
             <summary>
             Disposes managed and native resources held by this instance.
             </summary>
-            <param name="disposing"><c>true</c> if being disposed; <c>false</c> if being finalized.</param>
+            <param name="disposing"><see langword="true" /> if being disposed; <see langword="false" /> if being finalized.</param>
         </member>
         <member name="M:StreamJsonRpc.Reflection.MessageFormatterDuplexPipeTracker.GetMultiplexingStreamOrThrow">
             <summary>
-            Throws <see cref="T:System.NotSupportedException" /> if <see cref="P:StreamJsonRpc.Reflection.MessageFormatterDuplexPipeTracker.MultiplexingStream" /> is <c>null</c>.
+            Throws <see cref="T:System.NotSupportedException" /> if <see cref="P:StreamJsonRpc.Reflection.MessageFormatterDuplexPipeTracker.MultiplexingStream" /> is <see langword="null" />.
             </summary>
         </member>
         <member name="T:StreamJsonRpc.Reflection.MessageFormatterEnumerableTracker">
@@ -4673,7 +4842,7 @@
             and gets all its values from a remote generator.
             </summary>
             <typeparam name="T">The type of value that is produced by the enumerable.</typeparam>
-            <param name="handle">The handle specified by the generator that is used to obtain more values or dispose of the enumerator. May be <c>null</c> to indicate there will be no more values.</param>
+            <param name="handle">The handle specified by the generator that is used to obtain more values or dispose of the enumerator. May be <see langword="null" /> to indicate there will be no more values.</param>
             <param name="prefetchedItems">The list of items that are included with the enumerable handle.</param>
             <returns>The enumerator.</returns>
         </member>
@@ -4750,7 +4919,7 @@
             Converts given <see cref="T:System.Type" /> to its <see cref="T:System.IProgress`1" /> type.
             </summary>
             <param name="objectType">The type which may implement <see cref="T:System.IProgress`1" />.</param>
-            <returns>The <see cref="T:System.IProgress`1" /> from given <see cref="T:System.Type" /> object, or <c>null</c>  if no such interface was found in the given <paramref name="objectType" />.</returns>
+            <returns>The <see cref="T:System.IProgress`1" /> from given <see cref="T:System.Type" /> object, or <see langword="null" />  if no such interface was found in the given <paramref name="objectType" />.</returns>
         </member>
         <member name="M:StreamJsonRpc.Reflection.MessageFormatterProgressTracker.IsSupportedProgressType(System.Type)">
             <summary>
@@ -4758,6 +4927,20 @@
             </summary>
             <param name="objectType">The type which may implement <see cref="T:System.IProgress`1" />.</param>
             <returns>true if given <see cref="T:System.Type" /> implements <see cref="T:System.IProgress`1" />; otherwise, false.</returns>
+        </member>
+        <member name="M:StreamJsonRpc.Reflection.MessageFormatterProgressTracker.CanSerialize(System.Type)">
+            <summary>
+            Checks if a given <see cref="T:System.Type" /> implements <see cref="T:System.IProgress`1" />.
+            </summary>
+            <param name="objectType">The type which may implement <see cref="T:System.IProgress`1" />.</param>
+            <returns>true if given <see cref="T:System.Type" /> implements <see cref="T:System.IProgress`1" />; otherwise, false.</returns>
+        </member>
+        <member name="M:StreamJsonRpc.Reflection.MessageFormatterProgressTracker.CanDeserialize(System.Type)">
+            <summary>
+            Checks if a given <see cref="T:System.Type" /> is a closed generic of <see cref="T:System.IProgress`1" />.
+            </summary>
+            <param name="objectType">The type which may be <see cref="T:System.IProgress`1" />.</param>
+            <returns>true if given <see cref="T:System.Type" /> is <see cref="T:System.IProgress`1" />; otherwise, false.</returns>
         </member>
         <member name="M:StreamJsonRpc.Reflection.MessageFormatterProgressTracker.GetTokenForProgress(System.Object)">
             <summary>
@@ -4876,12 +5059,30 @@
             Defines the values of the "__jsonrpc_marshaled" property in the <see cref="T:StreamJsonRpc.Reflection.MessageFormatterRpcMarshaledContextTracker.MarshalToken" />.
             </summary>
         </member>
-        <member name="M:StreamJsonRpc.Reflection.MessageFormatterRpcMarshaledContextTracker.GetToken(StreamJsonRpc.IRpcMarshaledContext{System.Object})">
+        <member name="M:StreamJsonRpc.Reflection.MessageFormatterRpcMarshaledContextTracker.GetMarshalableOptionalInterfaces(System.Type)">
+            <summary>
+            Returns the cached list of <see cref="T:StreamJsonRpc.RpcMarshalableOptionalInterfaceAttribute" /> applied to
+            <paramref name="declaredType" />.
+            </summary>
+            <param name="declaredType">The type to get attributes from.</param>
+            <returns>The list of <see cref="T:StreamJsonRpc.RpcMarshalableOptionalInterfaceAttribute" /> applied to
+            <paramref name="declaredType" />.</returns>
+            <exception cref="T:System.NotSupportedException">If an invalid set of
+            <see cref="T:StreamJsonRpc.RpcMarshalableOptionalInterfaceAttribute" /> attributes are applied to
+            <paramref name="declaredType" />. This could happen if
+            <see cref="P:StreamJsonRpc.RpcMarshalableOptionalInterfaceAttribute.OptionalInterface" /> or
+            <see cref="P:StreamJsonRpc.RpcMarshalableOptionalInterfaceAttribute.OptionalInterfaceCode" /> values are duplicated, or if an
+            optional interface is not marked with <see cref="T:StreamJsonRpc.RpcMarshalableAttribute" /> or it is not a valid marshalable
+            interface.</exception>
+        </member>
+        <member name="M:StreamJsonRpc.Reflection.MessageFormatterRpcMarshaledContextTracker.GetToken(System.Object,StreamJsonRpc.JsonRpcTargetOptions,System.Type)">
             <summary>
             Prepares a local object to be marshaled over the wire.
             </summary>
-            <param name="marshaledContext">The object and metadata to be marshaled.</param>
-            <returns>A token to be serialized so the remote party can invoke methods on the object within <paramref name="marshaledContext" />.</returns>
+            <param name="marshaledObject">The object to be exposed over RPC.</param>
+            <param name="options"><inheritdoc cref="M:StreamJsonRpc.RpcMarshaledContext`1.#ctor(`0,StreamJsonRpc.JsonRpcTargetOptions)" path="/param[@name='options']" /></param>
+            <param name="declaredType">The marshalable interface type of <paramref name="marshaledObject" /> as declared in the RPC contract.</param>
+            <returns>A token to be serialized so the remote party can invoke methods on the marshaled object.</returns>
         </member>
         <member name="M:StreamJsonRpc.Reflection.MessageFormatterRpcMarshaledContextTracker.GetObject(System.Type,System.Nullable{StreamJsonRpc.Reflection.MessageFormatterRpcMarshaledContextTracker.MarshalToken},StreamJsonRpc.JsonRpcProxyOptions)">
             <summary>
@@ -4890,14 +5091,24 @@
             <param name="interfaceType">The interface the proxy must implement.</param>
             <param name="token">The token received from the remote party that includes the handle to the remote object.</param>
             <param name="options">The options to feed into proxy generation.</param>
-            <returns>The generated proxy, or <c>null</c> if <paramref name="token" /> is null.</returns>
+            <returns>The generated proxy, or <see langword="null" /> if <paramref name="token" /> is null.</returns>
+        </member>
+        <member name="M:StreamJsonRpc.Reflection.MessageFormatterRpcMarshaledContextTracker.ValidateMarshalableInterface(System.Type)">
+            <summary>
+            Throws <see cref="T:System.NotSupportedException" /> if <paramref name="type" /> is not a valid marshalable interface.
+            This method doesn't validate that <paramref name="type" /> has the <see cref="T:StreamJsonRpc.RpcMarshalableAttribute" />
+            attribute.
+            </summary>
+            <param name="type">The interface <see cref="T:System.Type" /> to validate.</param>
+            <exception cref="T:System.NotSupportedException">When <paramref name="type" /> is not a valid marshalable interface: this
+            can happen if <paramref name="type" /> has properties, events or it is not disposable.</exception>
         </member>
         <member name="M:StreamJsonRpc.Reflection.MessageFormatterRpcMarshaledContextTracker.ReleaseMarshaledObject(System.Int64,System.Boolean)">
             <summary>
             Releases memory associated with marshaled objects.
             </summary>
-            <param name="handle">The handle to the object as created by the <see cref="M:StreamJsonRpc.Reflection.MessageFormatterRpcMarshaledContextTracker.GetToken(StreamJsonRpc.IRpcMarshaledContext{System.Object})" /> method.</param>
-            <param name="ownedBySender"><c>true</c> if the <paramref name="handle" /> was created by (and thus the original object owned by) the remote party; <c>false</c> if the token and object was created locally.</param>
+            <param name="handle">The handle to the object as created by the <see cref="M:StreamJsonRpc.Reflection.MessageFormatterRpcMarshaledContextTracker.GetToken(System.Object,StreamJsonRpc.JsonRpcTargetOptions,System.Type)" /> method.</param>
+            <param name="ownedBySender"><see langword="true" /> if the <paramref name="handle" /> was created by (and thus the original object owned by) the remote party; <see langword="false" /> if the token and object was created locally.</param>
         </member>
         <member name="T:StreamJsonRpc.Reflection.MessageFormatterRpcMarshaledContextTracker.MarshalLifetime">
             <summary>
@@ -4922,7 +5133,7 @@
         </member>
         <member name="F:StreamJsonRpc.Reflection.RpcTargetInfo.eventReceivers">
             <summary>
-            A list of event handlers we've registered on target objects that define events. May be <c>null</c> if there are no handlers.
+            A list of event handlers we've registered on target objects that define events. May be <see langword="null" /> if there are no handlers.
             </summary>
         </member>
         <member name="F:StreamJsonRpc.Reflection.RpcTargetInfo.localTargetObjectsToDispose">
@@ -4957,12 +5168,21 @@
             If this type is not an interface, only public members become invokable unless <see cref="P:StreamJsonRpc.JsonRpcTargetOptions.AllowNonPublicInvocation" /> is set to true on the <paramref name="options" /> argument.
             </param>
             <param name="target">Target to invoke when incoming messages are received.</param>
-            <param name="options">A set of customizations for how the target object is registered. If <c>null</c>, default options will be used.</param>
+            <param name="options">A set of customizations for how the target object is registered. If <see langword="null" />, default options will be used.</param>
             <param name="requestRevertOption"><see langword="true" /> to receive an <see cref="T:System.IDisposable" /> that can remove the target object; <see langword="false" /> otherwise.</param>
-            <returns>An object that may be disposed of to revert the addition of the target object. Will be null if and only if <paramref name="requestRevertOption" /> is <c>false</c>.</returns>
+            <returns>An object that may be disposed of to revert the addition of the target object. Will be null if and only if <paramref name="requestRevertOption" /> is <see langword="false" />.</returns>
             <remarks>
             When multiple target objects are added, the first target with a method that matches a request is invoked.
             </remarks>
+        </member>
+        <member name="M:StreamJsonRpc.Reflection.RpcTargetInfo.AddRpcInterfaceToTarget(System.Type,System.Object,StreamJsonRpc.JsonRpcTargetOptions,StreamJsonRpc.Reflection.RpcTargetInfo.RevertAddLocalRpcTarget)">
+            <summary>
+            Adds a new RPC interface to an existing target registering additional RPC methods.
+            </summary>
+            <param name="exposingMembersOn">The interface type whose members define the RPC accessible members of the <paramref name="target" /> object.</param>
+            <param name="target">Target to invoke when incoming messages are received.</param>
+            <param name="options">A set of customizations for how the target object is registered. If <see langword="null" />, default options will be used.</param>
+            <param name="revertAddLocalRpcTarget">An optional object that may be disposed of to revert the addition of the target object..</param>
         </member>
         <member name="M:StreamJsonRpc.Reflection.RpcTargetInfo.AddLocalRpcMethod(System.Reflection.MethodInfo,System.Object,StreamJsonRpc.JsonRpcMethodAttribute,System.Threading.SynchronizationContext)">
             <summary>
@@ -4976,7 +5196,7 @@
             <param name="methodRpcSettings">
             A description for how this method should be treated.
             It need not be an attribute that was actually applied to <paramref name="handler" />.
-            An attribute will *not* be discovered via reflection on the <paramref name="handler" />, even if this value is <c>null</c>.
+            An attribute will *not* be discovered via reflection on the <paramref name="handler" />, even if this value is <see langword="null" />.
             </param>
             <param name="synchronizationContext">The <see cref="T:System.Threading.SynchronizationContext" /> to schedule the method invocation on instead of the default one specified by the <see cref="T:System.Threading.SynchronizationContext" /> property.</param>
         </member>
@@ -4997,6 +5217,15 @@
             </summary>
             <param name="exposedMembersOnType">Type to reflect over and analyze its events.</param>
             <returns>A list of EventInfos found.</returns>
+        </member>
+        <member name="M:StreamJsonRpc.Reflection.RpcTargetInfo.AddRpcInterfaceToTarget(System.Collections.Generic.IReadOnlyDictionary{System.String,System.Collections.Generic.List{StreamJsonRpc.MethodSignature}},System.Object,StreamJsonRpc.JsonRpcTargetOptions,StreamJsonRpc.Reflection.RpcTargetInfo.RevertAddLocalRpcTarget)">
+            <summary>
+            Adds a new RPC interface to an existing target registering RPC methods.
+            </summary>
+            <param name="mapping">The methods to bers of the <paramref name="target" /> object.</param>
+            <param name="target">Target to invoke when incoming messages are received.</param>
+            <param name="options">A set of customizations for how the target object is registered. If <see langword="null" />, default options will be used.</param>
+            <param name="revertAddLocalRpcTarget">An optional object that may be disposed of to revert the addition of the target object.</param>
         </member>
         <member name="M:StreamJsonRpc.Reflection.RpcTargetInfo.MethodNameMap.FindMethodAttribute(System.Reflection.MethodInfo)">
             <summary>
@@ -5038,7 +5267,7 @@
             Extracts some interface from a given <see cref="T:System.Type" />, if it is implemented.
             </summary>
             <param name="objectType">The type which may implement <typeparamref name="TInterface" />.</param>
-            <returns>The <typeparamref name="TInterface" /> type from given <see cref="T:System.Type" /> object, or <c>null</c>  if no such interface was found in the given <paramref name="objectType" />.</returns>
+            <returns>The <typeparamref name="TInterface" /> type from given <see cref="T:System.Type" /> object, or <see langword="null" />  if no such interface was found in the given <paramref name="objectType" />.</returns>
         </member>
         <member name="M:StreamJsonRpc.Reflection.TrackerHelpers`1.CanSerialize(System.Type)">
             <summary>
@@ -5052,14 +5281,14 @@
             Checks whether the given type is an interface compatible with <typeparamref name="TInterface" />.
             </summary>
             <param name="objectType">The type that may be deserialized.</param>
-            <returns><c>true</c> if <paramref name="objectType" /> is a closed generic form of <typeparamref name="TInterface" />; <c>false</c> otherwise.</returns>
+            <returns><see langword="true" /> if <paramref name="objectType" /> is a closed generic form of <typeparamref name="TInterface" />; <see langword="false" /> otherwise.</returns>
         </member>
         <member name="M:StreamJsonRpc.Reflection.TrackerHelpers`1.IsActualInterfaceMatch(System.Type)">
             <summary>
             Checks whether the given type is an interface compatible with <typeparamref name="TInterface" />.
             </summary>
             <param name="objectType">The type that may be deserialized.</param>
-            <returns><c>true</c> if <paramref name="objectType" /> is a closed generic form of <typeparamref name="TInterface" />; <c>false</c> otherwise.</returns>
+            <returns><see langword="true" /> if <paramref name="objectType" /> is a closed generic form of <typeparamref name="TInterface" />; <see langword="false" /> otherwise.</returns>
         </member>
         <member name="T:StreamJsonRpc.JsonRpcIgnoreAttribute">
             <summary>
@@ -5105,7 +5334,7 @@
             <summary>
             Gets the public RPC name by which this method will be invoked.
             </summary>
-            <value>May be <c>null</c> if the method's name has not been overridden.</value>
+            <value>May be <see langword="null" /> if the method's name has not been overridden.</value>
         </member>
         <member name="P:StreamJsonRpc.JsonRpcMethodAttribute.UseSingleObjectParameterDeserialization">
             <summary>
@@ -5161,6 +5390,50 @@
             <see href="https://github.com/microsoft/vs-streamjsonrpc/blob/main/doc/rpc_marshalable_objects.md">Learn more about marshable interfaces</see>.
             </remarks>
         </member>
+        <member name="T:StreamJsonRpc.RpcMarshalableOptionalInterfaceAttribute">
+            <summary>
+            Attribute to be used on an interface marked with <see cref="T:StreamJsonRpc.RpcMarshalableAttribute" /> to indicate that the
+            marshalable object may also implement the interface <see cref="P:StreamJsonRpc.RpcMarshalableOptionalInterfaceAttribute.OptionalInterface" />.
+            </summary>
+            <remarks><para>
+            When an object that implements <see cref="P:StreamJsonRpc.RpcMarshalableOptionalInterfaceAttribute.OptionalInterface" /> is marshaled as its base interface marked with
+            <see cref="T:StreamJsonRpc.RpcMarshalableOptionalInterfaceAttribute" />, <see cref="P:StreamJsonRpc.RpcMarshalableOptionalInterfaceAttribute.OptionalInterfaceCode" /> is included in the
+            StreamJsonRpc message allowing the creation of a proxy which also implements <see cref="P:StreamJsonRpc.RpcMarshalableOptionalInterfaceAttribute.OptionalInterface" />.
+            </para><para>
+            If a message is received containing no <see cref="P:StreamJsonRpc.RpcMarshalableOptionalInterfaceAttribute.OptionalInterfaceCode" /> values, for a marshalable interface that
+            has known optional interfaces, a proxy will be created using the base interface. Unknown
+            <see cref="P:StreamJsonRpc.RpcMarshalableOptionalInterfaceAttribute.OptionalInterfaceCode" /> values will be ignored when creating the proxy.
+            </para><para>
+            <see cref="T:StreamJsonRpc.RpcMarshalableOptionalInterfaceAttribute" /> is honored only when an object is marshaled through an RPC
+            method that used exactly the interface the attribute is assigned to:
+            <see cref="T:StreamJsonRpc.RpcMarshalableOptionalInterfaceAttribute" /> attributes applied to interfaces extending or extended from
+            the one the attribute is assigned to are ignored.
+            </para></remarks>
+        </member>
+        <member name="M:StreamJsonRpc.RpcMarshalableOptionalInterfaceAttribute.#ctor(System.Int32,System.Type)">
+            <summary>
+            Initializes a new instance of the <see cref="T:StreamJsonRpc.RpcMarshalableOptionalInterfaceAttribute" /> class.
+            </summary>
+            <param name="optionalInterfaceCode">The code to be serialized to specify that the marshaled object proxy should
+            be generated implementing the <paramref name="optionalInterface" /> interface.
+            <paramref name="optionalInterfaceCode" /> values must be unique across the different optional interfaces of the
+            type this attribute is applied to. Because <paramref name="optionalInterfaceCode" /> is serialized when
+            transmitting a marshaled object, its value should never be reassigned to a different optional interface when
+            updating RPC interfaces.</param>
+            <param name="optionalInterface">The <see cref="T:System.Type" /> of the known optional interface that the marshalable
+            object may implement.</param>
+        </member>
+        <member name="P:StreamJsonRpc.RpcMarshalableOptionalInterfaceAttribute.OptionalInterface">
+            <summary>
+            Gets the <see cref="T:System.Type" /> of the known optional interface that the marshalable object may implement.
+            </summary>
+        </member>
+        <member name="P:StreamJsonRpc.RpcMarshalableOptionalInterfaceAttribute.OptionalInterfaceCode">
+            <summary>
+            Gets the code to be serialized to specify that the marshaled object proxy should be generated implementing the
+            <see cref="P:StreamJsonRpc.RpcMarshalableOptionalInterfaceAttribute.OptionalInterface" /> interface.
+            </summary>
+        </member>
         <member name="T:StreamJsonRpc.TargetMethod">
             <summary>
             Represents the dispatch target of an incoming request.
@@ -5203,7 +5476,7 @@
         </member>
         <member name="P:StreamJsonRpc.RequestId.Null">
             <summary>
-            Gets the special value for an explicitly specified <c>null</c> request ID.
+            Gets the special value for an explicitly specified <see langword="null" /> request ID.
             </summary>
         </member>
         <member name="P:StreamJsonRpc.RequestId.Number">
@@ -5242,7 +5515,7 @@
             </summary>
             <param name="first">The first value.</param>
             <param name="second">The second value.</param>
-            <returns><c>true</c> if the values are equal; <c>false</c> otherwise.</returns>
+            <returns><see langword="true" /> if the values are equal; <see langword="false" /> otherwise.</returns>
         </member>
         <member name="M:StreamJsonRpc.RequestId.op_Inequality(StreamJsonRpc.RequestId,StreamJsonRpc.RequestId)">
             <summary>
@@ -5250,7 +5523,7 @@
             </summary>
             <param name="first">The first value.</param>
             <param name="second">The second value.</param>
-            <returns><c>false</c> if the values are equal; <c>true</c> otherwise.</returns>
+            <returns><see langword="false" /> if the values are equal; <see langword="true" /> otherwise.</returns>
         </member>
         <member name="M:StreamJsonRpc.RequestId.Equals(StreamJsonRpc.RequestId)">
             <inheritdoc />
@@ -5278,6 +5551,11 @@
             <summary>
               Overrides the current thread's CurrentUICulture property for all
               resource lookups using this strongly typed resource class.
+            </summary>
+        </member>
+        <member name="P:StreamJsonRpc.Resources.AddRpcInterfaceToTargetParameterNotInterface">
+            <summary>
+              Looks up a localized string similar to AddRpcInterfaceToTarget parameter is not an interface.
             </summary>
         </member>
         <member name="P:StreamJsonRpc.Resources.BothReadableWritableAreNull">
@@ -5417,17 +5695,17 @@
         </member>
         <member name="P:StreamJsonRpc.Resources.MarshalableInterfaceHasEvents">
             <summary>
-              Looks up a localized string similar to Interfaces with events cannot be marshaled..
+              Looks up a localized string similar to {0} is not a valid marshaled interface because it has events..
             </summary>
         </member>
         <member name="P:StreamJsonRpc.Resources.MarshalableInterfaceHasProperties">
             <summary>
-              Looks up a localized string similar to Interfaces with properties cannot be marshaled..
+              Looks up a localized string similar to {0} is not a valid marshaled interface because it has properties..
             </summary>
         </member>
         <member name="P:StreamJsonRpc.Resources.MarshalableInterfaceNotDisposable">
             <summary>
-              Looks up a localized string similar to Marshaled interfaces must extend IDisposable..
+              Looks up a localized string similar to {0} is not a valid marshaled interface because doesn't extend IDisposable..
             </summary>
         </member>
         <member name="P:StreamJsonRpc.Resources.MarshaledObjectInNotificationError">
@@ -5535,9 +5813,29 @@
               Looks up a localized string similar to Response is in an unexpected format.  Only error and result are supported: {0}.
             </summary>
         </member>
+        <member name="P:StreamJsonRpc.Resources.RpcMarshalableDuplicatedOptionalInterface">
+            <summary>
+              Looks up a localized string similar to Optional interface declarations should be unique. {0} has the same optional interface declared multiple times..
+            </summary>
+        </member>
+        <member name="P:StreamJsonRpc.Resources.RpcMarshalableDuplicatedOptionalInterfaceCode">
+            <summary>
+              Looks up a localized string similar to Optional interface codes should be unique. {0} has the same optional interface code used multiple times..
+            </summary>
+        </member>
+        <member name="P:StreamJsonRpc.Resources.RpcMarshalableOptionalInterfaceMustBeMarshalable">
+            <summary>
+              Looks up a localized string similar to {0} is not marked with the RpcMarshalable attribute..
+            </summary>
+        </member>
         <member name="P:StreamJsonRpc.Resources.RpcMethodNameNotFound">
             <summary>
               Looks up a localized string similar to No method by the name '{0}' is found..
+            </summary>
+        </member>
+        <member name="P:StreamJsonRpc.Resources.SerializationFailure">
+            <summary>
+              Looks up a localized string similar to An error occured during serialization..
             </summary>
         </member>
         <member name="P:StreamJsonRpc.Resources.StreamDisposed">
@@ -5593,6 +5891,11 @@
         <member name="P:StreamJsonRpc.Resources.UnexpectedErrorProcessingJsonRpc">
             <summary>
               Looks up a localized string similar to Unexpected error processing JSON-RPC message: {0}.
+            </summary>
+        </member>
+        <member name="P:StreamJsonRpc.Resources.UnexpectedNullValueInMap">
+            <summary>
+              Looks up a localized string similar to Unexpected null key encountered while deserializing map..
             </summary>
         </member>
         <member name="P:StreamJsonRpc.Resources.UnexpectedResponseWithNoMatchingRequest">
@@ -5850,7 +6153,7 @@
             <summary>
             Disposes resources allocated by this instance.
             </summary>
-            <param name="disposing"><c>true</c> when being disposed; <c>false</c> when being finalized.</param>
+            <param name="disposing"><see langword="true" /> when being disposed; <see langword="false" /> when being finalized.</param>
         </member>
         <member name="M:StreamJsonRpc.StreamMessageHandler.FlushAsync(System.Threading.CancellationToken)">
             <summary>
@@ -5859,9 +6162,113 @@
             </summary>
             <returns>A <see cref="T:System.Threading.Tasks.Task" /> that completes when the write buffer has been transmitted.</returns>
         </member>
-        <member name="P:StreamJsonRpc.Utilities.IsRunningOnMono">
+        <member name="T:StreamJsonRpc.SystemTextJsonFormatter">
             <summary>
-            Gets a value indicating whether the mono runtime is executing this code.
+            A formatter that emits UTF-8 encoded JSON where user data should be serializable via the <see cref="T:System.Text.Json.JsonSerializer" />.
+            </summary>
+        </member>
+        <member name="F:StreamJsonRpc.SystemTextJsonFormatter.BuiltInSerializerOptions">
+            <summary>
+            The <see cref="P:StreamJsonRpc.SystemTextJsonFormatter.JsonSerializerOptions" /> to use for the envelope and built-in types.
+            </summary>
+        </member>
+        <member name="F:StreamJsonRpc.SystemTextJsonFormatter.DefaultEncoding">
+            <summary>
+            UTF-8 encoding without a preamble.
+            </summary>
+        </member>
+        <member name="F:StreamJsonRpc.SystemTextJsonFormatter.deserializingDocument">
+            <summary>
+            Retains the message currently being deserialized so that it can be disposed when we're done with it.
+            </summary>
+        </member>
+        <member name="M:StreamJsonRpc.SystemTextJsonFormatter.#ctor">
+            <summary>
+            Initializes a new instance of the <see cref="T:StreamJsonRpc.SystemTextJsonFormatter" /> class.
+            </summary>
+        </member>
+        <member name="P:StreamJsonRpc.SystemTextJsonFormatter.Encoding">
+            <inheritdoc />
+        </member>
+        <member name="P:StreamJsonRpc.SystemTextJsonFormatter.JsonSerializerOptions">
+            <summary>
+            Gets or sets the options to use when serializing and deserializing JSON containing user data.
+            </summary>
+        </member>
+        <member name="M:StreamJsonRpc.SystemTextJsonFormatter.Deserialize(System.Buffers.ReadOnlySequence{System.Byte})">
+            <inheritdoc />
+        </member>
+        <member name="M:StreamJsonRpc.SystemTextJsonFormatter.Deserialize(System.Buffers.ReadOnlySequence{System.Byte},System.Text.Encoding)">
+            <inheritdoc />
+        </member>
+        <member name="M:StreamJsonRpc.SystemTextJsonFormatter.GetJsonText(StreamJsonRpc.Protocol.JsonRpcMessage)">
+            <inheritdoc />
+        </member>
+        <member name="M:StreamJsonRpc.SystemTextJsonFormatter.Serialize(System.Buffers.IBufferWriter{System.Byte},StreamJsonRpc.Protocol.JsonRpcMessage)">
+            <inheritdoc />
+        </member>
+        <member name="M:StreamJsonRpc.SystemTextJsonFormatter.TopLevelPropertyBag.#ctor(System.Text.Json.JsonDocument,System.Text.Json.JsonSerializerOptions)">
+            <summary>
+            Initializes a new instance of the <see cref="T:StreamJsonRpc.SystemTextJsonFormatter.TopLevelPropertyBag" /> class
+            for use with an incoming message.
+            </summary>
+            <param name="incomingMessage">The incoming message.</param>
+            <param name="jsonSerializerOptions">The serializer options to use.</param>
+        </member>
+        <member name="M:StreamJsonRpc.SystemTextJsonFormatter.TopLevelPropertyBag.#ctor(System.Text.Json.JsonSerializerOptions)">
+            <summary>
+            Initializes a new instance of the <see cref="T:StreamJsonRpc.SystemTextJsonFormatter.TopLevelPropertyBag" /> class
+            for use with an outcoming message.
+            </summary>
+            <param name="jsonSerializerOptions">The serializer options to use.</param>
+        </member>
+        <member name="F:StreamJsonRpc.SystemTextJsonFormatter.ExceptionConverter.exceptionRecursionCounter">
+            <summary>
+            Tracks recursion count while serializing or deserializing an exception.
+            </summary>
+        </member>
+        <member name="T:StreamJsonRpc.SystemTextJsonFormatter.DataContractResolver">
+            <summary>
+            Adds compatibility with DataContractSerializer attributes.
+            </summary>
+            <example>
+            To enable this resolver, add the following when creating your <see cref="T:StreamJsonRpc.SystemTextJsonFormatter" /> instance:
+            <code><![CDATA[
+            var formatter = new SystemTextJsonFormatter
+            {
+                JsonSerializerOptions =
+                {
+                    TypeInfoResolver = new SystemTextJsonFormatter.DataContractResolver(),
+                },
+            };
+            ]]></code>
+            </example>
+        </member>
+        <member name="M:StreamJsonRpc.SystemTextJsonFormatter.DataContractResolver.#ctor">
+            <summary>
+            Initializes a new instance of the <see cref="T:StreamJsonRpc.SystemTextJsonFormatter.DataContractResolver" /> class.
+            </summary>
+        </member>
+        <member name="P:StreamJsonRpc.SystemTextJsonFormatter.DataContractResolver.FallbackResolver">
+            <summary>
+            Gets the fallback resolver to use for types lacking a <see cref="T:System.Runtime.Serialization.DataContractAttribute" />.
+            </summary>
+            <value>The default value is an instance of <see cref="T:System.Text.Json.Serialization.Metadata.DefaultJsonTypeInfoResolver" />.</value>
+        </member>
+        <member name="M:StreamJsonRpc.SystemTextJsonFormatter.DataContractResolver.GetTypeInfo(System.Type,System.Text.Json.JsonSerializerOptions)">
+            <inheritdoc />
+        </member>
+        <member name="T:StreamJsonRpc.SystemTextJsonFormatter.ToStringHelper">
+            <inheritdoc cref="T:StreamJsonRpc.MessagePackFormatter.ToStringHelper" />
+        </member>
+        <member name="M:StreamJsonRpc.SystemTextJsonFormatter.ToStringHelper.Activate(System.Buffers.ReadOnlySequence{System.Byte})">
+            <summary>
+            Initializes this object to represent a message.
+            </summary>
+        </member>
+        <member name="M:StreamJsonRpc.SystemTextJsonFormatter.ToStringHelper.Deactivate">
+            <summary>
+            Cleans out this object to release memory and ensure <see cref="M:StreamJsonRpc.SystemTextJsonFormatter.ToStringHelper.ToString" /> throws if someone uses it after deactivation.
             </summary>
         </member>
         <member name="M:StreamJsonRpc.Utilities.ReadInt32BE(System.Buffers.ReadOnlySequence{System.Byte})">
@@ -5956,15 +6363,5 @@
         <member name="M:StreamJsonRpc.WebSocketMessageHandler.FlushAsync(System.Threading.CancellationToken)">
             <inheritdoc />
         </member>
-        <member name="T:System.Runtime.CompilerServices.IsExternalInit">
-            <summary>
-                Reserved to be used by the compiler for tracking metadata.
-                This class should not be used by developers in source code.
-            </summary>
-            <remarks>
-                This definition is provided by the <i>IsExternalInit</i> NuGet package (https://www.nuget.org/packages/IsExternalInit).
-                Please see https://github.com/manuelroemer/IsExternalInit for more information.
-            </remarks>
-        </member>
     </members>
-<Signature xmlns="http://www.w3.org/2000/09/xmldsig#"><SignedInfo><CanonicalizationMethod Algorithm="http://www.w3.org/TR/2001/REC-xml-c14n-20010315" /><SignatureMethod Algorithm="http://www.w3.org/2001/04/xmldsig-more#rsa-sha256" /><Reference URI=""><Transforms><Transform Algorithm="http://www.w3.org/2000/09/xmldsig#enveloped-signature" /><Transform Algorithm="http://www.w3.org/TR/2001/REC-xml-c14n-20010315" /></Transforms><DigestMethod Algorithm="http://www.w3.org/2001/04/xmlenc#sha256" /><DigestValue>xBwI+7lF81sVK0iEjCwfqxZrldN637dl0wQLco0Bh/s=</DigestValue></Reference></SignedInfo><SignatureValue>TlKqwmGhCMpXWdIEKP8wVcv42r6tD4sKOsWugIv3BH2Pa5iDJ09VTbbaEPz1TcGt3LLPM1/5A+ebrDiwfC7pd4qkotEv0AzVLF79OjwI+HwwDG5gzkN8yZIokNz+T9Rl5iTW5rXfVPfAKsCdJmFE2hr+2wVM+tt1bf6uEzazVbN/vhYLXt59d5JnzpvghcqyfOQZQz1cgkuoFLfu3oUC8AV7B6/pxV9pEMBxpmZZdLbdtH+8QK7zOT0dHMI86mMDqK3RVKraNYHb4uoWLgFfbB3raErejyjWKw55NORElWupp2CUeO3etZiu1ozHVQnLHE6wewcfKWsfOIAeY3R8oA==</SignatureValue><KeyInfo><KeyValue><RSAKeyValue><Modulus>wSKV0d29SGADLp1fWWAVWLGgO0uuJqmnCsvziVH9C6/y1v7VpSQ8yR/ZxQIbNM80nUEHC4UoTkk1MbZcGQ/XZ3yHMeKWYLtFR5KkMNnVXPDm9tRgaObFa14BAEMWaK5RLgJdtCqUiBS1AcKGRRhUkDUjHKj7nVzsPjIb5+q12L/6Y1yI4AZ7Z+qdX/tPgtjV7hayMIySCXdHqxnn8DIP/1alE3EWo+kogl0mOpIztSfT/KGkUARyDhRHy5V0N2tQE5TO3rwlL4N4gaa6S/o9STAFFb/vOzUQKaaz8le+VPxSi5TtoqA22+vXt0u9uV0C1vv5yTOIoVUNAR2nYe+P5Q==</Modulus><Exponent>AQAB</Exponent></RSAKeyValue></KeyValue><X509Data><X509Certificate>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</X509Certificate><X509Certificate>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</X509Certificate><X509Certificate>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</X509Certificate></X509Data></KeyInfo><Object Id="ts-countersig"><X509Data><X509Certificate>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</X509Certificate><X509Certificate>MIIHcTCCBVmgAwIBAgITMwAAABXF52ueAptJmQAAAAAAFTANBgkqhkiG9w0BAQsFADCBiDELMAkGA1UEBhMCVVMxEzARBgNVBAgTCldhc2hpbmd0b24xEDAOBgNVBAcTB1JlZG1vbmQxHjAcBgNVBAoTFU1pY3Jvc29mdCBDb3Jwb3JhdGlvbjEyMDAGA1UEAxMpTWljcm9zb2Z0IFJvb3QgQ2VydGlmaWNhdGUgQXV0aG9yaXR5IDIwMTAwHhcNMjEwOTMwMTgyMjI1WhcNMzAwOTMwMTgzMjI1WjB8MQswCQYDVQQGEwJVUzETMBEGA1UECBMKV2FzaGluZ3RvbjEQMA4GA1UEBxMHUmVkbW9uZDEeMBwGA1UEChMVTWljcm9zb2Z0IENvcnBvcmF0aW9uMSYwJAYDVQQDEx1NaWNyb3NvZnQgVGltZS1TdGFtcCBQQ0EgMjAxMDCCAiIwDQYJKoZIhvcNAQEBBQADggIPADCCAgoCggIBAOThpkzntHIhC3miy9ckeb0O1YLT/e6cBwfSqWxOdcjKNVf2AX9sSuDivbk+F2Az/1xPx2b3lVNxWuJ+Slr+uDZnhUYjDLWNE893MsAQGOhgfWpSg0S3po5GawcU88V29YZQ3MFEyHFcUTE3oAo4bo3t1w/YJlN8OWECesSq/XJprx2rrPY2vjUmZNqYO7oaezOtgFt+jBAcnVL+tuhiJdxqD89d9P6OU8/W7IVWTe/dvI2k45GPsjksUZzpcGkNyjYtcI4xyDUoveO0hyTD4MmPfrVUj9z6BVWYbWg7mka97aSueik3rMvrg0XnRm7KMtXAhjBcTyziYrLNueKNiOSWrAFKu75xqRdbZ2De+JKRHh09/SDPc31BmkZ1zcRfNN0Sidb9pSB9fvzZnkXftnIv231fgLrbqn427DZM9ituqBJR6L8FA6PRc6ZNN3SUHDSCD/AQ8rdHGO2n6Jl8P0zbr17C89XYcz1DTsEzOUyOArxCaC4Q6oRRRuLRvWoYWmEBc8pnol7XKHYC4jMYctenIPDC+hIK12NvDMk2ZItboKaDIV1fMHSRlJTYuVD5C4lh8zYGNRiER9vcG9H9stQcxWv2XFJRXRLbJbqvUAV6bMURHXLvjflSxIUXk8A8FdsaN8cIFRg/eKtFtvUeh17aj54WcmnGrnu3tz5q4i6tAgMBAAGjggHdMIIB2TASBgkrBgEEAYI3FQEEBQIDAQABMCMGCSsGAQQBgjcVAgQWBBQqp1L+ZMSavoKRPEY1Kc8Q/y8E7jAdBgNVHQ4EFgQUn6cVXQBeYl2D9OXSZacbUzUZ6XIwXAYDVR0gBFUwUzBRBgwrBgEEAYI3TIN9AQEwQTA/BggrBgEFBQcCARYzaHR0cDovL3d3dy5taWNyb3NvZnQuY29tL3BraW9wcy9Eb2NzL1JlcG9zaXRvcnkuaHRtMBMGA1UdJQQMMAoGCCsGAQUFBwMIMBkGCSsGAQQBgjcUAgQMHgoAUwB1AGIAQwBBMAsGA1UdDwQEAwIBhjAPBgNVHRMBAf8EBTADAQH/MB8GA1UdIwQYMBaAFNX2VsuP6KJcYmjRPZSQW9fOmhjEMFYGA1UdHwRPME0wS6BJoEeGRWh0dHA6Ly9jcmwubWljcm9zb2Z0LmNvbS9wa2kvY3JsL3Byb2R1Y3RzL01pY1Jvb0NlckF1dF8yMDEwLTA2LTIzLmNybDBaBggrBgEFBQcBAQROMEwwSgYIKwYBBQUHMAKGPmh0dHA6Ly93d3cubWljcm9zb2Z0LmNvbS9wa2kvY2VydHMvTWljUm9vQ2VyQXV0XzIwMTAtMDYtMjMuY3J0MA0GCSqGSIb3DQEBCwUAA4ICAQCdVX38Kq3hLB9nATEkW+Geckv8qW/qXBS2Pk5HZHixBpOXPTEztTnXwnE2P9pkbHzQdTltuw8x5MKP+2zRoZQYIu7pZmc6U03dmLq2HnjYNi6cqYJWAAOwBb6J6Gngugnue99qb74py27YP0h1AdkY3m2CDPVtI1TkeFN1JFe53Z/zjj3G82jfZfakVqr3lbYoVSfQJL1AoL8ZthISEV09J+BAljis9/kpicO8F7BUhUKz/AyeixmJ5/ALaoHCgRlCGVJ1ijbCHcNhcy4sa3tuPywJeBTpkbKpW99Jo3QMvOyRgNI95ko+ZjtPu4b6MhrZlvSP9pEB9s7GdP32THJvEKt1MMU0sHrYUP4KWN1APMdUbZ1jdEgssU5HLcEUBHG/ZPkkvnNtyo4JvbMBV0lUZNlz138eW0QBjloZkWsNn6Qo3GcZKCS6OEuabvshVGtqRRFHqfG3rsjoiV5PndLQTHa1V1QJsWkBRH58oWFsc/4Ku+xBZj1p/cvBQUl+fpO+y/g75LcVv7TOPqUxUYS8vwLBgqJ7Fx0ViY1w/ue10CgaiQuPNtq6TPmb/wrpNPgkNWcr4A245oyZ1uEi6vAnQj0llOZ0dFtq0Z4+7X6gMTN9vMvpe784cETRkPHIqzqKOghif9lwY1NNje6CbaUFEMFxBmoQtB1VM1izoXBm8g==</X509Certificate></X509Data><CounterSignature ts-format="cms-timestamp-message" xmlns="http://schemas.microsoft.com/xmldsig/timestamp/2003">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</CounterSignature></Object></Signature></doc>
+<Signature xmlns="http://www.w3.org/2000/09/xmldsig#"><SignedInfo><CanonicalizationMethod Algorithm="http://www.w3.org/TR/2001/REC-xml-c14n-20010315" /><SignatureMethod Algorithm="http://www.w3.org/2001/04/xmldsig-more#rsa-sha256" /><Reference URI=""><Transforms><Transform Algorithm="http://www.w3.org/2000/09/xmldsig#enveloped-signature" /><Transform Algorithm="http://www.w3.org/TR/2001/REC-xml-c14n-20010315" /></Transforms><DigestMethod Algorithm="http://www.w3.org/2001/04/xmlenc#sha256" /><DigestValue>yN1VfzNWU0WleYdodt8QRmyI+/CtJeWdgoQhjs2a03w=</DigestValue></Reference></SignedInfo><SignatureValue>F6W8+yPi9tTJ3tFCFLhgvsdJIKnX3tw5PoBPyOKMvvF/040m8ICuraSITTTsnTwhAYdn/fgPzy6Mtl2I1cSp84pw9D8BtrLG+CSIxjoW5pcbwrI3226mRW8xR9LG1gydV1VzqVFqm95U4qXRgNNfHJHoFWrGSVDYWrMXSe99M9K5CavCOHFENbmPvVn0wOpKo9AexW2dlVWHj/M5Q4QITLeUIsYblBg/ms3MimNyVkxe5pNlyRid3D55ImzKOrLjA5DrIr/M5QG1DxXg06PUiYOXPoJxzRaqVb6nPbSiNoSah7RPMgTSbi2luIx4O7z5kMoFNnK6sFTJ7jLoV8L+MQ==</SignatureValue><KeyInfo><KeyValue><RSAKeyValue><Modulus>3QiojSOiARVrryVJn+lnTiamZiMGLORuwCQ+VG3C+rbAvhATw269+qRRqNW7FKed50chWJ53KDIPBStHfIy5cNJYHsQw6+4InH9szgRVqn7/50i8MyRTT+VtNwxf9daGddq0hahpZvjuOnEY0wxQaTEQmWRnXWZUQY4r28tHiNVYEw9U7wHXwWEHvNn4ZlkJGEf5VpgCvr1v9fmzu4x2sV0zQsSyAVtOxfDwY1HMBcccn23tphweIdS+FNDn2vh1/2kREO0qmGc+fbFzNskjn72MiI56kjvNDRgWs+Q78yBvPCdPgTYTrto5eg33Ko2ELNR/zzEkCCuhO5Vw10qV8w==</Modulus><Exponent>AQAB</Exponent></RSAKeyValue></KeyValue><X509Data><X509Certificate>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</X509Certificate><X509Certificate>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</X509Certificate><X509Certificate>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</X509Certificate></X509Data></KeyInfo><Object Id="ts-countersig"><X509Data><X509Certificate>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</X509Certificate><X509Certificate>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</X509Certificate></X509Data><CounterSignature ts-format="cms-timestamp-message" xmlns="http://schemas.microsoft.com/xmldsig/timestamp/2003">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</CounterSignature></Object></Signature></doc>

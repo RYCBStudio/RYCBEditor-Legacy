@@ -633,24 +633,6 @@
             <param name="linePosition">The line position indicating where the error occurred.</param>
             <param name="innerException">The exception that is the cause of the current exception, or <c>null</c> if no inner exception is specified.</param>
         </member>
-        <member name="P:Microsoft.SqlServer.Management.Assessment.Configuration.Json.SqlAssessmentJsonException.Path">
-            <summary>
-            Gets the path to the JSON where the error occurred.
-            </summary>
-            <value>The path to the JSON where the error occurred.</value>
-        </member>
-        <member name="P:Microsoft.SqlServer.Management.Assessment.Configuration.Json.SqlAssessmentJsonException.LineNumber">
-            <summary>
-            Gets the line number indicating where the error occurred.
-            </summary>
-            <value>The line number indicating where the error occurred.</value>
-        </member>
-        <member name="P:Microsoft.SqlServer.Management.Assessment.Configuration.Json.SqlAssessmentJsonException.LinePosition">
-            <summary>
-            Gets the line position indicating where the error occurred.
-            </summary>
-            <value>The line position indicating where the error occurred.</value>
-        </member>
         <member name="M:Microsoft.SqlServer.Management.Assessment.Configuration.Json.SqlAssessmentJsonException.Create(Newtonsoft.Json.JsonReader,System.String,System.Exception)">
             <summary>
             Creates a new instance of <see cref="T:Microsoft.SqlServer.Management.Assessment.Configuration.Json.SqlAssessmentJsonException"/> specifying current JSON location.
@@ -2047,49 +2029,73 @@
             <param name="right">The right argument. Will be trimmed by <paramref name="left"/></param>
             <returns>Returns intersection of <paramref name="left"/> and <paramref name="right"/>.</returns>
         </member>
-        <member name="T:Microsoft.SqlServer.Management.Assessment.MachineType">
+        <member name="T:Microsoft.SqlServer.Management.Assessment.Tools.IAzGraphTool">
             <summary>
-            Indicates whether SQL Server is running in a virtualized environment.
+            An interface for communicating to Azure services.
             </summary>
         </member>
-        <member name="F:Microsoft.SqlServer.Management.Assessment.MachineType.Physical">
+        <member name="M:Microsoft.SqlServer.Management.Assessment.Tools.IAzGraphTool.Query(System.String,System.Collections.Generic.IReadOnlyDictionary{System.String,System.Object},System.Threading.CancellationToken)">
             <summary>
-            SQL Server is not running inside a virtual machine.
+            This method invokes a Kusto query with parameters to get data from Azure.
+            </summary>
+            <param name="query">A Kusto query to invoke.</param>
+            <param name="parameters">Query parameters.</param>
+            <param name="cancellationToken">The token to monitor for cancellation requests.</param>
+            <returns>Returns an <see cref="T:Microsoft.SqlServer.Management.Assessment.IDataView"/> containing data returned from Azure.</returns>
+        </member>
+        <member name="M:Microsoft.SqlServer.Management.Assessment.Tools.SingleFieldMeasurement.TryGetData(System.String,System.Object@)">
+            <summary>
+            Obtains data from this <see cref="T:Microsoft.SqlServer.Management.Assessment.IDataRow" /> by name.
+            Returns <c>true</c> if data was registered for this <paramref name="column" />, and <c>false</c> otherwise.
+            </summary>
+            <param name="column">Column name.</param>
+            <param name="value">Data if any. Initialized with null otherwise.</param>
+            <returns>
+            Returns <c>true</c> if data was registered for this <paramref name="column" />, and <c>false</c> otherwise.
+            </returns>
+        </member>
+        <member name="T:Microsoft.SqlServer.Management.Assessment.Tools.ITool">
+            <summary>
+            A channel of communication to the target server.
             </summary>
         </member>
-        <member name="F:Microsoft.SqlServer.Management.Assessment.MachineType.AzureVm">
+        <member name="M:Microsoft.SqlServer.Management.Assessment.Tools.ITool.GetDependencies">
             <summary>
-            SQL Server is running inside an Azure virtual machine.
+            Lists characteristics required for this channel.
+            </summary>
+            <returns>Returns a <see cref="T:Microsoft.SqlServer.Management.Assessment.Probes.CharacteristicCollection"/> required needed by this <see cref="T:Microsoft.SqlServer.Management.Assessment.Tools.ITool"/>.</returns>
+        </member>
+        <member name="M:Microsoft.SqlServer.Management.Assessment.Tools.ITool.IsAvailable(System.Threading.CancellationToken)">
+            <summary>
+            Determines whether the specified run space is available.
+            </summary>
+            <param name="cancellationToken">The token to monitor for cancellation requests.</param>
+            <returns>Returns <c>true</c> when the channel is ready to use. <c>false</c> otherwise.</returns>
+        </member>
+        <member name="T:Microsoft.SqlServer.Management.Assessment.Tools.IInventory">
+            <summary>
+            A DI container for channels.
             </summary>
         </member>
-        <member name="F:Microsoft.SqlServer.Management.Assessment.MachineType.Hypervisor">
+        <member name="M:Microsoft.SqlServer.Management.Assessment.Tools.IInventory.GetTools(Microsoft.SqlServer.Management.Assessment.RunSpace,System.Type)">
             <summary>
-            SQL Server is running inside a virtual machine hosted by an operating system running hypervisor (a host operating system that employs hardware-assisted virtualization).
+            Obtains all channels of type <paramref name="channelType"/>
+            connected to the target of the <paramref name="runSpace"/>.
             </summary>
+            <param name="runSpace"></param>
+            <param name="channelType">Tpe of channel to return.</param>
+            <returns></returns>
         </member>
-        <member name="F:Microsoft.SqlServer.Management.Assessment.MachineType.Other">
+        <member name="M:Microsoft.SqlServer.Management.Assessment.Tools.TwoFieldMeasurement.TryGetData(System.String,System.Object@)">
             <summary>
-            SQL Server is running inside a virtual machine hosted by an operating system that does not employ hardware assistant.
+            Obtains data from this <see cref="T:Microsoft.SqlServer.Management.Assessment.IDataRow" /> by name.
+            Returns <c>true</c> if data was registered for this <paramref name="column" />, and <c>false</c> otherwise.
             </summary>
-        </member>
-        <member name="M:Microsoft.SqlServer.Management.Assessment.ProbeRequirementsError.#ctor(Microsoft.SqlServer.Management.Assessment.Checks.ICheck,System.String,Microsoft.SqlServer.Management.Assessment.SqlObjectType,System.String)">
-            <summary>
-            Initializes a new instance of <see cref="T:Microsoft.SqlServer.Management.Assessment.ProbeError"/> with given values when no exception occured.
-            </summary>
-            <param name="check">The check returning this <see cref="T:Microsoft.SqlServer.Management.Assessment.ProbeError"/>.</param>
-            <param name="message">A <see cref="T:System.String"/> message explaining the issue to the user.</param>
-            <param name="targetType">Type of target object.</param>
-            <param name="targetPath">Path to the target object.</param>
-        </member>
-        <member name="M:Microsoft.SqlServer.Management.Assessment.ProbeRequirementsError.#ctor(Microsoft.SqlServer.Management.Assessment.Checks.ICheck,System.String,System.Collections.Generic.IEnumerable{System.Collections.Generic.KeyValuePair{System.String,System.Exception}},Microsoft.SqlServer.Management.Assessment.SqlObjectType,System.String)">
-            <summary>
-            Initializes a new instance of <see cref="T:Microsoft.SqlServer.Management.Assessment.ProbeError"/> with exceptions were caught.
-            </summary>
-            <param name="check">The check returning this <see cref="T:Microsoft.SqlServer.Management.Assessment.ProbeError"/>.</param>
-            <param name="message">A <see cref="T:System.String"/> message explaining the issue to the user.</param>
-            <param name="innerExceptions">A dictionary mapping probe names to exceptions.</param>
-            <param name="targetType">Type of target object.</param>
-            <param name="targetPath">Path to the target object.</param>
+            <param name="column">Column name.</param>
+            <param name="value">Data if any. Initialized with null otherwise.</param>
+            <returns>
+            Returns <c>true</c> if data was registered for this <paramref name="column" />, and <c>false</c> otherwise.
+            </returns>
         </member>
         <member name="P:Microsoft.SqlServer.Management.Assessment.Probes.AzStorageProbe.StorageDisk.IsPoolDisk">
             <summary>
@@ -2500,6 +2506,50 @@
             </param>
             <param name="args">The object array that contains one or more objects to format.</param>
         </member>
+        <member name="T:Microsoft.SqlServer.Management.Assessment.MachineType">
+            <summary>
+            Indicates whether SQL Server is running in a virtualized environment.
+            </summary>
+        </member>
+        <member name="F:Microsoft.SqlServer.Management.Assessment.MachineType.Physical">
+            <summary>
+            SQL Server is not running inside a virtual machine.
+            </summary>
+        </member>
+        <member name="F:Microsoft.SqlServer.Management.Assessment.MachineType.AzureVm">
+            <summary>
+            SQL Server is running inside an Azure virtual machine.
+            </summary>
+        </member>
+        <member name="F:Microsoft.SqlServer.Management.Assessment.MachineType.Hypervisor">
+            <summary>
+            SQL Server is running inside a virtual machine hosted by an operating system running hypervisor (a host operating system that employs hardware-assisted virtualization).
+            </summary>
+        </member>
+        <member name="F:Microsoft.SqlServer.Management.Assessment.MachineType.Other">
+            <summary>
+            SQL Server is running inside a virtual machine hosted by an operating system that does not employ hardware assistant.
+            </summary>
+        </member>
+        <member name="M:Microsoft.SqlServer.Management.Assessment.ProbeRequirementsError.#ctor(Microsoft.SqlServer.Management.Assessment.Checks.ICheck,System.String,Microsoft.SqlServer.Management.Assessment.SqlObjectType,System.String)">
+            <summary>
+            Initializes a new instance of <see cref="T:Microsoft.SqlServer.Management.Assessment.ProbeError"/> with given values when no exception occured.
+            </summary>
+            <param name="check">The check returning this <see cref="T:Microsoft.SqlServer.Management.Assessment.ProbeError"/>.</param>
+            <param name="message">A <see cref="T:System.String"/> message explaining the issue to the user.</param>
+            <param name="targetType">Type of target object.</param>
+            <param name="targetPath">Path to the target object.</param>
+        </member>
+        <member name="M:Microsoft.SqlServer.Management.Assessment.ProbeRequirementsError.#ctor(Microsoft.SqlServer.Management.Assessment.Checks.ICheck,System.String,System.Collections.Generic.IEnumerable{System.Collections.Generic.KeyValuePair{System.String,System.Exception}},Microsoft.SqlServer.Management.Assessment.SqlObjectType,System.String)">
+            <summary>
+            Initializes a new instance of <see cref="T:Microsoft.SqlServer.Management.Assessment.ProbeError"/> with exceptions were caught.
+            </summary>
+            <param name="check">The check returning this <see cref="T:Microsoft.SqlServer.Management.Assessment.ProbeError"/>.</param>
+            <param name="message">A <see cref="T:System.String"/> message explaining the issue to the user.</param>
+            <param name="innerExceptions">A dictionary mapping probe names to exceptions.</param>
+            <param name="targetType">Type of target object.</param>
+            <param name="targetPath">Path to the target object.</param>
+        </member>
         <member name="P:Microsoft.SqlServer.Management.Assessment.RequirementsWarning.Message">
             <summary>
             Gets a <see cref="T:System.String"/> containing information message, recommendation, or error message ro this <see cref="T:Microsoft.SqlServer.Management.Assessment.IAssessmentResult"/>.
@@ -2529,74 +2579,6 @@
         <member name="M:Microsoft.SqlServer.Management.Assessment.SpecGroupList.System#Collections#IEnumerable#GetEnumerator">
             <summary>Returns an enumerator that iterates through a collection.</summary>
             <returns>An <see cref="T:System.Collections.IEnumerator"></see> object that can be used to iterate through the collection.</returns>
-        </member>
-        <member name="T:Microsoft.SqlServer.Management.Assessment.Tools.IAzGraphTool">
-            <summary>
-            An interface for communicating to Azure services.
-            </summary>
-        </member>
-        <member name="M:Microsoft.SqlServer.Management.Assessment.Tools.IAzGraphTool.Query(System.String,System.Collections.Generic.IReadOnlyDictionary{System.String,System.Object},System.Threading.CancellationToken)">
-            <summary>
-            This method invokes a Kusto query with parameters to get data from Azure.
-            </summary>
-            <param name="query">A Kusto query to invoke.</param>
-            <param name="parameters">Query parameters.</param>
-            <param name="cancellationToken">The token to monitor for cancellation requests.</param>
-            <returns>Returns an <see cref="T:Microsoft.SqlServer.Management.Assessment.IDataView"/> containing data returned from Azure.</returns>
-        </member>
-        <member name="M:Microsoft.SqlServer.Management.Assessment.Tools.SingleFieldMeasurement.TryGetData(System.String,System.Object@)">
-            <summary>
-            Obtains data from this <see cref="T:Microsoft.SqlServer.Management.Assessment.IDataRow" /> by name.
-            Returns <c>true</c> if data was registered for this <paramref name="column" />, and <c>false</c> otherwise.
-            </summary>
-            <param name="column">Column name.</param>
-            <param name="value">Data if any. Initialized with null otherwise.</param>
-            <returns>
-            Returns <c>true</c> if data was registered for this <paramref name="column" />, and <c>false</c> otherwise.
-            </returns>
-        </member>
-        <member name="T:Microsoft.SqlServer.Management.Assessment.Tools.ITool">
-            <summary>
-            A channel of communication to the target server.
-            </summary>
-        </member>
-        <member name="M:Microsoft.SqlServer.Management.Assessment.Tools.ITool.GetDependencies">
-            <summary>
-            Lists characteristics required for this channel.
-            </summary>
-            <returns>Returns a <see cref="T:Microsoft.SqlServer.Management.Assessment.Probes.CharacteristicCollection"/> required needed by this <see cref="T:Microsoft.SqlServer.Management.Assessment.Tools.ITool"/>.</returns>
-        </member>
-        <member name="M:Microsoft.SqlServer.Management.Assessment.Tools.ITool.IsAvailable(System.Threading.CancellationToken)">
-            <summary>
-            Determines whether the specified run space is available.
-            </summary>
-            <param name="cancellationToken">The token to monitor for cancellation requests.</param>
-            <returns>Returns <c>true</c> when the channel is ready to use. <c>false</c> otherwise.</returns>
-        </member>
-        <member name="T:Microsoft.SqlServer.Management.Assessment.Tools.IInventory">
-            <summary>
-            A DI container for channels.
-            </summary>
-        </member>
-        <member name="M:Microsoft.SqlServer.Management.Assessment.Tools.IInventory.GetTools(Microsoft.SqlServer.Management.Assessment.RunSpace,System.Type)">
-            <summary>
-            Obtains all channels of type <paramref name="channelType"/>
-            connected to the target of the <paramref name="runSpace"/>.
-            </summary>
-            <param name="runSpace"></param>
-            <param name="channelType">Tpe of channel to return.</param>
-            <returns></returns>
-        </member>
-        <member name="M:Microsoft.SqlServer.Management.Assessment.Tools.TwoFieldMeasurement.TryGetData(System.String,System.Object@)">
-            <summary>
-            Obtains data from this <see cref="T:Microsoft.SqlServer.Management.Assessment.IDataRow" /> by name.
-            Returns <c>true</c> if data was registered for this <paramref name="column" />, and <c>false</c> otherwise.
-            </summary>
-            <param name="column">Column name.</param>
-            <param name="value">Data if any. Initialized with null otherwise.</param>
-            <returns>
-            Returns <c>true</c> if data was registered for this <paramref name="column" />, and <c>false</c> otherwise.
-            </returns>
         </member>
         <member name="T:Microsoft.SqlServer.Management.Assessment.DataSources.IAzureInstanceMetadataSource">
             <summary>

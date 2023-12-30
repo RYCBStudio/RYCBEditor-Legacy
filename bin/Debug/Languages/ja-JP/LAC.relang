@@ -3,13 +3,3 @@ Name=日本語
 
 [I18n]
 text.LAC.title=許可と著作権の表示
-text.LAC.gb1.AE=AvalonEdit（エディタコントロール）
-text.LAC.gb1.fullctrlname=フルコントロール名：
-text.LAC.gb1.version=バージョン：
-text.LAC.gb1.website=オフィシャルウェブサイト
-text.LAC.gb2.SUI=Sunny UI（UIコンポーネント）
-text.LAC.gb2.namespace=名前空間：
-text.LAC.gb2.gitee=Giteeリポジトリ
-text.LAC.gb3.MMUI=Metro Modern UI（UIコンポーネント）
-text.LAC.gb3.Github=Githubリポジトリ
-text.LAC.gb4.MsgPack=Message Pack（MsgPackシリアライゼーションプログラム）

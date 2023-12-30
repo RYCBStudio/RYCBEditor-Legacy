@@ -2247,7 +2247,8 @@
         </member>
         <member name="M:Microsoft.SqlServer.Management.Common.ServerConnection.GetDatabaseConnection(System.String,System.Boolean)">
             <summary>
-                Returns a connection that has the specified database name in the connection string
+            Returns a connection that has the specified database name in the connection string.
+            If the current connection is already referencing the given database, the current connection is returned.
             </summary>
             <param name="dbName"></param>
             <param name="poolConnection"></param>
@@ -2256,6 +2257,7 @@
         <member name="M:Microsoft.SqlServer.Management.Common.ServerConnection.GetDatabaseConnection(System.String,System.Boolean,Microsoft.SqlServer.Management.Common.IRenewableToken)">
             <summary>
             Returns a connection that has the specified database name in the connection string
+            If the current connection is already referencing the given database, the current connection is returned.
             </summary>
             <param name="dbName"></param>
             <param name="poolConnection"></param>

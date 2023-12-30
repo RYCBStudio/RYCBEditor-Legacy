@@ -955,166 +955,6 @@
         <member name="P:Microsoft.CodeAnalysis.Collections.SR.CannotFindOldValue">
             <summary>Cannot find the old value</summary>
         </member>
-        <member name="T:Microsoft.Build.Shared.AssemblyUtilities">
-            <summary>
-            This class contains common reflection tasks
-            </summary>
-        </member>
-        <member name="T:Microsoft.Build.Shared.VisualStudioLocationHelper">
-            <summary>
-            Helper class to wrap the Microsoft.VisualStudio.Setup.Configuration.Interop API to query
-            Visual Studio setup for instances installed on the machine.
-            Code derived from sample: https://code.msdn.microsoft.com/Visual-Studio-Setup-0cedd331
-            </summary>
-        </member>
-        <member name="M:Microsoft.Build.Shared.VisualStudioLocationHelper.GetInstances">
-            <summary>
-            Query the Visual Studio setup API to get instances of Visual Studio installed
-            on the machine. Will not include anything before Visual Studio "15".
-            </summary>
-            <returns>Enumerable list of Visual Studio instances</returns>
-        </member>
-        <member name="T:Microsoft.Build.Shared.VisualStudioInstance">
-            <summary>
-            Wrapper class to represent an installed instance of Visual Studio.
-            </summary>
-        </member>
-        <member name="P:Microsoft.Build.Shared.VisualStudioInstance.Version">
-            <summary>
-            Version of the Visual Studio Instance
-            </summary>
-        </member>
-        <member name="P:Microsoft.Build.Shared.VisualStudioInstance.Path">
-            <summary>
-            Path to the Visual Studio installation
-            </summary>
-        </member>
-        <member name="P:Microsoft.Build.Shared.VisualStudioInstance.Name">
-            <summary>
-            Full name of the Visual Studio instance with SKU name
-            </summary>
-        </member>
-        <member name="T:Microsoft.Build.Shared.MSBuildConstants">
-            <summary>
-            Constants that we want to be shareable across all our assemblies.
-            </summary>
-        </member>
-        <member name="F:Microsoft.Build.Shared.MSBuildConstants.ToolsPath">
-            <summary>
-            The name of the property that indicates the tools path
-            </summary>
-        </member>
-        <member name="F:Microsoft.Build.Shared.MSBuildConstants.ToolsPath64">
-            <summary>
-            Name of the property that indicates the X64 tools path
-            </summary>
-        </member>
-        <member name="F:Microsoft.Build.Shared.MSBuildConstants.SdksPath">
-            <summary>
-            Name of the property that indicates the root of the SDKs folder
-            </summary>
-        </member>
-        <member name="F:Microsoft.Build.Shared.MSBuildConstants.TreatWarningsAsErrors">
-            <summary>
-            Name of the property that indicates that all warnings should be treated as errors.
-            </summary>
-        </member>
-        <member name="F:Microsoft.Build.Shared.MSBuildConstants.WarningsAsErrors">
-            <summary>
-            Name of the property that indicates a list of warnings to treat as errors.
-            </summary>
-        </member>
-        <member name="F:Microsoft.Build.Shared.MSBuildConstants.WarningsAsMessages">
-            <summary>
-            Name of the property that indicates the list of warnings to treat as messages.
-            </summary>
-        </member>
-        <member name="F:Microsoft.Build.Shared.MSBuildConstants.NuGetAssemblyPathEnvironmentVariableName">
-            <summary>
-            The name of the environment variable that users can specify to override where NuGet assemblies are loaded from in the NuGetSdkResolver.
-            </summary>
-        </member>
-        <member name="F:Microsoft.Build.Shared.MSBuildConstants.RestoreTargetName">
-            <summary>
-            The name of the target to run when a user specifies the /restore command-line argument.
-            </summary>
-        </member>
-        <member name="F:Microsoft.Build.Shared.MSBuildConstants.CurrentVisualStudioVersion">
-            <summary>
-            The most current Visual Studio Version known to this version of MSBuild.
-            </summary>
-        </member>
-        <member name="F:Microsoft.Build.Shared.MSBuildConstants.CurrentToolsVersion">
-            <summary>
-            The most current ToolsVersion known to this version of MSBuild.
-            </summary>
-        </member>
-        <member name="F:Microsoft.Build.Shared.MSBuildConstants.CurrentAssemblyVersion">
-            <summary>
-            The most current VSGeneralAssemblyVersion known to this version of MSBuild.
-            </summary>
-        </member>
-        <member name="F:Microsoft.Build.Shared.MSBuildConstants.CurrentProductVersion">
-            <summary>
-            Current version of this MSBuild Engine assembly in the form, e.g, "12.0"
-            </summary>
-        </member>
-        <member name="F:Microsoft.Build.Shared.MSBuildConstants.DefaultTargetsMarker">
-            <summary>
-            Symbol used in ProjectReferenceTarget items to represent default targets
-            </summary>
-        </member>
-        <member name="F:Microsoft.Build.Shared.MSBuildConstants.StandardTestTargetFrameworkVersion">
-            <summary>
-            Framework version against which our test projects should be built.
-            </summary>
-            <remarks>
-            The targeting pack for this version of .NET Framework must be installed
-            on any machine that wants to run tests successfully, so this can be
-            periodically updated.
-            </remarks>
-        </member>
-        <member name="F:Microsoft.Build.Shared.MSBuildConstants.ProjectReferenceTargetsOrDefaultTargetsMarker">
-            <summary>
-            Symbol used in ProjectReferenceTarget items to represent targets specified on the ProjectReference item
-            with fallback to default targets if the ProjectReference item has no targets specified.
-            </summary>
-        </member>
-        <member name="F:Microsoft.Build.Shared.PropertyNames.IsGraphBuild">
-            <summary>
-            Specifies whether the current evaluation / build is happening during a graph build
-            </summary>
-        </member>
-        <member name="F:Microsoft.Build.Shared.ItemTypeNames.ProjectReference">
-            <summary>
-            References to other msbuild projects
-            </summary>
-        </member>
-        <member name="F:Microsoft.Build.Shared.ItemTypeNames.ProjectReferenceTargets">
-            <summary>
-            Statically specifies what targets a project calls on its references
-            </summary>
-        </member>
-        <member name="F:Microsoft.Build.Shared.ItemTypeNames.ProjectCachePlugin">
-            <summary>
-            Declares a project cache plugin and its configuration.
-            </summary>
-        </member>
-        <member name="F:Microsoft.Build.Shared.ItemTypeNames.EmbedInBinlog">
-            <summary>
-            Embed specified files in the binary log
-            </summary>
-        </member>
-        <member name="T:Microsoft.Build.Shared.ItemMetadataNames">
-            <summary>
-            Constants naming well-known item metadata.
-            </summary>
-        </member>
-        <member name="F:Microsoft.Build.Shared.ItemMetadataNames.targetPath">
-            <summary>
-            The output path for a given item.
-            </summary>
-        </member>
         <member name="T:Microsoft.Build.Framework.BuildEngineResult">
             <summary>
             This structure is used to return the result of the build and the target outputs.
@@ -1504,9 +1344,9 @@
             </summary>
         </member>
         <member name="F:Microsoft.Build.Framework.BuildEventContext._projectContextId">
-             <summary>
+            <summary>
             The node-unique project request context the event was in
-             </summary>
+            </summary>
         </member>
         <member name="F:Microsoft.Build.Framework.BuildEventContext._taskId">
             <summary>
@@ -1669,6 +1509,27 @@
             </summary>
             <param name="buildEventContext">BuildEventContext to compare to this instance</param>
             <returns>True if the value fields are the same, false if otherwise</returns>
+        </member>
+        <member name="M:Microsoft.Build.Framework.BuildException.BuildExceptionBase.InitializeCustomState(System.Collections.Generic.IDictionary{System.String,System.String})">
+            <summary>
+            Override this method to recover subtype-specific state from the remote exception.
+            </summary>
+        </member>
+        <member name="M:Microsoft.Build.Framework.BuildException.BuildExceptionBase.FlushCustomState">
+            <summary>
+            Override this method to provide subtype-specific state to be serialized.
+            </summary>
+            <returns></returns>
+        </member>
+        <member name="T:Microsoft.Build.Framework.BuildException.BuildExceptionRemoteState">
+            <summary>
+            Remote exception internal data serving as the source for the exception deserialization.
+            </summary>
+        </member>
+        <member name="T:Microsoft.Build.Framework.BuildException.GenericBuildTransferredException">
+            <summary>
+            A catch-all type for remote exceptions that we don't know how to deserialize.
+            </summary>
         </member>
         <member name="T:Microsoft.Build.Framework.BuildFinishedEventArgs">
             <summary>
@@ -2134,8 +1995,8 @@
             Coupled together with the MSBUILDDISABLEFEATURESFROMVERSION environment variable,
             this class acts as a way to make risky changes while giving customers an opt-out.
             </summary>
-            See docs here: https://github.com/dotnet/msbuild/blob/master/documentation/wiki/ChangeWaves.md
-            For dev docs: https://github.com/dotnet/msbuild/blob/master/documentation/wiki/ChangeWaves-Dev.md
+            See docs here: https://github.com/dotnet/msbuild/blob/main/documentation/wiki/ChangeWaves.md
+            For dev docs: https://github.com/dotnet/msbuild/blob/main/documentation/wiki/ChangeWaves-Dev.md
         </member>
         <member name="F:Microsoft.Build.Framework.ChangeWaves.EnableAllFeatures">
             <summary>
@@ -2169,7 +2030,7 @@
         </member>
         <member name="M:Microsoft.Build.Framework.ChangeWaves.ApplyChangeWave">
             <summary>
-            Read from environment variable `MSBuildDisableFeaturesFromVersion`, correct it if required, cache it and its ConversionState.
+            Read from environment variable `MSBUILDDISABLEFEATURESFROMVERSION`, correct it if required, cache it and its ConversionState.
             </summary>
         </member>
         <member name="M:Microsoft.Build.Framework.ChangeWaves.AreFeaturesEnabled(System.Version)">
@@ -2296,9 +2157,12 @@
         </member>
         <member name="P:Microsoft.Build.Framework.EngineServices.Version">
             <summary>
-            An explicit version of this class. Must be incremented whenever new members are added. Derived classes should override
-            the property to return the version actually being implemented.
+            Gets an explicit version of this class.
             </summary>
+            <remarks>
+            Must be incremented whenever new members are added. Derived classes should override
+            the property to return the version actually being implemented.
+            </remarks>
         </member>
         <member name="M:Microsoft.Build.Framework.EngineServices.LogsMessagesOfImportance(Microsoft.Build.Framework.MessageImportance)">
             <summary>
@@ -2345,13 +2209,6 @@
             The name of the environment variable that was read.
             </summary>
         </member>
-        <member name="F:Microsoft.Build.Framework.FrameworkErrorUtilities.s_throwExceptions">
-            <summary>
-            Emergency escape hatch. If a customer hits a bug in the shipped product causing an internal exception,
-            and fortuitously it happens that ignoring the VerifyThrow allows execution to continue in a reasonable way,
-            then we can give them this undocumented environment variable as an immediate workaround.
-            </summary>
-        </member>
         <member name="M:Microsoft.Build.Framework.FrameworkErrorUtilities.VerifyThrow(System.Boolean,System.String)">
             <summary>
             This method should be used in places where one would normally put
@@ -2370,13 +2227,376 @@
             anything caused by user action.
             </summary>
             <param name="parameter">The value of the argument.</param>
-            <param name="parameterName">Parameter that should not be null</param>
+            <param name="parameterName">Parameter that should not be null.</param>
         </member>
         <member name="M:Microsoft.Build.Framework.FrameworkErrorUtilities.ThrowInternalError(System.String,System.Exception,System.Object[])">
             <summary>
             Throws InternalErrorException.
             This is only for situations that would mean that there is a bug in MSBuild itself.
             </summary>
+        </member>
+        <member name="T:Microsoft.Build.Framework.ExtendedBuildErrorEventArgs">
+            <summary>
+            Generic custom error events including extended data for event enriching.
+            Extended data are implemented by <see cref="T:Microsoft.Build.Framework.IExtendedBuildEventArgs"/>
+            </summary>
+        </member>
+        <member name="P:Microsoft.Build.Framework.ExtendedBuildErrorEventArgs.ExtendedType">
+            <inheritdoc />
+        </member>
+        <member name="P:Microsoft.Build.Framework.ExtendedBuildErrorEventArgs.ExtendedMetadata">
+            <inheritdoc />
+        </member>
+        <member name="P:Microsoft.Build.Framework.ExtendedBuildErrorEventArgs.ExtendedData">
+            <inheritdoc />
+        </member>
+        <member name="M:Microsoft.Build.Framework.ExtendedBuildErrorEventArgs.#ctor">
+            <summary>
+            Default constructor. Used for deserialization.
+            </summary>
+        </member>
+        <member name="M:Microsoft.Build.Framework.ExtendedBuildErrorEventArgs.#ctor(System.String)">
+            <summary>
+            This constructor specifies only type of extended data.
+            </summary>
+            <param name="type">Type of <see cref="P:Microsoft.Build.Framework.IExtendedBuildEventArgs.ExtendedType"/>.</param>
+        </member>
+        <member name="M:Microsoft.Build.Framework.ExtendedBuildErrorEventArgs.#ctor(System.String,System.String,System.String,System.String,System.Int32,System.Int32,System.Int32,System.Int32,System.String,System.String,System.String)">
+            <summary>
+            This constructor allows all event data to be initialized
+            </summary>
+            <param name="type">Type of <see cref="P:Microsoft.Build.Framework.IExtendedBuildEventArgs.ExtendedType"/>.</param>
+            <param name="subcategory">event sub-category</param>
+            <param name="code">event code</param>
+            <param name="file">file associated with the event</param>
+            <param name="lineNumber">line number (0 if not applicable)</param>
+            <param name="columnNumber">column number (0 if not applicable)</param>
+            <param name="endLineNumber">end line number (0 if not applicable)</param>
+            <param name="endColumnNumber">end column number (0 if not applicable)</param>
+            <param name="message">text message</param>
+            <param name="helpKeyword">help keyword </param>
+            <param name="senderName">name of event sender</param>
+        </member>
+        <member name="M:Microsoft.Build.Framework.ExtendedBuildErrorEventArgs.#ctor(System.String,System.String,System.String,System.String,System.Int32,System.Int32,System.Int32,System.Int32,System.String,System.String,System.String,System.DateTime)">
+            <summary>
+            This constructor which allows a timestamp to be set
+            </summary>
+            <param name="type">Type of <see cref="P:Microsoft.Build.Framework.IExtendedBuildEventArgs.ExtendedType"/>.</param>
+            <param name="subcategory">event sub-category</param>
+            <param name="code">event code</param>
+            <param name="file">file associated with the event</param>
+            <param name="lineNumber">line number (0 if not applicable)</param>
+            <param name="columnNumber">column number (0 if not applicable)</param>
+            <param name="endLineNumber">end line number (0 if not applicable)</param>
+            <param name="endColumnNumber">end column number (0 if not applicable)</param>
+            <param name="message">text message</param>
+            <param name="helpKeyword">help keyword </param>
+            <param name="senderName">name of event sender</param>
+            <param name="eventTimestamp">Timestamp when event was created</param>
+        </member>
+        <member name="M:Microsoft.Build.Framework.ExtendedBuildErrorEventArgs.#ctor(System.String,System.String,System.String,System.String,System.Int32,System.Int32,System.Int32,System.Int32,System.String,System.String,System.String,System.DateTime,System.Object[])">
+            <summary>
+            This constructor which allows a timestamp to be set
+            </summary>
+            <param name="type">Type of <see cref="P:Microsoft.Build.Framework.IExtendedBuildEventArgs.ExtendedType"/>.</param>
+            <param name="subcategory">event sub-category</param>
+            <param name="code">event code</param>
+            <param name="file">file associated with the event</param>
+            <param name="lineNumber">line number (0 if not applicable)</param>
+            <param name="columnNumber">column number (0 if not applicable)</param>
+            <param name="endLineNumber">end line number (0 if not applicable)</param>
+            <param name="endColumnNumber">end column number (0 if not applicable)</param>
+            <param name="message">text message</param>
+            <param name="helpKeyword">help keyword </param>
+            <param name="senderName">name of event sender</param>
+            <param name="eventTimestamp">Timestamp when event was created</param>
+            <param name="messageArgs">message arguments</param>
+        </member>
+        <member name="M:Microsoft.Build.Framework.ExtendedBuildErrorEventArgs.#ctor(System.String,System.String,System.String,System.String,System.Int32,System.Int32,System.Int32,System.Int32,System.String,System.String,System.String,System.String,System.DateTime,System.Object[])">
+            <summary>
+            This constructor which allows a timestamp to be set
+            </summary>
+            <param name="type">Type of <see cref="P:Microsoft.Build.Framework.IExtendedBuildEventArgs.ExtendedType"/>.</param>
+            <param name="subcategory">event sub-category</param>
+            <param name="code">event code</param>
+            <param name="file">file associated with the event</param>
+            <param name="lineNumber">line number (0 if not applicable)</param>
+            <param name="columnNumber">column number (0 if not applicable)</param>
+            <param name="endLineNumber">end line number (0 if not applicable)</param>
+            <param name="endColumnNumber">end column number (0 if not applicable)</param>
+            <param name="message">text message</param>
+            <param name="helpKeyword">help keyword </param>
+            <param name="helpLink">A link pointing to more information about the error </param>
+            <param name="senderName">name of event sender</param>
+            <param name="eventTimestamp">Timestamp when event was created</param>
+            <param name="messageArgs">message arguments</param>
+        </member>
+        <member name="T:Microsoft.Build.Framework.ExtendedBuildMessageEventArgs">
+            <summary>
+            Generic custom build events including extended data for event enriching.
+            Extended data are implemented by <see cref="T:Microsoft.Build.Framework.IExtendedBuildEventArgs"/>
+            </summary>
+        </member>
+        <member name="P:Microsoft.Build.Framework.ExtendedBuildMessageEventArgs.ExtendedType">
+            <inheritdoc />
+        </member>
+        <member name="P:Microsoft.Build.Framework.ExtendedBuildMessageEventArgs.ExtendedMetadata">
+            <inheritdoc />
+        </member>
+        <member name="P:Microsoft.Build.Framework.ExtendedBuildMessageEventArgs.ExtendedData">
+            <inheritdoc />
+        </member>
+        <member name="M:Microsoft.Build.Framework.ExtendedBuildMessageEventArgs.#ctor">
+            <summary>
+            Default constructor. Used for deserialization.
+            </summary>
+        </member>
+        <member name="M:Microsoft.Build.Framework.ExtendedBuildMessageEventArgs.#ctor(System.String)">
+            <summary>
+            This constructor specifies only type of extended data.
+            </summary>
+            <param name="type">Type of <see cref="P:Microsoft.Build.Framework.IExtendedBuildEventArgs.ExtendedType"/>.</param>
+        </member>
+        <member name="M:Microsoft.Build.Framework.ExtendedBuildMessageEventArgs.#ctor(System.String,System.String,System.String,System.String,Microsoft.Build.Framework.MessageImportance)">
+            <summary>
+            This constructor allows all event data to be initialized
+            </summary>
+            <param name="type">Type of <see cref="P:Microsoft.Build.Framework.IExtendedBuildEventArgs.ExtendedType"/>.</param>
+            <param name="message">text message</param>
+            <param name="helpKeyword">help keyword </param>
+            <param name="senderName">name of event sender</param>
+            <param name="importance">importance of the message</param>
+        </member>
+        <member name="M:Microsoft.Build.Framework.ExtendedBuildMessageEventArgs.#ctor(System.String,System.String,System.String,System.String,Microsoft.Build.Framework.MessageImportance,System.DateTime)">
+            <summary>
+            This constructor allows a timestamp to be set
+            </summary>
+            <param name="type">Type of <see cref="P:Microsoft.Build.Framework.IExtendedBuildEventArgs.ExtendedType"/>.</param>
+            <param name="message">text message</param>
+            <param name="helpKeyword">help keyword </param>
+            <param name="senderName">name of event sender</param>
+            <param name="importance">importance of the message</param>
+            <param name="eventTimestamp">Timestamp when event was created</param>
+        </member>
+        <member name="M:Microsoft.Build.Framework.ExtendedBuildMessageEventArgs.#ctor(System.String,System.String,System.String,System.String,Microsoft.Build.Framework.MessageImportance,System.DateTime,System.Object[])">
+            <summary>
+            This constructor allows a timestamp to be set
+            </summary>
+            <param name="type">Type of <see cref="P:Microsoft.Build.Framework.IExtendedBuildEventArgs.ExtendedType"/>.</param>
+            <param name="message">text message</param>
+            <param name="helpKeyword">help keyword </param>
+            <param name="senderName">name of event sender</param>
+            <param name="importance">importance of the message</param>
+            <param name="eventTimestamp">Timestamp when event was created</param>
+            <param name="messageArgs">message arguments</param>
+        </member>
+        <member name="M:Microsoft.Build.Framework.ExtendedBuildMessageEventArgs.#ctor(System.String,System.String,System.String,System.String,System.Int32,System.Int32,System.Int32,System.Int32,System.String,System.String,System.String,Microsoft.Build.Framework.MessageImportance)">
+            <summary>
+            This constructor allows all event data to be initialized
+            </summary>
+            <param name="type">Type of <see cref="P:Microsoft.Build.Framework.IExtendedBuildEventArgs.ExtendedType"/>.</param>
+            <param name="subcategory">event sub-category</param>
+            <param name="code">event code</param>
+            <param name="file">file associated with the event</param>
+            <param name="lineNumber">line number (0 if not applicable)</param>
+            <param name="columnNumber">column number (0 if not applicable)</param>
+            <param name="endLineNumber">end line number (0 if not applicable)</param>
+            <param name="endColumnNumber">end column number (0 if not applicable)</param>
+            <param name="message">text message</param>
+            <param name="helpKeyword">help keyword </param>
+            <param name="senderName">name of event sender</param>
+            <param name="importance">importance of the message</param>
+        </member>
+        <member name="M:Microsoft.Build.Framework.ExtendedBuildMessageEventArgs.#ctor(System.String,System.String,System.String,System.String,System.Int32,System.Int32,System.Int32,System.Int32,System.String,System.String,System.String,Microsoft.Build.Framework.MessageImportance,System.DateTime)">
+            <summary>
+            This constructor which allows a timestamp to be set
+            </summary>
+            <param name="type">Type of <see cref="P:Microsoft.Build.Framework.IExtendedBuildEventArgs.ExtendedType"/>.</param>
+            <param name="subcategory">event sub-category</param>
+            <param name="code">event code</param>
+            <param name="file">file associated with the event</param>
+            <param name="lineNumber">line number (0 if not applicable)</param>
+            <param name="columnNumber">column number (0 if not applicable)</param>
+            <param name="endLineNumber">end line number (0 if not applicable)</param>
+            <param name="endColumnNumber">end column number (0 if not applicable)</param>
+            <param name="message">text message</param>
+            <param name="helpKeyword">help keyword </param>
+            <param name="senderName">name of event sender</param>
+            <param name="importance">importance of the message</param>
+            <param name="eventTimestamp">Timestamp when event was created</param>
+        </member>
+        <member name="M:Microsoft.Build.Framework.ExtendedBuildMessageEventArgs.#ctor(System.String,System.String,System.String,System.String,System.Int32,System.Int32,System.Int32,System.Int32,System.String,System.String,System.String,Microsoft.Build.Framework.MessageImportance,System.DateTime,System.Object[])">
+            <summary>
+            This constructor which allows a timestamp to be set
+            </summary>
+            <param name="type">Type of <see cref="P:Microsoft.Build.Framework.IExtendedBuildEventArgs.ExtendedType"/>.</param>
+            <param name="subcategory">event sub-category</param>
+            <param name="code">event code</param>
+            <param name="file">file associated with the event</param>
+            <param name="lineNumber">line number (0 if not applicable)</param>
+            <param name="columnNumber">column number (0 if not applicable)</param>
+            <param name="endLineNumber">end line number (0 if not applicable)</param>
+            <param name="endColumnNumber">end column number (0 if not applicable)</param>
+            <param name="message">text message</param>
+            <param name="helpKeyword">help keyword </param>
+            <param name="senderName">name of event sender</param>
+            <param name="importance">importance of the message</param>
+            <param name="eventTimestamp">Timestamp when event was created</param>
+            <param name="messageArgs">message arguments</param>
+        </member>
+        <member name="T:Microsoft.Build.Framework.ExtendedBuildWarningEventArgs">
+            <summary>
+            Generic custom warning events including extended data for event enriching.
+            Extended data are implemented by <see cref="T:Microsoft.Build.Framework.IExtendedBuildEventArgs"/>
+            </summary>
+        </member>
+        <member name="P:Microsoft.Build.Framework.ExtendedBuildWarningEventArgs.ExtendedType">
+            <inheritdoc />
+        </member>
+        <member name="P:Microsoft.Build.Framework.ExtendedBuildWarningEventArgs.ExtendedMetadata">
+            <inheritdoc />
+        </member>
+        <member name="P:Microsoft.Build.Framework.ExtendedBuildWarningEventArgs.ExtendedData">
+            <inheritdoc />
+        </member>
+        <member name="M:Microsoft.Build.Framework.ExtendedBuildWarningEventArgs.#ctor">
+            <summary>
+            Default constructor. Used for deserialization.
+            </summary>
+        </member>
+        <member name="M:Microsoft.Build.Framework.ExtendedBuildWarningEventArgs.#ctor(System.String)">
+            <summary>
+            This constructor specifies only type of extended data.
+            </summary>
+            <param name="type">Type of <see cref="P:Microsoft.Build.Framework.IExtendedBuildEventArgs.ExtendedType"/>.</param>
+        </member>
+        <member name="M:Microsoft.Build.Framework.ExtendedBuildWarningEventArgs.#ctor(System.String,System.String,System.String,System.String,System.Int32,System.Int32,System.Int32,System.Int32,System.String,System.String,System.String)">
+            <summary>
+            This constructor allows all event data to be initialized
+            </summary>
+            <param name="type">Type of <see cref="P:Microsoft.Build.Framework.IExtendedBuildEventArgs.ExtendedType"/>.</param>
+            <param name="subcategory">event sub-category</param>
+            <param name="code">event code</param>
+            <param name="file">file associated with the event</param>
+            <param name="lineNumber">line number (0 if not applicable)</param>
+            <param name="columnNumber">column number (0 if not applicable)</param>
+            <param name="endLineNumber">end line number (0 if not applicable)</param>
+            <param name="endColumnNumber">end column number (0 if not applicable)</param>
+            <param name="message">text message</param>
+            <param name="helpKeyword">help keyword </param>
+            <param name="senderName">name of event sender</param>
+        </member>
+        <member name="M:Microsoft.Build.Framework.ExtendedBuildWarningEventArgs.#ctor(System.String,System.String,System.String,System.String,System.Int32,System.Int32,System.Int32,System.Int32,System.String,System.String,System.String,System.DateTime)">
+            <summary>
+            This constructor which allows a timestamp to be set
+            </summary>
+            <param name="type">Type of <see cref="P:Microsoft.Build.Framework.IExtendedBuildEventArgs.ExtendedType"/>.</param>
+            <param name="subcategory">event sub-category</param>
+            <param name="code">event code</param>
+            <param name="file">file associated with the event</param>
+            <param name="lineNumber">line number (0 if not applicable)</param>
+            <param name="columnNumber">column number (0 if not applicable)</param>
+            <param name="endLineNumber">end line number (0 if not applicable)</param>
+            <param name="endColumnNumber">end column number (0 if not applicable)</param>
+            <param name="message">text message</param>
+            <param name="helpKeyword">help keyword </param>
+            <param name="senderName">name of event sender</param>
+            <param name="eventTimestamp">Timestamp when event was created</param>
+        </member>
+        <member name="M:Microsoft.Build.Framework.ExtendedBuildWarningEventArgs.#ctor(System.String,System.String,System.String,System.String,System.Int32,System.Int32,System.Int32,System.Int32,System.String,System.String,System.String,System.DateTime,System.Object[])">
+            <summary>
+            This constructor which allows a timestamp to be set
+            </summary>
+            <param name="type">Type of <see cref="P:Microsoft.Build.Framework.IExtendedBuildEventArgs.ExtendedType"/>.</param>
+            <param name="subcategory">event sub-category</param>
+            <param name="code">event code</param>
+            <param name="file">file associated with the event</param>
+            <param name="lineNumber">line number (0 if not applicable)</param>
+            <param name="columnNumber">column number (0 if not applicable)</param>
+            <param name="endLineNumber">end line number (0 if not applicable)</param>
+            <param name="endColumnNumber">end column number (0 if not applicable)</param>
+            <param name="message">text message</param>
+            <param name="helpKeyword">help keyword </param>
+            <param name="senderName">name of event sender</param>
+            <param name="eventTimestamp">Timestamp when event was created</param>
+            <param name="messageArgs">message arguments</param>
+        </member>
+        <member name="M:Microsoft.Build.Framework.ExtendedBuildWarningEventArgs.#ctor(System.String,System.String,System.String,System.String,System.Int32,System.Int32,System.Int32,System.Int32,System.String,System.String,System.String,System.String,System.DateTime,System.Object[])">
+            <summary>
+            This constructor which allows a timestamp to be set
+            </summary>
+            <param name="type">Type of <see cref="P:Microsoft.Build.Framework.IExtendedBuildEventArgs.ExtendedType"/>.</param>
+            <param name="subcategory">event sub-category</param>
+            <param name="code">event code</param>
+            <param name="file">file associated with the event</param>
+            <param name="lineNumber">line number (0 if not applicable)</param>
+            <param name="columnNumber">column number (0 if not applicable)</param>
+            <param name="endLineNumber">end line number (0 if not applicable)</param>
+            <param name="endColumnNumber">end column number (0 if not applicable)</param>
+            <param name="message">text message</param>
+            <param name="helpKeyword">help keyword </param>
+            <param name="helpLink">A link pointing to more information about the error </param>
+            <param name="senderName">name of event sender</param>
+            <param name="eventTimestamp">Timestamp when event was created</param>
+            <param name="messageArgs">message arguments</param>
+        </member>
+        <member name="T:Microsoft.Build.Framework.ExtendedCustomBuildEventArgs">
+            <summary>
+            Generic custom event.
+            Extended data are implemented by <see cref="T:Microsoft.Build.Framework.IExtendedBuildEventArgs"/>
+            </summary>
+        </member>
+        <member name="P:Microsoft.Build.Framework.ExtendedCustomBuildEventArgs.ExtendedType">
+            <inheritdoc />
+        </member>
+        <member name="P:Microsoft.Build.Framework.ExtendedCustomBuildEventArgs.ExtendedMetadata">
+            <inheritdoc />
+        </member>
+        <member name="P:Microsoft.Build.Framework.ExtendedCustomBuildEventArgs.ExtendedData">
+            <inheritdoc />
+        </member>
+        <member name="M:Microsoft.Build.Framework.ExtendedCustomBuildEventArgs.#ctor">
+            <summary>
+            This constructor allows event data to be initialized.
+            </summary>
+            <seealso cref="P:Microsoft.Build.Framework.IExtendedBuildEventArgs.ExtendedType"/>
+        </member>
+        <member name="M:Microsoft.Build.Framework.ExtendedCustomBuildEventArgs.#ctor(System.String)">
+            <summary>
+            This constructor allows event data to be initialized.
+            </summary>
+            <param name="type">Type of <see cref="P:Microsoft.Build.Framework.IExtendedBuildEventArgs.ExtendedType"/>.</param>
+            <seealso cref="P:Microsoft.Build.Framework.IExtendedBuildEventArgs.ExtendedType"/>
+        </member>
+        <member name="M:Microsoft.Build.Framework.ExtendedCustomBuildEventArgs.#ctor(System.String,System.String,System.String,System.String)">
+            <summary>
+            This constructor allows event data to be initialized.
+            </summary>
+            <param name="type">Type of <see cref="P:Microsoft.Build.Framework.IExtendedBuildEventArgs.ExtendedType"/>.</param>
+            <param name="message">text message</param>
+            <param name="helpKeyword">help keyword </param>
+            <param name="senderName">name of sender</param>
+        </member>
+        <member name="M:Microsoft.Build.Framework.ExtendedCustomBuildEventArgs.#ctor(System.String,System.String,System.String,System.String,System.DateTime)">
+            <summary>
+            This constructor allows event data to be initialized including timestamp.
+            </summary>
+            <param name="type">Type of <see cref="P:Microsoft.Build.Framework.IExtendedBuildEventArgs.ExtendedType"/>.</param>
+            <param name="message">text message</param>
+            <param name="helpKeyword">help keyword </param>
+            <param name="senderName">name of sender</param>
+            <param name="eventTimestamp">Timestamp when event was created</param>
+        </member>
+        <member name="M:Microsoft.Build.Framework.ExtendedCustomBuildEventArgs.#ctor(System.String,System.String,System.String,System.String,System.DateTime,System.Object[])">
+            <summary>
+            This constructor allows event data to be initialized including timestamp.
+            </summary>
+            <param name="type">Type of <see cref="P:Microsoft.Build.Framework.IExtendedBuildEventArgs.ExtendedType"/>.</param>
+            <param name="message">text message</param>
+            <param name="helpKeyword">help keyword </param>
+            <param name="senderName">name of sender</param>
+            <param name="eventTimestamp">Timestamp when event was created</param>
+            <param name="messageArgs">Message arguments</param>
         </member>
         <member name="T:Microsoft.Build.Framework.ExternalProjectFinishedEventArgs">
             <summary>
@@ -3092,10 +3312,36 @@
             instead of <see cref="T:Microsoft.Build.Framework.ProjectStartedEventArgs"/>.
             </summary>
         </member>
+        <member name="T:Microsoft.Build.Framework.IExtendedBuildEventArgs">
+            <summary>
+            Interface for Extended EventArgs to allow enriching particular events with extended data.
+            Deriving from EventArgs will be deprecated soon and using Extended EventArgs is recommended for custom Event Args.
+            </summary>
+        </member>
+        <member name="P:Microsoft.Build.Framework.IExtendedBuildEventArgs.ExtendedType">
+            <summary>
+            Unique string identifying type of extended data so receiver side knows how to interpret, deserialize and handle <see cref="P:Microsoft.Build.Framework.IExtendedBuildEventArgs.ExtendedData"/>.
+            </summary>
+        </member>
+        <member name="P:Microsoft.Build.Framework.IExtendedBuildEventArgs.ExtendedMetadata">
+            <summary>
+            Metadata of <see cref="P:Microsoft.Build.Framework.IExtendedBuildEventArgs.ExtendedData"/>.
+            Example usage:
+              - data which needed in custom code to properly routing this message without interpreting/deserializing <see cref="P:Microsoft.Build.Framework.IExtendedBuildEventArgs.ExtendedData"/>.
+              - simple extended data can be transferred in form of dictionary key-value per one extended property.
+            </summary>
+        </member>
+        <member name="P:Microsoft.Build.Framework.IExtendedBuildEventArgs.ExtendedData">
+            <summary>
+            Transparent data as string.
+            Custom code is responsible to serialize and deserialize this string to structured data - if needed.
+            Custom code can use any serialization they deem safe - e.g. json for textual data, base64 for binary data...
+            </summary>
+        </member>
         <member name="T:Microsoft.Build.Framework.IForwardingLogger">
             <summary>
             This interface extends the ILogger interface to provide a property which can be used to forward events
-            to a logger running in a different process. It can also be used create filtering loggers.
+            to a logger running in a different process. It can also be used to create filtering loggers.
             </summary>
         </member>
         <member name="P:Microsoft.Build.Framework.IForwardingLogger.BuildEventRedirector">
@@ -3136,6 +3382,17 @@
             MSBuild calls this method after executing the task to get output parameters.
             All exceptions from this method will be caught in the taskExecution host and logged as a fatal task error
             </remarks>
+        </member>
+        <member name="T:Microsoft.Build.Framework.IIncrementalTask">
+            <summary>
+            Interface for tasks which is supports incrementality.
+            </summary>
+            <remarks>The tasks implementing this interface should return false to stop the build when in <see cref="P:Microsoft.Build.Framework.IIncrementalTask.FailIfNotIncremental"/> is true and task is not fully incremental.  Try to provide helpful information to diagnose incremental behavior.</remarks>
+        </member>
+        <member name="P:Microsoft.Build.Framework.IIncrementalTask.FailIfNotIncremental">
+            <summary>
+            Set by MSBuild when Question flag is used.
+            </summary>
         </member>
         <member name="T:Microsoft.Build.Framework.LoggerVerbosity">
             <summary>
@@ -3225,6 +3482,18 @@
             is used for serialization (in node packet translator) as well as
             in the binary logger.
             </summary>
+        </member>
+        <member name="M:Microsoft.Build.Framework.IMetadataContainer.ImportMetadata(System.Collections.Generic.IEnumerable{System.Collections.Generic.KeyValuePair{System.String,System.String}})">
+            <summary>
+            Sets the given metadata. The operation is equivalent to calling
+            <see cref="M:Microsoft.Build.Framework.ITaskItem.SetMetadata(System.String,System.String)"/> on all metadata, but takes
+            advantage of a faster bulk-set operation where applicable. The
+            implementation may not perform the same parameter validation
+            as SetMetadata.
+            </summary>
+            <param name="metadata">The metadata to set. The keys are assumed
+            to be unique and values are assumed to be escaped.
+            </param>
         </member>
         <member name="T:Microsoft.Build.Framework.ImmutableFilesTimestampCache">
             <summary>
@@ -3333,6 +3602,36 @@
             <summary>
             The outer markup associated with this project element
             </summary>
+        </member>
+        <member name="T:Microsoft.Build.Framework.IStringBuilderProvider">
+            <summary>
+            Provider of <see cref="T:System.Text.StringBuilder"/> instances.
+            Main design goal is for reusable String Builders and string builder pools.
+            </summary>
+            <remarks>
+            It is up to particular implementations to decide how to handle unbalanced releases.
+            </remarks>
+        </member>
+        <member name="M:Microsoft.Build.Framework.IStringBuilderProvider.Acquire(System.Int32)">
+            <summary>
+            Get a <see cref="T:System.Text.StringBuilder"/> of at least the specified capacity.
+            </summary>
+            <param name="capacity">The suggested starting size of this instance.</param>
+            <returns>A <see cref="T:System.Text.StringBuilder"/> that may or may not be reused.</returns>
+            <remarks>
+            It can be called any number of times; if a <see cref="T:System.Text.StringBuilder"/> is in the cache then
+            it will be returned and the cache emptied. Subsequent calls will return a new <see cref="T:System.Text.StringBuilder"/>.
+            </remarks>
+        </member>
+        <member name="M:Microsoft.Build.Framework.IStringBuilderProvider.GetStringAndRelease(System.Text.StringBuilder)">
+            <summary>
+            Get a string and return its builder to the cache.
+            </summary>
+            <param name="builder">Builder to cache (if it's not too big).</param>
+            <returns>The <see langword="string"/> equivalent to <paramref name="builder"/>'s contents.</returns>
+            <remarks>
+            The StringBuilder should not be used after it has been released.
+            </remarks>
         </member>
         <member name="T:Microsoft.Build.Framework.ITask">
             <summary>
@@ -3622,16 +3921,6 @@
             Exposes the formatted message string to serializers.
             </summary>
         </member>
-        <member name="F:Microsoft.Build.Framework.LazyFormattedBuildEventArgs.originalCultureName">
-            <summary>
-            Stores the original culture for String.Format.
-            </summary>
-        </member>
-        <member name="F:Microsoft.Build.Framework.LazyFormattedBuildEventArgs.originalCultureInfo">
-            <summary>
-            Non-serializable CultureInfo object
-            </summary>
-        </member>
         <member name="M:Microsoft.Build.Framework.LazyFormattedBuildEventArgs.#ctor(System.String,System.String,System.String)">
             <summary>
             This constructor allows all event data to be initialized.
@@ -3673,7 +3962,7 @@
             <param name="reader">Binary reader which is attached to the stream the event will be deserialized from.</param>
             <param name="version">The version of the runtime the message packet was created from</param>
         </member>
-        <member name="M:Microsoft.Build.Framework.LazyFormattedBuildEventArgs.FormatString(System.Globalization.CultureInfo,System.String,System.Object[])">
+        <member name="M:Microsoft.Build.Framework.LazyFormattedBuildEventArgs.FormatString(System.String,System.Object[])">
             <summary>
             Formats the given string using the variable arguments passed in.
             
@@ -3681,7 +3970,6 @@
             the array of arguments -- do not call this method repeatedly in performance-critical scenarios
             </summary>
             <remarks>This method is thread-safe.</remarks>
-            <param name="culture">The culture info for formatting the message.</param>
             <param name="unformatted">The string to format.</param>
             <param name="args">Optional arguments for formatting the given string.</param>
             <returns>The formatted string.</returns>
@@ -3824,7 +4112,7 @@
         </member>
         <member name="M:Microsoft.Build.Framework.NativeMethods.MemoryStatus.#ctor">
             <summary>
-            Initializes a new instance of the <see cref="T:MemoryStatus"/> class.
+            Initializes a new instance of the <see cref="T:Microsoft.Build.Framework.NativeMethods.MemoryStatus"/> class.
             </summary>
         </member>
         <member name="F:Microsoft.Build.Framework.NativeMethods.MemoryStatus._length">
@@ -3970,6 +4258,11 @@
             for Windows (Windows_NT).
             </summary>
         </member>
+        <member name="P:Microsoft.Build.Framework.NativeMethods.FrameworkName">
+            <summary>
+            Framework named as presented to users (for example in version info).
+            </summary>
+        </member>
         <member name="M:Microsoft.Build.Framework.NativeMethods.GetOSNameForExtensionsPath">
             <summary>
             OS name that can be used for the msbuildExtensionsPathSearchPaths element
@@ -4015,13 +4308,6 @@
             Native architecture getter
             </summary>
         </member>
-        <member name="M:Microsoft.Build.Framework.NativeMethods.WaitForMultipleObjects(System.UInt32,System.IntPtr[],System.Boolean,System.UInt32)">
-            <summary>
-            Really truly non pumping wait.
-            Raw IntPtrs have to be used, because the marshaller does not support arrays of SafeHandle, only
-            single SafeHandles.
-            </summary>
-        </member>
         <member name="M:Microsoft.Build.Framework.NativeMethods.GetLastWriteDirectoryUtcTime(System.String,System.DateTime@)">
             <summary>
             Get the last write time of the fullpath to a directory. If the pointed path is not a directory, or
@@ -4058,6 +4344,13 @@
             if the file's content was modified by writing to it through a different link, unless
             MSBUILDALWAYSCHECKCONTENTTIMESTAMP=1.
             </remarks>
+        </member>
+        <member name="M:Microsoft.Build.Framework.NativeMethods.OpenFileThroughSymlinks(System.String)">
+            <summary>
+            Get the SafeFileHandle for a file, while skipping reparse points (going directly to target file).
+            </summary>
+            <param name="fullPath">Full path to the file in the filesystem</param>
+            <returns>the SafeFileHandle for a file (target file in case of symlinks)</returns>
         </member>
         <member name="M:Microsoft.Build.Framework.NativeMethods.GetContentLastWriteFileUtcTime(System.String)">
             <summary>
@@ -4126,10 +4419,13 @@
             that needs to be used for instance when writing to batch files
             </summary>
         </member>
-        <member name="M:Microsoft.Build.Framework.NativeMethods.GetModuleFileName(System.Runtime.InteropServices.HandleRef,System.Text.StringBuilder,System.Int32)">
+        <member name="M:Microsoft.Build.Framework.NativeMethods.GetModuleFileName(System.Runtime.InteropServices.HandleRef,System.Char[],System.Int32)">
             <summary>
-            Gets the fully qualified filename of the currently executing .exe
+            Gets the fully qualified filename of the currently executing .exe.
             </summary>
+            <param name="hModule"><see cref="T:System.Runtime.InteropServices.HandleRef"/> of the module for which we are finding the file name.</param>
+            <param name="buffer">The character buffer used to return the file name.</param>
+            <param name="length">The length of the buffer.</param>
         </member>
         <member name="M:Microsoft.Build.Framework.NativeMethods.CoWaitForMultipleHandles(Microsoft.Build.Framework.NativeMethods.COWAIT_FLAGS,System.Int32,System.Int32,System.IntPtr[],System.Int32@)">
             <summary>
@@ -4138,22 +4434,11 @@
             build thread which the main thread (blocked on BuildSubmission.Execute) must service.
             </summary>
         </member>
-        <member name="M:Microsoft.Build.Framework.NativeMethods.MsgWaitOne(System.Threading.WaitHandle)">
+        <member name="T:Microsoft.Build.Framework.OperatingSystem">
             <summary>
-            Waits while pumping APC messages.  This is important if the waiting thread is an STA thread which is potentially
-            servicing COM calls from other threads.
-            </summary>
-        </member>
-        <member name="M:Microsoft.Build.Framework.NativeMethods.MsgWaitOne(System.Threading.WaitHandle,System.TimeSpan)">
-            <summary>
-            Waits while pumping APC messages.  This is important if the waiting thread is an STA thread which is potentially
-            servicing COM calls from other threads.
-            </summary>
-        </member>
-        <member name="M:Microsoft.Build.Framework.NativeMethods.MsgWaitOne(System.Threading.WaitHandle,System.Int32)">
-            <summary>
-            Waits while pumping APC messages.  This is important if the waiting thread is an STA thread which is potentially
-            servicing COM calls from other threads.
+            System.OperatingSystem static methods were added in net5.0.
+            This class creates stand-in methods for net472 builds.
+            Assumes only Windows is supported.
             </summary>
         </member>
         <member name="T:Microsoft.Build.Framework.OutputAttribute">
@@ -4802,6 +5087,16 @@
             e.g., "v2.0"
             </summary>
         </member>
+        <member name="T:Microsoft.Build.Framework.ResponseFileUsedEventArgs">
+            <summary>
+            Arguments for the response file used event
+            </summary>
+        </member>
+        <member name="M:Microsoft.Build.Framework.ResponseFileUsedEventArgs.#ctor(System.String)">
+            <summary>
+            Initialize a new instance of the ResponseFileUsedEventArgs class.
+            </summary>
+        </member>
         <member name="T:Microsoft.Build.Framework.ReuseableStringBuilder">
             <summary>
             A StringBuilder lookalike that reuses its internal storage.
@@ -4859,6 +5154,12 @@
             <summary>
             Append a substring.
             </summary>
+        </member>
+        <member name="M:Microsoft.Build.Framework.ReuseableStringBuilder.AppendFormat(System.Globalization.CultureInfo,System.String,System.Object[])">
+            <inheritdoc cref="M:System.Text.StringBuilder.AppendFormat(System.IFormatProvider,System.String,System.Object[])"/>
+        </member>
+        <member name="M:Microsoft.Build.Framework.ReuseableStringBuilder.AppendLine">
+            <inheritdoc cref="M:System.Text.StringBuilder.AppendLine"/>
         </member>
         <member name="M:Microsoft.Build.Framework.ReuseableStringBuilder.Remove(System.Int32,System.Int32)">
             <summary>
@@ -5015,38 +5316,35 @@
         </member>
         <member name="T:Microsoft.Build.Framework.SdkResolver">
             <summary>
-                An abstract interface for classes that can resolve a Software Development Kit (SDK).
+            An abstract interface for classes that can resolve a Software Development Kit (SDK).
             </summary>
         </member>
         <member name="P:Microsoft.Build.Framework.SdkResolver.Name">
             <summary>
-                Name of the SDK resolver to be displayed in build output log.
+            Gets the name of the <see cref="T:Microsoft.Build.Framework.SdkResolver"/> to be displayed in build output log.
             </summary>
         </member>
         <member name="P:Microsoft.Build.Framework.SdkResolver.Priority">
             <summary>
-                Gets the self-described resolution priority order. MSBuild will sort resolvers
-                by this value.
+            Gets the self-described resolution priority order. MSBuild will sort resolvers
+            by this value.
             </summary>
         </member>
         <member name="M:Microsoft.Build.Framework.SdkResolver.Resolve(Microsoft.Build.Framework.SdkReference,Microsoft.Build.Framework.SdkResolverContext,Microsoft.Build.Framework.SdkResultFactory)">
             <summary>
-                Resolves the specified SDK reference.
+            Resolves the specified SDK reference.
             </summary>
             <param name="sdkReference">A <see cref="T:Microsoft.Build.Framework.SdkReference" /> containing the referenced SDKs be resolved.</param>
             <param name="resolverContext">Context for resolving the SDK.</param>
             <param name="factory">Factory class to create an <see cref="T:Microsoft.Build.Framework.SdkResult" /></param>
             <returns>
-                An <see cref="T:Microsoft.Build.Framework.SdkResult" /> containing the resolved SDKs or associated error / reason
-                the SDK could not be resolved.  Return <code>null</code> if the resolver is not
-                applicable for a particular <see cref="T:Microsoft.Build.Framework.SdkReference"/>.
-             </returns>   
-             <remarks><format type="text/markdown"><![CDATA[
-             ## Remarks
-             > [!NOTE]
-             > You must use the <xref:Microsoft.Build.Framework.SdkResultFactory> to return a result.
-             ]]></format>
-            </remarks>
+            An <see cref="T:Microsoft.Build.Framework.SdkResult" /> containing the resolved SDKs or associated error / reason
+            the SDK could not be resolved.  Return <see langword="null"/> if the resolver is not
+            applicable for a particular <see cref="T:Microsoft.Build.Framework.SdkReference"/>.
+            </returns>   
+            <remarks>
+             Note: You must use <see cref="T:Microsoft.Build.Framework.SdkResultFactory"/> to return a result.
+             </remarks>
             
         </member>
         <member name="T:Microsoft.Build.Framework.SdkResolverContext">
@@ -5217,6 +5515,57 @@
             </summary>
             <param name="itemSpec">The value (itemspec) for the item</param>
             <param name="metadata">A dictionary of item metadata.  This should be created with <see cref="P:System.StringComparer.OrdinalIgnoreCase"/> for the comparer.</param>
+        </member>
+        <member name="T:Microsoft.Build.Framework.StringBuilderCache">
+            <summary>
+            A cached reusable instance of StringBuilder.
+            </summary>
+            <remarks>
+            An optimization that reduces the number of instances of <see cref="T:System.Text.StringBuilder"/> constructed and collected.
+            </remarks>
+        </member>
+        <member name="M:Microsoft.Build.Framework.StringBuilderCache.Acquire(System.Int32)">
+             <summary>
+             Get a <see cref="T:System.Text.StringBuilder"/> of at least the specified capacity.
+             </summary>
+             <param name="capacity">The suggested starting size of this instance.</param>
+             <returns>A <see cref="T:System.Text.StringBuilder"/> that may or may not be reused.</returns>
+             <remarks>
+             It can be called any number of times; if a <see cref="T:System.Text.StringBuilder"/> is in the cache then
+             it will be returned and the cache emptied. Subsequent calls will return a new <see cref="T:System.Text.StringBuilder"/>.
+            
+             <para>The <see cref="T:System.Text.StringBuilder"/> instance is cached in Thread Local Storage and so there is one per thread.</para>
+             </remarks>
+        </member>
+        <member name="M:Microsoft.Build.Framework.StringBuilderCache.Release(System.Text.StringBuilder)">
+             <summary>
+             Place the specified builder in the cache if it is not too big. Unbalanced Releases are acceptable.
+             The StringBuilder should not be used after it has
+                        been released.
+                        Unbalanced Releases are perfectly acceptable.It
+             will merely cause the runtime to create a new
+             StringBuilder next time Acquire is called.
+             </summary>
+             <param name="sb">The <see cref="T:System.Text.StringBuilder"/> to cache. Likely returned from <see cref="M:Microsoft.Build.Framework.StringBuilderCache.Acquire(System.Int32)"/>.</param>
+             <remarks>
+             The StringBuilder should not be used after it has been released.
+            
+             <para>
+             Unbalanced Releases are perfectly acceptable.It
+             will merely cause the runtime to create a new
+             StringBuilder next time Acquire is called.
+             </para>
+             </remarks>
+        </member>
+        <member name="M:Microsoft.Build.Framework.StringBuilderCache.GetStringAndRelease(System.Text.StringBuilder)">
+            <summary>
+            Get a string and return its builder to the cache.
+            </summary>
+            <param name="sb">Builder to cache (if it's not too big).</param>
+            <returns>The <see langword="string"/> equivalent to <paramref name="sb"/>'s contents.</returns>
+            <remarks>
+            Convenience method equivalent to calling <see cref="M:System.Text.StringBuilder.ToString"/> followed by <see cref="M:Microsoft.Build.Framework.StringBuilderCache.Release(System.Text.StringBuilder)"/>.
+            </remarks>
         </member>
         <member name="T:Microsoft.Build.Framework.TargetBuiltReason">
             <summary>
@@ -5803,6 +6152,201 @@
             Gets or sets a list of properties associated with the event.
             </summary>
         </member>
+        <member name="T:Microsoft.Build.Framework.Telemetry.BuildTelemetry">
+            <summary>
+            Telemetry of build.
+            </summary>
+        </member>
+        <member name="P:Microsoft.Build.Framework.Telemetry.BuildTelemetry.StartAt">
+            <summary>
+            Time at which build have started.
+            </summary>
+            <remarks>
+            It is time when build started, not when BuildManager start executing build.
+            For example in case of MSBuild Server it is time before we connected or launched MSBuild Server.
+            </remarks>
+        </member>
+        <member name="P:Microsoft.Build.Framework.Telemetry.BuildTelemetry.InnerStartAt">
+            <summary>
+            Time at which inner build have started.
+            </summary>
+            <remarks>
+            It is time when build internally started, i.e. when BuildManager starts it.
+            In case of MSBuild Server it is time when Server starts build.
+            </remarks>
+        </member>
+        <member name="P:Microsoft.Build.Framework.Telemetry.BuildTelemetry.FinishedAt">
+            <summary>
+            Time at which build have finished.
+            </summary>
+        </member>
+        <member name="P:Microsoft.Build.Framework.Telemetry.BuildTelemetry.Success">
+            <summary>
+            Overall build success.
+            </summary>
+        </member>
+        <member name="P:Microsoft.Build.Framework.Telemetry.BuildTelemetry.Target">
+            <summary>
+            Build Target.
+            </summary>
+        </member>
+        <member name="P:Microsoft.Build.Framework.Telemetry.BuildTelemetry.ServerFallbackReason">
+            <summary>
+            MSBuild server fallback reason.
+            Either "ServerBusy", "ConnectionError" or null (no fallback).
+            </summary>
+        </member>
+        <member name="P:Microsoft.Build.Framework.Telemetry.BuildTelemetry.Version">
+            <summary>
+            Version of MSBuild.
+            </summary>
+        </member>
+        <member name="P:Microsoft.Build.Framework.Telemetry.BuildTelemetry.DisplayVersion">
+            <summary>
+            Display version of the Engine suitable for display to a user.
+            </summary>
+        </member>
+        <member name="P:Microsoft.Build.Framework.Telemetry.BuildTelemetry.Project">
+            <summary>
+            Path to project file.
+            </summary>
+        </member>
+        <member name="P:Microsoft.Build.Framework.Telemetry.BuildTelemetry.Host">
+            <summary>
+            Host in which MSBuild build was executed.
+            For example: "VS", "VSCode", "Azure DevOps", "GitHub Action", "CLI", ...
+            </summary>
+        </member>
+        <member name="P:Microsoft.Build.Framework.Telemetry.BuildTelemetry.InitialServerState">
+            <summary>
+            State of MSBuild server process before this build.
+            One of 'cold', 'hot', null (if not run as server)
+            </summary>
+        </member>
+        <member name="P:Microsoft.Build.Framework.Telemetry.BuildTelemetry.FrameworkName">
+            <summary>
+            Framework name suitable for display to a user.
+            </summary>
+        </member>
+        <member name="T:Microsoft.Build.Framework.Telemetry.KnownTelemetry">
+            <summary>
+            Static class to help access and modify known telemetries.
+            </summary>
+        </member>
+        <member name="P:Microsoft.Build.Framework.Telemetry.KnownTelemetry.PartialBuildTelemetry">
+            <summary>
+            Partial Telemetry for build.
+            This could be optionally initialized with some values from early in call stack, for example in Main method.
+            After this instance is acquired by a particular build, this is set to null.
+            Null means there are no prior collected build telemetry data, new clean instance shall be created for particular build.
+            </summary>
+        </member>
+        <member name="P:Microsoft.Build.Framework.Telemetry.KnownTelemetry.LoggingConfigurationTelemetry">
+            <summary>
+            Describes how logging was configured.
+            </summary>
+        </member>
+        <member name="P:Microsoft.Build.Framework.Telemetry.LoggingConfigurationTelemetry.TerminalLogger">
+            <summary>
+            True if terminal logger was used.
+            </summary>
+        </member>
+        <member name="P:Microsoft.Build.Framework.Telemetry.LoggingConfigurationTelemetry.TerminalLoggerUserIntent">
+            <summary>
+            What was user intent:
+              on | true -> user intent to enable logging
+              off | false -> user intent to disable logging
+              auto -> user intent to use logging if terminal allows it
+              null -> no user intent, using default
+            </summary>
+        </member>
+        <member name="P:Microsoft.Build.Framework.Telemetry.LoggingConfigurationTelemetry.TerminalLoggerUserIntentSource">
+            <summary>
+            How was user intent signaled:
+              arg -> from command line argument or rsp file
+              MSBUILDTERMINALLOGGER -> from environment variable
+              MSBUILDLIVELOGGER -> from environment variable
+              null -> no user intent
+            </summary>
+        </member>
+        <member name="P:Microsoft.Build.Framework.Telemetry.LoggingConfigurationTelemetry.TerminalLoggerDefault">
+            <summary>
+            The default behavior of terminal logger if user intent is not specified:
+              on | true -> enable logging
+              off | false -> disable logging
+              auto -> use logging if terminal allows it
+              null -> unspecified
+            </summary>
+        </member>
+        <member name="P:Microsoft.Build.Framework.Telemetry.LoggingConfigurationTelemetry.TerminalLoggerDefaultSource">
+            <summary>
+            How was default behavior signaled:
+              sdk -> from SDK
+              DOTNET_CLI_CONFIGURE_MSBUILD_TERMINAL_LOGGER -> from environment variable
+              msbuild -> MSBuild hardcoded default
+              null -> unspecified
+            </summary>
+        </member>
+        <member name="P:Microsoft.Build.Framework.Telemetry.LoggingConfigurationTelemetry.ConsoleLogger">
+            <summary>
+            True if console logger was used.
+            </summary>
+        </member>
+        <member name="P:Microsoft.Build.Framework.Telemetry.LoggingConfigurationTelemetry.ConsoleLoggerType">
+            <summary>
+            Type of console logger: serial | parallel
+            </summary>
+        </member>
+        <member name="P:Microsoft.Build.Framework.Telemetry.LoggingConfigurationTelemetry.ConsoleLoggerVerbosity">
+            <summary>
+            Verbosity of console logger: quiet | minimal | normal | detailed | diagnostic
+            </summary>
+        </member>
+        <member name="P:Microsoft.Build.Framework.Telemetry.LoggingConfigurationTelemetry.FileLogger">
+            <summary>
+            True if file logger was used.
+            </summary>
+        </member>
+        <member name="P:Microsoft.Build.Framework.Telemetry.LoggingConfigurationTelemetry.FileLoggerType">
+            <summary>
+            Type of file logger: serial | parallel
+            </summary>
+        </member>
+        <member name="P:Microsoft.Build.Framework.Telemetry.LoggingConfigurationTelemetry.FileLoggersCount">
+            <summary>
+            Number of file loggers.
+            </summary>
+        </member>
+        <member name="P:Microsoft.Build.Framework.Telemetry.LoggingConfigurationTelemetry.FileLoggerVerbosity">
+            <summary>
+            Verbosity of file logger: quiet | minimal | normal | detailed | diagnostic
+            </summary>
+        </member>
+        <member name="P:Microsoft.Build.Framework.Telemetry.LoggingConfigurationTelemetry.BinaryLogger">
+            <summary>
+            True if binary logger was used.
+            </summary>
+        </member>
+        <member name="P:Microsoft.Build.Framework.Telemetry.LoggingConfigurationTelemetry.BinaryLoggerUsedDefaultName">
+            <summary>
+            True if binary logger used default name i.e. no LogFile was specified.
+            </summary>
+        </member>
+        <member name="P:Microsoft.Build.Framework.Telemetry.TelemetryBase.EventName">
+            <summary>
+            Gets or sets the name of the event.
+            </summary>
+        </member>
+        <member name="P:Microsoft.Build.Framework.Telemetry.TelemetryBase.Properties">
+            <summary>
+            Gets or sets a list of properties associated with the event.
+            </summary>
+        </member>
+        <member name="M:Microsoft.Build.Framework.Telemetry.TelemetryBase.UpdateEventProperties">
+            <summary>
+            Translate all derived type members into properties which will be used to build <see cref="T:Microsoft.Build.Framework.TelemetryEventArgs"/>.
+            </summary>
+        </member>
         <member name="T:Microsoft.Build.Framework.Traits">
             <summary>
                 Represents toggleable features of the MSBuild engine
@@ -5833,6 +6377,11 @@
             Allow the user to specify that two processes should not be communicating via an environment variable.
             </summary>
         </member>
+        <member name="F:Microsoft.Build.Framework.Traits.ForceEvaluateAsFullFramework">
+            <summary>
+            Override property "MSBuildRuntimeType" to "Full", ignoring the actual runtime type of MSBuild.
+            </summary>
+        </member>
         <member name="F:Microsoft.Build.Framework.Traits.CopyTaskParallelism">
             <summary>
             Setting the associated environment variable to 1 restores the pre-15.8 single
@@ -5846,9 +6395,29 @@
             Instruct MSBuild to write out the generated "metaproj" file to disk when building a solution file.
             </summary>
         </member>
+        <member name="F:Microsoft.Build.Framework.Traits.SolutionBatchTargets">
+            <summary>
+            Modifies Solution Generator to generate a metaproj that batches multiple Targets into one MSBuild task invoke.
+            </summary>
+            <remarks>
+            For example, a run of Clean;Build target will first run Clean on all projects,
+            then run Build on all projects.  When enabled, it will run Clean;Build on all
+            Projects at the back to back.  Allowing the second target to start sooner than before.
+            </remarks>
+        </member>
         <member name="F:Microsoft.Build.Framework.Traits.LogPropertyFunctionsRequiringReflection">
             <summary>
             Log statistics about property functions which require reflection
+            </summary>
+        </member>
+        <member name="F:Microsoft.Build.Framework.Traits.LogAllAssemblyLoads">
+            <summary>
+            Log all environment variables whether or not they are used in a build in the binary log.
+            </summary>
+        </member>
+        <member name="F:Microsoft.Build.Framework.Traits.LogAllEnvironmentVariables">
+            <summary>
+            Log all environment variables whether or not they are used in a build in the binary log.
             </summary>
         </member>
         <member name="F:Microsoft.Build.Framework.Traits.LogPropertyTracking">
@@ -5859,6 +6428,11 @@
         <member name="F:Microsoft.Build.Framework.Traits.DictionaryBasedItemRemoveThreshold">
             <summary>
             When evaluating items, this is the minimum number of items on the running list to use a dictionary-based remove optimization.
+            </summary>
+        </member>
+        <member name="F:Microsoft.Build.Framework.Traits.UseMSBuildServerEnvVarName">
+            <summary>
+            Name of environment variables used to enable MSBuild server.
             </summary>
         </member>
         <member name="F:Microsoft.Build.Framework.EscapeHatches.DoNotSendDeferredMessagesToBuildManager">
@@ -5901,6 +6475,11 @@
         <member name="F:Microsoft.Build.Framework.EscapeHatches.AlwaysDoImmutableFilesUpToDateCheck">
             <summary>
             Disables skipping full up to date check for immutable files. See FileClassifier class.
+            </summary>
+        </member>
+        <member name="F:Microsoft.Build.Framework.EscapeHatches.CopyWithoutDelete">
+            <summary>
+            When copying over an existing file, copy directly into the existing file rather than deleting and recreating.
             </summary>
         </member>
         <member name="F:Microsoft.Build.Framework.EscapeHatches._logProjectImports">
@@ -6012,22 +6591,42 @@
             Escape hatch for problems arising from https://github.com/dotnet/msbuild/pull/5552.
             </remarks>
         </member>
-        <member name="F:Microsoft.Build.Framework.EscapeHatches.s_throwExceptions">
+        <member name="P:Microsoft.Build.Framework.EscapeHatches.EnableWarningOnCustomBuildEvent">
             <summary>
-            Emergency escape hatch. If a customer hits a bug in the shipped product causing an internal exception,
-            and fortuitously it happens that ignoring the VerifyThrow allows execution to continue in a reasonable way,
-            then we can give them this undocumented environment variable as an immediate workaround.
+            Allows displaying the deprecation warning for BinaryFormatter in your current environment.
             </summary>
-            <remarks>
-            Clone from ErrorUtilities which isn't (yet?) available in Framework.
-            </remarks>
         </member>
         <member name="M:Microsoft.Build.Framework.EscapeHatches.ThrowInternalError(System.String)">
             <summary>
             Throws InternalErrorException.
             </summary>
             <remarks>
-            Clone of ErrorUtilities.ThrowInternalError which isn't (yet?) available in Framework.
+            Clone of ErrorUtilities.ThrowInternalError which isn't available in Framework.
+            </remarks>
+        </member>
+        <member name="M:Microsoft.Build.Framework.EscapeHatches.ThrowInternalError(System.String,System.Object[])">
+            <summary>
+            Throws InternalErrorException.
+            This is only for situations that would mean that there is a bug in MSBuild itself.
+            </summary>
+            <remarks>
+            Clone from ErrorUtilities which isn't available in Framework.
+            </remarks>
+        </member>
+        <member name="M:Microsoft.Build.Framework.EscapeHatches.FormatString(System.String,System.Object[])">
+            <summary>
+            Formats the given string using the variable arguments passed in.
+            
+            PERF WARNING: calling a method that takes a variable number of arguments is expensive, because memory is allocated for
+            the array of arguments -- do not call this method repeatedly in performance-critical scenarios
+            
+            Thread safe.
+            </summary>
+            <param name="unformatted">The string to format.</param>
+            <param name="args">Optional arguments for formatting the given string.</param>
+            <returns>The formatted string.</returns>
+            <remarks>
+            Clone from ResourceUtilities which isn't available in Framework.
             </remarks>
         </member>
         <member name="T:Microsoft.Build.Framework.UninitializedPropertyReadEventArgs">
@@ -7480,10 +8079,1308 @@
             See ISupportInitialize.
             </summary>
         </member>
+        <member name="T:Microsoft.Build.Shared.AssemblyUtilities">
+            <summary>
+            This class contains common reflection tasks
+            </summary>
+        </member>
+        <member name="T:Microsoft.Build.Shared.EncodingUtilities">
+            <summary>
+            This class contains utility methods for dealing with encoding.
+            </summary>
+        </member>
+        <member name="P:Microsoft.Build.Shared.EncodingUtilities.CurrentSystemOemEncoding">
+            <summary>
+            Get the current system locale code page, OEM version. OEM code pages are used for console-based input/output
+            for historical reasons.
+            </summary>
+        </member>
+        <member name="M:Microsoft.Build.Shared.EncodingUtilities.SimilarToEncoding(System.Text.Encoding,System.Text.Encoding)">
+            <summary>
+            Checks two encoding types to determine if they are similar to each other (equal or if
+            the Encoding Name is the same).
+            </summary>
+            <param name="encoding1"></param>
+            <param name="encoding2"></param>
+            <returns>True if the two Encoding objects are equal or similar.</returns>
+        </member>
+        <member name="M:Microsoft.Build.Shared.EncodingUtilities.IsUtf8Encoding(System.Text.Encoding)">
+            <summary>
+            Check if an encoding type is UTF8 (with or without BOM).
+            </summary>
+            <param name="encoding"></param>
+            <returns>True if the encoding is UTF8.</returns>
+        </member>
+        <member name="M:Microsoft.Build.Shared.EncodingUtilities.StartsWithPreamble(System.IO.Stream)">
+            <summary>
+            Check the first 3 bytes of a stream to determine if it matches the UTF8 preamble.
+            </summary>
+            <param name="stream">Steam to check.</param>
+            <returns>True when the first 3 bytes of the Stream are equal to the UTF8 preamble (BOM).</returns>
+        </member>
+        <member name="M:Microsoft.Build.Shared.EncodingUtilities.StartsWithPreamble(System.IO.Stream,System.Byte[])">
+            <summary>
+            Check the first 3 bytes of a stream to determine if it matches the given preamble.
+            </summary>
+            <param name="stream">Steam to check.</param>
+            <param name="preamble">Preamble to look for.</param>
+            <returns>True when the first 3 bytes of the Stream are equal to the preamble.</returns>
+        </member>
+        <member name="M:Microsoft.Build.Shared.EncodingUtilities.FileStartsWithPreamble(System.String)">
+            <summary>
+            Check the first 3 bytes of a file to determine if it matches the 3-byte UTF8 preamble (BOM).
+            </summary>
+            <param name="file">Path to file to check.</param>
+            <returns>True when the first 3 bytes of the file are equal to the UTF8 BOM.</returns>
+        </member>
+        <member name="M:Microsoft.Build.Shared.EncodingUtilities.CanEncodeString(System.Int32,System.String)">
+            <summary>
+            Checks to see if a string can be encoded in a specified code page.
+            </summary>
+            <remarks>Internal for testing purposes.</remarks>
+            <param name="codePage">Code page for encoding.</param>
+            <param name="stringToEncode">String to encode.</param>
+            <returns>True if the string can be encoded in the specified code page.</returns>
+        </member>
+        <member name="M:Microsoft.Build.Shared.EncodingUtilities.BatchFileEncoding(System.String,System.String)">
+             <summary>
+             Find the encoding for the batch file.
+             </summary>
+             <remarks>
+             The "best" encoding is the current OEM encoding, unless it's not capable of representing
+             the characters we plan to put in the file. If it isn't, we can fall back to UTF-8.
+            
+             Why not always UTF-8? Because tools don't always handle it well. See
+             https://github.com/dotnet/msbuild/issues/397
+             </remarks>
+        </member>
+        <member name="M:Microsoft.Build.Shared.EncodingUtilities.GetExternalOverriddenUILanguageIfSupportableWithEncoding">
+            <summary>
+            The .NET SDK and Visual Studio both have environment variables that set a custom language. MSBuild should respect the SDK variable.
+            To use the corresponding UI culture, in certain cases the console encoding must be changed. This function will change the encoding in these cases.
+            This code introduces a breaking change in .NET 8 due to the encoding of the console being changed.
+            If the environment variables are undefined, this function should be a no-op.
+            </summary>
+            <returns>
+            The custom language that was set by the user for an 'external' tool besides MSBuild.
+            Returns <see langword="null"/> if none are set.
+            </returns>
+        </member>
+        <member name="M:Microsoft.Build.Shared.EncodingUtilities.GetExternalOverriddenUILanguage">
+            <summary>
+            Look at UI language overrides that can be set by known external invokers. (DOTNET_CLI_UI_LANGUAGE.)
+            Does NOT check System Locale or OS Display Language.
+            Ported from the .NET SDK: https://github.com/dotnet/sdk/blob/bcea1face15458814b8e53e8785b52ba464f6538/src/Cli/Microsoft.DotNet.Cli.Utils/UILanguageOverride.cs
+            </summary>
+            <returns>The custom language that was set by the user for an 'external' tool besides MSBuild.
+            Returns null if none are set.</returns>
+        </member>
+        <member name="T:Microsoft.Build.Shared.VisualStudioLocationHelper">
+            <summary>
+            Helper class to wrap the Microsoft.VisualStudio.Setup.Configuration.Interop API to query
+            Visual Studio setup for instances installed on the machine.
+            Code derived from sample: https://code.msdn.microsoft.com/Visual-Studio-Setup-0cedd331
+            </summary>
+        </member>
+        <member name="M:Microsoft.Build.Shared.VisualStudioLocationHelper.GetInstances">
+            <summary>
+            Query the Visual Studio setup API to get instances of Visual Studio installed
+            on the machine. Will not include anything before Visual Studio "15".
+            </summary>
+            <returns>Enumerable list of Visual Studio instances</returns>
+        </member>
+        <member name="T:Microsoft.Build.Shared.VisualStudioInstance">
+            <summary>
+            Wrapper class to represent an installed instance of Visual Studio.
+            </summary>
+        </member>
+        <member name="P:Microsoft.Build.Shared.VisualStudioInstance.Version">
+            <summary>
+            Version of the Visual Studio Instance
+            </summary>
+        </member>
+        <member name="P:Microsoft.Build.Shared.VisualStudioInstance.Path">
+            <summary>
+            Path to the Visual Studio installation
+            </summary>
+        </member>
+        <member name="P:Microsoft.Build.Shared.VisualStudioInstance.Name">
+            <summary>
+            Full name of the Visual Studio instance with SKU name
+            </summary>
+        </member>
+        <member name="T:Microsoft.Build.Shared.MSBuildConstants">
+            <summary>
+            Constants that we want to be shareable across all our assemblies.
+            </summary>
+        </member>
+        <member name="F:Microsoft.Build.Shared.MSBuildConstants.ToolsPath">
+            <summary>
+            The name of the property that indicates the tools path
+            </summary>
+        </member>
+        <member name="F:Microsoft.Build.Shared.MSBuildConstants.ToolsPath64">
+            <summary>
+            Name of the property that indicates the X64 tools path
+            </summary>
+        </member>
+        <member name="F:Microsoft.Build.Shared.MSBuildConstants.SdksPath">
+            <summary>
+            Name of the property that indicates the root of the SDKs folder
+            </summary>
+        </member>
+        <member name="F:Microsoft.Build.Shared.MSBuildConstants.TreatWarningsAsErrors">
+            <summary>
+            Name of the property that indicates that all warnings should be treated as errors.
+            </summary>
+        </member>
+        <member name="F:Microsoft.Build.Shared.MSBuildConstants.WarningsAsErrors">
+            <summary>
+            Name of the property that indicates a list of warnings to treat as errors.
+            </summary>
+        </member>
+        <member name="F:Microsoft.Build.Shared.MSBuildConstants.WarningsNotAsErrors">
+            <summary>
+            Name of the property that indicates a list of warnings to not treat as errors.
+            </summary>
+        </member>
+        <member name="F:Microsoft.Build.Shared.MSBuildConstants.WarningsAsMessages">
+            <summary>
+            Name of the property that indicates the list of warnings to treat as messages.
+            </summary>
+        </member>
+        <member name="F:Microsoft.Build.Shared.MSBuildConstants.NuGetAssemblyPathEnvironmentVariableName">
+            <summary>
+            The name of the environment variable that users can specify to override where NuGet assemblies are loaded from in the NuGetSdkResolver.
+            </summary>
+        </member>
+        <member name="F:Microsoft.Build.Shared.MSBuildConstants.RestoreTargetName">
+            <summary>
+            The name of the target to run when a user specifies the /restore command-line argument.
+            </summary>
+        </member>
+        <member name="F:Microsoft.Build.Shared.MSBuildConstants.CurrentVisualStudioVersion">
+            <summary>
+            The most current Visual Studio Version known to this version of MSBuild.
+            </summary>
+        </member>
+        <member name="F:Microsoft.Build.Shared.MSBuildConstants.CurrentToolsVersion">
+            <summary>
+            The most current ToolsVersion known to this version of MSBuild.
+            </summary>
+        </member>
+        <member name="F:Microsoft.Build.Shared.MSBuildConstants.CurrentAssemblyVersion">
+            <summary>
+            The most current VSGeneralAssemblyVersion known to this version of MSBuild.
+            </summary>
+        </member>
+        <member name="F:Microsoft.Build.Shared.MSBuildConstants.CurrentProductVersion">
+            <summary>
+            Current version of this MSBuild Engine assembly in the form, e.g, "12.0"
+            </summary>
+        </member>
+        <member name="F:Microsoft.Build.Shared.MSBuildConstants.DefaultTargetsMarker">
+            <summary>
+            Symbol used in ProjectReferenceTarget items to represent default targets
+            </summary>
+        </member>
+        <member name="F:Microsoft.Build.Shared.MSBuildConstants.StandardTestTargetFrameworkVersion">
+            <summary>
+            Framework version against which our test projects should be built.
+            </summary>
+            <remarks>
+            The targeting pack for this version of .NET Framework must be installed
+            on any machine that wants to run tests successfully, so this can be
+            periodically updated.
+            </remarks>
+        </member>
+        <member name="F:Microsoft.Build.Shared.MSBuildConstants.ProjectReferenceTargetsOrDefaultTargetsMarker">
+            <summary>
+            Symbol used in ProjectReferenceTarget items to represent targets specified on the ProjectReference item
+            with fallback to default targets if the ProjectReference item has no targets specified.
+            </summary>
+        </member>
+        <member name="F:Microsoft.Build.Shared.PropertyNames.IsGraphBuild">
+            <summary>
+            Specifies whether the current evaluation / build is happening during a graph build
+            </summary>
+        </member>
+        <member name="F:Microsoft.Build.Shared.ItemTypeNames.ProjectReference">
+            <summary>
+            References to other msbuild projects
+            </summary>
+        </member>
+        <member name="F:Microsoft.Build.Shared.ItemTypeNames.ProjectReferenceTargets">
+            <summary>
+            Statically specifies what targets a project calls on its references
+            </summary>
+        </member>
+        <member name="F:Microsoft.Build.Shared.ItemTypeNames.ProjectCachePlugin">
+            <summary>
+            Declares a project cache plugin and its configuration.
+            </summary>
+        </member>
+        <member name="F:Microsoft.Build.Shared.ItemTypeNames.EmbedInBinlog">
+            <summary>
+            Embed specified files in the binary log
+            </summary>
+        </member>
+        <member name="T:Microsoft.Build.Shared.ItemMetadataNames">
+            <summary>
+            Constants naming well-known item metadata.
+            </summary>
+        </member>
+        <member name="F:Microsoft.Build.Shared.ItemMetadataNames.targetPath">
+            <summary>
+            The output path for a given item.
+            </summary>
+        </member>
+        <member name="T:Microsoft.Build.BinaryReaderFactory">
+            <summary>
+            Opaque holder of shared buffer.
+            </summary>
+        </member>
+        <member name="T:Microsoft.Build.BackEnd.BinaryTranslator">
+            <summary>
+            This class is responsible for serializing and deserializing simple types to and
+            from the byte streams used to communicate INodePacket-implementing classes.
+            Each class implements a Translate method on INodePacket which takes this class
+            as a parameter, and uses it to store and retrieve fields to the stream.
+            </summary>
+        </member>
+        <member name="M:Microsoft.Build.BackEnd.BinaryTranslator.GetReadTranslator(System.IO.Stream,Microsoft.Build.BinaryReaderFactory)">
+            <summary>
+            Returns a read-only serializer.
+            </summary>
+            <returns>The serializer.</returns>
+        </member>
+        <member name="M:Microsoft.Build.BackEnd.BinaryTranslator.GetWriteTranslator(System.IO.Stream)">
+            <summary>
+            Returns a write-only serializer.
+            </summary>
+            <param name="stream">The stream containing data to serialize.</param>
+            <returns>The serializer.</returns>
+        </member>
+        <member name="T:Microsoft.Build.BackEnd.BinaryTranslator.BinaryReadTranslator">
+            <summary>
+            Implementation of ITranslator for reading from a stream.
+            </summary>
+        </member>
+        <member name="F:Microsoft.Build.BackEnd.BinaryTranslator.BinaryReadTranslator._packetStream">
+            <summary>
+            The stream used as a source or destination for data.
+            </summary>
+        </member>
+        <member name="F:Microsoft.Build.BackEnd.BinaryTranslator.BinaryReadTranslator._reader">
+            <summary>
+            The binary reader used in read mode.
+            </summary>
+        </member>
+        <member name="M:Microsoft.Build.BackEnd.BinaryTranslator.BinaryReadTranslator.#ctor(System.IO.Stream,Microsoft.Build.BinaryReaderFactory)">
+            <summary>
+            Constructs a serializer from the specified stream, operating in the designated mode.
+            </summary>
+        </member>
+        <member name="M:Microsoft.Build.BackEnd.BinaryTranslator.BinaryReadTranslator.Dispose">
+            <summary>
+            Delegates the Dispose call the to the underlying BinaryReader.
+            </summary>
+        </member>
+        <member name="P:Microsoft.Build.BackEnd.BinaryTranslator.BinaryReadTranslator.Reader">
+            <summary>
+            Gets the reader, if any.
+            </summary>
+        </member>
+        <member name="P:Microsoft.Build.BackEnd.BinaryTranslator.BinaryReadTranslator.Writer">
+            <summary>
+            Gets the writer, if any.
+            </summary>
+        </member>
+        <member name="P:Microsoft.Build.BackEnd.BinaryTranslator.BinaryReadTranslator.Mode">
+            <summary>
+            Returns the current serialization mode.
+            </summary>
+        </member>
+        <member name="M:Microsoft.Build.BackEnd.BinaryTranslator.BinaryReadTranslator.Translate(System.Boolean@)">
+            <summary>
+            Translates a boolean.
+            </summary>
+            <param name="value">The value to be translated.</param>
+        </member>
+        <member name="M:Microsoft.Build.BackEnd.BinaryTranslator.BinaryReadTranslator.Translate(System.Boolean[]@)">
+            <summary>
+            Translates an <see langword="bool"/> array.
+            </summary>
+            <param name="array">The array to be translated.</param>
+        </member>
+        <member name="M:Microsoft.Build.BackEnd.BinaryTranslator.BinaryReadTranslator.Translate(System.Byte@)">
+            <summary>
+            Translates a byte.
+            </summary>
+            <param name="value">The value to be translated.</param>
+        </member>
+        <member name="M:Microsoft.Build.BackEnd.BinaryTranslator.BinaryReadTranslator.Translate(System.Int16@)">
+            <summary>
+            Translates a short.
+            </summary>
+            <param name="value">The value to be translated.</param>
+        </member>
+        <member name="M:Microsoft.Build.BackEnd.BinaryTranslator.BinaryReadTranslator.Translate(System.UInt16@)">
+            <summary>
+            Translates an unsigned short.
+            </summary>
+            <param name="value">The value to be translated.</param>
+        </member>
+        <member name="M:Microsoft.Build.BackEnd.BinaryTranslator.BinaryReadTranslator.Translate(System.Int32@)">
+            <summary>
+            Translates an integer.
+            </summary>
+            <param name="value">The value to be translated.</param>
+        </member>
+        <member name="M:Microsoft.Build.BackEnd.BinaryTranslator.BinaryReadTranslator.Translate(System.UInt32@)">
+            <inheritdoc/>
+        </member>
+        <member name="M:Microsoft.Build.BackEnd.BinaryTranslator.BinaryReadTranslator.Translate(System.Int32[]@)">
+            <summary>
+            Translates an <see langword="int"/> array.
+            </summary>
+            <param name="array">The array to be translated.</param>
+        </member>
+        <member name="M:Microsoft.Build.BackEnd.BinaryTranslator.BinaryReadTranslator.Translate(System.Int64@)">
+            <summary>
+            Translates a long.
+            </summary>
+            <param name="value">The value to be translated.</param>
+        </member>
+        <member name="M:Microsoft.Build.BackEnd.BinaryTranslator.BinaryReadTranslator.Translate(System.Double@)">
+            <summary>
+            Translates a double.
+            </summary>
+            <param name="value">The value to be translated.</param>
+        </member>
+        <member name="M:Microsoft.Build.BackEnd.BinaryTranslator.BinaryReadTranslator.Translate(System.String@)">
+            <summary>
+            Translates a string.
+            </summary>
+            <param name="value">The value to be translated.</param>
+        </member>
+        <member name="M:Microsoft.Build.BackEnd.BinaryTranslator.BinaryReadTranslator.Translate(System.Byte[]@)">
+            <summary>
+            Translates a byte array
+            </summary>
+            <param name="byteArray">The array to be translated</param>
+        </member>
+        <member name="M:Microsoft.Build.BackEnd.BinaryTranslator.BinaryReadTranslator.Translate(System.Byte[]@,System.Int32@)">
+            <summary>
+            Translates a byte array
+            </summary>
+            <param name="byteArray">The array to be translated.</param>
+            <param name="length">The length of array which will be used in translation. This parameter is not used when reading</param>
+        </member>
+        <member name="M:Microsoft.Build.BackEnd.BinaryTranslator.BinaryReadTranslator.Translate(System.String[]@)">
+            <summary>
+            Translates a string array.
+            </summary>
+            <param name="array">The array to be translated.</param>
+        </member>
+        <member name="M:Microsoft.Build.BackEnd.BinaryTranslator.BinaryReadTranslator.Translate(System.Collections.Generic.HashSet{System.String}@)">
+            <inheritdoc />
+        </member>
+        <member name="M:Microsoft.Build.BackEnd.BinaryTranslator.BinaryReadTranslator.Translate(System.Collections.Generic.List{System.String}@)">
+            <summary>
+            Translates a list of strings
+            </summary>
+            <param name="list">The list to be translated.</param>
+        </member>
+        <member name="M:Microsoft.Build.BackEnd.BinaryTranslator.BinaryReadTranslator.Translate``1(System.Collections.Generic.List{``0}@,Microsoft.Build.BackEnd.ObjectTranslator{``0})">
+            <summary>
+            Translates a list of T using an <see cref="T:Microsoft.Build.BackEnd.ObjectTranslator`1"/>
+            </summary>
+            <param name="list">The list to be translated.</param>
+            <param name="objectTranslator">The translator to use for the items in the list</param>
+            <typeparam name="T">TaskItem type</typeparam>
+        </member>
+        <member name="M:Microsoft.Build.BackEnd.BinaryTranslator.BinaryReadTranslator.Translate``2(System.Collections.Generic.ICollection{``0}@,Microsoft.Build.BackEnd.ObjectTranslator{``0},Microsoft.Build.BackEnd.NodePacketCollectionCreator{``1})">
+            <summary>
+            Translates a collection of T into the specified type using an <see cref="T:Microsoft.Build.BackEnd.ObjectTranslator`1"/> and <see cref="T:Microsoft.Build.BackEnd.NodePacketCollectionCreator`1"/>
+            </summary>
+            <param name="collection">The collection to be translated.</param>
+            <param name="objectTranslator">The translator to use for the values in the collection.</param>
+            <param name="collectionFactory">The factory to create the ICollection.</param>
+            <typeparam name="T">The type contained in the collection.</typeparam>
+            <typeparam name="L">The type of collection to be created.</typeparam>
+        </member>
+        <member name="M:Microsoft.Build.BackEnd.BinaryTranslator.BinaryReadTranslator.Translate(System.DateTime@)">
+            <summary>
+            Translates a DateTime.
+            </summary>
+            <param name="value">The value to be translated.</param>
+        </member>
+        <member name="M:Microsoft.Build.BackEnd.BinaryTranslator.BinaryReadTranslator.Translate(System.TimeSpan@)">
+            <summary>
+            Translates a TimeSpan.
+            </summary>
+            <param name="value">The value to be translated.</param>
+        </member>
+        <member name="M:Microsoft.Build.BackEnd.BinaryTranslator.BinaryReadTranslator.Translate(Microsoft.Build.Framework.BuildEventContext@)">
+            <summary>
+            Translates a BuildEventContext
+            </summary>
+            <remarks>
+            This method exists only because there is no serialization method built into the BuildEventContext
+            class, and it lives in Framework and we don't want to add a public method to it.
+            </remarks>
+            <param name="value">The context to be translated.</param>
+        </member>
+        <member name="M:Microsoft.Build.BackEnd.BinaryTranslator.BinaryReadTranslator.TranslateCulture(System.Globalization.CultureInfo@)">
+            <summary>
+            Translates a CultureInfo
+            </summary>
+            <param name="value">The CultureInfo to translate</param>
+        </member>
+        <member name="M:Microsoft.Build.BackEnd.BinaryTranslator.BinaryReadTranslator.TranslateEnum``1(``0@,System.Int32)">
+            <summary>
+            Translates an enumeration.
+            </summary>
+            <typeparam name="T">The enumeration type.</typeparam>
+            <param name="value">The enumeration instance to be translated.</param>
+            <param name="numericValue">The enumeration value as an integer.</param>
+            <remarks>This is a bit ugly, but it doesn't seem like a nice method signature is possible because
+            you can't pass the enum type as a reference and constrain the generic parameter to Enum.  Nor
+            can you simply pass as ref Enum, because an enum instance doesn't match that function signature.
+            Finally, converting the enum to an int assumes that we always want to transport enums as ints.  This
+            works in all of our current cases, but certainly isn't perfectly generic.</remarks>
+        </member>
+        <member name="M:Microsoft.Build.BackEnd.BinaryTranslator.BinaryReadTranslator.TranslateDotNet``1(``0@)">
+            <summary>
+            Translates a value using the .Net binary formatter.
+            </summary>
+            <typeparam name="T">The reference type.</typeparam>
+            <param name="value">The value to be translated.</param>
+        </member>
+        <member name="M:Microsoft.Build.BackEnd.BinaryTranslator.BinaryReadTranslator.Translate``1(``0@)">
+            <summary>
+            Translates an object implementing INodePacketTranslatable.
+            </summary>
+            <typeparam name="T">The reference type.</typeparam>
+            <param name="value">The value to be translated.</param>
+        </member>
+        <member name="M:Microsoft.Build.BackEnd.BinaryTranslator.BinaryReadTranslator.TranslateArray``1(``0[]@)">
+            <summary>
+            Translates an array of objects implementing INodePacketTranslatable.
+            </summary>
+            <typeparam name="T">The reference type.</typeparam>
+            <param name="array">The array to be translated.</param>
+        </member>
+        <member name="M:Microsoft.Build.BackEnd.BinaryTranslator.BinaryReadTranslator.TranslateArray``1(``0[]@,Microsoft.Build.BackEnd.ObjectTranslator{``0})">
+            <summary>
+            Translates an array of objects using an <see cref="T:Microsoft.Build.BackEnd.ObjectTranslator`1"/>
+            </summary>
+            <typeparam name="T">The reference type.</typeparam>
+            <param name="array">The array to be translated.</param>
+            <param name="objectTranslator">The translator to use for the elements in the array</param>
+        </member>
+        <member name="M:Microsoft.Build.BackEnd.BinaryTranslator.BinaryReadTranslator.TranslateDictionary(System.Collections.Generic.Dictionary{System.String,System.String}@,System.Collections.Generic.IEqualityComparer{System.String})">
+            <summary>
+            Translates a dictionary of { string, string }.
+            </summary>
+            <param name="dictionary">The dictionary to be translated.</param>
+            <param name="comparer">The comparer used to instantiate the dictionary.</param>
+        </member>
+        <member name="M:Microsoft.Build.BackEnd.BinaryTranslator.BinaryReadTranslator.TranslateDictionary``1(System.Collections.Generic.Dictionary{System.String,``0}@,System.Collections.Generic.IEqualityComparer{System.String},Microsoft.Build.BackEnd.ObjectTranslator{``0})">
+            <summary>
+            Translates a dictionary of { string, T }.  
+            </summary>
+            <typeparam name="T">The reference type for the values</typeparam>
+            <param name="dictionary">The dictionary to be translated.</param>
+            <param name="comparer">The comparer used to instantiate the dictionary.</param>
+            <param name="objectTranslator">The translator to use for the values in the dictionary</param>
+        </member>
+        <member name="M:Microsoft.Build.BackEnd.BinaryTranslator.BinaryReadTranslator.TranslateDictionary``2(``0@,Microsoft.Build.BackEnd.ObjectTranslator{``1})">
+            <summary>
+            Translates a dictionary of { string, T } for dictionaries with public parameterless constructors.
+            </summary>
+            <typeparam name="D">The reference type for the dictionary.</typeparam>
+            <typeparam name="T">The reference type for values in the dictionary.</typeparam>
+            <param name="dictionary">The dictionary to be translated.</param>
+            <param name="objectTranslator">The translator to use for the values in the dictionary</param>
+        </member>
+        <member name="M:Microsoft.Build.BackEnd.BinaryTranslator.BinaryReadTranslator.TranslateDictionary``2(``0@,Microsoft.Build.BackEnd.ObjectTranslator{``1},Microsoft.Build.BackEnd.NodePacketCollectionCreator{``0})">
+            <summary>
+            Translates a dictionary of { string, T } for dictionaries with public parameterless constructors.
+            </summary>
+            <typeparam name="D">The reference type for the dictionary.</typeparam>
+            <typeparam name="T">The reference type for values in the dictionary.</typeparam>
+            <param name="dictionary">The dictionary to be translated.</param>
+            <param name="objectTranslator">The translator to use for the values in the dictionary</param>
+            <param name="dictionaryCreator">The delegate used to instantiate the dictionary.</param>
+        </member>
+        <member name="M:Microsoft.Build.BackEnd.BinaryTranslator.BinaryReadTranslator.TranslateNullable``1(``0)">
+            <summary>
+            Reads in the boolean which says if this object is null or not.
+            </summary>
+            <typeparam name="T">The type of object to test.</typeparam>
+            <returns>True if the object should be read, false otherwise.</returns>
+        </member>
+        <member name="T:Microsoft.Build.BackEnd.BinaryTranslator.BinaryWriteTranslator">
+            <summary>
+            Implementation of ITranslator for writing to a stream.
+            </summary>
+        </member>
+        <member name="F:Microsoft.Build.BackEnd.BinaryTranslator.BinaryWriteTranslator._packetStream">
+            <summary>
+            The stream used as a source or destination for data.
+            </summary>
+        </member>
+        <member name="F:Microsoft.Build.BackEnd.BinaryTranslator.BinaryWriteTranslator._writer">
+            <summary>
+            The binary writer used in write mode.
+            </summary>
+        </member>
+        <member name="M:Microsoft.Build.BackEnd.BinaryTranslator.BinaryWriteTranslator.#ctor(System.IO.Stream)">
+            <summary>
+            Constructs a serializer from the specified stream, operating in the designated mode.
+            </summary>
+            <param name="packetStream">The stream serving as the source or destination of data.</param>
+        </member>
+        <member name="M:Microsoft.Build.BackEnd.BinaryTranslator.BinaryWriteTranslator.Dispose">
+            <summary>
+            Delegates the Dispose call the to the underlying BinaryWriter.
+            </summary>
+        </member>
+        <member name="P:Microsoft.Build.BackEnd.BinaryTranslator.BinaryWriteTranslator.Reader">
+            <summary>
+            Gets the reader, if any.
+            </summary>
+        </member>
+        <member name="P:Microsoft.Build.BackEnd.BinaryTranslator.BinaryWriteTranslator.Writer">
+            <summary>
+            Gets the writer, if any.
+            </summary>
+        </member>
+        <member name="P:Microsoft.Build.BackEnd.BinaryTranslator.BinaryWriteTranslator.Mode">
+            <summary>
+            Returns the current serialization mode.
+            </summary>
+        </member>
+        <member name="M:Microsoft.Build.BackEnd.BinaryTranslator.BinaryWriteTranslator.Translate(System.Boolean@)">
+            <summary>
+            Translates a boolean.
+            </summary>
+            <param name="value">The value to be translated.</param>
+        </member>
+        <member name="M:Microsoft.Build.BackEnd.BinaryTranslator.BinaryWriteTranslator.Translate(System.Boolean[]@)">
+            <summary>
+            Translates an <see langword="bool"/> array.
+            </summary>
+            <param name="array">The array to be translated.</param>
+        </member>
+        <member name="M:Microsoft.Build.BackEnd.BinaryTranslator.BinaryWriteTranslator.Translate(System.Byte@)">
+            <summary>
+            Translates a byte.
+            </summary>
+            <param name="value">The value to be translated.</param>
+        </member>
+        <member name="M:Microsoft.Build.BackEnd.BinaryTranslator.BinaryWriteTranslator.Translate(System.Int16@)">
+            <summary>
+            Translates a short.
+            </summary>
+            <param name="value">The value to be translated.</param>
+        </member>
+        <member name="M:Microsoft.Build.BackEnd.BinaryTranslator.BinaryWriteTranslator.Translate(System.UInt16@)">
+            <summary>
+            Translates an unsigned short.
+            </summary>
+            <param name="value">The value to be translated.</param>
+        </member>
+        <member name="M:Microsoft.Build.BackEnd.BinaryTranslator.BinaryWriteTranslator.Translate(System.Int32@)">
+            <summary>
+            Translates an integer.
+            </summary>
+            <param name="value">The value to be translated.</param>
+        </member>
+        <member name="M:Microsoft.Build.BackEnd.BinaryTranslator.BinaryWriteTranslator.Translate(System.UInt32@)">
+            <inheritdoc/>
+        </member>
+        <member name="M:Microsoft.Build.BackEnd.BinaryTranslator.BinaryWriteTranslator.Translate(System.Int32[]@)">
+            <summary>
+            Translates an <see langword="int"/> array.
+            </summary>
+            <param name="array">The array to be translated.</param>
+        </member>
+        <member name="M:Microsoft.Build.BackEnd.BinaryTranslator.BinaryWriteTranslator.Translate(System.Int64@)">
+            <summary>
+            Translates a long.
+            </summary>
+            <param name="value">The value to be translated.</param>
+        </member>
+        <member name="M:Microsoft.Build.BackEnd.BinaryTranslator.BinaryWriteTranslator.Translate(System.Double@)">
+            <summary>
+            Translates a double.
+            </summary>
+            <param name="value">The value to be translated.</param>
+        </member>
+        <member name="M:Microsoft.Build.BackEnd.BinaryTranslator.BinaryWriteTranslator.Translate(System.String@)">
+            <summary>
+            Translates a string.
+            </summary>
+            <param name="value">The value to be translated.</param>
+        </member>
+        <member name="M:Microsoft.Build.BackEnd.BinaryTranslator.BinaryWriteTranslator.Translate(System.String[]@)">
+            <summary>
+            Translates a string array.
+            </summary>
+            <param name="array">The array to be translated.</param>
+        </member>
+        <member name="M:Microsoft.Build.BackEnd.BinaryTranslator.BinaryWriteTranslator.Translate(System.Collections.Generic.List{System.String}@)">
+            <summary>
+            Translates a list of strings
+            </summary>
+            <param name="list">The list to be translated.</param>
+        </member>
+        <member name="M:Microsoft.Build.BackEnd.BinaryTranslator.BinaryWriteTranslator.Translate(System.Collections.Generic.HashSet{System.String}@)">
+            <inheritdoc />
+        </member>
+        <member name="M:Microsoft.Build.BackEnd.BinaryTranslator.BinaryWriteTranslator.Translate``1(System.Collections.Generic.List{``0}@,Microsoft.Build.BackEnd.ObjectTranslator{``0})">
+            <summary>
+            Translates a list of T using an <see cref="T:Microsoft.Build.BackEnd.ObjectTranslator`1"/>
+            </summary>
+            <param name="list">The list to be translated.</param>
+            <param name="objectTranslator">The translator to use for the items in the list</param>
+            <typeparam name="T">A TaskItemType</typeparam>
+        </member>
+        <member name="M:Microsoft.Build.BackEnd.BinaryTranslator.BinaryWriteTranslator.Translate``2(System.Collections.Generic.IList{``0}@,Microsoft.Build.BackEnd.ObjectTranslator{``0},Microsoft.Build.BackEnd.NodePacketCollectionCreator{``1})">
+            <summary>
+            Translates a list of T using an <see cref="T:Microsoft.Build.BackEnd.ObjectTranslator`1"/>
+            </summary>
+            <param name="list">The list to be translated.</param>
+            <param name="objectTranslator">The translator to use for the items in the list</param>
+            <param name="collectionFactory">factory to create the IList</param>
+            <typeparam name="T">A TaskItemType</typeparam>
+            <typeparam name="L">IList subtype</typeparam>
+        </member>
+        <member name="M:Microsoft.Build.BackEnd.BinaryTranslator.BinaryWriteTranslator.Translate``2(System.Collections.Generic.ICollection{``0}@,Microsoft.Build.BackEnd.ObjectTranslator{``0},Microsoft.Build.BackEnd.NodePacketCollectionCreator{``1})">
+            <summary>
+            Translates a collection of T into the specified type using an <see cref="T:Microsoft.Build.BackEnd.ObjectTranslator`1"/> and <see cref="T:Microsoft.Build.BackEnd.NodePacketCollectionCreator`1"/>
+            </summary>
+            <param name="collection">The collection to be translated.</param>
+            <param name="objectTranslator">The translator to use for the values in the collection.</param>
+            <param name="collectionFactory">The factory to create the ICollection.</param>
+            <typeparam name="T">The type contained in the collection.</typeparam>
+            <typeparam name="L">The type of collection to be created.</typeparam>
+        </member>
+        <member name="M:Microsoft.Build.BackEnd.BinaryTranslator.BinaryWriteTranslator.Translate(System.DateTime@)">
+            <summary>
+            Translates a DateTime.
+            </summary>
+            <param name="value">The value to be translated.</param>
+        </member>
+        <member name="M:Microsoft.Build.BackEnd.BinaryTranslator.BinaryWriteTranslator.Translate(System.TimeSpan@)">
+            <summary>
+            Translates a TimeSpan.
+            </summary>
+            <param name="value">The value to be translated.</param>
+        </member>
+        <member name="M:Microsoft.Build.BackEnd.BinaryTranslator.BinaryWriteTranslator.Translate(Microsoft.Build.Framework.BuildEventContext@)">
+            <summary>
+            Translates a BuildEventContext
+            </summary>
+            <remarks>
+            This method exists only because there is no serialization method built into the BuildEventContext
+            class, and it lives in Framework and we don't want to add a public method to it.
+            </remarks>
+            <param name="value">The context to be translated.</param>
+        </member>
+        <member name="M:Microsoft.Build.BackEnd.BinaryTranslator.BinaryWriteTranslator.TranslateCulture(System.Globalization.CultureInfo@)">
+            <summary>
+            Translates a CultureInfo
+            </summary>
+            <param name="value">The CultureInfo</param>
+        </member>
+        <member name="M:Microsoft.Build.BackEnd.BinaryTranslator.BinaryWriteTranslator.TranslateEnum``1(``0@,System.Int32)">
+            <summary>
+            Translates an enumeration.
+            </summary>
+            <typeparam name="T">The enumeration type.</typeparam>
+            <param name="value">The enumeration instance to be translated.</param>
+            <param name="numericValue">The enumeration value as an integer.</param>
+            <remarks>This is a bit ugly, but it doesn't seem like a nice method signature is possible because
+            you can't pass the enum type as a reference and constrain the generic parameter to Enum.  Nor
+            can you simply pass as ref Enum, because an enum instance doesn't match that function signature.
+            Finally, converting the enum to an int assumes that we always want to transport enums as ints.  This
+            works in all of our current cases, but certainly isn't perfectly generic.</remarks>
+        </member>
+        <member name="M:Microsoft.Build.BackEnd.BinaryTranslator.BinaryWriteTranslator.TranslateDotNet``1(``0@)">
+            <summary>
+            Translates a value using the .Net binary formatter.
+            </summary>
+            <typeparam name="T">The reference type.</typeparam>
+            <param name="value">The value to be translated.</param>
+        </member>
+        <member name="M:Microsoft.Build.BackEnd.BinaryTranslator.BinaryWriteTranslator.Translate``1(``0@)">
+            <summary>
+            Translates an object implementing INodePacketTranslatable.
+            </summary>
+            <typeparam name="T">The reference type.</typeparam>
+            <param name="value">The value to be translated.</param>
+        </member>
+        <member name="M:Microsoft.Build.BackEnd.BinaryTranslator.BinaryWriteTranslator.Translate(System.Byte[]@)">
+            <summary>
+            Translates a byte array
+            </summary>
+            <param name="byteArray">The byte array to be translated</param>
+        </member>
+        <member name="M:Microsoft.Build.BackEnd.BinaryTranslator.BinaryWriteTranslator.Translate(System.Byte[]@,System.Int32@)">
+            <summary>
+            Translates a byte array
+            </summary>
+            <param name="byteArray">The array to be translated.</param>
+            <param name="length">The length of array which will be used in translation</param>
+        </member>
+        <member name="M:Microsoft.Build.BackEnd.BinaryTranslator.BinaryWriteTranslator.TranslateArray``1(``0[]@)">
+            <summary>
+            Translates an array of objects implementing INodePacketTranslatable.
+            </summary>
+            <typeparam name="T">The reference type.</typeparam>
+            <param name="array">The array to be translated.</param>
+        </member>
+        <member name="M:Microsoft.Build.BackEnd.BinaryTranslator.BinaryWriteTranslator.TranslateArray``1(``0[]@,Microsoft.Build.BackEnd.ObjectTranslator{``0})">
+            <summary>
+            Translates an array of objects using an <see cref="T:Microsoft.Build.BackEnd.ObjectTranslator`1"/>
+            </summary>
+            <typeparam name="T">The reference type.</typeparam>
+            <param name="array">The array to be translated.</param>
+            <param name="objectTranslator">The translator to use for the elements in the array</param>
+        </member>
+        <member name="M:Microsoft.Build.BackEnd.BinaryTranslator.BinaryWriteTranslator.TranslateDictionary(System.Collections.Generic.Dictionary{System.String,System.String}@,System.Collections.Generic.IEqualityComparer{System.String})">
+            <summary>
+            Translates a dictionary of { string, string }.
+            </summary>
+            <param name="dictionary">The dictionary to be translated.</param>
+            <param name="comparer">The comparer used to instantiate the dictionary.</param>
+        </member>
+        <member name="M:Microsoft.Build.BackEnd.BinaryTranslator.BinaryWriteTranslator.TranslateDictionary``1(System.Collections.Generic.Dictionary{System.String,``0}@,System.Collections.Generic.IEqualityComparer{System.String},Microsoft.Build.BackEnd.ObjectTranslator{``0})">
+            <summary>
+            Translates a dictionary of { string, T }.  
+            </summary>
+            <typeparam name="T">The reference type for the values, which implements INodePacketTranslatable.</typeparam>
+            <param name="dictionary">The dictionary to be translated.</param>
+            <param name="comparer">The comparer used to instantiate the dictionary.</param>
+            <param name="objectTranslator">The translator to use for the values in the dictionary</param>
+        </member>
+        <member name="M:Microsoft.Build.BackEnd.BinaryTranslator.BinaryWriteTranslator.TranslateDictionary``2(``0@,Microsoft.Build.BackEnd.ObjectTranslator{``1})">
+            <summary>
+            Translates a dictionary of { string, T } for dictionaries with public parameterless constructors.
+            </summary>
+            <typeparam name="D">The reference type for the dictionary.</typeparam>
+            <typeparam name="T">The reference type for values in the dictionary.</typeparam>
+            <param name="dictionary">The dictionary to be translated.</param>
+            <param name="objectTranslator">The translator to use for the values in the dictionary</param>
+        </member>
+        <member name="M:Microsoft.Build.BackEnd.BinaryTranslator.BinaryWriteTranslator.TranslateDictionary``2(``0@,Microsoft.Build.BackEnd.ObjectTranslator{``1},Microsoft.Build.BackEnd.NodePacketCollectionCreator{``0})">
+            <summary>
+            Translates a dictionary of { string, T } for dictionaries with public parameterless constructors.
+            </summary>
+            <typeparam name="D">The reference type for the dictionary.</typeparam>
+            <typeparam name="T">The reference type for values in the dictionary.</typeparam>
+            <param name="dictionary">The dictionary to be translated.</param>
+            <param name="objectTranslator">The translator to use for the values in the dictionary</param>
+            <param name="dictionaryCreator">The delegate used to instantiate the dictionary.</param>
+        </member>
+        <member name="M:Microsoft.Build.BackEnd.BinaryTranslator.BinaryWriteTranslator.TranslateDictionary(System.Collections.Generic.Dictionary{System.String,System.DateTime}@,System.StringComparer)">
+            <summary>
+            Translates a dictionary of { string, DateTime }.
+            </summary>
+            <param name="dictionary">The dictionary to be translated.</param>
+            <param name="comparer">Key comparer</param>
+        </member>
+        <member name="M:Microsoft.Build.BackEnd.BinaryTranslator.BinaryWriteTranslator.TranslateNullable``1(``0)">
+            <summary>
+            Writes out the boolean which says if this object is null or not.
+            </summary>
+            <param name="value">The object to test.</param>
+            <typeparam name="T">The type of object to test.</typeparam>
+            <returns>True if the object should be written, false otherwise.</returns>
+        </member>
+        <member name="T:Microsoft.Build.BackEnd.ITranslatable">
+            <summary>
+            An interface representing an object which may be serialized by the node packet serializer.
+            </summary>
+        </member>
+        <member name="M:Microsoft.Build.BackEnd.ITranslatable.Translate(Microsoft.Build.BackEnd.ITranslator)">
+            <summary>
+            Reads or writes the packet to the serializer.
+            </summary>
+        </member>
+        <member name="T:Microsoft.Build.BackEnd.NodePacketValueFactory`1">
+            <summary>
+            This delegate is used for objects which do not have public parameterless constructors and must be constructed using
+            another method.  When invoked, this delegate should return a new object which has been translated appropriately.
+            </summary>
+            <typeparam name="T">The type to be translated.</typeparam>
+        </member>
+        <member name="T:Microsoft.Build.BackEnd.ObjectTranslator`1">
+            <summary>
+            Delegate for users that want to translate an arbitrary structure that doesn't implement <see cref="T:Microsoft.Build.BackEnd.ITranslatable"/> (e.g. translating a complex collection)
+            </summary>
+            <param name="translator">the translator</param>
+            <param name="objectToTranslate">the object to translate</param>
+        </member>
+        <member name="T:Microsoft.Build.BackEnd.NodePacketCollectionCreator`1">
+            <summary>
+            This delegate is used to create arbitrary collection types for serialization.
+            </summary>
+            <typeparam name="T">The type of dictionary to be created.</typeparam>
+        </member>
+        <member name="T:Microsoft.Build.BackEnd.TranslationDirection">
+            <summary>
+            The serialization mode.
+            </summary>
+        </member>
+        <member name="F:Microsoft.Build.BackEnd.TranslationDirection.WriteToStream">
+            <summary>
+            Indicates the serializer is operating in write mode.
+            </summary>
+        </member>
+        <member name="F:Microsoft.Build.BackEnd.TranslationDirection.ReadFromStream">
+            <summary>
+            Indicates the serializer is operating in read mode.
+            </summary>
+        </member>
+        <member name="T:Microsoft.Build.BackEnd.ITranslator">
+            <summary>
+            This interface represents an object which aids objects in serializing and 
+            deserializing INodePackets.
+            </summary>
+            <remarks>
+            The reason we bother with a custom serialization mechanism at all is two fold:
+            1. The .Net serialization mechanism is inefficient, even if you implement ISerializable
+               with your own custom mechanism.  This is because the serializer uses a bag called
+               SerializationInfo into which you are expected to drop all your data.  This adds
+               an unnecessary level of indirection to the serialization routines and prevents direct,
+               efficient access to the byte-stream.
+            2. You have to implement both a reader and writer part, which introduces the potential for
+               error should the classes be later modified.  If the reader and writer methods are not
+               kept in perfect sync, serialization errors will occur.  Our custom serializer eliminates
+               that by ensuring a single Translate method on a given object can handle both reads and
+               writes without referencing any field more than once.
+            </remarks>
+        </member>
+        <member name="P:Microsoft.Build.BackEnd.ITranslator.Mode">
+            <summary>
+            Returns the current serialization mode.
+            </summary>
+        </member>
+        <member name="P:Microsoft.Build.BackEnd.ITranslator.Reader">
+            <summary>
+            Returns the binary reader.
+            </summary>
+            <remarks>
+            This should ONLY be used when absolutely necessary for translation.  It is generally unnecessary for the 
+            translating object to know the direction of translation.  Use one of the Translate methods instead.
+            </remarks>
+        </member>
+        <member name="P:Microsoft.Build.BackEnd.ITranslator.Writer">
+            <summary>
+            Returns the binary writer.
+            </summary>
+            <remarks>
+            This should ONLY be used when absolutely necessary for translation.  It is generally unnecessary for the 
+            translating object to know the direction of translation.  Use one of the Translate methods instead.
+            </remarks>
+        </member>
+        <member name="M:Microsoft.Build.BackEnd.ITranslator.Translate(System.Boolean@)">
+            <summary>
+            Translates a boolean.
+            </summary>
+            <param name="value">The value to be translated.</param>
+        </member>
+        <member name="M:Microsoft.Build.BackEnd.ITranslator.Translate(System.Boolean[]@)">
+            <summary>
+            Translates an <see langword="bool"/> array.
+            </summary>
+            <param name="array">The array to be translated.</param>
+        </member>
+        <member name="M:Microsoft.Build.BackEnd.ITranslator.Translate(System.Byte@)">
+            <summary>
+            Translates a byte.
+            </summary>
+            <param name="value">The value to be translated.</param>
+        </member>
+        <member name="M:Microsoft.Build.BackEnd.ITranslator.Translate(System.Int16@)">
+            <summary>
+            Translates a short.
+            </summary>
+            <param name="value">The value to be translated.</param>
+        </member>
+        <member name="M:Microsoft.Build.BackEnd.ITranslator.Translate(System.UInt16@)">
+            <summary>
+            Translates a unsigned short.
+            </summary>
+            <param name="value">The value to be translated.</param>
+        </member>
+        <member name="M:Microsoft.Build.BackEnd.ITranslator.Translate(System.Int32@)">
+            <summary>
+            Translates an integer.
+            </summary>
+            <param name="value">The value to be translated.</param>
+        </member>
+        <member name="M:Microsoft.Build.BackEnd.ITranslator.Translate(System.UInt32@)">
+            <summary>
+            Translates an unsigned integer.
+            </summary>
+            <param name="unsignedInteger">The unsigned integer to translate.</param>
+        </member>
+        <member name="M:Microsoft.Build.BackEnd.ITranslator.Translate(System.Int32[]@)">
+            <summary>
+            Translates an <see langword="int"/> array.
+            </summary>
+            <param name="array">The array to be translated.</param>
+        </member>
+        <member name="M:Microsoft.Build.BackEnd.ITranslator.Translate(System.Int64@)">
+            <summary>
+            Translates a long.
+            </summary>
+            <param name="value">The value to be translated.</param>
+        </member>
+        <member name="M:Microsoft.Build.BackEnd.ITranslator.Translate(System.String@)">
+            <summary>
+            Translates a string.
+            </summary>
+            <param name="value">The value to be translated.</param>
+        </member>
+        <member name="M:Microsoft.Build.BackEnd.ITranslator.Translate(System.Double@)">
+            <summary>
+            Translates a double.
+            </summary>
+            <param name="value">The value to be translated.</param>
+        </member>
+        <member name="M:Microsoft.Build.BackEnd.ITranslator.Translate(System.String[]@)">
+            <summary>
+            Translates a string array.
+            </summary>
+            <param name="array">The array to be translated.</param>
+        </member>
+        <member name="M:Microsoft.Build.BackEnd.ITranslator.Translate(System.Collections.Generic.List{System.String}@)">
+            <summary>
+            Translates a list of strings
+            </summary>
+            <param name="list">The list to be translated.</param>
+        </member>
+        <member name="M:Microsoft.Build.BackEnd.ITranslator.Translate(System.Collections.Generic.HashSet{System.String}@)">
+            <summary>
+            Translates a set of strings
+            </summary>
+            <param name="set">The set to be translated.</param>
+        </member>
+        <member name="M:Microsoft.Build.BackEnd.ITranslator.Translate``1(System.Collections.Generic.List{``0}@,Microsoft.Build.BackEnd.ObjectTranslator{``0})">
+            <summary>
+            Translates a list of T using an <see cref="T:Microsoft.Build.BackEnd.ObjectTranslator`1"/>
+            </summary>
+            <param name="list">The list to be translated.</param>
+            <param name="objectTranslator">The translator to use for the items in the list</param>
+            <typeparam name="T">A TaskItemType</typeparam>
+        </member>
+        <member name="M:Microsoft.Build.BackEnd.ITranslator.Translate``2(System.Collections.Generic.IList{``0}@,Microsoft.Build.BackEnd.ObjectTranslator{``0},Microsoft.Build.BackEnd.NodePacketCollectionCreator{``1})">
+            <summary>
+            Translates a list of T using an <see cref="T:Microsoft.Build.BackEnd.ObjectTranslator`1"/> anda collection factory
+            </summary>
+            <param name="list">The list to be translated.</param>
+            <param name="objectTranslator">The translator to use for the items in the list</param>
+            <typeparam name="T">An ITranslatable subtype</typeparam>
+            <typeparam name="L">An IList subtype</typeparam>
+            <param name="collectionFactory">factory to create a collection</param>
+        </member>
+        <member name="M:Microsoft.Build.BackEnd.ITranslator.Translate``2(System.Collections.Generic.ICollection{``0}@,Microsoft.Build.BackEnd.ObjectTranslator{``0},Microsoft.Build.BackEnd.NodePacketCollectionCreator{``1})">
+            <summary>
+            Translates a collection of T into the specified type using an <see cref="T:Microsoft.Build.BackEnd.ObjectTranslator`1"/> and <see cref="T:Microsoft.Build.BackEnd.NodePacketCollectionCreator`1"/>
+            </summary>
+            <param name="collection">The collection to be translated.</param>
+            <param name="objectTranslator">The translator to use for the values in the collection.</param>
+            <param name="collectionFactory">The factory to create the ICollection.</param>
+            <typeparam name="T">The type contained in the collection.</typeparam>
+            <typeparam name="L">The type of collection to be created.</typeparam>
+        </member>
+        <member name="M:Microsoft.Build.BackEnd.ITranslator.Translate(System.DateTime@)">
+            <summary>
+            Translates a DateTime.
+            </summary>
+            <param name="value">The value to be translated.</param>
+        </member>
+        <member name="M:Microsoft.Build.BackEnd.ITranslator.Translate(System.TimeSpan@)">
+            <summary>
+            Translates a TimeSpan.
+            </summary>
+            <param name="value">The value to be translated.</param>
+        </member>
+        <member name="M:Microsoft.Build.BackEnd.ITranslator.Translate(Microsoft.Build.Framework.BuildEventContext@)">
+            <summary>
+            Translates a BuildEventContext
+            </summary>
+            <remarks>
+            This method exists only because there is no serialization method built into the BuildEventContext
+            class, and it lives in Framework and we don't want to add a public method to it.
+            </remarks>
+            <param name="value">The context to be translated.</param>
+        </member>
+        <member name="M:Microsoft.Build.BackEnd.ITranslator.TranslateEnum``1(``0@,System.Int32)">
+            <summary>
+            Translates an enumeration.
+            </summary>
+            <typeparam name="T">The enumeration type.</typeparam>
+            <param name="value">The enumeration instance to be translated.</param>
+            <param name="numericValue">The enumeration value as an integer.</param>
+            <remarks>This is a bit ugly, but it doesn't seem like a nice method signature is possible because
+            you can't pass the enum type as a reference and constrain the generic parameter to Enum.  Nor
+            can you simply pass as ref Enum, because an enum instance doesn't match that function signature.
+            Finally, converting the enum to an int assumes that we always want to transport enums as ints.  This
+            works in all of our current cases, but certainly isn't perfectly generic.</remarks>
+        </member>
+        <member name="M:Microsoft.Build.BackEnd.ITranslator.TranslateDotNet``1(``0@)">
+            <summary>
+            Translates a value using the .Net binary formatter.
+            </summary>
+            <typeparam name="T">The reference type.</typeparam>
+            <param name="value">The value to be translated.</param>
+            <remarks>
+            The primary purpose of this method is to support serialization of Exceptions and
+            custom build logging events, since these do not support our custom serialization
+            methods.
+            </remarks>
+        </member>
+        <member name="M:Microsoft.Build.BackEnd.ITranslator.Translate``1(``0@)">
+            <summary>
+            Translates an object implementing INodePacketTranslatable.
+            </summary>
+            <typeparam name="T">The reference type.</typeparam>
+            <param name="value">The value to be translated.</param>
+        </member>
+        <member name="M:Microsoft.Build.BackEnd.ITranslator.TranslateCulture(System.Globalization.CultureInfo@)">
+            <summary>
+            Translates a culture
+            </summary>
+            <param name="culture">The culture</param>
+        </member>
+        <member name="M:Microsoft.Build.BackEnd.ITranslator.Translate(System.Byte[]@)">
+            <summary>
+            Translates a byte array
+            </summary>
+            <param name="byteArray">The array to be translated.</param>
+        </member>
+        <member name="M:Microsoft.Build.BackEnd.ITranslator.Translate(System.Byte[]@,System.Int32@)">
+            <summary>
+            Translates a byte array
+            </summary>
+            <param name="byteArray">The array to be translated.</param>
+            <param name="length">The length of array which will be used in translation</param>
+        </member>
+        <member name="M:Microsoft.Build.BackEnd.ITranslator.TranslateArray``1(``0[]@)">
+            <summary>
+            Translates an array of objects implementing INodePacketTranslatable.
+            </summary>
+            <typeparam name="T">The reference type.</typeparam>
+            <param name="array">The array to be translated.</param>
+        </member>
+        <member name="M:Microsoft.Build.BackEnd.ITranslator.TranslateArray``1(``0[]@,Microsoft.Build.BackEnd.ObjectTranslator{``0})">
+            <summary>
+            Translates an array of objects using an <see cref="T:Microsoft.Build.BackEnd.ObjectTranslator`1"/>.
+            </summary>
+            <typeparam name="T">The reference type.</typeparam>
+            <param name="array">The array to be translated.</param>
+            <param name="objectTranslator">The translator to use for the elements in the array.</param>
+        </member>
+        <member name="M:Microsoft.Build.BackEnd.ITranslator.TranslateDictionary(System.Collections.Generic.Dictionary{System.String,System.String}@,System.Collections.Generic.IEqualityComparer{System.String})">
+            <summary>
+            Translates a dictionary of { string, string }.
+            </summary>
+            <param name="dictionary">The dictionary to be translated.</param>
+            <param name="comparer">The comparer used to instantiate the dictionary.</param>
+        </member>
+        <member name="M:Microsoft.Build.BackEnd.ITranslator.TranslateDictionary``1(System.Collections.Generic.Dictionary{System.String,``0}@,System.Collections.Generic.IEqualityComparer{System.String},Microsoft.Build.BackEnd.ObjectTranslator{``0})">
+            <summary>
+            Translates a dictionary of { string, T }.  
+            </summary>
+            <typeparam name="T">The reference type for the values, which implements INodePacketTranslatable.</typeparam>
+            <param name="dictionary">The dictionary to be translated.</param>
+            <param name="comparer">The comparer used to instantiate the dictionary.</param>
+            <param name="objectTranslator">The translator to use for the values in the dictionary</param>
+        </member>
+        <member name="M:Microsoft.Build.BackEnd.ITranslator.TranslateDictionary``2(``0@,Microsoft.Build.BackEnd.ObjectTranslator{``1})">
+            <summary>
+            Translates a dictionary of { string, T } for dictionaries with public parameterless constructors.
+            </summary>
+            <typeparam name="D">The reference type for the dictionary.</typeparam>
+            <typeparam name="T">The reference type for values in the dictionary.</typeparam>
+            <param name="dictionary">The dictionary to be translated.</param>
+            <param name="objectTranslator">The translator to use for the values in the dictionary.</param>
+        </member>
+        <member name="M:Microsoft.Build.BackEnd.ITranslator.TranslateDictionary``2(``0@,Microsoft.Build.BackEnd.ObjectTranslator{``1},Microsoft.Build.BackEnd.NodePacketCollectionCreator{``0})">
+            <summary>
+            Translates a dictionary of { string, T } for dictionaries with public parameterless constructors.
+            </summary>
+            <typeparam name="D">The reference type for the dictionary.</typeparam>
+            <typeparam name="T">The reference type for values in the dictionary.</typeparam>
+            <param name="dictionary">The dictionary to be translated.</param>
+            <param name="objectTranslator">The translator to use for the values in the dictionary</param>
+            <param name="collectionCreator">A factory used to create the dictionary.</param>
+        </member>
+        <member name="M:Microsoft.Build.BackEnd.ITranslator.TranslateNullable``1(``0)">
+            <summary>
+            Translates the boolean that says whether this value is null or not
+            </summary>
+            <param name="value">The object to test.</param>
+            <typeparam name="T">The type of object to test.</typeparam>
+            <returns>True if the object should be written, false otherwise.</returns>
+        </member>
+        <member name="T:Microsoft.Build.Logging.TerminalLogger.AnsiCodes">
+            <summary>
+            A collection of standard ANSI/VT100 control codes.
+            </summary>
+        </member>
+        <member name="F:Microsoft.Build.Logging.TerminalLogger.AnsiCodes.CSI">
+            <summary>
+            The control sequence introducer.
+            </summary>
+        </member>
+        <member name="F:Microsoft.Build.Logging.TerminalLogger.AnsiCodes.SetColor">
+            <summary>
+            Select graphic rendition.
+            </summary>
+            <remarks>
+            Print <see cref="F:Microsoft.Build.Logging.TerminalLogger.AnsiCodes.CSI"/>color-code<see cref="F:Microsoft.Build.Logging.TerminalLogger.AnsiCodes.SetColor"/> to change text color.
+            </remarks>
+        </member>
+        <member name="F:Microsoft.Build.Logging.TerminalLogger.AnsiCodes.SetBold">
+            <summary>
+            Select graphic rendition - set bold mode.
+            </summary>
+            <remarks>
+            Print <see cref="F:Microsoft.Build.Logging.TerminalLogger.AnsiCodes.CSI"/><see cref="F:Microsoft.Build.Logging.TerminalLogger.AnsiCodes.SetBold"/> to change text to bold.
+            </remarks>
+        </member>
+        <member name="F:Microsoft.Build.Logging.TerminalLogger.AnsiCodes.SetDefaultColor">
+            <summary>
+            A shortcut to reset color back to normal.
+            </summary>
+        </member>
+        <member name="F:Microsoft.Build.Logging.TerminalLogger.AnsiCodes.LinkPrefix">
+            <summary>
+            Non-xterm extension to render a hyperlink.
+            </summary>
+            <remarks>
+            Print <see cref="F:Microsoft.Build.Logging.TerminalLogger.AnsiCodes.LinkPrefix"/>url<see cref="F:Microsoft.Build.Logging.TerminalLogger.AnsiCodes.LinkInfix"/>text<see cref="F:Microsoft.Build.Logging.TerminalLogger.AnsiCodes.LinkSuffix"/> to render a hyperlink.
+            </remarks>
+        </member>
+        <member name="F:Microsoft.Build.Logging.TerminalLogger.AnsiCodes.LinkInfix">
+            <summary>
+            <see cref="F:Microsoft.Build.Logging.TerminalLogger.AnsiCodes.LinkPrefix"/>
+            </summary>
+        </member>
+        <member name="F:Microsoft.Build.Logging.TerminalLogger.AnsiCodes.LinkSuffix">
+            <summary>
+            <see cref="F:Microsoft.Build.Logging.TerminalLogger.AnsiCodes.LinkPrefix"/>
+            </summary>
+        </member>
+        <member name="F:Microsoft.Build.Logging.TerminalLogger.AnsiCodes.MoveUpToLineStart">
+            <summary>
+            Moves up the specified number of lines and puts cursor at the beginning of the line.
+            </summary>
+            <remarks>
+            Print <see cref="F:Microsoft.Build.Logging.TerminalLogger.AnsiCodes.CSI"/>N<see cref="F:Microsoft.Build.Logging.TerminalLogger.AnsiCodes.MoveUpToLineStart"/> to move N lines up.
+            </remarks>
+        </member>
+        <member name="F:Microsoft.Build.Logging.TerminalLogger.AnsiCodes.MoveForward">
+            <summary>
+            Moves forward (to the right) the specified number of characters.
+            </summary>
+            <remarks>
+            Print <see cref="F:Microsoft.Build.Logging.TerminalLogger.AnsiCodes.CSI"/>N<see cref="F:Microsoft.Build.Logging.TerminalLogger.AnsiCodes.MoveForward"/> to move N characters forward.
+            </remarks>
+        </member>
+        <member name="F:Microsoft.Build.Logging.TerminalLogger.AnsiCodes.MoveBackward">
+            <summary>
+            Moves backward (to the left) the specified number of characters.
+            </summary>
+            <remarks>
+            Print <see cref="F:Microsoft.Build.Logging.TerminalLogger.AnsiCodes.CSI"/>N<see cref="F:Microsoft.Build.Logging.TerminalLogger.AnsiCodes.MoveBackward"/> to move N characters backward.
+            </remarks>
+        </member>
+        <member name="F:Microsoft.Build.Logging.TerminalLogger.AnsiCodes.EraseInDisplay">
+            <summary>
+            Clears everything from cursor to end of screen.
+            </summary>
+            <remarks>
+            Print <see cref="F:Microsoft.Build.Logging.TerminalLogger.AnsiCodes.CSI"/><see cref="F:Microsoft.Build.Logging.TerminalLogger.AnsiCodes.EraseInDisplay"/> to clear.
+            </remarks>
+        </member>
+        <member name="F:Microsoft.Build.Logging.TerminalLogger.AnsiCodes.EraseInLine">
+            <summary>
+            Clears everything from cursor to the end of the current line.
+            </summary>
+            <remarks>
+            Print <see cref="F:Microsoft.Build.Logging.TerminalLogger.AnsiCodes.CSI"/><see cref="F:Microsoft.Build.Logging.TerminalLogger.AnsiCodes.EraseInLine"/> to clear.
+            </remarks>
+        </member>
+        <member name="F:Microsoft.Build.Logging.TerminalLogger.AnsiCodes.HideCursor">
+            <summary>
+            Hides the cursor.
+            </summary>
+        </member>
+        <member name="F:Microsoft.Build.Logging.TerminalLogger.AnsiCodes.ShowCursor">
+            <summary>
+            Shows/restores the cursor.
+            </summary>
+        </member>
+        <member name="F:Microsoft.Build.Logging.TerminalLogger.AnsiCodes.SetProgressIndeterminate">
+            <summary>
+            Set progress state to a busy spinner. <br/>
+            Note: this code works only on ConEmu terminals, and conflicts with push a notification code on iTerm2.
+            </summary>
+            <remarks>
+            <see href="https://conemu.github.io/en/AnsiEscapeCodes.html#ConEmu_specific_OSC">ConEmu specific OSC codes.</see><br/>
+            <see href="https://iterm2.com/documentation-escape-codes.html">iTerm2 proprietary escape codes.</see>
+            </remarks>
+        </member>
+        <member name="F:Microsoft.Build.Logging.TerminalLogger.AnsiCodes.RemoveProgress">
+            <summary>
+            Remove progress state, restoring taskbar status to normal. <br/>
+            Note: this code works only on ConEmu terminals, and conflicts with push a notification code on iTerm2.
+            </summary>
+            <remarks>
+            <see href="https://conemu.github.io/en/AnsiEscapeCodes.html#ConEmu_specific_OSC">ConEmu specific OSC codes.</see><br/>
+            <see href="https://iterm2.com/documentation-escape-codes.html">iTerm2 proprietary escape codes.</see>
+            </remarks>
+        </member>
+        <member name="T:Microsoft.Build.Logging.TerminalLogger.TerminalColor">
+            <summary>
+            Enumerates the text colors supported by VT100 terminal.
+            </summary>
+        </member>
         <member name="T:Microsoft.Build.Eventing.MSBuildEventSource">
             <summary>
             This captures information of how various key methods of building with MSBuild ran.
             </summary>
+            <remarks>
+            Changes to existing event method signatures will not be reflected unless you update the <see cref="P:System.Diagnostics.Tracing.EventAttribute.Version" /> property or assign a new event ID.
+            </remarks>
+        </member>
+        <member name="F:Microsoft.Build.Eventing.MSBuildEventSource.Keywords.All">
+            <summary>
+            Keyword applied to all MSBuild events.
+            </summary>
+            <remarks>
+            Literally every event should define this.
+            </remarks>
+        </member>
+        <member name="F:Microsoft.Build.Eventing.MSBuildEventSource.Keywords.PerformanceLog">
+            <summary>
+            Keyword for events that should go in the text performance log when turned on.
+            </summary>
+            <remarks>
+            This keyword should be applied only to events that are low-volume
+            and likely to be useful to diagnose perf issues using the
+            <see href="https://github.com/dotnet/msbuild/pull/5861">text perf log</see>.
+            </remarks>
         </member>
         <member name="F:Microsoft.Build.Eventing.MSBuildEventSource.Log">
             <summary>
@@ -7599,7 +9496,7 @@
         </member>
         <member name="M:Microsoft.Build.Eventing.MSBuildEventSource.RarRemoveReferencesMarkedForExclusionStart">
             <summary>
-            Call this method to notify listeners of profiling for the method that removes blacklisted references from the reference table. It puts primary and dependency references in invalid file lists.
+            Call this method to notify listeners of profiling for the method that removes denylisted references from the reference table. It puts primary and dependency references in invalid file lists.
             </summary>
         </member>
         <member name="M:Microsoft.Build.Eventing.MSBuildEventSource.SaveStart(System.String)">
@@ -7639,6 +9536,13 @@
                and if it is seen more than 100x per build it might indicates wrong usage patterns resulting into degrading
                efficiency of ReusableStringBuilderFactory. Hence it is collected in release build as well.
             </remarks>
+        </member>
+        <member name="T:System.Runtime.Versioning.SupportedOSPlatformGuard">
+            <summary>
+            SupportedOSPlatform is a net5.0+ Attribute.
+            Create the same type only in full-framework and netstandard2.0 builds
+            to prevent many #if RUNTIME_TYPE_NETCORE checks.
+            </summary>
         </member>
         <member name="T:System.Diagnostics.CodeAnalysis.AllowNullAttribute">
             <summary>Specifies that null is allowed as an input even if the corresponding type disallows it.</summary>

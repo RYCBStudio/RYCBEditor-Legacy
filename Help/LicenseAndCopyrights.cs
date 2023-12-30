@@ -6,55 +6,40 @@ namespace IDE
 {
     public partial class LicenseAndCopyrights : Sunny.UI.UIForm
     {
+        private string Text;
         public LicenseAndCopyrights()
         {
             InitializeComponent();
             InitializeTranslation();
         }
 
-        private void startAvalonGithub(object sender, LinkLabelLinkClickedEventArgs e)
-        {
-            Process.Start("https://github.com/icsharpcode/AvalonEdit/blob/master/LICENSE");
-        }
-
-        private void startAvalonOfficalWebsite(object sender, LinkLabelLinkClickedEventArgs e)
-        {
-            Process.Start("http://avalonedit.net/");
-        }
-
-        private void LicenseAndCopyrights_Load(object sender, EventArgs e)
+        private async void LicenseAndCopyrights_Load(object sender, EventArgs e)
         {
             TS_L_Copyright.Text = $"Copyright © {DateTime.Now.Year} RYCB Studio, All rights reserved.";
+            await webView21.EnsureCoreWebView2Async();
+            Text = _I18nContentFile.ReadToEnd();
+            this.webView21.NavigateToString(Text);
+            _I18nContentFile.Close();
         }
 
-        private void StartMetroUIOnGithub(object sender, LinkLabelLinkClickedEventArgs e)
+        private void Back(object sender, EventArgs e)
         {
-            Process.Start("https://github.com/dennismagno/metroframework-modern-ui");
+            this.webView21.GoBack();
         }
 
-        private void StartMetroLicense(object sender, LinkLabelLinkClickedEventArgs e)
+        private void Previous(object sender, EventArgs e)
         {
-            Process.Start("https://github.com/dennismagno/metroframework-modern-ui/blob/master/LICENSE.md");
+            this.webView21.GoForward();
         }
 
-        private void StartSunnyOffical(object sender, LinkLabelLinkClickedEventArgs e)
+        private void Refresh(object sender, EventArgs e)
         {
-            Process.Start("https://gitee.com/yhuse/SunnyUI");
+            this.webView21.Reload();
         }
 
-        private void StartSunnyLicense(object sender, LinkLabelLinkClickedEventArgs e)
+        private void Home(object sender, EventArgs e)
         {
-            Process.Start("https://gitee.com/yhuse/SunnyUI/blob/master/LICENSE");
-        }
-
-        private void StartMsgPackOnGithub(object sender, LinkLabelLinkClickedEventArgs e)
-        {
-            Process.Start("https://github.com/neuecc/MessagePack-CSharp");
-        }
-
-        private void StartMsgPackLicense(object sender, LinkLabelLinkClickedEventArgs e)
-        {
-            Process.Start("https://github.com/neuecc/MessagePack-CSharp/blob/master/LICENSE");
+            this.webView21.NavigateToString(Text);
         }
     }
 }

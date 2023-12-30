@@ -2303,6 +2303,12 @@
              Supports indexing objects by their Name and Schema properties
             </summary>
         </member>
+        <member name="T:Microsoft.SqlServer.Management.Smo.SensitivityClassificationCollection">
+            <summary>
+             Strongly typed list of SensitivityClassification objects
+             Has strongly typed support for all of the methods of the sorted list class
+            </summary>
+        </member>
         <member name="T:Microsoft.SqlServer.Management.Smo.TriggerCollection">
             <summary>
              Strongly typed list of MAPPED_TYPE objects
@@ -4691,6 +4697,9 @@
         <member name="F:Microsoft.SqlServer.Management.Smo.CertificateSourceType.SqlAssembly">
             Load the certificate from the specified assembly.
         </member>
+        <member name="F:Microsoft.SqlServer.Management.Smo.CertificateSourceType.Binary">
+            Load the certificate from the binary stream
+        </member>
         <member name="T:Microsoft.SqlServer.Management.Smo.Certificate">
             <summary>
             Instance class encapsulating : Server[@Name='']/Database/Certificate
@@ -6041,6 +6050,17 @@
         <member name="P:Microsoft.SqlServer.Management.Smo.Credential.Microsoft#SqlServer#Management#Sdk#Sfc#ISfcSupportsDesignMode#IsDesignMode">
             <summary>
             This object extend ISfcSupportsDesignMode.
+            </summary>
+        </member>
+        <member name="T:Microsoft.SqlServer.Management.Smo.SensitivityClassification">
+            <summary>
+            Instance class encapsulating : Server[@Name='']/Database/SensitivityClassification
+            </summary>
+            <inheritdoc/>
+        </member>
+        <member name="P:Microsoft.SqlServer.Management.Smo.SensitivityClassification.UrnSuffix">
+            <summary>
+            returns the name of the type in the urn expression
             </summary>
         </member>
         <member name="T:Microsoft.SqlServer.Management.Smo.DatabaseScopedCredential">
@@ -12682,10 +12702,10 @@
         </member>
         <member name="P:Microsoft.SqlServer.Management.Smo.Index.IsSqlDwIndex">
             <summary>
-            Indicates if the index belongs to a SQL DW table.
+            Indicates if the index belongs to a SQL DW table or DW materialized view.
             We need to rely on this getter instead of the SMO property(DwTableDistribution) while the index is being created.
             </summary>
-            <returns>True, if the index is a SQL DW table index; false otherwise.</returns>
+            <returns>True, if the index is a SQL DW table index or DW materialized view index; false otherwise.</returns>
         </member>
         <member name="M:Microsoft.SqlServer.Management.Smo.Index.IndexScripter.CheckSpatialProperties">
             <summary>
@@ -14258,6 +14278,24 @@
             <summary>
             The number permissions in the SMO enumerator
             </summary>
+        </member>
+        <member name="P:Microsoft.SqlServer.Management.Smo.DatabasePermissionSet.AdministerDatabaseBulkOperations">
+            Add getters/setters for new database permission set values here, in alphabetical order
+        </member>
+        <member name="T:Microsoft.SqlServer.Management.Smo.ObjectPermission">
+            <summary>
+            Object permissions are permissions for any object within a database,
+            including tables, views, schemas, certificates, etc.
+            </summary>
+        </member>
+        <member name="P:Microsoft.SqlServer.Management.Smo.ObjectPermission.Alter">
+            Add new object permissions here, in alphabetical order
+        </member>
+        <member name="P:Microsoft.SqlServer.Management.Smo.ObjectPermissionSet.Alter">
+            Add getters/setters for new object permission set values here, in alphabetical order
+        </member>
+        <member name="P:Microsoft.SqlServer.Management.Smo.ServerPermissionSet.AdministerBulkOperations">
+            Add getters/setters for new server permission set values here, in alphabetical order
         </member>
         <member name="T:Microsoft.SqlServer.Management.Smo.PermissionSetBase">
             <summary>
@@ -16194,7 +16232,7 @@
         </member>
         <member name="P:Microsoft.SqlServer.Management.Smo.IncludeScriptPreferences.Owner">
             <summary>
-            Gets or sets owner script in included or not
+            Gets or sets whether to script object owners
             </summary>
         </member>
         <member name="P:Microsoft.SqlServer.Management.Smo.IncludeScriptPreferences.DatabaseContext">
@@ -20866,6 +20904,18 @@
             <param name="forScripting"></param>
             <param name="extraFields"></param>
         </member>
+        <member name="M:Microsoft.SqlServer.Management.Smo.SqlSmoObject.IsDatabaseSpecialCase(System.Boolean,Microsoft.SqlServer.Management.Sdk.Sfc.XPathExpression,System.String[],System.Collections.Generic.IList{System.String})">
+            <summary>
+            When enumerating Database instances, we can't successfully fetch extra properties for unavailable databases.
+            When clients ask for "Status" in the property list explicitly, we will proactively exclude databases with a non-1 
+            status from full property population when such extra properties are requested.
+            </summary>
+            <param name="forScripting"></param>
+            <param name="parsedUrn"></param>
+            <param name="fields"></param>
+            <param name="defaultFields"></param>
+            <returns></returns>
+        </member>
         <member name="M:Microsoft.SqlServer.Management.Smo.SqlSmoObject.CompareAttributeToObject(Microsoft.SqlServer.Management.Smo.SqlSmoObject,Microsoft.SqlServer.Management.Sdk.Sfc.FilterNodeOperator)">
              <summary>
             
@@ -21945,7 +21995,11 @@
             </summary>
             <inheritdoc/>
         </member>
-        <!-- Badly formed XML comment ignored for member "P:Microsoft.SqlServer.Management.Smo.Table.UrnSuffix" -->
+        <member name="P:Microsoft.SqlServer.Management.Smo.Table.UrnSuffix">
+            <summary>
+            returns the name of the type in the urn expression
+            </summary>
+        </member>
         <member name="F:Microsoft.SqlServer.Management.Smo.Table.m_EdgeConstraints">
             <summary>
             Include Edge constraints as a child collection inside Table

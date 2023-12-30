@@ -398,8 +398,8 @@
       <returns>A collection of the sections defined by this <see cref="T:System.Configuration.Configuration" /> object.</returns>
     </member>
     <member name="P:System.Configuration.Configuration.TargetFramework">
-      <summary>Specifies the targeted version of the .NET Framework when a version earlier than the current one is targeted.</summary>
-      <returns>The name of the targeted version of the .NET Framework. The default value is <see langword="null" />, which indicates that the current version is targeted.</returns>
+      <summary>Gets or sets the targeted version of .NET when a version earlier than the current one is targeted.</summary>
+      <returns>The name of the targeted version of .NET. The default value is <see langword="null" />, which indicates that the current version is targeted.</returns>
     </member>
     <member name="P:System.Configuration.Configuration.TypeStringTransformer">
       <summary>Specifies a function delegate that is used to transform type strings in configuration files.</summary>
@@ -436,7 +436,7 @@
       <summary>The <see cref="T:System.Configuration.ConfigurationSection" /> can be defined in the Machine.config file, in the Exe.config file in the client application directory, or in the User.config file in the roaming user directory.</summary>
     </member>
     <member name="T:System.Configuration.ConfigurationCollectionAttribute">
-      <summary>Declaratively instructs the .NET Framework to create an instance of a configuration element collection. This class cannot be inherited.</summary>
+      <summary>Declaratively instructs .NET to create an instance of a configuration element collection. This class cannot be inherited.</summary>
     </member>
     <member name="M:System.Configuration.ConfigurationCollectionAttribute.#ctor(System.Type)">
       <summary>Initializes a new instance of the <see cref="T:System.Configuration.ConfigurationCollectionAttribute" /> class.</summary>
@@ -588,7 +588,6 @@
       <summary>Throws an exception when a required property is not found.</summary>
       <param name="name">The name of the required attribute that was not found.</param>
       <exception cref="T:System.Configuration.ConfigurationErrorsException">In all cases.</exception>
-      <returns>None.</returns>
     </member>
     <member name="M:System.Configuration.ConfigurationElement.PostDeserialize">
       <summary>Called after deserialization.</summary>
@@ -673,7 +672,7 @@
       <param name="propertyName">The name of the <see cref="T:System.Configuration.ConfigurationProperty" /> to access.</param>
       <exception cref="T:System.Configuration.ConfigurationErrorsException">
         <paramref name="prop" /> is read-only or locked.</exception>
-      <returns>The specified property, attribute, or child element</returns>
+      <returns>The specified property, attribute, or child element.</returns>
     </member>
     <member name="P:System.Configuration.ConfigurationElement.LockAllAttributesExcept">
       <summary>Gets the collection of locked attributes.</summary>
@@ -857,7 +856,7 @@
     <member name="M:System.Configuration.ConfigurationElementCollection.IsModified">
       <summary>Indicates whether this <see cref="T:System.Configuration.ConfigurationElementCollection" /> has been modified since it was last saved or loaded when overridden in a derived class.</summary>
       <returns>
-        <see langword="true" /> if any contained element has been modified; otherwise, <see langword="false" /></returns>
+        <see langword="true" /> if any contained element has been modified; otherwise, <see langword="false" />.</returns>
     </member>
     <member name="M:System.Configuration.ConfigurationElementCollection.IsReadOnly">
       <summary>Indicates whether the <see cref="T:System.Configuration.ConfigurationElementCollection" /> object is read only.</summary>
@@ -1001,7 +1000,7 @@
       <param name="inner">The exception that caused this <see cref="T:System.Configuration.ConfigurationErrorsException" /> exception to be thrown.</param>
     </member>
     <member name="M:System.Configuration.ConfigurationErrorsException.#ctor(System.String,System.Exception,System.String,System.Int32)">
-      <summary>Initializes a new instance of a <see cref="T:System.Configuration.ConfigurationErrorsException" /> class.</summary>
+      <summary>Initializes a new instance of the <see cref="T:System.Configuration.ConfigurationErrorsException" /> class.</summary>
       <param name="message">A message that describes why this <see cref="T:System.Configuration.ConfigurationErrorsException" /> exception was thrown.</param>
       <param name="inner">The inner exception that caused this <see cref="T:System.Configuration.ConfigurationErrorsException" /> exception to be thrown.</param>
       <param name="filename">The path to the configuration file that caused this <see cref="T:System.Configuration.ConfigurationErrorsException" /> exception to be thrown.</param>
@@ -1059,10 +1058,6 @@
       <summary>Sets the <see cref="T:System.Runtime.Serialization.SerializationInfo" /> object with the file name and line number at which this configuration exception occurred.</summary>
       <param name="info">The object that holds the information to be serialized.</param>
       <param name="context">The contextual information about the source or destination.</param>
-    </member>
-    <member name="P:System.Configuration.ConfigurationErrorsException.BareMessage">
-      <summary>Gets a description of why this configuration exception was thrown.</summary>
-      <returns>A description of why this <see cref="T:System.Configuration.ConfigurationErrorsException" /> was thrown.</returns>
     </member>
     <member name="P:System.Configuration.ConfigurationErrorsException.Errors">
       <summary>Gets a collection of errors that detail the reasons this <see cref="T:System.Configuration.ConfigurationErrorsException" /> exception was thrown.</summary>
@@ -1425,7 +1420,7 @@
       <returns>The <see cref="T:System.Configuration.ConfigurationValidatorBase" /> validator, which is used to validate this <see cref="T:System.Configuration.ConfigurationProperty" />.</returns>
     </member>
     <member name="T:System.Configuration.ConfigurationPropertyAttribute">
-      <summary>Declaratively instructs the .NET Framework to instantiate a configuration property. This class cannot be inherited.</summary>
+      <summary>Declaratively instructs .NET to instantiate a configuration property. This class cannot be inherited.</summary>
     </member>
     <member name="M:System.Configuration.ConfigurationPropertyAttribute.#ctor(System.String)">
       <summary>Initializes a new instance of <see cref="T:System.Configuration.ConfigurationPropertyAttribute" /> class.</summary>
@@ -1484,7 +1479,7 @@
     </member>
     <member name="M:System.Configuration.ConfigurationPropertyCollection.GetEnumerator">
       <summary>Gets the <see cref="T:System.Collections.IEnumerator" /> object as it applies to the collection.</summary>
-      <returns>The <see cref="T:System.Collections.IEnumerator" /> object as it applies to the collection</returns>
+      <returns>The <see cref="T:System.Collections.IEnumerator" /> object as it applies to the collection.</returns>
     </member>
     <member name="M:System.Configuration.ConfigurationPropertyCollection.Remove(System.String)">
       <summary>Removes a configuration property from the collection.</summary>
@@ -1519,7 +1514,7 @@
       <summary>Specifies the options to apply to a property.</summary>
     </member>
     <member name="F:System.Configuration.ConfigurationPropertyOptions.IsAssemblyStringTransformationRequired">
-      <summary>Indicates whether the assembly name for the configuration property requires transformation when it is serialized for an earlier version of the .NET Framework.</summary>
+      <summary>Indicates whether the assembly name for the configuration property requires transformation when it is serialized for an earlier version of .NET.</summary>
     </member>
     <member name="F:System.Configuration.ConfigurationPropertyOptions.IsDefaultCollection">
       <summary>Indicates that the property is a default collection.</summary>
@@ -1531,7 +1526,7 @@
       <summary>Indicates that the property is required.</summary>
     </member>
     <member name="F:System.Configuration.ConfigurationPropertyOptions.IsTypeStringTransformationRequired">
-      <summary>Indicates whether the type name for the configuration property requires transformation when it is serialized for an earlier version of the .NET Framework.</summary>
+      <summary>Indicates whether the type name for the configuration property requires transformation when it is serialized for an earlier version of .NET.</summary>
     </member>
     <member name="F:System.Configuration.ConfigurationPropertyOptions.IsVersionCheckRequired">
       <summary>Indicates whether the configuration property's parent configuration section should be queried at serialization time to determine whether the configuration property should be serialized into XML.</summary>
@@ -1649,11 +1644,6 @@
       <param name="index">The index of the <see cref="T:System.Configuration.ConfigurationSection" /> object whose key is to be returned.</param>
       <returns>The key of the <see cref="T:System.Configuration.ConfigurationSection" /> object at the specified index.</returns>
     </member>
-    <member name="M:System.Configuration.ConfigurationSectionCollection.GetObjectData(System.Runtime.Serialization.SerializationInfo,System.Runtime.Serialization.StreamingContext)">
-      <summary>Used by the system during serialization.</summary>
-      <param name="info">The applicable <see cref="T:System.Runtime.Serialization.SerializationInfo" /> object.</param>
-      <param name="context">The applicable <see cref="T:System.Runtime.Serialization.StreamingContext" /> object.</param>
-    </member>
     <member name="M:System.Configuration.ConfigurationSectionCollection.Remove(System.String)">
       <summary>Removes the specified <see cref="T:System.Configuration.ConfigurationSection" /> object from this <see cref="T:System.Configuration.ConfigurationSectionCollection" /> object.</summary>
       <param name="name">The name of the section to be removed.</param>
@@ -1661,10 +1651,6 @@
     <member name="M:System.Configuration.ConfigurationSectionCollection.RemoveAt(System.Int32)">
       <summary>Removes the specified <see cref="T:System.Configuration.ConfigurationSection" /> object from this <see cref="T:System.Configuration.ConfigurationSectionCollection" /> object.</summary>
       <param name="index">The index of the section to be removed.</param>
-    </member>
-    <member name="P:System.Configuration.ConfigurationSectionCollection.Count">
-      <summary>Gets the number of sections in this <see cref="T:System.Configuration.ConfigurationSectionCollection" /> object.</summary>
-      <returns>An integer that represents the number of sections in the collection.</returns>
     </member>
     <member name="P:System.Configuration.ConfigurationSectionCollection.Item(System.Int32)">
       <summary>Gets the specified <see cref="T:System.Configuration.ConfigurationSection" /> object.</summary>
@@ -1675,10 +1661,6 @@
       <summary>Gets the specified <see cref="T:System.Configuration.ConfigurationSection" /> object.</summary>
       <param name="name">The name of the <see cref="T:System.Configuration.ConfigurationSection" /> object to be returned.</param>
       <returns>The <see cref="T:System.Configuration.ConfigurationSection" /> object with the specified name.</returns>
-    </member>
-    <member name="P:System.Configuration.ConfigurationSectionCollection.Keys">
-      <summary>Gets the keys to all <see cref="T:System.Configuration.ConfigurationSection" /> objects contained in this <see cref="T:System.Configuration.ConfigurationSectionCollection" /> object.</summary>
-      <returns>A <see cref="T:System.Collections.Specialized.NameObjectCollectionBase.KeysCollection" /> object that contains the keys of all sections in this collection.</returns>
     </member>
     <member name="T:System.Configuration.ConfigurationSectionGroup">
       <summary>Represents a group of related sections within a configuration file.</summary>
@@ -1781,11 +1763,6 @@
       <param name="index">The index of the section group whose key is to be returned.</param>
       <returns>The key of the <see cref="T:System.Configuration.ConfigurationSectionGroup" /> object at the specified index.</returns>
     </member>
-    <member name="M:System.Configuration.ConfigurationSectionGroupCollection.GetObjectData(System.Runtime.Serialization.SerializationInfo,System.Runtime.Serialization.StreamingContext)">
-      <summary>Used by the system during serialization.</summary>
-      <param name="info">The applicable <see cref="T:System.Runtime.Serialization.SerializationInfo" /> object.</param>
-      <param name="context">The applicable <see cref="T:System.Runtime.Serialization.StreamingContext" /> object.</param>
-    </member>
     <member name="M:System.Configuration.ConfigurationSectionGroupCollection.Remove(System.String)">
       <summary>Removes the <see cref="T:System.Configuration.ConfigurationSectionGroup" /> object whose name is specified from this <see cref="T:System.Configuration.ConfigurationSectionGroupCollection" /> object.</summary>
       <param name="name">The name of the section group to be removed.</param>
@@ -1793,10 +1770,6 @@
     <member name="M:System.Configuration.ConfigurationSectionGroupCollection.RemoveAt(System.Int32)">
       <summary>Removes the <see cref="T:System.Configuration.ConfigurationSectionGroup" /> object whose index is specified from this <see cref="T:System.Configuration.ConfigurationSectionGroupCollection" /> object.</summary>
       <param name="index">The index of the section group to be removed.</param>
-    </member>
-    <member name="P:System.Configuration.ConfigurationSectionGroupCollection.Count">
-      <summary>Gets the number of section groups in the collection.</summary>
-      <returns>An integer that represents the number of section groups in the collection.</returns>
     </member>
     <member name="P:System.Configuration.ConfigurationSectionGroupCollection.Item(System.Int32)">
       <summary>Gets the <see cref="T:System.Configuration.ConfigurationSectionGroup" /> object whose index is specified from the collection.</summary>
@@ -1812,10 +1785,6 @@
   
  In C#, this property is the indexer for the <see cref="T:System.Configuration.ConfigurationSectionCollection" /> class.</returns>
     </member>
-    <member name="P:System.Configuration.ConfigurationSectionGroupCollection.Keys">
-      <summary>Gets the keys to all <see cref="T:System.Configuration.ConfigurationSectionGroup" /> objects contained in this <see cref="T:System.Configuration.ConfigurationSectionGroupCollection" /> object.</summary>
-      <returns>A <see cref="T:System.Collections.Specialized.NameObjectCollectionBase.KeysCollection" /> object that contains the names of all section groups in this collection.</returns>
-    </member>
     <member name="T:System.Configuration.ConfigurationSettings">
       <summary>Provides runtime versions 1.0 and 1.1 support for reading configuration sections and common configuration settings.</summary>
     </member>
@@ -1823,10 +1792,7 @@
       <summary>Returns the <see cref="T:System.Configuration.ConfigurationSection" /> object for the passed configuration section name and path.</summary>
       <param name="sectionName">A configuration name and path, such as "system.net/settings".</param>
       <exception cref="T:System.Configuration.ConfigurationException">Unable to retrieve the requested section.</exception>
-      <returns>The <see cref="T:System.Configuration.ConfigurationSection" /> object for the passed configuration section name and path.  
-  
- <block subset="none" type="note"><para>  
- The <see cref="T:System.Configuration.ConfigurationSettings" /> class provides backward compatibility only. Use the <see cref="T:System.Configuration.ConfigurationManager" /> class or <see cref="T:System.Web.Configuration.WebConfigurationManager" /> class instead.</para></block></returns>
+      <returns>The <see cref="T:System.Configuration.ConfigurationSection" /> object for the passed configuration section name and path.</returns>
     </member>
     <member name="P:System.Configuration.ConfigurationSettings.AppSettings">
       <summary>Gets a read-only collection of the application settings from the configuration file.</summary>
@@ -1956,15 +1922,15 @@
       <summary>Represents a single, named connection string in the connection strings configuration file section.</summary>
     </member>
     <member name="M:System.Configuration.ConnectionStringSettings.#ctor">
-      <summary>Initializes a new instance of a <see cref="T:System.Configuration.ConnectionStringSettings" /> class.</summary>
+      <summary>Initializes a new instance of the <see cref="T:System.Configuration.ConnectionStringSettings" /> class.</summary>
     </member>
     <member name="M:System.Configuration.ConnectionStringSettings.#ctor(System.String,System.String)">
-      <summary>Initializes a new instance of a <see cref="T:System.Configuration.ConnectionStringSettings" /> class.</summary>
+      <summary>Initializes a new instance of the <see cref="T:System.Configuration.ConnectionStringSettings" /> class.</summary>
       <param name="name">The name of the connection string.</param>
       <param name="connectionString">The connection string.</param>
     </member>
     <member name="M:System.Configuration.ConnectionStringSettings.#ctor(System.String,System.String,System.String)">
-      <summary>Initializes a new instance of a <see cref="T:System.Configuration.ConnectionStringSettings" /> object.</summary>
+      <summary>Initializes a new instance of the <see cref="T:System.Configuration.ConnectionStringSettings" /> class.</summary>
       <param name="name">The name of the connection string.</param>
       <param name="connectionString">The connection string.</param>
       <param name="providerName">The name of the provider to use with the connection string.</param>
@@ -2149,7 +2115,7 @@
     </member>
     <member name="P:System.Configuration.ElementInformation.Errors">
       <summary>Gets the errors for the associated element and subelements.</summary>
-      <returns>The collection containing the errors for the associated element and subelements</returns>
+      <returns>The collection containing the errors for the associated element and subelements.</returns>
     </member>
     <member name="P:System.Configuration.ElementInformation.IsCollection">
       <summary>Gets a value indicating whether the associated <see cref="T:System.Configuration.ConfigurationElement" /> object is a <see cref="T:System.Configuration.ConfigurationElementCollection" /> collection.</summary>
@@ -2336,7 +2302,7 @@
       <param name="ctx">The <see cref="T:System.ComponentModel.ITypeDescriptorContext" /> object used for type conversions.</param>
       <param name="ci">The <see cref="T:System.Globalization.CultureInfo" /> object used during conversion.</param>
       <param name="data">The <see cref="T:System.String" /> object to convert.</param>
-      <returns>The <see cref="F:System.Int32.MaxValue" />, if the <paramref name="data" /> parameter is the <see cref="T:System.String" /> "infinite"; otherwise, the <see cref="T:System.Int32" /> representing the <paramref name="data" /> parameter integer value.</returns>
+      <returns>The <see cref="F:System.Int32.MaxValue">Int32.MaxValue</see>, if the <paramref name="data" /> parameter is the <see cref="T:System.String" /> "infinite"; otherwise, the <see cref="T:System.Int32" /> representing the <paramref name="data" /> parameter integer value.</returns>
     </member>
     <member name="M:System.Configuration.InfiniteIntConverter.ConvertTo(System.ComponentModel.ITypeDescriptorContext,System.Globalization.CultureInfo,System.Object,System.Type)">
       <summary>Converts an <see cref="T:System.Int32" />.to a <see cref="T:System.String" />.</summary>
@@ -2344,7 +2310,7 @@
       <param name="ci">The <see cref="T:System.Globalization.CultureInfo" /> object used during conversion.</param>
       <param name="value">The value to convert to.</param>
       <param name="type">The type to convert to.</param>
-      <returns>The <see cref="T:System.String" /> "infinite" if the <paramref name="value" /> is <see cref="F:System.Int32.MaxValue" />; otherwise, the <see cref="T:System.String" /> representing the <paramref name="value" /> parameter.</returns>
+      <returns>The <see cref="T:System.String" /> "infinite" if the <paramref name="value" /> is <see cref="F:System.Int32.MaxValue">Int32.MaxValue</see>; otherwise, the <see cref="T:System.String" /> representing the <paramref name="value" /> parameter.</returns>
     </member>
     <member name="T:System.Configuration.InfiniteTimeSpanConverter">
       <summary>Converts between a string and the standard infinite <see cref="T:System.TimeSpan" /> value.</summary>
@@ -2357,7 +2323,7 @@
       <param name="ctx">The <see cref="T:System.ComponentModel.ITypeDescriptorContext" /> object used for type conversions.</param>
       <param name="ci">The <see cref="T:System.Globalization.CultureInfo" /> object used during conversion.</param>
       <param name="data">The <see cref="T:System.String" /> object to convert.</param>
-      <returns>The <see cref="F:System.TimeSpan.MaxValue" />, if the <paramref name="data" /> parameter is the <see cref="T:System.String" /> infinite; otherwise, the <see cref="T:System.TimeSpan" /> representing the <paramref name="data" /> parameter in minutes.</returns>
+      <returns>The <see cref="F:System.TimeSpan.MaxValue">TimeSpan.MaxValue</see>, if the <paramref name="data" /> parameter is the <see cref="T:System.String" /> infinite; otherwise, the <see cref="T:System.TimeSpan" /> representing the <paramref name="data" /> parameter in minutes.</returns>
     </member>
     <member name="M:System.Configuration.InfiniteTimeSpanConverter.ConvertTo(System.ComponentModel.ITypeDescriptorContext,System.Globalization.CultureInfo,System.Object,System.Type)">
       <summary>Converts a <see cref="T:System.TimeSpan" /> to a <see cref="T:System.String" />.</summary>
@@ -2365,7 +2331,7 @@
       <param name="ci">The <see cref="T:System.Globalization.CultureInfo" /> used during object conversion.</param>
       <param name="value">The value to convert.</param>
       <param name="type">The conversion type.</param>
-      <returns>The <see cref="T:System.String" /> "infinite", if the <paramref name="value" /> parameter is <see cref="F:System.TimeSpan.MaxValue" />; otherwise, the <see cref="T:System.String" /> representing the <paramref name="value" /> parameter in minutes.</returns>
+      <returns>The <see cref="T:System.String" /> "infinite", if the <paramref name="value" /> parameter is <see cref="F:System.TimeSpan.MaxValue">TimeSpan.MaxValue</see>; otherwise, the <see cref="T:System.String" /> representing the <paramref name="value" /> parameter in minutes.</returns>
     </member>
     <member name="T:System.Configuration.IntegerValidator">
       <summary>Provides validation of an <see cref="T:System.Int32" /> value.</summary>
@@ -2406,7 +2372,7 @@
       <param name="value">The value to be validated.</param>
     </member>
     <member name="T:System.Configuration.IntegerValidatorAttribute">
-      <summary>Declaratively instructs the .NET Framework to perform integer validation on a configuration property. This class cannot be inherited.</summary>
+      <summary>Declaratively instructs .NET to perform integer validation on a configuration property. This class cannot be inherited.</summary>
     </member>
     <member name="M:System.Configuration.IntegerValidatorAttribute.#ctor">
       <summary>Creates a new instance of the <see cref="T:System.Configuration.IntegerValidatorAttribute" /> class.</summary>
@@ -2461,7 +2427,7 @@
     <member name="M:System.Configuration.Internal.DelegatingConfigHost.EncryptSection(System.String,System.Configuration.ProtectedConfigurationProvider,System.Configuration.ProtectedConfigurationSection)">
       <summary>Encrypts a section of a configuration object.</summary>
       <param name="clearTextXml">A section of the configuration that is not encrypted.</param>
-      <param name="protectionProvider">An object containing the providers that encrypt and decrypt protected configuration data</param>
+      <param name="protectionProvider">An object containing the providers that encrypt and decrypt protected configuration data.</param>
       <param name="protectedConfigSection">An object that provides programatic access to the <c>configProtectedData</c> configuration section.</param>
       <returns>A string representing an encrypted section of the configuration object.</returns>
     </member>
@@ -2507,7 +2473,7 @@
       <returns>A <see cref="P:System.Diagnostics.FileVersionInfo.FileVersion" /> object representing the version of a <see cref="T:System.IO.Stream" /> object performing I/O tasks on a configuration file.</returns>
     </member>
     <member name="M:System.Configuration.Internal.DelegatingConfigHost.Impersonate">
-      <summary>Instructs the host to impersonate and returns an <see cref="T:System.IDisposable" /> object required internally by the .NET Framework.</summary>
+      <summary>Instructs the host to impersonate and returns an <see cref="T:System.IDisposable" /> object required internally by .NET.</summary>
       <returns>An <see cref="T:System.IDisposable" /> value.</returns>
     </member>
     <member name="M:System.Configuration.Internal.DelegatingConfigHost.Init(System.Configuration.Internal.IInternalConfigRoot,System.Object[])">
@@ -2643,7 +2609,7 @@
       <summary>Verifies that a configuration definition is allowed for a configuration record.</summary>
       <param name="configPath">A string representing the path to a configuration file.</param>
       <param name="allowDefinition">An <see cref="P:System.Configuration.SectionInformation.AllowDefinition" /> object.</param>
-      <param name="allowExeDefinition">A <see cref="T:System.Configuration.ConfigurationAllowExeDefinition" /> object</param>
+      <param name="allowExeDefinition">A <see cref="T:System.Configuration.ConfigurationAllowExeDefinition" /> object.</param>
       <param name="errorInfo">An <see cref="T:System.Configuration.Internal.IConfigErrorInfo" /> object.</param>
     </member>
     <member name="M:System.Configuration.Internal.DelegatingConfigHost.WriteCompleted(System.String,System.Boolean,System.Object)">
@@ -2679,7 +2645,7 @@
     <member name="P:System.Configuration.Internal.DelegatingConfigHost.IsAppConfigHttp">
       <summary>Determines if the application configuration file comes from a non-local URI (that is, <c>http://</c>) or is a local file.</summary>
       <returns>
-        <see langword="true" /> if the delegated host's sections belong to <c>System.Net</c> and the configuration file for the application is downloaded via HTTP using <see cref="T:System.Net.WebClient" />; otherwise, <see langword="false" />.</returns>
+        <see langword="true" /> if the delegated host's sections belong to <see cref="N:System.Net" /> and the configuration file for the application is downloaded via HTTP using <see cref="T:System.Net.WebClient" />; otherwise, <see langword="false" />.</returns>
     </member>
     <member name="P:System.Configuration.Internal.DelegatingConfigHost.IsRemote">
       <summary>Gets a value indicating whether the configuration is remote.</summary>
@@ -2707,7 +2673,7 @@
         <see langword="true" /> if the host configuration supports refresh; otherwise, <see langword="false" />.</returns>
     </member>
     <member name="T:System.Configuration.Internal.IConfigErrorInfo">
-      <summary>Defines an interface used by the .NET Framework to support creating error configuration records.</summary>
+      <summary>Defines an interface used by .NET to support creating error configuration records.</summary>
     </member>
     <member name="P:System.Configuration.Internal.IConfigErrorInfo.Filename">
       <summary>Gets a string specifying the file name related to the configuration details.</summary>
@@ -2718,7 +2684,7 @@
       <returns>An integer specifying a line number.</returns>
     </member>
     <member name="T:System.Configuration.Internal.IConfigSystem">
-      <summary>Defines an interface used by the .NET Framework to support the initialization of configuration properties.</summary>
+      <summary>Defines an interface used by .NET to support the initialization of configuration properties.</summary>
     </member>
     <member name="M:System.Configuration.Internal.IConfigSystem.Init(System.Type,System.Object[])">
       <summary>Initializes a configuration object.</summary>
@@ -2727,20 +2693,20 @@
     </member>
     <member name="P:System.Configuration.Internal.IConfigSystem.Host">
       <summary>Gets the configuration host.</summary>
-      <returns>An <see cref="T:System.Configuration.Internal.IInternalConfigHost" /> object that is used by the .NET Framework to initialize application configuration properties.</returns>
+      <returns>An <see cref="T:System.Configuration.Internal.IInternalConfigHost" /> object that is used by .NET to initialize application configuration properties.</returns>
     </member>
     <member name="P:System.Configuration.Internal.IConfigSystem.Root">
       <summary>Gets the root of the configuration hierarchy.</summary>
       <returns>An <see cref="T:System.Configuration.Internal.IInternalConfigRoot" /> object.</returns>
     </member>
     <member name="T:System.Configuration.Internal.IConfigurationManagerHelper">
-      <summary>Defines an interface used by the .NET Framework to support configuration management.</summary>
+      <summary>Defines an interface used by .NET to support configuration management.</summary>
     </member>
     <member name="M:System.Configuration.Internal.IConfigurationManagerHelper.EnsureNetConfigLoaded">
       <summary>Ensures that the networking configuration is loaded.</summary>
     </member>
     <member name="T:System.Configuration.Internal.IConfigurationManagerInternal">
-      <summary>Defines an interface used by the .NET Framework to initialize configuration properties.</summary>
+      <summary>Defines an interface used by .NET to initialize configuration properties.</summary>
     </member>
     <member name="P:System.Configuration.Internal.IConfigurationManagerInternal.ApplicationConfigUri">
       <summary>Gets the configuration file name related to the application path.</summary>
@@ -2789,7 +2755,7 @@
       <returns>A string specifying the name of the file used to store user configuration.</returns>
     </member>
     <member name="T:System.Configuration.Internal.IInternalConfigClientHost">
-      <summary>Defines interfaces that allow the internal .NET Framework infrastructure to customize configuration.</summary>
+      <summary>Defines interfaces that allow the internal .NET infrastructure to customize configuration.</summary>
     </member>
     <member name="M:System.Configuration.Internal.IInternalConfigClientHost.GetExeConfigPath">
       <summary>Returns the path to the application configuration file.</summary>
@@ -2876,9 +2842,9 @@
     </member>
     <member name="M:System.Configuration.Internal.IInternalConfigHost.GetConfigType(System.String,System.Boolean)">
       <summary>Returns a <see cref="T:System.Type" /> object representing the type of the configuration object.</summary>
-      <param name="typeName">The type name</param>
+      <param name="typeName">The type name.</param>
       <param name="throwOnError">
-        <see langword="true" /> to throw an exception if an error occurs; otherwise, <see langword="false" /></param>
+        <see langword="true" /> to throw an exception if an error occurs; otherwise, <see langword="false" />.</param>
       <returns>A <see cref="T:System.Type" /> object representing the type of the configuration object.</returns>
     </member>
     <member name="M:System.Configuration.Internal.IInternalConfigHost.GetConfigTypeName(System.Type)">
@@ -3043,7 +3009,7 @@
       <summary>Verifies that a configuration definition is allowed for a configuration record.</summary>
       <param name="configPath">A string representing the path of the application configuration file.</param>
       <param name="allowDefinition">A <see cref="P:System.Configuration.SectionInformation.AllowDefinition" /> object.</param>
-      <param name="allowExeDefinition">A <see cref="T:System.Configuration.ConfigurationAllowExeDefinition" /> object</param>
+      <param name="allowExeDefinition">A <see cref="T:System.Configuration.ConfigurationAllowExeDefinition" /> object.</param>
       <param name="errorInfo">An <see cref="T:System.Configuration.Internal.IConfigErrorInfo" /> object.</param>
     </member>
     <member name="M:System.Configuration.Internal.IInternalConfigHost.WriteCompleted(System.String,System.Boolean,System.Object)">
@@ -3181,7 +3147,7 @@
         <see langword="true" /> if the initialization process of the configuration system is complete; otherwise, <see langword="false" />.</param>
     </member>
     <member name="T:System.Configuration.Internal.IInternalConfigSystem">
-      <summary>Defines an interface used by the .NET Framework to initialize application configuration properties.</summary>
+      <summary>Defines an interface used by .NET to initialize application configuration properties.</summary>
     </member>
     <member name="M:System.Configuration.Internal.IInternalConfigSystem.GetSection(System.String)">
       <summary>Returns the configuration object based on the specified key.</summary>
@@ -3198,7 +3164,7 @@
         <see langword="true" /> if the user configuration is supported; otherwise, <see langword="false" />.</returns>
     </member>
     <member name="T:System.Configuration.Internal.InternalConfigEventArgs">
-      <summary>Defines a class that allows the .NET Framework infrastructure to specify event arguments for configuration events.</summary>
+      <summary>Defines a class that allows the .NET infrastructure to specify event arguments for configuration events.</summary>
     </member>
     <member name="M:System.Configuration.Internal.InternalConfigEventArgs.#ctor(System.String)">
       <summary>Initializes a new instance of the <see cref="T:System.Configuration.Internal.InternalConfigEventArgs" /> class.</summary>
@@ -3209,7 +3175,7 @@
       <returns>A string value specifying the configuration path.</returns>
     </member>
     <member name="T:System.Configuration.Internal.InternalConfigEventHandler">
-      <summary>Defines a class used by the .NET Framework infrastructure to support configuration events.</summary>
+      <summary>Defines a class used by the .NET infrastructure to support configuration events.</summary>
       <param name="sender">The source object of the event.</param>
       <param name="e">A configuration event argument.</param>
     </member>
@@ -3419,7 +3385,7 @@
       <param name="value">The value of an object.</param>
     </member>
     <member name="T:System.Configuration.LongValidatorAttribute">
-      <summary>Declaratively instructs the .NET Framework to perform long-integer validation on a configuration property. This class cannot be inherited.</summary>
+      <summary>Declaratively instructs .NET to perform long-integer validation on a configuration property. This class cannot be inherited.</summary>
     </member>
     <member name="M:System.Configuration.LongValidatorAttribute.#ctor">
       <summary>Initializes a new instance of the <see cref="T:System.Configuration.LongValidatorAttribute" /> class.</summary>
@@ -3490,7 +3456,7 @@
       <returns>The value of the <see cref="T:System.Configuration.NameValueConfigurationElement" /> object.</returns>
     </member>
     <member name="T:System.Configuration.NameValueFileSectionHandler">
-      <summary>Provides access to a configuration file. This type supports the .NET Framework configuration infrastructure and is not intended to be used directly from your code.</summary>
+      <summary>Provides access to a configuration file. This type supports the .NET configuration infrastructure and is not intended to be used directly from your code.</summary>
     </member>
     <member name="M:System.Configuration.NameValueFileSectionHandler.#ctor">
       <summary>Initializes a new instance of the <see cref="T:System.Configuration.NameValueFileSectionHandler" /> class.</summary>
@@ -3567,7 +3533,7 @@
         <paramref name="value" /> cannot be resolved as a positive <see cref="T:System.TimeSpan" /> value.</exception>
     </member>
     <member name="T:System.Configuration.PositiveTimeSpanValidatorAttribute">
-      <summary>Declaratively instructs the .NET Framework to perform time validation on a configuration property. This class cannot be inherited.</summary>
+      <summary>Declaratively instructs .NET to perform time validation on a configuration property. This class cannot be inherited.</summary>
     </member>
     <member name="M:System.Configuration.PositiveTimeSpanValidatorAttribute.#ctor">
       <summary>Initializes a new instance of the <see cref="T:System.Configuration.PositiveTimeSpanValidatorAttribute" /> class.</summary>
@@ -3653,13 +3619,6 @@
     <member name="M:System.Configuration.PropertyInformationCollection.GetEnumerator">
       <summary>Gets an <see cref="T:System.Collections.IEnumerator" /> object, which is used to iterate through this <see cref="T:System.Configuration.PropertyInformationCollection" /> collection.</summary>
       <returns>An <see cref="T:System.Collections.IEnumerator" /> object, which is used to iterate through this <see cref="T:System.Configuration.PropertyInformationCollection" />.</returns>
-    </member>
-    <member name="M:System.Configuration.PropertyInformationCollection.GetObjectData(System.Runtime.Serialization.SerializationInfo,System.Runtime.Serialization.StreamingContext)">
-      <summary>Populates a <see cref="T:System.Runtime.Serialization.SerializationInfo" /> object with the data needed to serialize the <see cref="T:System.Configuration.PropertyInformationCollection" /> instance.</summary>
-      <param name="info">A <see cref="T:System.Runtime.Serialization.SerializationInfo" /> object that contains the information required to serialize the <see cref="T:System.Configuration.PropertyInformationCollection" /> instance.</param>
-      <param name="context">A <see cref="T:System.Runtime.Serialization.StreamingContext" /> object that contains the source and destination of the serialized stream associated with the <see cref="T:System.Configuration.PropertyInformationCollection" /> instance.</param>
-      <exception cref="T:System.ArgumentNullException">
-        <paramref name="info" /> is <see langword="null" />.</exception>
     </member>
     <member name="P:System.Configuration.PropertyInformationCollection.Item(System.String)">
       <summary>Gets the <see cref="T:System.Configuration.PropertyInformation" /> object in the collection, based on the specified property name.</summary>
@@ -3942,7 +3901,7 @@
         <paramref name="value" /> does not conform to the parameters of the <see cref="T:System.Text.RegularExpressions.Regex" /> class.</exception>
     </member>
     <member name="T:System.Configuration.RegexStringValidatorAttribute">
-      <summary>Declaratively instructs the .NET Framework to perform string validation on a configuration property using a regular expression. This class cannot be inherited.</summary>
+      <summary>Declaratively instructs .NET to perform string validation on a configuration property using a regular expression. This class cannot be inherited.</summary>
     </member>
     <member name="M:System.Configuration.RegexStringValidatorAttribute.#ctor(System.String)">
       <summary>Initializes a new instance of the <see cref="T:System.Configuration.RegexStringValidatorAttribute" /> object.</summary>
@@ -4041,13 +4000,6 @@
       <exception cref="T:System.IO.FileNotFoundException">The file specified in <paramref name="path" /> was not found.</exception>
       <exception cref="T:System.NotSupportedException">
         <paramref name="path" /> is in an invalid format.</exception>
-    </member>
-    <member name="M:System.Configuration.RsaProtectedConfigurationProvider.Initialize(System.String,System.Collections.Specialized.NameValueCollection)">
-      <summary>Initializes the provider with default settings.</summary>
-      <param name="name">The provider name to use for the object.</param>
-      <param name="configurationValues">A <see cref="T:System.Collections.Specialized.NameValueCollection" /> collection of values to use when initializing the object.</param>
-      <exception cref="T:System.Configuration.ConfigurationErrorsException">
-        <paramref name="configurationValues" /> includes one or more unrecognized values.</exception>
     </member>
     <member name="P:System.Configuration.RsaProtectedConfigurationProvider.CspProviderName">
       <summary>Gets the name of the Windows cryptography API (crypto API) cryptographic service provider (CSP).</summary>
@@ -4195,8 +4147,7 @@
       <returns>
         <see langword="true" /> if the associated <see cref="T:System.Configuration.ConfigurationSection" /> object will be saved even if it has not been modified; otherwise, <see langword="false" />. The default is <see langword="false" />.  
   
- <block subset="none" type="note"><para>  
- If the configuration file is saved (even if there are no modifications), ASP.NET restarts the application.</para></block></returns>
+Note: If the configuration file is saved (even if there are no modifications), ASP.NET restarts the application1.exe.config.</returns>
     </member>
     <member name="P:System.Configuration.SectionInformation.InheritInChildApplications">
       <summary>Gets or sets a value that indicates whether the settings that are specified in the associated configuration section are inherited by applications that reside in a subdirectory of the relevant application.</summary>
@@ -4375,6 +4326,11 @@
       <summary>Initializes a new instance of the <see cref="T:System.Configuration.SettingsAttributeDictionary" /> class.</summary>
       <param name="attributes">A collection of key/value pairs that are related to configuration settings.</param>
     </member>
+    <member name="M:System.Configuration.SettingsAttributeDictionary.#ctor(System.Runtime.Serialization.SerializationInfo,System.Runtime.Serialization.StreamingContext)">
+      <summary>Constructor for deserializing a <see cref="T:System.Configuration.SettingsAttributeDictionary" /> instance from state file (binary serialization).</summary>
+      <param name="serializationInfo">The <see cref="T:System.Runtime.Serialization.SerializationInfo" /> containing all the data needed to deserialize the object.</param>
+      <param name="streamingContext">The <see cref="T:System.Runtime.Serialization.StreamingContext" /> describing the source and destination of the given serialized stream.</param>
+    </member>
     <member name="T:System.Configuration.SettingsBase">
       <summary>Provides the base class used to support user property settings.</summary>
     </member>
@@ -4429,6 +4385,11 @@
     </member>
     <member name="M:System.Configuration.SettingsContext.#ctor">
       <summary>Initializes a new instance of the <see cref="T:System.Configuration.SettingsContext" /> class.</summary>
+    </member>
+    <member name="M:System.Configuration.SettingsContext.#ctor(System.Runtime.Serialization.SerializationInfo,System.Runtime.Serialization.StreamingContext)">
+      <summary>Constructor for deserializing a <see cref="T:System.Configuration.SettingsContext" /> instance from state file (binary serialization).</summary>
+      <param name="serializationInfo">The <see cref="T:System.Runtime.Serialization.SerializationInfo" /> containing all the data needed to deserialize the object.</param>
+      <param name="streamingContext">The <see cref="T:System.Runtime.Serialization.StreamingContext" /> describing the source and destination of the given serialized stream.</param>
     </member>
     <member name="T:System.Configuration.SettingsDescriptionAttribute">
       <summary>Provides a string that describes an individual configuration property. This class cannot be inherited.</summary>
@@ -4976,7 +4937,7 @@
  <paramref name="value" /> contains invalid characters.</exception>
     </member>
     <member name="T:System.Configuration.StringValidatorAttribute">
-      <summary>Declaratively instructs the .NET Framework to perform string validation on a configuration property. This class cannot be inherited.</summary>
+      <summary>Declaratively instructs .NET to perform string validation on a configuration property. This class cannot be inherited.</summary>
     </member>
     <member name="M:System.Configuration.StringValidatorAttribute.#ctor">
       <summary>Initializes a new instance of the <see cref="T:System.Configuration.StringValidatorAttribute" /> class.</summary>
@@ -5021,7 +4982,7 @@
         <paramref name="value" /> is not of a <see cref="T:System.Type" /> that can be derived from <paramref name="baseClass" /> as defined in the constructor.</exception>
     </member>
     <member name="T:System.Configuration.SubclassTypeValidatorAttribute">
-      <summary>Declaratively instructs the .NET Framework to perform validation on a configuration property. This class cannot be inherited.</summary>
+      <summary>Declaratively instructs .NET to perform validation on a configuration property. This class cannot be inherited.</summary>
     </member>
     <member name="M:System.Configuration.SubclassTypeValidatorAttribute.#ctor(System.Type)">
       <summary>Initializes a new instance of the <see cref="T:System.Configuration.SubclassTypeValidatorAttribute" /> class.</summary>
@@ -5067,7 +5028,7 @@
       <param name="ctx">The <see cref="T:System.ComponentModel.ITypeDescriptorContext" /> object used for type conversions.</param>
       <param name="ci">The <see cref="T:System.Globalization.CultureInfo" /> object used during conversion.</param>
       <param name="data">The <see cref="T:System.String" /> object to convert.</param>
-      <returns>The <see cref="F:System.TimeSpan.MaxValue" />, if the <paramref name="data" /> parameter is the <see cref="T:System.String" /> "infinite"; otherwise, the <see cref="T:System.TimeSpan" /> representing the <paramref name="data" /> parameter in minutes.</returns>
+      <returns>The <see cref="F:System.TimeSpan.MaxValue">TimeSpan.MaxValue</see>, if the <paramref name="data" /> parameter is the <see cref="T:System.String" /> "infinite"; otherwise, the <see cref="T:System.TimeSpan" /> representing the <paramref name="data" /> parameter in minutes.</returns>
     </member>
     <member name="M:System.Configuration.TimeSpanMinutesOrInfiniteConverter.ConvertTo(System.ComponentModel.ITypeDescriptorContext,System.Globalization.CultureInfo,System.Object,System.Type)">
       <summary>Converts a <see cref="T:System.TimeSpan" /> to a <see cref="T:System.String" />.</summary>
@@ -5075,7 +5036,7 @@
       <param name="ci">The <see cref="T:System.Globalization.CultureInfo" /> object used during conversion.</param>
       <param name="value">The value to convert.</param>
       <param name="type">The conversion type.</param>
-      <returns>The <see cref="T:System.String" /> "infinite", if the <paramref name="value" /> parameter is <see cref="F:System.TimeSpan.MaxValue" />; otherwise, the <see cref="T:System.String" /> representing the <paramref name="value" /> parameter in minutes.</returns>
+      <returns>The <see cref="T:System.String" /> "infinite", if the <paramref name="value" /> parameter is <see cref="F:System.TimeSpan.MaxValue">TimeSpan.MaxValue</see>; otherwise, the <see cref="T:System.String" /> representing the <paramref name="value" /> parameter in minutes.</returns>
     </member>
     <member name="T:System.Configuration.TimeSpanSecondsConverter">
       <summary>Converts a time span expressed in seconds.</summary>
@@ -5111,7 +5072,7 @@
       <param name="ctx">The <see cref="T:System.ComponentModel.ITypeDescriptorContext" /> object used for type conversions.</param>
       <param name="ci">The <see cref="T:System.Globalization.CultureInfo" /> object used during conversion.</param>
       <param name="data">The <see cref="T:System.String" /> object to convert.</param>
-      <returns>The <see cref="F:System.TimeSpan.MaxValue" />, if the <paramref name="data" /> parameter is the <see cref="T:System.String" /> "infinite"; otherwise, the <see cref="T:System.TimeSpan" /> representing the <paramref name="data" /> parameter in seconds.</returns>
+      <returns>The <see cref="F:System.TimeSpan.MaxValue">TimeSpan.MaxValue</see>, if the <paramref name="data" /> parameter is the <see cref="T:System.String" /> "infinite"; otherwise, the <see cref="T:System.TimeSpan" /> representing the <paramref name="data" /> parameter in seconds.</returns>
     </member>
     <member name="M:System.Configuration.TimeSpanSecondsOrInfiniteConverter.ConvertTo(System.ComponentModel.ITypeDescriptorContext,System.Globalization.CultureInfo,System.Object,System.Type)">
       <summary>Converts a <see cref="T:System.TimeSpan" /> to a. <see cref="T:System.String" />.</summary>
@@ -5119,7 +5080,7 @@
       <param name="ci">The <see cref="T:System.Globalization.CultureInfo" /> object used during conversion.</param>
       <param name="value">The value to convert.</param>
       <param name="type">The conversion type.</param>
-      <returns>The <see cref="T:System.String" /> "infinite", if the <paramref name="value" /> parameter is <see cref="F:System.TimeSpan.MaxValue" />; otherwise, the <see cref="T:System.String" /> representing the <paramref name="value" /> parameter in seconds.</returns>
+      <returns>The <see cref="T:System.String" /> "infinite", if the <paramref name="value" /> parameter is <see cref="F:System.TimeSpan.MaxValue">TimeSpan.MaxValue</see>; otherwise, the <see cref="T:System.String" /> representing the <paramref name="value" /> parameter in seconds.</returns>
     </member>
     <member name="T:System.Configuration.TimeSpanValidator">
       <summary>Provides validation of a <see cref="T:System.TimeSpan" /> object.</summary>
@@ -5159,7 +5120,7 @@
       <param name="value">The value of an object.</param>
     </member>
     <member name="T:System.Configuration.TimeSpanValidatorAttribute">
-      <summary>Declaratively instructs the .NET Framework to perform time validation on a configuration property. This class cannot be inherited.</summary>
+      <summary>Declaratively instructs .NET to perform time validation on a configuration property. This class cannot be inherited.</summary>
     </member>
     <member name="F:System.Configuration.TimeSpanValidatorAttribute.TimeSpanMaxValue">
       <summary>Gets the absolute maximum value allowed.</summary>
@@ -5235,7 +5196,7 @@
     </member>
     <member name="P:System.Configuration.UriSection.SchemeSettings">
       <summary>Gets a <see cref="T:System.Configuration.SchemeSettingElementCollection" /> object that contains the configuration settings for scheme parsing in the <see cref="T:System.Uri" /> class.</summary>
-      <returns>The configuration settings for scheme parsing in the <see cref="T:System.Uri" /> class</returns>
+      <returns>The configuration settings for scheme parsing in the <see cref="T:System.Uri" /> class.</returns>
     </member>
     <member name="T:System.Configuration.UserScopedSettingAttribute">
       <summary>Specifies that an application settings group or property contains distinct values for each user of an application. This class cannot be inherited.</summary>
@@ -5274,6 +5235,10 @@
       <param name="type">The type to convert to.</param>
       <returns>An object representing the converted value.</returns>
     </member>
+    <member name="T:System.Diagnostics.TraceConfiguration" />
+    <member name="M:System.Diagnostics.TraceConfiguration.Register">
+      <summary>Registers the configuration system to apply settings from configuration files to <see cref="T:System.Diagnostics.TraceSource" /> and related classes.</summary>
+    </member>
     <member name="T:System.Drawing.Configuration.SystemDrawingSection">
       <summary>Represents the configuration section used by classes in the <see cref="N:System.Drawing" /> namespace.</summary>
     </member>
@@ -5294,7 +5259,7 @@
       <summary>This value will convert all external Unicode domain names to use the Punycode equivalents (IDN names). In this case to handle international names on the local Intranet, the DNS servers that are used for the Intranet should support Unicode names.</summary>
     </member>
     <member name="F:System.UriIdnScope.None">
-      <summary>This value will not convert any Unicode domain names to use Punycode. This is the default value which is consistent with the .NET Framework 2.0 behavior.</summary>
+      <summary>Don't convert any Unicode domain names to use Punycode.</summary>
     </member>
   </members>
 </doc>

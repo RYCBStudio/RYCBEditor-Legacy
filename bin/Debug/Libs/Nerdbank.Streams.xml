@@ -4,6 +4,307 @@
         <name>Nerdbank.Streams</name>
     </assembly>
     <members>
+        <member name="T:System.Buffers.SequenceReader`1">
+            <summary>
+            Provides methods for reading binary and text data out of a <see cref="T:System.Buffers.ReadOnlySequence`1"/> with a focus on performance and minimal or zero heap allocations.
+            </summary>
+            <typeparam name="T">The type of element stored by the <see cref="T:System.Buffers.ReadOnlySequence`1"/>.</typeparam>
+        </member>
+        <member name="M:System.Buffers.SequenceReader`1.#ctor(System.Buffers.ReadOnlySequence{`0})">
+            <summary>
+            Create a <see cref="T:System.Buffers.SequenceReader`1"/> over the given <see cref="T:System.Buffers.ReadOnlySequence`1"/>.
+            </summary>
+        </member>
+        <member name="P:System.Buffers.SequenceReader`1.End">
+            <summary>
+            True when there is no more data in the <see cref="P:System.Buffers.SequenceReader`1.Sequence"/>.
+            </summary>
+        </member>
+        <member name="P:System.Buffers.SequenceReader`1.Sequence">
+            <summary>
+            The underlying <see cref="T:System.Buffers.ReadOnlySequence`1"/> for the reader.
+            </summary>
+        </member>
+        <member name="P:System.Buffers.SequenceReader`1.Position">
+            <summary>
+            The current position in the <see cref="P:System.Buffers.SequenceReader`1.Sequence"/>.
+            </summary>
+        </member>
+        <member name="P:System.Buffers.SequenceReader`1.CurrentSpan">
+            <summary>
+            The current segment in the <see cref="P:System.Buffers.SequenceReader`1.Sequence"/> as a span.
+            </summary>
+        </member>
+        <member name="P:System.Buffers.SequenceReader`1.CurrentSpanIndex">
+            <summary>
+            The index in the <see cref="P:System.Buffers.SequenceReader`1.CurrentSpan"/>.
+            </summary>
+        </member>
+        <member name="P:System.Buffers.SequenceReader`1.UnreadSpan">
+            <summary>
+            The unread portion of the <see cref="P:System.Buffers.SequenceReader`1.CurrentSpan"/>.
+            </summary>
+        </member>
+        <member name="P:System.Buffers.SequenceReader`1.Consumed">
+            <summary>
+            The total number of <typeparamref name="T"/>'s processed by the reader.
+            </summary>
+        </member>
+        <member name="P:System.Buffers.SequenceReader`1.Remaining">
+            <summary>
+            Remaining <typeparamref name="T"/>'s in the reader's <see cref="P:System.Buffers.SequenceReader`1.Sequence"/>.
+            </summary>
+        </member>
+        <member name="P:System.Buffers.SequenceReader`1.Length">
+            <summary>
+            Count of <typeparamref name="T"/> in the reader's <see cref="P:System.Buffers.SequenceReader`1.Sequence"/>.
+            </summary>
+        </member>
+        <member name="M:System.Buffers.SequenceReader`1.TryPeek(`0@)">
+            <summary>
+            Peeks at the next value without advancing the reader.
+            </summary>
+            <param name="value">The next value or default if at the end.</param>
+            <returns>False if at the end of the reader.</returns>
+        </member>
+        <member name="M:System.Buffers.SequenceReader`1.TryRead(`0@)">
+            <summary>
+            Read the next value and advance the reader.
+            </summary>
+            <param name="value">The next value or default if at the end.</param>
+            <returns>False if at the end of the reader.</returns>
+        </member>
+        <member name="M:System.Buffers.SequenceReader`1.Rewind(System.Int64)">
+            <summary>
+            Move the reader back the specified number of items.
+            </summary>
+            <exception cref="T:System.ArgumentOutOfRangeException">
+            Thrown if trying to rewind a negative amount or more than <see cref="P:System.Buffers.SequenceReader`1.Consumed"/>.
+            </exception>
+        </member>
+        <member name="M:System.Buffers.SequenceReader`1.GetNextSpan">
+            <summary>
+            Get the next segment with available data, if any.
+            </summary>
+        </member>
+        <member name="M:System.Buffers.SequenceReader`1.Advance(System.Int64)">
+            <summary>
+            Move the reader ahead the specified number of items.
+            </summary>
+        </member>
+        <member name="M:System.Buffers.SequenceReader`1.AdvanceCurrentSpan(System.Int64)">
+            <summary>
+            Unchecked helper to avoid unnecessary checks where you know count is valid.
+            </summary>
+        </member>
+        <member name="M:System.Buffers.SequenceReader`1.AdvanceWithinSpan(System.Int64)">
+            <summary>
+            Only call this helper if you know that you are advancing in the current span
+            with valid count and there is no need to fetch the next one.
+            </summary>
+        </member>
+        <member name="M:System.Buffers.SequenceReader`1.TryCopyTo(System.Span{`0})">
+            <summary>
+            Copies data from the current <see cref="P:System.Buffers.SequenceReader`1.Position"/> to the given <paramref name="destination"/> span if there
+            is enough data to fill it.
+            </summary>
+            <remarks>
+            This API is used to copy a fixed amount of data out of the sequence if possible. It does not advance
+            the reader. To look ahead for a specific stream of data <see cref="M:System.Buffers.SequenceReader`1.IsNext(System.ReadOnlySpan{`0},System.Boolean)"/> can be used.
+            </remarks>
+            <param name="destination">Destination span to copy to.</param>
+            <returns>True if there is enough data to completely fill the <paramref name="destination"/> span.</returns>
+        </member>
+        <member name="M:System.Buffers.SequenceReader`1.TryReadTo(System.ReadOnlySpan{`0}@,`0,System.Boolean)">
+            <summary>
+            Try to read everything up to the given <paramref name="delimiter"/>.
+            </summary>
+            <param name="span">The read data, if any.</param>
+            <param name="delimiter">The delimiter to look for.</param>
+            <param name="advancePastDelimiter">True to move past the <paramref name="delimiter"/> if found.</param>
+            <returns>True if the <paramref name="delimiter"/> was found.</returns>
+        </member>
+        <member name="M:System.Buffers.SequenceReader`1.TryReadTo(System.ReadOnlySpan{`0}@,`0,`0,System.Boolean)">
+            <summary>
+            Try to read everything up to the given <paramref name="delimiter"/>, ignoring delimiters that are
+            preceded by <paramref name="delimiterEscape"/>.
+            </summary>
+            <param name="span">The read data, if any.</param>
+            <param name="delimiter">The delimiter to look for.</param>
+            <param name="delimiterEscape">If found prior to <paramref name="delimiter"/> it will skip that occurrence.</param>
+            <param name="advancePastDelimiter">True to move past the <paramref name="delimiter"/> if found.</param>
+            <returns>True if the <paramref name="delimiter"/> was found.</returns>
+        </member>
+        <member name="M:System.Buffers.SequenceReader`1.TryReadTo(System.Buffers.ReadOnlySequence{`0}@,`0,System.Boolean)">
+            <summary>
+            Try to read everything up to the given <paramref name="delimiter"/>.
+            </summary>
+            <param name="sequence">The read data, if any.</param>
+            <param name="delimiter">The delimiter to look for.</param>
+            <param name="advancePastDelimiter">True to move past the <paramref name="delimiter"/> if found.</param>
+            <returns>True if the <paramref name="delimiter"/> was found.</returns>
+        </member>
+        <member name="M:System.Buffers.SequenceReader`1.TryReadTo(System.Buffers.ReadOnlySequence{`0}@,`0,`0,System.Boolean)">
+            <summary>
+            Try to read everything up to the given <paramref name="delimiter"/>, ignoring delimiters that are
+            preceded by <paramref name="delimiterEscape"/>.
+            </summary>
+            <param name="sequence">The read data, if any.</param>
+            <param name="delimiter">The delimiter to look for.</param>
+            <param name="delimiterEscape">If found prior to <paramref name="delimiter"/> it will skip that occurrence.</param>
+            <param name="advancePastDelimiter">True to move past the <paramref name="delimiter"/> if found.</param>
+            <returns>True if the <paramref name="delimiter"/> was found.</returns>
+        </member>
+        <member name="M:System.Buffers.SequenceReader`1.TryReadToAny(System.ReadOnlySpan{`0}@,System.ReadOnlySpan{`0},System.Boolean)">
+            <summary>
+            Try to read everything up to the given <paramref name="delimiters"/>.
+            </summary>
+            <param name="span">The read data, if any.</param>
+            <param name="delimiters">The delimiters to look for.</param>
+            <param name="advancePastDelimiter">True to move past the first found instance of any of the given <paramref name="delimiters"/>.</param>
+            <returns>True if any of the <paramref name="delimiters"/> were found.</returns>
+        </member>
+        <member name="M:System.Buffers.SequenceReader`1.TryReadToAny(System.Buffers.ReadOnlySequence{`0}@,System.ReadOnlySpan{`0},System.Boolean)">
+            <summary>
+            Try to read everything up to the given <paramref name="delimiters"/>.
+            </summary>
+            <param name="sequence">The read data, if any.</param>
+            <param name="delimiters">The delimiters to look for.</param>
+            <param name="advancePastDelimiter">True to move past the first found instance of any of the given <paramref name="delimiters"/>.</param>
+            <returns>True if any of the <paramref name="delimiters"/> were found.</returns>
+        </member>
+        <member name="M:System.Buffers.SequenceReader`1.TryReadTo(System.Buffers.ReadOnlySequence{`0}@,System.ReadOnlySpan{`0},System.Boolean)">
+            <summary>
+            Try to read data until the entire given <paramref name="delimiter"/> matches.
+            </summary>
+            <param name="sequence">The read data, if any.</param>
+            <param name="delimiter">The multi (T) delimiter.</param>
+            <param name="advancePastDelimiter">True to move past the <paramref name="delimiter"/> if found.</param>
+            <returns>True if the <paramref name="delimiter"/> was found.</returns>
+        </member>
+        <member name="M:System.Buffers.SequenceReader`1.TryReadExact(System.Int32,System.Buffers.ReadOnlySequence{`0}@)">
+            <summary>
+            Try to read data with given <paramref name="count"/>.
+            </summary>
+            <param name="count">Read count.</param>
+            <param name="sequence">The read data, if successfully read requested <paramref name="count"/> data.</param>
+            <returns><c>true</c> if remaining items in current <see cref="T:System.Buffers.SequenceReader`1" /> is enough for <paramref name="count"/>.</returns>
+        </member>
+        <member name="M:System.Buffers.SequenceReader`1.TryAdvanceTo(`0,System.Boolean)">
+            <summary>
+            Advance until the given <paramref name="delimiter"/>, if found.
+            </summary>
+            <param name="delimiter">The delimiter to search for.</param>
+            <param name="advancePastDelimiter">True to move past the <paramref name="delimiter"/> if found.</param>
+            <returns>True if the given <paramref name="delimiter"/> was found.</returns>
+        </member>
+        <member name="M:System.Buffers.SequenceReader`1.TryAdvanceToAny(System.ReadOnlySpan{`0},System.Boolean)">
+            <summary>
+            Advance until any of the given <paramref name="delimiters"/>, if found.
+            </summary>
+            <param name="delimiters">The delimiters to search for.</param>
+            <param name="advancePastDelimiter">True to move past the first found instance of any of the given <paramref name="delimiters"/>.</param>
+            <returns>True if any of the given <paramref name="delimiters"/> were found.</returns>
+        </member>
+        <member name="M:System.Buffers.SequenceReader`1.AdvancePast(`0)">
+            <summary>
+            Advance past consecutive instances of the given <paramref name="value"/>.
+            </summary>
+            <returns>How many positions the reader has been advanced.</returns>
+        </member>
+        <member name="M:System.Buffers.SequenceReader`1.AdvancePastAny(System.ReadOnlySpan{`0})">
+            <summary>
+            Skip consecutive instances of any of the given <paramref name="values"/>.
+            </summary>
+            <returns>How many positions the reader has been advanced.</returns>
+        </member>
+        <member name="M:System.Buffers.SequenceReader`1.AdvancePastAny(`0,`0,`0,`0)">
+            <summary>
+            Advance past consecutive instances of any of the given values.
+            </summary>
+            <returns>How many positions the reader has been advanced.</returns>
+        </member>
+        <member name="M:System.Buffers.SequenceReader`1.AdvancePastAny(`0,`0,`0)">
+            <summary>
+            Advance past consecutive instances of any of the given values.
+            </summary>
+            <returns>How many positions the reader has been advanced.</returns>
+        </member>
+        <member name="M:System.Buffers.SequenceReader`1.AdvancePastAny(`0,`0)">
+            <summary>
+            Advance past consecutive instances of any of the given values.
+            </summary>
+            <returns>How many positions the reader has been advanced.</returns>
+        </member>
+        <member name="M:System.Buffers.SequenceReader`1.IsNext(`0,System.Boolean)">
+            <summary>
+            Check to see if the given <paramref name="next"/> value is next.
+            </summary>
+            <param name="next">The value to compare the next items to.</param>
+            <param name="advancePast">Move past the <paramref name="next"/> value if found.</param>
+        </member>
+        <member name="M:System.Buffers.SequenceReader`1.IsNext(System.ReadOnlySpan{`0},System.Boolean)">
+            <summary>
+            Check to see if the given <paramref name="next"/> values are next.
+            </summary>
+            <param name="next">The span to compare the next items to.</param>
+            <param name="advancePast">Move past the <paramref name="next"/> values if found.</param>
+        </member>
+        <member name="T:System.Buffers.SequenceReaderExtensions">
+            <summary>
+            Provides extended functionality for the <see cref="T:System.Buffers.SequenceReader`1"/> class that allows reading of endian specific numeric values from binary data.
+            </summary>
+        </member>
+        <member name="M:System.Buffers.SequenceReaderExtensions.TryRead``1(System.Buffers.SequenceReader{System.Byte}@,``0@)">
+            <summary>
+            Try to read the given type out of the buffer if possible. Warning: this is dangerous to use with arbitrary
+            structs- see remarks for full details.
+            </summary>
+            <remarks>
+            IMPORTANT: The read is a straight copy of bits. If a struct depends on specific state of it's members to
+            behave correctly this can lead to exceptions, etc. If reading endian specific integers, use the explicit
+            overloads such as <see cref="M:System.Buffers.SequenceReaderExtensions.TryReadLittleEndian(System.Buffers.SequenceReader{System.Byte}@,System.Int16@)"/>
+            </remarks>
+            <returns>
+            True if successful. <paramref name="value"/> will be default if failed (due to lack of space).
+            </returns>
+        </member>
+        <member name="M:System.Buffers.SequenceReaderExtensions.TryReadLittleEndian(System.Buffers.SequenceReader{System.Byte}@,System.Int16@)">
+            <summary>
+            Reads an <see cref="T:System.Int16"/> as little endian.
+            </summary>
+            <returns>False if there wasn't enough data for an <see cref="T:System.Int16"/>.</returns>
+        </member>
+        <member name="M:System.Buffers.SequenceReaderExtensions.TryReadBigEndian(System.Buffers.SequenceReader{System.Byte}@,System.Int16@)">
+            <summary>
+            Reads an <see cref="T:System.Int16"/> as big endian.
+            </summary>
+            <returns>False if there wasn't enough data for an <see cref="T:System.Int16"/>.</returns>
+        </member>
+        <member name="M:System.Buffers.SequenceReaderExtensions.TryReadLittleEndian(System.Buffers.SequenceReader{System.Byte}@,System.Int32@)">
+            <summary>
+            Reads an <see cref="T:System.Int32"/> as little endian.
+            </summary>
+            <returns>False if there wasn't enough data for an <see cref="T:System.Int32"/>.</returns>
+        </member>
+        <member name="M:System.Buffers.SequenceReaderExtensions.TryReadBigEndian(System.Buffers.SequenceReader{System.Byte}@,System.Int32@)">
+            <summary>
+            Reads an <see cref="T:System.Int32"/> as big endian.
+            </summary>
+            <returns>False if there wasn't enough data for an <see cref="T:System.Int32"/>.</returns>
+        </member>
+        <member name="M:System.Buffers.SequenceReaderExtensions.TryReadLittleEndian(System.Buffers.SequenceReader{System.Byte}@,System.Int64@)">
+            <summary>
+            Reads an <see cref="T:System.Int64"/> as little endian.
+            </summary>
+            <returns>False if there wasn't enough data for an <see cref="T:System.Int64"/>.</returns>
+        </member>
+        <member name="M:System.Buffers.SequenceReaderExtensions.TryReadBigEndian(System.Buffers.SequenceReader{System.Byte}@,System.Int64@)">
+            <summary>
+            Reads an <see cref="T:System.Int64"/> as big endian.
+            </summary>
+            <returns>False if there wasn't enough data for an <see cref="T:System.Int64"/>.</returns>
+        </member>
         <member name="T:Nerdbank.Streams.BufferTextWriter">
             <summary>
             A <see cref="T:System.IO.TextWriter"/> that writes to a reassignable instance of <see cref="T:System.Buffers.IBufferWriter`1"/>.
@@ -138,12 +439,25 @@
             <summary>
             Encodes characters written so far to a buffer provided by the underyling <see cref="F:Nerdbank.Streams.BufferTextWriter.bufferWriter"/>.
             </summary>
-            <param name="flushEncoder"><c>true</c> to flush the characters in the encoder; useful when finalizing the output.</param>
+            <param name="flushEncoder"><see langword="true"/> to flush the characters in the encoder; useful when finalizing the output.</param>
         </member>
         <member name="M:Nerdbank.Streams.BufferTextWriter.CommitBytes">
             <summary>
             Commits any written bytes to the underlying <see cref="F:Nerdbank.Streams.BufferTextWriter.bufferWriter"/>.
             </summary>
+        </member>
+        <member name="T:Nerdbank.Streams.BufferWriterExtensions">
+            <summary>
+            Extension methods for the <see cref="T:System.Buffers.IBufferWriter`1"/> interface.
+            </summary>
+        </member>
+        <member name="M:Nerdbank.Streams.BufferWriterExtensions.Write``1(System.Buffers.IBufferWriter{``0},System.Buffers.ReadOnlySequence{``0})">
+            <summary>
+            Copies the content of a <see cref="T:System.Buffers.ReadOnlySequence`1"/> into an <see cref="T:System.Buffers.IBufferWriter`1"/>.
+            </summary>
+            <typeparam name="T">The type of element to copy.</typeparam>
+            <param name="writer">The <see cref="T:System.Buffers.IBufferWriter`1"/> to write to.</param>
+            <param name="sequence">The sequence to read from.</param>
         </member>
         <member name="T:Nerdbank.Streams.BufferWriterStream">
             <summary>
@@ -677,6 +991,11 @@
             The party-qualified id of the channel.
             </summary>
         </member>
+        <member name="F:Nerdbank.Streams.MultiplexingStream.Channel.mxStreamIOWriterSemaphore">
+            <summary>
+            A semaphore that should be entered before using the <see cref="F:Nerdbank.Streams.MultiplexingStream.Channel.mxStreamIOWriter"/>.
+            </summary>
+        </member>
         <member name="F:Nerdbank.Streams.MultiplexingStream.Channel.remoteWindowFilled">
             <summary>
             The number of bytes transmitted from here but not yet acknowledged as processed from there,
@@ -706,8 +1025,16 @@
         </member>
         <member name="F:Nerdbank.Streams.MultiplexingStream.Channel.isDisposed">
             <summary>
-            Indicates whether the <see cref="M:Nerdbank.Streams.MultiplexingStream.Channel.Dispose"/> method has been called.
+            Indicates whether the <see cref="M:Nerdbank.Streams.MultiplexingStream.Channel.Dispose(System.Exception)"/> method has been called.
             </summary>
+        </member>
+        <member name="F:Nerdbank.Streams.MultiplexingStream.Channel.faultingException">
+            <summary>
+            The original exception that led to faulting this channel.
+            </summary>
+            <remarks>
+            This should only be set with a <see cref="P:Nerdbank.Streams.MultiplexingStream.Channel.SyncObject"/> lock and after checking that it is <see langword="null" />.
+            </remarks>
         </member>
         <member name="F:Nerdbank.Streams.MultiplexingStream.Channel.mxStreamIOReader">
             <summary>
@@ -845,16 +1172,34 @@
         </member>
         <member name="M:Nerdbank.Streams.MultiplexingStream.Channel.Dispose">
             <summary>
-            Closes this channel and releases all resources associated with it.
+            Immediately terminates the channel and shuts down any ongoing communication.
             </summary>
             <remarks>
             Because this method may terminate the channel immediately and thus can cause previously queued content to not actually be received by the remote party,
             consider this method a "break glass" way of terminating a channel. The preferred method is that both sides "complete writing" and let the channel dispose itself.
             </remarks>
         </member>
+        <member name="M:Nerdbank.Streams.MultiplexingStream.Channel.Dispose(System.Exception)">
+            <summary>
+            Disposes the channel by releasing all resources associated with it.
+            </summary>
+            <param name="disposeException">The exception to dispose this channel with.</param>
+        </member>
+        <member name="M:Nerdbank.Streams.MultiplexingStream.Channel.OnContentAsync(System.Buffers.ReadOnlySequence{System.Byte},System.Threading.CancellationToken)">
+            <summary>
+            Receives content from the <see cref="P:Nerdbank.Streams.MultiplexingStream.Channel.MultiplexingStream"/> that is bound for this channel.
+            </summary>
+            <param name="payload">The content for this channel.</param>
+            <param name="cancellationToken">A token that is canceled if the overall <see cref="P:Nerdbank.Streams.MultiplexingStream.Channel.MultiplexingStream"/> gets disposed of.</param>
+            <returns>
+            A task that completes when content has been accepted.
+            All multiplexing stream reads are held up till this completes, so this should only pause in exceptional circumstances.
+            Faulting the returned <see cref="T:System.Threading.Tasks.ValueTask"/> will fault the whole multiplexing stream.
+            </returns>
+        </member>
         <member name="M:Nerdbank.Streams.MultiplexingStream.Channel.OnContentWritingCompleted">
             <summary>
-            Called by the <see cref="P:Nerdbank.Streams.MultiplexingStream.Channel.MultiplexingStream"/> when when it will not be writing any more data to the channel.
+            Called by the <see cref="P:Nerdbank.Streams.MultiplexingStream.Channel.MultiplexingStream"/> when it will not be writing any more data to the channel.
             </summary>
         </member>
         <member name="M:Nerdbank.Streams.MultiplexingStream.Channel.TryAcceptOffer(Nerdbank.Streams.MultiplexingStream.ChannelOptions)">
@@ -869,7 +1214,7 @@
             Occurs when the remote party has accepted our offer of this channel.
             </summary>
             <param name="acceptanceParameters">The channel parameters provided by the accepting party.</param>
-            <returns>A value indicating whether the acceptance went through; <c>false</c> if the channel is already accepted, rejected or offer rescinded.</returns>
+            <returns>A value indicating whether the acceptance went through; <see langword="false"/> if the channel is already accepted, rejected or offer rescinded.</returns>
         </member>
         <member name="M:Nerdbank.Streams.MultiplexingStream.Channel.OnContentProcessed(System.Int64)">
             <summary>
@@ -879,7 +1224,7 @@
             </summary>
             <param name="bytesProcessed">The number of bytes processed by the remote party.</param>
         </member>
-        <member name="M:Nerdbank.Streams.MultiplexingStream.Channel.GetReceivedMessagePipeWriter">
+        <member name="M:Nerdbank.Streams.MultiplexingStream.Channel.GetReceivedMessagePipeWriterAsync(System.Threading.CancellationToken)">
             <summary>
             Gets the pipe writer to use when a message is received for this channel, so that the channel owner will notice and read it.
             </summary>
@@ -900,6 +1245,12 @@
             <summary>
             Relays data that the local channel owner wants to send to the remote party.
             </summary>
+            <remarks>
+            This method takes ownership of <see cref="F:Nerdbank.Streams.MultiplexingStream.Channel.mxStreamIOReader"/> and guarantees that it will be completed by the time this method completes,
+            whether successfully or in a faulted state.
+            To protect thread-safety, this method replaces the <see cref="F:Nerdbank.Streams.MultiplexingStream.Channel.mxStreamIOReader"/> field with an instance of <see cref="T:Nerdbank.Streams.UnownedPipeReader"/>
+            so no one else can mess with it and introduce thread-safety bugs. The field is restored as this method exits.
+            </remarks>
         </member>
         <member name="M:Nerdbank.Streams.MultiplexingStream.Channel.OnTransmittingBytes(System.Int64)">
             <summary>
@@ -1000,7 +1351,7 @@
             <summary>
             Gets or sets an existing <see cref="T:System.IO.Pipelines.IDuplexPipe"/> instance used to exchange data with the channel.
             </summary>
-            <value>The default is <c>null</c>.</value>
+            <value>The default is <see langword="null"/>.</value>
             <remarks>
             <para>
             This property supports high throughput scenarios where channel data ultimately goes to a <see cref="T:System.IO.Pipelines.PipeWriter"/> and <see cref="T:System.IO.Pipelines.PipeReader"/> that already exist.
@@ -1013,7 +1364,7 @@
             the value of <see cref="P:Nerdbank.Streams.MultiplexingStream.ChannelOptions.ChannelReceivingWindowSize"/> and <see cref="P:Nerdbank.Streams.MultiplexingStream.Options.DefaultChannelReceivingWindowSize"/>.
             </para>
             </remarks>
-            <exception cref="T:System.ArgumentException">Thrown if set to an <see cref="T:System.IO.Pipelines.IDuplexPipe"/> that returns <c>null</c> for either of its properties.</exception>
+            <exception cref="T:System.ArgumentException">Thrown if set to an <see cref="T:System.IO.Pipelines.IDuplexPipe"/> that returns <see langword="null"/> for either of its properties.</exception>
         </member>
         <member name="P:Nerdbank.Streams.MultiplexingStream.ChannelOptions.InputPipeOptions">
             <summary>
@@ -1149,6 +1500,12 @@
             The major version of the protocol being used for this connection.
             </summary>
         </member>
+        <member name="F:Nerdbank.Streams.MultiplexingStream.faultOpenChannelsOnStreamDisposal">
+            <summary>
+            A value indicating whether any open channels should be faulted (i.e. their <see cref="P:Nerdbank.Streams.MultiplexingStream.Channel.Completion"/> task will be faulted)
+            when the <see cref="T:Nerdbank.Streams.MultiplexingStream"/> is disposed.
+            </summary>
+        </member>
         <member name="F:Nerdbank.Streams.MultiplexingStream.lastOfferedChannelId">
             <summary>
             The last number assigned to a channel.
@@ -1181,6 +1538,11 @@
             <see cref="M:Nerdbank.Streams.MultiplexingStream.StartListening"/>.
             </remarks>
         </member>
+        <member name="F:Nerdbank.Streams.MultiplexingStream.TraceEventId.FatalError">
+            <summary>
+            A fatal error occurred at the overall multiplexing stream level, taking down the whole connection.
+            </summary>
+        </member>
         <member name="F:Nerdbank.Streams.MultiplexingStream.TraceEventId.ContentDiscardedOnDisposedChannel">
             <summary>
             Raised when content arrives for a channel that has been disposed locally, resulting in discarding the content.
@@ -1199,6 +1561,11 @@
         <member name="F:Nerdbank.Streams.MultiplexingStream.TraceEventId.HandshakeStarted">
             <summary>
             Raised when the protocol handshake is starting, to annouce the major version being used.
+            </summary>
+        </member>
+        <member name="F:Nerdbank.Streams.MultiplexingStream.TraceEventId.ChannelFatalError">
+            <summary>
+            A fatal exception occurred that took down one channel.
             </summary>
         </member>
         <member name="P:Nerdbank.Streams.MultiplexingStream.Completion">
@@ -1231,7 +1598,7 @@
         <member name="P:Nerdbank.Streams.MultiplexingStream.DefaultChannelTraceSourceFactory">
             <summary>
             Gets a factory for <see cref="P:Nerdbank.Streams.MultiplexingStream.TraceSource"/> instances to attach to a newly opened <see cref="T:Nerdbank.Streams.MultiplexingStream.Channel"/>
-            when its <see cref="P:Nerdbank.Streams.MultiplexingStream.ChannelOptions.TraceSource"/> is <c>null</c>.
+            when its <see cref="P:Nerdbank.Streams.MultiplexingStream.ChannelOptions.TraceSource"/> is <see langword="null"/>.
             </summary>
         </member>
         <member name="M:Nerdbank.Streams.MultiplexingStream.Create(System.IO.Stream,Nerdbank.Streams.MultiplexingStream.Options)">
@@ -1347,22 +1714,17 @@
             <exception cref="T:System.OperationCanceledException">Thrown if <paramref name="cancellationToken"/> is canceled before the channel is accepted by the remote end.</exception>
         </member>
         <member name="M:Nerdbank.Streams.MultiplexingStream.AcceptChannelAsync(System.String,System.Threading.CancellationToken)">
-            <summary>
-            Accepts a channel that the remote end has attempted or may attempt to create.
-            </summary>
-            <param name="name">The name of the channel to accept.</param>
-            <param name="cancellationToken">A token to indicate lost interest in accepting the channel.</param>
-            <returns>The <see cref="T:Nerdbank.Streams.MultiplexingStream.Channel"/>, after its offer has been received from the remote party and accepted.</returns>
-            <remarks>
-            If multiple offers exist with the specified <paramref name="name"/>, the first one received will be accepted.
-            </remarks>
-            <exception cref="T:System.OperationCanceledException">Thrown if <paramref name="cancellationToken"/> is canceled before a request to create the channel has been received.</exception>
+            <inheritdoc cref="M:Nerdbank.Streams.MultiplexingStream.AcceptChannelAsync(System.String,Nerdbank.Streams.MultiplexingStream.ChannelOptions,System.Threading.CancellationToken)"/>
         </member>
         <member name="M:Nerdbank.Streams.MultiplexingStream.AcceptChannelAsync(System.String,Nerdbank.Streams.MultiplexingStream.ChannelOptions,System.Threading.CancellationToken)">
             <summary>
             Accepts a channel that the remote end has attempted or may attempt to create.
             </summary>
-            <param name="name">The name of the channel to accept.</param>
+            <param name="name">
+            The name of the channel to accept.
+            An empty string will match an offer made via <see cref="M:Nerdbank.Streams.MultiplexingStream.OfferChannelAsync(System.String,Nerdbank.Streams.MultiplexingStream.ChannelOptions,System.Threading.CancellationToken)"/> with an empty channel name.
+            It will also match an anonymous channel offer made with <see cref="M:Nerdbank.Streams.MultiplexingStream.CreateChannel(Nerdbank.Streams.MultiplexingStream.ChannelOptions)"/>.
+            </param>
             <param name="options">A set of options that describe local treatment of this channel.</param>
             <param name="cancellationToken">A token to indicate lost interest in accepting the channel.</param>
             <returns>The <see cref="T:Nerdbank.Streams.MultiplexingStream.Channel"/>, after its offer has been received from the remote party and accepted.</returns>
@@ -1395,9 +1757,9 @@
             </summary>
             <param name="stream">The stream to read from.</param>
             <param name="buffer">The buffer to fill.</param>
-            <param name="throwOnEmpty"><c>true</c> to throw if 0 bytes are read before the stream before the end of stream is encountered; <c>false</c> to simply return <c>false</c> when that happens.</param>
+            <param name="throwOnEmpty"><see langword="true"/> to throw if 0 bytes are read before the stream before the end of stream is encountered; <see langword="false"/> to simply return <see langword="false"/> when that happens.</param>
             <param name="cancellationToken">A cancellation token.</param>
-            <returns><c>true</c> if the buffer was filled as required; <c>false</c> if the stream was empty and no bytes were read, if <paramref name="throwOnEmpty"/> is <c>false</c>.</returns>
+            <returns><see langword="true"/> if the buffer was filled as required; <see langword="false"/> if the stream was empty and no bytes were read, if <paramref name="throwOnEmpty"/> is <see langword="false"/>.</returns>
             <exception cref="T:System.IO.EndOfStreamException">Thrown if the end of the stream was reached before the buffer was filled (unless <paramref name="throwOnEmpty"/> is false and 0 bytes were read).</exception>
         </member>
         <member name="M:Nerdbank.Streams.MultiplexingStream.ReadAndDiscardAsync(System.IO.Stream,System.Int32,System.Threading.CancellationToken)">
@@ -1410,17 +1772,19 @@
             <returns>The result of the operation.</returns>
             <exception cref="T:System.IO.EndOfStreamException">Thrown if the end of the stream was reached before <paramref name="length"/> bytes were read.</exception>
         </member>
-        <member name="M:Nerdbank.Streams.MultiplexingStream.OnChannelTerminatedAsync(Nerdbank.Streams.MultiplexingStream.QualifiedChannelId)">
+        <member name="M:Nerdbank.Streams.MultiplexingStream.OnChannelTerminatedAsync(Nerdbank.Streams.MultiplexingStream.QualifiedChannelId,System.Buffers.ReadOnlySequence{System.Byte})">
             <summary>
             Occurs when the remote party has terminated a channel (including canceling an offer).
             </summary>
             <param name="channelId">The ID of the terminated channel.</param>
+            <param name="payload">The payload sent from the remote side alongside the channel terminated frame.</param>
         </member>
-        <member name="M:Nerdbank.Streams.MultiplexingStream.OnChannelDisposed(Nerdbank.Streams.MultiplexingStream.Channel)">
+        <member name="M:Nerdbank.Streams.MultiplexingStream.OnChannelDisposed(Nerdbank.Streams.MultiplexingStream.Channel,System.Exception)">
             <summary>
-            Raised when <see cref="M:Nerdbank.Streams.MultiplexingStream.Channel.Dispose"/> is called and any local transmission is completed.
+            Raised when <see cref="M:Nerdbank.Streams.MultiplexingStream.Channel.Dispose(System.Exception)"/> is called and any local transmission is completed.
             </summary>
             <param name="channel">The channel that is closing down.</param>
+            <param name="exception">The exception to send to the remote side alongside the disposal.</param>
         </member>
         <member name="M:Nerdbank.Streams.MultiplexingStream.OnChannelWritingCompleted(Nerdbank.Streams.MultiplexingStream.Channel)">
             <summary>
@@ -1465,6 +1829,20 @@
             <summary>
             The magic number to send at the start of communication when using v1 of the protocol.
             </summary>
+        </member>
+        <member name="M:Nerdbank.Streams.MultiplexingStream.V2Formatter.SerializeException(System.Exception)">
+            <summary>
+            Creates a payload for a <see cref="F:Nerdbank.Streams.MultiplexingStream.ControlCode.ChannelTerminated"/> frame.
+            </summary>
+            <param name="exception">The exception to send to the remote side if there is one.</param>
+            <returns>The payload to send when a channel gets terminated.</returns>
+        </member>
+        <member name="M:Nerdbank.Streams.MultiplexingStream.V2Formatter.DeserializeException(System.Buffers.ReadOnlySequence{System.Byte})">
+            <summary>
+            Gets the error message in the payload if there is one.
+            </summary>
+            <param name="payload">The payload that could contain an error message.</param>
+            <returns>The error message in this payload if there is one, null otherwise.</returns>
         </member>
         <member name="P:Nerdbank.Streams.MultiplexingStream.FrameHeader.Code">
             <summary>
@@ -1527,6 +1905,11 @@
             Backing field for the <see cref="P:Nerdbank.Streams.MultiplexingStream.Options.StartSuspended"/> property.
             </summary>
         </member>
+        <member name="F:Nerdbank.Streams.MultiplexingStream.Options.faultOpenChannelsOnStreamDisposal">
+            <summary>
+            Backing field for the <see cref="P:Nerdbank.Streams.MultiplexingStream.Options.FaultOpenChannelsOnStreamDisposal"/> property.
+            </summary>
+        </member>
         <member name="M:Nerdbank.Streams.MultiplexingStream.Options.#ctor">
             <summary>
             Initializes a new instance of the <see cref="T:Nerdbank.Streams.MultiplexingStream.Options"/> class.
@@ -1545,7 +1928,7 @@
             and copies the values from another instance into this one.
             </summary>
             <param name="copyFrom">The instance to copy values from.</param>
-            <param name="frozen"><c>true</c> to freeze this copy.</param>
+            <param name="frozen"><see langword="true"/> to freeze this copy.</param>
         </member>
         <member name="P:Nerdbank.Streams.MultiplexingStream.Options.TraceSource">
             <summary>
@@ -1579,20 +1962,20 @@
         <member name="P:Nerdbank.Streams.MultiplexingStream.Options.DefaultChannelTraceSourceFactory">
             <summary>
             Gets or sets a factory for <see cref="P:Nerdbank.Streams.MultiplexingStream.Options.TraceSource"/> instances to attach to a newly opened <see cref="T:Nerdbank.Streams.MultiplexingStream.Channel"/>
-            when its <see cref="P:Nerdbank.Streams.MultiplexingStream.ChannelOptions.TraceSource"/> is <c>null</c>.
+            when its <see cref="P:Nerdbank.Streams.MultiplexingStream.ChannelOptions.TraceSource"/> is <see langword="null"/>.
             </summary>
             <remarks>
-            <para>The delegate receives a channel ID and name, and may return a <see cref="P:Nerdbank.Streams.MultiplexingStream.Options.TraceSource"/> or <c>null</c>.</para>
+            <para>The delegate receives a channel ID and name, and may return a <see cref="P:Nerdbank.Streams.MultiplexingStream.Options.TraceSource"/> or <see langword="null"/>.</para>
             <para>This delegate will not be invoked if <see cref="P:Nerdbank.Streams.MultiplexingStream.Options.DefaultChannelTraceSourceFactoryWithQualifier"/> has been set to a non-null value.</para>
             </remarks>
         </member>
         <member name="P:Nerdbank.Streams.MultiplexingStream.Options.DefaultChannelTraceSourceFactoryWithQualifier">
             <summary>
             Gets or sets a factory for <see cref="P:Nerdbank.Streams.MultiplexingStream.Options.TraceSource"/> instances to attach to a newly opened <see cref="T:Nerdbank.Streams.MultiplexingStream.Channel"/>
-            when its <see cref="P:Nerdbank.Streams.MultiplexingStream.ChannelOptions.TraceSource"/> is <c>null</c>.
+            when its <see cref="P:Nerdbank.Streams.MultiplexingStream.ChannelOptions.TraceSource"/> is <see langword="null"/>.
             </summary>
             <remarks>
-            <para>The delegate receives a channel ID and name, and may return a <see cref="P:Nerdbank.Streams.MultiplexingStream.Options.TraceSource"/> or <c>null</c>.</para>
+            <para>The delegate receives a channel ID and name, and may return a <see cref="P:Nerdbank.Streams.MultiplexingStream.Options.TraceSource"/> or <see langword="null"/>.</para>
             <para>This delegate supersedes the obsolete <see cref="P:Nerdbank.Streams.MultiplexingStream.Options.DefaultChannelTraceSourceFactory"/> as this one provides detail about whether the channel was offered locally or remotely.</para>
             </remarks>
         </member>
@@ -1618,6 +2001,12 @@
             with the 0-based index into this list used as the channel ID.
             They are only supported when <see cref="P:Nerdbank.Streams.MultiplexingStream.Options.ProtocolMajorVersion"/> is at least 3.
             </remarks>
+        </member>
+        <member name="P:Nerdbank.Streams.MultiplexingStream.Options.FaultOpenChannelsOnStreamDisposal">
+            <summary>
+            Gets or sets a value indicating whether any open channels should be faulted (i.e. their <see cref="P:Nerdbank.Streams.MultiplexingStream.Channel.Completion"/> task will be faulted)
+            when the <see cref="T:Nerdbank.Streams.MultiplexingStream"/> is disposed.
+            </summary>
         </member>
         <member name="P:Nerdbank.Streams.MultiplexingStream.Options.IsFrozen">
             <summary>
@@ -1809,7 +2198,7 @@
             Exposes a full-duplex pipe as a <see cref="T:System.IO.Stream"/>.
             </summary>
             <param name="pipe">The pipe to wrap as a stream.</param>
-            <param name="ownsPipe"><c>true</c> to complete the underlying reader and writer when the <see cref="T:System.IO.Stream"/> is disposed; <c>false</c> to keep them open.</param>
+            <param name="ownsPipe"><see langword="true"/> to complete the underlying reader and writer when the <see cref="T:System.IO.Stream"/> is disposed; <see langword="false"/> to keep them open.</param>
             <returns>The wrapping stream.</returns>
         </member>
         <member name="M:Nerdbank.Streams.PipeExtensions.AsStream(System.IO.Pipelines.PipeReader)">
@@ -2160,6 +2549,32 @@
             This instance is safe to reuse after this call.
             </remarks>
         </member>
+        <member name="T:Nerdbank.Streams.ReadOnlySequenceExtensions">
+            <summary>
+            Extension methods for the <see cref="T:System.Buffers.ReadOnlySequence`1"/> type.
+            </summary>
+        </member>
+        <member name="M:Nerdbank.Streams.ReadOnlySequenceExtensions.Clone``1(System.Buffers.ReadOnlySequence{``0})">
+            <summary>
+            Copies the content of one <see cref="T:System.Buffers.ReadOnlySequence`1"/> to another that is backed by its own
+            memory buffers.
+            </summary>
+            <typeparam name="T">The type of element in the sequence.</typeparam>
+            <param name="template">The sequence to copy from.</param>
+            <returns>A shallow copy of the sequence, backed by buffers which will never be recycled.</returns>
+            <remarks>
+            This method is useful for retaining data that is backed by buffers that will be reused later.
+            </remarks>
+        </member>
+        <member name="M:Nerdbank.Streams.ReadOnlySequenceExtensions.GetFirstSpan``1(System.Buffers.ReadOnlySequence{``0},System.ReadOnlySpan{``0}@,System.SequencePosition@)">
+            <summary>
+            Polyfill method used by the <see cref="T:System.Buffers.SequenceReader`1"/>.
+            </summary>
+            <typeparam name="T">The type of element kept by the sequence.</typeparam>
+            <param name="sequence">The sequence to retrieve.</param>
+            <param name="first">The first span in the sequence.</param>
+            <param name="next">The next position.</param>
+        </member>
         <member name="F:Nerdbank.Streams.ReadOnlySequenceStream.lastReadTask">
             <summary>
             A reusable task if two consecutive reads return the same number of bytes.
@@ -2367,7 +2782,7 @@
             in which case the higher of the two minimums dictate the minimum array size that will be allocated.
             </para>
             <para>
-            If <see cref="P:Nerdbank.Streams.Sequence`1.AutoIncreaseMinimumSpanLength"/> is <c>true</c>, this value may be automatically increased as the length of a sequence grows.
+            If <see cref="P:Nerdbank.Streams.Sequence`1.AutoIncreaseMinimumSpanLength"/> is <see langword="true"/>, this value may be automatically increased as the length of a sequence grows.
             </para>
             </remarks>
         </member>
@@ -2490,7 +2905,7 @@
         <member name="P:Nerdbank.Streams.Sequence`1.SequenceSegment.MemoryOwner">
             <summary>
             Gets the tracker for the underlying array for this segment, which can be used to recycle the array when we're disposed of.
-            Will be <c>null</c> if using an array pool, in which case the memory is held by <see cref="F:Nerdbank.Streams.Sequence`1.SequenceSegment.array"/>.
+            Will be <see langword="null"/> if using an array pool, in which case the memory is held by <see cref="F:Nerdbank.Streams.Sequence`1.SequenceSegment.array"/>.
             </summary>
         </member>
         <member name="P:Nerdbank.Streams.Sequence`1.SequenceSegment.AvailableMemory">
@@ -2654,6 +3069,17 @@
             This method shamelessly copied from the .NET Core 2.1 Stream class: https://github.com/dotnet/coreclr/blob/a113b1c803783c9d64f1f0e946ff9a853e3bc140/src/System.Private.CoreLib/shared/System/IO/Stream.cs#L366-L391.
             </devremarks>
         </member>
+        <member name="M:Nerdbank.Streams.SpanPolyfillExtensions.Read(System.IO.Stream,System.Span{System.Byte})">
+            <summary>
+            Reads from the stream into a memory buffer.
+            </summary>
+            <param name="stream">The stream to read from.</param>
+            <param name="buffer">The buffer to copy the data into.</param>
+            <returns>The number of bytes actually read.</returns>
+            <devremarks>
+            This method shamelessly copied from the .NET Core 2.1 Stream class: https://github.com/dotnet/coreclr/blob/a113b1c803783c9d64f1f0e946ff9a853e3bc140/src/System.Private.CoreLib/shared/System/IO/Stream.cs#L366-L391.
+            </devremarks>
+        </member>
         <member name="M:Nerdbank.Streams.SpanPolyfillExtensions.WriteAsync(System.IO.Stream,System.ReadOnlyMemory{System.Byte},System.Threading.CancellationToken)">
             <summary>
             Writes to a stream from a memory buffer.
@@ -2810,13 +3236,19 @@
             Indicates when we have drained the underlying stream of all bytes.
             </summary>
         </member>
+        <member name="M:Nerdbank.Streams.StreamPipeReader.#ctor(System.IO.Stream)">
+            <inheritdoc cref="M:Nerdbank.Streams.StreamPipeReader.#ctor(System.IO.Stream,System.Int32,System.Boolean)" />
+            <remarks>
+            The <paramref name="stream"/> will be disposed of when the reader is completed.
+            </remarks>
+        </member>
         <member name="M:Nerdbank.Streams.StreamPipeReader.#ctor(System.IO.Stream,System.Int32,System.Boolean)">
             <summary>
             Initializes a new instance of the <see cref="T:Nerdbank.Streams.StreamPipeReader"/> class.
             </summary>
             <param name="stream">The stream to read from.</param>
             <param name="bufferSize">A hint at the size of messages that are commonly transferred. Use 0 for a commonly reasonable default.</param>
-            <param name="leaveOpen"><c>true</c> to leave the underlying <paramref name="stream"/> open after calling <see cref="M:System.IO.Pipelines.PipeReader.Complete(System.Exception)"/>; <c>false</c> to close the stream.</param>
+            <param name="leaveOpen"><see langword="true"/> to leave the underlying <paramref name="stream"/> open after calling <see cref="M:System.IO.Pipelines.PipeReader.Complete(System.Exception)"/>; <see langword="false"/> to close the stream.</param>
         </member>
         <member name="M:Nerdbank.Streams.StreamPipeReader.AdvanceTo(System.SequencePosition)">
             <inheritdoc />
@@ -2835,6 +3267,12 @@
         </member>
         <member name="M:Nerdbank.Streams.StreamPipeReader.ReadAsync(System.Threading.CancellationToken)">
             <inheritdoc />
+        </member>
+        <member name="M:Nerdbank.Streams.StreamPipeReader.Read">
+            <summary>
+            Reads a sequence of bytes from the from the buffer or underlying <see cref="T:System.IO.Stream" /> using synchronous APIs.
+            </summary>
+            <returns>The read buffer.</returns>
         </member>
         <member name="M:Nerdbank.Streams.StreamPipeReader.TryRead(System.IO.Pipelines.ReadResult@)">
             <inheritdoc />
@@ -3082,6 +3520,19 @@
         <member name="M:Nerdbank.Streams.SubstreamReader.Dispose(System.Boolean)">
             <inheritdoc/>
         </member>
+        <member name="T:Nerdbank.Streams.UnownedPipeReader">
+            <summary>
+            A substitute <see cref="T:System.IO.Pipelines.PipeReader"/> that throws for nearly every call, notifying the caller that they don't own this object.
+            The only allowed call is to <see cref="M:System.IO.Pipelines.PipeReader.CancelPendingRead"/> because that is assumed to be thread-safe.
+            </summary>
+            <remarks>
+            This can be useful to set on a field that contains a <see cref="T:System.IO.Pipelines.PipeReader"/> while some async method "owns" it.
+            One example is at disposal, the 'owning' object may be tempted to call <see cref="M:System.IO.Pipelines.PipeReader.Complete(System.Exception)"/> on it,
+            but this can cause thread-safety bugs and data corruption when the async reader loop is still using it.
+            Instead, such a Dispose method should cancel the reader loop in a thread-safe fashion, and then either that read method
+            or the Dispose method can Complete the reader.
+            </remarks>
+        </member>
         <member name="T:Nerdbank.Streams.Utilities">
             <summary>
             Internal utilities.
@@ -3108,7 +3559,7 @@
             <typeparam name="T">The element to remove.</typeparam>
             <param name="queue">The queue to modify.</param>
             <param name="valueToRemove">The value to remove.</param>
-            <returns><c>true</c> if the value was found and removed; <c>false</c> if no match was found.</returns>
+            <returns><see langword="true"/> if the value was found and removed; <see langword="false"/> if no match was found.</returns>
             <remarks>
             If a value appears multiple times in the queue, only its first entry is removed.
             </remarks>

@@ -1,6 +1,6 @@
 [Display]
 # This sets the main display font of IDE.
-DisplayFont=HarmonyOS Sans SC
+DisplayFont=HP Simplified Hans
 
 [General]
 # This sets the update channel of IDE(Under development)
