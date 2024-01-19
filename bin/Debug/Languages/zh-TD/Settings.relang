@@ -13,6 +13,7 @@ text.settings.page.edit.title=編輯
 text.settings.page.edit.appearance.title=編輯器外觀
 text.settings.page.edit.appearance.font=字型
 text.settings.page.edit.appearance.font.size=大小
+text.settings.page.edit.appearance.general.title=常規設置
 text.settings.page.edit.appearance.font.writetesttexts=在下方的編輯器中輸入您想要檢視的任何文字
 text.settings.page.edit.appearance.font.color.comment=註釋
 text.settings.page.edit.appearance.font.color.number=數字

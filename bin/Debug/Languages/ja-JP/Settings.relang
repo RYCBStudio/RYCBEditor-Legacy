@@ -10,6 +10,7 @@ text.settings.page.general.basicsettings.lang=言語
 text.settings.page.general.basicsettings.xshdpath=Xshdファイルのパス
 text.settings.page.general.basicsettings.xshdpath.choose=選択
 text.settings.page.edit.title=編集
+text.settings.page.edit.appearance.general.title=一般設定
 text.settings.page.edit.appearance.title=エディタの外観
 text.settings.page.edit.appearance.font=フォント
 text.settings.page.edit.appearance.font.size=サイズ

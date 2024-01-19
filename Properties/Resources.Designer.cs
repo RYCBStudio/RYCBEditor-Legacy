@@ -565,7 +565,7 @@ namespace IDE.Properties {
         /// </summary>
         public static System.Drawing.Bitmap IDE_ico_1024x_ {
             get {
-                object obj = ResourceManager.GetObject("IDE_ico(1024x)", resourceCulture);
+                object obj = ResourceManager.GetObject("IDE_ico_1024x_", resourceCulture);
                 return ((System.Drawing.Bitmap)(obj));
             }
         }
@@ -656,6 +656,16 @@ namespace IDE.Properties {
         public static System.Drawing.Bitmap Linux {
             get {
                 object obj = ResourceManager.GetObject("Linux", resourceCulture);
+                return ((System.Drawing.Bitmap)(obj));
+            }
+        }
+        
+        /// <summary>
+        ///   查找 System.Drawing.Bitmap 类型的本地化资源。
+        /// </summary>
+        public static System.Drawing.Bitmap loading_ {
+            get {
+                object obj = ResourceManager.GetObject("loading_", resourceCulture);
                 return ((System.Drawing.Bitmap)(obj));
             }
         }
@@ -776,6 +786,16 @@ namespace IDE.Properties {
         public static System.Drawing.Bitmap Run1 {
             get {
                 object obj = ResourceManager.GetObject("Run1", resourceCulture);
+                return ((System.Drawing.Bitmap)(obj));
+            }
+        }
+        
+        /// <summary>
+        ///   查找 System.Drawing.Bitmap 类型的本地化资源。
+        /// </summary>
+        public static System.Drawing.Bitmap runnerconfig {
+            get {
+                object obj = ResourceManager.GetObject("runnerconfig", resourceCulture);
                 return ((System.Drawing.Bitmap)(obj));
             }
         }

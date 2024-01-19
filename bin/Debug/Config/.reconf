@@ -1,3 +1,6 @@
+[FirstBoot]
+IsFirstBoot=true
+
 [Display]
 # This sets the main display font of IDE.
 DisplayFont=HP Simplified Hans
@@ -39,7 +42,7 @@ ShowLineNum=true
 # *Notice: It is recommended to leave this setting blank. 
 #   The IDE will automatically inject this content during runtime.
 # Accepted Value: An existing directory.(e.g. C:\Program Files\RYCB Editor\Config\Highlighting)
-XshdFilePath=F:\VS 2022\repos\IDE\bin\Debug\Config\Highlighting
+XshdFilePath=F:\VS 2022\repos\IDE\bin\Debug\Config\HighLighting
 
 [DevMode]
 # This sets if IDE should enable developer mode.

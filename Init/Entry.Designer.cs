@@ -31,11 +31,11 @@
             this.components = new System.ComponentModel.Container();
             this.elementHost1 = new System.Windows.Forms.Integration.ElementHost();
             this.metroProgressBar1 = new MetroFramework.Controls.MetroProgressBar();
-            this.uiLabel1 = new Sunny.UI.UILabel();
-            this.uiLabel2 = new Sunny.UI.UILabel();
-            this.uiLabel3 = new Sunny.UI.UILabel();
+            this.uiLabel1 = new System.Windows.Forms.Label();
+            this.uiLabel2 = new System.Windows.Forms.Label();
+            this.uiLabel3 = new System.Windows.Forms.Label();
             this.timer1 = new System.Windows.Forms.Timer(this.components);
-            this.uiLabel4 = new Sunny.UI.UILabel();
+            this.uiLabel4 = new System.Windows.Forms.Label();
             this.SuspendLayout();
             // 
             // elementHost1
@@ -65,7 +65,6 @@
             this.uiLabel1.Location = new System.Drawing.Point(12, 25);
             this.uiLabel1.Name = "uiLabel1";
             this.uiLabel1.Size = new System.Drawing.Size(826, 198);
-            this.uiLabel1.Style = Sunny.UI.UIStyle.Custom;
             this.uiLabel1.TabIndex = 6;
             this.uiLabel1.Text = "RYCB Editor";
             this.uiLabel1.TextAlign = System.Drawing.ContentAlignment.MiddleCenter;
@@ -78,7 +77,6 @@
             this.uiLabel2.Location = new System.Drawing.Point(595, 393);
             this.uiLabel2.Name = "uiLabel2";
             this.uiLabel2.Size = new System.Drawing.Size(176, 28);
-            this.uiLabel2.Style = Sunny.UI.UIStyle.Custom;
             this.uiLabel2.TabIndex = 7;
             this.uiLabel2.Text = "© RYCB Studio";
             this.uiLabel2.TextAlign = System.Drawing.ContentAlignment.MiddleLeft;
@@ -91,7 +89,6 @@
             this.uiLabel3.Location = new System.Drawing.Point(762, 393);
             this.uiLabel3.Name = "uiLabel3";
             this.uiLabel3.Size = new System.Drawing.Size(82, 28);
-            this.uiLabel3.Style = Sunny.UI.UIStyle.Custom;
             this.uiLabel3.TabIndex = 8;
             this.uiLabel3.Text = "2023";
             this.uiLabel3.TextAlign = System.Drawing.ContentAlignment.MiddleRight;
@@ -109,7 +106,6 @@
             this.uiLabel4.Location = new System.Drawing.Point(12, 382);
             this.uiLabel4.Name = "uiLabel4";
             this.uiLabel4.Size = new System.Drawing.Size(113, 39);
-            this.uiLabel4.Style = Sunny.UI.UIStyle.Custom;
             this.uiLabel4.TabIndex = 9;
             this.uiLabel4.Text = "LightEdit";
             this.uiLabel4.TextAlign = System.Drawing.ContentAlignment.MiddleLeft;
@@ -153,10 +149,10 @@
         #endregion
         private System.Windows.Forms.Integration.ElementHost elementHost1;
         internal MetroFramework.Controls.MetroProgressBar metroProgressBar1;
-        private Sunny.UI.UILabel uiLabel1;
-        private Sunny.UI.UILabel uiLabel2;
-        private Sunny.UI.UILabel uiLabel3;
+        private System.Windows.Forms.Label uiLabel1;
+        private System.Windows.Forms.Label uiLabel2;
+        private System.Windows.Forms.Label uiLabel3;
         private System.Windows.Forms.Timer timer1;
-        private Sunny.UI.UILabel uiLabel4;
+        private System.Windows.Forms.Label uiLabel4;
     }
 }

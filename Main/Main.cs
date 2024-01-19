@@ -24,6 +24,8 @@ using TextEditor = ICSharpCode.AvalonEdit.TextEditor;
 using Engines = IDE.ErrorMessageBox.Engines;
 using Markdig;
 using Microsoft.Web.WebView2.WinForms;
+using System.Threading.Tasks;
+using IDE.Init;
 #endregion
 
 namespace IDE
@@ -36,6 +38,8 @@ namespace IDE
         private static readonly string STARTUP_PATH = Program.STARTUP_PATH;
         private static readonly IniFile reConf = Program.reConf;
         private static readonly Stopwatch stopwatch = new();
+        //private ConcurrentBag<Process> processesToClose = new ConcurrentBag<Process>();
+        private string query = "SELECT * FROM Win32_Process WHERE Name='Runner'";
         private string title = "选择文件：", filter = "Py-CN文件|*.pycn|Py-CN编译后文件(Python 文件)|*.py|所有文件|*.*";
         private static StreamWriter keepFile, markdownFileConverter;
         private string LightEdit_File;
@@ -43,7 +47,7 @@ namespace IDE
         private TextEditor edit;
         private int tmp_, _i;
         private static string CachePath = Application.StartupPath + "\\Cache\\";
-        private static Process proc;
+        private static Process proc, RunnerProc;
         //private static StreamWriter CacheWriter;
         //private struct elementHost1
         //{
@@ -63,8 +67,8 @@ namespace IDE
             { Engines.TRADITIONAL_CHINESE_GLOBAL, "https://www.google.com/search?q=Python+{text}+{desc}"},
             { Engines.JAPANESE, "https://www.google.com/search?q=Python+{text}+{desc}"},
         };
-        public const string VERSION = "0.0.2";
-        public const string FRIENDLY_VER = "0.0.2-Beta.64";
+        public const string VERSION = "0.0.3";
+        public const string FRIENDLY_VER = "0.0.3-Alpha.64";
         public static readonly LogUtil LOGGER = new(Environment.CurrentDirectory + $"\\logs\\{DateTime.Now.Year}-{DateTime.Now.Month}-{DateTime.Now.Day}.log");
         public string text_tsl2;
         #endregion
@@ -158,6 +162,7 @@ namespace IDE
             };
             edit.TextArea.TextEntered += new TextCompositionEventHandler(this.TextAreaOnTextEntered);
             edit.TextArea.TextEntering += new TextCompositionEventHandler(this.TextArea_TextEntering);
+            edit.DocumentChanged += Edit_DocumentChanged;
             elementHost1.Child = edit;
             //快速搜索功能
             SearchPanel.Install(edit.TextArea);
@@ -175,6 +180,11 @@ namespace IDE
                 tabPage1.Text = GetFileName(LightEdit_File);
                 tabPage1.ToolTipText = LightEdit_File;
             }
+        }
+
+        private void Edit_DocumentChanged(object sender, EventArgs e)
+        {
+            Save(new object(), e);
         }
         #endregion
         #region 打开文件
@@ -333,6 +343,8 @@ namespace IDE
                 webView.SuspendLayout();
                 webView.Size = elementHost1.Size;
                 await webView.EnsureCoreWebView2Async();
+                webView.DoubleBuffered();
+                webView.CoreWebView2.Settings.IsWebMessageEnabled = true;
                 webView.BackColor = this.BackColor;
                 webView.ForeColor = this.ForeColor;
                 webView.ResumeLayout(false);
@@ -365,7 +377,7 @@ namespace IDE
 
                 var tmpEHost = new ElementHost
                 {
-                    Size = table.PreferredSize,
+                    Size = elementHost1.Size,
                     Location = elementHost1.Location,
                     BackColor = elementHost1.BackColor,
                     ForeColor = elementHost1.ForeColor
@@ -389,6 +401,7 @@ namespace IDE
                 LOGGER.WriteLog($"编辑器控件已准备就绪。\n字体: {tmpEditor.FontFamily}", EnumMsgLevel.INFO, EnumPort.CLIENT, EnumModule.MAIN);
                 tmpEditor.TextArea.TextEntered += new TextCompositionEventHandler(this.TextAreaOnTextEntered);
                 tmpEditor.TextArea.TextEntering += new TextCompositionEventHandler(this.TextArea_TextEntering);
+                tmpEditor.DocumentChanged += Edit_DocumentChanged;
                 LOGGER.WriteLog("编辑器控件方法入口已准备就绪。", EnumMsgLevel.INFO, EnumPort.CLIENT, EnumModule.MAIN);
 
                 // 快速搜索功能
@@ -413,13 +426,14 @@ namespace IDE
             }
             tabControl1.TabPages.Add(tab);
             LOGGER.WriteLog("所有设置均已完成。");
+            tabControl1.SelectedTab = tab;
         }
         #endregion
         #region 实时保存
         private void Save(object sender, EventArgs e)
         {
-            toolStripStatusLabel8.Visible = false;
-            toolStripStatusLabel9.Visible = false;
+            FileSavingIcon.Visible = false;
+            FileSavingTip.Visible = false;
             var _editor = GetCurrentTextEditor();
             if (_editor is null) { return; }
             if (tabControl1.SelectedTab != tabPage1 & tabControl1.SelectedTab.ToolTipText != null & tabControl1.SelectedTab.ToolTipText != "")
@@ -429,24 +443,24 @@ namespace IDE
                     StreamWriter streamWriter = new(tabControl1.SelectedTab.ToolTipText, false, Encoding.UTF8);
                     streamWriter.Write(_editor.Text);
                     streamWriter.Close();
-                    toolStripStatusLabel8.Image = Properties.Resources.file_saved_dark;
-                    toolStripStatusLabel9.Text = _I18nFile.ReadString("I18n", "text.st.filesaved", "text.st.filesaved");
+                    FileSavingIcon.Image = Properties.Resources.file_saved_dark;
+                    FileSavingTip.Text = _I18nFile.Localize("text.st.filesaved");
                     tabControl1.SelectedTab.Text.Replace("*", "");
                 }
                 catch (Exception ex)
                 {
-                    toolStripStatusLabel8.Image = Properties.Resources.file_save_failed_dark;
-                    toolStripStatusLabel9.Text = _I18nFile.ReadString("I18n", "text.st.filesavefailed", "text.st.filesavefailed");
+                    FileSavingIcon.Image = Properties.Resources.file_save_failed_dark;
+                    FileSavingTip.Text = _I18nFile.Localize("text.st.filesavefailed");
                     LOGGER.WriteErrLog(ex, EnumMsgLevel.ERROR, EnumPort.CLIENT);
                 }
             }
             else
             {
-                toolStripStatusLabel8.Image = Properties.Resources.file_ready_to_save_dark;
-                toolStripStatusLabel9.Text = _I18nFile.ReadString("I18n", "text.st.filereadytosave", "text.st.filereadytosave");
+                FileSavingIcon.Image = Properties.Resources.file_ready_to_save_dark;
+                FileSavingTip.Text = _I18nFile.ReadString("I18n", "text.st.filereadytosave", "text.st.filereadytosave");
             }
-            toolStripStatusLabel8.Visible = true;
-            toolStripStatusLabel9.Visible = true;
+            FileSavingIcon.Visible = true;
+            FileSavingTip.Visible = true;
         }
         #endregion
         #region 另存为
@@ -476,7 +490,7 @@ namespace IDE
                     }
 
                     UpdateTabPageInfo(saveFileDialog1.FileName);
-                    tabControl1.SelectedTab.Tag = saveFileDialog1.FileName;
+                    //tabControl1.SelectedTab.ToolTipText = saveFileDialog1.FileName;
                 }
                 catch (Exception ex)
                 {
@@ -584,7 +598,7 @@ namespace IDE
                             errMsgBox.Show();
                             return;
                         }
-                        Process.Start(".\\Runner.exe", "\"" + tabControl1.SelectedTab.ToolTipText.Replace(".pycn", ".py") + "\"");
+                        RunnerProc = Process.Start(".\\Runner.exe", "\"" + tabControl1.SelectedTab.ToolTipText.Replace(".pycn", ".py") + "\"");
                     }
                     else if (tabControl1.SelectedTab.ToolTipText.Contains(".py"))
                     {
@@ -595,7 +609,7 @@ namespace IDE
                             errMsgBox.Show();
                             return;
                         }
-                        Process.Start(".\\Runner.exe", tabControl1.SelectedTab.ToolTipText);
+                        RunnerProc = Process.Start(".\\Runner.exe", tabControl1.SelectedTab.ToolTipText);
                     }
                 }
                 else
@@ -633,7 +647,7 @@ namespace IDE
                                 errMsgBox.Show();
                                 return;
                             }
-                            Process.Start(".\\Runner.exe", "\"" + tmpPath.Replace(".pycn", ".py") + "\"");
+                            RunnerProc = Process.Start(".\\Runner.exe", "\"" + tmpPath.Replace(".pycn", ".py") + "\"");
                         }
                         else if (tmpPath.Contains(".py"))
                         {
@@ -644,7 +658,7 @@ namespace IDE
                                 errMsgBox.Show();
                                 return;
                             }
-                            Process.Start(".\\Runner.exe", tmpPath);
+                            RunnerProc = Process.Start(".\\Runner.exe", tmpPath);
                         }
                         return;
                     }
@@ -669,7 +683,7 @@ namespace IDE
                             errMsgBox.Show();
                             return;
                         }
-                        Process.Start(".\\Runner.exe", "\"" + tabControl1.SelectedTab.ToolTipText.Replace(".pycn", ".py") + "\"");
+                        RunnerProc = Process.Start(".\\Runner.exe", "\"" + tabControl1.SelectedTab.ToolTipText.Replace(".pycn", ".py") + "\"");
                     }
                     else if (@tabControl1.SelectedTab.ToolTipText.Contains(".py"))
                     {
@@ -692,12 +706,13 @@ namespace IDE
                         Process p = new() { StartInfo = ps };
                         LOGGER.WriteLog("Process对象已创建。", EnumMsgLevel.DEBUG, EnumPort.CLIENT, EnumModule.MAIN);
                         //LOGGER.WriteLog("Process对象是否已运行：" + p.Start(), EnumMsgLevel.DEBUG, EnumPort.CLIENT, EnumModule.MAIN);
-                        p.WaitForInputIdle();
+                        p.Start();
+                        RunnerProc = p;
                         //var p_name = p.MainWindowTitle;
                         //LOGGER.WriteLog("Process对象标题名称：" + p_name, EnumMsgLevel.DEBUG, EnumPort.CLIENT, EnumModule.MAIN);
-                        appContainer1.AppProcess = p;
+                        //appContainer1.AppProcess = p;
 
-                        appContainer1.Start();
+                        //appContainer1.Start();
                         LOGGER.WriteLog("Process对象是否已运行：" + (p.StartTime != null), EnumMsgLevel.DEBUG, EnumPort.CLIENT, EnumModule.MAIN);
                         //    Task.Run(() =>
                         //    {
@@ -851,8 +866,11 @@ namespace IDE
         }
         #endregion
         #region <FUNC> 占位方法
-        private void func_0a1(string tmp)
+        private async void func_0a1(string tmp)
         {
+            CurrentWorkTip.Text = "Working on...";
+            WorkingIcon.Visible = true;
+            CurrentWorkTip.Visible = true;
             foreach (TabPage tab in tabControl1.TabPages)
             {
                 if (tab.Text == tmp)
@@ -890,6 +908,7 @@ namespace IDE
                 SearchPanel.Install(tmpEditor.TextArea);
                 tmpEditor.TextArea.TextEntered += new TextCompositionEventHandler(this.TextAreaOnTextEntered);
                 tmpEditor.TextArea.TextEntering += new TextCompositionEventHandler(this.TextArea_TextEntering);
+                tmpEditor.DocumentChanged += Edit_DocumentChanged;
                 var file = AutoGetLanguage(newTab.Text);
                 using (Stream s = new FileStream(XshdFilePath + $"\\{file}.xshd", FileMode.Open, FileAccess.Read, FileShare.ReadWrite | FileShare.Delete))
                 {
@@ -901,103 +920,37 @@ namespace IDE
                 newTab.Controls.Add(table);
                 tabControl1.TabPages.Add(newTab);
                 newTab.ToolTipText = openFileDialog1.FileName;
-                tmpEditor.Load(@openFileDialog1.FileName);
+                tmpEditor.Text = await ReadTextAsync(@openFileDialog1.FileName);
                 tabControl1.SelectedTab = newTab;
+                WorkingIcon.Visible = false;
+                CurrentWorkTip.Visible = false;
             }
-            //else if (tmp == "md")
-            //{
-            //    WBBox bBox = new(0, false, 5);
-            //    bBox.Show();
-            //    TableLayoutPanel tableMd = new()
-            //    {
-            //        ColumnCount = 3,
-            //        Dock = DockStyle.Fill,
-            //        Location = new System.Drawing.Point(0, 0),
-            //        Name = "tableLayoutPanel2",
-            //        RowCount = 1,
-            //        Size = new System.Drawing.Size(858, 299),
-            //        TabIndex = 0,
-            //    };
-            //    bBox.uiProcessBar1.Value += 1;
-            //    tableMd.RowStyles.Add(new RowStyle(SizeType.Percent, 50F));
-            //    tableMd.ColumnStyles.Add(new ColumnStyle(SizeType.Percent, 33F));
-            //    tableMd.ColumnStyles.Add(new ColumnStyle(SizeType.Percent, 33F));
-            //    tableMd.ColumnStyles.Add(new ColumnStyle(SizeType.Percent, 34F));
-            //    bBox.uiProcessBar1.Value += 1;
-            //    var tmpEHostMd = new ElementHost
-            //    {
-            //        Size = elementHost1.Size,
-            //        Location = elementHost1.Location,
-            //        BackColor = elementHost1.BackColor,
-            //        ForeColor = elementHost1.ForeColor
-            //    }; var tmpEHostHtml = new ElementHost
-            //    {
-            //        Size = elementHost1.Size,
-            //        Location = elementHost1.Location,
-            //        BackColor = elementHost1.BackColor,
-            //        ForeColor = elementHost1.ForeColor
-            //    };
-            //    LOGGER.WriteLog("ElementHostForMarkdown已准备就绪。", EnumMsgLevel.INFO, EnumPort.CLIENT, EnumModule.MAIN);
-            //    bBox.uiProcessBar1.Value += 1;
-            //    var tmpEditorMd = new TextEditor
-            //    {
-            //        Width = elementHost1.Width,
-            //        Height = elementHost1.Height,
-            //        FontFamily = new FontFamily(reConf.ReadString("Editor", "Font", "Consolas")),
-            //        Background = new SolidColorBrush(Editor.Back),
-            //        Foreground = new SolidColorBrush(Editor.Fore),
-            //        FontSize = reConf.ReadInt("Editor", "Size"),
-            //        ShowLineNumbers = bool.Parse(reConf.ReadString("Editor", "ShowLineNum", "true")),
-            //        VerticalScrollBarVisibility = System.Windows.Controls.ScrollBarVisibility.Auto,
-            //        HorizontalScrollBarVisibility = System.Windows.Controls.ScrollBarVisibility.Auto,
-            //    };
-            //    var tmpEditorHtml = new TextEditor
-            //    {
-            //        Width = elementHost1.Width,
-            //        Height = elementHost1.Height,
-            //        FontFamily = new FontFamily(reConf.ReadString("Editor", "Font", "Consolas")),
-            //        Background = new SolidColorBrush(Editor.Back),
-            //        Foreground = new SolidColorBrush(Editor.Fore),
-            //        FontSize = reConf.ReadInt("Editor", "Size"),
-            //        ShowLineNumbers = bool.Parse(reConf.ReadString("Editor", "ShowLineNum", "true")),
-            //        VerticalScrollBarVisibility = System.Windows.Controls.ScrollBarVisibility.Auto,
-            //        HorizontalScrollBarVisibility = System.Windows.Controls.ScrollBarVisibility.Auto,
-            //        IsReadOnly = true,
-            //    };
-            //    bBox.uiProcessBar1.Value += 1;
-            //    LOGGER.WriteLog($"编辑器控件已准备就绪。\n字体: {tmpEditorHtml.FontFamily}", EnumMsgLevel.INFO, EnumPort.CLIENT, EnumModule.MAIN);
-            //    tmpEditorMd.TextChanged += new EventHandler(this.TextAreaMarkdownEntered);
-            //    LOGGER.WriteLog("编辑器控件方法入口已准备就绪。", EnumMsgLevel.INFO, EnumPort.CLIENT, EnumModule.MAIN);
-            //    tmpEHostHtml.Child = tmpEditorHtml;
-            //    tmpEHostMd.Child = tmpEditorMd;
-            //    var resourceName = XshdFilePath + "\\HTML.xshd";
-            //    using (Stream s = new FileStream(resourceName, FileMode.Open, FileAccess.Read, FileShare.ReadWrite | FileShare.Delete))
-            //    {
-            //        using XmlTextReader reader = new(s);
-            //        var xshd = HighlightingLoader.LoadXshd(reader);
-            //        tmpEditorHtml.SyntaxHighlighting = HighlightingLoader.Load(xshd, HighlightingManager.Instance);
-            //    }
-            //    bBox.uiProcessBar1.Value += 1;
-            //    Microsoft.Web.WebView2.WinForms.WebView2 webView = new();
-            //    webView.SuspendLayout();
-            //    webView.Size = elementHost1.Size;
-            //    await webView.EnsureCoreWebView2Async();
-            //    webView.BackColor = this.BackColor;
-            //    webView.ForeColor = this.ForeColor;
-            //    webView.ResumeLayout(false);
-            //    webView.PerformLayout();
-            //    bBox.uiProcessBar1.Value += 1;
+        }
 
-            //    newTab.Tag = new Dictionary<WebView2, TextEditor>() { { webView, tmpEditorHtml } };
-            //    tableMd.Controls.Add(tmpEHostMd);
-            //    tableMd.Controls.Add(tmpEHostHtml);
-            //    tableMd.Controls.Add(webView);
-            //    newTab.Controls.Add(tableMd);
-            //    tmpEditorMd.Load(MdFilePath);
-            //    bBox.Close();
-            //    tabControl1.TabPages.Add(newTab);
-            //    tabControl1.SelectedTab = newTab;
-            //}
+        /// <summary>
+        /// Method taken from <see href="https://learn.microsoft.com/zh-cn/dotnet/csharp/asynchronous-programming/using-async-for-file-access">MSDN</see>.
+        /// </summary>
+        /// <param name="filePath">File Path</param>
+        /// <returns>The string value of the file.</returns>
+        internal static async Task<string> ReadTextAsync(string filePath)
+        {
+            using var sourceStream =
+                new FileStream(
+                    filePath,
+                    FileMode.Open, FileAccess.Read, FileShare.Read,
+                    bufferSize: 4096, useAsync: true);
+
+            var sb = new StringBuilder();
+
+            byte[] buffer = new byte[0x1000];
+            int numRead;
+            while ((numRead = await sourceStream.ReadAsync(buffer, 0, buffer.Length)) != 0)
+            {
+                string text = Encoding.Unicode.GetString(buffer, 0, numRead);
+                sb.Append(text);
+            }
+
+            return sb.ToString();
         }
         #endregion
         #region <FUNC> 占位方法
@@ -1059,7 +1012,14 @@ namespace IDE
         private void WriteDownMem(object sender, EventArgs e)
         {
             tmp_ = GetDigitalMemory();
-            HelpButton.Location = new System.Drawing.Point(this.Width - 44, 7);
+            HelpButton.Location = new System.Drawing.Point(this.Width - HelpButton.Width, 7);
+            var tmpETable = tabControl1.SelectedTab.Controls[0] as TableLayoutPanel;
+            var CurrentEdtior = GetCurrentTextEditor();
+            if (CurrentEdtior is not null)
+            {
+                CurrentEdtior.Width = tmpETable.Controls[0].Width;
+                CurrentEdtior.Height = tmpETable.Controls[0].Height;
+            }
         }
         #endregion
         #region 帮助窗口
@@ -1228,6 +1188,8 @@ namespace IDE
         #region 静默保存
         private void QuietSave(object sender, EventArgs e)
         {
+            FileSavingIcon.Visible = false;
+            FileSavingTip.Visible = false;
             try
             {
                 var result = tabControl1.SelectedTab.ToolTipText;
@@ -1239,6 +1201,8 @@ namespace IDE
                     sw.Flush();
                     sw.Close();
                     tabControl1.SelectedTab.Text.Replace("*", "");
+                    FileSavingTip.Text = _I18nFile.Localize("text.st.filesaved");
+                    FileSavingIcon.Image = Properties.Resources.file_saved_dark;
                 }
                 else
                 {
@@ -1248,7 +1212,11 @@ namespace IDE
             catch (Exception ex)
             {
                 LOGGER.WriteErrLog($"已捕捉异常：{ex.Message}", ex, EnumMsgLevel.ERROR, EnumPort.CLIENT);
+                FileSavingIcon.Image = Properties.Resources.file_save_failed_dark;
+                FileSavingTip.Text = _I18nFile.Localize("text.st.filesavefailed");
             }
+            FileSavingIcon.Visible = true;
+            FileSavingTip.Visible = true;
             //StreamWriter sw = new();
         }
         #endregion
@@ -1384,6 +1352,7 @@ namespace IDE
         #region 判断代码是否已修改
         private void TextArea_TextEntering(object sender, TextCompositionEventArgs e)
         {
+            FileSavingIcon.Image = Properties.Resources.file_ready_to_save_dark;
             tabControl1.SelectedTab.Text += tabControl1.SelectedTab.Text.Contains("*") ? "" : "*";
             if (e.Text.Length > 0 && _codeSense != null && !e.Text[0].IsLetterOrDigit())
             {
@@ -1467,6 +1436,8 @@ namespace IDE
             this.Height = Screen.PrimaryScreen.WorkingArea.Height;//这样窗体打开的时候直接就是屏幕的大小了
             this.WindowState = FormWindowState.Maximized;
             this.Show();
+            var isFirstBoot = reConf.ReadBool("FirstBoot", "IsFirstBoot");
+            if (isFirstBoot) { new FirstBootStep1().ShowDialog(); }
         }
 
         private void ForceExit(object sender, FormClosedEventArgs e)
@@ -1574,10 +1545,8 @@ namespace IDE
         #region 强制停止
         private void ForceStop(object sender, EventArgs e)
         {
-            foreach (var RunnerProcess in Process.GetProcessesByName("Runner.exe"))
-            {
-                RunnerProcess.Kill();
-            }
+            Cmd.RunCmd("taskkill /im runner.exe /f /t");
+            //RunnerProc.CloseMainWindow();
         }
         #endregion
         #region 全选
@@ -1606,7 +1575,7 @@ namespace IDE
                 var t = new Thread(SetWindow.ResizeWindow);
                 t.Start();  //开线程刷新第三方窗体大小
                 Thread.Sleep(50); //略加延时
-                timer2.Stop();  //停止定时器
+                BackgroundWorker_GetFileType.Stop();  //停止定时器
             }
         }
 
@@ -1748,7 +1717,9 @@ namespace IDE
                 var dResult = MessageBox.Show(agreeText, _I18nFile.ReadString("I18n", "text.inprogram.title.info", "text.inprogram.title.info"), MessageBoxButtons.YesNo, MessageBoxIcon.Information);
                 if (dResult != DialogResult.Yes) { return; }
                 statusStrip1.Show();
-
+                CurrentWorkTip.Text = "Working on...";
+                WorkingIcon.Visible = true;
+                CurrentWorkTip.Visible = true;
                 TabPage newTab = new() { Text = tmp, ToolTipText = @openFileDialog1.FileName };
                 WBBox bBox = new(0, false, 5);
                 bBox.Show();
@@ -1757,7 +1728,7 @@ namespace IDE
                     ColumnCount = 1,
                     Dock = DockStyle.Fill,
                     Location = new System.Drawing.Point(0, 0),
-                    Name = "tableLayoutPanel"+DateTime.Now.Millisecond,
+                    Name = "tableLayoutPanel" + DateTime.Now.Millisecond,
                     RowCount = 1,
                     Size = new System.Drawing.Size(858, 299),
                     TabIndex = 0,
@@ -1796,10 +1767,94 @@ namespace IDE
                 bBox.uiProcessBar1.Value += 1;
                 tabControl1.SelectedTab = newTab;
                 bBox.Close();
-
+                WorkingIcon.Visible = false;
+                CurrentWorkTip.Visible = false;
+            }
+            else if (fileExtension.ToLower().Equals("dat"))
+            {
+                toolStripStatusLabel2.Text = _I18nFile.Localize("text.inprogram.fileex.dat") + "(.dat)" + text_tsl2;
+                var agreeText = _I18nFile.Localize("text.inprogram.bootfile.0") + _I18nFile.Localize("text.inprogram.fileex.dat") + "(.dat)" + _I18nFile.Localize("text.inprogram.bootfile.1");
+                var dResult = MessageBox.Show(agreeText, _I18nFile.Localize("text.inprogram.title.info"), MessageBoxButtons.YesNo, MessageBoxIcon.Information);
+                if (dResult != DialogResult.Yes) { return; }
+                statusStrip1.Show();
+                CurrentWorkTip.Text = "Working on...";
+                WorkingIcon.Visible = true;
+                CurrentWorkTip.Visible = true;
+                TabPage newTab = new() { Text = tmp, ToolTipText = @openFileDialog1.FileName };
+                WBBox bBox = new(0, false, 5);
+                bBox.Show();
+                TableLayoutPanel table = new()
+                {
+                    ColumnCount = 2,
+                    Dock = DockStyle.Fill,
+                    Location = new System.Drawing.Point(0, 0),
+                    Name = "tableLayoutPanel" + DateTime.Now.Millisecond,
+                    RowCount = 1,
+                    Size = new System.Drawing.Size(858, 299),
+                    TabIndex = 0,
+                };
+                bBox.uiProcessBar1.Value += 1;
+                table.RowStyles.Add(new RowStyle(SizeType.Percent, 50F));
+                table.ColumnStyles.Add(new ColumnStyle(SizeType.Percent, 70F));
+                table.ColumnStyles.Add(new ColumnStyle(SizeType.Percent, 30F));
+                ElementHost tmpEHostForRawData = new()
+                {
+                    Size = elementHost1.Size,
+                    Location = elementHost1.Location
+                }; ElementHost tmpEHostForStringData = new()
+                {
+                    Size = elementHost1.Size,
+                    Location = elementHost1.Location
+                };
+                table.Controls.Add(tmpEHostForRawData, 0, 0);
+                table.Controls.Add(tmpEHostForStringData, 1, 0);
+                bBox.uiProcessBar1.Value += 1;
+                var tmpEditorForRawData = new TextEditor
+                {
+                    Width = elementHost1.Width,
+                    Height = elementHost1.Height,
+                    FontFamily = new FontFamily(reConf.ReadString("Editor", "Font", "Consolas")),
+                    Background = new SolidColorBrush(Editor.Back),
+                    Foreground = new SolidColorBrush(Editor.Fore),
+                    FontSize = reConf.ReadInt("Editor", "Size"),
+                    ShowLineNumbers = bool.Parse(reConf.ReadString("Editor", "ShowLineNum", "true")),
+                    VerticalScrollBarVisibility = System.Windows.Controls.ScrollBarVisibility.Auto,
+                    HorizontalScrollBarVisibility = System.Windows.Controls.ScrollBarVisibility.Auto,
+                    Text = "",
+                };
+                var tmpEditorForStringData = new TextEditor
+                {
+                    Width = elementHost1.Width,
+                    Height = elementHost1.Height,
+                    FontFamily = new FontFamily(reConf.ReadString("Editor", "Font", "Consolas")),
+                    Background = new SolidColorBrush(Editor.Back),
+                    Foreground = new SolidColorBrush(Editor.Fore),
+                    FontSize = reConf.ReadInt("Editor", "Size"),
+                    ShowLineNumbers = bool.Parse(reConf.ReadString("Editor", "ShowLineNum", "true")),
+                    VerticalScrollBarVisibility = System.Windows.Controls.ScrollBarVisibility.Auto,
+                    HorizontalScrollBarVisibility = System.Windows.Controls.ScrollBarVisibility.Auto,
+                    Text = "",
+                };
+                bBox.uiProcessBar1.Value += 1;
+                tmpEHostForRawData.Child = tmpEditorForRawData;
+                tmpEHostForStringData.Child = tmpEditorForStringData;
+                newTab.Controls.Add(table);
+                tabControl1.TabPages.Add(newTab);
+                bBox.uiProcessBar1.Value += 1;
+                newTab.ToolTipText = openFileDialog1.FileName;
+                tmpEditorForRawData.Text = BinaryFileReader.ReadBinaryFile(fileName).Item1;
+                tmpEditorForStringData.Text = BinaryFileReader.ReadBinaryFile(fileName).Item2;
+                bBox.uiProcessBar1.Value += 1;
+                tabControl1.SelectedTab = newTab;
+                bBox.Close();
+                WorkingIcon.Visible = true;
+                CurrentWorkTip.Visible = true;
             }
             else if (fileExtension.Equals("md"))
             {
+                CurrentWorkTip.Text = "Working on...";
+                WorkingIcon.Visible = true;
+                CurrentWorkTip.Visible = true;
                 TableLayoutPanel table = new()
                 {
                     ColumnCount = 1,
@@ -1912,6 +1967,8 @@ namespace IDE
                 tmpEditorMd.Text.Append<char>('\n');
                 tabControl1.TabPages.Add(newTab);
                 tabControl1.SelectedTab = newTab;
+                WorkingIcon.Visible = false;
+                CurrentWorkTip.Visible = false;
             }
             #endregion
             #region 普通文件
@@ -1958,6 +2015,7 @@ namespace IDE
                 };
                 tmpEditor.TextArea.TextEntered += new TextCompositionEventHandler(this.TextAreaOnTextEntered);
                 tmpEditor.TextArea.TextEntering += new TextCompositionEventHandler(this.TextArea_TextEntering);
+                tmpEditor.DocumentChanged += Edit_DocumentChanged;
                 //快速搜索功能
                 SearchPanel.Install(tmpEditor.TextArea);
                 var file = AutoGetLanguage(newTab.Text);
@@ -2063,6 +2121,25 @@ namespace IDE
             }
         }
         #endregion
+        #region 布置TextEditor
+        private void LayoutTextEditor(object sender, System.ComponentModel.CancelEventArgs e)
+        {
+
+            var tmpETable = tabControl1.SelectedTab.Controls[0] as TableLayoutPanel;
+            var CurrentEdtior = GetCurrentTextEditor();
+            if (CurrentEdtior is not null)
+            {
+                CurrentEdtior.Width = tmpETable.Controls[0].Width;
+                CurrentEdtior.Height = tmpETable.Controls[0].Height;
+            }
+        }
+        #endregion
+        #region 配置运行器
+        private void ConfigRunners(object sender, EventArgs e)
+        {
+            new InterpreterConfigBox(Program.STARTUP_PATH + "\\config\\runners\\test.icbconfig");
+        }
+        #endregion
         #region extern模块
         [DllImport("user32.dll", EntryPoint = "PostMessage")]
         public static extern int PostMessage(IntPtr hwnd, int wMsg, int wParam, int lParam);
@@ -2072,7 +2149,6 @@ namespace IDE
         private static extern int SendMessage(IntPtr HWnd, uint Msg, int WParam, int LParam);
         public const int WM_SYSCOMMAND = 0x112;
         public const int SC_MINIMIZE = 0xF020;
-
         public const int SC_MAXIMIZE = 0xF030;
         public const uint WM_SYSCOMMAND2 = 0x0112;
         public const uint SC_MAXIMIZE2 = 0xF030;

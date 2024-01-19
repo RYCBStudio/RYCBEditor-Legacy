@@ -16,6 +16,7 @@ public partial class CustomSettings
         var Back = GlobalSettings.theme.Item3;
         this.MainTabCtrl.FillColor = Fore;
         this.MainTabCtrl.TabBackColor = Back;
+        this.TitleFont = new(GlobalSettings.MainFontName, this.TitleFont.Size, this.TitleFont.Style);
         if (Theme == "Light")
         {
             uiButton1.Show();
@@ -29,6 +30,7 @@ public partial class CustomSettings
             item.Text = _I18nFile.ReadString("I18n", item.Text, item.Text);
             item.ForeColor = Fore;
             item.BackColor = Back;
+            item.Font = new(GlobalSettings.MainFontName, item.Font.Size, item.Font.Style);
 
             foreach (Control ctrls in item.Controls)
             {
@@ -36,6 +38,7 @@ public partial class CustomSettings
                 {
                     continue;
                 }
+                ctrls.Font = new(GlobalSettings.MainFontName, ctrls.Font.Size, ctrls.Font.Style);
 
                 ctrls.Text = _I18nFile.ReadString("I18n", ctrls.Text, ctrls.Text);
                 ctrls.ForeColor = Fore;
@@ -48,6 +51,8 @@ public partial class CustomSettings
         }
         this.NUDFontSize.ForeColor = Fore; 
         this.NUDFontSize.BackColor = Back;
+        this.NUDFontSize.Font = new(GlobalSettings.MainFontName, this.NUDFontSize.Font.Size, this.NUDFontSize.Font.Style);
+
     }
 
     private List<Control> GetAllControls(Control control)

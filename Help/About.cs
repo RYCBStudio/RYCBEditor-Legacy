@@ -1,5 +1,6 @@
 ﻿using System;
 using System.Windows.Forms;
+using Microsoft.VisualStudio.Shell.TableManager;
 using Sunny.UI;
 
 namespace IDE
@@ -9,8 +10,17 @@ namespace IDE
         IniFile _I18nFile = new(Application.StartupPath + $"\\Languages\\{GlobalSettings.language}\\main.relang", System.Text.Encoding.UTF8);
         public About()
         {
+            this.TitleFont = new(GlobalSettings.MainFontName, this.TitleFont.Size, this.TitleFont.Style);
             InitializeComponent();
             this.Text = _I18nFile.ReadString("I18n", "text.help.window.title.about", "text.help.window.title.about");
+            foreach (Control ctrl in this.Controls)
+            {
+                if (ctrl.Tag is not null)
+                {
+                    if (ctrl.Tag.ToString() == "NoModify") { continue; }
+                }
+                ctrl.Font = new(GlobalSettings.MainFontName, ctrl.Font.Size, ctrl.Font.Style);
+            }
         }
 
 

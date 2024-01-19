@@ -35,10 +35,11 @@ partial class MsgBox
             // htmlLabel1
             // 
             this.htmlLabel1.AutoScroll = true;
-            this.htmlLabel1.AutoScrollMinSize = new System.Drawing.Size(10, 10);
+            this.htmlLabel1.AutoScrollMinSize = new System.Drawing.Size(10, 0);
             this.htmlLabel1.AutoSize = false;
             this.htmlLabel1.BackColor = System.Drawing.SystemColors.Window;
             this.htmlLabel1.Dock = System.Windows.Forms.DockStyle.Fill;
+            this.htmlLabel1.Font = new System.Drawing.Font("Microsoft YaHei UI", 12F);
             this.htmlLabel1.Location = new System.Drawing.Point(0, 35);
             this.htmlLabel1.Name = "htmlLabel1";
             this.htmlLabel1.Size = new System.Drawing.Size(416, 170);
@@ -49,8 +50,10 @@ partial class MsgBox
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.None;
             this.ClientSize = new System.Drawing.Size(416, 205);
             this.Controls.Add(this.htmlLabel1);
+            this.Font = new System.Drawing.Font("Microsoft YaHei UI", 12F);
             this.Name = "MsgBox";
             this.Text = "MsgBox";
+            this.TitleFont = new System.Drawing.Font("Microsoft YaHei UI", 12F);
             this.ZoomScaleRect = new System.Drawing.Rectangle(19, 19, 800, 450);
             this.Activated += new System.EventHandler(this.PreInit);
             this.Deactivate += new System.EventHandler(this.HideProcess);

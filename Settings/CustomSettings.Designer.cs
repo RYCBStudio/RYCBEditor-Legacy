@@ -42,6 +42,9 @@
             this.CBoxLanguage = new Sunny.UI.UIComboBox();
             this.LbGLanguage = new Sunny.UI.UILabel();
             this.Edit = new System.Windows.Forms.TabPage();
+            this.CBoxEditorXshd = new Sunny.UI.UIComboBox();
+            this.uiLine4 = new Sunny.UI.UILine();
+            this.uiLine3 = new Sunny.UI.UILine();
             this.uiLine2 = new Sunny.UI.UILine();
             this.Lb_EditorText_Comment = new Sunny.UI.UILabel();
             this.Lb_EditorText_Num = new Sunny.UI.UILabel();
@@ -64,9 +67,6 @@
             this.folderBrowserDialog1 = new System.Windows.Forms.FolderBrowserDialog();
             this.errorProvider1 = new System.Windows.Forms.ErrorProvider(this.components);
             this.uiButton1 = new System.Windows.Forms.Button();
-            this.uiLine3 = new Sunny.UI.UILine();
-            this.uiLine4 = new Sunny.UI.UILine();
-            this.CBoxEditorXshd = new Sunny.UI.UIComboBox();
             this.MainTabCtrl.SuspendLayout();
             this.General.SuspendLayout();
             this.Edit.SuspendLayout();
@@ -92,9 +92,9 @@
             this.MainTabCtrl.Multiline = true;
             this.MainTabCtrl.Name = "MainTabCtrl";
             this.MainTabCtrl.SelectedIndex = 0;
-            this.MainTabCtrl.Size = new System.Drawing.Size(894, 887);
+            this.MainTabCtrl.Size = new System.Drawing.Size(905, 887);
             this.MainTabCtrl.SizeMode = System.Windows.Forms.TabSizeMode.Fixed;
-            this.MainTabCtrl.Style = Sunny.UI.UIStyle.Black;
+            this.MainTabCtrl.Style = Sunny.UI.UIStyle.Custom;
             this.MainTabCtrl.StyleCustomMode = true;
             this.MainTabCtrl.TabIndex = 0;
             this.MainTabCtrl.TabUnSelectedForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(240)))), ((int)(((byte)(240)))), ((int)(((byte)(240)))));
@@ -113,12 +113,13 @@
             this.General.Controls.Add(this.LbGLanguage);
             this.General.Location = new System.Drawing.Point(201, 0);
             this.General.Name = "General";
-            this.General.Size = new System.Drawing.Size(693, 887);
+            this.General.Size = new System.Drawing.Size(704, 887);
             this.General.TabIndex = 0;
             this.General.Text = "text.settings.page.general.title";
             // 
             // uiLine1
             // 
+            this.uiLine1.BackColor = System.Drawing.Color.Transparent;
             this.uiLine1.FillColor = System.Drawing.Color.FromArgb(((int)(((byte)(56)))), ((int)(((byte)(56)))), ((int)(((byte)(56)))));
             this.uiLine1.Font = new System.Drawing.Font("微软雅黑", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(134)));
             this.uiLine1.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(244)))), ((int)(((byte)(244)))), ((int)(((byte)(244)))));
@@ -144,11 +145,13 @@
             this.errorProvider1.SetIconPadding(this.CBoxTheme, 10);
             this.CBoxTheme.ItemFillColor = System.Drawing.Color.FromArgb(((int)(((byte)(56)))), ((int)(((byte)(56)))), ((int)(((byte)(56)))));
             this.CBoxTheme.ItemForeColor = System.Drawing.Color.Silver;
+            this.CBoxTheme.ItemHoverColor = System.Drawing.Color.FromArgb(((int)(((byte)(155)))), ((int)(((byte)(200)))), ((int)(((byte)(255)))));
             this.CBoxTheme.Items.AddRange(new object[] {
             "text.item.theme.light",
             "text.item.theme.dark",
             "text.item.theme.IDEA",
             "text.item.theme.custom"});
+            this.CBoxTheme.ItemSelectForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(235)))), ((int)(((byte)(243)))), ((int)(((byte)(255)))));
             this.CBoxTheme.Location = new System.Drawing.Point(440, 42);
             this.CBoxTheme.Margin = new System.Windows.Forms.Padding(4, 5, 4, 5);
             this.CBoxTheme.MaxDropDownItems = 5;
@@ -237,11 +240,13 @@
             this.errorProvider1.SetIconPadding(this.CBoxLanguage, 10);
             this.CBoxLanguage.ItemFillColor = System.Drawing.Color.FromArgb(((int)(((byte)(56)))), ((int)(((byte)(56)))), ((int)(((byte)(56)))));
             this.CBoxLanguage.ItemForeColor = System.Drawing.Color.Silver;
+            this.CBoxLanguage.ItemHoverColor = System.Drawing.Color.FromArgb(((int)(((byte)(155)))), ((int)(((byte)(200)))), ((int)(((byte)(255)))));
             this.CBoxLanguage.Items.AddRange(new object[] {
             "简体中文",
             "繁體中文",
             "English",
             "日本語"});
+            this.CBoxLanguage.ItemSelectForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(235)))), ((int)(((byte)(243)))), ((int)(((byte)(255)))));
             this.CBoxLanguage.Location = new System.Drawing.Point(112, 42);
             this.CBoxLanguage.Margin = new System.Windows.Forms.Padding(4, 5, 4, 5);
             this.CBoxLanguage.MaxDropDownItems = 5;
@@ -298,12 +303,75 @@
             this.Edit.Controls.Add(this.LbEditorFont);
             this.Edit.Location = new System.Drawing.Point(201, 0);
             this.Edit.Name = "Edit";
-            this.Edit.Size = new System.Drawing.Size(693, 887);
+            this.Edit.Size = new System.Drawing.Size(704, 887);
             this.Edit.TabIndex = 2;
             this.Edit.Text = "text.settings.page.edit.title";
             // 
+            // CBoxEditorXshd
+            // 
+            this.CBoxEditorXshd.DataSource = null;
+            this.CBoxEditorXshd.DropDownStyle = Sunny.UI.UIDropDownStyle.DropDownList;
+            this.CBoxEditorXshd.FillColor = System.Drawing.Color.FromArgb(((int)(((byte)(56)))), ((int)(((byte)(56)))), ((int)(((byte)(56)))));
+            this.CBoxEditorXshd.Font = new System.Drawing.Font("微软雅黑", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(134)));
+            this.CBoxEditorXshd.ForeColor = System.Drawing.Color.Silver;
+            this.CBoxEditorXshd.ItemFillColor = System.Drawing.Color.FromArgb(((int)(((byte)(56)))), ((int)(((byte)(56)))), ((int)(((byte)(56)))));
+            this.CBoxEditorXshd.ItemForeColor = System.Drawing.Color.Silver;
+            this.CBoxEditorXshd.ItemHoverColor = System.Drawing.Color.FromArgb(((int)(((byte)(155)))), ((int)(((byte)(200)))), ((int)(((byte)(255)))));
+            this.CBoxEditorXshd.ItemSelectForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(235)))), ((int)(((byte)(243)))), ((int)(((byte)(255)))));
+            this.CBoxEditorXshd.Location = new System.Drawing.Point(15, 266);
+            this.CBoxEditorXshd.Margin = new System.Windows.Forms.Padding(4, 5, 4, 5);
+            this.CBoxEditorXshd.MaxDropDownItems = 5;
+            this.CBoxEditorXshd.MinimumSize = new System.Drawing.Size(63, 0);
+            this.CBoxEditorXshd.Name = "CBoxEditorXshd";
+            this.CBoxEditorXshd.Padding = new System.Windows.Forms.Padding(0, 0, 30, 2);
+            this.CBoxEditorXshd.Size = new System.Drawing.Size(221, 35);
+            this.CBoxEditorXshd.Sorted = true;
+            this.CBoxEditorXshd.Style = Sunny.UI.UIStyle.Custom;
+            this.CBoxEditorXshd.StyleCustomMode = true;
+            this.CBoxEditorXshd.TabIndex = 26;
+            this.CBoxEditorXshd.TextAlignment = System.Drawing.ContentAlignment.MiddleLeft;
+            this.CBoxEditorXshd.Watermark = "";
+            this.CBoxEditorXshd.SelectedIndexChanged += new System.EventHandler(this.ChangeXshdColor);
+            this.CBoxEditorXshd.SelectedValueChanged += new System.EventHandler(this.ChangeXshdColor);
+            // 
+            // uiLine4
+            // 
+            this.uiLine4.BackColor = System.Drawing.Color.Transparent;
+            this.uiLine4.FillColor = System.Drawing.Color.FromArgb(((int)(((byte)(56)))), ((int)(((byte)(56)))), ((int)(((byte)(56)))));
+            this.uiLine4.Font = new System.Drawing.Font("微软雅黑", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(134)));
+            this.uiLine4.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(244)))), ((int)(((byte)(244)))), ((int)(((byte)(244)))));
+            this.uiLine4.LineColor2 = System.Drawing.Color.FromArgb(((int)(((byte)(238)))), ((int)(((byte)(251)))), ((int)(((byte)(250)))));
+            this.uiLine4.LineColorGradient = true;
+            this.uiLine4.LineSize = 5;
+            this.uiLine4.Location = new System.Drawing.Point(55, 40);
+            this.uiLine4.MinimumSize = new System.Drawing.Size(1, 1);
+            this.uiLine4.Name = "uiLine4";
+            this.uiLine4.Size = new System.Drawing.Size(578, 31);
+            this.uiLine4.Style = Sunny.UI.UIStyle.Custom;
+            this.uiLine4.StyleCustomMode = true;
+            this.uiLine4.TabIndex = 45;
+            this.uiLine4.Text = "text.settings.page.edit.appearance.general.title";
+            // 
+            // uiLine3
+            // 
+            this.uiLine3.BackColor = System.Drawing.Color.Transparent;
+            this.uiLine3.FillColor = System.Drawing.Color.FromArgb(((int)(((byte)(56)))), ((int)(((byte)(56)))), ((int)(((byte)(56)))));
+            this.uiLine3.Font = new System.Drawing.Font("微软雅黑", 10F);
+            this.uiLine3.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(244)))), ((int)(((byte)(244)))), ((int)(((byte)(244)))));
+            this.uiLine3.LineColor2 = System.Drawing.Color.FromArgb(((int)(((byte)(0)))), ((int)(((byte)(2)))), ((int)(((byte)(52)))));
+            this.uiLine3.LineSize = 3;
+            this.uiLine3.Location = new System.Drawing.Point(21, 226);
+            this.uiLine3.MinimumSize = new System.Drawing.Size(1, 1);
+            this.uiLine3.Name = "uiLine3";
+            this.uiLine3.Size = new System.Drawing.Size(221, 32);
+            this.uiLine3.Style = Sunny.UI.UIStyle.Custom;
+            this.uiLine3.StyleCustomMode = true;
+            this.uiLine3.TabIndex = 44;
+            this.uiLine3.Text = "text.settings.page.edit.appearance.choosexshd";
+            // 
             // uiLine2
             // 
+            this.uiLine2.BackColor = System.Drawing.Color.Transparent;
             this.uiLine2.FillColor = System.Drawing.Color.FromArgb(((int)(((byte)(56)))), ((int)(((byte)(56)))), ((int)(((byte)(56)))));
             this.uiLine2.Font = new System.Drawing.Font("微软雅黑", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(134)));
             this.uiLine2.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(244)))), ((int)(((byte)(244)))), ((int)(((byte)(244)))));
@@ -521,6 +589,7 @@
             // 
             // LbWriteText
             // 
+            this.LbWriteText.BackColor = System.Drawing.Color.Transparent;
             this.LbWriteText.FillColor = System.Drawing.Color.FromArgb(((int)(((byte)(56)))), ((int)(((byte)(56)))), ((int)(((byte)(56)))));
             this.LbWriteText.Font = new System.Drawing.Font("微软雅黑", 10F);
             this.LbWriteText.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(244)))), ((int)(((byte)(244)))), ((int)(((byte)(244)))));
@@ -545,6 +614,8 @@
             this.CBoxEditorFont.ForeColor = System.Drawing.Color.Silver;
             this.CBoxEditorFont.ItemFillColor = System.Drawing.Color.FromArgb(((int)(((byte)(56)))), ((int)(((byte)(56)))), ((int)(((byte)(56)))));
             this.CBoxEditorFont.ItemForeColor = System.Drawing.Color.Silver;
+            this.CBoxEditorFont.ItemHoverColor = System.Drawing.Color.FromArgb(((int)(((byte)(155)))), ((int)(((byte)(200)))), ((int)(((byte)(255)))));
+            this.CBoxEditorFont.ItemSelectForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(235)))), ((int)(((byte)(243)))), ((int)(((byte)(255)))));
             this.CBoxEditorFont.Location = new System.Drawing.Point(130, 81);
             this.CBoxEditorFont.Margin = new System.Windows.Forms.Padding(4, 5, 4, 5);
             this.CBoxEditorFont.MaxDropDownItems = 5;
@@ -597,70 +668,12 @@
             this.uiButton1.UseVisualStyleBackColor = false;
             this.uiButton1.Click += new System.EventHandler(this.Exit);
             // 
-            // uiLine3
-            // 
-            this.uiLine3.FillColor = System.Drawing.Color.FromArgb(((int)(((byte)(56)))), ((int)(((byte)(56)))), ((int)(((byte)(56)))));
-            this.uiLine3.Font = new System.Drawing.Font("微软雅黑", 10F);
-            this.uiLine3.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(244)))), ((int)(((byte)(244)))), ((int)(((byte)(244)))));
-            this.uiLine3.LineColor2 = System.Drawing.Color.FromArgb(((int)(((byte)(0)))), ((int)(((byte)(2)))), ((int)(((byte)(52)))));
-            this.uiLine3.LineSize = 3;
-            this.uiLine3.Location = new System.Drawing.Point(21, 226);
-            this.uiLine3.MinimumSize = new System.Drawing.Size(1, 1);
-            this.uiLine3.Name = "uiLine3";
-            this.uiLine3.Size = new System.Drawing.Size(221, 32);
-            this.uiLine3.Style = Sunny.UI.UIStyle.Custom;
-            this.uiLine3.StyleCustomMode = true;
-            this.uiLine3.TabIndex = 44;
-            this.uiLine3.Text = "text.settings.page.edit.appearance.choosexshd";
-            // 
-            // uiLine4
-            // 
-            this.uiLine4.FillColor = System.Drawing.Color.FromArgb(((int)(((byte)(56)))), ((int)(((byte)(56)))), ((int)(((byte)(56)))));
-            this.uiLine4.Font = new System.Drawing.Font("微软雅黑", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(134)));
-            this.uiLine4.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(244)))), ((int)(((byte)(244)))), ((int)(((byte)(244)))));
-            this.uiLine4.LineColor2 = System.Drawing.Color.FromArgb(((int)(((byte)(238)))), ((int)(((byte)(251)))), ((int)(((byte)(250)))));
-            this.uiLine4.LineColorGradient = true;
-            this.uiLine4.LineSize = 5;
-            this.uiLine4.Location = new System.Drawing.Point(55, 40);
-            this.uiLine4.MinimumSize = new System.Drawing.Size(1, 1);
-            this.uiLine4.Name = "uiLine4";
-            this.uiLine4.Size = new System.Drawing.Size(578, 31);
-            this.uiLine4.Style = Sunny.UI.UIStyle.Custom;
-            this.uiLine4.StyleCustomMode = true;
-            this.uiLine4.TabIndex = 45;
-            this.uiLine4.Text = "text.settings.page.edit.appearance.general.title";
-            // 
-            // CBoxEditorXshd
-            // 
-            this.CBoxEditorXshd.DataSource = null;
-            this.CBoxEditorXshd.DropDownStyle = Sunny.UI.UIDropDownStyle.DropDownList;
-            this.CBoxEditorXshd.FillColor = System.Drawing.Color.FromArgb(((int)(((byte)(56)))), ((int)(((byte)(56)))), ((int)(((byte)(56)))));
-            this.CBoxEditorXshd.Font = new System.Drawing.Font("微软雅黑", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(134)));
-            this.CBoxEditorXshd.ForeColor = System.Drawing.Color.Silver;
-            this.CBoxEditorXshd.ItemFillColor = System.Drawing.Color.FromArgb(((int)(((byte)(56)))), ((int)(((byte)(56)))), ((int)(((byte)(56)))));
-            this.CBoxEditorXshd.ItemForeColor = System.Drawing.Color.Silver;
-            this.CBoxEditorXshd.Location = new System.Drawing.Point(15, 266);
-            this.CBoxEditorXshd.Margin = new System.Windows.Forms.Padding(4, 5, 4, 5);
-            this.CBoxEditorXshd.MaxDropDownItems = 5;
-            this.CBoxEditorXshd.MinimumSize = new System.Drawing.Size(63, 0);
-            this.CBoxEditorXshd.Name = "CBoxEditorXshd";
-            this.CBoxEditorXshd.Padding = new System.Windows.Forms.Padding(0, 0, 30, 2);
-            this.CBoxEditorXshd.Size = new System.Drawing.Size(221, 35);
-            this.CBoxEditorXshd.Sorted = true;
-            this.CBoxEditorXshd.Style = Sunny.UI.UIStyle.Custom;
-            this.CBoxEditorXshd.StyleCustomMode = true;
-            this.CBoxEditorXshd.TabIndex = 26;
-            this.CBoxEditorXshd.TextAlignment = System.Drawing.ContentAlignment.MiddleLeft;
-            this.CBoxEditorXshd.Watermark = "";
-            this.CBoxEditorXshd.SelectedIndexChanged += new System.EventHandler(this.ChangeXshdColor);
-            this.CBoxEditorXshd.SelectedValueChanged += new System.EventHandler(this.ChangeXshdColor);
-            // 
             // CustomSettings
             // 
             this.AllowAddControlOnTitle = true;
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.None;
             this.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(24)))), ((int)(((byte)(24)))), ((int)(((byte)(24)))));
-            this.ClientSize = new System.Drawing.Size(894, 922);
+            this.ClientSize = new System.Drawing.Size(905, 922);
             this.ControlBox = false;
             this.ControlBoxFillHoverColor = System.Drawing.Color.FromArgb(((int)(((byte)(70)))), ((int)(((byte)(70)))), ((int)(((byte)(70)))));
             this.Controls.Add(this.uiButton1);
@@ -679,6 +692,7 @@
             this.StyleCustomMode = true;
             this.Text = "text.settings.window.title";
             this.TitleColor = System.Drawing.Color.FromArgb(((int)(((byte)(21)))), ((int)(((byte)(21)))), ((int)(((byte)(21)))));
+            this.TitleFont = new System.Drawing.Font("微软雅黑", 12F);
             this.ZoomScaleRect = new System.Drawing.Rectangle(19, 19, 842, 400);
             this.Load += new System.EventHandler(this.CustomSettings_Load);
             this.Shown += new System.EventHandler(this.FormUpdate);

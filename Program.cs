@@ -27,6 +27,8 @@ namespace IDE
         [STAThread]
         static void Main(string[] args)
         {
+            Application.ThreadException += Application_ThreadException;
+            AppDomain.CurrentDomain.UnhandledException += CurrentDomain_UnhandledException;
             bool createdNew;
             var CurrentMutexForRE = new Mutex(true, "RYCB_Editor_Running", out createdNew);
             if (!createdNew)
@@ -38,18 +40,11 @@ namespace IDE
             {
                 CurrentMutexForRE.ReleaseMutex();
             }
-            GlobalSettings.CrashAttempts = reConf.ReadInt("CrashHanding", "CrashAttempts", 3);
-            reConf.Write("Editor", "XshdFilePath", STARTUP_PATH + "\\Config\\Highlighting");
-            if (GlobalSettings.CrashAttempts == 0)
-            {
-                GlobalSettings.CrashAttempts = int.MaxValue;
-            }
-            Application.ThreadException += Application_ThreadException;
-            AppDomain.CurrentDomain.UnhandledException += CurrentDomain_UnhandledException;
             Application.EnableVisualStyles();
             Application.SetCompatibleTextRenderingDefault(false);
             w.Start();
             startTimer.Start();
+            GlobalSettings.MainFontName = reConf.Read("Display", "DisplayFont", "Microsoft YaHei UI").FontExists("Microsoft YaHei UI");
 
             #region 判断参数
             switch (args.Length)
@@ -80,9 +75,14 @@ namespace IDE
                     break;
             }
             #endregion
-
             splash = new(isLightEdit);
             splash.Show();
+            GlobalSettings.CrashAttempts = reConf.ReadInt("CrashHanding", "CrashAttempts", 3);
+            //reConf.Write("Editor", "XshdFilePath", STARTUP_PATH + "\\Config\\Highlighting");
+            if (GlobalSettings.CrashAttempts == 0)
+            {
+                GlobalSettings.CrashAttempts = int.MaxValue;
+            }
             if (param == "") { class_ = new Main(); }
             else { class_ = new Main(param); }
 
@@ -157,6 +157,7 @@ namespace IDE
             startTimer.Stop();
             startTime = startTimer.Elapsed;
             splash.metroProgressBar1.PerformStep();
+            splash.Hide();
             Application.Run(form);
             isInitialized = true;
         }

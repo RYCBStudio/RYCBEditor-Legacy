@@ -10,6 +10,7 @@ text.settings.page.general.basicsettings.lang=Language
 text.settings.page.general.basicsettings.xshdpath=Xshd Path
 text.settings.page.general.basicsettings.xshdpath.choose=Choose
 text.settings.page.edit.title=Editing
+text.settings.page.edit.appearance.general.title=General
 text.settings.page.edit.appearance.title=Editor Appearance
 text.settings.page.edit.appearance.font=Font
 text.settings.page.edit.appearance.font.size=Size

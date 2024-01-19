@@ -13,6 +13,7 @@ using System.Runtime.InteropServices;
 using System.Threading;
 using System.Diagnostics;
 using Microsoft.Diagnostics.Runtime;
+using ICSharpCode.AvalonEdit.Utils;
 
 namespace IDE
 {
@@ -206,6 +207,84 @@ namespace IDE
         }
     }
 
+    public static class BinaryFileReader
+    {
+        /// <summary>
+        /// 读取一个二进制文件的数据。
+        /// </summary>
+        /// <param name="filePath">文件完整路径</param>
+        /// <returns>一个元组，包含二进制元数据和字符串数据。</returns>
+        public static (string, string) ReadBinaryFile(string filePath)
+        {
+            string binaryString = "";
+            string textString = "";
+
+            using (FileStream fs = new FileStream(filePath, FileMode.Open, FileAccess.Read))
+            {
+                byte[] buffer = new byte[4096];
+                int bytesRead;
+
+                while ((bytesRead = fs.Read(buffer, 0, buffer.Length)) > 0)
+                {
+                    binaryString += ConvertBytesToBinaryString(buffer, bytesRead);
+                    textString += System.Text.Encoding.Default.GetString(buffer, 0, bytesRead);
+                }
+            }
+
+            return (binaryString, textString);
+        }
+
+        private static string ConvertBytesToBinaryString(byte[] bytes, int length)
+        {
+            string binaryString = "";
+            for (int i = 0; i < length; i++)
+            {
+                binaryString += Convert.ToString(bytes[i], 2).PadLeft(8, '0');
+            }
+            return binaryString;
+        }
+    }
+
+    public static class Cmd
+    {
+        private static string CmdPath = @"C:\Windows\System32\cmd.exe";
+        /// <summary>
+        /// 执行cmd命令 返回cmd窗口显示的信息
+        /// 多命令请使用批处理命令连接符：
+        /// <![CDATA[
+        /// &:同时执行两个命令
+        /// |:将上一个命令的输出,作为下一个命令的输入
+        /// &&：当&&前的命令成功时,才执行&&后的命令
+        /// ||：当||前的命令失败时,才执行||后的命令]]>
+        /// </summary>
+        ///<param name="cmd">执行的命令</param>
+        public static string RunCmd(string cmd)
+        {
+            cmd = cmd.Trim().TrimEnd('&') + "&exit";//说明：不管命令是否成功均执行exit命令，否则当调用ReadToEnd()方法时，会处于假死状态
+            using (Process p = new Process())
+            {
+                p.StartInfo.FileName = CmdPath;
+                p.StartInfo.UseShellExecute = false; //是否使用操作系统shell启动
+                p.StartInfo.RedirectStandardInput = true; //接受来自调用程序的输入信息
+                p.StartInfo.RedirectStandardOutput = true; //由调用程序获取输出信息
+                p.StartInfo.RedirectStandardError = true; //重定向标准错误输出
+                p.StartInfo.CreateNoWindow = true; //不显示程序窗口
+                p.Start();//启动程序
+
+                //向cmd窗口写入命令
+                p.StandardInput.WriteLine(cmd);
+                p.StandardInput.AutoFlush = true;
+
+                //获取cmd窗口的输出信息
+                string output = p.StandardOutput.ReadToEnd();
+                p.WaitForExit();//等待程序执行完退出进程
+                p.Close();
+
+                return output;
+            }
+        }
+    }
+
     public static class GlobalSettings
     {
         /// <summary>
@@ -213,8 +292,19 @@ namespace IDE
         /// </summary>
         public static string language = Program.reConf.ReadString("General", "Language", "zh-CN");
 
+        /// <summary>
+        /// 程序主字体
+        /// </summary>
+        public static string MainFontName = "Microsoft YaHei UI";
+
+        /// <summary>
+        /// 崩溃尝试次数
+        /// </summary>
         public static int CrashAttempts = Program.reConf.ReadInt("CrashHanding", "CrashAttempts", 3);
 
+        /// <summary>
+        /// 主题
+        /// </summary>
         internal static Tuple<string, Color, Color> theme = Themes.GetTheme(Program.reConf.ReadString("General", "Theme", "Dark"));
 
         internal static List<string> keywords;
@@ -330,6 +420,23 @@ namespace IDE
             using var font = new Font(fontName, 12);
             return string.Equals(font.Name, fontName, System.StringComparison.InvariantCultureIgnoreCase);
         }
+        /// <summary>
+        /// 检查指定字符串所对应的字体是否存在。若不存在，则替换成<paramref name="substituteFontName"/>对应的字体。
+        /// </summary>
+        /// <param name="fontName">字体名称</param>
+        /// <param name="substituteFontName">替换字体</param>
+        /// <returns>如果计算机中存在<paramref name="fontName"/>，则不进行操作；否则替换成<paramref name="substituteFontName"/>对应的字体。</returns>
+        public static string FontExists(this string fontName, string substituteFontName)
+        {
+            using var font = new Font(fontName, 12);
+            if (!font.Name.Equals(fontName, StringComparison.OrdinalIgnoreCase))
+            {
+                font.Dispose();
+                return substituteFontName;
+            }
+            return fontName;
+        }
+
 
         /// <summary>
         /// 读取I18n文件中的本地化值
@@ -369,6 +476,24 @@ namespace IDE
         public static void Enable(this Control ctrl)
         {
             ctrl.Enabled = true;
+        }
+
+        /// <summary>
+        /// 显示控件
+        /// </summary>
+        /// <param name="ctrl">控件名</param>
+        public static void ShowControl(this Control ctrl)
+        {
+            ctrl.Visible = true;
+        }
+
+        /// <summary>
+        /// 隐藏控件
+        /// </summary>
+        /// <param name="ctrl">控件名</param>
+        public static void HideControl(this Control ctrl)
+        {
+            ctrl.Visible = false;
         }
 
         /// <summary>
@@ -669,7 +794,7 @@ namespace IDE
 
                 foreach (var thread in clrRuntime.Threads)
                 {
-                    res+=$"#Thread {thread.OSThreadId}\n";
+                    res += $"#Thread {thread.OSThreadId}\n";
 
                     foreach (var frame in thread.EnumerateStackTrace())
                     {

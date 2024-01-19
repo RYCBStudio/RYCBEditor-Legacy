@@ -1,0 +1,7 @@
+﻿导入 easigui 作为 eg
+
+定义 主函数（）：
+	eg。msgbox（“Hello：”）
+
+如果 ————name———— == “————main————”：
+	主函数（）

@@ -16,13 +16,22 @@ namespace IDE
         {
             InitializeComponent();
             this.light = light;
+            foreach (Control ctrl in this.Controls)
+            {
+                if (ctrl is not Label) { continue; }
+                ctrl.Font = new(GlobalSettings.MainFontName, ctrl.Font.Size, ctrl.Font.Style);
+            }
         }
 
         public Entry()
         {
             InitializeComponent();
+            foreach (Control ctrl in this.Controls)
+            {
+                if (ctrl is not Label) { continue; }
+                ctrl.Font = new(GlobalSettings.MainFontName, ctrl.Font.Size, ctrl.Font.Style);
+            }
         }
-
         private void Entry_Load(object sender, EventArgs e)
         {
             if (light)
