@@ -5,6 +5,7 @@ using System.Data;
 using System.Drawing;
 using System.Linq;
 using System.Text;
+using System.Threading;
 using System.Threading.Tasks;
 using System.Windows.Forms;
 using Sunny.UI;
@@ -38,5 +39,10 @@ public partial class FirstBootStep4 : UIForm
             this.Close();
         }
         i--;
+    }
+
+    private void FirstBootStep4_FormClosing(object sender, FormClosingEventArgs e)
+    {
+        Program.reConf.Write("FirstBoot", "IsFirstBoot", false);
     }
 }

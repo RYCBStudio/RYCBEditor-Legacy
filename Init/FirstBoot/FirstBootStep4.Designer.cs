@@ -101,6 +101,7 @@ partial class FirstBootStep4
             this.Text = "Complete";
             this.TitleFont = new System.Drawing.Font("微软雅黑", 12F);
             this.ZoomScaleRect = new System.Drawing.Rectangle(19, 19, 800, 450);
+            this.FormClosing += new System.Windows.Forms.FormClosingEventHandler(this.FirstBootStep4_FormClosing);
             this.Shown += new System.EventHandler(this.FirstBootStep4_Shown);
             this.ResumeLayout(false);
             this.PerformLayout();

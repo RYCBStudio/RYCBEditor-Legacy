@@ -27,6 +27,6 @@ public partial class FirstBootStep1 : UIForm
     private void Next(object sender, EventArgs e)
     {
         this.Hide();
-        next.Show();
+        next.ShowDialog();
     }
 }

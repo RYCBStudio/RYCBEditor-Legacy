@@ -26,6 +26,7 @@ using Markdig;
 using Microsoft.Web.WebView2.WinForms;
 using System.Threading.Tasks;
 using IDE.Init;
+using IDE.Utils.Update;
 #endregion
 
 namespace IDE
@@ -1438,6 +1439,7 @@ namespace IDE
             this.Show();
             var isFirstBoot = reConf.ReadBool("FirstBoot", "IsFirstBoot");
             if (isFirstBoot) { new FirstBootStep1().ShowDialog(); }
+            UpdateCheck();
         }
 
         private void ForceExit(object sender, FormClosedEventArgs e)
@@ -2138,6 +2140,12 @@ namespace IDE
         private void ConfigRunners(object sender, EventArgs e)
         {
             new InterpreterConfigBox(Program.STARTUP_PATH + "\\config\\runners\\test.icbconfig");
+        }
+        #endregion
+        #region 检查更新
+        private void UpdateCheck()
+        {
+            new UpdateChecker().DownloadTest();
         }
         #endregion
         #region extern模块

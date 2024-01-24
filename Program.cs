@@ -22,7 +22,7 @@ namespace IDE
         private static int CrashAttempts = 0;
         internal static Entry splash;
         internal static TimeSpan startTime;
-        internal static IniFile reConf = new(STARTUP_PATH + "\\Config\\.reconf");
+        internal static IniFile reConf = new(STARTUP_PATH + "\\Config\\.reconf", System.Text.Encoding.UTF8);
 
         [STAThread]
         static void Main(string[] args)

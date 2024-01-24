@@ -84,6 +84,9 @@
       <HintPath>packages\Microsoft.PinYinConverter.1.0.0\lib\ChnCharInfo.dll</HintPath>
       <Private>True</Private>
     </Reference>
+    <Reference Include="Downloader, Version=3.0.6.0, Culture=neutral, PublicKeyToken=844973e732f6cdf4, processorArchitecture=MSIL">
+      <HintPath>packages\Downloader.3.0.6\lib\net452\Downloader.dll</HintPath>
+    </Reference>
     <Reference Include="Humanizer, Version=2.14.0.0, Culture=neutral, PublicKeyToken=979442b78dfc278e, processorArchitecture=MSIL">
       <HintPath>packages\Humanizer.Core.2.14.1\lib\netstandard2.0\Humanizer.dll</HintPath>
     </Reference>
@@ -852,6 +855,10 @@
     <Compile Include="Utils\Boxes\TextEnterBox.Designer.cs">
       <DependentUpon>TextEnterBox.cs</DependentUpon>
     </Compile>
+    <Compile Include="Utils\Update\CloudSourceConnecter.cs" />
+    <Compile Include="Utils\Update\GlobalDefinitions.cs" />
+    <Compile Include="Utils\Update\UpdateBackgroundDownloader.cs" />
+    <Compile Include="Utils\Update\UpdateChecker.cs" />
     <Compile Include="Utils\Utils.cs" />
     <Compile Include="XshdVisualEdit\XshdVisualEditor.cs">
       <SubType>Form</SubType>
@@ -1718,6 +1725,7 @@
     <None Include="Resources\Icon-Ver3.1024x1.png" />
     <None Include="Resources\loading_.gif" />
     <None Include="Resources\runnerconfig.png" />
+    <None Include="Resources\select_dark.png" />
     <Content Include="语法说明.html" />
     <None Include="Resources\help.png" />
     <None Include="Resources\Google Translate%28Large%29.png" />

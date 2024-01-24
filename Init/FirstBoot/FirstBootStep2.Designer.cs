@@ -41,7 +41,6 @@ partial class FirstBootStep2
             this.uiButton4 = new Sunny.UI.UIButton();
             this.uiLine2 = new Sunny.UI.UILine();
             this.textBox2 = new System.Windows.Forms.TextBox();
-            this.uiIntegerUpDown1 = new Sunny.UI.UIIntegerUpDown();
             this.uiIntegerUpDown2 = new Sunny.UI.UIIntegerUpDown();
             this.SuspendLayout();
             // 
@@ -103,10 +102,10 @@ partial class FirstBootStep2
             this.textBox1.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(243)))), ((int)(((byte)(249)))), ((int)(((byte)(255)))));
             this.textBox1.BorderStyle = System.Windows.Forms.BorderStyle.FixedSingle;
             this.textBox1.Font = new System.Drawing.Font("微软雅黑", 12F);
-            this.textBox1.Location = new System.Drawing.Point(339, 38);
+            this.textBox1.Location = new System.Drawing.Point(349, 38);
             this.textBox1.Multiline = true;
             this.textBox1.Name = "textBox1";
-            this.textBox1.Size = new System.Drawing.Size(261, 119);
+            this.textBox1.Size = new System.Drawing.Size(251, 151);
             this.textBox1.TabIndex = 4;
             this.textBox1.Text = "Example Text\r\n示例文字\r\nサンプルテキスト\r\nعينة من النص\r\nBeispieltext";
             // 
@@ -194,28 +193,12 @@ partial class FirstBootStep2
             this.textBox2.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(243)))), ((int)(((byte)(249)))), ((int)(((byte)(255)))));
             this.textBox2.BorderStyle = System.Windows.Forms.BorderStyle.FixedSingle;
             this.textBox2.Font = new System.Drawing.Font("JetBrains Mono", 12F);
-            this.textBox2.Location = new System.Drawing.Point(339, 197);
+            this.textBox2.Location = new System.Drawing.Point(348, 197);
             this.textBox2.Multiline = true;
             this.textBox2.Name = "textBox2";
-            this.textBox2.Size = new System.Drawing.Size(261, 78);
+            this.textBox2.Size = new System.Drawing.Size(252, 78);
             this.textBox2.TabIndex = 11;
             this.textBox2.Text = "Example Text\r\n示例文字";
-            // 
-            // uiIntegerUpDown1
-            // 
-            this.uiIntegerUpDown1.Font = new System.Drawing.Font("微软雅黑", 12F);
-            this.uiIntegerUpDown1.Location = new System.Drawing.Point(339, 161);
-            this.uiIntegerUpDown1.Margin = new System.Windows.Forms.Padding(4, 5, 4, 5);
-            this.uiIntegerUpDown1.Minimum = 1;
-            this.uiIntegerUpDown1.MinimumSize = new System.Drawing.Size(100, 0);
-            this.uiIntegerUpDown1.Name = "uiIntegerUpDown1";
-            this.uiIntegerUpDown1.ShowText = false;
-            this.uiIntegerUpDown1.Size = new System.Drawing.Size(100, 28);
-            this.uiIntegerUpDown1.TabIndex = 13;
-            this.uiIntegerUpDown1.Text = "uiIntegerUpDown1";
-            this.uiIntegerUpDown1.TextAlignment = System.Drawing.ContentAlignment.MiddleCenter;
-            this.uiIntegerUpDown1.Value = 12;
-            this.uiIntegerUpDown1.ValueChanged += new Sunny.UI.UIIntegerUpDown.OnValueChanged(this.UpdateMainFont);
             // 
             // uiIntegerUpDown2
             // 
@@ -238,7 +221,6 @@ partial class FirstBootStep2
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.None;
             this.ClientSize = new System.Drawing.Size(603, 396);
             this.Controls.Add(this.uiIntegerUpDown2);
-            this.Controls.Add(this.uiIntegerUpDown1);
             this.Controls.Add(this.textBox2);
             this.Controls.Add(this.uiLabel4);
             this.Controls.Add(this.uiButton4);
@@ -276,6 +258,5 @@ partial class FirstBootStep2
     private Sunny.UI.UIButton uiButton4;
     private Sunny.UI.UILine uiLine2;
     private System.Windows.Forms.TextBox textBox2;
-    private Sunny.UI.UIIntegerUpDown uiIntegerUpDown1;
     private Sunny.UI.UIIntegerUpDown uiIntegerUpDown2;
 }

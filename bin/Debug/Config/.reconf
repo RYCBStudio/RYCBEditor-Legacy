@@ -1,5 +1,8 @@
 [FirstBoot]
-IsFirstBoot=true
+# DO NOT edit this key, unless for joke.
+# This is auto-generated key, shows whether the user fist uses IDE or not.
+# Accepted Value: true,false
+IsFirstBoot=False
 
 [Display]
 # This sets the main display font of IDE.
@@ -70,3 +73,5 @@ Custom.ForeGround=
 # This sets the background color of IDE.
 # Accepted Value: HEX Color Value(e.g. #FF000000 or #000000)
 Custom.BackGround=
+[FistBoot]
+IsFirstBoot=False

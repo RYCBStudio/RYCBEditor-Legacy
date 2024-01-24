@@ -29,7 +29,6 @@
         private void InitializeComponent()
         {
             this.components = new System.ComponentModel.Container();
-            this.elementHost1 = new System.Windows.Forms.Integration.ElementHost();
             this.metroProgressBar1 = new MetroFramework.Controls.MetroProgressBar();
             this.uiLabel1 = new System.Windows.Forms.Label();
             this.uiLabel2 = new System.Windows.Forms.Label();
@@ -37,15 +36,6 @@
             this.timer1 = new System.Windows.Forms.Timer(this.components);
             this.uiLabel4 = new System.Windows.Forms.Label();
             this.SuspendLayout();
-            // 
-            // elementHost1
-            // 
-            this.elementHost1.Location = new System.Drawing.Point(739, 327);
-            this.elementHost1.Name = "elementHost1";
-            this.elementHost1.Size = new System.Drawing.Size(1, 1);
-            this.elementHost1.TabIndex = 4;
-            this.elementHost1.Text = "elementHost1";
-            this.elementHost1.Child = null;
             // 
             // metroProgressBar1
             // 
@@ -59,12 +49,16 @@
             // 
             // uiLabel1
             // 
+            this.uiLabel1.Anchor = ((System.Windows.Forms.AnchorStyles)((((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Bottom) 
+            | System.Windows.Forms.AnchorStyles.Left) 
+            | System.Windows.Forms.AnchorStyles.Right)));
+            this.uiLabel1.AutoSize = true;
             this.uiLabel1.BackColor = System.Drawing.Color.Transparent;
             this.uiLabel1.Font = new System.Drawing.Font("Exo", 83F);
             this.uiLabel1.ForeColor = System.Drawing.Color.White;
-            this.uiLabel1.Location = new System.Drawing.Point(12, 25);
+            this.uiLabel1.Location = new System.Drawing.Point(3, 9);
             this.uiLabel1.Name = "uiLabel1";
-            this.uiLabel1.Size = new System.Drawing.Size(826, 198);
+            this.uiLabel1.Size = new System.Drawing.Size(810, 184);
             this.uiLabel1.TabIndex = 6;
             this.uiLabel1.Text = "RYCB Editor";
             this.uiLabel1.TextAlign = System.Drawing.ContentAlignment.MiddleCenter;
@@ -125,7 +119,6 @@
             this.Controls.Add(this.uiLabel3);
             this.Controls.Add(this.uiLabel1);
             this.Controls.Add(this.metroProgressBar1);
-            this.Controls.Add(this.elementHost1);
             this.DoubleBuffered = true;
             this.Font = new System.Drawing.Font("Microsoft YaHei UI", 9F);
             this.ForeColor = System.Drawing.SystemColors.Control;
@@ -143,11 +136,11 @@
             this.Shown += new System.EventHandler(this.Entry_Load);
             this.MouseDown += new System.Windows.Forms.MouseEventHandler(this.DragNoFrameWindow_MouseDown);
             this.ResumeLayout(false);
+            this.PerformLayout();
 
         }
 
         #endregion
-        private System.Windows.Forms.Integration.ElementHost elementHost1;
         internal MetroFramework.Controls.MetroProgressBar metroProgressBar1;
         private System.Windows.Forms.Label uiLabel1;
         private System.Windows.Forms.Label uiLabel2;
