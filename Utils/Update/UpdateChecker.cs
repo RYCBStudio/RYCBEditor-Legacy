@@ -45,7 +45,7 @@ internal class UpdateChecker
                     ProtocolVersion = HttpVersion.Version11, // Default value is HTTP 1.1
                     UseDefaultCredentials = false,
                     UserAgent = $"DownloaderSample/{Assembly.GetExecutingAssembly().GetName().Version.ToString(3)}",
-                    Credentials = GetCredentialCache(url, "rycbqyf@163.com", "rycbqyf666"),
+                    Credentials = GetCredentialCache(url, "*****", "******"),
 
                 }
         };
@@ -79,7 +79,7 @@ internal class UpdateChecker
                     ProtocolVersion = HttpVersion.Version11, // Default value is HTTP 1.1
                     UseDefaultCredentials = false,
                     UserAgent = $"DownloaderSample/{Assembly.GetExecutingAssembly().GetName().Version.ToString(3)}",
-                    Credentials = GetCredentialCache(url, "rycbqyf@163.com", "rycbqyf666"),
+                    Credentials = GetCredentialCache(url, "******", "******"),
 
                 }
         };
