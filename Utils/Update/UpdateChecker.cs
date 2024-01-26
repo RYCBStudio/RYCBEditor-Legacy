@@ -4,9 +4,11 @@ using System.IO;
 using System.Linq;
 using System.Net;
 using System.Reflection;
+using System.Security.Policy;
 using System.Text;
 using System.Threading.Tasks;
 using Downloader;
+using Microsoft.SqlServer.Management.Sdk.Sfc;
 using Sunny.UI;
 using Sunny.UI.Win32;
 
@@ -14,6 +16,8 @@ namespace IDE.Utils.Update;
 internal class UpdateChecker
 {
     private readonly CloudSourceConnecter csc = new();
+    private const string USERNAME = "rycbqyf@163.com";
+    private const string PASSWORD = "rycbqyf666";
 
     public async Task InitAsync()
     {
@@ -45,7 +49,7 @@ internal class UpdateChecker
                     ProtocolVersion = HttpVersion.Version11, // Default value is HTTP 1.1
                     UseDefaultCredentials = false,
                     UserAgent = $"DownloaderSample/{Assembly.GetExecutingAssembly().GetName().Version.ToString(3)}",
-                    Credentials = GetCredentialCache(url, "rycbqyf@163.com", "rycbqyf666"),
+                    Credentials = GetCredentialCache(url, USERNAME, PASSWORD),
 
                 }
         };
@@ -79,7 +83,7 @@ internal class UpdateChecker
                     ProtocolVersion = HttpVersion.Version11, // Default value is HTTP 1.1
                     UseDefaultCredentials = false,
                     UserAgent = $"DownloaderSample/{Assembly.GetExecutingAssembly().GetName().Version.ToString(3)}",
-                    Credentials = GetCredentialCache(url, "rycbqyf@163.com", "rycbqyf666"),
+                    Credentials =GetCredentialCache(url, USERNAME, PASSWORD),
 
                 }
         };
