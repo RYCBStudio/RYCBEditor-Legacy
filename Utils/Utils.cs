@@ -330,6 +330,13 @@ namespace IDE
             { "Dark", new(){System.Windows.Media.Color.FromRgb(0xA9, 0xB7, 0xC6), System.Windows.Media.Color.FromRgb(0x1E, 0x1F, 0x22) } },
             { "Light",  new(){System.Windows.Media.Color.FromRgb(8, 8, 8), System.Windows.Media.Color.FromRgb(255, 255, 255) }},
         };
+
+        public static class Downloading
+        {
+            public static bool ParallelDownload = Program.reConf.ReadBool("Downloading", "ParallelDownload", true);
+            public static bool AutoParallelCount = Program.reConf.ReadBool("Downloading", "AutoParallelCount", false);
+            public static int ParallelCount = Program.reConf.ReadInt("Downloading", "ParallelCount", Environment.ProcessorCount * 2);
+        }
     }
 
     internal class Themes
@@ -447,6 +454,18 @@ namespace IDE
         public static string Localize(this IniFile iniFile, string translationKey)
         {
             return iniFile.ReadString("I18n", translationKey, translationKey);
+        }
+
+        /// <summary>
+        /// 读取Ini文件中的字符串值
+        /// </summary>
+        /// <param name="iniFile">I18n文件类</param>
+        /// <param name="section">需读取的Section</param>
+        /// <param name="key">需读取的键</param>
+        /// <returns>读取结果</returns>
+        public static string ReadString(this IniFile iniFile, string section, string key)
+        {
+            return iniFile.ReadString(section, key, "none");
         }
 
         /// <summary>

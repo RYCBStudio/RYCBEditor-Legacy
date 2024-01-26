@@ -13,38 +13,32 @@ internal static class GlobalDefinitions
         GLOBAL
     }
 
-    internal static bool CloudSourceOK
-    {
-        get; set;
-    }
-    
-    internal static bool UpdateCheckOK
-    {
-        get; set;
-    }
+    internal static bool CloudSourceOK;
 
-    internal static AreaInfo CurrentArea
-    {
-        get; set;
-    }
+    internal static bool UpdateCheckOK;
 
-    internal static string DownloadBaseUri
-    {
-        get; set;
-    }
+    internal static AreaInfo CurrentArea;
 
-    internal static readonly List<Dictionary<AreaInfo, string>> TestFileLists =
-    [
-        new(){{AreaInfo.CHINA, "https://share.asytech.cn/remote.php/webdav/TestDownloadFile.Text" }, {AreaInfo.GLOBAL, "https://raw.githubusercontent.com/RYCBStudio/RE-Update-Resources/UpdateResources/TestDownloadFile.Text" } }
-    ];
+    internal static string DownloadBaseUri;
 
-    internal static string Update_URL
+    internal static readonly Dictionary<AreaInfo, string> TestFileLists = new()
     {
-        get; set;
-    }
+        {AreaInfo.CHINA, "https://share.asytech.cn/remote.php/webdav/TestDownloadFile.Text"},
+            {AreaInfo.GLOBAL,
+    "https://raw.githubusercontent.com/RYCBStudio/RE-Update-Resources/UpdateResources/TestDownloadFile.Text"}
+    };
 
-    internal static string UpdateFile_URL
+    internal static string UpdateFile_URL;
+
+    internal static string UpdateFile_Path;
+
+    internal static class UpdateInfo
     {
-        get; set;
+        public static string FriendlyVersion;
+        public static int MajorVersion;
+        public static int MinorVersion;
+        public static int MicroVersion;
+        public static string RevisionNumber;
+        public static string Channel;
     }
 }

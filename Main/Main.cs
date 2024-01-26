@@ -1387,7 +1387,7 @@ namespace IDE
             return true;
         }
 
-        private void FirstInit(object sender, EventArgs e)
+        private async void FirstInit(object sender, EventArgs e)
         {
             ExecuteCMDWithOutput("mkdir " + Environment.GetFolderPath(Environment.SpecialFolder.ApplicationData) + "\\RYCB\\IDE\\protect", "cmd", "/s /c");
             keepFile = new StreamWriter(new FileStream(Environment.GetFolderPath(Environment.SpecialFolder.ApplicationData) + "\\RYCB\\IDE\\protect\\.KEEP", FileMode.OpenOrCreate, FileAccess.ReadWrite, FileShare.ReadWrite), Encoding.UTF8);
@@ -1439,7 +1439,7 @@ namespace IDE
             this.Show();
             var isFirstBoot = reConf.ReadBool("FirstBoot", "IsFirstBoot");
             if (isFirstBoot) { new FirstBootStep1().ShowDialog(); }
-            UpdateCheck();
+            await UpdateCheckAsync();
         }
 
         private void ForceExit(object sender, FormClosedEventArgs e)
@@ -2143,9 +2143,12 @@ namespace IDE
         }
         #endregion
         #region 检查更新
-        private void UpdateCheck()
+        private async Task UpdateCheckAsync()
         {
-            new UpdateChecker().DownloadTest();
+            var uc = new UpdateChecker();
+            await uc.InitAsync();
+            //await uc.DownloadTestAsync();
+            await uc.DownloadUpdateFileAsync();
         }
         #endregion
         #region extern模块

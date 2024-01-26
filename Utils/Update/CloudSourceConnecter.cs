@@ -5,7 +5,6 @@ using System.Net;
 using System.Net.Http;
 using System.Text;
 using System.Threading.Tasks;
-using static IDE.Utils.Update.GlobalDefinitions;
 
 namespace IDE.Utils.Update;
 internal class CloudSourceConnecter
@@ -14,7 +13,7 @@ internal class CloudSourceConnecter
     /// 通过服务器超时更改<see cref="AreaInfo"/>信息。
     /// </summary>
     /// <returns>当前的<see cref="AreaInfo"/>。</returns>
-    public async void RecognizeArea()
+    public async Task RecognizeAreaAsync()
     {
         HttpClient httpClient = new()
         {
@@ -26,33 +25,33 @@ internal class CloudSourceConnecter
             var response = await httpClient.GetAsync(httpClient.BaseAddress);
             if (response.IsSuccessStatusCode)
             {
-                CloudSourceOK = true;
-                CurrentArea = AreaInfo.CHINA;
+                GlobalDefinitions.CloudSourceOK = true;
+                GlobalDefinitions.CurrentArea = GlobalDefinitions.AreaInfo.CHINA;
                 return;
             }
         }
         catch 
         {
-            CloudSourceOK = false;
+            GlobalDefinitions.CloudSourceOK = false;
             return;
         }
 
-        CloudSourceOK = true;
-        CurrentArea = AreaInfo.GLOBAL;
+        GlobalDefinitions.CloudSourceOK = true;
+        GlobalDefinitions.CurrentArea = GlobalDefinitions.AreaInfo.GLOBAL;
     }
 
 
     internal void GenerateDownloadURL()
     {
-        if (CloudSourceOK)
+        if (GlobalDefinitions.CloudSourceOK)
         {
-            switch (CurrentArea)
+            switch (GlobalDefinitions.CurrentArea)
             {
-                case AreaInfo.CHINA:
-                    DownloadBaseUri = "https://share.asytech.cn/remote.php/webdav/IDE/";
+                case GlobalDefinitions.AreaInfo.CHINA:
+                    GlobalDefinitions.DownloadBaseUri = "https://share.asytech.cn/remote.php/webdav/IDE/";
                     break;
-                case AreaInfo.GLOBAL:
-                    DownloadBaseUri = "https://raw.githubusercontent.com/RYCBStudio/RE-Update-Resources/UpdateResources/";
+                case GlobalDefinitions.AreaInfo.GLOBAL:
+                    GlobalDefinitions.DownloadBaseUri = "https://raw.githubusercontent.com/RYCBStudio/RE-Update-Resources/UpdateResources/";
                     break;
                 default:
                     break;
