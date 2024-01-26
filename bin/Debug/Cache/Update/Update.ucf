@@ -1,7 +1,7 @@
 [Update]
-version=0.0.1
-revision_number=alpha+dev.04
+version=0.0.3
+major=0
+minor=0
+micro=3
+revision_number=alpha
 channel=dev
-files_count=16
-url=
-desc_url=

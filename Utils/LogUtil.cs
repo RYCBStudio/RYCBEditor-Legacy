@@ -1,5 +1,4 @@
 ﻿#region 导入命名空间
-using Microsoft.Win32;
 using Sunny.UI;
 using System;
 using System.Diagnostics;
@@ -211,8 +210,8 @@ namespace IDE
         private static string[] msgLvlZh = new string[] { "信息", "警告", "错误", "致命错误", "调试" };
         private static string[] portEn = new string[] { "CLIENT", "SERVER" };
         private static string[] portZh = new string[] { "客户端", "服务端" };
-        private static string[] moduleEn = new string[] { "Main Module", "I18n Translation Module", "Command Prompt", "Terminal", "Initialization", "Net Request", "I/O" };
-        private static string[] moduleZh = new string[] { "主程序", "I18n翻译模块", "命令提示符模块", "终端", "初始化", "网络请求", "文件交互" };
+        private static string[] moduleEn = new string[] { "Main Module", "I18n Translation Module", "Command Prompt", "Terminal", "Initialization", "Net Request", "I/O", "Update" };
+        private static string[] moduleZh = new string[] { "主程序", "I18n翻译模块", "命令提示符模块", "终端", "初始化", "网络请求", "文件交互", "更新" };
 
         #region I18n Translate
         public static string Translate(int index, string type, string lang)
@@ -317,6 +316,7 @@ namespace IDE
         INIT,
         NET,
         IO,
+        UPDATE,
     }
     #endregion
 }

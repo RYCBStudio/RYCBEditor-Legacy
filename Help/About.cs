@@ -1,6 +1,5 @@
 ﻿using System;
 using System.Windows.Forms;
-using Microsoft.VisualStudio.Shell.TableManager;
 using Sunny.UI;
 
 namespace IDE

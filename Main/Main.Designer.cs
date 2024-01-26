@@ -80,18 +80,13 @@ namespace IDE
             this.toolStripStatusLabel1 = new System.Windows.Forms.ToolStripStatusLabel();
             this.toolStripStatusLabel4 = new System.Windows.Forms.ToolStripStatusLabel();
             this.toolStripStatusLabel8 = new System.Windows.Forms.ToolStripStatusLabel();
-            this.UpdateIcon = new System.Windows.Forms.ToolStripStatusLabel();
-            this.Separator = new System.Windows.Forms.ToolStripStatusLabel();
-            this.UpdatesPreparedIcon = new System.Windows.Forms.ToolStripStatusLabel();
             this.Blank = new System.Windows.Forms.ToolStripStatusLabel();
-            this.toolStripStatusLabel9 = new System.Windows.Forms.ToolStripStatusLabel();
             this.MemoryChecker = new System.Windows.Forms.Timer(this.components);
             this.statusStrip2 = new System.Windows.Forms.StatusStrip();
             this.toolStripStatusLabel3 = new System.Windows.Forms.ToolStripStatusLabel();
             this.toolStripStatusLabel6 = new System.Windows.Forms.ToolStripStatusLabel();
             this.toolStripStatusLabel7 = new System.Windows.Forms.ToolStripStatusLabel();
             this.toolStripStatusLabel5 = new System.Windows.Forms.ToolStripStatusLabel();
-            this.toolStripStatusLabel10 = new System.Windows.Forms.ToolStripStatusLabel();
             this.WorkingIcon = new System.Windows.Forms.ToolStripStatusLabel();
             this.CurrentWorkTip = new System.Windows.Forms.ToolStripStatusLabel();
             this.FileSavingIcon = new System.Windows.Forms.ToolStripStatusLabel();
@@ -122,6 +117,11 @@ namespace IDE
             this.toolStripButton2 = new System.Windows.Forms.ToolStripButton();
             this.toolStripButton3 = new System.Windows.Forms.ToolStripButton();
             this.toolStripSeparator1 = new System.Windows.Forms.ToolStripSeparator();
+            this.UpdateIcon = new System.Windows.Forms.ToolStripStatusLabel();
+            this.toolStripStatusLabel11 = new System.Windows.Forms.ToolStripStatusLabel();
+            this.toolStripStatusLabel13 = new System.Windows.Forms.ToolStripStatusLabel();
+            this.toolStripStatusLabel9 = new System.Windows.Forms.ToolStripStatusLabel();
+            this.toolStripStatusLabel10 = new System.Windows.Forms.ToolStripStatusLabel();
             this.menuStrip1.SuspendLayout();
             this.contextMenuStrip1.SuspendLayout();
             this.statusStrip1.SuspendLayout();
@@ -596,11 +596,7 @@ namespace IDE
             this.toolStripStatusLabel2,
             this.toolStripStatusLabel4,
             this.toolStripStatusLabel8,
-            this.UpdateIcon,
-            this.Separator,
-            this.UpdatesPreparedIcon,
-            this.Blank,
-            this.toolStripStatusLabel9});
+            this.Blank});
             this.statusStrip1.Location = new System.Drawing.Point(0, 650);
             this.statusStrip1.Name = "statusStrip1";
             this.statusStrip1.Size = new System.Drawing.Size(1064, 26);
@@ -623,39 +619,13 @@ namespace IDE
             // toolStripStatusLabel8
             // 
             this.toolStripStatusLabel8.Name = "toolStripStatusLabel8";
-            this.toolStripStatusLabel8.Size = new System.Drawing.Size(589, 20);
+            this.toolStripStatusLabel8.Size = new System.Drawing.Size(858, 20);
             this.toolStripStatusLabel8.Spring = true;
-            // 
-            // UpdateIcon
-            // 
-            this.UpdateIcon.DisplayStyle = System.Windows.Forms.ToolStripItemDisplayStyle.Image;
-            this.UpdateIcon.Image = global::IDE.Properties.Resources.Update_can_update;
-            this.UpdateIcon.Name = "UpdateIcon";
-            this.UpdateIcon.Size = new System.Drawing.Size(20, 20);
-            // 
-            // Separator
-            // 
-            this.Separator.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(162)))), ((int)(((byte)(162)))), ((int)(((byte)(162)))));
-            this.Separator.Name = "Separator";
-            this.Separator.Size = new System.Drawing.Size(17, 20);
-            this.Separator.Text = " |";
-            // 
-            // UpdatesPreparedIcon
-            // 
-            this.UpdatesPreparedIcon.Image = global::IDE.Properties.Resources.select_dark;
-            this.UpdatesPreparedIcon.Name = "UpdatesPreparedIcon";
-            this.UpdatesPreparedIcon.Size = new System.Drawing.Size(20, 20);
             // 
             // Blank
             // 
             this.Blank.Name = "Blank";
             this.Blank.Size = new System.Drawing.Size(0, 20);
-            // 
-            // toolStripStatusLabel9
-            // 
-            this.toolStripStatusLabel9.Name = "toolStripStatusLabel9";
-            this.toolStripStatusLabel9.Size = new System.Drawing.Size(173, 20);
-            this.toolStripStatusLabel9.Text = "Updates are prepared.";
             // 
             // MemoryChecker
             // 
@@ -673,6 +643,10 @@ namespace IDE
             this.toolStripStatusLabel7,
             this.toolStripStatusLabel5,
             this.toolStripStatusLabel10,
+            this.UpdateIcon,
+            this.toolStripStatusLabel11,
+            this.toolStripStatusLabel13,
+            this.toolStripStatusLabel9,
             this.WorkingIcon,
             this.CurrentWorkTip,
             this.FileSavingIcon,
@@ -704,12 +678,6 @@ namespace IDE
             // 
             this.toolStripStatusLabel5.Name = "toolStripStatusLabel5";
             this.toolStripStatusLabel5.Size = new System.Drawing.Size(0, 20);
-            // 
-            // toolStripStatusLabel10
-            // 
-            this.toolStripStatusLabel10.Name = "toolStripStatusLabel10";
-            this.toolStripStatusLabel10.Size = new System.Drawing.Size(856, 20);
-            this.toolStripStatusLabel10.Spring = true;
             // 
             // WorkingIcon
             // 
@@ -1029,6 +997,38 @@ namespace IDE
             this.toolStripSeparator1.Name = "toolStripSeparator1";
             this.toolStripSeparator1.Size = new System.Drawing.Size(6, 27);
             // 
+            // UpdateIcon
+            // 
+            this.UpdateIcon.DisplayStyle = System.Windows.Forms.ToolStripItemDisplayStyle.Image;
+            this.UpdateIcon.Image = global::IDE.Properties.Resources.Update_can_update;
+            this.UpdateIcon.Name = "UpdateIcon";
+            this.UpdateIcon.Size = new System.Drawing.Size(20, 20);
+            // 
+            // toolStripStatusLabel11
+            // 
+            this.toolStripStatusLabel11.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(162)))), ((int)(((byte)(162)))), ((int)(((byte)(162)))));
+            this.toolStripStatusLabel11.Name = "toolStripStatusLabel11";
+            this.toolStripStatusLabel11.Size = new System.Drawing.Size(17, 20);
+            this.toolStripStatusLabel11.Text = " |";
+            // 
+            // toolStripStatusLabel13
+            // 
+            this.toolStripStatusLabel13.Image = global::IDE.Properties.Resources.select_dark;
+            this.toolStripStatusLabel13.Name = "toolStripStatusLabel13";
+            this.toolStripStatusLabel13.Size = new System.Drawing.Size(20, 20);
+            // 
+            // toolStripStatusLabel9
+            // 
+            this.toolStripStatusLabel9.Name = "toolStripStatusLabel9";
+            this.toolStripStatusLabel9.Size = new System.Drawing.Size(173, 20);
+            this.toolStripStatusLabel9.Text = "Updates are prepared.";
+            // 
+            // toolStripStatusLabel10
+            // 
+            this.toolStripStatusLabel10.Name = "toolStripStatusLabel10";
+            this.toolStripStatusLabel10.Size = new System.Drawing.Size(240, 20);
+            this.toolStripStatusLabel10.Spring = true;
+            // 
             // Main
             // 
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.None;
@@ -1158,14 +1158,14 @@ namespace IDE
         private ToolStripSeparator toolStripSeparator1;
         private ToolStripStatusLabel WorkingIcon;
         private ToolStripStatusLabel CurrentWorkTip;
-        private ToolStripStatusLabel toolStripStatusLabel10;
         private ToolStripMenuItem 配置运行器ToolStripMenuItem;
-        private ToolStripStatusLabel UpdateIcon;
         private ToolStripStatusLabel toolStripStatusLabel8;
-        private ToolStripStatusLabel UpdatesPreparedIcon;
-        private ToolStripStatusLabel toolStripStatusLabel9;
-        private ToolStripStatusLabel Separator;
         private ToolStripStatusLabel Blank;
+        private ToolStripStatusLabel UpdateIcon;
+        private ToolStripStatusLabel toolStripStatusLabel11;
+        private ToolStripStatusLabel toolStripStatusLabel13;
+        private ToolStripStatusLabel toolStripStatusLabel9;
+        private ToolStripStatusLabel toolStripStatusLabel10;
     }
 }
 

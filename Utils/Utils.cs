@@ -13,7 +13,6 @@ using System.Runtime.InteropServices;
 using System.Threading;
 using System.Diagnostics;
 using Microsoft.Diagnostics.Runtime;
-using ICSharpCode.AvalonEdit.Utils;
 
 namespace IDE
 {

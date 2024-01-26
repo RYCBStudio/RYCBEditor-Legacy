@@ -812,7 +812,6 @@
     <Compile Include="Utils\Boxes\ErrorMessageBox\ErrorMessageBox.Designer.cs">
       <DependentUpon>ErrorMessageBox.cs</DependentUpon>
     </Compile>
-    <Compile Include="Utils\I18nHandler.cs" />
     <Compile Include="Utils\LogUtil.cs" />
     <Compile Include="Main\Main.cs">
       <SubType>Form</SubType>
@@ -859,6 +858,7 @@
     <Compile Include="Utils\Update\GlobalDefinitions.cs" />
     <Compile Include="Utils\Update\UpdateBackgroundDownloader.cs" />
     <Compile Include="Utils\Update\UpdateChecker.cs" />
+    <Compile Include="Utils\Update\UpdateChecker.Hideinfo.cs" />
     <Compile Include="Utils\Utils.cs" />
     <Compile Include="XshdVisualEdit\XshdVisualEditor.cs">
       <SubType>Form</SubType>

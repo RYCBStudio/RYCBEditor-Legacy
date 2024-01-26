@@ -3,7 +3,6 @@ using System.Collections.Generic;
 using System.Diagnostics;
 using System.Windows.Forms;
 using ICSharpCode.AvalonEdit;
-using Microsoft.CodeAnalysis.CSharp.Syntax;
 using Sunny.UI;
 
 namespace IDE;

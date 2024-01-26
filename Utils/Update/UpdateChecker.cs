@@ -21,6 +21,7 @@ internal partial class UpdateChecker
 
     public async Task DownloadTestAsync()
     {
+        if (!GlobalDefinitions.CloudSourceOK) { return; }
         var url = GlobalDefinitions.TestFileLists[GlobalDefinitions.CurrentArea];
         var DownloadOpt = new DownloadConfiguration()
         {
@@ -55,6 +56,7 @@ internal partial class UpdateChecker
 
     public async Task DownloadUpdateFileAsync()
     {
+        if (!GlobalDefinitions.CloudSourceOK || !GlobalDefinitions.UpdateCheckOK) { return; }
         var url = GlobalDefinitions.DownloadBaseUri + "Update.ucf";
         var DownloadOpt = new DownloadConfiguration()
         {
@@ -153,7 +155,10 @@ internal partial class UpdateChecker
 
     public bool AnalyzeUpdateFile()
     {
-        if (!GlobalDefinitions.CloudSourceOK || !GlobalDefinitions.UpdateCheckOK || GlobalDefinitions.UpdateFile_Path.IsNullOrEmpty()) { Main.LOGGER.WriteLog("云端模块未初始化完成或传入数据为空。", EnumMsgLevel.WARN, EnumPort.CLIENT, EnumModule.IO); return false; }
+        if (!GlobalDefinitions.CloudSourceOK || !GlobalDefinitions.UpdateCheckOK || GlobalDefinitions.UpdateFile_Path.IsNullOrEmpty()) { Main.LOGGER.WriteLog("云端模块未初始化完成或传入数据为空。", EnumMsgLevel.WARN, EnumPort.CLIENT, EnumModule.UPDATE); return false; }
+
+        if (!GlobalDefinitions.ValidateFile(GlobalDefinitions.UpdateFile_Path, UCF_MD5, UCF_SHA256)) { Main.LOGGER.WriteLog("Fatal Error: The MD5 value or SHA256 value does not match the original value. The update file may have been modified. To keep your computer safe, IDE has stopped reading it.", EnumMsgLevel.FATAL, EnumPort.CLIENT, EnumModule.UPDATE); return false; }
+
         IniFile ucf = new(GlobalDefinitions.UpdateFile_Path)
         {
             IniEncoding = Encoding.UTF8

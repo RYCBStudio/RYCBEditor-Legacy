@@ -14,7 +14,7 @@ UpdateChannel=Normal
 # This sets the display language of IDE.
 # Format: xx-XX
 # Accepted Value(Now): zh-CN(Simplified Chinese), zh-TD(Traditional Chinese), en-US(English), ja-JP(Japanese)
-Language=zh-CN
+Language=en-US
 # This sets the log language of IDE.
 # Format: xx
 # Accepted Value(Now): zh(Simplified Chinese), td(Traditional Chinese), en(English), ja(Japanese)

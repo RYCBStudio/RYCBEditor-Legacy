@@ -1,13 +1,7 @@
 ﻿using System;
-using System.Collections.Generic;
-using System.ComponentModel;
-using System.Data;
-using System.Drawing;
 using System.IO;
-using System.Linq;
 using System.Security.Cryptography;
 using System.Text;
-using System.Threading.Tasks;
 using System.Windows.Forms;
 using Sunny.UI;
 
@@ -52,8 +46,9 @@ public partial class FileSHAorMD5Checker : UIForm
         }
         catch (Exception ex)
         {
-            throw new Exception("GetMD5HashFromFile() fail,error:" + ex.Message);
+            Main.LOGGER.WriteErrLog(new Exception("GetMD5HashFromFile() fail,error:" + ex.Message), EnumMsgLevel.ERROR, EnumPort.CLIENT);
         }
+        return string.Empty;
     }
 
     public string GetSHA1(string s)

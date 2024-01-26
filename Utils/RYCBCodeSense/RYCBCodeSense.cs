@@ -1,10 +1,9 @@
-﻿using EnvDTE;
-using ICSharpCode.AvalonEdit.CodeCompletion;
+﻿using ICSharpCode.AvalonEdit.CodeCompletion;
 using ICSharpCode.AvalonEdit.Document;
 using ICSharpCode.AvalonEdit.Editing;
 using IDE.Properties;
 using System;
-using System.Linq;
+using System.Diagnostics;
 using System.Windows;
 using System.Windows.Interop;
 using System.Windows.Media;
@@ -78,8 +77,8 @@ namespace IDE
 
         public void Complete(TextArea textArea, ISegment completionSegment, EventArgs insertionRequestEventArgs)
         {
-            textArea.Document.Remove(completionSegment.Offset - 1, cstrl);
-            textArea.Document.Replace(completionSegment, Text);
+            var completionText = Text.Substring(completionSegment.Length);
+            textArea.Document.Insert(textArea.Caret.Offset, completionText);
             _completed = true;
         }
     }

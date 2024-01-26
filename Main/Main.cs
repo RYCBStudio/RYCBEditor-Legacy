@@ -1345,16 +1345,23 @@ namespace IDE
 
         private void ClearTemporaryCompletion()
         {
-            RYCBCodeSense.Clear(ref tmpCompletionStr);
+            if (RYCBCodeSense._completed)
+            {
+                tmpCompletionStr = _codeSense.CompletionList.SelectedItem?.Text ?? "";
+            }
+            else
+            {
+                tmpCompletionStr = "";
+            }
             RYCBCodeSense._completed = false;
         }
+
 
         #endregion
         #region 判断代码是否已修改
         private void TextArea_TextEntering(object sender, TextCompositionEventArgs e)
         {
             FileSavingIcon.Image = Properties.Resources.file_ready_to_save_dark;
-            tabControl1.SelectedTab.Text += tabControl1.SelectedTab.Text.Contains("*") ? "" : "*";
             if (e.Text.Length > 0 && _codeSense != null && !e.Text[0].IsLetterOrDigit())
             {
                 _codeSense.CompletionList.RequestInsertion(e);
@@ -2147,8 +2154,9 @@ namespace IDE
         {
             var uc = new UpdateChecker();
             await uc.InitAsync();
-            //await uc.DownloadTestAsync();
+            await uc.DownloadTestAsync();
             await uc.DownloadUpdateFileAsync();
+            uc.AnalyzeUpdateFile();
         }
         #endregion
         #region extern模块
