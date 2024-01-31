@@ -772,6 +772,9 @@
     <Compile Include="Utils\Boxes\WaitingBar\WBBox.Designer.cs">
       <DependentUpon>WBBox.cs</DependentUpon>
     </Compile>
+    <Compile Include="Utils\RE-Addon-Controls\CodeSenseSelection.xaml.cs">
+      <DependentUpon>CodeSenseSelection.xaml</DependentUpon>
+    </Compile>
     <Compile Include="Utils\RYCBCodeSense\CodeSenseBase.cs" />
     <Compile Include="Settings\CodeSettings.cs">
       <SubType>Form</SubType>
@@ -857,8 +860,11 @@
     <Compile Include="Utils\Update\CloudSourceConnecter.cs" />
     <Compile Include="Utils\Update\GlobalDefinitions.cs" />
     <Compile Include="Utils\Update\UpdateBackgroundDownloader.cs" />
+    <Compile Include="Utils\Update\UpdateBackgroundDownloader.HideInfo.cs" />
     <Compile Include="Utils\Update\UpdateChecker.cs" />
     <Compile Include="Utils\Update\UpdateChecker.Hideinfo.cs" />
+    <Compile Include="Utils\Update\UpdateGlobalDeployer.cs" />
+    <Compile Include="Utils\Update\UpdateGlobalDeployer.HideInfo.cs" />
     <Compile Include="Utils\Utils.cs" />
     <Compile Include="XshdVisualEdit\XshdVisualEditor.cs">
       <SubType>Form</SubType>
@@ -1726,6 +1732,8 @@
     <None Include="Resources\loading_.gif" />
     <None Include="Resources\runnerconfig.png" />
     <None Include="Resources\select_dark.png" />
+    <Content Include="Utils\RE-Addon-Controls\Enter-Dark.png" />
+    <Content Include="Utils\RE-Addon-Controls\Enter.png" />
     <Content Include="语法说明.html" />
     <None Include="Resources\help.png" />
     <None Include="Resources\Google Translate%28Large%29.png" />
@@ -1747,7 +1755,12 @@
       <Install>false</Install>
     </BootstrapperPackage>
   </ItemGroup>
-  <ItemGroup />
+  <ItemGroup>
+    <Page Include="Utils\RE-Addon-Controls\CodeSenseSelection.xaml">
+      <Generator>MSBuild:Compile</Generator>
+      <SubType>Designer</SubType>
+    </Page>
+  </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
   <Target Name="EnsureNuGetPackageBuildImports" BeforeTargets="PrepareForBuild">
     <PropertyGroup>

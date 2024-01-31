@@ -34,13 +34,7 @@ public class MessageBoxEX
         MessageBoxButtons _buttons;
         string[] _buttonTitles = null;
 
-        bool _watchForActivate = false;
-
-        public bool WatchForActivate
-        {
-            get { return _watchForActivate; }
-            set { _watchForActivate = value; }
-        }
+        public bool WatchForActivate { get; set; } = false;
 
         public MessageForm(MessageBoxButtons buttons, string[] buttonTitles)
         {
@@ -63,9 +57,9 @@ public class MessageBoxEX
 
         protected override void WndProc(ref Message m)
         {
-            if (_watchForActivate && m.Msg == 0x0006)
+            if (WatchForActivate && m.Msg == 0x0006)
             {
-                _watchForActivate = false;
+                WatchForActivate = false;
                 _handle = m.LParam;
                 CheckMsgbox();
             }

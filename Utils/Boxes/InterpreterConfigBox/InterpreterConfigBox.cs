@@ -38,7 +38,7 @@ internal class ICBFileProcessor
 
     internal string GetInfo(InfoType infoType)
     {
-        string ret = "";
+        var ret = "";
         switch (infoType)
         {
             case InfoType.Itptr_type:

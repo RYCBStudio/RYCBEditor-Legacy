@@ -39,7 +39,6 @@ namespace IDE
         private static readonly string STARTUP_PATH = Program.STARTUP_PATH;
         private static readonly IniFile reConf = Program.reConf;
         private static readonly Stopwatch stopwatch = new();
-        //private ConcurrentBag<Process> processesToClose = new ConcurrentBag<Process>();
         private string query = "SELECT * FROM Win32_Process WHERE Name='Runner'";
         private string title = "选择文件：", filter = "Py-CN文件|*.pycn|Py-CN编译后文件(Python 文件)|*.py|所有文件|*.*";
         private static StreamWriter keepFile, markdownFileConverter;
@@ -70,8 +69,13 @@ namespace IDE
         };
         public const string VERSION = "0.0.3";
         public const string FRIENDLY_VER = "0.0.3-Alpha.64";
+        public const int MAJOR_VER = 0;
+        public const int MINOR_VER = 0;
+        public const int MICRO_VER = 2;
+        public const string REVISION = "alpha";
         public static readonly LogUtil LOGGER = new(Environment.CurrentDirectory + $"\\logs\\{DateTime.Now.Year}-{DateTime.Now.Month}-{DateTime.Now.Day}.log");
         public string text_tsl2;
+        public static Main instance;
         #endregion
         #region 一堆方法
         #region 构造函数
@@ -84,8 +88,10 @@ namespace IDE
             {
                 InitializeComponent();
                 InitializeTranslation();
+                CheckForIllegalCrossThreadCalls = false;
                 proc = Process.GetCurrentProcess();
                 msgBox = new(MsgBox.MsgType.Normal, "", this);
+                instance = this;
                 Program.splash.metroProgressBar1.PerformStep();
             }
             catch (Exception ex)
@@ -943,11 +949,11 @@ namespace IDE
 
             var sb = new StringBuilder();
 
-            byte[] buffer = new byte[0x1000];
+            var buffer = new byte[0x1000];
             int numRead;
             while ((numRead = await sourceStream.ReadAsync(buffer, 0, buffer.Length)) != 0)
             {
-                string text = Encoding.Unicode.GetString(buffer, 0, numRead);
+                var text = Encoding.Unicode.GetString(buffer, 0, numRead);
                 sb.Append(text);
             }
 
@@ -2149,7 +2155,7 @@ namespace IDE
             new InterpreterConfigBox(Program.STARTUP_PATH + "\\config\\runners\\test.icbconfig");
         }
         #endregion
-        #region 检查更新
+        #region 检查&下载更新
         private async Task UpdateCheckAsync()
         {
             var uc = new UpdateChecker();
@@ -2157,6 +2163,25 @@ namespace IDE
             await uc.DownloadTestAsync();
             await uc.DownloadUpdateFileAsync();
             uc.AnalyzeUpdateFile();
+            uc.ValidateUpdate();
+        }
+
+        private async void DownloadUpdate(object sender, EventArgs e)
+        {
+            var ubd = new UpdateBackgroundDownloader();
+            toolStripStatusLabel12.Enabled = false;
+            await ubd.DownloadUpdateAsync();
+            DeployUpdate();
+        }
+
+        private void DeployUpdate()
+        {
+            while (GlobalDefinitions.CanDeployUpdate & !GlobalDefinitions.UpdateDeployed)
+            {
+                toolStripStatusLabel12.Enabled = true;
+                var ugd = new UpdateGlobalDeployer();
+                ugd.DeployUpdate();
+            }
         }
         #endregion
         #region extern模块

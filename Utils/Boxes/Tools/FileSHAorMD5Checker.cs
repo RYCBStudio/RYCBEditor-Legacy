@@ -33,12 +33,12 @@ public partial class FileSHAorMD5Checker : UIForm
     {
         try
         {
-            FileStream file = new FileStream(fileName, System.IO.FileMode.Open);
+            var file = new FileStream(fileName, System.IO.FileMode.Open);
             MD5 md5 = new MD5CryptoServiceProvider();
-            byte[] retVal = md5.ComputeHash(file);
+            var retVal = md5.ComputeHash(file);
             file.Close();
-            StringBuilder sb = new StringBuilder();
-            for (int i = 0; i < retVal.Length; i++)
+            var sb = new StringBuilder();
+            for (var i = 0; i < retVal.Length; i++)
             {
                 sb.Append(retVal[i].ToString("x2"));
             }
@@ -53,13 +53,13 @@ public partial class FileSHAorMD5Checker : UIForm
 
     public string GetSHA1(string s)
     {
-        FileStream file = new FileStream(s, FileMode.Open);
+        var file = new FileStream(s, FileMode.Open);
         SHA1 sha1 = new SHA1CryptoServiceProvider();
-        byte[] retval = sha1.ComputeHash(file);
+        var retval = sha1.ComputeHash(file);
         file.Close();
 
-        StringBuilder sc = new StringBuilder();
-        for (int i = 0; i < retval.Length; i++)
+        var sc = new StringBuilder();
+        for (var i = 0; i < retval.Length; i++)
         {
             sc.Append(retval[i].ToString("x2"));
         }

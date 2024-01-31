@@ -19,6 +19,23 @@ internal partial class UpdateChecker
         csc.GenerateDownloadURL();
     }
 
+    public void ValidateUpdate()
+    {
+        if (GlobalDefinitions.UpdateInfo.MajorVersion >= Main.MAJOR_VER &
+            GlobalDefinitions.UpdateInfo.MinorVersion >= Main.MINOR_VER &
+            GlobalDefinitions.UpdateInfo.MicroVersion >= Main.MICRO_VER &
+            GlobalDefinitions.ValidateRevisionNumber(GlobalDefinitions.UpdateInfo.RevisionNumber))
+        {
+            GlobalDefinitions.CanUpdate = true;
+            return;
+        }
+        else
+        {
+            GlobalDefinitions.CanUpdate = false;
+        }
+        return;
+    }
+
     public async Task DownloadTestAsync()
     {
         if (!GlobalDefinitions.CloudSourceOK) { return; }
@@ -38,7 +55,7 @@ internal partial class UpdateChecker
                     Accept = "*/*",
                     AutomaticDecompression = DecompressionMethods.GZip | DecompressionMethods.Deflate,
                     CookieContainer =  new CookieContainer(), // Add your cookies
-                    Headers = new WebHeaderCollection(), // Add your custom headers
+                    Headers = [], // Add your custom headers
                     KeepAlive = false,
                     ProtocolVersion = HttpVersion.Version11, // Default value is HTTP 1.1
                     UseDefaultCredentials = false,
@@ -140,7 +157,7 @@ internal partial class UpdateChecker
     {
         string[] sizeUnits = ["B", "KB", "MB", "GB", "TB"];
         double size = fileSize;
-        int unitIndex = 0;
+        var unitIndex = 0;
 
         while (size >= 1024 && unitIndex < sizeUnits.Length - 1)
         {

@@ -3,7 +3,7 @@ using ICSharpCode.AvalonEdit.Document;
 using ICSharpCode.AvalonEdit.Editing;
 using IDE.Properties;
 using System;
-using System.Diagnostics;
+using RE_Addon_Controls;
 using System.Windows;
 using System.Windows.Interop;
 using System.Windows.Media;

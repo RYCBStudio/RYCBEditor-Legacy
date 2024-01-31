@@ -87,5 +87,6 @@ Custom.ForeGround=
 # This sets the background color of IDE.
 # Accepted Value: HEX Color Value(e.g. #FF000000 or #000000)
 Custom.BackGround=
+
 [FistBoot]
 IsFirstBoot=False

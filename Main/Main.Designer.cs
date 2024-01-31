@@ -87,6 +87,12 @@ namespace IDE
             this.toolStripStatusLabel6 = new System.Windows.Forms.ToolStripStatusLabel();
             this.toolStripStatusLabel7 = new System.Windows.Forms.ToolStripStatusLabel();
             this.toolStripStatusLabel5 = new System.Windows.Forms.ToolStripStatusLabel();
+            this.toolStripStatusLabel10 = new System.Windows.Forms.ToolStripStatusLabel();
+            this.UpdateIcon = new System.Windows.Forms.ToolStripStatusLabel();
+            this.toolStripStatusLabel11 = new System.Windows.Forms.ToolStripStatusLabel();
+            this.toolStripStatusLabel13 = new System.Windows.Forms.ToolStripStatusLabel();
+            this.toolStripStatusLabel9 = new System.Windows.Forms.ToolStripStatusLabel();
+            this.toolStripStatusLabel12 = new System.Windows.Forms.ToolStripStatusLabel();
             this.WorkingIcon = new System.Windows.Forms.ToolStripStatusLabel();
             this.CurrentWorkTip = new System.Windows.Forms.ToolStripStatusLabel();
             this.FileSavingIcon = new System.Windows.Forms.ToolStripStatusLabel();
@@ -117,11 +123,15 @@ namespace IDE
             this.toolStripButton2 = new System.Windows.Forms.ToolStripButton();
             this.toolStripButton3 = new System.Windows.Forms.ToolStripButton();
             this.toolStripSeparator1 = new System.Windows.Forms.ToolStripSeparator();
-            this.UpdateIcon = new System.Windows.Forms.ToolStripStatusLabel();
-            this.toolStripStatusLabel11 = new System.Windows.Forms.ToolStripStatusLabel();
-            this.toolStripStatusLabel13 = new System.Windows.Forms.ToolStripStatusLabel();
-            this.toolStripStatusLabel9 = new System.Windows.Forms.ToolStripStatusLabel();
-            this.toolStripStatusLabel10 = new System.Windows.Forms.ToolStripStatusLabel();
+            this.statusStrip3 = new System.Windows.Forms.StatusStrip();
+            this.Downloading = new System.Windows.Forms.ToolStripStatusLabel();
+            this.ReceivedBytes = new System.Windows.Forms.ToolStripStatusLabel();
+            this.ReceivedBytesUnit = new System.Windows.Forms.ToolStripStatusLabel();
+            this.ToReceiveBytes = new System.Windows.Forms.ToolStripStatusLabel();
+            this.UpdateProgress = new System.Windows.Forms.ToolStripProgressBar();
+            this.DownloadProgress = new System.Windows.Forms.ToolStripStatusLabel();
+            this.Percent = new System.Windows.Forms.ToolStripStatusLabel();
+            this.DownloadSpeed = new System.Windows.Forms.ToolStripStatusLabel();
             this.menuStrip1.SuspendLayout();
             this.contextMenuStrip1.SuspendLayout();
             this.statusStrip1.SuspendLayout();
@@ -135,6 +145,7 @@ namespace IDE
             this.ErrorAndExceptionsPage.SuspendLayout();
             this.tabPage2.SuspendLayout();
             this.toolStrip1.SuspendLayout();
+            this.statusStrip3.SuspendLayout();
             this.SuspendLayout();
             // 
             // menuStrip1
@@ -597,9 +608,10 @@ namespace IDE
             this.toolStripStatusLabel4,
             this.toolStripStatusLabel8,
             this.Blank});
-            this.statusStrip1.Location = new System.Drawing.Point(0, 650);
+            this.statusStrip1.Location = new System.Drawing.Point(0, 685);
             this.statusStrip1.Name = "statusStrip1";
             this.statusStrip1.Size = new System.Drawing.Size(1064, 26);
+            this.statusStrip1.SizingGrip = false;
             this.statusStrip1.TabIndex = 3;
             this.statusStrip1.Text = "statusStrip1";
             // 
@@ -647,13 +659,15 @@ namespace IDE
             this.toolStripStatusLabel11,
             this.toolStripStatusLabel13,
             this.toolStripStatusLabel9,
+            this.toolStripStatusLabel12,
             this.WorkingIcon,
             this.CurrentWorkTip,
             this.FileSavingIcon,
             this.FileSavingTip});
-            this.statusStrip2.Location = new System.Drawing.Point(0, 624);
+            this.statusStrip2.Location = new System.Drawing.Point(0, 659);
             this.statusStrip2.Name = "statusStrip2";
             this.statusStrip2.Size = new System.Drawing.Size(1064, 26);
+            this.statusStrip2.SizingGrip = false;
             this.statusStrip2.TabIndex = 4;
             this.statusStrip2.Text = "statusStrip2";
             // 
@@ -678,6 +692,50 @@ namespace IDE
             // 
             this.toolStripStatusLabel5.Name = "toolStripStatusLabel5";
             this.toolStripStatusLabel5.Size = new System.Drawing.Size(0, 20);
+            // 
+            // toolStripStatusLabel10
+            // 
+            this.toolStripStatusLabel10.Name = "toolStripStatusLabel10";
+            this.toolStripStatusLabel10.Size = new System.Drawing.Size(80, 20);
+            this.toolStripStatusLabel10.Spring = true;
+            // 
+            // UpdateIcon
+            // 
+            this.UpdateIcon.DisplayStyle = System.Windows.Forms.ToolStripItemDisplayStyle.Image;
+            this.UpdateIcon.Image = global::IDE.Properties.Resources.Update_can_update;
+            this.UpdateIcon.Name = "UpdateIcon";
+            this.UpdateIcon.Size = new System.Drawing.Size(20, 20);
+            // 
+            // toolStripStatusLabel11
+            // 
+            this.toolStripStatusLabel11.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(162)))), ((int)(((byte)(162)))), ((int)(((byte)(162)))));
+            this.toolStripStatusLabel11.Name = "toolStripStatusLabel11";
+            this.toolStripStatusLabel11.Size = new System.Drawing.Size(17, 20);
+            this.toolStripStatusLabel11.Text = " |";
+            // 
+            // toolStripStatusLabel13
+            // 
+            this.toolStripStatusLabel13.Image = global::IDE.Properties.Resources.select_dark;
+            this.toolStripStatusLabel13.Name = "toolStripStatusLabel13";
+            this.toolStripStatusLabel13.Size = new System.Drawing.Size(20, 20);
+            // 
+            // toolStripStatusLabel9
+            // 
+            this.toolStripStatusLabel9.Name = "toolStripStatusLabel9";
+            this.toolStripStatusLabel9.Size = new System.Drawing.Size(231, 20);
+            this.toolStripStatusLabel9.Text = "There are new updates for IDE.";
+            // 
+            // toolStripStatusLabel12
+            // 
+            this.toolStripStatusLabel12.IsLink = true;
+            this.toolStripStatusLabel12.LinkBehavior = System.Windows.Forms.LinkBehavior.NeverUnderline;
+            this.toolStripStatusLabel12.LinkColor = System.Drawing.Color.Turquoise;
+            this.toolStripStatusLabel12.Name = "toolStripStatusLabel12";
+            this.toolStripStatusLabel12.Size = new System.Drawing.Size(141, 20);
+            this.toolStripStatusLabel12.Text = "Download Update";
+            this.toolStripStatusLabel12.VisitedLinkColor = System.Drawing.Color.DarkOrchid;
+            this.toolStripStatusLabel12.Click += new System.EventHandler(this.DownloadUpdate);
+            this.toolStripStatusLabel12.DoubleClick += new System.EventHandler(this.DownloadUpdate);
             // 
             // WorkingIcon
             // 
@@ -731,7 +789,7 @@ namespace IDE
             this.tableLayoutPanel1.RowCount = 2;
             this.tableLayoutPanel1.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Percent, 75F));
             this.tableLayoutPanel1.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Percent, 25F));
-            this.tableLayoutPanel1.Size = new System.Drawing.Size(1064, 563);
+            this.tableLayoutPanel1.Size = new System.Drawing.Size(1064, 572);
             this.tableLayoutPanel1.TabIndex = 6;
             // 
             // tabControl1
@@ -749,7 +807,7 @@ namespace IDE
             this.tabControl1.Name = "tabControl1";
             this.tabControl1.SelectedIndex = 0;
             this.tabControl1.ShowCloseButton = true;
-            this.tabControl1.Size = new System.Drawing.Size(1058, 416);
+            this.tabControl1.Size = new System.Drawing.Size(1058, 423);
             this.tabControl1.SizeMode = System.Windows.Forms.TabSizeMode.Fixed;
             this.tabControl1.StyleCustomMode = true;
             this.tabControl1.TabBackColor = System.Drawing.Color.Black;
@@ -766,7 +824,7 @@ namespace IDE
             this.tabPage1.Controls.Add(this.webView1);
             this.tabPage1.Location = new System.Drawing.Point(0, 30);
             this.tabPage1.Name = "tabPage1";
-            this.tabPage1.Size = new System.Drawing.Size(1058, 386);
+            this.tabPage1.Size = new System.Drawing.Size(1058, 393);
             this.tabPage1.TabIndex = 0;
             this.tabPage1.Text = "text.tc.tp.tmp";
             // 
@@ -780,7 +838,7 @@ namespace IDE
             this.tableLayoutPanel2.Name = "tableLayoutPanel2";
             this.tableLayoutPanel2.RowCount = 1;
             this.tableLayoutPanel2.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Percent, 50F));
-            this.tableLayoutPanel2.Size = new System.Drawing.Size(1058, 386);
+            this.tableLayoutPanel2.Size = new System.Drawing.Size(1058, 393);
             this.tableLayoutPanel2.TabIndex = 0;
             // 
             // elementHost1
@@ -788,7 +846,7 @@ namespace IDE
             this.elementHost1.Dock = System.Windows.Forms.DockStyle.Fill;
             this.elementHost1.Location = new System.Drawing.Point(3, 3);
             this.elementHost1.Name = "elementHost1";
-            this.elementHost1.Size = new System.Drawing.Size(1052, 380);
+            this.elementHost1.Size = new System.Drawing.Size(1052, 387);
             this.elementHost1.TabIndex = 1;
             this.elementHost1.Validating += new System.ComponentModel.CancelEventHandler(this.LayoutTextEditor);
             this.elementHost1.Child = null;
@@ -814,12 +872,12 @@ namespace IDE
             this.uiTabControl1.FillColor = System.Drawing.Color.FromArgb(((int)(((byte)(248)))), ((int)(((byte)(248)))), ((int)(((byte)(248)))));
             this.uiTabControl1.Font = new System.Drawing.Font("微软雅黑", 9F);
             this.uiTabControl1.ItemSize = new System.Drawing.Size(150, 25);
-            this.uiTabControl1.Location = new System.Drawing.Point(3, 425);
+            this.uiTabControl1.Location = new System.Drawing.Point(3, 432);
             this.uiTabControl1.MainPage = "";
             this.uiTabControl1.MenuStyle = Sunny.UI.UIMenuStyle.Custom;
             this.uiTabControl1.Name = "uiTabControl1";
             this.uiTabControl1.SelectedIndex = 0;
-            this.uiTabControl1.Size = new System.Drawing.Size(1058, 135);
+            this.uiTabControl1.Size = new System.Drawing.Size(1058, 137);
             this.uiTabControl1.SizeMode = System.Windows.Forms.TabSizeMode.Fixed;
             this.uiTabControl1.Style = Sunny.UI.UIStyle.Custom;
             this.uiTabControl1.StyleCustomMode = true;
@@ -836,7 +894,7 @@ namespace IDE
             this.ErrorAndExceptionsPage.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(243)))), ((int)(((byte)(249)))), ((int)(((byte)(255)))));
             this.ErrorAndExceptionsPage.Location = new System.Drawing.Point(0, 0);
             this.ErrorAndExceptionsPage.Name = "ErrorAndExceptionsPage";
-            this.ErrorAndExceptionsPage.Size = new System.Drawing.Size(1058, 110);
+            this.ErrorAndExceptionsPage.Size = new System.Drawing.Size(1058, 112);
             this.ErrorAndExceptionsPage.TabIndex = 1;
             this.ErrorAndExceptionsPage.Text = "text.bottom.errors";
             // 
@@ -855,7 +913,7 @@ namespace IDE
             this.listView1.Location = new System.Drawing.Point(0, 0);
             this.listView1.MultiSelect = false;
             this.listView1.Name = "listView1";
-            this.listView1.Size = new System.Drawing.Size(1058, 110);
+            this.listView1.Size = new System.Drawing.Size(1058, 112);
             this.listView1.SmallImageList = this.imageList1;
             this.listView1.Sorting = System.Windows.Forms.SortOrder.Ascending;
             this.listView1.TabIndex = 0;
@@ -997,47 +1055,79 @@ namespace IDE
             this.toolStripSeparator1.Name = "toolStripSeparator1";
             this.toolStripSeparator1.Size = new System.Drawing.Size(6, 27);
             // 
-            // UpdateIcon
+            // statusStrip3
             // 
-            this.UpdateIcon.DisplayStyle = System.Windows.Forms.ToolStripItemDisplayStyle.Image;
-            this.UpdateIcon.Image = global::IDE.Properties.Resources.Update_can_update;
-            this.UpdateIcon.Name = "UpdateIcon";
-            this.UpdateIcon.Size = new System.Drawing.Size(20, 20);
+            this.statusStrip3.BackColor = System.Drawing.Color.Black;
+            this.statusStrip3.ImageScalingSize = new System.Drawing.Size(20, 20);
+            this.statusStrip3.Items.AddRange(new System.Windows.Forms.ToolStripItem[] {
+            this.Downloading,
+            this.ReceivedBytes,
+            this.ReceivedBytesUnit,
+            this.ToReceiveBytes,
+            this.UpdateProgress,
+            this.DownloadProgress,
+            this.Percent,
+            this.DownloadSpeed});
+            this.statusStrip3.Location = new System.Drawing.Point(0, 633);
+            this.statusStrip3.Name = "statusStrip3";
+            this.statusStrip3.Size = new System.Drawing.Size(1064, 26);
+            this.statusStrip3.SizingGrip = false;
+            this.statusStrip3.TabIndex = 1;
             // 
-            // toolStripStatusLabel11
+            // Downloading
             // 
-            this.toolStripStatusLabel11.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(162)))), ((int)(((byte)(162)))), ((int)(((byte)(162)))));
-            this.toolStripStatusLabel11.Name = "toolStripStatusLabel11";
-            this.toolStripStatusLabel11.Size = new System.Drawing.Size(17, 20);
-            this.toolStripStatusLabel11.Text = " |";
+            this.Downloading.Name = "Downloading";
+            this.Downloading.Size = new System.Drawing.Size(168, 20);
+            this.Downloading.Text = "Downloading Update:";
             // 
-            // toolStripStatusLabel13
+            // ReceivedBytes
             // 
-            this.toolStripStatusLabel13.Image = global::IDE.Properties.Resources.select_dark;
-            this.toolStripStatusLabel13.Name = "toolStripStatusLabel13";
-            this.toolStripStatusLabel13.Size = new System.Drawing.Size(20, 20);
+            this.ReceivedBytes.Name = "ReceivedBytes";
+            this.ReceivedBytes.Size = new System.Drawing.Size(0, 20);
+            this.ReceivedBytes.TextAlign = System.Drawing.ContentAlignment.MiddleRight;
             // 
-            // toolStripStatusLabel9
+            // ReceivedBytesUnit
             // 
-            this.toolStripStatusLabel9.Name = "toolStripStatusLabel9";
-            this.toolStripStatusLabel9.Size = new System.Drawing.Size(173, 20);
-            this.toolStripStatusLabel9.Text = "Updates are prepared.";
+            this.ReceivedBytesUnit.Name = "ReceivedBytesUnit";
+            this.ReceivedBytesUnit.Size = new System.Drawing.Size(15, 20);
+            this.ReceivedBytesUnit.Text = "/";
             // 
-            // toolStripStatusLabel10
+            // ToReceiveBytes
             // 
-            this.toolStripStatusLabel10.Name = "toolStripStatusLabel10";
-            this.toolStripStatusLabel10.Size = new System.Drawing.Size(240, 20);
-            this.toolStripStatusLabel10.Spring = true;
+            this.ToReceiveBytes.Name = "ToReceiveBytes";
+            this.ToReceiveBytes.Size = new System.Drawing.Size(0, 20);
+            // 
+            // UpdateProgress
+            // 
+            this.UpdateProgress.Name = "UpdateProgress";
+            this.UpdateProgress.Size = new System.Drawing.Size(200, 18);
+            // 
+            // DownloadProgress
+            // 
+            this.DownloadProgress.Name = "DownloadProgress";
+            this.DownloadProgress.Size = new System.Drawing.Size(0, 20);
+            // 
+            // Percent
+            // 
+            this.Percent.Name = "Percent";
+            this.Percent.Size = new System.Drawing.Size(22, 20);
+            this.Percent.Text = "%";
+            // 
+            // DownloadSpeed
+            // 
+            this.DownloadSpeed.Name = "DownloadSpeed";
+            this.DownloadSpeed.Size = new System.Drawing.Size(0, 20);
             // 
             // Main
             // 
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.None;
             this.BackColor = System.Drawing.Color.Black;
-            this.ClientSize = new System.Drawing.Size(1064, 676);
+            this.ClientSize = new System.Drawing.Size(1064, 711);
             this.Controls.Add(this.tableLayoutPanel1);
             this.Controls.Add(this.toolStrip1);
             this.Controls.Add(this.menuStrip1);
             this.Controls.Add(this.HelpButton);
+            this.Controls.Add(this.statusStrip3);
             this.Controls.Add(this.statusStrip2);
             this.Controls.Add(this.statusStrip1);
             this.Cursor = System.Windows.Forms.Cursors.Default;
@@ -1070,6 +1160,8 @@ namespace IDE
             this.tabPage2.ResumeLayout(false);
             this.toolStrip1.ResumeLayout(false);
             this.toolStrip1.PerformLayout();
+            this.statusStrip3.ResumeLayout(false);
+            this.statusStrip3.PerformLayout();
             this.ResumeLayout(false);
             this.PerformLayout();
 
@@ -1077,95 +1169,105 @@ namespace IDE
 
         #endregion
 
-        private System.Windows.Forms.MenuStrip menuStrip1;
-        private System.Windows.Forms.ToolStripMenuItem 文件FToolStripMenuItem;
-        private System.Windows.Forms.ToolStripMenuItem 新建NToolStripMenuItem;
-        private System.Windows.Forms.ToolStripMenuItem 打开OToolStripMenuItem;
-        private System.Windows.Forms.ToolStripMenuItem 保存SToolStripMenuItem;
-        private System.Windows.Forms.ToolStripMenuItem 另存为AToolStripMenuItem;
-        private System.Windows.Forms.ToolStripMenuItem 编辑EToolStripMenuItem;
-        private System.Windows.Forms.ToolStripMenuItem 撤消UToolStripMenuItem;
-        private System.Windows.Forms.ToolStripMenuItem 剪切TToolStripMenuItem;
-        private System.Windows.Forms.ToolStripMenuItem 复制CToolStripMenuItem;
-        private System.Windows.Forms.ToolStripMenuItem 粘贴PToolStripMenuItem;
-        private System.Windows.Forms.ToolStripMenuItem 工具TToolStripMenuItem;
-        private System.Windows.Forms.ToolStripMenuItem 自定义CToolStripMenuItem;
-        private System.Windows.Forms.ToolStripMenuItem 选项OToolStripMenuItem;
-        private System.Windows.Forms.ToolStripMenuItem 帮助HToolStripMenuItem;
-        private System.Windows.Forms.ToolStripMenuItem 关于AToolStripMenuItem;
-        private System.Windows.Forms.OpenFileDialog openFileDialog1;
-        private System.Windows.Forms.Timer autoSaveController;
-        private System.Windows.Forms.SaveFileDialog saveFileDialog1;
-        private System.Windows.Forms.Timer BackgroundWorker_GetFileType;
-        private System.Windows.Forms.ContextMenuStrip contextMenuStrip1;
-        private System.Windows.Forms.ToolStripMenuItem 刷新RToolStripMenuItem;
-        private System.Windows.Forms.ToolStripMenuItem 关闭CtrlF4ToolStripMenuItem;
-        private System.Windows.Forms.ToolStripStatusLabel toolStripStatusLabel2;
-        private System.Windows.Forms.StatusStrip statusStrip1;
-        private System.Windows.Forms.Timer MemoryChecker;
-        private System.Windows.Forms.StatusStrip statusStrip2;
-        private System.Windows.Forms.ToolStripStatusLabel toolStripStatusLabel3;
-        private System.Windows.Forms.Button HelpButton;
-        private System.Windows.Forms.ToolStripMenuItem 配置ToolStripMenuItem;
-        private System.Windows.Forms.ToolStripMenuItem 鸣谢ToolStripMenuItem;
-        private System.Windows.Forms.ToolStripMenuItem 许可与版权声明ToolStripMenuItem;
-        private System.Windows.Forms.Timer SizeController;
-        private System.Windows.Forms.ToolStripStatusLabel toolStripStatusLabel1;
-        private System.Windows.Forms.ToolStripStatusLabel toolStripStatusLabel4;
-        private System.Windows.Forms.ToolStripStatusLabel toolStripStatusLabel5;
-        private System.Windows.Forms.ToolStripMenuItem 重复RToolStripMenuItem;
-        private System.Windows.Forms.ToolStripMenuItem 全选AToolStripMenuItem;
-        private System.Windows.Forms.ToolStripStatusLabel toolStripStatusLabel6;
-        private System.Windows.Forms.ToolStripStatusLabel toolStripStatusLabel7;
-        private System.Windows.Forms.ToolStripMenuItem 项目ToolStripMenuItem;
-        private System.Windows.Forms.ToolStripMenuItem 文件ToolStripMenuItem;
-        private System.Windows.Forms.Timer SyntaxErrorChecker;
-        private System.Windows.Forms.ToolStripMenuItem 开发者选项DToolStripMenuItem;
-        private System.Windows.Forms.ToolStripMenuItem 崩溃测试ToolStripMenuItem;
-        private System.Windows.Forms.ToolStripMenuItem 运行RToolStripMenuItem;
-        private System.Windows.Forms.ToolStripMenuItem 运行ToolStripMenuItem;
-        private ToolStripMenuItem 百宝箱ToolStripMenuItem;
-        private ToolStripMenuItem 应用程序ToolStripMenuItem;
-        private ToolStripMenuItem 退出ToolStripMenuItem;
-        private ToolStripMenuItem 重启ToolStripMenuItem;
-        private ToolStripMenuItem 捐助ToolStripMenuItem;
-        private TableLayoutPanel tableLayoutPanel1;
-        private Sunny.UI.UITabControl tabControl1;
-        private TabPage tabPage1;
-        private TableLayoutPanel tableLayoutPanel2;
-        private System.Windows.Forms.Integration.ElementHost elementHost1;
-        private ToolStripMenuItem 查找替换ToolStripMenuItem;
-        private ToolStripStatusLabel FileSavingIcon;
-        private ToolStripStatusLabel FileSavingTip;
-        private ToolStripMenuItem 快速工具ToolStripMenuItem;
-        private ToolStripMenuItem 清理缓存ToolStripMenuItem;
-        private Sunny.UI.UITabControl uiTabControl1;
-        private TabPage ErrorAndExceptionsPage;
-        private ListView listView1;
-        private ColumnHeader columnHeader1;
-        private ColumnHeader columnHeader2;
-        private ColumnHeader columnHeader4;
-        private ColumnHeader columnHeader5;
-        private ImageList imageList1;
-        private TabPage tabPage2;
-        private Panel panel1;
-        private SmileWei.EmbeddedApp.AppContainer appContainer1;
-        private Microsoft.Web.WebView2.WinForms.WebView2 webView1;
-        private ToolStrip toolStrip1;
-        private ToolStripButton toolStripButton1;
-        private ToolStripButton toolStripButton2;
-        private ToolStripButton toolStripButton3;
-        private ToolStripSeparator toolStripSeparator1;
-        private ToolStripStatusLabel WorkingIcon;
-        private ToolStripStatusLabel CurrentWorkTip;
-        private ToolStripMenuItem 配置运行器ToolStripMenuItem;
-        private ToolStripStatusLabel toolStripStatusLabel8;
-        private ToolStripStatusLabel Blank;
-        private ToolStripStatusLabel UpdateIcon;
-        private ToolStripStatusLabel toolStripStatusLabel11;
-        private ToolStripStatusLabel toolStripStatusLabel13;
-        private ToolStripStatusLabel toolStripStatusLabel9;
-        private ToolStripStatusLabel toolStripStatusLabel10;
+        internal MenuStrip menuStrip1;
+        internal ToolStripMenuItem 文件FToolStripMenuItem;
+        internal ToolStripMenuItem 新建NToolStripMenuItem;
+        internal ToolStripMenuItem 打开OToolStripMenuItem;
+        internal ToolStripMenuItem 保存SToolStripMenuItem;
+        internal ToolStripMenuItem 另存为AToolStripMenuItem;
+        internal ToolStripMenuItem 编辑EToolStripMenuItem;
+        internal ToolStripMenuItem 撤消UToolStripMenuItem;
+        internal ToolStripMenuItem 剪切TToolStripMenuItem;
+        internal ToolStripMenuItem 复制CToolStripMenuItem;
+        internal ToolStripMenuItem 粘贴PToolStripMenuItem;
+        internal ToolStripMenuItem 工具TToolStripMenuItem;
+        internal ToolStripMenuItem 自定义CToolStripMenuItem;
+        internal ToolStripMenuItem 选项OToolStripMenuItem;
+        internal ToolStripMenuItem 帮助HToolStripMenuItem;
+        internal ToolStripMenuItem 关于AToolStripMenuItem;
+        internal OpenFileDialog openFileDialog1;
+        internal Timer autoSaveController;
+        internal SaveFileDialog saveFileDialog1;
+        internal Timer BackgroundWorker_GetFileType;
+        internal ContextMenuStrip contextMenuStrip1;
+        internal ToolStripMenuItem 刷新RToolStripMenuItem;
+        internal ToolStripMenuItem 关闭CtrlF4ToolStripMenuItem;
+        internal ToolStripStatusLabel toolStripStatusLabel2;
+        internal StatusStrip statusStrip1;
+        internal Timer MemoryChecker;
+        internal StatusStrip statusStrip2;
+        internal ToolStripStatusLabel toolStripStatusLabel3;
+        internal Button HelpButton;
+        internal ToolStripMenuItem 配置ToolStripMenuItem;
+        internal ToolStripMenuItem 鸣谢ToolStripMenuItem;
+        internal ToolStripMenuItem 许可与版权声明ToolStripMenuItem;
+        internal Timer SizeController;
+        internal ToolStripStatusLabel toolStripStatusLabel1;
+        internal ToolStripStatusLabel toolStripStatusLabel4;
+        internal ToolStripStatusLabel toolStripStatusLabel5;
+        internal ToolStripMenuItem 重复RToolStripMenuItem;
+        internal ToolStripMenuItem 全选AToolStripMenuItem;
+        internal ToolStripStatusLabel toolStripStatusLabel6;
+        internal ToolStripStatusLabel toolStripStatusLabel7;
+        internal ToolStripMenuItem 项目ToolStripMenuItem;
+        internal ToolStripMenuItem 文件ToolStripMenuItem;
+        internal Timer SyntaxErrorChecker;
+        internal ToolStripMenuItem 开发者选项DToolStripMenuItem;
+        internal ToolStripMenuItem 崩溃测试ToolStripMenuItem;
+        internal ToolStripMenuItem 运行RToolStripMenuItem;
+        internal ToolStripMenuItem 运行ToolStripMenuItem;
+        internal ToolStripMenuItem 百宝箱ToolStripMenuItem;
+        internal ToolStripMenuItem 应用程序ToolStripMenuItem;
+        internal ToolStripMenuItem 退出ToolStripMenuItem;
+        internal ToolStripMenuItem 重启ToolStripMenuItem;
+        internal ToolStripMenuItem 捐助ToolStripMenuItem;
+        internal TableLayoutPanel tableLayoutPanel1;
+        internal Sunny.UI.UITabControl tabControl1;
+        internal TabPage tabPage1;
+        internal TableLayoutPanel tableLayoutPanel2;
+        internal System.Windows.Forms.Integration.ElementHost elementHost1;
+        internal ToolStripMenuItem 查找替换ToolStripMenuItem;
+        internal ToolStripStatusLabel FileSavingIcon;
+        internal ToolStripStatusLabel FileSavingTip;
+        internal ToolStripMenuItem 快速工具ToolStripMenuItem;
+        internal ToolStripMenuItem 清理缓存ToolStripMenuItem;
+        internal Sunny.UI.UITabControl uiTabControl1;
+        internal TabPage ErrorAndExceptionsPage;
+        internal ListView listView1;
+        internal ColumnHeader columnHeader1;
+        internal ColumnHeader columnHeader2;
+        internal ColumnHeader columnHeader4;
+        internal ColumnHeader columnHeader5;
+        internal ImageList imageList1;
+        internal TabPage tabPage2;
+        internal Panel panel1;
+        internal SmileWei.EmbeddedApp.AppContainer appContainer1;
+        internal Microsoft.Web.WebView2.WinForms.WebView2 webView1;
+        internal ToolStrip toolStrip1;
+        internal ToolStripButton toolStripButton1;
+        internal ToolStripButton toolStripButton2;
+        internal ToolStripButton toolStripButton3;
+        internal ToolStripSeparator toolStripSeparator1;
+        internal ToolStripStatusLabel WorkingIcon;
+        internal ToolStripStatusLabel CurrentWorkTip;
+        internal ToolStripMenuItem 配置运行器ToolStripMenuItem;
+        internal ToolStripStatusLabel toolStripStatusLabel8;
+        internal ToolStripStatusLabel Blank;
+        internal ToolStripStatusLabel UpdateIcon;
+        internal ToolStripStatusLabel toolStripStatusLabel11;
+        internal ToolStripStatusLabel toolStripStatusLabel13;
+        internal ToolStripStatusLabel toolStripStatusLabel10;
+        internal ToolStripStatusLabel toolStripStatusLabel12;
+        internal StatusStrip statusStrip3;
+        internal ToolStripStatusLabel ReceivedBytes;
+        internal ToolStripStatusLabel ReceivedBytesUnit;
+        internal ToolStripStatusLabel ToReceiveBytes;
+        internal ToolStripProgressBar UpdateProgress;
+        internal ToolStripStatusLabel DownloadProgress;
+        internal ToolStripStatusLabel Percent;
+        internal ToolStripStatusLabel Downloading;
+        internal ToolStripStatusLabel DownloadSpeed;
+        internal ToolStripStatusLabel toolStripStatusLabel9;
     }
 }
 

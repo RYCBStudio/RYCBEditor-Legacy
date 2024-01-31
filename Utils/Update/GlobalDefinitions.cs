@@ -15,7 +15,13 @@ internal static class GlobalDefinitions
 
     internal static bool CloudSourceOK;
 
-    internal static bool UpdateCheckOK = true;
+    internal static bool UpdateCheckOK;
+
+    internal static bool CanUpdate;
+
+    internal static bool CanDeployUpdate;
+
+    internal static bool UpdateDeployed;
 
     internal static AreaInfo CurrentArea;
 
@@ -31,6 +37,8 @@ internal static class GlobalDefinitions
     internal static string UpdateFile_URL;
 
     internal static string UpdateFile_Path;
+
+    internal static string UpdateArchive_Path;
 
     internal static class UpdateInfo
     {
@@ -57,12 +65,12 @@ internal static class GlobalDefinitions
     {
         try
         {
-            FileStream file = new FileStream(fileName, System.IO.FileMode.Open);
+            var file = new FileStream(fileName, System.IO.FileMode.Open);
             MD5 md5 = new MD5CryptoServiceProvider();
-            byte[] retVal = md5.ComputeHash(file);
+            var retVal = md5.ComputeHash(file);
             file.Close();
-            StringBuilder sb = new StringBuilder();
-            for (int i = 0; i < retVal.Length; i++)
+            var sb = new StringBuilder();
+            for (var i = 0; i < retVal.Length; i++)
             {
                 sb.Append(retVal[i].ToString("x2"));
             }
@@ -85,5 +93,15 @@ internal static class GlobalDefinitions
                 return BitConverter.ToString(hash).Replace("-", "").ToLower();
             }
         }
+    }
+
+    internal static bool ValidateRevisionNumber(string revisionNumber)
+    {
+        List<string> rn_list = ["alpha", "beta", "rc", "public"];
+        if (rn_list.IndexOf(revisionNumber) > rn_list.IndexOf(Main.REVISION.ToLower()))
+        {
+            return true;
+        }
+        return false;
     }
 }

@@ -215,12 +215,12 @@ namespace IDE
         /// <returns>一个元组，包含二进制元数据和字符串数据。</returns>
         public static (string, string) ReadBinaryFile(string filePath)
         {
-            string binaryString = "";
-            string textString = "";
+            var binaryString = "";
+            var textString = "";
 
-            using (FileStream fs = new FileStream(filePath, FileMode.Open, FileAccess.Read))
+            using (var fs = new FileStream(filePath, FileMode.Open, FileAccess.Read))
             {
-                byte[] buffer = new byte[4096];
+                var buffer = new byte[4096];
                 int bytesRead;
 
                 while ((bytesRead = fs.Read(buffer, 0, buffer.Length)) > 0)
@@ -235,8 +235,8 @@ namespace IDE
 
         private static string ConvertBytesToBinaryString(byte[] bytes, int length)
         {
-            string binaryString = "";
-            for (int i = 0; i < length; i++)
+            var binaryString = "";
+            for (var i = 0; i < length; i++)
             {
                 binaryString += Convert.ToString(bytes[i], 2).PadLeft(8, '0');
             }
@@ -260,7 +260,7 @@ namespace IDE
         public static string RunCmd(string cmd)
         {
             cmd = cmd.Trim().TrimEnd('&') + "&exit";//说明：不管命令是否成功均执行exit命令，否则当调用ReadToEnd()方法时，会处于假死状态
-            using (Process p = new Process())
+            using (var p = new Process())
             {
                 p.StartInfo.FileName = CmdPath;
                 p.StartInfo.UseShellExecute = false; //是否使用操作系统shell启动
@@ -275,7 +275,7 @@ namespace IDE
                 p.StandardInput.AutoFlush = true;
 
                 //获取cmd窗口的输出信息
-                string output = p.StandardOutput.ReadToEnd();
+                var output = p.StandardOutput.ReadToEnd();
                 p.WaitForExit();//等待程序执行完退出进程
                 p.Close();
 
@@ -334,7 +334,7 @@ namespace IDE
         {
             public static bool ParallelDownload = Program.reConf.ReadBool("Downloading", "ParallelDownload", true);
             public static bool AutoParallelCount = Program.reConf.ReadBool("Downloading", "AutoParallelCount", false);
-            public static int ParallelCount = Program.reConf.ReadInt("Downloading", "ParallelCount", Environment.ProcessorCount * 2);
+            public static int ParallelCount = (AutoParallelCount ? Program.reConf.ReadInt("Downloading", "ParallelCount", Environment.ProcessorCount * 2) : Environment.ProcessorCount * 2);
         }
     }
 
@@ -379,20 +379,20 @@ namespace IDE
         public static List<string> Analyze(string content)
         {
             // 去除注释和字符串字面量，只保留代码行
-            string[] lines = Regex.Split(content, @"(?:#[^\n]*|'[^']*'|""[^""]*"")*\n");
+            var lines = Regex.Split(content, @"(?:#[^\n]*|'[^']*'|""[^""]*"")*\n");
 
             // 匹配所有以字母或下划线开头的标识符
-            Regex pattern = new Regex(@"\b\w+\b");
+            var pattern = new Regex(@"\b\w+\b");
 
-            HashSet<string> variables = new HashSet<string>();
+            var variables = new HashSet<string>();
 
             // 逐行扫描，提取所有标识符
-            foreach (string line in lines)
+            foreach (var line in lines)
             {
-                MatchCollection matches = pattern.Matches(line);
+                var matches = pattern.Matches(line);
                 foreach (Match match in matches)
                 {
-                    string identifier = match.Value;
+                    var identifier = match.Value;
                     if (!char.IsDigit(identifier[0]))
                     {
                         variables.Add(identifier);
