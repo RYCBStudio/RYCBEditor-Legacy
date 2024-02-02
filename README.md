@@ -1,6 +1,6 @@
 # RYCB-Editor
 
-\[ 简体中文 | [English](./README_EN.md) \]
+\[ 简体中文 | [English](https://github.com/RYCBStudio/RYCB-Editor/README_EN.md) \]
 
 The Py-CN Project 配套IDE，具有高度自定义性。
 
