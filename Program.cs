@@ -1,5 +1,6 @@
 ﻿using IDE.Utils;
 using Microsoft.VisualBasic.Devices;
+using SmileWei.EmbeddedEXE;
 using Sunny.UI;
 using System;
 using System.Diagnostics;
@@ -14,9 +15,9 @@ namespace IDE
     {
         internal static readonly string STARTUP_PATH = Application.StartupPath;
         internal static bool isInitialized = false;
-        private static Form class_;
         private static bool isLightEdit = false;
         private static string param = "";
+        private static Form class_;
         private static readonly Stopwatch w = new();
         private static readonly Stopwatch startTimer = new();
         private static int CrashAttempts = 0;
@@ -46,7 +47,64 @@ namespace IDE
             startTimer.Start();
             GlobalSettings.MainFontName = reConf.Read("Display", "DisplayFont", "Microsoft YaHei UI").FontExists("Microsoft YaHei UI");
 
-            #region 判断参数
+            ParseArguments(args);
+
+            splash = new(isLightEdit);
+            splash.Show();
+            GlobalSettings.CrashAttempts = reConf.ReadInt("CrashHanding", "CrashAttempts", 3);
+            if (GlobalSettings.CrashAttempts == 0)
+            {
+                GlobalSettings.CrashAttempts = int.MaxValue;
+            }
+            var sys = new ComputerInfo().OSFullName;
+            var sysInfo = sys.Contains("Microsoft Windows");
+
+            if (!sysInfo)
+            {
+                return;
+            }
+
+            class_ = param == "" ? new Main() : new Main(param);
+
+            switch (true)
+            {
+                case bool _ when sys.Contains("10"):
+                case bool _ when sys.Contains("11"):
+                case bool _ when sys.Contains("8"):
+                case bool _ when sys.Contains("8.1"):
+                    func_1a1();
+                    break;
+                default:
+                    MessageBox.Show("您的计算机版本过低，请升级系统后打开此程序！");
+                    break;
+            }
+
+            End();
+        }
+
+        private static void Application_ThreadException(object sender, ThreadExceptionEventArgs e)
+        {
+            var ex = e.Exception;
+            IDE.Main.LOGGER.WriteErrLog(ex, EnumMsgLevel.ERROR, EnumPort.CLIENT);
+            Infrastructure.MiniDump.TryDump(STARTUP_PATH + $"\\Crash\\{DateTime.Now:yyyy-MM-dd_HH-mm-ss+fff}.dmp");
+            ((Main)class_).msgBox.MainForm = class_;
+            ((Main)class_).msgBox.CurrentMsgType = MsgBox.MsgType.Error;
+            ((Main)class_).msgBox.CurrentException = ex;
+            ((Main)class_).msgBox.Show();
+        }
+
+        private static void CurrentDomain_UnhandledException(object sender, UnhandledExceptionEventArgs e)
+        {
+            var ex = e.ExceptionObject as Exception;
+
+            if (e.IsTerminating)
+            {
+                End(ex);
+            }
+        }
+
+        private static void ParseArguments(string[] args)
+        {
             switch (args.Length)
             {
                 case 1:
@@ -74,91 +132,15 @@ namespace IDE
                 default:
                     break;
             }
-            #endregion
-            splash = new(isLightEdit);
-            splash.Show();
-            GlobalSettings.CrashAttempts = reConf.ReadInt("CrashHanding", "CrashAttempts", 3);
-            //reConf.Write("Editor", "XshdFilePath", STARTUP_PATH + "\\Config\\Highlighting");
-            if (GlobalSettings.CrashAttempts == 0)
-            {
-                GlobalSettings.CrashAttempts = int.MaxValue;
-            }
-            if (param == "") { class_ = new Main(); }
-            else { class_ = new Main(param); }
-
-            splash.metroProgressBar1.PerformStep();
-            GlobalSettings.language = reConf.Read("General", "Language", "zh-CN");
-            var sys = new ComputerInfo().OSFullName;
-            var sysInfo = sys.Contains("Microsoft Windows");
-            splash.metroProgressBar1.PerformStep();
-
-            #region 判断系统类型
-            if (!sysInfo)
-            {
-                return;
-            }
-            else
-            {
-                switch (true)
-                {
-                    case bool _ when sys.Contains("10"):
-                    case bool _ when sys.Contains("11"):
-                    case bool _ when sys.Contains("8"):
-                    case bool _ when sys.Contains("8.1"):
-                    {
-                        splash.metroProgressBar1.PerformStep();
-                        func_1a1(class_);
-                        break;
-                    }
-                    default:
-                    {
-                        MessageBox.Show("您的计算机版本过低，请升级系统后打开此程序！");
-                        break;
-                    }
-                }
-
-                End();
-            }
-            #endregion 
-            
         }
 
-        private static void Application_ThreadException(object sender, ThreadExceptionEventArgs e)
-        {
-            var ex = e.Exception;
-            IDE.Main.LOGGER.WriteErrLog(ex, EnumMsgLevel.ERROR, EnumPort.CLIENT);
-            Infrastructure.MiniDump.TryDump(STARTUP_PATH + $"\\Crash\\{DateTime.Now.Year}-{DateTime.Now.Month}-{DateTime.Now.Day}_{DateTime.Now.Hour}-{DateTime.Now.Minute}-{DateTime.Now.Second}+{DateTime.Now.Millisecond}.dmp");
-            ((Main)class_).msgBox.MainForm = class_;
-            //((Main)class_).msgBox.MarkdownText =
-            //    "<h3> Error</h3> <hr /> <p>Message:" + ex.Message + "</p><h5>Stacktrace(s):</h5><p>" + ex.StackTrace + "</p><h3>Error has written into the log file.</h3>";
-            ((Main)class_).msgBox.CurrentMsgType = MsgBox.MsgType.Error;
-            ((Main)class_).msgBox.CurrentException = ex;
-            //((Main)class_).msgBox.Invalidate();
-            ((Main)class_).msgBox.Show();
-            
-        }
-
-        private static void CurrentDomain_UnhandledException(object sender, UnhandledExceptionEventArgs e)
-        {
-            var ex = e.ExceptionObject as Exception;
-            //IDE.Main.LOGGER.WriteErrLog(ex, e.IsTerminating ? EnumMsgLevel.FATAL : EnumMsgLevel.ERROR, EnumPort.CLIENT);
-            //((Main)class_).msgBox.MarkdownText =
-            //    "## Error <hr /> <h5>Message:" + ex.Message + "</h5><h5>Stacktrace(s):</h5><h5>==============</h5><h5>" + ex.StackTrace + "</h5><h5>Error has written into the log file.</h5>";
-            //((Main)class_).msgBox.Show();
-            if (e.IsTerminating)
-            {
-                End(ex);
-            }
-        }
-
-        private static void func_1a1(Form form)
+        private static void func_1a1()
         {
             Initializer.Init();
             startTimer.Stop();
             startTime = startTimer.Elapsed;
-            splash.metroProgressBar1.PerformStep();
             splash.Hide();
-            Application.Run(form);
+            Application.Run(class_);
             isInitialized = true;
         }
 
@@ -177,7 +159,7 @@ namespace IDE
                 crashHandler.WriteDumpFile();
                 ErrorAnalysiser EA = new(ex);
                 EA.GetExceptions();
-                Infrastructure.MiniDump.TryDump(STARTUP_PATH + $"\\Crash\\{DateTime.Now.Year}-{DateTime.Now.Month}-{DateTime.Now.Day}_{DateTime.Now.Hour}-{DateTime.Now.Minute}-{DateTime.Now.Second}+{DateTime.Now.Millisecond}.dmp");
+                Infrastructure.MiniDump.TryDump(STARTUP_PATH + $"\\Crash\\{DateTime.Now:yyyy-MM-dd_HH-mm-ss+fff}.dmp");
                 Process.GetCurrentProcess().Kill();
             }
             else

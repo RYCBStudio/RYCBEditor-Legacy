@@ -805,7 +805,7 @@ A relative sensitivity ranking of the query. Available values are as below:
             Exception when executing a enclave based Always Encrypted query 
             </summary>
         </member>
-        <member name="M:Microsoft.Data.SqlClient.EnclaveDelegate.CreateEnclaveSession(Microsoft.Data.SqlClient.SqlConnectionAttestationProtocol,System.String,Microsoft.Data.SqlClient.EnclaveSessionParameters,System.Byte[],Microsoft.Data.SqlClient.SqlEnclaveAttestationParameters,System.Byte[],System.Int32)">
+        <member name="M:Microsoft.Data.SqlClient.EnclaveDelegate.CreateEnclaveSession(Microsoft.Data.SqlClient.SqlConnectionAttestationProtocol,System.String,Microsoft.Data.SqlClient.EnclaveSessionParameters,System.Byte[],Microsoft.Data.SqlClient.SqlEnclaveAttestationParameters,System.Byte[],System.Int32,System.Boolean)">
             <summary>
             Create a new enclave session
             </summary>
@@ -814,8 +814,9 @@ A relative sensitivity ranking of the query. Available values are as below:
             <param name="enclaveSessionParameters">The set of parameters required for enclave session.</param>
             <param name="attestationInfo">attestation info from SQL Server</param>
             <param name="attestationParameters">attestation parameters</param>
-            <param name="customData">A set of extra data needed for attestating the enclave.</param>
-            <param name="customDataLength">The length of the extra data needed for attestating the enclave.</param>
+            <param name="customData">A set of extra data needed for attesting the enclave.</param>
+            <param name="customDataLength">The length of the extra data needed for attesting the enclave.</param>
+            <param name="isRetry">Indicates if this is a retry from a failed call.</param>
         </member>
         <member name="M:Microsoft.Data.SqlClient.EnclaveDelegate.GenerateEnclavePackage(Microsoft.Data.SqlClient.SqlConnectionAttestationProtocol,System.Collections.Concurrent.ConcurrentDictionary{System.Int32,Microsoft.Data.SqlClient.SqlTceCipherInfoEntry},System.String,System.String,Microsoft.Data.SqlClient.EnclaveSessionParameters,Microsoft.Data.SqlClient.SqlConnection,Microsoft.Data.SqlClient.SqlCommand)">
             <summary>
@@ -847,11 +848,6 @@ A relative sensitivity ranking of the query. Available values are as below:
             In System.Data.SqlClient and Microsoft.Data.SqlClient prior to 3.0.0 a field with type Timestamp/RowVersion
             would return an empty byte array. This switch contols whether to preserve that behaviour on newer versions
             of Microsoft.Data.SqlClient, if this switch returns false an appropriate null value will be returned
-            </summary>
-        </member>
-        <member name="P:Microsoft.Data.SqlClient.LocalAppContextSwitches.UseSystemDefaultSecureProtocols">
-            <summary>
-            For backward compatibility, this switch can be on to jump back on OS preferences.
             </summary>
         </member>
         <member name="M:Microsoft.Data.SqlClient.NoneAttestationEnclaveProvider.InvalidateEnclaveSession(Microsoft.Data.SqlClient.EnclaveSessionParameters,Microsoft.Data.SqlClient.SqlEnclaveSession)">
@@ -1017,7 +1013,7 @@ The <xref:Microsoft.Data.SqlClient.SqlDependency.OnChange> event does not necess
             <see cref="T:System.EventHandler" /> with event argument of <see cref="T:Microsoft.Data.SqlClient.SqlRetryingEventArgs" /> object can be subscribed.</value><remarks>
             <format type="text/markdown"><![CDATA[  
 
-> [IMPORTAMT!]
+> [IMPORTANT!]
 > Don't block execution with a time consuming action when an event occurs. For instance, if you log data to a file, run it in a new thread to avoid blocking the main execution thread.  
 
 ]]>
@@ -4798,6 +4794,24 @@ Implicit conversions have been added to maintain backwards compatibility with bo
  ]]></format>
       </remarks>
         </member>
+        <member name="M:Microsoft.Data.SqlClient.SqlConnectionEncryptOption.Parse(System.String)">
+            <summary>
+        Converts the specified string representation of a logical value to its <see cref="T:Microsoft.Data.SqlClient.SqlConnectionEncryptOption" /> equivalent.
+      </summary><param name="value">A string containing the value to convert.</param><returns>
+        An object that is equivalent to <see cref="T:Microsoft.Data.SqlClient.SqlConnectionEncryptOption" /> contained in <paramref name="value" />.
+      </returns><exception cref="T:System.ArgumentException">
+        Throws exception if provided <paramref name="value" /> is not convertible to <see cref="T:Microsoft.Data.SqlClient.SqlConnectionEncryptOption" /> type.
+      </exception>
+        </member>
+        <member name="M:Microsoft.Data.SqlClient.SqlConnectionEncryptOption.TryParse(System.String,Microsoft.Data.SqlClient.SqlConnectionEncryptOption@)">
+            <summary>
+        Converts the specified string representation of a logical value to its <see cref="T:Microsoft.Data.SqlClient.SqlConnectionEncryptOption" /> equivalent and returns a value that indicates whether the conversion succeeded.
+      </summary><param name="value">A string containing the value to convert.</param><param name="result">
+        An object that is equivalent to <see cref="T:Microsoft.Data.SqlClient.SqlConnectionEncryptOption" /> contained in <paramref name="value" />. <see langword="null" /> if conversion fails.
+      </param><returns>
+        <see langword="true" /> if the <paramref name="value" /> parameter was converted successfully; otherwise, <see langword="false" />.
+      </returns><remarks>This method does not throw an exception if conversion fails.</remarks>
+        </member>
         <member name="P:Microsoft.Data.SqlClient.SqlConnectionEncryptOption.Optional">
             <summary>Specifies that TLS encryption is optional when connecting to the server. If the server requires encryption, encryption will be negotiated.</summary>
         </member>
@@ -5149,7 +5163,38 @@ When `TrustServerCertificate` is false and `Encrypt` is <xref:Microsoft.Data.Sql
             </remarks><related type="Article" href="https://msdn.microsoft.com/library/745c5f95-2f02-4674-b378-6d51a7ec2490">Working with Connection Strings</related><related type="Article" href="/sql/connect/ado-net/overview-sqlclient-driver">Overview of the SqlClient driver</related>
         </member>
         <member name="P:Microsoft.Data.SqlClient.SqlConnectionStringBuilder.HostNameInCertificate">
-            <!-- No matching elements were found for the following include tag --><include file="../../../../../../doc/snippets/Microsoft.Data.SqlClient/SqlConnectionStringBuilder.xml" path="docs/members[@name=&quot;SqlConnectionStringBuilder&quot;]/HostNameInCertificate/*" />
+            <summary>Gets or sets the host name to use when validating the server certificate for the connection. When not specified, the server name from the `Data Source` is used for certificate validation. (Only available in v5.0+)</summary><value>
+          The value of the <see cref="P:Microsoft.Data.SqlClient.SqlConnectionStringBuilder.HostNameInCertificate" /> property, or <see langword="String.Empty" /> if none has been supplied.
+        </value><remarks>
+          <format type="text/markdown">
+            <![CDATA[  
+
+## Remarks  
+This property corresponds to the "HostNameInCertificiate" and "Host Name in Certificiate" keys within the connection string. 
+
+> [!NOTE]
+> This property only applies when using `Encrypt` in <xref:Microsoft.Data.SqlClient.SqlConnectionEncryptOption.Mandatory%2A> or <xref:Microsoft.Data.SqlClient.SqlConnectionEncryptOption.Strict%2A> mode, otherwise it is ignored.
+
+ ]]>
+          </format>
+        </remarks>
+        </member>
+        <member name="P:Microsoft.Data.SqlClient.SqlConnectionStringBuilder.ServerCertificate">
+            <summary>Gets or sets the path to a certificate file to match against the SQL Server TLS/SSL certificate for the connection. The accepted certificate formats are PEM, DER, and CER. If specified, the SQL Server certificate is checked by verifying if the `ServerCertificate` provided is an exact match. (Only available in v5.1+)</summary><value>
+            The value of the <see cref="P:Microsoft.Data.SqlClient.SqlConnectionStringBuilder.ServerCertificate" /> property, or <see langword="String.Empty" /> if none has been supplied.
+          </value><remarks>
+          <format type="text/markdown">
+            <![CDATA[  
+
+## Remarks  
+This property corresponds to the "ServerCertificate" and "Server Certificate" keys within the connection string.  
+
+> [!NOTE]
+> This property only applies when using `Encrypt` in <xref:Microsoft.Data.SqlClient.SqlConnectionEncryptOption.Mandatory%2A> or <xref:Microsoft.Data.SqlClient.SqlConnectionEncryptOption.Strict%2A> mode, otherwise it is ignored.
+
+ ]]>
+            </format>
+          </remarks>
         </member>
         <member name="P:Microsoft.Data.SqlClient.SqlConnectionStringBuilder.ColumnEncryptionSetting">
             <summary>Gets or sets the column encryption settings for the connection string builder.</summary><value>The column encryption settings for the connection string builder.This property enables or disables [Always Encrypted](/sql/relational-databases/security/encryption/always-encrypted-database-engine) functionality for the connection.</value>
@@ -5634,7 +5679,7 @@ False
 |Context Connection(Obsolete)|False|  
 |Current Language|Empty string|  
 |Data Source|Empty string|  
-|Encrypt|False|  
+|Encrypt|False in versions prior to 4.0, True in versions 4.0 and up|  
 |Enlist|True|  
 |Failover Partner|Empty string|  
 |Initial Catalog|Empty string|  
@@ -8487,6 +8532,135 @@ If `Multi Subnet Failover` is set to `true`, this setting has no effect.
         <member name="F:Microsoft.Data.SqlClient.SqlAuthenticationMethod.ActiveDirectoryDefault">
             <summary>The authentication method uses Active Directory Default. Use this mode to connect to a SQL Database using multiple non-interactive authentication methods tried sequentially to acquire an access token. This method does not fallback to the "Active Directory Interactive" authentication method.</summary><value>9</value>
         </member>
+        <member name="P:Microsoft.Data.SqlClient.SNILoadHandle.ClientOSEncryptionSupport">
+            <summary>
+            Verify client encryption possibility.
+            </summary>
+        </member>
+        <member name="F:Microsoft.Data.SqlClient.TdsParserStateObject._inBuff">
+            <summary>
+            internal read buffer - initialize on login
+            </summary>
+        </member>
+        <member name="F:Microsoft.Data.SqlClient.TdsParserStateObject._inBytesUsed">
+            <summary>
+            number of bytes used in internal read buffer
+            </summary>
+        </member>
+        <member name="F:Microsoft.Data.SqlClient.TdsParserStateObject._inBytesRead">
+            <summary>
+            number of bytes read into internal read buffer
+            </summary>
+        </member>
+        <member name="F:Microsoft.Data.SqlClient.TdsParserStateObject._inBytesPacket">
+            <summary>
+            number of bytes left in packet
+            </summary>
+        </member>
+        <member name="F:Microsoft.Data.SqlClient.TdsParserStateObject._writePacketLockObject">
+            <summary>
+            Used to synchronize access to _writePacketCache and _pendingWritePackets
+            </summary>
+        </member>
+        <member name="M:Microsoft.Data.SqlClient.TdsParserStateObject.NullBitmap.IsGuaranteedNull(System.Int32)">
+            <summary>
+            If this method returns true, the value is guaranteed to be null. This is not true vice versa:
+            if the bitmap value is false (if this method returns false), the value can be either null or non-null - no guarantee in this case.
+            To determine whether it is null or not, read it from the TDS (per NBCROW design spec, for IMAGE/TEXT/NTEXT columns server might send
+            bitmap = 0, when the actual value is null).
+            </summary>
+        </member>
+        <member name="M:Microsoft.Data.SqlClient.TdsParserStateObject.OnTimeoutCore(System.Int32,System.Int32,System.Boolean)">
+            <summary>
+            attempts to change the timout state from the expected state to the target state and if it succeeds
+            will setup the the stateobject into the timeout expired state
+            </summary>
+            <param name="expectedState">the state that is the expected current state, state will change only if this is correct</param>
+            <param name="targetState">the state that will be changed to if the expected state is correct</param>
+            <param name="asyncClose">any close action to be taken by an async task to avoid deadlock.</param>
+            <returns>boolean value indicating whether the call changed the timeout state</returns>
+        </member>
+        <member name="M:Microsoft.Data.SqlClient.TdsParserStateObject.IsConnectionAlive(System.Boolean)">
+            <summary>
+            Checks to see if the underlying connection is still alive (used by connection pool resilency)
+            NOTE: This is not safe to do on a connection that is currently in use
+            NOTE: This will mark the connection as broken if it is found to be dead
+            </summary>
+            <param name="throwOnException">If true then an exception will be thrown if the connection is found to be dead, otherwise no exception will be thrown</param>
+            <returns>True if the connection is still alive, otherwise false</returns>
+        </member>
+        <member name="M:Microsoft.Data.SqlClient.TdsParserStateObject.ValidateSNIConnection">
+            <summary>
+            Checks to see if the underlying connection is still valid (used by idle connection resiliency - for active connections) 
+            NOTE: This is not safe to do on a connection that is currently in use
+            NOTE: This will mark the connection as broken if it is found to be dead
+            </summary>
+            <returns>True if the connection is still alive, otherwise false</returns>
+        </member>
+        <member name="P:Microsoft.Data.SqlClient.TdsParserStateObject.HasErrorOrWarning">
+            <summary>
+            True if there is at least one error or warning (not counting the pre-attention errors\warnings)
+            </summary>
+        </member>
+        <member name="M:Microsoft.Data.SqlClient.TdsParserStateObject.AddError(Microsoft.Data.SqlClient.SqlError)">
+            <summary>
+            Adds an error to the error collection
+            </summary>
+            <param name="error"></param>
+        </member>
+        <member name="P:Microsoft.Data.SqlClient.TdsParserStateObject.ErrorCount">
+            <summary>
+            Gets the number of errors currently in the error collection
+            </summary>
+        </member>
+        <member name="M:Microsoft.Data.SqlClient.TdsParserStateObject.AddWarning(Microsoft.Data.SqlClient.SqlError)">
+            <summary>
+            Adds an warning to the warning collection
+            </summary>
+            <param name="error"></param>
+        </member>
+        <member name="P:Microsoft.Data.SqlClient.TdsParserStateObject.WarningCount">
+            <summary>
+            Gets the number of warnings currently in the warning collection
+            </summary>
+        </member>
+        <member name="P:Microsoft.Data.SqlClient.TdsParserStateObject.PreAttentionErrorCount">
+            <summary>
+            Gets the number of errors currently in the pre-attention error collection
+            </summary>
+        </member>
+        <member name="P:Microsoft.Data.SqlClient.TdsParserStateObject.PreAttentionWarningCount">
+            <summary>
+            Gets the number of errors currently in the pre-attention warning collection
+            </summary>
+        </member>
+        <member name="M:Microsoft.Data.SqlClient.TdsParserStateObject.GetFullErrorAndWarningCollection(System.Boolean@)">
+            <summary>
+            Gets the full list of errors and warnings (including the pre-attention ones), then wipes all error and warning lists
+            </summary>
+            <param name="broken">If true, the connection should be broken</param>
+            <returns>An array containing all of the errors and warnings</returns>
+        </member>
+        <member name="M:Microsoft.Data.SqlClient.TdsParserStateObject.StoreErrorAndWarningForAttention">
+            <summary>
+            Stores away current errors and warnings so that an attention can be processed
+            </summary>
+        </member>
+        <member name="M:Microsoft.Data.SqlClient.TdsParserStateObject.RestoreErrorAndWarningAfterAttention">
+            <summary>
+            Restores errors and warnings that were stored in order to process an attention
+            </summary>
+        </member>
+        <member name="M:Microsoft.Data.SqlClient.TdsParserStateObject.CheckThrowSNIException">
+            <summary>
+            Checks if an error is stored in _error and, if so, throws an error
+            </summary>
+        </member>
+        <member name="M:Microsoft.Data.SqlClient.TdsParserStateObject.AssertStateIsClean">
+            <summary>
+            Debug Only: Ensures that the TdsParserStateObject has no lingering state and can safely be re-used
+            </summary>
+        </member>
         <member name="T:Microsoft.Data.SqlClient.SqlAuthenticationProviderManager">
             <summary>
             Authentication provider manager.
@@ -8875,8 +9049,12 @@ Transact-SQL `INSERT … SELECT` statement to copy the data.
 				<format type="text/markdown"><![CDATA[
 
 When <xref:Microsoft.Data.SqlClient.SqlBulkCopy.EnableStreaming> is `true`, <xref:Microsoft.Data.SqlClient.SqlBulkCopy> reads from an <xref:System.Data.IDataReader> object using <xref:System.Data.CommandBehavior.SequentialAccess>,
-optimizing memory usage by using the <xref:System.Data.IDataReader> streaming capabilities. When it's set to false, the <xref:Microsoft.Data.SqlClient.SqlBulkCopy> class loads all the data returned by the
-<xref:System.Data.IDataReader> object into memory before sending it to SQL Server or SQL Azure.
+optimizing memory usage by using the <xref:System.Data.IDataReader> streaming capabilities. Streaming is only applicable to max data types (i.e.
+VARBINARY(MAX), VARCHAR(MAX), NVARCHAR(MAX), and XML). When <xref:Microsoft.Data.SqlClient.SqlBulkCopy.EnableStreaming> is set to false,
+the <xref:Microsoft.Data.SqlClient.SqlBulkCopy> class loads all the data returned by the <xref:System.Data.IDataReader> object into memory before sending it to the server.
+
+> [!NOTE]
+> The main advantage of enabling streaming is reducing memory usage during bulk copy of max data types.
 ]]></format>
 			</remarks>
         </member>
@@ -8994,7 +9172,7 @@ statement to copy the data.
 ## Remarks
 This value is incremented during the <xref:Microsoft.Data.SqlClient.SqlBulkCopy.SqlRowsCopied> event and does not imply that this number of rows has been sent to the server or committed.
 
-During the execution of a bulk copy operation, this value can be accessed, but it cannot be changed. Any attempt to change it will throw an <xref:System.InvalidOperationException>.
+This value can be accessed during or after the execution of a bulk copy operation.
 ]]></format>
 			</remarks>
         </member>
@@ -10572,15 +10750,15 @@ the enclave attestation protocol as well as the logic for creating and caching e
 ]]></format>
             </remarks>
         </member>
-        <member name="M:Microsoft.Data.SqlClient.SqlColumnEncryptionEnclaveProvider.GetEnclaveSession(Microsoft.Data.SqlClient.EnclaveSessionParameters,System.Boolean,Microsoft.Data.SqlClient.SqlEnclaveSession@,System.Int64@,System.Byte[]@,System.Int32@)">
-            <param name="enclaveSessionParameters">The set of parameters required for enclave session.</param><param name="generateCustomData"><see langword="true" /> to indicate that a set of extra data needs to be generated for attestation; otherwise, <see langword="false" />.</param><param name="sqlEnclaveSession">When this method returns, the requested enclave session or <see langword="null" /> if the provider doesn't implement session caching. This parameter is treated as uninitialized.</param><param name="counter">A counter that the enclave provider is expected to increment each time SqlClient retrieves the session from the cache. The purpose of this field is to prevent replay attacks.</param><param name="customData">A set of extra data needed for attestating the enclave.</param><param name="customDataLength">The length of the extra data needed for attestating the enclave.</param><summary>When overridden in a derived class, looks up an existing enclave session information in the enclave session cache. If the enclave provider doesn't implement enclave session caching, this method is expected to return <see langword="null" /> in the <paramref name="sqlEnclaveSession" /> parameter.
+        <member name="M:Microsoft.Data.SqlClient.SqlColumnEncryptionEnclaveProvider.GetEnclaveSession(Microsoft.Data.SqlClient.EnclaveSessionParameters,System.Boolean,System.Boolean,Microsoft.Data.SqlClient.SqlEnclaveSession@,System.Int64@,System.Byte[]@,System.Int32@)">
+            <param name="enclaveSessionParameters">The set of parameters required for enclave session.</param><param name="generateCustomData"><see langword="true" /> to indicate that a set of extra data needs to be generated for attestation; otherwise, <see langword="false" />.</param><param name="isRetry">Indicates if this is a retry from a failed call.</param><param name="sqlEnclaveSession">When this method returns, the requested enclave session or <see langword="null" /> if the provider doesn't implement session caching. This parameter is treated as uninitialized.</param><param name="counter">A counter that the enclave provider is expected to increment each time SqlClient retrieves the session from the cache. The purpose of this field is to prevent replay attacks.</param><param name="customData">A set of extra data needed for attesting the enclave.</param><param name="customDataLength">The length of the extra data needed for attesting the enclave.</param><summary>When overridden in a derived class, looks up an existing enclave session information in the enclave session cache. If the enclave provider doesn't implement enclave session caching, this method is expected to return <see langword="null" /> in the <paramref name="sqlEnclaveSession" /> parameter.
             </summary><remarks>To be added.</remarks>
         </member>
         <member name="M:Microsoft.Data.SqlClient.SqlColumnEncryptionEnclaveProvider.GetAttestationParameters(System.String,System.Byte[],System.Int32)">
-            <param name="attestationUrl">The endpoint of an attestation service for attesting the enclave.</param><param name="customData">A set of extra data needed for attestating the enclave.</param><param name="customDataLength">The length of the extra data needed for attestating the enclave.</param><summary>Gets the information that SqlClient subsequently uses to initiate the process of attesting the enclave and to establish a secure session with the enclave.</summary><returns>The information SqlClient subsequently uses to initiate the process of attesting the enclave and to establish a secure session with the enclave.</returns><remarks>To be added.</remarks>
+            <param name="attestationUrl">The endpoint of an attestation service for attesting the enclave.</param><param name="customData">A set of extra data needed for attesting the enclave.</param><param name="customDataLength">The length of the extra data needed for attesting the enclave.</param><summary>Gets the information that SqlClient subsequently uses to initiate the process of attesting the enclave and to establish a secure session with the enclave.</summary><returns>The information SqlClient subsequently uses to initiate the process of attesting the enclave and to establish a secure session with the enclave.</returns><remarks>To be added.</remarks>
         </member>
         <member name="M:Microsoft.Data.SqlClient.SqlColumnEncryptionEnclaveProvider.CreateEnclaveSession(System.Byte[],System.Security.Cryptography.ECDiffieHellman,Microsoft.Data.SqlClient.EnclaveSessionParameters,System.Byte[],System.Int32,Microsoft.Data.SqlClient.SqlEnclaveSession@,System.Int64@)">
-            <param name="enclaveAttestationInfo">The information the provider uses to attest the enclave and generate a symmetric key for the session. The format of this information is specific to the enclave attestation protocol.</param><param name="clientDiffieHellmanKey">A Diffie-Hellman algorithm object that encapsulates a client-side key pair.</param><param name="enclaveSessionParameters">The set of parameters required for an enclave session.</param><param name="customData">The set of extra data needed for attestating the enclave.</param><param name="customDataLength">The length of the extra data needed for attestating the enclave.</param><param name="sqlEnclaveSession">The requested enclave session or <see langword="null" /> if the provider doesn't implement session caching.</param><param name="counter">A counter that the enclave provider is expected to increment each time SqlClient retrieves the session from the cache. The purpose of this field is to prevent replay attacks.</param><summary>When overridden in a derived class, performs enclave attestation, generates a symmetric key for the session, creates a an enclave session and stores the session information in the cache.</summary><remarks>To be added.</remarks>
+            <param name="enclaveAttestationInfo">The information the provider uses to attest the enclave and generate a symmetric key for the session. The format of this information is specific to the enclave attestation protocol.</param><param name="clientDiffieHellmanKey">A Diffie-Hellman algorithm object that encapsulates a client-side key pair.</param><param name="enclaveSessionParameters">The set of parameters required for an enclave session.</param><param name="customData">The set of extra data needed for attesting the enclave.</param><param name="customDataLength">The length of the extra data needed for attesting the enclave.</param><param name="sqlEnclaveSession">The requested enclave session or <see langword="null" /> if the provider doesn't implement session caching.</param><param name="counter">A counter that the enclave provider is expected to increment each time SqlClient retrieves the session from the cache. The purpose of this field is to prevent replay attacks.</param><summary>When overridden in a derived class, performs enclave attestation, generates a symmetric key for the session, creates a an enclave session and stores the session information in the cache.</summary><remarks>To be added.</remarks>
         </member>
         <member name="M:Microsoft.Data.SqlClient.SqlColumnEncryptionEnclaveProvider.InvalidateEnclaveSession(Microsoft.Data.SqlClient.EnclaveSessionParameters,Microsoft.Data.SqlClient.SqlEnclaveSession)">
             <param name="enclaveSessionParameters">The set of parameters required for enclave session.</param><param name="enclaveSession">The session to be invalidated.</param><summary>When overridden in a derived class, looks up and evicts an enclave session from the enclave session cache, if the provider implements session caching.</summary><remarks>To be added.</remarks>
@@ -13499,7 +13677,7 @@ This does shallow copying of the dictionary so that the app cannot alter the cus
             <param name="inRetry"></param>
             <returns></returns>
         </member>
-        <member name="M:Microsoft.Data.SqlClient.SqlCommand.TryFetchInputParameterEncryptionInfo(System.Int32,System.Boolean,System.Boolean,System.Boolean@,System.Threading.Tasks.Task@,System.Collections.ObjectModel.ReadOnlyDictionary{Microsoft.Data.SqlClient._SqlRPC,Microsoft.Data.SqlClient._SqlRPC}@)">
+        <member name="M:Microsoft.Data.SqlClient.SqlCommand.TryFetchInputParameterEncryptionInfo(System.Int32,System.Boolean,System.Boolean,System.Boolean@,System.Threading.Tasks.Task@,System.Collections.ObjectModel.ReadOnlyDictionary{Microsoft.Data.SqlClient._SqlRPC,Microsoft.Data.SqlClient._SqlRPC}@,System.Boolean)">
             <summary>
             Executes an RPC to fetch param encryption info from SQL Engine. If this method is not done writing
              the request to wire, it'll set the "task" parameter which can be used to create continuations.
@@ -13510,6 +13688,7 @@ This does shallow copying of the dictionary so that the app cannot alter the cus
             <param name="inputParameterEncryptionNeeded"></param>
             <param name="task"></param>
             <param name="describeParameterEncryptionRpcOriginalRpcMap"></param>
+            <param name="inRetry">Indicates if this is a retry from a failed call.</param>
             <returns></returns>
         </member>
         <member name="M:Microsoft.Data.SqlClient.SqlCommand.GetSqlParameterWithQueryText(System.String)">
@@ -13529,12 +13708,13 @@ This does shallow copying of the dictionary so that the app cannot alter the cus
             <param name="describeParameterEncryptionRequest"></param>
             <param name="attestationParameters"></param>
         </member>
-        <member name="M:Microsoft.Data.SqlClient.SqlCommand.ReadDescribeEncryptionParameterResults(Microsoft.Data.SqlClient.SqlDataReader,System.Collections.ObjectModel.ReadOnlyDictionary{Microsoft.Data.SqlClient._SqlRPC,Microsoft.Data.SqlClient._SqlRPC})">
+        <member name="M:Microsoft.Data.SqlClient.SqlCommand.ReadDescribeEncryptionParameterResults(Microsoft.Data.SqlClient.SqlDataReader,System.Collections.ObjectModel.ReadOnlyDictionary{Microsoft.Data.SqlClient._SqlRPC,Microsoft.Data.SqlClient._SqlRPC},System.Boolean)">
             <summary>
             Read the output of sp_describe_parameter_encryption
             </summary>
             <param name="ds">Resultset from calling to sp_describe_parameter_encryption</param>
             <param name="describeParameterEncryptionRpcOriginalRpcMap"> Readonly dictionary with the map of parameter encryption rpc requests with the corresponding original rpc requests.</param>
+            <param name="inRetry">Indicates if this is a retry from a failed call.</param>
         </member>
         <member name="M:Microsoft.Data.SqlClient.SqlCommand.Clone">
             <summary>
@@ -13561,7 +13741,7 @@ This does shallow copying of the dictionary so that the app cannot alter the cus
             Please consider the changes being done in this function for the above function as well.
             </summary>
         </member>
-        <member name="M:Microsoft.Data.SqlClient.SqlCommand.BuildStoredProcedureStatementForColumnEncryption(System.String,Microsoft.Data.SqlClient.SqlParameter[])">
+        <member name="M:Microsoft.Data.SqlClient.SqlCommand.BuildStoredProcedureStatementForColumnEncryption(System.String,Microsoft.Data.SqlClient.SqlParameterCollection)">
             <summary>
             This function constructs a string parameter containing the exec statement in the following format
             N'EXEC sp_name @param1=@param1, @param1=@param2, ..., @paramN=@paramN'
@@ -13936,11 +14116,11 @@ The following sample tries to open a connection to an invalid database to simula
 |Application Name|N/A|The name of the application. If no application name is provided, 'Framework Microsoft SqlClient Data Provider' when running on .NET Framework and 'Core Microsoft SqlClient Data Provider' otherwise.<br /><br /> An application name can be 128 characters or less.|  
 |AttachDBFilename<br /><br /> -or-<br /><br /> Extended Properties<br /><br /> -or-<br /><br /> Initial File Name|N/A|The name of the primary database file, including the full path name of an attachable database. AttachDBFilename is only supported for primary data files with an .mdf extension.<br /><br /> If the value of the AttachDBFileName key is specified in the connection string, the database is attached and becomes the default database for the connection.<br /><br /> If this key is not specified and if the database was previously attached, the database will not be reattached. The previously attached database will be used as the default database for the connection.<br /><br /> If this key is specified together with the AttachDBFileName key, the value of this key will be used as the alias. However, if the name is already used in another attached database, the connection will fail.<br /><br /> The path may be absolute or relative by using the DataDirectory substitution string. If DataDirectory is used, the database file must exist within a subdirectory of the directory pointed to by the substitution string. **Note:**  Remote server, HTTP, and UNC path names are not supported. <br /><br /> The database name must be specified with the keyword 'database' (or one of its aliases) as in the following:<br /><br /> <code>"AttachDbFileName=&#124;DataDirectory&#124;\data\YourDB.mdf;integrated security=true;database=YourDatabase"</code><br /><br /> An error will be generated if a log file exists in the same directory as the data file and the 'database' keyword is used when attaching the primary data file. In this case, remove the log file. Once the database is attached, a new log file will be automatically generated based on the physical path.|  
 |Attestation Protocol|NotSpecified|Gets or sets the value of Attestation Protocol.<br /><br />When no value is specified, secure enclaves are disabled on the connection.<br /><br />Valid values are:<br />`AAS`<br />`HGS`<br />`None` (Only valid in v3.1 and v4.1+))|
-|Authentication|N/A|The authentication method used for [Connecting to SQL Database By Using Azure Active Directory Authentication](https://azure.microsoft.com/documentation/articles/sql-database-aad-authentication/#7-connect-to-your-database-by-using-azure-active-directory-identities).<br /><br /> Valid values are:<br /><br /> `Active Directory Integrated`, `Active Directory Interactive`, `Active Directory Password`, `Active Directory Service Principal`, `Active Directory Device Code Flow`, `Active Directory Managed Identity`, `Active Directory MSI`, `Active Directory Default`, `Sql Password`.|  
+|Authentication|N/A|The authentication method used for [Connecting to SQL Database By Using Azure Active Directory Authentication](https://azure.microsoft.com/documentation/articles/sql-database-aad-authentication/#7-connect-to-your-database-by-using-azure-active-directory-identities).<br /><br /> Valid values are:<br /><br /> `Active Directory Integrated`, `Active Directory Interactive`, `Active Directory Password`, `Active Directory Service Principal`, `Active Directory Device Code Flow`, `Active Directory Managed Identity`, `Active Directory MSI`, `Active Directory Default`, `Sql Password`.<br /><br /> For additional information see [Using Azure Active Directory authentication with SqlClient](https://docs.microsoft.com/sql/connect/ado-net/sql/azure-active-directory-authentication?view=sql-server-ver15).|  
 |Column Encryption Setting|disabled|Enables or disables [Always Encrypted](/sql/relational-databases/security/encryption/always-encrypted-database-engine) functionality for the connection. Supported values are: `enabled` and `disabled`|  
 |Command Timeout|30|The default wait time (in seconds) before terminating the attempt to execute a command and generating an error.<br /><br /> Valid values are greater than or equal to 0 and less than or equal to 2147483647.|  
-|Connect Retry Count<br /><br /> -or-<br /><br />ConnectRetryCount|1|Controls the number of reconnection attempts after the client identifies an idle connection failure. Valid values are 0 to 255. The default is 1. 0 means do not attempt to reconnect (disable connection resiliency).<br /><br /> For additional information about idle connection resiliency, see [Technical Article - Idle Connection Resiliency](https://go.microsoft.com/fwlink/?LinkId=393996).|  
-|Connect Retry Interval<br /><br /> -or-<br /><br />ConnectRetryInterval|10|Specifies the time between each connection retry attempt (`ConnectRetryCount`). Valid values are 1 to 60 seconds (default=10), applied after the first reconnection attempt. When a broken connection is detected, the client immediately attempts to reconnect; this is the first reconnection attempt and only occurs if `ConnectRetryCount` is greater than 0. If the first reconnection attempt fails and `ConnectRetryCount` is greater than 1, the client waits `ConnectRetryInterval` to try the second and subsequent reconnection attempts.<br /><br /> For additional information about idle connection resiliency, see [Technical Article - Idle Connection Resiliency](https://go.microsoft.com/fwlink/?LinkId=393996).|  
+|Connect Retry Count<br /><br /> -or-<br /><br />ConnectRetryCount|1|Controls the number of reconnection attempts after the client identifies an idle connection failure. Valid values are 0 to 255. The default is 1. 0 means do not attempt to reconnect (disable connection resiliency).<br /><br /> For additional information about idle connection resiliency, see[.NET SqlConnection parameters for connection retry](https://learn.microsoft.com/azure/azure-sql/database/troubleshoot-common-connectivity-issues?view=azuresql#net-sqlconnection-parameters-for-connection-retry) and [Technical Article - Idle Connection Resiliency](https://go.microsoft.com/fwlink/?LinkId=393996).|  
+|Connect Retry Interval<br /><br /> -or-<br /><br />ConnectRetryInterval|10|Specifies the time between each connection retry attempt (`ConnectRetryCount`). Valid values are 1 to 60 seconds (default=10), applied after the first reconnection attempt. When a broken connection is detected, the client immediately attempts to reconnect; this is the first reconnection attempt and only occurs if `ConnectRetryCount` is greater than 0. If the first reconnection attempt fails and `ConnectRetryCount` is greater than 1, the client waits `ConnectRetryInterval` to try the second and subsequent reconnection attempts.<br /><br /> For additional information about idle connection resiliency, see[.NET SqlConnection parameters for connection retry](https://learn.microsoft.com/azure/azure-sql/database/troubleshoot-common-connectivity-issues?view=azuresql#net-sqlconnection-parameters-for-connection-retry) and [Technical Article - Idle Connection Resiliency](https://go.microsoft.com/fwlink/?LinkId=393996).|  
 |Connect Timeout<br /><br /> -or-<br /><br /> Connection Timeout<br /><br /> -or-<br /><br /> Timeout|15|The length of time (in seconds) to wait for a connection to the server before terminating the attempt and generating an error.<br /><br /> Valid values are greater than or equal to 0 and less than or equal to 2147483647.<br /><br /> When opening a connection to a Azure SQL Database, set the connection timeout to 30 seconds.|  
 |Current Language<br /><br /> -or-<br /><br /> Language|N/A|Sets the language used for database server warning or error messages.<br /><br /> The language name can be 128 characters or less.|  
 |Data Source<br /><br /> -or-<br /><br /> Server<br /><br /> -or-<br /><br /> Address<br /><br /> -or-<br /><br /> Addr<br /><br /> -or-<br /><br /> Network Address|N/A|The name or network address of the instance of SQL Server to which to connect. The port number can be specified after the server name:<br /><br /> `server=tcp:servername, portnumber`<br /><br /> When specifying a local instance, always use (local). To force a protocol, add one of the following prefixes:<br /><br /> `np:(local),  tcp:(local), lpc:(local)`<br /><br /> You can also connect to a LocalDB database as follows:<br /><br /> `server=(localdb)\\myInstance`<br /><br /> For more information about LocalDB, see [SqlClient Support for LocalDB](/sql/connect/ado-net/sql/sqlclient-support-localdb).<br /><br /> **Data Source** must use the TCP format or the Named Pipes format.<br /><br /> TCP format is as follows:<br /><br /> -   tcp:\<host name>\\<instance name\><br />-   tcp:\<host name>,\<TCP/IP port number><br /><br /> The TCP format must start with the prefix "tcp:" and is followed by the database instance, as specified by a host name and an instance name. This format is not applicable when connecting to Azure SQL Database. TCP is automatically selected for connections to Azure SQL Database when no protocol is specified.<br /><br /> The host name MUST be specified in one of the following ways:<br /><br /> -   NetBIOSName<br />-   IPv4Address<br />-   IPv6Address<br /><br /> The instance name is used to resolve to a particular TCP/IP port number on which a database instance is hosted. Alternatively, specifying a TCP/IP port number directly is also allowed. If both instance name and port number are not present, the default database instance is used.<br /><br /> The Named Pipes format is as follows:<br /><br /> -   np:\\\\<host name\>\pipe\\<pipe name\><br /><br /> The Named Pipes format MUST start with the prefix "np:" and is followed by a named pipe name.<br /><br /> The host name MUST be specified in one of the following ways:<br /><br /> -   NetBIOSName<br />-   IPv4Address<br />-   IPv6Address<br /><br /> The pipe name is used to identify the database instance to which the .NET application will connect.<br /><br /> If the value of the **Network** key is specified, the prefixes "tcp:" and "np:" should not be specified. **Note:**  You can force the use of TCP instead of shared memory, either by prefixing **tcp:** to the server name in the connection string, or by using **localhost**.|  
@@ -13949,7 +14129,8 @@ The following sample tries to open a connection to an invalid database to simula
 |Enlist|'true'|`true` indicates that the SQL Server connection pooler automatically enlists the connection in the creation thread's current transaction context.|  
 |Failover Partner|N/A|The name of the failover partner server where database mirroring is configured.<br /><br /> If the value of this key is "", then **Initial Catalog** must be present, and its value must not be "".<br /><br /> The server name can be 128 characters or less.<br /><br /> If you specify a failover partner but the failover partner server is not configured for database mirroring and the primary server (specified with the Server keyword) is not available, then the connection will fail.<br /><br /> If you specify a failover partner and the primary server is not configured for database mirroring, the connection to the primary server (specified with the Server keyword) will succeed if the primary server is available.|  
 |Failover Partner SPN<br /><br /> -or-<br /><br /> FailoverPartnerSPN|N/A|The SPN for the failover partner. The default value is an empty string, which causes SqlClient to use the default, driver-generated SPN.<br /><br /> (Only available in v5.0+)|  
-|Host Name In Certificate<br /><br /> -or-<br /><br />HostNameInCertificate|N/A|Available starting in version 5.0.<br/><br/>The host name to use when validating the server certificate. When not specified, the server name from the Data Source is used for certificate validation.|
+|Host Name In Certificate<br /><br /> -or-<br /><br />HostNameInCertificate|N/A|The host name to use when validating the server certificate. When not specified, the server name from the Data Source is used for certificate validation.<br /><br /> (Only available in v5.0+)|
+|Server Certificate<br /><br /> -or-<br /><br />ServerCertificate|N/A|The path to a certificate file to match against the SQL Server TLS/SSL certificate. The accepted certificate formats are PEM, DER, and CER. If specified, the SQL Server certificate is checked by verifying if the ServerCertificate provided is an exact match.<br /><br /> (Only available in v5.1+)|
 |Initial Catalog<br /><br /> -or-<br /><br /> Database|N/A|The name of the database.<br /><br /> The database name can be 128 characters or less.|  
 |Integrated Security<br /><br /> -or-<br /><br /> Trusted_Connection|'false'|When `false`, User ID and Password are specified in the connection. When `true`, the current Windows account credentials are used for authentication.<br /><br /> Recognized values are `true`, `false`, `yes`, `no`, and `sspi` (strongly recommended), which is equivalent to `true`.<br /><br /> If User ID and Password are specified and Integrated Security is set to true, the User ID and Password will be ignored and Integrated Security will be used.<br /><br /> <xref:Microsoft.Data.SqlClient.SqlCredential> is a more secure way to specify credentials for a connection that uses SQL Server Authentication (`Integrated Security=false`).|  
 |IP Address Preference<br /><br /> -or-<br /><br /> IPAddressPreference|IPv4First|The IP address family preference when establishing TCP connections. If `Transparent Network IP Resolution` (in .NET Framework) or `Multi Subnet Failover` is set to true, this setting has no effect. Supported values include:<br /><br /> `IPAddressPreference=IPv4First`<br /><br />`IPAddressPreference=IPv6First`<br /><br />`IPAddressPreference=UsePlatformDefault`|  
@@ -15475,14 +15656,14 @@ GO
   
 |||||  
 |-|-|-|-|  
-|Boolean|Byte|Char|DateTime|  
-|DateTimeOffset|Decimal|Double|Float|  
-|Guid|Int16|Int32|Int64|  
-|SqlBoolean|SqlByte|SqlDateTime|SqlDecimal|  
-|SqlDouble|SqlGuid|SqlInt16|SqlInt32|  
-|SqlInt64|SqlMoney|SqlSingle|SqlString|  
-|Stream|String|TextReader|UDT, which can be any CLR type marked with <xref:Microsoft.Data.SqlClient.Server.SqlUserDefinedTypeAttribute>.|
-|XmlReader||||
+|Boolean|Byte|Char|DateOnly (.NET 6 or later)|  
+|DateTime|DateTimeOffset|Decimal|Double| 
+|Float|Guid|Int16|Int32|
+|Int64|SqlBoolean|SqlByte|SqlDateTime|
+|SqlDecimal|SqlDouble|SqlGuid|SqlInt16|
+|SqlInt32|SqlInt64|SqlMoney|SqlSingle|
+|SqlString|Stream|String|TextReader|
+|TimeOnly (.NET 6 or later)|XmlReader||UDT, which can be any CLR type marked with <xref:Microsoft.Data.SqlClient.Server.SqlUserDefinedTypeAttribute>.|
   
  For more information, see [SqlClient Streaming Support](/sql/connect/ado-net/sqlclient-streaming-support).  
   
@@ -15667,14 +15848,14 @@ GO
   
 |||||  
 |-|-|-|-|  
-|Boolean|Byte|Char|DateTime|  
-|DateTimeOffset|Decimal|Double|Float|  
-|Guid|Int16|Int32|Int64|  
-|SqlBoolean|SqlByte|SqlDateTime|SqlDecimal|  
-|SqlDouble|SqlGuid|SqlInt16|SqlInt32|  
-|SqlInt64|SqlMoney|SqlSingle|SqlString|  
-|Stream|String|TextReader|UDT, which can be any CLR type marked with <xref:Microsoft.Data.SqlClient.Server.SqlUserDefinedTypeAttribute>.|
-|XmlReader||||
+|Boolean|Byte|Char|DateOnly (.NET 6 or later)|  
+|DateTime|DateTimeOffset|Decimal|Double| 
+|Float|Guid|Int16|Int32|
+|Int64|SqlBoolean|SqlByte|SqlDateTime|
+|SqlDecimal|SqlDouble|SqlGuid|SqlInt16|
+|SqlInt32|SqlInt64|SqlMoney|SqlSingle|
+|SqlString|Stream|String|TextReader|
+|TimeOnly (.NET 6 or later)|XmlReader||UDT, which can be any CLR type marked with <xref:Microsoft.Data.SqlClient.Server.SqlUserDefinedTypeAttribute>.|
   
  For more information, see [SqlClient Streaming Support](/sql/connect/ado-net/sqlclient-streaming-support).  
   
@@ -16303,110 +16484,6 @@ GO
             </summary>
             <param name="protocol"></param>
             <returns>Localized warning message</returns>
-        </member>
-        <member name="P:Microsoft.Data.SqlClient.SNILoadHandle.ClientOSEncryptionSupport">
-            <summary>
-            Verify client encryption possibility.
-            </summary>
-        </member>
-        <member name="M:Microsoft.Data.SqlClient.TdsParserStateObject.NullBitmap.IsGuaranteedNull(System.Int32)">
-            <summary>
-            If this method returns true, the value is guaranteed to be null. This is not true vice versa: 
-            if the bitmat value is false (if this method returns false), the value can be either null or non-null - no guarantee in this case.
-            To determine whether it is null or not, read it from the TDS (per NBCROW design spec, for IMAGE/TEXT/NTEXT columns server might send
-            bitmap = 0, when the actual value is null).
-            </summary>
-        </member>
-        <member name="M:Microsoft.Data.SqlClient.TdsParserStateObject.OnTimeoutCore(System.Int32,System.Int32,System.Boolean)">
-            <summary>
-            attempts to change the timout state from the expected state to the target state and if it succeeds
-            will setup the the stateobject into the timeout expired state
-            </summary>
-            <param name="expectedState">the state that is the expected current state, state will change only if this is correct</param>
-            <param name="targetState">the state that will be changed to if the expected state is correct</param>
-            <param name="asyncClose">any close action to be taken by an async task to avoid deadlock.</param>
-            <returns>boolean value indicating whether the call changed the timeout state</returns>
-        </member>
-        <member name="M:Microsoft.Data.SqlClient.TdsParserStateObject.IsConnectionAlive(System.Boolean)">
-            <summary>
-            Checks to see if the underlying connection is still alive (used by connection pool resilency)
-            NOTE: This is not safe to do on a connection that is currently in use
-            NOTE: This will mark the connection as broken if it is found to be dead
-            </summary>
-            <param name="throwOnException">If true then an exception will be thrown if the connection is found to be dead, otherwise no exception will be thrown</param>
-            <returns>True if the connection is still alive, otherwise false</returns>
-        </member>
-        <member name="M:Microsoft.Data.SqlClient.TdsParserStateObject.ValidateSNIConnection">
-            <summary>
-            Checks to see if the underlying connection is still valid (used by idle connection resiliency - for active connections) 
-            NOTE: This is not safe to do on a connection that is currently in use
-            NOTE: This will mark the connection as broken if it is found to be dead
-            </summary>
-            <returns>True if the connection is still alive, otherwise false</returns>
-        </member>
-        <member name="P:Microsoft.Data.SqlClient.TdsParserStateObject.HasErrorOrWarning">
-            <summary>
-            True if there is at least one error or warning (not counting the pre-attention errors\warnings)
-            </summary>
-        </member>
-        <member name="M:Microsoft.Data.SqlClient.TdsParserStateObject.AddError(Microsoft.Data.SqlClient.SqlError)">
-            <summary>
-            Adds an error to the error collection
-            </summary>
-            <param name="error"></param>
-        </member>
-        <member name="P:Microsoft.Data.SqlClient.TdsParserStateObject.ErrorCount">
-            <summary>
-            Gets the number of errors currently in the error collection
-            </summary>
-        </member>
-        <member name="M:Microsoft.Data.SqlClient.TdsParserStateObject.AddWarning(Microsoft.Data.SqlClient.SqlError)">
-            <summary>
-            Adds an warning to the warning collection
-            </summary>
-            <param name="error"></param>
-        </member>
-        <member name="P:Microsoft.Data.SqlClient.TdsParserStateObject.WarningCount">
-            <summary>
-            Gets the number of warnings currently in the warning collection
-            </summary>
-        </member>
-        <member name="P:Microsoft.Data.SqlClient.TdsParserStateObject.PreAttentionErrorCount">
-            <summary>
-            Gets the number of errors currently in the pre-attention error collection
-            </summary>
-        </member>
-        <member name="P:Microsoft.Data.SqlClient.TdsParserStateObject.PreAttentionWarningCount">
-            <summary>
-            Gets the number of errors currently in the pre-attention warning collection
-            </summary>
-        </member>
-        <member name="M:Microsoft.Data.SqlClient.TdsParserStateObject.GetFullErrorAndWarningCollection(System.Boolean@)">
-            <summary>
-            Gets the full list of errors and warnings (including the pre-attention ones), then wipes all error and warning lists
-            </summary>
-            <param name="broken">If true, the connection should be broken</param>
-            <returns>An array containing all of the errors and warnings</returns>
-        </member>
-        <member name="M:Microsoft.Data.SqlClient.TdsParserStateObject.StoreErrorAndWarningForAttention">
-            <summary>
-            Stores away current errors and warnings so that an attention can be processed
-            </summary>
-        </member>
-        <member name="M:Microsoft.Data.SqlClient.TdsParserStateObject.RestoreErrorAndWarningAfterAttention">
-            <summary>
-            Restores errors and warnings that were stored in order to process an attention
-            </summary>
-        </member>
-        <member name="M:Microsoft.Data.SqlClient.TdsParserStateObject.CheckThrowSNIException">
-            <summary>
-            Checks if an error is stored in _error and, if so, throws an error
-            </summary>
-        </member>
-        <member name="M:Microsoft.Data.SqlClient.TdsParserStateObject.AssertStateIsClean">
-            <summary>
-            Debug Only: Ensures that the TdsParserStateObject has no lingering state and can safely be re-used
-            </summary>
         </member>
         <member name="T:Microsoft.Data.SqlTypes.SqlTypeWorkarounds">
             <summary>
@@ -19838,6 +19915,11 @@ Use the <xref:Microsoft.Data.SqlTypes.SqlFileStream.CanWrite%2A> property to det
               Looks up a localized string similar to The UDL file to use when connecting to the Data Source..
             </summary>
         </member>
+        <member name="P:System.Strings.DbConnectionString_HostNameInCertificate">
+            <summary>
+              Looks up a localized string similar to The hostname to be expected in the server&apos;s certificate when encryption is negotiated, if it&apos;s different from the default value derived from Addr/Address/Server..
+            </summary>
+        </member>
         <member name="P:System.Strings.DbConnectionString_InitialCatalog">
             <summary>
               Looks up a localized string similar to The name of the initial catalog or database in the data source..
@@ -19916,6 +19998,11 @@ Use the <xref:Microsoft.Data.SqlTypes.SqlFileStream.CanWrite%2A> property to det
         <member name="P:System.Strings.DbConnectionString_Replication">
             <summary>
               Looks up a localized string similar to Used by SQL Server in Replication..
+            </summary>
+        </member>
+        <member name="P:System.Strings.DbConnectionString_ServerCertificate">
+            <summary>
+              Looks up a localized string similar to The path to a certificate file to match against the SQL Server TLS/SSL certificate..
             </summary>
         </member>
         <member name="P:System.Strings.DbConnectionString_ServerSPN">
@@ -21466,6 +21553,11 @@ Use the <xref:Microsoft.Data.SqlTypes.SqlFileStream.CanWrite%2A> property to det
               Looks up a localized string similar to Associating port with I/O completion mechanism failed.
             </summary>
         </member>
+        <member name="P:System.Strings.SNI_PlatformNotSupportedNetFx">
+            <summary>
+              Looks up a localized string similar to The &apos;{0}&apos; platform is not supported when targeting .NET Framework..
+            </summary>
+        </member>
         <member name="P:System.Strings.SNI_PN0">
             <summary>
               Looks up a localized string similar to HTTP Provider.
@@ -22043,7 +22135,7 @@ Use the <xref:Microsoft.Data.SqlTypes.SqlFileStream.CanWrite%2A> property to det
         </member>
         <member name="P:System.Strings.SQL_MSALInnerException">
             <summary>
-              Looks up a localized string similar to Error code 0x{0}..
+              Looks up a localized string similar to Error code 0x{0}.
             </summary>
         </member>
         <member name="P:System.Strings.SQL_NestedTransactionScopesNotSupported">

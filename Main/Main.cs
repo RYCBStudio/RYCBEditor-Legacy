@@ -2159,30 +2159,50 @@ namespace IDE
         private async Task UpdateCheckAsync()
         {
             var uc = new UpdateChecker();
+            LOGGER.WriteLog("开始检查更新。", EnumMsgLevel.INFO, EnumPort.CLIENT, EnumModule.UPDATE);
             await uc.InitAsync();
+            LOGGER.WriteLog("UpdateChecker初始化完毕。", EnumMsgLevel.INFO, EnumPort.CLIENT, EnumModule.UPDATE);
+            LOGGER.WriteLog("下载测试文件。", EnumMsgLevel.INFO, EnumPort.CLIENT, EnumModule.UPDATE);
             await uc.DownloadTestAsync();
+            LOGGER.WriteLog("下载更新配置文件。", EnumMsgLevel.INFO, EnumPort.CLIENT, EnumModule.UPDATE);
             await uc.DownloadUpdateFileAsync();
+            LOGGER.WriteLog("分析更新配置文件。", EnumMsgLevel.INFO, EnumPort.CLIENT, EnumModule.UPDATE);
             uc.AnalyzeUpdateFile();
+            LOGGER.WriteLog("验证更新。", EnumMsgLevel.INFO, EnumPort.CLIENT, EnumModule.UPDATE);
             uc.ValidateUpdate();
+            
         }
 
         private async void DownloadUpdate(object sender, EventArgs e)
         {
             var ubd = new UpdateBackgroundDownloader();
             toolStripStatusLabel12.Enabled = false;
+            LOGGER.WriteLog("下载更新文件。", EnumMsgLevel.INFO, EnumPort.CLIENT, EnumModule.UPDATE);
             await ubd.DownloadUpdateAsync();
+            LOGGER.WriteLog("开始部署更新。", EnumMsgLevel.INFO, EnumPort.CLIENT, EnumModule.UPDATE);
             DeployUpdate();
         }
 
         private void DeployUpdate()
         {
-            while (GlobalDefinitions.CanDeployUpdate & !GlobalDefinitions.UpdateDeployed)
+            double i = 0;
+            while (!GlobalDefinitions.CanDeployUpdate & !GlobalDefinitions.UpdateDeployed)
             {
-                toolStripStatusLabel12.Enabled = true;
-                var ugd = new UpdateGlobalDeployer();
-                ugd.DeployUpdate();
+                i += 0.1;
+                if (i % 1 == 0)
+                {
+                    LOGGER.WriteLog("等待开始更新：次数" + i.ToString(), EnumMsgLevel.INFO, EnumPort.CLIENT, EnumModule.UPDATE);
+                }
             }
+            var ugd = new UpdateGlobalDeployer();
+            LOGGER.WriteLog("正在部署更新。", EnumMsgLevel.INFO, EnumPort.CLIENT, EnumModule.UPDATE);
+            ugd.DeployUpdate();
         }
+
+        private void StepIt(object sender, FileSystemEventArgs e)
+        {
+        }
+
         #endregion
         #region extern模块
         [DllImport("user32.dll", EntryPoint = "PostMessage")]

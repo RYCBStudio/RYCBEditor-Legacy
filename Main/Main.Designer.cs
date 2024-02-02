@@ -90,7 +90,7 @@ namespace IDE
             this.toolStripStatusLabel10 = new System.Windows.Forms.ToolStripStatusLabel();
             this.UpdateIcon = new System.Windows.Forms.ToolStripStatusLabel();
             this.toolStripStatusLabel11 = new System.Windows.Forms.ToolStripStatusLabel();
-            this.toolStripStatusLabel13 = new System.Windows.Forms.ToolStripStatusLabel();
+            this.CanUpdateIcon = new System.Windows.Forms.ToolStripStatusLabel();
             this.toolStripStatusLabel9 = new System.Windows.Forms.ToolStripStatusLabel();
             this.toolStripStatusLabel12 = new System.Windows.Forms.ToolStripStatusLabel();
             this.WorkingIcon = new System.Windows.Forms.ToolStripStatusLabel();
@@ -126,12 +126,13 @@ namespace IDE
             this.statusStrip3 = new System.Windows.Forms.StatusStrip();
             this.Downloading = new System.Windows.Forms.ToolStripStatusLabel();
             this.ReceivedBytes = new System.Windows.Forms.ToolStripStatusLabel();
-            this.ReceivedBytesUnit = new System.Windows.Forms.ToolStripStatusLabel();
+            this.ReceivedBytesSeparatorSign = new System.Windows.Forms.ToolStripStatusLabel();
             this.ToReceiveBytes = new System.Windows.Forms.ToolStripStatusLabel();
             this.UpdateProgress = new System.Windows.Forms.ToolStripProgressBar();
             this.DownloadProgress = new System.Windows.Forms.ToolStripStatusLabel();
             this.Percent = new System.Windows.Forms.ToolStripStatusLabel();
             this.DownloadSpeed = new System.Windows.Forms.ToolStripStatusLabel();
+            this.UpdateFileMonitor = new System.IO.FileSystemWatcher();
             this.menuStrip1.SuspendLayout();
             this.contextMenuStrip1.SuspendLayout();
             this.statusStrip1.SuspendLayout();
@@ -146,6 +147,7 @@ namespace IDE
             this.tabPage2.SuspendLayout();
             this.toolStrip1.SuspendLayout();
             this.statusStrip3.SuspendLayout();
+            ((System.ComponentModel.ISupportInitialize)(this.UpdateFileMonitor)).BeginInit();
             this.SuspendLayout();
             // 
             // menuStrip1
@@ -657,7 +659,7 @@ namespace IDE
             this.toolStripStatusLabel10,
             this.UpdateIcon,
             this.toolStripStatusLabel11,
-            this.toolStripStatusLabel13,
+            this.CanUpdateIcon,
             this.toolStripStatusLabel9,
             this.toolStripStatusLabel12,
             this.WorkingIcon,
@@ -696,7 +698,7 @@ namespace IDE
             // toolStripStatusLabel10
             // 
             this.toolStripStatusLabel10.Name = "toolStripStatusLabel10";
-            this.toolStripStatusLabel10.Size = new System.Drawing.Size(80, 20);
+            this.toolStripStatusLabel10.Size = new System.Drawing.Size(427, 20);
             this.toolStripStatusLabel10.Spring = true;
             // 
             // UpdateIcon
@@ -713,11 +715,11 @@ namespace IDE
             this.toolStripStatusLabel11.Size = new System.Drawing.Size(17, 20);
             this.toolStripStatusLabel11.Text = " |";
             // 
-            // toolStripStatusLabel13
+            // CanUpdateIcon
             // 
-            this.toolStripStatusLabel13.Image = global::IDE.Properties.Resources.select_dark;
-            this.toolStripStatusLabel13.Name = "toolStripStatusLabel13";
-            this.toolStripStatusLabel13.Size = new System.Drawing.Size(20, 20);
+            this.CanUpdateIcon.Image = global::IDE.Properties.Resources.select;
+            this.CanUpdateIcon.Name = "CanUpdateIcon";
+            this.CanUpdateIcon.Size = new System.Drawing.Size(20, 20);
             // 
             // toolStripStatusLabel9
             // 
@@ -1062,7 +1064,7 @@ namespace IDE
             this.statusStrip3.Items.AddRange(new System.Windows.Forms.ToolStripItem[] {
             this.Downloading,
             this.ReceivedBytes,
-            this.ReceivedBytesUnit,
+            this.ReceivedBytesSeparatorSign,
             this.ToReceiveBytes,
             this.UpdateProgress,
             this.DownloadProgress,
@@ -1086,11 +1088,11 @@ namespace IDE
             this.ReceivedBytes.Size = new System.Drawing.Size(0, 20);
             this.ReceivedBytes.TextAlign = System.Drawing.ContentAlignment.MiddleRight;
             // 
-            // ReceivedBytesUnit
+            // ReceivedBytesSeparatorSign
             // 
-            this.ReceivedBytesUnit.Name = "ReceivedBytesUnit";
-            this.ReceivedBytesUnit.Size = new System.Drawing.Size(15, 20);
-            this.ReceivedBytesUnit.Text = "/";
+            this.ReceivedBytesSeparatorSign.Name = "ReceivedBytesSeparatorSign";
+            this.ReceivedBytesSeparatorSign.Size = new System.Drawing.Size(15, 20);
+            this.ReceivedBytesSeparatorSign.Text = "/";
             // 
             // ToReceiveBytes
             // 
@@ -1101,6 +1103,7 @@ namespace IDE
             // 
             this.UpdateProgress.Name = "UpdateProgress";
             this.UpdateProgress.Size = new System.Drawing.Size(200, 18);
+            this.UpdateProgress.Style = System.Windows.Forms.ProgressBarStyle.Marquee;
             // 
             // DownloadProgress
             // 
@@ -1117,6 +1120,13 @@ namespace IDE
             // 
             this.DownloadSpeed.Name = "DownloadSpeed";
             this.DownloadSpeed.Size = new System.Drawing.Size(0, 20);
+            // 
+            // UpdateFileMonitor
+            // 
+            this.UpdateFileMonitor.EnableRaisingEvents = true;
+            this.UpdateFileMonitor.IncludeSubdirectories = true;
+            this.UpdateFileMonitor.SynchronizingObject = this;
+            this.UpdateFileMonitor.Changed += new System.IO.FileSystemEventHandler(this.StepIt);
             // 
             // Main
             // 
@@ -1162,6 +1172,7 @@ namespace IDE
             this.toolStrip1.PerformLayout();
             this.statusStrip3.ResumeLayout(false);
             this.statusStrip3.PerformLayout();
+            ((System.ComponentModel.ISupportInitialize)(this.UpdateFileMonitor)).EndInit();
             this.ResumeLayout(false);
             this.PerformLayout();
 
@@ -1255,12 +1266,12 @@ namespace IDE
         internal ToolStripStatusLabel Blank;
         internal ToolStripStatusLabel UpdateIcon;
         internal ToolStripStatusLabel toolStripStatusLabel11;
-        internal ToolStripStatusLabel toolStripStatusLabel13;
+        internal ToolStripStatusLabel CanUpdateIcon;
         internal ToolStripStatusLabel toolStripStatusLabel10;
         internal ToolStripStatusLabel toolStripStatusLabel12;
         internal StatusStrip statusStrip3;
         internal ToolStripStatusLabel ReceivedBytes;
-        internal ToolStripStatusLabel ReceivedBytesUnit;
+        internal ToolStripStatusLabel ReceivedBytesSeparatorSign;
         internal ToolStripStatusLabel ToReceiveBytes;
         internal ToolStripProgressBar UpdateProgress;
         internal ToolStripStatusLabel DownloadProgress;
@@ -1268,6 +1279,7 @@ namespace IDE
         internal ToolStripStatusLabel Downloading;
         internal ToolStripStatusLabel DownloadSpeed;
         internal ToolStripStatusLabel toolStripStatusLabel9;
+        internal System.IO.FileSystemWatcher UpdateFileMonitor;
     }
 }
 

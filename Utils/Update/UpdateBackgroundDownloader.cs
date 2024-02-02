@@ -42,7 +42,7 @@ internal partial class UpdateBackgroundDownloader
         downloader.DownloadProgressChanged += Downloader_DownloadProgressChanged;
         var file = Program.STARTUP_PATH + $"\\Cache\\Update\\IDE_{GlobalDefinitions.UpdateInfo.FriendlyVersion}+y{DateTime.Now.Year}m{DateTime.Now.Month}d{DateTime.Now.Day}.7z";
         GlobalDefinitions.UpdateArchive_Path = file;
-        if (File.Exists(GlobalDefinitions.UpdateArchive_Path)) { GlobalDefinitions.CanDeployUpdate = true; }
+        if (File.Exists(GlobalDefinitions.UpdateArchive_Path)) { GlobalDefinitions.CanDeployUpdate = true; return; }
         await downloader.DownloadFileTaskAsync(url, file);
     }
 

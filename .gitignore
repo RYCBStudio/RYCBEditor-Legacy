@@ -6,3 +6,4 @@ UpdateChecker.Hideinfo.cs
 UpdateBackgroundDownloader.HideInfo.cs
 UpdateGlobalDeployer.HideInfo.cs
 *.7z
+*.dmp

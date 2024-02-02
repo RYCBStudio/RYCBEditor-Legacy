@@ -97,8 +97,9 @@ internal static class GlobalDefinitions
 
     internal static bool ValidateRevisionNumber(string revisionNumber)
     {
+        Main.LOGGER.WriteLog("验证修订号。", EnumMsgLevel.INFO, EnumPort.CLIENT, EnumModule.UPDATE);
         List<string> rn_list = ["alpha", "beta", "rc", "public"];
-        if (rn_list.IndexOf(revisionNumber) > rn_list.IndexOf(Main.REVISION.ToLower()))
+        if (rn_list.IndexOf(revisionNumber) >= rn_list.IndexOf(Main.REVISION.ToLower()))
         {
             return true;
         }
