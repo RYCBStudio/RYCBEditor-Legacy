@@ -1,0 +1,9 @@
+[LangSet]
+Name=繁體中文
+
+[I18n]
+text.thanks.window.title=感謝
+text.thanks.p.1.title=Minecraft
+text.thanks.p.1.words=它為我提供了很多想法，對每個小模塊都很有用，比如本地化(在我想到 Minecraft 的方式之前，這是一個大問題)和一些復活節彩蛋(這些需要你自己發現，哈哈)
+text.thanks.p.2.title=CSDN.net
+text.thanks.p.2.words=不得不說，CSDN是一個不錯的網站。它為我提供了許多解決方案，使程式更加實用，功能更加豐富。
