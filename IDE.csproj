@@ -982,6 +982,8 @@
     <Compile Include="Utils\Update\UpdateChecker.Hideinfo.cs" />
     <Compile Include="Utils\Update\UpdateGlobalDeployer.cs" />
     <Compile Include="Utils\Update\UpdateGlobalDeployer.HideInfo.cs" />
+    <Compile Include="Utils\Update\UpdateValidater.cs" />
+    <Compile Include="Utils\Update\UpdateValidater.HideInfo.cs" />
     <Compile Include="Utils\Utils.cs" />
     <Compile Include="XshdVisualEdit\XshdVisualEditor.cs">
       <SubType>Form</SubType>
