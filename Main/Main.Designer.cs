@@ -132,7 +132,6 @@ namespace IDE
             this.DownloadProgress = new System.Windows.Forms.ToolStripStatusLabel();
             this.Percent = new System.Windows.Forms.ToolStripStatusLabel();
             this.DownloadSpeed = new System.Windows.Forms.ToolStripStatusLabel();
-            this.UpdateFileMonitor = new System.IO.FileSystemWatcher();
             this.menuStrip1.SuspendLayout();
             this.contextMenuStrip1.SuspendLayout();
             this.statusStrip1.SuspendLayout();
@@ -147,7 +146,6 @@ namespace IDE
             this.tabPage2.SuspendLayout();
             this.toolStrip1.SuspendLayout();
             this.statusStrip3.SuspendLayout();
-            ((System.ComponentModel.ISupportInitialize)(this.UpdateFileMonitor)).BeginInit();
             this.SuspendLayout();
             // 
             // menuStrip1
@@ -176,7 +174,7 @@ namespace IDE
             this.另存为AToolStripMenuItem});
             this.文件FToolStripMenuItem.ForeColor = System.Drawing.Color.White;
             this.文件FToolStripMenuItem.Name = "文件FToolStripMenuItem";
-            this.文件FToolStripMenuItem.Size = new System.Drawing.Size(95, 24);
+            this.文件FToolStripMenuItem.Size = new System.Drawing.Size(95, 26);
             this.文件FToolStripMenuItem.Text = "text.ts.file";
             // 
             // 新建NToolStripMenuItem
@@ -261,7 +259,7 @@ namespace IDE
             this.查找替换ToolStripMenuItem});
             this.编辑EToolStripMenuItem.ForeColor = System.Drawing.Color.White;
             this.编辑EToolStripMenuItem.Name = "编辑EToolStripMenuItem";
-            this.编辑EToolStripMenuItem.Size = new System.Drawing.Size(102, 24);
+            this.编辑EToolStripMenuItem.Size = new System.Drawing.Size(102, 26);
             this.编辑EToolStripMenuItem.Text = "text.ts.edit";
             // 
             // 撤消UToolStripMenuItem
@@ -345,7 +343,7 @@ namespace IDE
             this.配置运行器ToolStripMenuItem});
             this.运行RToolStripMenuItem.ForeColor = System.Drawing.Color.White;
             this.运行RToolStripMenuItem.Name = "运行RToolStripMenuItem";
-            this.运行RToolStripMenuItem.Size = new System.Drawing.Size(97, 24);
+            this.运行RToolStripMenuItem.Size = new System.Drawing.Size(97, 26);
             this.运行RToolStripMenuItem.Text = "text.ts.run";
             // 
             // 运行ToolStripMenuItem
@@ -378,7 +376,7 @@ namespace IDE
             this.快速工具ToolStripMenuItem});
             this.工具TToolStripMenuItem.ForeColor = System.Drawing.Color.White;
             this.工具TToolStripMenuItem.Name = "工具TToolStripMenuItem";
-            this.工具TToolStripMenuItem.Size = new System.Drawing.Size(103, 24);
+            this.工具TToolStripMenuItem.Size = new System.Drawing.Size(103, 26);
             this.工具TToolStripMenuItem.Text = "text.ts.tool";
             // 
             // 自定义CToolStripMenuItem
@@ -465,7 +463,7 @@ namespace IDE
             this.捐助ToolStripMenuItem});
             this.帮助HToolStripMenuItem.ForeColor = System.Drawing.Color.White;
             this.帮助HToolStripMenuItem.Name = "帮助HToolStripMenuItem";
-            this.帮助HToolStripMenuItem.Size = new System.Drawing.Size(105, 24);
+            this.帮助HToolStripMenuItem.Size = new System.Drawing.Size(105, 26);
             this.帮助HToolStripMenuItem.Text = "text.ts.help";
             // 
             // 关于AToolStripMenuItem
@@ -1028,7 +1026,7 @@ namespace IDE
             this.toolStripButton1.Image = global::IDE.Properties.Resources.Run;
             this.toolStripButton1.ImageTransparentColor = System.Drawing.Color.Magenta;
             this.toolStripButton1.Name = "toolStripButton1";
-            this.toolStripButton1.Size = new System.Drawing.Size(29, 24);
+            this.toolStripButton1.Size = new System.Drawing.Size(29, 28);
             this.toolStripButton1.Text = "toolStripButton1";
             this.toolStripButton1.Click += new System.EventHandler(this.Run);
             // 
@@ -1039,7 +1037,7 @@ namespace IDE
             this.toolStripButton2.DisplayStyle = System.Windows.Forms.ToolStripItemDisplayStyle.Image;
             this.toolStripButton2.ImageTransparentColor = System.Drawing.Color.Magenta;
             this.toolStripButton2.Name = "toolStripButton2";
-            this.toolStripButton2.Size = new System.Drawing.Size(29, 24);
+            this.toolStripButton2.Size = new System.Drawing.Size(29, 28);
             this.toolStripButton2.Text = "toolStripButton2";
             this.toolStripButton2.Click += new System.EventHandler(this.ForceStop);
             // 
@@ -1049,13 +1047,13 @@ namespace IDE
             this.toolStripButton3.Image = global::IDE.Properties.Resources.Debug_Color;
             this.toolStripButton3.ImageTransparentColor = System.Drawing.Color.Magenta;
             this.toolStripButton3.Name = "toolStripButton3";
-            this.toolStripButton3.Size = new System.Drawing.Size(29, 24);
+            this.toolStripButton3.Size = new System.Drawing.Size(29, 28);
             this.toolStripButton3.Text = "toolStripButton3";
             // 
             // toolStripSeparator1
             // 
             this.toolStripSeparator1.Name = "toolStripSeparator1";
-            this.toolStripSeparator1.Size = new System.Drawing.Size(6, 27);
+            this.toolStripSeparator1.Size = new System.Drawing.Size(6, 31);
             // 
             // statusStrip3
             // 
@@ -1101,9 +1099,10 @@ namespace IDE
             // 
             // UpdateProgress
             // 
+            this.UpdateProgress.MarqueeAnimationSpeed = 200;
             this.UpdateProgress.Name = "UpdateProgress";
             this.UpdateProgress.Size = new System.Drawing.Size(200, 18);
-            this.UpdateProgress.Style = System.Windows.Forms.ProgressBarStyle.Marquee;
+            this.UpdateProgress.Style = System.Windows.Forms.ProgressBarStyle.Continuous;
             // 
             // DownloadProgress
             // 
@@ -1120,13 +1119,6 @@ namespace IDE
             // 
             this.DownloadSpeed.Name = "DownloadSpeed";
             this.DownloadSpeed.Size = new System.Drawing.Size(0, 20);
-            // 
-            // UpdateFileMonitor
-            // 
-            this.UpdateFileMonitor.EnableRaisingEvents = true;
-            this.UpdateFileMonitor.IncludeSubdirectories = true;
-            this.UpdateFileMonitor.SynchronizingObject = this;
-            this.UpdateFileMonitor.Changed += new System.IO.FileSystemEventHandler(this.StepIt);
             // 
             // Main
             // 
@@ -1172,7 +1164,6 @@ namespace IDE
             this.toolStrip1.PerformLayout();
             this.statusStrip3.ResumeLayout(false);
             this.statusStrip3.PerformLayout();
-            ((System.ComponentModel.ISupportInitialize)(this.UpdateFileMonitor)).EndInit();
             this.ResumeLayout(false);
             this.PerformLayout();
 
@@ -1279,7 +1270,6 @@ namespace IDE
         internal ToolStripStatusLabel Downloading;
         internal ToolStripStatusLabel DownloadSpeed;
         internal ToolStripStatusLabel toolStripStatusLabel9;
-        internal System.IO.FileSystemWatcher UpdateFileMonitor;
     }
 }
 

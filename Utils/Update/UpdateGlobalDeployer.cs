@@ -1,8 +1,6 @@
 ﻿using System;
 using System.Diagnostics;
 using System.IO;
-using ICSharpCode.SharpZipLib.Zip;
-using static IronPython.Modules.PythonNT;
 
 namespace IDE.Utils.Update;
 internal partial class UpdateGlobalDeployer
@@ -16,18 +14,17 @@ internal partial class UpdateGlobalDeployer
 
             if (GlobalDefinitions.ValidateFile(GlobalDefinitions.UpdateArchive_Path, ARCHIVE_MD5, ARCHIVE_SHA256))
             {
-                Main.instance.UpdateFileMonitor.Path = path;
-                Main.instance.UpdateFileMonitor.EnableRaisingEvents = true;
                 Main.instance.UpdateProgress.Style = System.Windows.Forms.ProgressBarStyle.Marquee;
                 Main.instance.ReceivedBytesSeparatorSign.Visible = false;
                 Main.instance.ToReceiveBytes.Text = "";
                 Main.instance.Downloading.Text = "Decompressing: ";
                 Main.instance.DownloadProgress.Text = "";
                 Main.instance.Percent.Visible = false;
-                if (DecompressFile(GlobalDefinitions.UpdateArchive_Path, Environment.GetFolderPath(Environment.SpecialFolder.ApplicationData) + "\\RYCB\\IDE\\Update"))
+                if (DecompressFile(GlobalDefinitions.UpdateArchive_Path, path))
                 {
                     Main.instance.toolStripStatusLabel9.Text = "Updates are ready.";
                     GlobalDefinitions.UpdateDeployed = true;
+                    GlobalDefinitions.DecompressedUpdateArchive_Path = path;
                 }
                 else
                 {

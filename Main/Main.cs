@@ -2152,7 +2152,7 @@ namespace IDE
         #region 配置运行器
         private void ConfigRunners(object sender, EventArgs e)
         {
-            new InterpreterConfigBox(Program.STARTUP_PATH + "\\config\\runners\\test.icbconfig");
+            new InterpreterConfigBox(Program.STARTUP_PATH + "\\config\\runners\\").Show();
         }
         #endregion
         #region 检查&下载更新
@@ -2183,12 +2183,12 @@ namespace IDE
             DeployUpdate();
         }
 
-        private void DeployUpdate()
+        private async void DeployUpdate()
         {
             double i = 0;
             while (!GlobalDefinitions.CanDeployUpdate & !GlobalDefinitions.UpdateDeployed)
             {
-                i += 0.1;
+                i += 0.01;
                 if (i % 1 == 0)
                 {
                     LOGGER.WriteLog("等待开始更新：次数" + i.ToString(), EnumMsgLevel.INFO, EnumPort.CLIENT, EnumModule.UPDATE);
@@ -2196,11 +2196,19 @@ namespace IDE
             }
             var ugd = new UpdateGlobalDeployer();
             LOGGER.WriteLog("正在部署更新。", EnumMsgLevel.INFO, EnumPort.CLIENT, EnumModule.UPDATE);
-            ugd.DeployUpdate();
-        }
-
-        private void StepIt(object sender, FileSystemEventArgs e)
-        {
+            ugd.DeployUpdate(); 
+            LOGGER.WriteLog("更新部署完成。", EnumMsgLevel.INFO, EnumPort.CLIENT, EnumModule.UPDATE);
+            while (!GlobalDefinitions.UpdateDeployed)
+            {
+                i += 0.1;
+                if (i % 1 == 0)
+                {
+                    LOGGER.WriteLog("等待验证更新：次数" + i.ToString(), EnumMsgLevel.INFO, EnumPort.CLIENT, EnumModule.UPDATE);
+                }
+            }
+            UpdateValidater uv = new();
+            LOGGER.WriteLog("正在验证更新。", EnumMsgLevel.INFO, EnumPort.CLIENT, EnumModule.UPDATE);
+            await uv.ValidateFileAsync();
         }
 
         #endregion

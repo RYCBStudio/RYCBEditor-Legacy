@@ -6,11 +6,15 @@ using Sunny.UI;
 namespace IDE;
 public partial class CacheCleaner : UIForm
 {
+
+    private bool ClearStatus = false;
+
     private struct ClearChoices
     {
         internal static bool LogFile = false;
-        internal static bool PyCNFile = false;
         internal static bool TmpFile = false;
+        internal static bool UpdateArchive = false;
+        internal static bool UpdateFile = false;
     }
 
     public CacheCleaner()
@@ -22,19 +26,17 @@ public partial class CacheCleaner : UIForm
     private void ChangeState_Log(object sender, EventArgs e)
     {
         ClearChoices.LogFile = ((UICheckBox)sender).Checked;
-        GetFiles();
     }
 
     private void ChangeState_PyCN(object sender, EventArgs e)
     {
-        ClearChoices.PyCNFile = ((UICheckBox)sender).Checked;
-        GetFiles();
+        //ClearChoices.PyCNFile = ((UICheckBox)sender).Checked;
+        //GetFiles();
     }
 
     private void ChangeState_Tmp(object sender, EventArgs e)
     {
         ClearChoices.TmpFile = ((UICheckBox)sender).Checked;
-        GetFiles();
     }
 
     private void GetFiles()
@@ -44,22 +46,32 @@ public partial class CacheCleaner : UIForm
         {
             total += System.IO.Directory.EnumerateFiles(Program.STARTUP_PATH + "\\logs").Count();
         }
-        if (ClearChoices.PyCNFile)
-        {
-            //total += System.IO.Directory.EnumerateFiles(Program.STARTUP_PATH + "\\logs").Count();
-        }
+        //if (ClearChoices.PyCNFile)
+        //{
+        //    //total += System.IO.Directory.EnumerateFiles(Program.STARTUP_PATH + "\\logs").Count();
+        //}
         if (ClearChoices.TmpFile)
         {
             total += System.IO.Directory.EnumerateFiles(Program.STARTUP_PATH + "\\$tmp_code").Count();
+        }
+        if (ClearChoices.UpdateFile)
+        {
+            total += System.IO.Directory.EnumerateFiles(Utils.Update.GlobalDefinitions.DecompressedUpdateArchive_Path).Count();
+        }
+        if (ClearChoices.UpdateArchive)
+        {
+            total += 1;
         }
         uiProcessBar1.Maximum = total;
     }
 
     private void Disable(object sender, EventArgs e)
     {
-        if (!(ClearChoices.TmpFile && ClearChoices.PyCNFile && ClearChoices.LogFile)) { return; }
+        if (ClearChoices.TmpFile && ClearChoices.UpdateArchive && ClearChoices.LogFile && ClearChoices.UpdateFile) { return; }
+        ClearStatus = true;
         BtnOk.Disabled();
-        BtnCancel.Disabled(); 
+        BtnCancel.Disabled();
+        GetFiles();
         if (ClearChoices.TmpFile)
         {
             foreach (var file in System.IO.Directory.EnumerateFiles(Program.STARTUP_PATH + "\\$tmp_code"))
@@ -74,10 +86,25 @@ public partial class CacheCleaner : UIForm
             foreach (var file in files)
             {
                 if (isCurrentLogFile(file))
+                {
                     continue;
+                }
                 File.Delete(file);
                 uiProcessBar1.StepIt();
             }
+        }
+        if (ClearChoices.UpdateFile)
+        {
+            var files = System.IO.Directory.EnumerateFiles(Utils.Update.GlobalDefinitions.DecompressedUpdateArchive_Path);
+            foreach (var file in files)
+            {
+                File.Delete(file);
+                uiProcessBar1.StepIt();
+            }
+        }
+        if (ClearChoices.UpdateArchive)
+        {
+            File.Delete(Utils.Update.GlobalDefinitions.UpdateArchive_Path);
         }
     }
 
@@ -97,5 +124,20 @@ public partial class CacheCleaner : UIForm
             BtnOk.Enabled = true;
             BtnCancel.Enabled = true;
         }
+    }
+
+    private void Cancel(object sender, EventArgs e)
+    {
+        this.Close();
+    }
+
+    private void ChangeState_UA(object sender, EventArgs e)
+    {
+        ClearChoices.UpdateArchive = ((UICheckBox)sender).Checked;
+    }
+
+    private void ChangeState_UR(object sender, EventArgs e)
+    {
+        ClearChoices.UpdateFile = ((UICheckBox)sender).Checked;
     }
 }

@@ -7,3 +7,4 @@ UpdateBackgroundDownloader.HideInfo.cs
 UpdateGlobalDeployer.HideInfo.cs
 *.7z
 *.dmp
+UpdateValidater.HideInfo.cs

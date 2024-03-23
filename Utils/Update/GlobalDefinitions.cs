@@ -40,6 +40,8 @@ internal static class GlobalDefinitions
 
     internal static string UpdateArchive_Path;
 
+    internal static string DecompressedUpdateArchive_Path;
+
     internal static class UpdateInfo
     {
         public static string FriendlyVersion;

@@ -84,7 +84,7 @@
             this.uiLabel3.Name = "uiLabel3";
             this.uiLabel3.Size = new System.Drawing.Size(82, 28);
             this.uiLabel3.TabIndex = 8;
-            this.uiLabel3.Text = "2023";
+            this.uiLabel3.Text = "2024";
             this.uiLabel3.TextAlign = System.Drawing.ContentAlignment.MiddleRight;
             // 
             // timer1

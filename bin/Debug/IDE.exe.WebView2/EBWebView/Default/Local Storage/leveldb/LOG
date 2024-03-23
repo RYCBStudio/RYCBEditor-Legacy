@@ -1,3 +1,2 @@
-2024/02/02-13:05:47.377 3528 Reusing MANIFEST F:\VS 2022\repos\IDE\bin\Debug\IDE.exe.WebView2\EBWebView\Default\Local Storage\leveldb/MANIFEST-000001
-2024/02/02-13:05:47.384 3528 Recovering log #3
-2024/02/02-13:05:47.387 3528 Reusing old log F:\VS 2022\repos\IDE\bin\Debug\IDE.exe.WebView2\EBWebView\Default\Local Storage\leveldb/000003.log 
+2024/02/05-18:39:09.570 6e44 Creating DB F:\VS 2022\repos\IDE\bin\Debug\IDE.exe.WebView2\EBWebView\Default\Local Storage\leveldb since it was missing.
+2024/02/05-18:39:09.594 6e44 Reusing MANIFEST F:\VS 2022\repos\IDE\bin\Debug\IDE.exe.WebView2\EBWebView\Default\Local Storage\leveldb/MANIFEST-000001

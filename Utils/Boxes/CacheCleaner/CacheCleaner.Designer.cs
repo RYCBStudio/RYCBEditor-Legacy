@@ -38,12 +38,15 @@ partial class CacheCleaner
             this.BtnStart = new Sunny.UI.UIButton();
             this.BtnCancel = new Sunny.UI.UIButton();
             this.BtnOk = new Sunny.UI.UIButton();
+            this.uiCheckBox1 = new Sunny.UI.UICheckBox();
+            this.uiCheckBox2 = new Sunny.UI.UICheckBox();
             this.SuspendLayout();
             // 
             // CLogFile
             // 
             this.CLogFile.Cursor = System.Windows.Forms.Cursors.Hand;
             this.CLogFile.Font = new System.Drawing.Font("微软雅黑", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(134)));
+            this.CLogFile.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(48)))), ((int)(((byte)(48)))), ((int)(((byte)(48)))));
             this.CLogFile.Location = new System.Drawing.Point(3, 90);
             this.CLogFile.MinimumSize = new System.Drawing.Size(1, 1);
             this.CLogFile.Name = "CLogFile";
@@ -58,6 +61,7 @@ partial class CacheCleaner
             // 
             this.CPyCNCompiledFile.Cursor = System.Windows.Forms.Cursors.Hand;
             this.CPyCNCompiledFile.Font = new System.Drawing.Font("微软雅黑", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(134)));
+            this.CPyCNCompiledFile.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(48)))), ((int)(((byte)(48)))), ((int)(((byte)(48)))));
             this.CPyCNCompiledFile.Location = new System.Drawing.Point(3, 133);
             this.CPyCNCompiledFile.MinimumSize = new System.Drawing.Size(1, 1);
             this.CPyCNCompiledFile.Name = "CPyCNCompiledFile";
@@ -72,6 +76,7 @@ partial class CacheCleaner
             // 
             this.CTemporaryCode.Cursor = System.Windows.Forms.Cursors.Hand;
             this.CTemporaryCode.Font = new System.Drawing.Font("微软雅黑", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(134)));
+            this.CTemporaryCode.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(48)))), ((int)(((byte)(48)))), ((int)(((byte)(48)))));
             this.CTemporaryCode.Location = new System.Drawing.Point(3, 176);
             this.CTemporaryCode.MinimumSize = new System.Drawing.Size(1, 1);
             this.CTemporaryCode.Name = "CTemporaryCode";
@@ -84,7 +89,9 @@ partial class CacheCleaner
             // 
             // uiLine1
             // 
+            this.uiLine1.BackColor = System.Drawing.Color.Transparent;
             this.uiLine1.Font = new System.Drawing.Font("微软雅黑", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(134)));
+            this.uiLine1.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(48)))), ((int)(((byte)(48)))), ((int)(((byte)(48)))));
             this.uiLine1.LineColor2 = System.Drawing.Color.White;
             this.uiLine1.LineDashStyle = Sunny.UI.UILineDashStyle.Solid;
             this.uiLine1.LineSize = 5;
@@ -101,7 +108,7 @@ partial class CacheCleaner
             // 
             this.uiProcessBar1.FillColor = System.Drawing.Color.FromArgb(((int)(((byte)(235)))), ((int)(((byte)(243)))), ((int)(((byte)(255)))));
             this.uiProcessBar1.Font = new System.Drawing.Font("微软雅黑", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(134)));
-            this.uiProcessBar1.Location = new System.Drawing.Point(3, 263);
+            this.uiProcessBar1.Location = new System.Drawing.Point(3, 402);
             this.uiProcessBar1.MinimumSize = new System.Drawing.Size(70, 3);
             this.uiProcessBar1.Name = "uiProcessBar1";
             this.uiProcessBar1.Size = new System.Drawing.Size(621, 34);
@@ -112,11 +119,13 @@ partial class CacheCleaner
             // 
             // uiLine2
             // 
+            this.uiLine2.BackColor = System.Drawing.Color.Transparent;
             this.uiLine2.Font = new System.Drawing.Font("微软雅黑", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(134)));
+            this.uiLine2.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(48)))), ((int)(((byte)(48)))), ((int)(((byte)(48)))));
             this.uiLine2.LineColor2 = System.Drawing.Color.White;
             this.uiLine2.LineDashStyle = Sunny.UI.UILineDashStyle.Solid;
             this.uiLine2.LineSize = 5;
-            this.uiLine2.Location = new System.Drawing.Point(3, 219);
+            this.uiLine2.Location = new System.Drawing.Point(3, 358);
             this.uiLine2.MinimumSize = new System.Drawing.Size(1, 1);
             this.uiLine2.Name = "uiLine2";
             this.uiLine2.Size = new System.Drawing.Size(621, 38);
@@ -129,7 +138,7 @@ partial class CacheCleaner
             // 
             this.BtnStart.Cursor = System.Windows.Forms.Cursors.Hand;
             this.BtnStart.Font = new System.Drawing.Font("微软雅黑", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(134)));
-            this.BtnStart.Location = new System.Drawing.Point(315, 316);
+            this.BtnStart.Location = new System.Drawing.Point(315, 442);
             this.BtnStart.MinimumSize = new System.Drawing.Size(1, 1);
             this.BtnStart.Name = "BtnStart";
             this.BtnStart.Size = new System.Drawing.Size(99, 36);
@@ -145,7 +154,7 @@ partial class CacheCleaner
             this.BtnCancel.Cursor = System.Windows.Forms.Cursors.Hand;
             this.BtnCancel.DialogResult = System.Windows.Forms.DialogResult.Cancel;
             this.BtnCancel.Font = new System.Drawing.Font("微软雅黑", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(134)));
-            this.BtnCancel.Location = new System.Drawing.Point(525, 316);
+            this.BtnCancel.Location = new System.Drawing.Point(525, 442);
             this.BtnCancel.MinimumSize = new System.Drawing.Size(1, 1);
             this.BtnCancel.Name = "BtnCancel";
             this.BtnCancel.Size = new System.Drawing.Size(99, 36);
@@ -154,13 +163,14 @@ partial class CacheCleaner
             this.BtnCancel.TabIndex = 7;
             this.BtnCancel.Text = "text.window.cc.cancel";
             this.BtnCancel.TipsFont = new System.Drawing.Font("微软雅黑", 9F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(134)));
+            this.BtnCancel.Click += new System.EventHandler(this.Cancel);
             // 
             // BtnOk
             // 
             this.BtnOk.Cursor = System.Windows.Forms.Cursors.Hand;
             this.BtnOk.DialogResult = System.Windows.Forms.DialogResult.OK;
             this.BtnOk.Font = new System.Drawing.Font("微软雅黑", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(134)));
-            this.BtnOk.Location = new System.Drawing.Point(420, 316);
+            this.BtnOk.Location = new System.Drawing.Point(420, 442);
             this.BtnOk.MinimumSize = new System.Drawing.Size(1, 1);
             this.BtnOk.Name = "BtnOk";
             this.BtnOk.Size = new System.Drawing.Size(99, 36);
@@ -170,10 +180,42 @@ partial class CacheCleaner
             this.BtnOk.Text = "text.window.cc.ok";
             this.BtnOk.TipsFont = new System.Drawing.Font("微软雅黑", 9F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(134)));
             // 
+            // uiCheckBox1
+            // 
+            this.uiCheckBox1.Cursor = System.Windows.Forms.Cursors.Hand;
+            this.uiCheckBox1.Font = new System.Drawing.Font("微软雅黑", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(134)));
+            this.uiCheckBox1.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(48)))), ((int)(((byte)(48)))), ((int)(((byte)(48)))));
+            this.uiCheckBox1.Location = new System.Drawing.Point(3, 219);
+            this.uiCheckBox1.MinimumSize = new System.Drawing.Size(1, 1);
+            this.uiCheckBox1.Name = "uiCheckBox1";
+            this.uiCheckBox1.Size = new System.Drawing.Size(621, 37);
+            this.uiCheckBox1.Style = Sunny.UI.UIStyle.Custom;
+            this.uiCheckBox1.StyleCustomMode = true;
+            this.uiCheckBox1.TabIndex = 9;
+            this.uiCheckBox1.Text = "text.window.cc.choices.updatearchive";
+            this.uiCheckBox1.CheckedChanged += new System.EventHandler(this.ChangeState_UA);
+            // 
+            // uiCheckBox2
+            // 
+            this.uiCheckBox2.Cursor = System.Windows.Forms.Cursors.Hand;
+            this.uiCheckBox2.Font = new System.Drawing.Font("微软雅黑", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(134)));
+            this.uiCheckBox2.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(48)))), ((int)(((byte)(48)))), ((int)(((byte)(48)))));
+            this.uiCheckBox2.Location = new System.Drawing.Point(3, 262);
+            this.uiCheckBox2.MinimumSize = new System.Drawing.Size(1, 1);
+            this.uiCheckBox2.Name = "uiCheckBox2";
+            this.uiCheckBox2.Size = new System.Drawing.Size(621, 37);
+            this.uiCheckBox2.Style = Sunny.UI.UIStyle.Custom;
+            this.uiCheckBox2.StyleCustomMode = true;
+            this.uiCheckBox2.TabIndex = 10;
+            this.uiCheckBox2.Text = "text.window.cc.choices.updateres";
+            this.uiCheckBox2.CheckedChanged += new System.EventHandler(this.ChangeState_UR);
+            // 
             // CacheCleaner
             // 
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.None;
-            this.ClientSize = new System.Drawing.Size(627, 355);
+            this.ClientSize = new System.Drawing.Size(627, 481);
+            this.Controls.Add(this.uiCheckBox2);
+            this.Controls.Add(this.uiCheckBox1);
             this.Controls.Add(this.BtnOk);
             this.Controls.Add(this.BtnCancel);
             this.Controls.Add(this.BtnStart);
@@ -183,6 +225,7 @@ partial class CacheCleaner
             this.Controls.Add(this.CTemporaryCode);
             this.Controls.Add(this.CPyCNCompiledFile);
             this.Controls.Add(this.CLogFile);
+            this.Font = new System.Drawing.Font("微软雅黑", 12F);
             this.Icon = ((System.Drawing.Icon)(resources.GetObject("$this.Icon")));
             this.MaximizeBox = false;
             this.MinimizeBox = false;
@@ -191,6 +234,7 @@ partial class CacheCleaner
             this.Style = Sunny.UI.UIStyle.Custom;
             this.StyleCustomMode = true;
             this.Text = "text.window.cachecleaner.title";
+            this.TitleFont = new System.Drawing.Font("微软雅黑", 12F);
             this.ZoomScaleRect = new System.Drawing.Rectangle(19, 19, 800, 450);
             this.ResumeLayout(false);
 
@@ -207,4 +251,6 @@ partial class CacheCleaner
     private Sunny.UI.UIButton BtnStart;
     private Sunny.UI.UIButton BtnCancel;
     private Sunny.UI.UIButton BtnOk;
+    private Sunny.UI.UICheckBox uiCheckBox1;
+    private Sunny.UI.UICheckBox uiCheckBox2;
 }

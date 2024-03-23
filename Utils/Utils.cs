@@ -13,6 +13,7 @@ using System.Runtime.InteropServices;
 using System.Threading;
 using System.Diagnostics;
 using Microsoft.Diagnostics.Runtime;
+using static Community.CsharpSqlite.Sqlite3;
 
 namespace IDE
 {
@@ -593,6 +594,48 @@ namespace IDE
         {
             var result = Convert.ChangeType(o, typeof(T));
             return (T)result;
+        }
+
+        /// <summary>
+        /// 向ListBox中添加项目
+        /// </summary>
+        /// <param name="lb">需添加项目的ListBox</param>
+        /// <param name="item">需添加的项目</param>
+        public static void Add(this UIUserControl lb, object item)
+        {
+            var _lb = (UIListBox)lb;
+            _lb.Items.Add(item);
+            lb.Invalidate(false);
+        }
+
+        /// <summary>
+        /// 向ListBox中删除项目
+        /// </summary>
+        /// <param name="lb">需删除项目的ListBox</param>
+        /// <param name="item">需删除的项目</param>
+        public static void Delete(this UIUserControl lb, object item)
+        {
+            var _lb = (UIListBox)lb;
+            if (_lb.SelectedIndex != -1)
+            {
+                _lb.Items.Remove(item);
+            }
+            lb.Invalidate(false);
+        }
+
+        /// <summary>
+        /// 向ListBox中删除项目
+        /// </summary>
+        /// <param name="lb">需删除项目的ListBox</param>
+        /// <param name="index">需删除的项目的下标</param>
+        public static void DeleteAt(this UIUserControl lb, int index)
+        {
+            var _lb = (UIListBox)lb;
+            if (_lb.SelectedIndex != -1)
+            {
+                _lb.Items.RemoveAt(index);
+            }
+            lb.Invalidate(false);
         }
 
         private static bool EqualsPrivate(this ListViewItem item, ListViewItem item1)

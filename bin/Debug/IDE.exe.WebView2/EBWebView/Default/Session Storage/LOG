@@ -1,3 +1,2 @@
-2024/02/02-13:05:57.055 3528 Reusing MANIFEST F:\VS 2022\repos\IDE\bin\Debug\IDE.exe.WebView2\EBWebView\Default\Session Storage/MANIFEST-000001
-2024/02/02-13:05:57.057 3528 Recovering log #3
-2024/02/02-13:05:57.060 3528 Reusing old log F:\VS 2022\repos\IDE\bin\Debug\IDE.exe.WebView2\EBWebView\Default\Session Storage/000003.log 
+2024/02/05-18:40:06.604 6e44 Creating DB F:\VS 2022\repos\IDE\bin\Debug\IDE.exe.WebView2\EBWebView\Default\Session Storage since it was missing.
+2024/02/05-18:40:06.629 6e44 Reusing MANIFEST F:\VS 2022\repos\IDE\bin\Debug\IDE.exe.WebView2\EBWebView\Default\Session Storage/MANIFEST-000001

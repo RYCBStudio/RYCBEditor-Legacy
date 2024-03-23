@@ -1,0 +1,5 @@
+[itptr]
+name=12fd
+type=System
+path=E:\Program Files\Python\Python312\python.exe
+args=-m pip install --upgrade pip  
