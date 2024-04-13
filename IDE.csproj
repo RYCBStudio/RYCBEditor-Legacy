@@ -1852,6 +1852,7 @@
     <None Include="Resources\runnerconfig.png" />
     <None Include="Resources\select_dark.png" />
     <None Include="Resources\Exception-32X.png" />
+    <None Include="Resources\GitHubLogo_Light.png" />
     <Content Include="Utils\RE-Addon-Controls\Enter-Dark.png" />
     <Content Include="Utils\RE-Addon-Controls\Enter.png" />
     <Content Include="语法说明.html" />
