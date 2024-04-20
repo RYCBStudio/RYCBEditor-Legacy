@@ -1,0 +1,9 @@
+[LangSet]
+Name=English
+
+[I18n]
+text.thanks.window.title=Credits
+text.thanks.p.1.title=Minecraft 
+text.thanks.p.1.words=It provides me with many ideas, which are very useful for each small module, such as I18n (It is a big problem before I thought of the way of Minecraft) and some Easter egg (those need to be discovered by yourself, haha.)
+text.thanks.p.2.title=CSDN.net
+text.thanks.p.2.words=It has to be said that CSDN.net is a good website. It provides me with many solutions, making the IDE more user-friendly and feature rich.

@@ -1,0 +1,8 @@
+[LangSet]
+Name=English
+
+[I18n]
+text.newfile.filename=File Name: 
+text.newfile.filetype=File Type: 
+text.newfile.yes=Create
+text.newfile.no=Cancel

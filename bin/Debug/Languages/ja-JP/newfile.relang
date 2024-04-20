@@ -1,0 +1,8 @@
+[LangSet]
+Name=日本語
+
+[I18n]
+text.newfile.filename=ファイル名: 
+text.newfile.filetype=ファイルの種類: 
+text.newfile.yes=はい
+text.newfile.no=キャンセル

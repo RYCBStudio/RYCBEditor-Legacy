@@ -1,0 +1,7 @@
+[LangSet]
+Name=简体中文
+
+[I18n]
+text.errmsgbox.err.type=类型
+text.errmsgbox.err.line=行数
+text.errmsgbox.err.content=异常信息
