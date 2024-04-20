@@ -1,0 +1,38 @@
+[15:29:41:198] [客户端:初始化|信息] 已清除过期的日志文件！ 
+[15:29:44:23] [客户端:初始化|信息] 窗口大小修改成功 (水平长度1920px, 垂直长度1020px) 
+[15:29:44:25] [客户端:初始化|信息] 窗口位置：{X=192,Y=192} 
+[15:29:44:25] [客户端:初始化|调试] 窗口PID：25064 
+[15:29:44:27] [客户端:初始化|调试] 窗口句柄：2628 
+[15:29:44:27] [客户端:初始化|信息] 主程序正在初始化... 
+[15:29:44:35] [客户端:初始化|信息] 编辑器控件加载完毕。 
+[15:29:44:37] [客户端:初始化|信息] 主程序初始化成功！ 
+[15:29:44:39] [客户端:初始化|信息] 主程序初始化时间共计：0.01s 
+[15:29:44:39] [客户端:初始化|信息] 初始化时间共计：5.41s 
+[15:29:47:761] [客户端:主程序|信息] 已获取文件名: .py 
+[15:29:51:148] [客户端:主程序|调试] ProcessStartInfo对象已创建。 
+[15:29:51:148] [客户端:主程序|调试] ProcessStartInfo对象属性：FileName=Runner.exe, Arguments=F:\VS 2022\repos\IDE\bin\Debug\Workpace\Python\1.py 
+[15:29:51:149] [客户端:主程序|调试] Process对象已创建。 
+[15:29:53:746] [客户端:主程序|调试] ProcessStartInfo对象已创建。 
+[15:29:53:746] [客户端:主程序|调试] ProcessStartInfo对象属性：FileName=Runner.exe, Arguments=F:\VS 2022\repos\IDE\bin\Debug\Workpace\Python\1.py 
+[15:29:53:747] [客户端:主程序|调试] Process对象已创建。 
+[15:30:32:936] [客户端:主程序|调试] ProcessStartInfo对象已创建。 
+[15:30:32:937] [客户端:主程序|调试] ProcessStartInfo对象属性：FileName=Runner.exe, Arguments=F:\VS 2022\repos\IDE\bin\Debug\Workpace\Python\1.py 
+[15:30:32:937] [客户端:主程序|调试] Process对象已创建。 
+[15:30:37:314] [客户端:主程序|调试] ProcessStartInfo对象已创建。 
+[15:30:37:314] [客户端:主程序|调试] ProcessStartInfo对象属性：FileName=Runner.exe, Arguments=F:\VS 2022\repos\IDE\bin\Debug\Workpace\Python\1.py 
+[15:30:37:314] [客户端:主程序|调试] Process对象已创建。 
+[15:31:59:200] [客户端:主程序|调试] ProcessStartInfo对象已创建。 
+[15:31:59:200] [客户端:主程序|调试] ProcessStartInfo对象属性：FileName=Runner.exe, Arguments=F:\VS 2022\repos\IDE\bin\Debug\Workpace\Python\1.py 
+[15:31:59:200] [客户端:主程序|调试] Process对象已创建。 
+[15:32:0:483] [客户端|错误] [Type System.InvalidOperationException] [HResult -2146233079] [InnerException: Null HResult Null] 已捕获异常：System.InvalidOperationException 
+ 异常信息：没有与此对象关联的进程。
+[15:32:0:483] [客户端|错误] ======== 堆栈跟踪如下 ======== 
+				[Outer Exception]    在 System.Diagnostics.Process.EnsureState(State state)
+   在 System.Diagnostics.Process.EnsureState(State state)
+   在 System.Diagnostics.Process.GetProcessHandle(Int32 access, Boolean throwIfExited)
+   在 System.Diagnostics.Process.GetProcessTimes()
+   在 System.Diagnostics.Process.get_StartTime()
+   在 IDE.Main.Run(Object sender, EventArgs e)
+				[Inner Exception] (无 InnerException)
+[15:32:7:161] [客户端:主程序|信息] 已询问退出，返回值：Yes 
+[15:32:7:161] [客户端:主程序|信息] Stopping! 
