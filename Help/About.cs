@@ -1,4 +1,5 @@
 ﻿using System;
+using System.Diagnostics;
 using System.Windows.Forms;
 using Sunny.UI;
 
@@ -27,6 +28,11 @@ namespace IDE
         {
             label3.Text = "Version " + Main.FRIENDLY_VER;
             label4.Text = $"Copyright © RYCBStudio {DateTime.Now.Year}. All Rights Reserved.";
+        }
+
+        private void GoToGithub(object sender, LinkLabelLinkClickedEventArgs e)
+        {
+            Process.Start("https://github.com/RYCBStudio/RYCB-Editor");
         }
     }
 }

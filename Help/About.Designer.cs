@@ -123,6 +123,7 @@
             this.linkLabel1.TabStop = true;
             this.linkLabel1.Text = "Open-source (GPL-3 License)";
             this.linkLabel1.UseCompatibleTextRendering = true;
+            this.linkLabel1.LinkClicked += new System.Windows.Forms.LinkLabelLinkClickedEventHandler(this.GoToGithub);
             // 
             // About
             // 
