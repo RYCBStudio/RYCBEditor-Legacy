@@ -1,0 +1,58 @@
+<?xml version="1.0"?>
+<SyntaxDefinition name="SharpPython" extensions=".ini;.config;.cfg;.reconf;.conf"
+	xmlns="http://icsharpcode.net/sharpdevelop/syntaxdefinition/2008">
+	<!-- The named colors 'Comment' and 'String' are used in SharpDevelop to detect if a line is
+	inside a multiline string/comment -->
+	<Color name="Comment" foreground="#ff808080" exampleText="#comment" />
+	<Color name="String" foreground="#ff6A8759" />
+	<Color name="NumberLiteral" foreground="#ff99cc99" />
+	<Color name="Section" fontWeight="bold" foreground="#ffCC7832" />
+	<Color name="Key" fontWeight="bold" foreground="#ff569CD6" />
+
+
+	<!-- This is the main ruleset. -->
+	<RuleSet>
+
+		<Span color="Comment" begin="#" />
+		<Span color="Comment" begin=";" />
+
+		<Span color="String">
+			<Begin>"</Begin>
+			<End>"</End>
+			<RuleSet>
+				<!-- span for escape sequences -->
+				<Span begin="\\" end="." />
+			</RuleSet>
+		</Span>
+
+		<Span color="String">
+			<Begin>'</Begin>
+			<End>'</End>
+			<RuleSet>
+				<!-- span for escape sequences -->
+				<Span begin="\\" end="." />
+			</RuleSet>
+		</Span>
+
+		<!-- Mark previous rule-->
+		<Rule color="Key">
+			\b
+			[\d\w_]+ # an identifier
+			(?=\s*\=) # followed by =
+		</Rule>
+		<Rule color="Section">
+			\[\b
+			[\d\w_]+ # an identifier
+			(?=\s*\]) # followed by ]
+		</Rule>
+		<!-- Digits -->
+		<Rule color="NumberLiteral">
+			\b0[xX][0-9a-fA-F]+ # hex number
+			|
+			( \b\d+(\.[0-9]+)? #number with optional floating point
+			| \.[0-9]+ #or just starting with floating point
+			)
+			([eE][+-]?[0-9]+)? # optional exponent
+		</Rule>
+	</RuleSet>
+</SyntaxDefinition>

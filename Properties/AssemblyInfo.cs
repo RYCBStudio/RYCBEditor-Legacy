@@ -10,7 +10,7 @@ using System.Runtime.InteropServices;
 [assembly: AssemblyConfiguration("")]
 [assembly: AssemblyCompany("RYCBStudio")]
 [assembly: AssemblyProduct("RYCB Studio")]
-[assembly: AssemblyCopyright("Copyright © RYCB Studio 2023")]
+[assembly: AssemblyCopyright("Copyright © RYCB Studio 2024")]
 [assembly: AssemblyTrademark("")]
 [assembly: AssemblyCulture("")]
 

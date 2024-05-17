@@ -107,13 +107,13 @@ namespace IDE
         /// <param name="ex">捕获的异常</param>
         /// <param name="msgLevel">消息级别</param>
         /// <param name="port">端口</param>
-        public void WriteErrLog(Exception ex, EnumMsgLevel msgLevel, EnumPort port)
+        public void WriteErrLog(Exception ex, EnumMsgLevel msgLevel, EnumPort port, EnumModule module = EnumModule.MAIN)
         {
             var data = ex.Message;
             FileStream tmpStream = new(logPath, FileMode.OpenOrCreate, FileAccess.ReadWrite, FileShare.ReadWrite);
             StreamWriter sw = new(tmpStream);
             sw.BaseStream.Seek(0, SeekOrigin.End);
-            sw.WriteLine("[{3}:{4}:{5}:{6}] [{0}|{1}] [Type {9}] [HResult {7}]" +
+            sw.WriteLine("[{3}:{4}:{5}:{6}] [{12}:{0}|{1}] [Type {9}] [HResult {7}]" +
                 " [InnerException: {10} HResult {8}] 已捕获异常：{11} \n 异常信息：{2}",
                 I18n.Translate((int)port, "port", lang),
                 I18n.Translate((int)msgLevel, "msg", lang),
@@ -130,7 +130,8 @@ namespace IDE
                 data, DateTime.Now.Hour, DateTime.Now.Minute,
                 DateTime.Now.Second, DateTime.Now.Millisecond,
                 ex.StackTrace,
-                ex.InnerException != null ? ex.InnerException.StackTrace : "(无 InnerException)");
+                ex.InnerException != null ? ex.InnerException.StackTrace : "(无 InnerException)",
+                I18n.Translate((int)module, "module", lang));
             tmpStream.Flush();
             sw.Flush();
         }

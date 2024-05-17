@@ -382,6 +382,11 @@ namespace IDE
             }
         }
 
+        private void OpenEditor(object sender, EventArgs e)
+        {
+            new CustomSettingsFileEditor().Show();
+        }
+
         /// <summary>
         /// ComboBox Items设定
         /// </summary>

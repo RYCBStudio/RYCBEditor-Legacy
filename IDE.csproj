@@ -822,6 +822,12 @@
     <Compile Include="Init\FirstBoot\FirstBootStep4.Designer.cs">
       <DependentUpon>FirstBootStep4.cs</DependentUpon>
     </Compile>
+    <Compile Include="Settings\CustomSettings.FileEditor.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="Settings\CustomSettings.FileEditor.Designer.cs">
+      <DependentUpon>CustomSettings.FileEditor.cs</DependentUpon>
+    </Compile>
     <Compile Include="Settings\CustomSettings.Initializer.cs">
       <SubType>Form</SubType>
     </Compile>
@@ -1005,6 +1011,9 @@
     </EmbeddedResource>
     <EmbeddedResource Include="Settings\CodeSettings.resx">
       <DependentUpon>CodeSettings.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Settings\CustomSettings.FileEditor.resx">
+      <DependentUpon>CustomSettings.FileEditor.cs</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="Settings\CustomSettings.resx">
       <DependentUpon>CustomSettings.cs</DependentUpon>

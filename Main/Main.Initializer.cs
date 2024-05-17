@@ -15,6 +15,8 @@ namespace IDE
 
         private IniFile _I18nFile = new(Application.StartupPath + $"\\Languages\\{GlobalSettings.language}\\main.relang", System.Text.Encoding.UTF8);
 
+        internal static IniFile I18nFile;
+
         private void InitializeTranslation()
         {
             var fontName = reConf.ReadString("Display", "DisplayFont", "Microsoft YaHei UI");
@@ -88,6 +90,7 @@ namespace IDE
 
             title = _I18nFile.ReadString("I18n", "text.main.selectfile.title", "text.main.selectfile.title");
             filter = _I18nFile.ReadString("I18n", "text.main.selectfile.filter", "text.main.selectfile.filter");
+            I18nFile = _I18nFile;
         }
 
         private List<Control> GetAllControls(Control control)

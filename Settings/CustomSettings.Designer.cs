@@ -67,6 +67,7 @@
             this.folderBrowserDialog1 = new System.Windows.Forms.FolderBrowserDialog();
             this.errorProvider1 = new System.Windows.Forms.ErrorProvider(this.components);
             this.uiButton1 = new System.Windows.Forms.Button();
+            this.button1 = new System.Windows.Forms.Button();
             this.MainTabCtrl.SuspendLayout();
             this.General.SuspendLayout();
             this.Edit.SuspendLayout();
@@ -660,13 +661,33 @@
             this.uiButton1.Font = new System.Drawing.Font("微软雅黑", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(134)));
             this.uiButton1.ForeColor = System.Drawing.Color.Transparent;
             this.uiButton1.Image = global::IDE.Properties.Resources.delete;
-            this.uiButton1.Location = new System.Drawing.Point(848, 4);
+            this.uiButton1.Location = new System.Drawing.Point(855, 4);
             this.uiButton1.MinimumSize = new System.Drawing.Size(1, 1);
             this.uiButton1.Name = "uiButton1";
             this.uiButton1.Size = new System.Drawing.Size(28, 28);
             this.uiButton1.TabIndex = 1;
             this.uiButton1.UseVisualStyleBackColor = false;
             this.uiButton1.Click += new System.EventHandler(this.Exit);
+            // 
+            // button1
+            // 
+            this.button1.BackColor = System.Drawing.Color.Transparent;
+            this.button1.BackgroundImage = global::IDE.Properties.Resources.detail;
+            this.button1.BackgroundImageLayout = System.Windows.Forms.ImageLayout.Stretch;
+            this.button1.Cursor = System.Windows.Forms.Cursors.Hand;
+            this.button1.DialogResult = System.Windows.Forms.DialogResult.Cancel;
+            this.button1.FlatAppearance.BorderSize = 0;
+            this.button1.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
+            this.button1.Font = new System.Drawing.Font("微软雅黑", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(134)));
+            this.button1.ForeColor = System.Drawing.Color.Transparent;
+            this.button1.ImageAlign = System.Drawing.ContentAlignment.BottomCenter;
+            this.button1.Location = new System.Drawing.Point(806, 8);
+            this.button1.MinimumSize = new System.Drawing.Size(1, 1);
+            this.button1.Name = "button1";
+            this.button1.Size = new System.Drawing.Size(24, 24);
+            this.button1.TabIndex = 2;
+            this.button1.UseVisualStyleBackColor = false;
+            this.button1.Click += new System.EventHandler(this.OpenEditor);
             // 
             // CustomSettings
             // 
@@ -676,6 +697,7 @@
             this.ClientSize = new System.Drawing.Size(905, 922);
             this.ControlBox = false;
             this.ControlBoxFillHoverColor = System.Drawing.Color.FromArgb(((int)(((byte)(70)))), ((int)(((byte)(70)))), ((int)(((byte)(70)))));
+            this.Controls.Add(this.button1);
             this.Controls.Add(this.uiButton1);
             this.Controls.Add(this.MainTabCtrl);
             this.EscClose = true;
@@ -742,5 +764,6 @@
         private Sunny.UI.UILine uiLine4;
         private Sunny.UI.UILine uiLine3;
         private Sunny.UI.UIComboBox CBoxEditorXshd;
+        private System.Windows.Forms.Button button1;
     }
 }
