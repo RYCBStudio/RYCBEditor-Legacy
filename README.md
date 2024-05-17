@@ -1,3 +1,7 @@
+> 注意: 我们目前正在规范化`Main`分支，所以该分支可能稍显凌乱，敬请理解。
+> 
+> Note: We are currently standardizing the `Main` branch, so it may appear slightly messy. Please understand.
+
 # RYCB-Editor
 
 \[ 简体中文 | [English](https://github.com/RYCBStudio/RYCB-Editor/README_EN.md) \]
