@@ -798,6 +798,7 @@
     </Reference>
   </ItemGroup>
   <ItemGroup>
+    <Compile Include="Init\FirstBoot\FBSInitializer.cs" />
     <Compile Include="Init\FirstBoot\FirstBootStep1.cs">
       <SubType>Form</SubType>
     </Compile>

@@ -75,7 +75,7 @@ namespace IDE
         /// <param name="msgLevel">消息级别</param>
         /// <param name="port">端口</param>
         /// <param name="module">模块名</param>
-        public void WriteLog(string data, EnumMsgLevel msgLevel = EnumMsgLevel.INFO, EnumPort port = EnumPort.CLIENT, EnumModule module = EnumModule.MAIN)
+        public void WriteLog(string data, EnumMsgLevel msgLevel = EnumMsgLevel.INFO, EnumPort port = EnumPort.CLIENT, EnumModule module = EnumModule.MAIN, string cutsom_module = "")
         {
             FileStream tmpStream;
             try
@@ -94,7 +94,7 @@ namespace IDE
                 I18n.Translate((int)msgLevel, "msg", lang),
                 data, DateTime.Now.Hour, DateTime.Now.Minute,
                 DateTime.Now.Second, DateTime.Now.Millisecond,
-                I18n.Translate((int)module, "module", lang));
+                (module != EnumModule.CUSTOM) ? I18n.Translate((int)module, "module", lang) : cutsom_module);
             tmpStream.Flush();
             sw.Flush();
         }
@@ -318,6 +318,7 @@ namespace IDE
         NET,
         IO,
         UPDATE,
+        CUSTOM,
     }
     #endregion
 }
