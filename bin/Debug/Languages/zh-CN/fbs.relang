@@ -1,0 +1,27 @@
+[LangSet]
+Name=简体中文
+
+[I18n]
+text.title.fbs.1.welcomeuse=欢迎使用 RYCB Editor!
+text.fbs.poem.1=海内存知己，天涯若比邻。
+
+text.fbs.poem.2=与君初相识，犹如故人归。
+text.fbs.bs.tip=下面是一些基础设置。
+text.fbs.chooseyourmainfont.title=选择你的主界面字体
+text.fbs.chooseyourmainfont.tip.l1=右侧的文字框实时显示了你所选择的主界面字体。
+text.fbs.chooseyourmainfont.tip.l2=你可以点击右侧按钮以选择。
+text.fbs.chooseyoureditorfont.title=选择你的编辑器字体
+text.fbs.chooseyoureditorfont.tip.l1=右侧的文字框实时显示了你所选择的编辑器字体。
+text.fbs.chooseyoureditorfont.tip.l2=你可以点击下方按钮以选择。
+text.fbs.chooseyoureditorfont.tip.l3=推荐: JetBrains Mono, Consolas
+
+text.fbs.poem.3=青，取之于蓝而青于蓝；冰，水为之而寒于水。
+text.fbs.as.tip=下面是一些高级设置。
+
+text.fbs.poem.4=有朋自远方来，不亦乐乎!
+text.fbs.bingo=完成!
+text.fbs.sthgoodiscoming=好东西就要来了!
+text.fbs.xsecclose={0}秒后关闭。
+
+text.fbs.pre=上一步
+text.fbs.next=下一步

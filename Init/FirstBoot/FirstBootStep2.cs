@@ -10,6 +10,7 @@ public partial class FirstBootStep2 : UIForm
     public FirstBootStep2(UIForm previous)
     {
         InitializeComponent();
+        InitializeLocalization();
         this.TopMost = true;
         this.previous = previous;
         this.next = new FirstBootStep3(new List<UIForm>{ this.previous},this);
@@ -25,7 +26,7 @@ public partial class FirstBootStep2 : UIForm
     private void Previous(object sender, EventArgs e)
     {
         this.Hide();
-        previous.ShowDialog();
+        previous.Show();
     }
 
     private void ChangeMainFont(object sender, EventArgs e)

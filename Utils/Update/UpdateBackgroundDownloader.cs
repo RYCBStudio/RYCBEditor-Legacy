@@ -8,6 +8,9 @@ using System.IO;
 namespace IDE.Utils.Update;
 internal partial class UpdateBackgroundDownloader
 {
+
+    internal static bool updateFLAG = true;
+    internal DownloadService downloader;
     public async Task DownloadUpdateAsync()
     {
         if (!GlobalDefinitions.CloudSourceOK & !GlobalDefinitions.UpdateCheckOK) { return; }
@@ -36,7 +39,7 @@ internal partial class UpdateBackgroundDownloader
 
                 }
         };
-        var downloader = new DownloadService(DownloadOpt);
+        downloader = new DownloadService(DownloadOpt);
         downloader.DownloadStarted += Downloader_DownloadStarted;
         downloader.DownloadFileCompleted += Downloader_DownloadFileCompleted;
         downloader.DownloadProgressChanged += Downloader_DownloadProgressChanged;
@@ -52,6 +55,6 @@ internal partial class UpdateBackgroundDownloader
         Main.instance.ReceivedBytes.Text = ProcessFileSize(e.ReceivedBytesSize);
         Main.instance.ToReceiveBytes.Text = ProcessFileSize(e.TotalBytesToReceive);
         Main.instance.UpdateProgress.Value = (int)e.ReceivedBytesSize;
-        Main.instance.DownloadProgress.Text = (Math.Round((double)Main.instance.UpdateProgress.Value / Main.instance.UpdateProgress.Maximum, 4)*100).ToString();
+        Main.instance.DownloadProgress.Text = (Math.Round((double)Main.instance.UpdateProgress.Value / Main.instance.UpdateProgress.Maximum, 4) * 100).ToString();
     }
 }

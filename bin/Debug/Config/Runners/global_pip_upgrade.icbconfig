@@ -1,0 +1,5 @@
+[itptr]
+name=Global Pip Upgrade
+type=Local
+path=python.exe
+args=-m pip install --upgrade pip     

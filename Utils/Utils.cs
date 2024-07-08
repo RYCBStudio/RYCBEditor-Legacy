@@ -14,6 +14,7 @@ using System.Threading;
 using System.Diagnostics;
 using Microsoft.Diagnostics.Runtime;
 using static Community.CsharpSqlite.Sqlite3;
+using System.Security.Cryptography;
 
 namespace IDE
 {
@@ -407,6 +408,93 @@ namespace IDE
 
     public static class Extensions
     {
+
+        public static bool DecompressFile(string zipPath, string filePath)
+        {
+            bool exeRes = true;
+            try
+            {
+                Process process = new Process();
+                process.StartInfo.FileName = "cmd.exe";
+                string message = "";
+                string command0 = "cd \"" + Program.STARTUP_PATH + "\\Tools\"";
+                string command = "";
+
+                command = $"7Z x -t7z \"" + zipPath + "\" -o\"" + filePath + "\" -y";
+                process.StartInfo.UseShellExecute = false;
+                process.StartInfo.RedirectStandardInput = true;
+                process.StartInfo.RedirectStandardOutput = true;
+                process.StartInfo.RedirectStandardError = true;
+                process.StartInfo.CreateNoWindow = true;
+                process.Start();
+                process.StandardInput.WriteLine(command0);
+                process.StandardInput.WriteLine(command);
+                process.StandardInput.WriteLine("exit");
+                //process.WaitForExit();
+                message = process.StandardOutput.ReadToEnd();//要等压缩完成后才可以来抓取这个压缩文件
+
+                process.Close();
+                if (!message.Contains("Everything is Ok"))
+                {
+                    exeRes = false;
+                }
+            }
+            catch
+            {
+                exeRes = false;
+            }
+
+            return exeRes;
+        }
+        public static string GetMD5HashFromFile(string fileName)
+        {
+            try
+            {
+                var file = new FileStream(fileName, System.IO.FileMode.Open);
+                MD5 md5 = new MD5CryptoServiceProvider();
+                var retVal = md5.ComputeHash(file);
+                file.Close();
+                var sb = new StringBuilder();
+                for (var i = 0; i < retVal.Length; i++)
+                {
+                    sb.Append(retVal[i].ToString("x2"));
+                }
+                return sb.ToString();
+            }
+            catch (Exception ex)
+            {
+                Main.LOGGER.WriteErrLog(new Exception("GetMD5HashFromFile() fail,error:" + ex.Message), EnumMsgLevel.ERROR, EnumPort.CLIENT);
+            }
+            return string.Empty;
+        }
+
+        public static string GetSHA1(string s)
+        {
+            var file = new FileStream(s, FileMode.Open);
+            SHA1 sha1 = new SHA1CryptoServiceProvider();
+            var retval = sha1.ComputeHash(file);
+            file.Close();
+
+            var sc = new StringBuilder();
+            for (var i = 0; i < retval.Length; i++)
+            {
+                sc.Append(retval[i].ToString("x2"));
+            }
+            return sc.ToString();
+        }
+
+        public static string GetSHA256(string filePath)
+        {
+            using (var sha256 = SHA256.Create())
+            {
+                using (var stream = File.OpenRead(filePath))
+                {
+                    var hash = sha256.ComputeHash(stream);
+                    return BitConverter.ToString(hash).Replace("-", "").ToLower();
+                }
+            }
+        }
+
         /// <summary>
         /// 指示指定的Unicode字符是香属于字母或十进制数字类别。
         /// </summary>
@@ -638,6 +726,19 @@ namespace IDE
             lb.Invalidate(false);
         }
 
+        /// <summary>
+        /// 将两个字符串拼接在一起
+        /// </summary>
+        /// <param name="s">string母类</param>
+        /// <param name="c">拼接两个字符串(<paramref name="c1"/>和<paramref name="c2"/>)的字符串</param>
+        /// <param name="c1">拼接的第一个字符串></param>
+        /// <param name="c2">拼接的第二个字符串</param>
+        public static string Combine2WithChar(string c1, string c2, string c)
+        {
+            return c1 + c + c2;
+        }
+
+
         private static bool EqualsPrivate(this ListViewItem item, ListViewItem item1)
         {
             bool[] signs = { false, false, false };
@@ -656,6 +757,9 @@ namespace IDE
 
     public class Dictionaries
     {
+
+        internal static string _7za_download_link = "https://www.7-zip.org/a/7z2301-extra.7z";
+
         public static class Exceptions
         {
             public static readonly Dictionary<string, string> cs = new()

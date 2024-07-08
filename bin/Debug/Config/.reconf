@@ -71,7 +71,7 @@ DevMode=true
 # This sets if IDE should use some experimental settings.
 # AcceptedValue: true,false
 # WARNING: When you set this setting to "false", that means that you gave up two settings(Use experimental settings and developer mode), 
-#          and you can't get any help from the developer if the program crashes because you don't have any useful infomation.
+#          and you can't get any help from the developer if the program crashes because you can't provide any useful infomation.
 CollectCrashInfomation=true
 # This sets count of crash attempts of the IDE.
 # Min Value: 1

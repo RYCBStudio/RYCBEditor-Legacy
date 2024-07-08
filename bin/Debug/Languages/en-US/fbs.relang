@@ -1,0 +1,27 @@
+[LangSet]
+Name=English(US)
+
+[I18n]
+text.title.fbs.1.welcomeuse=Welcome to use RYCB Editor!
+text.fbs.poem.1=A bosom friend afar brings a distant land near.
+
+text.fbs.poem.2=At first sight of you, I feel like an old mate of mine.
+text.fbs.bs.tip=Here are some basic settings.
+text.fbs.chooseyourmainfont.title=Choose your main interface font
+text.fbs.chooseyourmainfont.tip.l1=The text box on the right displays the font you have selected for the main interface in real-time.
+text.fbs.chooseyourmainfont.tip.l2=You can select by clicking the right button.
+text.fbs.chooseyoureditorfont.title=Choose your editor font
+text.fbs.chooseyoureditorfont.tip.l1=The text box on the right displays the font you have selected for the editor in real-time.
+text.fbs.chooseyoureditorfont.tip.l2=You can select by clicking the button below.
+text.fbs.chooseyoureditorfont.tip.l3=Recommended: JetBrains Mono, Consolas
+
+text.fbs.poem.3=Indigo blue is from the indigo plant, but is bluer than the plant it comes from.
+text.fbs.as.tip=Here are some advanced Settings.
+
+text.fbs.poem.4=It is always a pleasure to greet a friend from afar.
+text.fbs.bingo=Completed!
+text.fbs.sthgoodiscoming=Something good is coming!
+text.fbs.xsecclose=Close in {0}s.
+
+text.fbs.pre=Previous
+text.fbs.next=Next

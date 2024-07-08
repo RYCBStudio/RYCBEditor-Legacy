@@ -9,10 +9,12 @@ internal class ErrorAnalysiser
 
     private static List<string> Exceptions = new();
     private static Exception _ex;
+    private static string _path;
 
-    internal ErrorAnalysiser(Exception ex)
+    internal ErrorAnalysiser(Exception ex, string path)
     {
         _ex = ex;
+        _path = path;
     }
 
     /// <summary>
@@ -54,5 +56,10 @@ internal class ErrorAnalysiser
         }
         Exceptions.Add(GetErrorType(__ex));
         return Exceptions;
+    }
+
+    internal void GenerateExceptionInfomation(List<string> exceptions)
+    {
+        File.WriteAllLines(_path, exceptions);
     }
 }

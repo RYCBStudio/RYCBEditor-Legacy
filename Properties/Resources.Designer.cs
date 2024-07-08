@@ -933,6 +933,16 @@ namespace IDE.Properties {
         /// <summary>
         ///   查找 System.Drawing.Bitmap 类型的本地化资源。
         /// </summary>
+        public static System.Drawing.Bitmap Update_Cancelled {
+            get {
+                object obj = ResourceManager.GetObject("Update_Cancelled", resourceCulture);
+                return ((System.Drawing.Bitmap)(obj));
+            }
+        }
+        
+        /// <summary>
+        ///   查找 System.Drawing.Bitmap 类型的本地化资源。
+        /// </summary>
         public static System.Drawing.Bitmap Update_normal {
             get {
                 object obj = ResourceManager.GetObject("Update-normal", resourceCulture);

@@ -123,7 +123,7 @@ namespace IDE
                 ex.InnerException != null ? ex.InnerException.HResult : "Null",
                 ex.ToString().Split(new string[] { ": " }, StringSplitOptions.RemoveEmptyEntries)[0],
                 ex.InnerException != null ? ex.InnerException.ToString().Split(new string[] { ": " }, StringSplitOptions.RemoveEmptyEntries)[0] : "Null",
-                ex.GetType());
+                ex.GetType(), I18n.Translate((int)module, "module", lang));
             sw.WriteLine("[{3}:{4}:{5}:{6}] [{0}|{1}] ======== 堆栈跟踪如下 ======== \n\t\t\t\t[Outer Exception] {7}\n\t\t\t\t[Inner Exception] {8}",
                 I18n.Translate((int)port, "port", lang),
                 I18n.Translate((int)msgLevel, "msg", lang),

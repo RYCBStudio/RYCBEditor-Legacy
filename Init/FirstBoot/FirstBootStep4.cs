@@ -1,6 +1,7 @@
 ﻿using System;
 using System.Collections.Generic;
 using System.Windows.Forms;
+using Humanizer;
 using Sunny.UI;
 
 namespace IDE.Init;
@@ -11,18 +12,19 @@ public partial class FirstBootStep4 : UIForm
     public FirstBootStep4(IEnumerable<UIForm> previous)
     {
         InitializeComponent();
+        InitializeLocalization();
         i = 4;
         previousForms = previous;
     }
 
     private void FirstBootStep4_Shown(object sender, EventArgs e)
     {
+        uiLabel3.Text = string.Format(uiLabel3.Text, (i + 1).ToString());
         timer1.Start();
     }
 
     private void CountDown(object sender, EventArgs e)
     {
-        uiLabel2.Text = i.ToString();
         if (i == 0)
         {
             foreach (var item in previousForms)

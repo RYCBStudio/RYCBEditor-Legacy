@@ -1,4 +1,5 @@
 .git
+bin/Debug/Cache
 obj
 *.log
 .vs

@@ -132,6 +132,9 @@ namespace IDE
             this.DownloadProgress = new System.Windows.Forms.ToolStripStatusLabel();
             this.Percent = new System.Windows.Forms.ToolStripStatusLabel();
             this.DownloadSpeed = new System.Windows.Forms.ToolStripStatusLabel();
+            this.UpdateControlBlocker = new System.Windows.Forms.ToolStripStatusLabel();
+            this.UpdateForceStopLabel = new System.Windows.Forms.ToolStripStatusLabel();
+            this.texttstoolapplicationresetToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.menuStrip1.SuspendLayout();
             this.contextMenuStrip1.SuspendLayout();
             this.statusStrip1.SuspendLayout();
@@ -151,6 +154,7 @@ namespace IDE
             // menuStrip1
             // 
             this.menuStrip1.BackColor = System.Drawing.Color.Black;
+            this.menuStrip1.GripMargin = new System.Windows.Forms.Padding(2, 2, 0, 2);
             this.menuStrip1.ImageScalingSize = new System.Drawing.Size(20, 20);
             this.menuStrip1.Items.AddRange(new System.Windows.Forms.ToolStripItem[] {
             this.文件FToolStripMenuItem,
@@ -161,7 +165,7 @@ namespace IDE
             this.开发者选项DToolStripMenuItem});
             this.menuStrip1.Location = new System.Drawing.Point(0, 0);
             this.menuStrip1.Name = "menuStrip1";
-            this.menuStrip1.Size = new System.Drawing.Size(1064, 30);
+            this.menuStrip1.Size = new System.Drawing.Size(1064, 32);
             this.menuStrip1.TabIndex = 0;
             this.menuStrip1.Text = "menuStrip1";
             // 
@@ -174,7 +178,7 @@ namespace IDE
             this.另存为AToolStripMenuItem});
             this.文件FToolStripMenuItem.ForeColor = System.Drawing.Color.White;
             this.文件FToolStripMenuItem.Name = "文件FToolStripMenuItem";
-            this.文件FToolStripMenuItem.Size = new System.Drawing.Size(95, 26);
+            this.文件FToolStripMenuItem.Size = new System.Drawing.Size(108, 28);
             this.文件FToolStripMenuItem.Text = "text.ts.file";
             // 
             // 新建NToolStripMenuItem
@@ -187,7 +191,7 @@ namespace IDE
             this.新建NToolStripMenuItem.Image = global::IDE.Properties.Resources.edit;
             this.新建NToolStripMenuItem.ImageTransparentColor = System.Drawing.Color.Magenta;
             this.新建NToolStripMenuItem.Name = "新建NToolStripMenuItem";
-            this.新建NToolStripMenuItem.Size = new System.Drawing.Size(388, 26);
+            this.新建NToolStripMenuItem.Size = new System.Drawing.Size(454, 34);
             this.新建NToolStripMenuItem.Text = "text.ts.file.new";
             // 
             // 项目ToolStripMenuItem
@@ -197,7 +201,7 @@ namespace IDE
             this.项目ToolStripMenuItem.Image = global::IDE.Properties.Resources.Window;
             this.项目ToolStripMenuItem.Name = "项目ToolStripMenuItem";
             this.项目ToolStripMenuItem.ShortcutKeys = ((System.Windows.Forms.Keys)((System.Windows.Forms.Keys.Control | System.Windows.Forms.Keys.P)));
-            this.项目ToolStripMenuItem.Size = new System.Drawing.Size(287, 26);
+            this.项目ToolStripMenuItem.Size = new System.Drawing.Size(335, 34);
             this.项目ToolStripMenuItem.Text = "text.ts.file.new.proj";
             // 
             // 文件ToolStripMenuItem
@@ -207,7 +211,7 @@ namespace IDE
             this.文件ToolStripMenuItem.Image = global::IDE.Properties.Resources.file_common;
             this.文件ToolStripMenuItem.Name = "文件ToolStripMenuItem";
             this.文件ToolStripMenuItem.ShortcutKeys = ((System.Windows.Forms.Keys)((System.Windows.Forms.Keys.Control | System.Windows.Forms.Keys.N)));
-            this.文件ToolStripMenuItem.Size = new System.Drawing.Size(287, 26);
+            this.文件ToolStripMenuItem.Size = new System.Drawing.Size(335, 34);
             this.文件ToolStripMenuItem.Text = "text.ts.file.new.file";
             this.文件ToolStripMenuItem.Click += new System.EventHandler(this.New);
             // 
@@ -219,7 +223,7 @@ namespace IDE
             this.打开OToolStripMenuItem.ImageTransparentColor = System.Drawing.Color.Magenta;
             this.打开OToolStripMenuItem.Name = "打开OToolStripMenuItem";
             this.打开OToolStripMenuItem.ShortcutKeys = ((System.Windows.Forms.Keys)((System.Windows.Forms.Keys.Control | System.Windows.Forms.Keys.O)));
-            this.打开OToolStripMenuItem.Size = new System.Drawing.Size(388, 26);
+            this.打开OToolStripMenuItem.Size = new System.Drawing.Size(454, 34);
             this.打开OToolStripMenuItem.Text = "text.ts.file.open";
             this.打开OToolStripMenuItem.Click += new System.EventHandler(this.OpenFile);
             // 
@@ -231,7 +235,7 @@ namespace IDE
             this.保存SToolStripMenuItem.ImageTransparentColor = System.Drawing.Color.Magenta;
             this.保存SToolStripMenuItem.Name = "保存SToolStripMenuItem";
             this.保存SToolStripMenuItem.ShortcutKeys = ((System.Windows.Forms.Keys)((System.Windows.Forms.Keys.Control | System.Windows.Forms.Keys.S)));
-            this.保存SToolStripMenuItem.Size = new System.Drawing.Size(388, 26);
+            this.保存SToolStripMenuItem.Size = new System.Drawing.Size(454, 34);
             this.保存SToolStripMenuItem.Text = "text.ts.file.save";
             this.保存SToolStripMenuItem.Click += new System.EventHandler(this.QuietSave);
             // 
@@ -243,7 +247,7 @@ namespace IDE
             this.另存为AToolStripMenuItem.ShortcutKeys = ((System.Windows.Forms.Keys)((((System.Windows.Forms.Keys.Control | System.Windows.Forms.Keys.Alt) 
             | System.Windows.Forms.Keys.Shift) 
             | System.Windows.Forms.Keys.S)));
-            this.另存为AToolStripMenuItem.Size = new System.Drawing.Size(388, 26);
+            this.另存为AToolStripMenuItem.Size = new System.Drawing.Size(454, 34);
             this.另存为AToolStripMenuItem.Text = "text.ts.file.saveanother";
             this.另存为AToolStripMenuItem.Click += new System.EventHandler(this.SaveFile);
             // 
@@ -259,7 +263,7 @@ namespace IDE
             this.查找替换ToolStripMenuItem});
             this.编辑EToolStripMenuItem.ForeColor = System.Drawing.Color.White;
             this.编辑EToolStripMenuItem.Name = "编辑EToolStripMenuItem";
-            this.编辑EToolStripMenuItem.Size = new System.Drawing.Size(102, 26);
+            this.编辑EToolStripMenuItem.Size = new System.Drawing.Size(116, 28);
             this.编辑EToolStripMenuItem.Text = "text.ts.edit";
             // 
             // 撤消UToolStripMenuItem
@@ -269,7 +273,7 @@ namespace IDE
             this.撤消UToolStripMenuItem.Image = global::IDE.Properties.Resources.iconundo_2x;
             this.撤消UToolStripMenuItem.Name = "撤消UToolStripMenuItem";
             this.撤消UToolStripMenuItem.ShortcutKeys = ((System.Windows.Forms.Keys)((System.Windows.Forms.Keys.Control | System.Windows.Forms.Keys.Z)));
-            this.撤消UToolStripMenuItem.Size = new System.Drawing.Size(291, 26);
+            this.撤消UToolStripMenuItem.Size = new System.Drawing.Size(340, 34);
             this.撤消UToolStripMenuItem.Text = "text.ts.edit.undo";
             // 
             // 重复RToolStripMenuItem
@@ -279,7 +283,7 @@ namespace IDE
             this.重复RToolStripMenuItem.Image = global::IDE.Properties.Resources.iconredo_2x;
             this.重复RToolStripMenuItem.Name = "重复RToolStripMenuItem";
             this.重复RToolStripMenuItem.ShortcutKeys = ((System.Windows.Forms.Keys)((System.Windows.Forms.Keys.Control | System.Windows.Forms.Keys.Y)));
-            this.重复RToolStripMenuItem.Size = new System.Drawing.Size(291, 26);
+            this.重复RToolStripMenuItem.Size = new System.Drawing.Size(340, 34);
             this.重复RToolStripMenuItem.Text = "text.ts.edit.redo";
             // 
             // 剪切TToolStripMenuItem
@@ -290,7 +294,7 @@ namespace IDE
             this.剪切TToolStripMenuItem.ImageTransparentColor = System.Drawing.Color.Magenta;
             this.剪切TToolStripMenuItem.Name = "剪切TToolStripMenuItem";
             this.剪切TToolStripMenuItem.ShortcutKeys = ((System.Windows.Forms.Keys)((System.Windows.Forms.Keys.Control | System.Windows.Forms.Keys.X)));
-            this.剪切TToolStripMenuItem.Size = new System.Drawing.Size(291, 26);
+            this.剪切TToolStripMenuItem.Size = new System.Drawing.Size(340, 34);
             this.剪切TToolStripMenuItem.Text = "text.ts.edit.cut";
             // 
             // 复制CToolStripMenuItem
@@ -301,7 +305,7 @@ namespace IDE
             this.复制CToolStripMenuItem.ImageTransparentColor = System.Drawing.Color.Magenta;
             this.复制CToolStripMenuItem.Name = "复制CToolStripMenuItem";
             this.复制CToolStripMenuItem.ShortcutKeys = ((System.Windows.Forms.Keys)((System.Windows.Forms.Keys.Control | System.Windows.Forms.Keys.C)));
-            this.复制CToolStripMenuItem.Size = new System.Drawing.Size(291, 26);
+            this.复制CToolStripMenuItem.Size = new System.Drawing.Size(340, 34);
             this.复制CToolStripMenuItem.Text = "text.ts.edit.copy";
             // 
             // 粘贴PToolStripMenuItem
@@ -312,7 +316,7 @@ namespace IDE
             this.粘贴PToolStripMenuItem.ImageTransparentColor = System.Drawing.Color.Magenta;
             this.粘贴PToolStripMenuItem.Name = "粘贴PToolStripMenuItem";
             this.粘贴PToolStripMenuItem.ShortcutKeys = ((System.Windows.Forms.Keys)((System.Windows.Forms.Keys.Control | System.Windows.Forms.Keys.V)));
-            this.粘贴PToolStripMenuItem.Size = new System.Drawing.Size(291, 26);
+            this.粘贴PToolStripMenuItem.Size = new System.Drawing.Size(340, 34);
             this.粘贴PToolStripMenuItem.Text = "text.ts.edit.paste";
             // 
             // 全选AToolStripMenuItem
@@ -322,7 +326,7 @@ namespace IDE
             this.全选AToolStripMenuItem.Image = global::IDE.Properties.Resources.select;
             this.全选AToolStripMenuItem.Name = "全选AToolStripMenuItem";
             this.全选AToolStripMenuItem.ShortcutKeys = ((System.Windows.Forms.Keys)((System.Windows.Forms.Keys.Control | System.Windows.Forms.Keys.A)));
-            this.全选AToolStripMenuItem.Size = new System.Drawing.Size(291, 26);
+            this.全选AToolStripMenuItem.Size = new System.Drawing.Size(340, 34);
             this.全选AToolStripMenuItem.Text = "text.ts.edit.selectall";
             this.全选AToolStripMenuItem.Click += new System.EventHandler(this.SelectAll);
             // 
@@ -331,7 +335,7 @@ namespace IDE
             this.查找替换ToolStripMenuItem.Name = "查找替换ToolStripMenuItem";
             this.查找替换ToolStripMenuItem.ShortcutKeyDisplayString = "";
             this.查找替换ToolStripMenuItem.ShortcutKeys = ((System.Windows.Forms.Keys)((System.Windows.Forms.Keys.Control | System.Windows.Forms.Keys.F)));
-            this.查找替换ToolStripMenuItem.Size = new System.Drawing.Size(291, 26);
+            this.查找替换ToolStripMenuItem.Size = new System.Drawing.Size(340, 34);
             this.查找替换ToolStripMenuItem.Text = "查找/替换";
             this.查找替换ToolStripMenuItem.Visible = false;
             this.查找替换ToolStripMenuItem.Click += new System.EventHandler(this.Find);
@@ -343,7 +347,7 @@ namespace IDE
             this.配置运行器ToolStripMenuItem});
             this.运行RToolStripMenuItem.ForeColor = System.Drawing.Color.White;
             this.运行RToolStripMenuItem.Name = "运行RToolStripMenuItem";
-            this.运行RToolStripMenuItem.Size = new System.Drawing.Size(97, 26);
+            this.运行RToolStripMenuItem.Size = new System.Drawing.Size(111, 28);
             this.运行RToolStripMenuItem.Text = "text.ts.run";
             // 
             // 运行ToolStripMenuItem
@@ -353,7 +357,7 @@ namespace IDE
             this.运行ToolStripMenuItem.Image = global::IDE.Properties.Resources.Run1;
             this.运行ToolStripMenuItem.Name = "运行ToolStripMenuItem";
             this.运行ToolStripMenuItem.ShortcutKeys = System.Windows.Forms.Keys.F5;
-            this.运行ToolStripMenuItem.Size = new System.Drawing.Size(271, 26);
+            this.运行ToolStripMenuItem.Size = new System.Drawing.Size(318, 34);
             this.运行ToolStripMenuItem.Text = "text.ts.run.run";
             this.运行ToolStripMenuItem.Click += new System.EventHandler(this.Run);
             // 
@@ -363,7 +367,7 @@ namespace IDE
             this.配置运行器ToolStripMenuItem.ForeColor = System.Drawing.SystemColors.Control;
             this.配置运行器ToolStripMenuItem.Image = global::IDE.Properties.Resources.runnerconfig;
             this.配置运行器ToolStripMenuItem.Name = "配置运行器ToolStripMenuItem";
-            this.配置运行器ToolStripMenuItem.Size = new System.Drawing.Size(271, 26);
+            this.配置运行器ToolStripMenuItem.Size = new System.Drawing.Size(318, 34);
             this.配置运行器ToolStripMenuItem.Text = "text.ts.run.configrunners";
             this.配置运行器ToolStripMenuItem.Click += new System.EventHandler(this.ConfigRunners);
             // 
@@ -376,7 +380,7 @@ namespace IDE
             this.快速工具ToolStripMenuItem});
             this.工具TToolStripMenuItem.ForeColor = System.Drawing.Color.White;
             this.工具TToolStripMenuItem.Name = "工具TToolStripMenuItem";
-            this.工具TToolStripMenuItem.Size = new System.Drawing.Size(103, 26);
+            this.工具TToolStripMenuItem.Size = new System.Drawing.Size(116, 28);
             this.工具TToolStripMenuItem.Text = "text.ts.tool";
             // 
             // 自定义CToolStripMenuItem
@@ -387,7 +391,7 @@ namespace IDE
             this.自定义CToolStripMenuItem.Name = "自定义CToolStripMenuItem";
             this.自定义CToolStripMenuItem.ShortcutKeys = ((System.Windows.Forms.Keys)(((System.Windows.Forms.Keys.Control | System.Windows.Forms.Keys.Alt) 
             | System.Windows.Forms.Keys.S)));
-            this.自定义CToolStripMenuItem.Size = new System.Drawing.Size(317, 26);
+            this.自定义CToolStripMenuItem.Size = new System.Drawing.Size(369, 34);
             this.自定义CToolStripMenuItem.Text = "text.ts.tool.custom";
             this.自定义CToolStripMenuItem.Click += new System.EventHandler(this.CustomSet);
             // 
@@ -396,7 +400,7 @@ namespace IDE
             this.选项OToolStripMenuItem.BackColor = System.Drawing.SystemColors.ActiveCaptionText;
             this.选项OToolStripMenuItem.ForeColor = System.Drawing.SystemColors.Control;
             this.选项OToolStripMenuItem.Name = "选项OToolStripMenuItem";
-            this.选项OToolStripMenuItem.Size = new System.Drawing.Size(317, 26);
+            this.选项OToolStripMenuItem.Size = new System.Drawing.Size(369, 34);
             this.选项OToolStripMenuItem.Text = "text.ts.tool.options";
             // 
             // 应用程序ToolStripMenuItem
@@ -404,11 +408,12 @@ namespace IDE
             this.应用程序ToolStripMenuItem.BackColor = System.Drawing.SystemColors.ActiveCaptionText;
             this.应用程序ToolStripMenuItem.DropDownItems.AddRange(new System.Windows.Forms.ToolStripItem[] {
             this.退出ToolStripMenuItem,
-            this.重启ToolStripMenuItem});
+            this.重启ToolStripMenuItem,
+            this.texttstoolapplicationresetToolStripMenuItem});
             this.应用程序ToolStripMenuItem.ForeColor = System.Drawing.SystemColors.Control;
             this.应用程序ToolStripMenuItem.Image = ((System.Drawing.Image)(resources.GetObject("应用程序ToolStripMenuItem.Image")));
             this.应用程序ToolStripMenuItem.Name = "应用程序ToolStripMenuItem";
-            this.应用程序ToolStripMenuItem.Size = new System.Drawing.Size(317, 26);
+            this.应用程序ToolStripMenuItem.Size = new System.Drawing.Size(369, 34);
             this.应用程序ToolStripMenuItem.Text = "text.ts.tool.application";
             // 
             // 退出ToolStripMenuItem
@@ -418,7 +423,7 @@ namespace IDE
             this.退出ToolStripMenuItem.Image = global::IDE.Properties.Resources.logout;
             this.退出ToolStripMenuItem.Name = "退出ToolStripMenuItem";
             this.退出ToolStripMenuItem.ShortcutKeys = ((System.Windows.Forms.Keys)((System.Windows.Forms.Keys.Control | System.Windows.Forms.Keys.End)));
-            this.退出ToolStripMenuItem.Size = new System.Drawing.Size(361, 26);
+            this.退出ToolStripMenuItem.Size = new System.Drawing.Size(423, 34);
             this.退出ToolStripMenuItem.Text = "text.ts.tool.application.exit";
             this.退出ToolStripMenuItem.Click += new System.EventHandler(this.Exit);
             // 
@@ -428,7 +433,7 @@ namespace IDE
             this.重启ToolStripMenuItem.ForeColor = System.Drawing.SystemColors.Control;
             this.重启ToolStripMenuItem.Image = global::IDE.Properties.Resources.refresh;
             this.重启ToolStripMenuItem.Name = "重启ToolStripMenuItem";
-            this.重启ToolStripMenuItem.Size = new System.Drawing.Size(361, 26);
+            this.重启ToolStripMenuItem.Size = new System.Drawing.Size(423, 34);
             this.重启ToolStripMenuItem.Text = "text.ts.tool.application.restart";
             this.重启ToolStripMenuItem.Click += new System.EventHandler(this.Restart);
             // 
@@ -440,7 +445,7 @@ namespace IDE
             this.快速工具ToolStripMenuItem.ForeColor = System.Drawing.SystemColors.Control;
             this.快速工具ToolStripMenuItem.Image = global::IDE.Properties.Resources.ToolKit;
             this.快速工具ToolStripMenuItem.Name = "快速工具ToolStripMenuItem";
-            this.快速工具ToolStripMenuItem.Size = new System.Drawing.Size(317, 26);
+            this.快速工具ToolStripMenuItem.Size = new System.Drawing.Size(369, 34);
             this.快速工具ToolStripMenuItem.Text = "text.ts.tool.quick";
             // 
             // 清理缓存ToolStripMenuItem
@@ -449,7 +454,7 @@ namespace IDE
             this.清理缓存ToolStripMenuItem.ForeColor = System.Drawing.SystemColors.Control;
             this.清理缓存ToolStripMenuItem.Image = global::IDE.Properties.Resources.Dark_ClearCache;
             this.清理缓存ToolStripMenuItem.Name = "清理缓存ToolStripMenuItem";
-            this.清理缓存ToolStripMenuItem.Size = new System.Drawing.Size(296, 26);
+            this.清理缓存ToolStripMenuItem.Size = new System.Drawing.Size(345, 34);
             this.清理缓存ToolStripMenuItem.Text = "text.ts.tool.quick.clearcache";
             this.清理缓存ToolStripMenuItem.Click += new System.EventHandler(this.ClearCache);
             // 
@@ -463,7 +468,7 @@ namespace IDE
             this.捐助ToolStripMenuItem});
             this.帮助HToolStripMenuItem.ForeColor = System.Drawing.Color.White;
             this.帮助HToolStripMenuItem.Name = "帮助HToolStripMenuItem";
-            this.帮助HToolStripMenuItem.Size = new System.Drawing.Size(105, 26);
+            this.帮助HToolStripMenuItem.Size = new System.Drawing.Size(120, 28);
             this.帮助HToolStripMenuItem.Text = "text.ts.help";
             // 
             // 关于AToolStripMenuItem
@@ -472,7 +477,7 @@ namespace IDE
             this.关于AToolStripMenuItem.ForeColor = System.Drawing.SystemColors.Control;
             this.关于AToolStripMenuItem.Image = global::IDE.Properties.Resources.help2;
             this.关于AToolStripMenuItem.Name = "关于AToolStripMenuItem";
-            this.关于AToolStripMenuItem.Size = new System.Drawing.Size(326, 26);
+            this.关于AToolStripMenuItem.Size = new System.Drawing.Size(383, 34);
             this.关于AToolStripMenuItem.Text = "text.ts.help.about";
             this.关于AToolStripMenuItem.Click += new System.EventHandler(this.AboutThis);
             // 
@@ -482,7 +487,7 @@ namespace IDE
             this.鸣谢ToolStripMenuItem.ForeColor = System.Drawing.SystemColors.Control;
             this.鸣谢ToolStripMenuItem.Image = global::IDE.Properties.Resources.Info_dark;
             this.鸣谢ToolStripMenuItem.Name = "鸣谢ToolStripMenuItem";
-            this.鸣谢ToolStripMenuItem.Size = new System.Drawing.Size(326, 26);
+            this.鸣谢ToolStripMenuItem.Size = new System.Drawing.Size(383, 34);
             this.鸣谢ToolStripMenuItem.Text = "text.ts.help.thanks";
             this.鸣谢ToolStripMenuItem.Click += new System.EventHandler(this.Thanks);
             // 
@@ -492,7 +497,7 @@ namespace IDE
             this.许可与版权声明ToolStripMenuItem.ForeColor = System.Drawing.SystemColors.Control;
             this.许可与版权声明ToolStripMenuItem.Image = global::IDE.Properties.Resources._48x48_check;
             this.许可与版权声明ToolStripMenuItem.Name = "许可与版权声明ToolStripMenuItem";
-            this.许可与版权声明ToolStripMenuItem.Size = new System.Drawing.Size(326, 26);
+            this.许可与版权声明ToolStripMenuItem.Size = new System.Drawing.Size(383, 34);
             this.许可与版权声明ToolStripMenuItem.Text = "text.ts.help.licenseandcopyright";
             this.许可与版权声明ToolStripMenuItem.Click += new System.EventHandler(this.copyrightsAndLicense);
             // 
@@ -502,7 +507,7 @@ namespace IDE
             this.百宝箱ToolStripMenuItem.ForeColor = System.Drawing.SystemColors.Control;
             this.百宝箱ToolStripMenuItem.Image = global::IDE.Properties.Resources.ender_pearl;
             this.百宝箱ToolStripMenuItem.Name = "百宝箱ToolStripMenuItem";
-            this.百宝箱ToolStripMenuItem.Size = new System.Drawing.Size(326, 26);
+            this.百宝箱ToolStripMenuItem.Size = new System.Drawing.Size(383, 34);
             this.百宝箱ToolStripMenuItem.Text = "text.ts.help.treasurebox";
             this.百宝箱ToolStripMenuItem.Click += new System.EventHandler(this.OpenTheTBox);
             // 
@@ -512,7 +517,7 @@ namespace IDE
             this.捐助ToolStripMenuItem.ForeColor = System.Drawing.SystemColors.Control;
             this.捐助ToolStripMenuItem.Image = global::IDE.Properties.Resources.donate;
             this.捐助ToolStripMenuItem.Name = "捐助ToolStripMenuItem";
-            this.捐助ToolStripMenuItem.Size = new System.Drawing.Size(326, 26);
+            this.捐助ToolStripMenuItem.Size = new System.Drawing.Size(383, 34);
             this.捐助ToolStripMenuItem.Text = "text.ts.help.donate";
             this.捐助ToolStripMenuItem.Click += new System.EventHandler(this.DonateLink);
             // 
@@ -522,7 +527,7 @@ namespace IDE
             this.崩溃测试ToolStripMenuItem});
             this.开发者选项DToolStripMenuItem.ForeColor = System.Drawing.Color.WhiteSmoke;
             this.开发者选项DToolStripMenuItem.Name = "开发者选项DToolStripMenuItem";
-            this.开发者选项DToolStripMenuItem.Size = new System.Drawing.Size(143, 24);
+            this.开发者选项DToolStripMenuItem.Size = new System.Drawing.Size(163, 28);
             this.开发者选项DToolStripMenuItem.Text = "text.ts.devmode";
             this.开发者选项DToolStripMenuItem.Visible = false;
             // 
@@ -535,7 +540,7 @@ namespace IDE
             this.崩溃测试ToolStripMenuItem.ShortcutKeys = ((System.Windows.Forms.Keys)((((System.Windows.Forms.Keys.Control | System.Windows.Forms.Keys.Alt) 
             | System.Windows.Forms.Keys.Shift) 
             | System.Windows.Forms.Keys.C)));
-            this.崩溃测试ToolStripMenuItem.Size = new System.Drawing.Size(421, 26);
+            this.崩溃测试ToolStripMenuItem.Size = new System.Drawing.Size(509, 34);
             this.崩溃测试ToolStripMenuItem.Text = "text.ts.devmode.crashtest";
             this.崩溃测试ToolStripMenuItem.Click += new System.EventHandler(this.TestCrash);
             // 
@@ -565,7 +570,7 @@ namespace IDE
             this.刷新RToolStripMenuItem,
             this.关闭CtrlF4ToolStripMenuItem});
             this.contextMenuStrip1.Name = "contextMenuStrip1";
-            this.contextMenuStrip1.Size = new System.Drawing.Size(269, 56);
+            this.contextMenuStrip1.Size = new System.Drawing.Size(300, 64);
             // 
             // 刷新RToolStripMenuItem
             // 
@@ -573,7 +578,7 @@ namespace IDE
             this.刷新RToolStripMenuItem.Image = global::IDE.Properties.Resources.refresh;
             this.刷新RToolStripMenuItem.Name = "刷新RToolStripMenuItem";
             this.刷新RToolStripMenuItem.ShortcutKeys = ((System.Windows.Forms.Keys)((System.Windows.Forms.Keys.Control | System.Windows.Forms.Keys.R)));
-            this.刷新RToolStripMenuItem.Size = new System.Drawing.Size(268, 26);
+            this.刷新RToolStripMenuItem.Size = new System.Drawing.Size(299, 30);
             this.刷新RToolStripMenuItem.Text = "text.cms.1.refresh";
             // 
             // 关闭CtrlF4ToolStripMenuItem
@@ -582,7 +587,7 @@ namespace IDE
             this.关闭CtrlF4ToolStripMenuItem.Image = global::IDE.Properties.Resources.delete;
             this.关闭CtrlF4ToolStripMenuItem.Name = "关闭CtrlF4ToolStripMenuItem";
             this.关闭CtrlF4ToolStripMenuItem.ShortcutKeys = ((System.Windows.Forms.Keys)((System.Windows.Forms.Keys.Control | System.Windows.Forms.Keys.F4)));
-            this.关闭CtrlF4ToolStripMenuItem.Size = new System.Drawing.Size(268, 26);
+            this.关闭CtrlF4ToolStripMenuItem.Size = new System.Drawing.Size(299, 30);
             this.关闭CtrlF4ToolStripMenuItem.Text = "text.cms.1.close";
             this.关闭CtrlF4ToolStripMenuItem.Click += new System.EventHandler(this.CloseFile);
             // 
@@ -595,7 +600,7 @@ namespace IDE
             // toolStripStatusLabel2
             // 
             this.toolStripStatusLabel2.Name = "toolStripStatusLabel2";
-            this.toolStripStatusLabel2.Size = new System.Drawing.Size(166, 20);
+            this.toolStripStatusLabel2.Size = new System.Drawing.Size(192, 24);
             this.toolStripStatusLabel2.Text = "text.st.editprohibited";
             // 
             // statusStrip1
@@ -608,9 +613,9 @@ namespace IDE
             this.toolStripStatusLabel4,
             this.toolStripStatusLabel8,
             this.Blank});
-            this.statusStrip1.Location = new System.Drawing.Point(0, 685);
+            this.statusStrip1.Location = new System.Drawing.Point(0, 680);
             this.statusStrip1.Name = "statusStrip1";
-            this.statusStrip1.Size = new System.Drawing.Size(1064, 26);
+            this.statusStrip1.Size = new System.Drawing.Size(1064, 31);
             this.statusStrip1.SizingGrip = false;
             this.statusStrip1.TabIndex = 3;
             this.statusStrip1.Text = "statusStrip1";
@@ -619,25 +624,25 @@ namespace IDE
             // 
             this.toolStripStatusLabel1.Image = global::IDE.Properties.Resources._48x48_Warn;
             this.toolStripStatusLabel1.Name = "toolStripStatusLabel1";
-            this.toolStripStatusLabel1.Size = new System.Drawing.Size(25, 20);
+            this.toolStripStatusLabel1.Size = new System.Drawing.Size(30, 24);
             this.toolStripStatusLabel1.Text = "    ";
             this.toolStripStatusLabel1.TextImageRelation = System.Windows.Forms.TextImageRelation.Overlay;
             // 
             // toolStripStatusLabel4
             // 
             this.toolStripStatusLabel4.Name = "toolStripStatusLabel4";
-            this.toolStripStatusLabel4.Size = new System.Drawing.Size(0, 20);
+            this.toolStripStatusLabel4.Size = new System.Drawing.Size(0, 24);
             // 
             // toolStripStatusLabel8
             // 
             this.toolStripStatusLabel8.Name = "toolStripStatusLabel8";
-            this.toolStripStatusLabel8.Size = new System.Drawing.Size(858, 20);
+            this.toolStripStatusLabel8.Size = new System.Drawing.Size(827, 24);
             this.toolStripStatusLabel8.Spring = true;
             // 
             // Blank
             // 
             this.Blank.Name = "Blank";
-            this.Blank.Size = new System.Drawing.Size(0, 20);
+            this.Blank.Size = new System.Drawing.Size(0, 24);
             // 
             // MemoryChecker
             // 
@@ -664,9 +669,9 @@ namespace IDE
             this.CurrentWorkTip,
             this.FileSavingIcon,
             this.FileSavingTip});
-            this.statusStrip2.Location = new System.Drawing.Point(0, 659);
+            this.statusStrip2.Location = new System.Drawing.Point(0, 649);
             this.statusStrip2.Name = "statusStrip2";
-            this.statusStrip2.Size = new System.Drawing.Size(1064, 26);
+            this.statusStrip2.Size = new System.Drawing.Size(1064, 31);
             this.statusStrip2.SizingGrip = false;
             this.statusStrip2.TabIndex = 4;
             this.statusStrip2.Text = "statusStrip2";
@@ -674,29 +679,29 @@ namespace IDE
             // toolStripStatusLabel3
             // 
             this.toolStripStatusLabel3.Name = "toolStripStatusLabel3";
-            this.toolStripStatusLabel3.Size = new System.Drawing.Size(96, 20);
+            this.toolStripStatusLabel3.Size = new System.Drawing.Size(110, 24);
             this.toolStripStatusLabel3.Text = "text.st.mem";
             // 
             // toolStripStatusLabel6
             // 
             this.toolStripStatusLabel6.Name = "toolStripStatusLabel6";
-            this.toolStripStatusLabel6.Size = new System.Drawing.Size(97, 20);
+            this.toolStripStatusLabel6.Size = new System.Drawing.Size(112, 24);
             this.toolStripStatusLabel6.Text = "text.st.input";
             // 
             // toolStripStatusLabel7
             // 
             this.toolStripStatusLabel7.Name = "toolStripStatusLabel7";
-            this.toolStripStatusLabel7.Size = new System.Drawing.Size(0, 20);
+            this.toolStripStatusLabel7.Size = new System.Drawing.Size(0, 24);
             // 
             // toolStripStatusLabel5
             // 
             this.toolStripStatusLabel5.Name = "toolStripStatusLabel5";
-            this.toolStripStatusLabel5.Size = new System.Drawing.Size(0, 20);
+            this.toolStripStatusLabel5.Size = new System.Drawing.Size(0, 24);
             // 
             // toolStripStatusLabel10
             // 
             this.toolStripStatusLabel10.Name = "toolStripStatusLabel10";
-            this.toolStripStatusLabel10.Size = new System.Drawing.Size(427, 20);
+            this.toolStripStatusLabel10.Size = new System.Drawing.Size(328, 24);
             this.toolStripStatusLabel10.Spring = true;
             // 
             // UpdateIcon
@@ -704,25 +709,25 @@ namespace IDE
             this.UpdateIcon.DisplayStyle = System.Windows.Forms.ToolStripItemDisplayStyle.Image;
             this.UpdateIcon.Image = global::IDE.Properties.Resources.Update_can_update;
             this.UpdateIcon.Name = "UpdateIcon";
-            this.UpdateIcon.Size = new System.Drawing.Size(20, 20);
+            this.UpdateIcon.Size = new System.Drawing.Size(20, 24);
             // 
             // toolStripStatusLabel11
             // 
             this.toolStripStatusLabel11.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(162)))), ((int)(((byte)(162)))), ((int)(((byte)(162)))));
             this.toolStripStatusLabel11.Name = "toolStripStatusLabel11";
-            this.toolStripStatusLabel11.Size = new System.Drawing.Size(17, 20);
+            this.toolStripStatusLabel11.Size = new System.Drawing.Size(20, 24);
             this.toolStripStatusLabel11.Text = " |";
             // 
             // CanUpdateIcon
             // 
             this.CanUpdateIcon.Image = global::IDE.Properties.Resources.select;
             this.CanUpdateIcon.Name = "CanUpdateIcon";
-            this.CanUpdateIcon.Size = new System.Drawing.Size(20, 20);
+            this.CanUpdateIcon.Size = new System.Drawing.Size(20, 24);
             // 
             // toolStripStatusLabel9
             // 
             this.toolStripStatusLabel9.Name = "toolStripStatusLabel9";
-            this.toolStripStatusLabel9.Size = new System.Drawing.Size(231, 20);
+            this.toolStripStatusLabel9.Size = new System.Drawing.Size(272, 24);
             this.toolStripStatusLabel9.Text = "There are new updates for IDE.";
             // 
             // toolStripStatusLabel12
@@ -731,7 +736,7 @@ namespace IDE
             this.toolStripStatusLabel12.LinkBehavior = System.Windows.Forms.LinkBehavior.NeverUnderline;
             this.toolStripStatusLabel12.LinkColor = System.Drawing.Color.Turquoise;
             this.toolStripStatusLabel12.Name = "toolStripStatusLabel12";
-            this.toolStripStatusLabel12.Size = new System.Drawing.Size(141, 20);
+            this.toolStripStatusLabel12.Size = new System.Drawing.Size(167, 24);
             this.toolStripStatusLabel12.Text = "Download Update";
             this.toolStripStatusLabel12.VisitedLinkColor = System.Drawing.Color.DarkOrchid;
             this.toolStripStatusLabel12.Click += new System.EventHandler(this.DownloadUpdate);
@@ -742,14 +747,14 @@ namespace IDE
             this.WorkingIcon.DisplayStyle = System.Windows.Forms.ToolStripItemDisplayStyle.Image;
             this.WorkingIcon.Image = global::IDE.Properties.Resources.loading_;
             this.WorkingIcon.Name = "WorkingIcon";
-            this.WorkingIcon.Size = new System.Drawing.Size(20, 20);
+            this.WorkingIcon.Size = new System.Drawing.Size(20, 24);
             this.WorkingIcon.Visible = false;
             // 
             // CurrentWorkTip
             // 
             this.CurrentWorkTip.DisplayStyle = System.Windows.Forms.ToolStripItemDisplayStyle.Text;
             this.CurrentWorkTip.Name = "CurrentWorkTip";
-            this.CurrentWorkTip.Size = new System.Drawing.Size(137, 20);
+            this.CurrentWorkTip.Size = new System.Drawing.Size(158, 24);
             this.CurrentWorkTip.Text = "Show some work.";
             this.CurrentWorkTip.Visible = false;
             // 
@@ -757,13 +762,13 @@ namespace IDE
             // 
             this.FileSavingIcon.Image = global::IDE.Properties.Resources.file_ready_to_save_dark;
             this.FileSavingIcon.Name = "FileSavingIcon";
-            this.FileSavingIcon.Size = new System.Drawing.Size(20, 20);
+            this.FileSavingIcon.Size = new System.Drawing.Size(20, 24);
             this.FileSavingIcon.Visible = false;
             // 
             // FileSavingTip
             // 
             this.FileSavingTip.Name = "FileSavingTip";
-            this.FileSavingTip.Size = new System.Drawing.Size(170, 20);
+            this.FileSavingTip.Size = new System.Drawing.Size(196, 24);
             this.FileSavingTip.Text = "text.st.filereadytosave";
             this.FileSavingTip.Visible = false;
             // 
@@ -789,7 +794,7 @@ namespace IDE
             this.tableLayoutPanel1.RowCount = 2;
             this.tableLayoutPanel1.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Percent, 75F));
             this.tableLayoutPanel1.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Percent, 25F));
-            this.tableLayoutPanel1.Size = new System.Drawing.Size(1064, 572);
+            this.tableLayoutPanel1.Size = new System.Drawing.Size(1064, 556);
             this.tableLayoutPanel1.TabIndex = 6;
             // 
             // tabControl1
@@ -807,7 +812,7 @@ namespace IDE
             this.tabControl1.Name = "tabControl1";
             this.tabControl1.SelectedIndex = 0;
             this.tabControl1.ShowCloseButton = true;
-            this.tabControl1.Size = new System.Drawing.Size(1058, 423);
+            this.tabControl1.Size = new System.Drawing.Size(1058, 411);
             this.tabControl1.SizeMode = System.Windows.Forms.TabSizeMode.Fixed;
             this.tabControl1.StyleCustomMode = true;
             this.tabControl1.TabBackColor = System.Drawing.Color.Black;
@@ -824,7 +829,7 @@ namespace IDE
             this.tabPage1.Controls.Add(this.webView1);
             this.tabPage1.Location = new System.Drawing.Point(0, 30);
             this.tabPage1.Name = "tabPage1";
-            this.tabPage1.Size = new System.Drawing.Size(1058, 393);
+            this.tabPage1.Size = new System.Drawing.Size(1058, 381);
             this.tabPage1.TabIndex = 0;
             this.tabPage1.Text = "text.tc.tp.tmp";
             // 
@@ -838,7 +843,7 @@ namespace IDE
             this.tableLayoutPanel2.Name = "tableLayoutPanel2";
             this.tableLayoutPanel2.RowCount = 1;
             this.tableLayoutPanel2.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Percent, 50F));
-            this.tableLayoutPanel2.Size = new System.Drawing.Size(1058, 393);
+            this.tableLayoutPanel2.Size = new System.Drawing.Size(1058, 381);
             this.tableLayoutPanel2.TabIndex = 0;
             // 
             // elementHost1
@@ -846,7 +851,7 @@ namespace IDE
             this.elementHost1.Dock = System.Windows.Forms.DockStyle.Fill;
             this.elementHost1.Location = new System.Drawing.Point(3, 3);
             this.elementHost1.Name = "elementHost1";
-            this.elementHost1.Size = new System.Drawing.Size(1052, 387);
+            this.elementHost1.Size = new System.Drawing.Size(1052, 375);
             this.elementHost1.TabIndex = 1;
             this.elementHost1.Validating += new System.ComponentModel.CancelEventHandler(this.LayoutTextEditor);
             this.elementHost1.Child = null;
@@ -872,12 +877,12 @@ namespace IDE
             this.uiTabControl1.FillColor = System.Drawing.Color.FromArgb(((int)(((byte)(248)))), ((int)(((byte)(248)))), ((int)(((byte)(248)))));
             this.uiTabControl1.Font = new System.Drawing.Font("微软雅黑", 9F);
             this.uiTabControl1.ItemSize = new System.Drawing.Size(150, 25);
-            this.uiTabControl1.Location = new System.Drawing.Point(3, 432);
+            this.uiTabControl1.Location = new System.Drawing.Point(3, 420);
             this.uiTabControl1.MainPage = "";
             this.uiTabControl1.MenuStyle = Sunny.UI.UIMenuStyle.Custom;
             this.uiTabControl1.Name = "uiTabControl1";
             this.uiTabControl1.SelectedIndex = 0;
-            this.uiTabControl1.Size = new System.Drawing.Size(1058, 137);
+            this.uiTabControl1.Size = new System.Drawing.Size(1058, 133);
             this.uiTabControl1.SizeMode = System.Windows.Forms.TabSizeMode.Fixed;
             this.uiTabControl1.Style = Sunny.UI.UIStyle.Custom;
             this.uiTabControl1.StyleCustomMode = true;
@@ -894,7 +899,7 @@ namespace IDE
             this.ErrorAndExceptionsPage.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(243)))), ((int)(((byte)(249)))), ((int)(((byte)(255)))));
             this.ErrorAndExceptionsPage.Location = new System.Drawing.Point(0, 0);
             this.ErrorAndExceptionsPage.Name = "ErrorAndExceptionsPage";
-            this.ErrorAndExceptionsPage.Size = new System.Drawing.Size(1058, 112);
+            this.ErrorAndExceptionsPage.Size = new System.Drawing.Size(1058, 108);
             this.ErrorAndExceptionsPage.TabIndex = 1;
             this.ErrorAndExceptionsPage.Text = "text.bottom.errors";
             // 
@@ -913,7 +918,7 @@ namespace IDE
             this.listView1.Location = new System.Drawing.Point(0, 0);
             this.listView1.MultiSelect = false;
             this.listView1.Name = "listView1";
-            this.listView1.Size = new System.Drawing.Size(1058, 112);
+            this.listView1.Size = new System.Drawing.Size(1058, 108);
             this.listView1.SmallImageList = this.imageList1;
             this.listView1.Sorting = System.Windows.Forms.SortOrder.Ascending;
             this.listView1.TabIndex = 0;
@@ -1013,10 +1018,10 @@ namespace IDE
             this.toolStripButton2,
             this.toolStripButton3,
             this.toolStripSeparator1});
-            this.toolStrip1.Location = new System.Drawing.Point(0, 30);
+            this.toolStrip1.Location = new System.Drawing.Point(0, 32);
             this.toolStrip1.Name = "toolStrip1";
             this.toolStrip1.RenderMode = System.Windows.Forms.ToolStripRenderMode.Professional;
-            this.toolStrip1.Size = new System.Drawing.Size(1064, 31);
+            this.toolStrip1.Size = new System.Drawing.Size(1064, 29);
             this.toolStrip1.TabIndex = 7;
             this.toolStrip1.Text = "toolStrip1";
             // 
@@ -1026,7 +1031,7 @@ namespace IDE
             this.toolStripButton1.Image = global::IDE.Properties.Resources.Run;
             this.toolStripButton1.ImageTransparentColor = System.Drawing.Color.Magenta;
             this.toolStripButton1.Name = "toolStripButton1";
-            this.toolStripButton1.Size = new System.Drawing.Size(29, 28);
+            this.toolStripButton1.Size = new System.Drawing.Size(34, 24);
             this.toolStripButton1.Text = "toolStripButton1";
             this.toolStripButton1.Click += new System.EventHandler(this.Run);
             // 
@@ -1037,7 +1042,7 @@ namespace IDE
             this.toolStripButton2.DisplayStyle = System.Windows.Forms.ToolStripItemDisplayStyle.Image;
             this.toolStripButton2.ImageTransparentColor = System.Drawing.Color.Magenta;
             this.toolStripButton2.Name = "toolStripButton2";
-            this.toolStripButton2.Size = new System.Drawing.Size(29, 28);
+            this.toolStripButton2.Size = new System.Drawing.Size(34, 24);
             this.toolStripButton2.Text = "toolStripButton2";
             this.toolStripButton2.Click += new System.EventHandler(this.ForceStop);
             // 
@@ -1047,13 +1052,13 @@ namespace IDE
             this.toolStripButton3.Image = global::IDE.Properties.Resources.Debug_Color;
             this.toolStripButton3.ImageTransparentColor = System.Drawing.Color.Magenta;
             this.toolStripButton3.Name = "toolStripButton3";
-            this.toolStripButton3.Size = new System.Drawing.Size(29, 28);
+            this.toolStripButton3.Size = new System.Drawing.Size(34, 24);
             this.toolStripButton3.Text = "toolStripButton3";
             // 
             // toolStripSeparator1
             // 
             this.toolStripSeparator1.Name = "toolStripSeparator1";
-            this.toolStripSeparator1.Size = new System.Drawing.Size(6, 31);
+            this.toolStripSeparator1.Size = new System.Drawing.Size(6, 29);
             // 
             // statusStrip3
             // 
@@ -1067,58 +1072,90 @@ namespace IDE
             this.UpdateProgress,
             this.DownloadProgress,
             this.Percent,
-            this.DownloadSpeed});
-            this.statusStrip3.Location = new System.Drawing.Point(0, 633);
+            this.DownloadSpeed,
+            this.UpdateControlBlocker,
+            this.UpdateForceStopLabel});
+            this.statusStrip3.Location = new System.Drawing.Point(0, 617);
             this.statusStrip3.Name = "statusStrip3";
-            this.statusStrip3.Size = new System.Drawing.Size(1064, 26);
+            this.statusStrip3.Size = new System.Drawing.Size(1064, 32);
             this.statusStrip3.SizingGrip = false;
             this.statusStrip3.TabIndex = 1;
             // 
             // Downloading
             // 
             this.Downloading.Name = "Downloading";
-            this.Downloading.Size = new System.Drawing.Size(168, 20);
+            this.Downloading.Size = new System.Drawing.Size(199, 25);
             this.Downloading.Text = "Downloading Update:";
             // 
             // ReceivedBytes
             // 
             this.ReceivedBytes.Name = "ReceivedBytes";
-            this.ReceivedBytes.Size = new System.Drawing.Size(0, 20);
+            this.ReceivedBytes.Size = new System.Drawing.Size(0, 25);
             this.ReceivedBytes.TextAlign = System.Drawing.ContentAlignment.MiddleRight;
             // 
             // ReceivedBytesSeparatorSign
             // 
             this.ReceivedBytesSeparatorSign.Name = "ReceivedBytesSeparatorSign";
-            this.ReceivedBytesSeparatorSign.Size = new System.Drawing.Size(15, 20);
+            this.ReceivedBytesSeparatorSign.Size = new System.Drawing.Size(18, 25);
             this.ReceivedBytesSeparatorSign.Text = "/";
             // 
             // ToReceiveBytes
             // 
             this.ToReceiveBytes.Name = "ToReceiveBytes";
-            this.ToReceiveBytes.Size = new System.Drawing.Size(0, 20);
+            this.ToReceiveBytes.Size = new System.Drawing.Size(0, 25);
             // 
             // UpdateProgress
             // 
             this.UpdateProgress.MarqueeAnimationSpeed = 200;
             this.UpdateProgress.Name = "UpdateProgress";
-            this.UpdateProgress.Size = new System.Drawing.Size(200, 18);
+            this.UpdateProgress.Size = new System.Drawing.Size(200, 24);
             this.UpdateProgress.Style = System.Windows.Forms.ProgressBarStyle.Continuous;
             // 
             // DownloadProgress
             // 
             this.DownloadProgress.Name = "DownloadProgress";
-            this.DownloadProgress.Size = new System.Drawing.Size(0, 20);
+            this.DownloadProgress.Size = new System.Drawing.Size(0, 25);
             // 
             // Percent
             // 
             this.Percent.Name = "Percent";
-            this.Percent.Size = new System.Drawing.Size(22, 20);
+            this.Percent.Size = new System.Drawing.Size(26, 25);
             this.Percent.Text = "%";
             // 
             // DownloadSpeed
             // 
             this.DownloadSpeed.Name = "DownloadSpeed";
-            this.DownloadSpeed.Size = new System.Drawing.Size(0, 20);
+            this.DownloadSpeed.Size = new System.Drawing.Size(0, 25);
+            // 
+            // UpdateControlBlocker
+            // 
+            this.UpdateControlBlocker.Name = "UpdateControlBlocker";
+            this.UpdateControlBlocker.Size = new System.Drawing.Size(474, 25);
+            this.UpdateControlBlocker.Spring = true;
+            // 
+            // UpdateForceStopLabel
+            // 
+            this.UpdateForceStopLabel.Font = new System.Drawing.Font("Microsoft YaHei UI", 9F, System.Drawing.FontStyle.Bold);
+            this.UpdateForceStopLabel.ForeColor = System.Drawing.SystemColors.Control;
+            this.UpdateForceStopLabel.Image = global::IDE.Properties.Resources.Update_Cancelled;
+            this.UpdateForceStopLabel.IsLink = true;
+            this.UpdateForceStopLabel.LinkBehavior = System.Windows.Forms.LinkBehavior.HoverUnderline;
+            this.UpdateForceStopLabel.LinkColor = System.Drawing.Color.Red;
+            this.UpdateForceStopLabel.Name = "UpdateForceStopLabel";
+            this.UpdateForceStopLabel.Size = new System.Drawing.Size(128, 25);
+            this.UpdateForceStopLabel.Text = "Force Stop";
+            this.UpdateForceStopLabel.VisitedLinkColor = System.Drawing.Color.Maroon;
+            this.UpdateForceStopLabel.Click += new System.EventHandler(this.StopDownload);
+            // 
+            // texttstoolapplicationresetToolStripMenuItem
+            // 
+            this.texttstoolapplicationresetToolStripMenuItem.BackColor = System.Drawing.SystemColors.ActiveCaptionText;
+            this.texttstoolapplicationresetToolStripMenuItem.ForeColor = System.Drawing.SystemColors.ControlLightLight;
+            this.texttstoolapplicationresetToolStripMenuItem.Image = global::IDE.Properties.Resources.unselect;
+            this.texttstoolapplicationresetToolStripMenuItem.Name = "texttstoolapplicationresetToolStripMenuItem";
+            this.texttstoolapplicationresetToolStripMenuItem.Size = new System.Drawing.Size(423, 34);
+            this.texttstoolapplicationresetToolStripMenuItem.Text = "text.ts.tool.application.reset";
+            this.texttstoolapplicationresetToolStripMenuItem.Click += new System.EventHandler(this.Reset);
             // 
             // Main
             // 
@@ -1270,6 +1307,9 @@ namespace IDE
         internal ToolStripStatusLabel Downloading;
         internal ToolStripStatusLabel DownloadSpeed;
         internal ToolStripStatusLabel toolStripStatusLabel9;
+        private ToolStripStatusLabel UpdateControlBlocker;
+        private ToolStripStatusLabel UpdateForceStopLabel;
+        private ToolStripMenuItem texttstoolapplicationresetToolStripMenuItem;
     }
 }
 

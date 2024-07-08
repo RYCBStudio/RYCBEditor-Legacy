@@ -181,7 +181,7 @@ partial class InterpreterConfigBox
             this.CBoxItptrType.MinimumSize = new System.Drawing.Size(63, 0);
             this.CBoxItptrType.Name = "CBoxItptrType";
             this.CBoxItptrType.Padding = new System.Windows.Forms.Padding(0, 0, 30, 2);
-            this.CBoxItptrType.Size = new System.Drawing.Size(484, 26);
+            this.CBoxItptrType.Size = new System.Drawing.Size(484, 31);
             this.CBoxItptrType.TabIndex = 1;
             this.CBoxItptrType.TextAlignment = System.Drawing.ContentAlignment.MiddleLeft;
             this.CBoxItptrType.Watermark = "";
@@ -209,7 +209,7 @@ partial class InterpreterConfigBox
             this.TBoxItptrPath.Name = "TBoxItptrPath";
             this.TBoxItptrPath.Padding = new System.Windows.Forms.Padding(5);
             this.TBoxItptrPath.ShowText = false;
-            this.TBoxItptrPath.Size = new System.Drawing.Size(451, 26);
+            this.TBoxItptrPath.Size = new System.Drawing.Size(451, 31);
             this.TBoxItptrPath.Symbol = 162434;
             this.TBoxItptrPath.TabIndex = 3;
             this.TBoxItptrPath.Text = "C:\\Example\\eg\\Simple\\py.exe";
@@ -257,7 +257,7 @@ partial class InterpreterConfigBox
             this.TBoxItptrFinalCmd.ReadOnly = true;
             this.TBoxItptrFinalCmd.ShowButton = true;
             this.TBoxItptrFinalCmd.ShowText = false;
-            this.TBoxItptrFinalCmd.Size = new System.Drawing.Size(451, 26);
+            this.TBoxItptrFinalCmd.Size = new System.Drawing.Size(451, 31);
             this.TBoxItptrFinalCmd.TabIndex = 8;
             this.TBoxItptrFinalCmd.TextAlignment = System.Drawing.ContentAlignment.MiddleLeft;
             this.TBoxItptrFinalCmd.Watermark = "";
@@ -324,7 +324,7 @@ partial class InterpreterConfigBox
             this.uiComboBox1.MinimumSize = new System.Drawing.Size(63, 0);
             this.uiComboBox1.Name = "uiComboBox1";
             this.uiComboBox1.Padding = new System.Windows.Forms.Padding(0, 0, 30, 2);
-            this.uiComboBox1.Size = new System.Drawing.Size(654, 31);
+            this.uiComboBox1.Size = new System.Drawing.Size(654, 36);
             this.uiComboBox1.TabIndex = 5;
             this.uiComboBox1.Text = "Python";
             this.uiComboBox1.TextAlignment = System.Drawing.ContentAlignment.MiddleLeft;

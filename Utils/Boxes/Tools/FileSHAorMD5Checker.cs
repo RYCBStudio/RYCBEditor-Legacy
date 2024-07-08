@@ -8,6 +8,66 @@ using Sunny.UI;
 namespace IDE;
 public partial class FileSHAorMD5Checker : UIForm
 {
+
+    private const string TXT_TEMPLATE = 
+            """
+            ----------|----------------------------------------------------------------------------------------------------------------
+              File    | {0}
+            ----------|----------------------------------------------------------------------------------------------------------------
+               MD5    | {1}
+            ----------|----------------------------------------------------------------------------------------------------------------
+               SHA1   | {2}
+            ----------|----------------------------------------------------------------------------------------------------------------
+              SHA256  | {3}
+            ----------|----------------------------------------------------------------------------------------------------------------
+            """;
+    private const string MD_TEMPLATE =
+            """
+            |  File  |{0}|
+            |:------:|:-:|
+            |  MD5   |{1}|
+            |  SHA1  |{2}|
+            | SHA256 |{3}|
+            """;
+    private const string HTML_TEMPLATE =
+            """
+            <!DOCTYPE html>
+            <html>
+            <head>
+                <meta charset="UTF-8" />
+                <title>File Information</title>
+                <h1>File Information</h1>
+                <h3>WARNING: MD5 value, SHA1 value and SHA256 value are important private information, please don't leak them unless necessary.</h3>
+            </head>
+            <body>
+                <table>
+                    <thead>
+                    <tr>
+                    <th style="text-align:center">File</th>
+                    <th style="text-align:center">{0}</th>
+                    </tr>
+                    </thead>
+                    <tbody>
+                    <tr>
+                    <td style="text-align:center">MD5</td>
+                    <td style="text-align:center">{1}</td>
+                    </tr>
+                    <tr>
+                    <td style="text-align:center">SHA1</td>
+                    <td style="text-align:center">{2}</td>
+                    </tr>
+                    <tr>
+                    <td style="text-align:center">SHA256</td>
+                    <td style="text-align:center">{3}</td>
+                    </tr>
+                    </tbody>
+                    </table>       
+                    <p>Copyright © 2024 RYCBStudio</p> 
+            </body>
+            </html>
+            """;
+
+
     public FileSHAorMD5Checker()
     {
         InitializeComponent();
@@ -111,6 +171,33 @@ public partial class FileSHAorMD5Checker : UIForm
         else
         {
             pictureBox5.Image = IDE.Properties.Resources.delete;
+        }
+    }
+
+    private void ExportToTxt(object sender, EventArgs e)
+    {
+        saveFileDialog1.Filter = "|*.txt";
+        if (saveFileDialog1.ShowDialog() == DialogResult.OK)
+        {
+            File.WriteAllText(saveFileDialog1.FileName, string.Format(TXT_TEMPLATE, txtBoxFilePath.Text, txtBoxFileMD5.Text, txtBoxFileSHA1.Text, GetSHA256(txtBoxFilePath.Text)));
+        }   
+    }
+
+    private void ExportToMd(object sender, EventArgs e)
+    {
+        saveFileDialog1.Filter = "|*.md";
+        if (saveFileDialog1.ShowDialog() == DialogResult.OK)
+        {
+            File.WriteAllText(saveFileDialog1.FileName, string.Format(MD_TEMPLATE, txtBoxFilePath.Text, txtBoxFileMD5.Text, txtBoxFileSHA1.Text, GetSHA256(txtBoxFilePath.Text)));
+        }
+    }
+
+    private void ExportToHtml(object sender, EventArgs e)
+    {
+        saveFileDialog1.Filter = "|*.html";
+        if (saveFileDialog1.ShowDialog() == DialogResult.OK)
+        {
+            File.WriteAllText(saveFileDialog1.FileName, string.Format(HTML_TEMPLATE, txtBoxFilePath.Text, txtBoxFileMD5.Text, txtBoxFileSHA1.Text, GetSHA256(txtBoxFilePath.Text)));
         }
     }
 }

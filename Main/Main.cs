@@ -59,6 +59,7 @@ namespace IDE
         //}
         private static ErrorMessageBox errMsgBox;
         internal MsgBox msgBox;
+        internal UpdateBackgroundDownloader activeubd;
         internal static string XshdFilePath;
         internal static readonly Dictionary<Engines, string> SearchEngines = new()
         {
@@ -1603,6 +1604,22 @@ namespace IDE
             }
         }
         #endregion
+        #region 重置IDE
+        private void Reset(object sender, EventArgs e)
+        {
+            IniFile _ = new(Program.STARTUP_PATH + "\\7z.exe.pvtconf");
+            if (_.Read("Info", "MD5", "Error") == Extensions.GetMD5HashFromFile(_.FileName)&_.Read("Info","MD5", "Error") == Extensions.GetMD5HashFromFile("./Tools/InitialDirectory.7z"))
+            {
+                Extensions.DecompressFile(Program.STARTUP_PATH + "/Tools/InitialDirectory.7z", Program.STARTUP_PATH + "/Cache/InitialDirectory");
+                File.WriteAllText(Program.STARTUP_PATH + "/Tools/InitialDirectory.path", Program.STARTUP_PATH + "/Cache/InitialDirectory");
+                if (MessageBox.Show("RYCB Editor needs reboot to apply package. Press \"\"", "Tip", MessageBoxButtons.OKCancel, MessageBoxIcon.Information, MessageBoxDefaultButton.Button1) == DialogResult.OK)
+                {
+
+                    Application.Exit();
+                }
+            }
+        }
+        #endregion
         #region 清理缓存
         private void ClearCache(object sender, EventArgs e)
         {
@@ -2175,10 +2192,14 @@ namespace IDE
 
         private async void DownloadUpdate(object sender, EventArgs e)
         {
-            var ubd = new UpdateBackgroundDownloader();
+            activeubd = new UpdateBackgroundDownloader();
             toolStripStatusLabel12.Enabled = false;
             LOGGER.WriteLog("下载更新文件。", EnumMsgLevel.INFO, EnumPort.CLIENT, EnumModule.UPDATE);
-            await ubd.DownloadUpdateAsync();
+            await activeubd.DownloadUpdateAsync();
+            if (activeubd.downloader.IsCancelled)
+            {
+                return;
+            }
             LOGGER.WriteLog("开始部署更新。", EnumMsgLevel.INFO, EnumPort.CLIENT, EnumModule.UPDATE);
             DeployUpdate();
         }
@@ -2209,6 +2230,18 @@ namespace IDE
             UpdateValidater uv = new();
             LOGGER.WriteLog("正在验证更新。", EnumMsgLevel.INFO, EnumPort.CLIENT, EnumModule.UPDATE);
             await uv.ValidateFileAsync();
+        }
+
+        private void StopDownload(object sender, EventArgs e)
+        {
+            LOGGER.WriteLog("Try to cancel update task.", EnumMsgLevel.INFO, EnumPort.SERVER, EnumModule.UPDATE);
+            activeubd.downloader.CancelAsync();
+            if (activeubd.downloader.IsCancelled)
+            {
+                LOGGER.WriteLog("Update Cancelled.", EnumMsgLevel.WARN, EnumPort.CLIENT, EnumModule.UPDATE);
+                return;
+            }
+            LOGGER.WriteLog("Fail to cancel update task.", EnumMsgLevel.WARN, EnumPort.SERVER, EnumModule.UPDATE);
         }
 
         #endregion

@@ -157,7 +157,7 @@ namespace IDE
                 CrashHandler crashHandler = new(ex, Environment.GetFolderPath(Environment.SpecialFolder.Desktop)); ;
                 crashHandler.CollectCrashInfo();
                 crashHandler.WriteDumpFile();
-                ErrorAnalysiser EA = new(ex);
+                ErrorAnalysiser EA = new(ex, Environment.GetFolderPath(Environment.SpecialFolder.Desktop));
                 EA.GetExceptions();
                 Infrastructure.MiniDump.TryDump(STARTUP_PATH + $"\\Crash\\{DateTime.Now:yyyy-MM-dd_HH-mm-ss+fff}.dmp");
                 Process.GetCurrentProcess().Kill();

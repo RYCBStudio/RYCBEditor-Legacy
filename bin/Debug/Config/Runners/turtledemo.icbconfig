@@ -1,0 +1,5 @@
+[itptr]
+name=Turtle Demo
+type=Local
+path=python.exe
+args=-m turtledemo 

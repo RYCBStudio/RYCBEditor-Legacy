@@ -1048,6 +1048,7 @@
     </EmbeddedResource>
     <EmbeddedResource Include="Utils\Boxes\CacheCleaner\CacheCleaner.resx">
       <DependentUpon>CacheCleaner.cs</DependentUpon>
+      <SubType>Designer</SubType>
     </EmbeddedResource>
     <EmbeddedResource Include="Utils\Boxes\ErrorMessageBox\ErrorMessageBox.resx">
       <DependentUpon>ErrorMessageBox.cs</DependentUpon>
@@ -1863,6 +1864,7 @@
     <None Include="Resources\select_dark.png" />
     <None Include="Resources\Exception-32X.png" />
     <None Include="Resources\GitHubLogo_Light.png" />
+    <None Include="Resources\Update_Cancelled.png" />
     <Content Include="Utils\RE-Addon-Controls\Enter-Dark.png" />
     <Content Include="Utils\RE-Addon-Controls\Enter.png" />
     <Content Include="语法说明.html" />

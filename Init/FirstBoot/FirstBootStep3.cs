@@ -11,7 +11,7 @@ public partial class FirstBootStep3 : UIForm
     private void Previous(object sender, EventArgs e)
     {
         this.Hide();
-        this.previous.ShowDialog();
+        this.previous.Show();
     }
 
     private void Next(object sender, EventArgs e)
@@ -23,6 +23,7 @@ public partial class FirstBootStep3 : UIForm
     public FirstBootStep3(IEnumerable<UIForm> previousForms, UIForm previous)
     {
         InitializeComponent();
+        InitializeLocalization();
         this.previous = previous;
         this.next = new FirstBootStep4(new UIForm[] { this.previous, this }.Concat(previousForms));
     }

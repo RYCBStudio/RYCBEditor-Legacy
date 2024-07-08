@@ -9,6 +9,7 @@ public partial class FirstBootStep1 : UIForm
     public FirstBootStep1()
     {
         InitializeComponent();
+        InitializeLocalization();
         next = new FirstBootStep2(this);
     }
 
