@@ -44,7 +44,7 @@ public partial class CacheCleaner : UIForm
         var total = 0;
         if (ClearChoices.LogFile)
         {
-            total += System.IO.Directory.EnumerateFiles(Program.STARTUP_PATH + "\\logs").Count();
+            total += Directory.EnumerateFiles(Program.STARTUP_PATH + "\\logs").Count();
         }
         //if (ClearChoices.PyCNFile)
         //{
@@ -52,11 +52,11 @@ public partial class CacheCleaner : UIForm
         //}
         if (ClearChoices.TmpFile)
         {
-            total += System.IO.Directory.EnumerateFiles(Program.STARTUP_PATH + "\\$tmp_code").Count();
+            total += Directory.EnumerateFiles(Program.STARTUP_PATH + "\\$tmp_code").Count();
         }
         if (ClearChoices.UpdateFile)
         {
-            total += System.IO.Directory.EnumerateFiles(Utils.Update.GlobalDefinitions.DecompressedUpdateArchive_Path).Count();
+            total += Directory.EnumerateFiles(Utils.Update.GlobalDefinitions.DecompressedUpdateArchive_Path).Count();
         }
         if (ClearChoices.UpdateArchive)
         {
@@ -74,7 +74,7 @@ public partial class CacheCleaner : UIForm
         GetFiles();
         if (ClearChoices.TmpFile)
         {
-            foreach (var file in System.IO.Directory.EnumerateFiles(Program.STARTUP_PATH + "\\$tmp_code"))
+            foreach (var file in Directory.EnumerateFiles(Program.STARTUP_PATH + "\\$tmp_code"))
             {
                 File.Delete(file);
                 uiProcessBar1.StepIt();
@@ -82,7 +82,7 @@ public partial class CacheCleaner : UIForm
         }
         if (ClearChoices.LogFile)
         {
-            var files = System.IO.Directory.EnumerateFiles(Program.STARTUP_PATH + "\\logs");
+            var files = Directory.EnumerateFiles(Program.STARTUP_PATH + "\\logs");
             foreach (var file in files)
             {
                 if (isCurrentLogFile(file))
@@ -95,7 +95,7 @@ public partial class CacheCleaner : UIForm
         }
         if (ClearChoices.UpdateFile)
         {
-            var files = System.IO.Directory.EnumerateFiles(Utils.Update.GlobalDefinitions.DecompressedUpdateArchive_Path);
+            var files = Directory.EnumerateFiles(Utils.Update.GlobalDefinitions.DecompressedUpdateArchive_Path);
             foreach (var file in files)
             {
                 File.Delete(file);

@@ -1,0 +1,19 @@
+[LangSet]
+Name=日本語
+
+[I18n]
+title.lpmm.text=ローカルパッケージマネージャ
+text.lpmm.searchbox.wm=検索けんさく...
+text.lpmm.pkg.processing=ローカルパッケージを処理しています。しばらくお待ちください。        タイムアウトが発生した場合は、ここをクリックして閉じる
+text.lpmm.pkg.notfound=ローカルパッケージが見つかりません。インポートまたはオンライン検索しますか？
+text.lpmm.pkg.notfound.import=インポート
+text.lpmm.pkg.notfound.search=オンライン検索
+text.lpmm.pkg.notfound.cancel=キャンセル
+text.lpmm.pkg.tip=ヒント
+text.lpmm.pkg.status=ポジション
+text.lpmm.pkg.desc=説明
+text.lpmm.pkg.author=著者
+text.lpmm.pkg.name=パッケージ名
+Disabled=無効
+Enabled=有効
+unknown=不明

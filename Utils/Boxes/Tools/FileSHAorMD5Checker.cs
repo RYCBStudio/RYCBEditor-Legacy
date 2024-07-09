@@ -93,7 +93,7 @@ public partial class FileSHAorMD5Checker : UIForm
     {
         try
         {
-            var file = new FileStream(fileName, System.IO.FileMode.Open);
+            var file = new FileStream(fileName, FileMode.Open);
             MD5 md5 = new MD5CryptoServiceProvider();
             var retVal = md5.ComputeHash(file);
             file.Close();
@@ -142,11 +142,11 @@ public partial class FileSHAorMD5Checker : UIForm
     {
         if (txtBoxFileMD5.Text.ToLower() == txtBoxGivenMD5Value.Text.ToLower())
         {
-            pictureBox3.Image = IDE.Properties.Resources.save;
+            pictureBox3.Image = Properties.Resources.save;
         }
         else
         {
-            pictureBox3.Image = IDE.Properties.Resources.delete;
+            pictureBox3.Image = Properties.Resources.delete;
         }
     }
 
@@ -154,11 +154,11 @@ public partial class FileSHAorMD5Checker : UIForm
     {
         if (txtBoxFileSHA1.Text.ToLower() == txtBoxGivenSHA1Value.Text.ToLower())
         {
-            pictureBox4.Image = IDE.Properties.Resources.save;
+            pictureBox4.Image = Properties.Resources.save;
         }
         else
         {
-            pictureBox4.Image = IDE.Properties.Resources.delete;
+            pictureBox4.Image = Properties.Resources.delete;
         }
     }
 
@@ -166,11 +166,11 @@ public partial class FileSHAorMD5Checker : UIForm
     {
         if (txtBoxFileSHA256.Text.ToLower() == txtBoxGivenSHA256Value.Text.ToLower())
         {
-            pictureBox5.Image = IDE.Properties.Resources.save;
+            pictureBox5.Image = Properties.Resources.save;
         }
         else
         {
-            pictureBox5.Image = IDE.Properties.Resources.delete;
+            pictureBox5.Image = Properties.Resources.delete;
         }
     }
 

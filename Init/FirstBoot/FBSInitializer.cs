@@ -10,7 +10,7 @@ namespace IDE.Init.FirstBoot
 {
     internal class FBSInitializer
     {
-        internal readonly IniFile _I18nFile = new(Application.StartupPath + $"\\Languages\\{GlobalSettings.language}\\fbs.relang", System.Text.Encoding.UTF8);
+        internal readonly IniFile _I18nFile = new(Application.StartupPath + $"\\Languages\\{GlobalSettings.language}\\fbs.relang", Encoding.UTF8);
     }
 }
 namespace IDE.Init

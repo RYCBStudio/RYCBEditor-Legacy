@@ -823,6 +823,11 @@
     <Compile Include="Init\FirstBoot\FirstBootStep4.Designer.cs">
       <DependentUpon>FirstBootStep4.cs</DependentUpon>
     </Compile>
+    <Compile Include="Properties\Resources.Designer.cs">
+      <AutoGen>True</AutoGen>
+      <DesignTime>True</DesignTime>
+      <DependentUpon>Resources.resx</DependentUpon>
+    </Compile>
     <Compile Include="Settings\CustomSettings.FileEditor.cs">
       <SubType>Form</SubType>
     </Compile>
@@ -878,11 +883,20 @@
     <Compile Include="Utils\Boxes\MsgInIDE\MsgBox.Designer.cs">
       <DependentUpon>MsgBox.cs</DependentUpon>
     </Compile>
-    <Compile Include="Utils\Boxes\PlugInHandler\PlugInHandlerMainWindow.cs">
+    <Compile Include="Utils\Boxes\PackageManager\LocalPackageManagerMainWindow.cs">
       <SubType>Form</SubType>
     </Compile>
-    <Compile Include="Utils\Boxes\PlugInHandler\PlugInHandlerMainWindow.Designer.cs">
-      <DependentUpon>PlugInHandlerMainWindow.cs</DependentUpon>
+    <Compile Include="Utils\Boxes\PackageManager\LocalPackageManagerMainWindow.Designer.cs">
+      <DependentUpon>LocalPackageManagerMainWindow.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Utils\Boxes\PackageManager\LocalPackageManagerMainWindow.Initializer.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="Utils\Boxes\PackageManager\PackageManagerProgressWindow.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="Utils\Boxes\PackageManager\PackageManagerProgressWindow.Designer.cs">
+      <DependentUpon>PackageManagerProgressWindow.cs</DependentUpon>
     </Compile>
     <Compile Include="Utils\Boxes\Tools\FileSHAorMD5Checker.cs">
       <SubType>Form</SubType>
@@ -1064,9 +1078,11 @@
       <DependentUpon>NewFileBox.cs</DependentUpon>
       <SubType>Designer</SubType>
     </EmbeddedResource>
-    <EmbeddedResource Include="Utils\Boxes\PlugInHandler\PlugInHandlerMainWindow.resx">
-      <DependentUpon>PlugInHandlerMainWindow.cs</DependentUpon>
-      <SubType>Designer</SubType>
+    <EmbeddedResource Include="Utils\Boxes\PackageManager\LocalPackageManagerMainWindow.resx">
+      <DependentUpon>LocalPackageManagerMainWindow.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Utils\Boxes\PackageManager\PackageManagerProgressWindow.resx">
+      <DependentUpon>PackageManagerProgressWindow.cs</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="Utils\Boxes\RYCBSearchPanel.resx">
       <DependentUpon>RYCBSearchPanel.cs</DependentUpon>
@@ -1111,11 +1127,6 @@
       <Generator>SettingsSingleFileGenerator</Generator>
       <LastGenOutput>Settings.Designer.cs</LastGenOutput>
     </None>
-    <Compile Include="Properties\Resources.Designer.cs">
-      <AutoGen>True</AutoGen>
-      <DesignTime>True</DesignTime>
-      <DependentUpon>Resources.resx</DependentUpon>
-    </Compile>
     <Compile Include="Properties\Settings.Designer.cs">
       <AutoGen>True</AutoGen>
       <DependentUpon>Settings.settings</DependentUpon>
@@ -1865,6 +1876,11 @@
     <None Include="Resources\Exception-32X.png" />
     <None Include="Resources\GitHubLogo_Light.png" />
     <None Include="Resources\Update_Cancelled.png" />
+    <None Include="Resources\install-line.png" />
+    <None Include="Resources\disable_ban.png" />
+    <None Include="Resources\plugin-ban.png" />
+    <None Include="Resources\plugin-enable.png" />
+    <None Include="Resources\ABout1.png" />
     <Content Include="Utils\RE-Addon-Controls\Enter-Dark.png" />
     <Content Include="Utils\RE-Addon-Controls\Enter.png" />
     <Content Include="语法说明.html" />

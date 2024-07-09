@@ -1,0 +1,14 @@
+[LangSet]
+Name=English
+
+[I18n]
+title.lpmm.text=Local Package Manager
+text.lpmm.searchbox.wm=Search...
+text.lpmm.pkg.processing=Processing local packages, please wait a minute.        If timeout occurs, please click here to close
+text.lpmm.pkg.notfound=No local package was found. Do you want to import from disk or search online?
+text.lpmm.pkg.tip=Tip
+text.lpmm.pkg.status=Status
+text.lpmm.pkg.desc=Description
+text.lpmm.pkg.author=Author
+text.lpmm.pkg.name=Name
+unknown=Unknown

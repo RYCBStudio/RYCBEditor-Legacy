@@ -135,7 +135,7 @@ public partial class MsgBox : UIForm
         }
     }
 
-    private void MsgBox_FormClosing(object sender, System.Windows.Forms.FormClosingEventArgs e)
+    private void MsgBox_FormClosing(object sender, FormClosingEventArgs e)
     {
         e.Cancel = true;
         this.Hide();

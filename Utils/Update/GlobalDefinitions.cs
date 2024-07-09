@@ -67,7 +67,7 @@ internal static class GlobalDefinitions
     {
         try
         {
-            var file = new FileStream(fileName, System.IO.FileMode.Open);
+            var file = new FileStream(fileName, FileMode.Open);
             MD5 md5 = new MD5CryptoServiceProvider();
             var retVal = md5.ComputeHash(file);
             file.Close();

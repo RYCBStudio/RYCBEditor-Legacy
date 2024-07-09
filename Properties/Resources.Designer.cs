@@ -113,6 +113,16 @@ namespace IDE.Properties {
         /// <summary>
         ///   查找 System.Drawing.Bitmap 类型的本地化资源。
         /// </summary>
+        public static System.Drawing.Bitmap ABout1 {
+            get {
+                object obj = ResourceManager.GetObject("ABout1", resourceCulture);
+                return ((System.Drawing.Bitmap)(obj));
+            }
+        }
+        
+        /// <summary>
+        ///   查找 System.Drawing.Bitmap 类型的本地化资源。
+        /// </summary>
         public static System.Drawing.Bitmap Android {
             get {
                 object obj = ResourceManager.GetObject("Android", resourceCulture);
@@ -256,6 +266,16 @@ namespace IDE.Properties {
         public static System.Drawing.Bitmap detail {
             get {
                 object obj = ResourceManager.GetObject("detail", resourceCulture);
+                return ((System.Drawing.Bitmap)(obj));
+            }
+        }
+        
+        /// <summary>
+        ///   查找 System.Drawing.Bitmap 类型的本地化资源。
+        /// </summary>
+        public static System.Drawing.Bitmap disable_ban {
+            get {
+                object obj = ResourceManager.GetObject("disable_ban", resourceCulture);
                 return ((System.Drawing.Bitmap)(obj));
             }
         }
@@ -643,6 +663,16 @@ namespace IDE.Properties {
         /// <summary>
         ///   查找 System.Drawing.Bitmap 类型的本地化资源。
         /// </summary>
+        public static System.Drawing.Bitmap install_line {
+            get {
+                object obj = ResourceManager.GetObject("install-line", resourceCulture);
+                return ((System.Drawing.Bitmap)(obj));
+            }
+        }
+        
+        /// <summary>
+        ///   查找 System.Drawing.Bitmap 类型的本地化资源。
+        /// </summary>
         public static System.Drawing.Bitmap Internet {
             get {
                 object obj = ResourceManager.GetObject("Internet", resourceCulture);
@@ -756,6 +786,26 @@ namespace IDE.Properties {
         public static System.Drawing.Bitmap notch_square {
             get {
                 object obj = ResourceManager.GetObject("notch_square", resourceCulture);
+                return ((System.Drawing.Bitmap)(obj));
+            }
+        }
+        
+        /// <summary>
+        ///   查找 System.Drawing.Bitmap 类型的本地化资源。
+        /// </summary>
+        public static System.Drawing.Bitmap plugin_ban {
+            get {
+                object obj = ResourceManager.GetObject("plugin-ban", resourceCulture);
+                return ((System.Drawing.Bitmap)(obj));
+            }
+        }
+        
+        /// <summary>
+        ///   查找 System.Drawing.Bitmap 类型的本地化资源。
+        /// </summary>
+        public static System.Drawing.Bitmap plugin_enable {
+            get {
+                object obj = ResourceManager.GetObject("plugin-enable", resourceCulture);
                 return ((System.Drawing.Bitmap)(obj));
             }
         }

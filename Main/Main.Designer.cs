@@ -58,6 +58,8 @@ namespace IDE
             this.应用程序ToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.退出ToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.重启ToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
+            this.texttstoolapplicationresetToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
+            this.texttsapplicationpackagemanagementToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.快速工具ToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.清理缓存ToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.帮助HToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
@@ -134,7 +136,6 @@ namespace IDE
             this.DownloadSpeed = new System.Windows.Forms.ToolStripStatusLabel();
             this.UpdateControlBlocker = new System.Windows.Forms.ToolStripStatusLabel();
             this.UpdateForceStopLabel = new System.Windows.Forms.ToolStripStatusLabel();
-            this.texttstoolapplicationresetToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.menuStrip1.SuspendLayout();
             this.contextMenuStrip1.SuspendLayout();
             this.statusStrip1.SuspendLayout();
@@ -154,7 +155,6 @@ namespace IDE
             // menuStrip1
             // 
             this.menuStrip1.BackColor = System.Drawing.Color.Black;
-            this.menuStrip1.GripMargin = new System.Windows.Forms.Padding(2, 2, 0, 2);
             this.menuStrip1.ImageScalingSize = new System.Drawing.Size(20, 20);
             this.menuStrip1.Items.AddRange(new System.Windows.Forms.ToolStripItem[] {
             this.文件FToolStripMenuItem,
@@ -165,7 +165,7 @@ namespace IDE
             this.开发者选项DToolStripMenuItem});
             this.menuStrip1.Location = new System.Drawing.Point(0, 0);
             this.menuStrip1.Name = "menuStrip1";
-            this.menuStrip1.Size = new System.Drawing.Size(1064, 32);
+            this.menuStrip1.Size = new System.Drawing.Size(1064, 36);
             this.menuStrip1.TabIndex = 0;
             this.menuStrip1.Text = "menuStrip1";
             // 
@@ -178,7 +178,7 @@ namespace IDE
             this.另存为AToolStripMenuItem});
             this.文件FToolStripMenuItem.ForeColor = System.Drawing.Color.White;
             this.文件FToolStripMenuItem.Name = "文件FToolStripMenuItem";
-            this.文件FToolStripMenuItem.Size = new System.Drawing.Size(108, 28);
+            this.文件FToolStripMenuItem.Size = new System.Drawing.Size(108, 32);
             this.文件FToolStripMenuItem.Text = "text.ts.file";
             // 
             // 新建NToolStripMenuItem
@@ -263,7 +263,7 @@ namespace IDE
             this.查找替换ToolStripMenuItem});
             this.编辑EToolStripMenuItem.ForeColor = System.Drawing.Color.White;
             this.编辑EToolStripMenuItem.Name = "编辑EToolStripMenuItem";
-            this.编辑EToolStripMenuItem.Size = new System.Drawing.Size(116, 28);
+            this.编辑EToolStripMenuItem.Size = new System.Drawing.Size(116, 32);
             this.编辑EToolStripMenuItem.Text = "text.ts.edit";
             // 
             // 撤消UToolStripMenuItem
@@ -347,7 +347,7 @@ namespace IDE
             this.配置运行器ToolStripMenuItem});
             this.运行RToolStripMenuItem.ForeColor = System.Drawing.Color.White;
             this.运行RToolStripMenuItem.Name = "运行RToolStripMenuItem";
-            this.运行RToolStripMenuItem.Size = new System.Drawing.Size(111, 28);
+            this.运行RToolStripMenuItem.Size = new System.Drawing.Size(111, 32);
             this.运行RToolStripMenuItem.Text = "text.ts.run";
             // 
             // 运行ToolStripMenuItem
@@ -380,7 +380,7 @@ namespace IDE
             this.快速工具ToolStripMenuItem});
             this.工具TToolStripMenuItem.ForeColor = System.Drawing.Color.White;
             this.工具TToolStripMenuItem.Name = "工具TToolStripMenuItem";
-            this.工具TToolStripMenuItem.Size = new System.Drawing.Size(116, 28);
+            this.工具TToolStripMenuItem.Size = new System.Drawing.Size(116, 32);
             this.工具TToolStripMenuItem.Text = "text.ts.tool";
             // 
             // 自定义CToolStripMenuItem
@@ -409,7 +409,8 @@ namespace IDE
             this.应用程序ToolStripMenuItem.DropDownItems.AddRange(new System.Windows.Forms.ToolStripItem[] {
             this.退出ToolStripMenuItem,
             this.重启ToolStripMenuItem,
-            this.texttstoolapplicationresetToolStripMenuItem});
+            this.texttstoolapplicationresetToolStripMenuItem,
+            this.texttsapplicationpackagemanagementToolStripMenuItem});
             this.应用程序ToolStripMenuItem.ForeColor = System.Drawing.SystemColors.Control;
             this.应用程序ToolStripMenuItem.Image = ((System.Drawing.Image)(resources.GetObject("应用程序ToolStripMenuItem.Image")));
             this.应用程序ToolStripMenuItem.Name = "应用程序ToolStripMenuItem";
@@ -423,7 +424,7 @@ namespace IDE
             this.退出ToolStripMenuItem.Image = global::IDE.Properties.Resources.logout;
             this.退出ToolStripMenuItem.Name = "退出ToolStripMenuItem";
             this.退出ToolStripMenuItem.ShortcutKeys = ((System.Windows.Forms.Keys)((System.Windows.Forms.Keys.Control | System.Windows.Forms.Keys.End)));
-            this.退出ToolStripMenuItem.Size = new System.Drawing.Size(423, 34);
+            this.退出ToolStripMenuItem.Size = new System.Drawing.Size(493, 34);
             this.退出ToolStripMenuItem.Text = "text.ts.tool.application.exit";
             this.退出ToolStripMenuItem.Click += new System.EventHandler(this.Exit);
             // 
@@ -433,9 +434,29 @@ namespace IDE
             this.重启ToolStripMenuItem.ForeColor = System.Drawing.SystemColors.Control;
             this.重启ToolStripMenuItem.Image = global::IDE.Properties.Resources.refresh;
             this.重启ToolStripMenuItem.Name = "重启ToolStripMenuItem";
-            this.重启ToolStripMenuItem.Size = new System.Drawing.Size(423, 34);
+            this.重启ToolStripMenuItem.Size = new System.Drawing.Size(493, 34);
             this.重启ToolStripMenuItem.Text = "text.ts.tool.application.restart";
             this.重启ToolStripMenuItem.Click += new System.EventHandler(this.Restart);
+            // 
+            // texttstoolapplicationresetToolStripMenuItem
+            // 
+            this.texttstoolapplicationresetToolStripMenuItem.BackColor = System.Drawing.SystemColors.ActiveCaptionText;
+            this.texttstoolapplicationresetToolStripMenuItem.ForeColor = System.Drawing.SystemColors.ControlLightLight;
+            this.texttstoolapplicationresetToolStripMenuItem.Image = global::IDE.Properties.Resources.unselect;
+            this.texttstoolapplicationresetToolStripMenuItem.Name = "texttstoolapplicationresetToolStripMenuItem";
+            this.texttstoolapplicationresetToolStripMenuItem.Size = new System.Drawing.Size(493, 34);
+            this.texttstoolapplicationresetToolStripMenuItem.Text = "text.ts.tool.application.reset";
+            this.texttstoolapplicationresetToolStripMenuItem.Click += new System.EventHandler(this.Reset);
+            // 
+            // texttsapplicationpackagemanagementToolStripMenuItem
+            // 
+            this.texttsapplicationpackagemanagementToolStripMenuItem.BackColor = System.Drawing.SystemColors.ActiveCaptionText;
+            this.texttsapplicationpackagemanagementToolStripMenuItem.ForeColor = System.Drawing.SystemColors.ControlLightLight;
+            this.texttsapplicationpackagemanagementToolStripMenuItem.Image = global::IDE.Properties.Resources.plugin_enable;
+            this.texttsapplicationpackagemanagementToolStripMenuItem.Name = "texttsapplicationpackagemanagementToolStripMenuItem";
+            this.texttsapplicationpackagemanagementToolStripMenuItem.Size = new System.Drawing.Size(493, 34);
+            this.texttsapplicationpackagemanagementToolStripMenuItem.Text = "text.ts.tool.application.packagemanagement";
+            this.texttsapplicationpackagemanagementToolStripMenuItem.Click += new System.EventHandler(this.OpenPkgMgmt);
             // 
             // 快速工具ToolStripMenuItem
             // 
@@ -468,7 +489,7 @@ namespace IDE
             this.捐助ToolStripMenuItem});
             this.帮助HToolStripMenuItem.ForeColor = System.Drawing.Color.White;
             this.帮助HToolStripMenuItem.Name = "帮助HToolStripMenuItem";
-            this.帮助HToolStripMenuItem.Size = new System.Drawing.Size(120, 28);
+            this.帮助HToolStripMenuItem.Size = new System.Drawing.Size(120, 32);
             this.帮助HToolStripMenuItem.Text = "text.ts.help";
             // 
             // 关于AToolStripMenuItem
@@ -527,7 +548,7 @@ namespace IDE
             this.崩溃测试ToolStripMenuItem});
             this.开发者选项DToolStripMenuItem.ForeColor = System.Drawing.Color.WhiteSmoke;
             this.开发者选项DToolStripMenuItem.Name = "开发者选项DToolStripMenuItem";
-            this.开发者选项DToolStripMenuItem.Size = new System.Drawing.Size(163, 28);
+            this.开发者选项DToolStripMenuItem.Size = new System.Drawing.Size(163, 32);
             this.开发者选项DToolStripMenuItem.Text = "text.ts.devmode";
             this.开发者选项DToolStripMenuItem.Visible = false;
             // 
@@ -789,12 +810,12 @@ namespace IDE
             this.tableLayoutPanel1.Controls.Add(this.tabControl1, 0, 0);
             this.tableLayoutPanel1.Controls.Add(this.uiTabControl1, 0, 1);
             this.tableLayoutPanel1.Dock = System.Windows.Forms.DockStyle.Fill;
-            this.tableLayoutPanel1.Location = new System.Drawing.Point(0, 61);
+            this.tableLayoutPanel1.Location = new System.Drawing.Point(0, 74);
             this.tableLayoutPanel1.Name = "tableLayoutPanel1";
             this.tableLayoutPanel1.RowCount = 2;
             this.tableLayoutPanel1.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Percent, 75F));
             this.tableLayoutPanel1.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Percent, 25F));
-            this.tableLayoutPanel1.Size = new System.Drawing.Size(1064, 556);
+            this.tableLayoutPanel1.Size = new System.Drawing.Size(1064, 575);
             this.tableLayoutPanel1.TabIndex = 6;
             // 
             // tabControl1
@@ -812,7 +833,7 @@ namespace IDE
             this.tabControl1.Name = "tabControl1";
             this.tabControl1.SelectedIndex = 0;
             this.tabControl1.ShowCloseButton = true;
-            this.tabControl1.Size = new System.Drawing.Size(1058, 411);
+            this.tabControl1.Size = new System.Drawing.Size(1058, 425);
             this.tabControl1.SizeMode = System.Windows.Forms.TabSizeMode.Fixed;
             this.tabControl1.StyleCustomMode = true;
             this.tabControl1.TabBackColor = System.Drawing.Color.Black;
@@ -829,7 +850,7 @@ namespace IDE
             this.tabPage1.Controls.Add(this.webView1);
             this.tabPage1.Location = new System.Drawing.Point(0, 30);
             this.tabPage1.Name = "tabPage1";
-            this.tabPage1.Size = new System.Drawing.Size(1058, 381);
+            this.tabPage1.Size = new System.Drawing.Size(1058, 395);
             this.tabPage1.TabIndex = 0;
             this.tabPage1.Text = "text.tc.tp.tmp";
             // 
@@ -843,7 +864,7 @@ namespace IDE
             this.tableLayoutPanel2.Name = "tableLayoutPanel2";
             this.tableLayoutPanel2.RowCount = 1;
             this.tableLayoutPanel2.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Percent, 50F));
-            this.tableLayoutPanel2.Size = new System.Drawing.Size(1058, 381);
+            this.tableLayoutPanel2.Size = new System.Drawing.Size(1058, 395);
             this.tableLayoutPanel2.TabIndex = 0;
             // 
             // elementHost1
@@ -851,7 +872,7 @@ namespace IDE
             this.elementHost1.Dock = System.Windows.Forms.DockStyle.Fill;
             this.elementHost1.Location = new System.Drawing.Point(3, 3);
             this.elementHost1.Name = "elementHost1";
-            this.elementHost1.Size = new System.Drawing.Size(1052, 375);
+            this.elementHost1.Size = new System.Drawing.Size(1052, 389);
             this.elementHost1.TabIndex = 1;
             this.elementHost1.Validating += new System.ComponentModel.CancelEventHandler(this.LayoutTextEditor);
             this.elementHost1.Child = null;
@@ -877,12 +898,12 @@ namespace IDE
             this.uiTabControl1.FillColor = System.Drawing.Color.FromArgb(((int)(((byte)(248)))), ((int)(((byte)(248)))), ((int)(((byte)(248)))));
             this.uiTabControl1.Font = new System.Drawing.Font("微软雅黑", 9F);
             this.uiTabControl1.ItemSize = new System.Drawing.Size(150, 25);
-            this.uiTabControl1.Location = new System.Drawing.Point(3, 420);
+            this.uiTabControl1.Location = new System.Drawing.Point(3, 434);
             this.uiTabControl1.MainPage = "";
             this.uiTabControl1.MenuStyle = Sunny.UI.UIMenuStyle.Custom;
             this.uiTabControl1.Name = "uiTabControl1";
             this.uiTabControl1.SelectedIndex = 0;
-            this.uiTabControl1.Size = new System.Drawing.Size(1058, 133);
+            this.uiTabControl1.Size = new System.Drawing.Size(1058, 138);
             this.uiTabControl1.SizeMode = System.Windows.Forms.TabSizeMode.Fixed;
             this.uiTabControl1.Style = Sunny.UI.UIStyle.Custom;
             this.uiTabControl1.StyleCustomMode = true;
@@ -899,7 +920,7 @@ namespace IDE
             this.ErrorAndExceptionsPage.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(243)))), ((int)(((byte)(249)))), ((int)(((byte)(255)))));
             this.ErrorAndExceptionsPage.Location = new System.Drawing.Point(0, 0);
             this.ErrorAndExceptionsPage.Name = "ErrorAndExceptionsPage";
-            this.ErrorAndExceptionsPage.Size = new System.Drawing.Size(1058, 108);
+            this.ErrorAndExceptionsPage.Size = new System.Drawing.Size(1058, 113);
             this.ErrorAndExceptionsPage.TabIndex = 1;
             this.ErrorAndExceptionsPage.Text = "text.bottom.errors";
             // 
@@ -918,7 +939,7 @@ namespace IDE
             this.listView1.Location = new System.Drawing.Point(0, 0);
             this.listView1.MultiSelect = false;
             this.listView1.Name = "listView1";
-            this.listView1.Size = new System.Drawing.Size(1058, 108);
+            this.listView1.Size = new System.Drawing.Size(1058, 113);
             this.listView1.SmallImageList = this.imageList1;
             this.listView1.Sorting = System.Windows.Forms.SortOrder.Ascending;
             this.listView1.TabIndex = 0;
@@ -1018,10 +1039,10 @@ namespace IDE
             this.toolStripButton2,
             this.toolStripButton3,
             this.toolStripSeparator1});
-            this.toolStrip1.Location = new System.Drawing.Point(0, 32);
+            this.toolStrip1.Location = new System.Drawing.Point(0, 36);
             this.toolStrip1.Name = "toolStrip1";
             this.toolStrip1.RenderMode = System.Windows.Forms.ToolStripRenderMode.Professional;
-            this.toolStrip1.Size = new System.Drawing.Size(1064, 29);
+            this.toolStrip1.Size = new System.Drawing.Size(1064, 38);
             this.toolStrip1.TabIndex = 7;
             this.toolStrip1.Text = "toolStrip1";
             // 
@@ -1031,7 +1052,7 @@ namespace IDE
             this.toolStripButton1.Image = global::IDE.Properties.Resources.Run;
             this.toolStripButton1.ImageTransparentColor = System.Drawing.Color.Magenta;
             this.toolStripButton1.Name = "toolStripButton1";
-            this.toolStripButton1.Size = new System.Drawing.Size(34, 24);
+            this.toolStripButton1.Size = new System.Drawing.Size(34, 33);
             this.toolStripButton1.Text = "toolStripButton1";
             this.toolStripButton1.Click += new System.EventHandler(this.Run);
             // 
@@ -1042,7 +1063,7 @@ namespace IDE
             this.toolStripButton2.DisplayStyle = System.Windows.Forms.ToolStripItemDisplayStyle.Image;
             this.toolStripButton2.ImageTransparentColor = System.Drawing.Color.Magenta;
             this.toolStripButton2.Name = "toolStripButton2";
-            this.toolStripButton2.Size = new System.Drawing.Size(34, 24);
+            this.toolStripButton2.Size = new System.Drawing.Size(34, 33);
             this.toolStripButton2.Text = "toolStripButton2";
             this.toolStripButton2.Click += new System.EventHandler(this.ForceStop);
             // 
@@ -1052,13 +1073,13 @@ namespace IDE
             this.toolStripButton3.Image = global::IDE.Properties.Resources.Debug_Color;
             this.toolStripButton3.ImageTransparentColor = System.Drawing.Color.Magenta;
             this.toolStripButton3.Name = "toolStripButton3";
-            this.toolStripButton3.Size = new System.Drawing.Size(34, 24);
+            this.toolStripButton3.Size = new System.Drawing.Size(34, 33);
             this.toolStripButton3.Text = "toolStripButton3";
             // 
             // toolStripSeparator1
             // 
             this.toolStripSeparator1.Name = "toolStripSeparator1";
-            this.toolStripSeparator1.Size = new System.Drawing.Size(6, 29);
+            this.toolStripSeparator1.Size = new System.Drawing.Size(6, 38);
             // 
             // statusStrip3
             // 
@@ -1080,6 +1101,7 @@ namespace IDE
             this.statusStrip3.Size = new System.Drawing.Size(1064, 32);
             this.statusStrip3.SizingGrip = false;
             this.statusStrip3.TabIndex = 1;
+            this.statusStrip3.Visible = false;
             // 
             // Downloading
             // 
@@ -1146,16 +1168,6 @@ namespace IDE
             this.UpdateForceStopLabel.Text = "Force Stop";
             this.UpdateForceStopLabel.VisitedLinkColor = System.Drawing.Color.Maroon;
             this.UpdateForceStopLabel.Click += new System.EventHandler(this.StopDownload);
-            // 
-            // texttstoolapplicationresetToolStripMenuItem
-            // 
-            this.texttstoolapplicationresetToolStripMenuItem.BackColor = System.Drawing.SystemColors.ActiveCaptionText;
-            this.texttstoolapplicationresetToolStripMenuItem.ForeColor = System.Drawing.SystemColors.ControlLightLight;
-            this.texttstoolapplicationresetToolStripMenuItem.Image = global::IDE.Properties.Resources.unselect;
-            this.texttstoolapplicationresetToolStripMenuItem.Name = "texttstoolapplicationresetToolStripMenuItem";
-            this.texttstoolapplicationresetToolStripMenuItem.Size = new System.Drawing.Size(423, 34);
-            this.texttstoolapplicationresetToolStripMenuItem.Text = "text.ts.tool.application.reset";
-            this.texttstoolapplicationresetToolStripMenuItem.Click += new System.EventHandler(this.Reset);
             // 
             // Main
             // 
@@ -1310,6 +1322,7 @@ namespace IDE
         private ToolStripStatusLabel UpdateControlBlocker;
         private ToolStripStatusLabel UpdateForceStopLabel;
         private ToolStripMenuItem texttstoolapplicationresetToolStripMenuItem;
+        private ToolStripMenuItem texttsapplicationpackagemanagementToolStripMenuItem;
     }
 }
 

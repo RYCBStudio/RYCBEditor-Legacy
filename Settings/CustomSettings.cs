@@ -20,7 +20,7 @@ namespace IDE
         private bool isInitialized = false;
         private static readonly IniFile settings = Program.reConf;
         private static TextEditor edit;
-        private static readonly System.Drawing.Size SHOW_SIZE = new(879, 468);
+        private static readonly System.Drawing.Size SHOW_SIZE = new(1343, 787);
         private List<string> xshd_files = new();
 
         public CustomSettings(string path)
@@ -58,7 +58,6 @@ namespace IDE
         private void CustomSettings_Load(object sender, EventArgs e)
         {
             this.Size = SHOW_SIZE;
-            isInitialized = true;
             edit = new TextEditor()
             {
                 Width = EHostForEditor.Width,
@@ -137,7 +136,7 @@ namespace IDE
                 }
             }
             TBoxXshdCache.Text = settings.ReadString("Editor", "XshdFilePath", Application.StartupPath + "\\Config\\Highlightings\\");
-
+            isInitialized = true;
         }
 
         private void FormUpdate(object sender, EventArgs e)

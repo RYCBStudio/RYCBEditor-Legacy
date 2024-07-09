@@ -36,6 +36,7 @@ namespace IDE
     {
 
         #region 一堆变量和常量
+        private Utils.PackageManagerMain _pmm = new();
         private static readonly string STARTUP_PATH = Program.STARTUP_PATH;
         private static readonly IniFile reConf = Program.reConf;
         private static readonly Stopwatch stopwatch = new();
@@ -165,8 +166,8 @@ namespace IDE
                 Foreground = new SolidColorBrush(Editor.Fore),
                 FontSize = reConf.ReadInt("Editor", "Size", 12),
                 ShowLineNumbers = bool.Parse(reConf.ReadString("Editor", "ShowLineNum", "true")),
-                HorizontalScrollBarVisibility = System.Windows.Controls.ScrollBarVisibility.Auto,
-                VerticalScrollBarVisibility = System.Windows.Controls.ScrollBarVisibility.Auto,
+                HorizontalScrollBarVisibility = System.Windows.Controls.ScrollBarVisibility.Visible,
+                VerticalScrollBarVisibility = System.Windows.Controls.ScrollBarVisibility.Visible,
             };
             edit.TextArea.TextEntered += new TextCompositionEventHandler(this.TextAreaOnTextEntered);
             edit.TextArea.TextEntering += new TextCompositionEventHandler(this.TextArea_TextEntering);
@@ -317,8 +318,8 @@ namespace IDE
                     Foreground = new SolidColorBrush(Editor.Fore),
                     FontSize = reConf.ReadInt("Editor", "Size"),
                     ShowLineNumbers = bool.Parse(reConf.ReadString("Editor", "ShowLineNum", "true")),
-                    VerticalScrollBarVisibility = System.Windows.Controls.ScrollBarVisibility.Auto,
-                    HorizontalScrollBarVisibility = System.Windows.Controls.ScrollBarVisibility.Auto,
+                    VerticalScrollBarVisibility = System.Windows.Controls.ScrollBarVisibility.Visible,
+                    HorizontalScrollBarVisibility = System.Windows.Controls.ScrollBarVisibility.Visible,
                 };
                 var tmpEditorHtml = new TextEditor
                 {
@@ -329,8 +330,8 @@ namespace IDE
                     Foreground = new SolidColorBrush(Editor.Fore),
                     FontSize = reConf.ReadInt("Editor", "Size"),
                     ShowLineNumbers = bool.Parse(reConf.ReadString("Editor", "ShowLineNum", "true")),
-                    VerticalScrollBarVisibility = System.Windows.Controls.ScrollBarVisibility.Auto,
-                    HorizontalScrollBarVisibility = System.Windows.Controls.ScrollBarVisibility.Auto,
+                    VerticalScrollBarVisibility = System.Windows.Controls.ScrollBarVisibility.Visible,
+                    HorizontalScrollBarVisibility = System.Windows.Controls.ScrollBarVisibility.Visible,
                     IsReadOnly = true,
                 };
                 bBox.uiProcessBar1.Value += 1;
@@ -347,7 +348,7 @@ namespace IDE
                     tmpEditorHtml.SyntaxHighlighting = HighlightingLoader.Load(xshd, HighlightingManager.Instance);
                 }
                 bBox.uiProcessBar1.Value += 1;
-                Microsoft.Web.WebView2.WinForms.WebView2 webView = new();
+                WebView2 webView = new();
                 webView.SuspendLayout();
                 webView.Size = elementHost1.Size;
                 await webView.EnsureCoreWebView2Async();
@@ -388,7 +389,8 @@ namespace IDE
                     Size = elementHost1.Size,
                     Location = elementHost1.Location,
                     BackColor = elementHost1.BackColor,
-                    ForeColor = elementHost1.ForeColor
+                    ForeColor = elementHost1.ForeColor,
+                    Dock = DockStyle.Fill,
                 };
                 table.Controls.Add(tmpEHost, 0, 0);
                 LOGGER.WriteLog("ElementHost已准备就绪。", EnumMsgLevel.INFO, EnumPort.CLIENT, EnumModule.MAIN);
@@ -402,9 +404,8 @@ namespace IDE
                     Foreground = new SolidColorBrush(Editor.Fore),
                     FontSize = reConf.ReadInt("Editor", "Size"),
                     ShowLineNumbers = bool.Parse(reConf.ReadString("Editor", "ShowLineNum", "true")),
-                    VerticalScrollBarVisibility = System.Windows.Controls.ScrollBarVisibility.Auto,
-                    HorizontalScrollBarVisibility = System.Windows.Controls.ScrollBarVisibility.Auto,
-
+                    VerticalScrollBarVisibility = System.Windows.Controls.ScrollBarVisibility.Visible,
+                    HorizontalScrollBarVisibility = System.Windows.Controls.ScrollBarVisibility.Visible,
                 };
                 LOGGER.WriteLog($"编辑器控件已准备就绪。\n字体: {tmpEditor.FontFamily}", EnumMsgLevel.INFO, EnumPort.CLIENT, EnumModule.MAIN);
                 tmpEditor.TextArea.TextEntered += new TextCompositionEventHandler(this.TextAreaOnTextEntered);
@@ -1177,11 +1178,9 @@ namespace IDE
         #region 退出
         private void ExitByClosing(object sender, FormClosingEventArgs e)
         {
-            var dRes = MessageBoxEX.Show("确定退出吗？", "提示", MessageBoxButtons.YesNo, new string[] { "是", "否" });
-            LOGGER.WriteLog("已询问退出，返回值：" + dRes, EnumMsgLevel.INFO, EnumPort.CLIENT, EnumModule.MAIN);
-            if (dRes == DialogResult.Yes)
+            if (e.CloseReason == CloseReason.ApplicationExitCall)
             {
-                LOGGER.WriteLog("Stopping!", EnumMsgLevel.INFO, EnumPort.CLIENT, EnumModule.MAIN);
+                LOGGER.WriteLog("Stopped by Patch Applyer", EnumMsgLevel.INFO, EnumPort.CLIENT, EnumModule.MAIN);
                 keepFile.WriteLine(long.MaxValue);
                 keepFile.Close();
                 Process.GetCurrentProcess().Kill();
@@ -1189,7 +1188,20 @@ namespace IDE
             }
             else
             {
-                e.Cancel = true;
+                var dRes = MessageBoxEX.Show("确定退出吗？", "提示", MessageBoxButtons.YesNo, new string[] { "是", "否" });
+                LOGGER.WriteLog("已询问退出，返回值：" + dRes, EnumMsgLevel.INFO, EnumPort.CLIENT, EnumModule.MAIN);
+                if (dRes == DialogResult.Yes)
+                {
+                    LOGGER.WriteLog("Stopping!", EnumMsgLevel.INFO, EnumPort.CLIENT, EnumModule.MAIN);
+                    keepFile.WriteLine(long.MaxValue);
+                    keepFile.Close();
+                    Process.GetCurrentProcess().Kill();
+                    e.Cancel = false;
+                }
+                else
+                {
+                    e.Cancel = true;
+                }
             }
         }
         #endregion
@@ -1281,7 +1293,7 @@ namespace IDE
                 var _keywords = new string[] { };
                 var _specialdefs = new string[] { };
                 var _builtins = new string[] { };
-                var _fields = new string[] { };
+                var _fields = new List<string>();
                 var tmp = tabControl1.SelectedTab.Text;
                 var lang = AutoGetLanguage(tmp, false);
                 var _tmpfilepath = (string)tabControl1.SelectedTab.Tag;
@@ -1605,18 +1617,20 @@ namespace IDE
         }
         #endregion
         #region 重置IDE
+        private void OpenPkgMgmt(object sender, EventArgs e)
+        {
+            _pmm.Show();
+        }
+
         private void Reset(object sender, EventArgs e)
         {
-            IniFile _ = new(Program.STARTUP_PATH + "\\7z.exe.pvtconf");
-            if (_.Read("Info", "MD5", "Error") == Extensions.GetMD5HashFromFile(_.FileName)&_.Read("Info","MD5", "Error") == Extensions.GetMD5HashFromFile("./Tools/InitialDirectory.7z"))
+            if (MessageBox.Show("RYCB Editor needs reboot to apply package. Press \"OK\" to continue", "Tip", MessageBoxButtons.OKCancel, MessageBoxIcon.Information, MessageBoxDefaultButton.Button1) == DialogResult.OK)
             {
-                Extensions.DecompressFile(Program.STARTUP_PATH + "/Tools/InitialDirectory.7z", Program.STARTUP_PATH + "/Cache/InitialDirectory");
+                Extensions.DecompressFile(Program.STARTUP_PATH + "/Package/Reset/InitialDirectory.7z", Program.STARTUP_PATH + "/Cache/InitialDirectory");
                 File.WriteAllText(Program.STARTUP_PATH + "/Tools/InitialDirectory.path", Program.STARTUP_PATH + "/Cache/InitialDirectory");
-                if (MessageBox.Show("RYCB Editor needs reboot to apply package. Press \"\"", "Tip", MessageBoxButtons.OKCancel, MessageBoxIcon.Information, MessageBoxDefaultButton.Button1) == DialogResult.OK)
-                {
-
-                    Application.Exit();
-                }
+                File.Copy(Program.STARTUP_PATH + "/Package/Reset/package.info", Program.STARTUP_PATH + "/Cache/InitialDirectory/package.info", true);
+                Process.Start(new ProcessStartInfo() { Arguments = $"{Program.STARTUP_PATH + "/Tools/InitialDirectory.path"} F:/VSProj/repos/IDE-PatchApplyer/bin/Debug", FileName = Program.STARTUP_PATH + "/Tools/IDE-PatchApplyer.exe" });
+                ExitByClosing(sender, new FormClosingEventArgs(CloseReason.ApplicationExitCall, false));
             }
         }
         #endregion
@@ -1784,8 +1798,8 @@ namespace IDE
                     Foreground = new SolidColorBrush(Editor.Fore),
                     FontSize = reConf.ReadInt("Editor", "Size"),
                     ShowLineNumbers = bool.Parse(reConf.ReadString("Editor", "ShowLineNum", "true")),
-                    VerticalScrollBarVisibility = System.Windows.Controls.ScrollBarVisibility.Auto,
-                    HorizontalScrollBarVisibility = System.Windows.Controls.ScrollBarVisibility.Auto,
+                    VerticalScrollBarVisibility = System.Windows.Controls.ScrollBarVisibility.Visible,
+                    HorizontalScrollBarVisibility = System.Windows.Controls.ScrollBarVisibility.Visible,
 
                 };
                 bBox.uiProcessBar1.Value += 1;
@@ -1850,8 +1864,8 @@ namespace IDE
                     Foreground = new SolidColorBrush(Editor.Fore),
                     FontSize = reConf.ReadInt("Editor", "Size"),
                     ShowLineNumbers = bool.Parse(reConf.ReadString("Editor", "ShowLineNum", "true")),
-                    VerticalScrollBarVisibility = System.Windows.Controls.ScrollBarVisibility.Auto,
-                    HorizontalScrollBarVisibility = System.Windows.Controls.ScrollBarVisibility.Auto,
+                    VerticalScrollBarVisibility = System.Windows.Controls.ScrollBarVisibility.Visible,
+                    HorizontalScrollBarVisibility = System.Windows.Controls.ScrollBarVisibility.Visible,
                     Text = "",
                 };
                 var tmpEditorForStringData = new TextEditor
@@ -1863,8 +1877,8 @@ namespace IDE
                     Foreground = new SolidColorBrush(Editor.Fore),
                     FontSize = reConf.ReadInt("Editor", "Size"),
                     ShowLineNumbers = bool.Parse(reConf.ReadString("Editor", "ShowLineNum", "true")),
-                    VerticalScrollBarVisibility = System.Windows.Controls.ScrollBarVisibility.Auto,
-                    HorizontalScrollBarVisibility = System.Windows.Controls.ScrollBarVisibility.Auto,
+                    VerticalScrollBarVisibility = System.Windows.Controls.ScrollBarVisibility.Visible,
+                    HorizontalScrollBarVisibility = System.Windows.Controls.ScrollBarVisibility.Visible,
                     Text = "",
                 };
                 bBox.uiProcessBar1.Value += 1;
@@ -1943,8 +1957,8 @@ namespace IDE
                     Foreground = new SolidColorBrush(Editor.Fore),
                     FontSize = reConf.ReadInt("Editor", "Size"),
                     ShowLineNumbers = bool.Parse(reConf.ReadString("Editor", "ShowLineNum", "true")),
-                    VerticalScrollBarVisibility = System.Windows.Controls.ScrollBarVisibility.Auto,
-                    HorizontalScrollBarVisibility = System.Windows.Controls.ScrollBarVisibility.Auto,
+                    VerticalScrollBarVisibility = System.Windows.Controls.ScrollBarVisibility.Visible,
+                    HorizontalScrollBarVisibility = System.Windows.Controls.ScrollBarVisibility.Visible,
                 };
                 var tmpEditorHtml = new TextEditor
                 {
@@ -1955,8 +1969,8 @@ namespace IDE
                     Foreground = new SolidColorBrush(Editor.Fore),
                     FontSize = reConf.ReadInt("Editor", "Size"),
                     ShowLineNumbers = bool.Parse(reConf.ReadString("Editor", "ShowLineNum", "true")),
-                    VerticalScrollBarVisibility = System.Windows.Controls.ScrollBarVisibility.Auto,
-                    HorizontalScrollBarVisibility = System.Windows.Controls.ScrollBarVisibility.Auto,
+                    VerticalScrollBarVisibility = System.Windows.Controls.ScrollBarVisibility.Visible,
+                    HorizontalScrollBarVisibility = System.Windows.Controls.ScrollBarVisibility.Visible,
                     IsReadOnly = true,
                 };
                 bBox.uiProcessBar1.Value += 1;
@@ -1972,7 +1986,7 @@ namespace IDE
                     tmpEditorHtml.SyntaxHighlighting = HighlightingLoader.Load(xshd, HighlightingManager.Instance);
                 }
                 bBox.uiProcessBar1.Value += 1;
-                Microsoft.Web.WebView2.WinForms.WebView2 webView = new();
+                WebView2 webView = new();
                 webView.SuspendLayout();
                 webView.Size = elementHost1.Size;
                 await webView.EnsureCoreWebView2Async();
@@ -1996,7 +2010,7 @@ namespace IDE
                 webView.DoubleBuffered();
                 tmpEditorHtml.Text = mdDoc;
                 bBox.Close();
-                tmpEditorMd.Text.Append<char>('\n');
+                tmpEditorMd.Text.Append('\n');
                 tabControl1.TabPages.Add(newTab);
                 tabControl1.SelectedTab = newTab;
                 WorkingIcon.Visible = false;
@@ -2187,11 +2201,12 @@ namespace IDE
             uc.AnalyzeUpdateFile();
             LOGGER.WriteLog("验证更新。", EnumMsgLevel.INFO, EnumPort.CLIENT, EnumModule.UPDATE);
             uc.ValidateUpdate();
-            
+
         }
 
         private async void DownloadUpdate(object sender, EventArgs e)
         {
+            statusStrip3.Show();
             activeubd = new UpdateBackgroundDownloader();
             toolStripStatusLabel12.Enabled = false;
             LOGGER.WriteLog("下载更新文件。", EnumMsgLevel.INFO, EnumPort.CLIENT, EnumModule.UPDATE);
@@ -2217,7 +2232,7 @@ namespace IDE
             }
             var ugd = new UpdateGlobalDeployer();
             LOGGER.WriteLog("正在部署更新。", EnumMsgLevel.INFO, EnumPort.CLIENT, EnumModule.UPDATE);
-            ugd.DeployUpdate(); 
+            ugd.DeployUpdate();
             LOGGER.WriteLog("更新部署完成。", EnumMsgLevel.INFO, EnumPort.CLIENT, EnumModule.UPDATE);
             while (!GlobalDefinitions.UpdateDeployed)
             {

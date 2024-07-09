@@ -1,5 +1,7 @@
 .git
 bin/Debug/Cache
+bin/Debug/Package/*.*
+bin/Debug/IDE.exe.WebView2
 obj
 *.log
 .vs

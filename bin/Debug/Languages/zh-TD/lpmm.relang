@@ -1,0 +1,19 @@
+[LangSet]
+Name=繁體中文
+
+[I18n]
+title.lpmm.text=本地包管理器
+text.lpmm.searchbox.wm=蒐索...
+text.lpmm.pkg.processing=正在處理本地包，請稍候。        若超時請點擊此處關閉
+text.lpmm.pkg.notfound=本地未發現包。是否聯機蒐索或導入？
+text.lpmm.pkg.notfound.import=導入
+text.lpmm.pkg.notfound.search=蒐索
+text.lpmm.pkg.notfound.cancel=取消
+text.lpmm.pkg.tip=提示
+text.lpmm.pkg.status=包狀態
+text.lpmm.pkg.desc=描述
+text.lpmm.pkg.author=作者
+text.lpmm.pkg.name=名稱
+Disabled=已禁用
+Enabled=已啟用
+unknown=未知

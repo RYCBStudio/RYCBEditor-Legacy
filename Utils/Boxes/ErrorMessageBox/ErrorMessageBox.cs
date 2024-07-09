@@ -168,7 +168,7 @@ internal partial class ErrorMessageBox : UIForm
             newTxtBox3.ButtonRectHoverColor = System.Drawing.Color.FromArgb((int)(byte)51, (int)(byte)203, (int)(byte)189);
             newTxtBox3.ButtonRectPressColor = System.Drawing.Color.FromArgb((int)(byte)0, (int)(byte)152, (int)(byte)138);
             newTxtBox3.ButtonSymbolOffset = new System.Drawing.Point(0, 0);
-            newTxtBox3.Cursor = System.Windows.Forms.Cursors.IBeam;
+            newTxtBox3.Cursor = Cursors.IBeam;
             newTxtBox3.FillColor2 = System.Drawing.Color.FromArgb((int)(byte)238, (int)(byte)251, (int)(byte)250);
             newTxtBox3.Font = new System.Drawing.Font("微软雅黑", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, (byte)134);
             newTxtBox3.Location = new System.Drawing.Point(85, 109);
@@ -179,11 +179,11 @@ internal partial class ErrorMessageBox : UIForm
             newTxtBox3.Padding = new Padding(5);
             newTxtBox3.ReadOnly = true;
             newTxtBox3.RectColor = System.Drawing.Color.FromArgb((int)(byte)0, (int)(byte)190, (int)(byte)172);
-            newTxtBox3.RectSides = System.Windows.Forms.ToolStripStatusLabelBorderSides.None;
+            newTxtBox3.RectSides = ToolStripStatusLabelBorderSides.None;
             newTxtBox3.ScrollBarColor = System.Drawing.Color.FromArgb((int)(byte)0, (int)(byte)190, (int)(byte)172);
             newTxtBox3.ShowText = false;
             newTxtBox3.Size = new System.Drawing.Size(222, 145);
-            newTxtBox3.Style = Sunny.UI.UIStyle.Custom;
+            newTxtBox3.Style = UIStyle.Custom;
             newTxtBox3.StyleCustomMode = true;
             newTxtBox3.TabIndex = 7;
             newTxtBox3.Text = contents[i];
@@ -198,7 +198,7 @@ internal partial class ErrorMessageBox : UIForm
             newTxtBox2.ButtonRectHoverColor = System.Drawing.Color.FromArgb((int)(byte)51, (int)(byte)203, (int)(byte)189);
             newTxtBox2.ButtonRectPressColor = System.Drawing.Color.FromArgb((int)(byte)0, (int)(byte)152, (int)(byte)138);
             newTxtBox2.ButtonSymbolOffset = new System.Drawing.Point(0, 0);
-            newTxtBox2.Cursor = System.Windows.Forms.Cursors.IBeam;
+            newTxtBox2.Cursor = Cursors.IBeam;
             newTxtBox2.FillColor2 = System.Drawing.Color.FromArgb((int)(byte)238, (int)(byte)251, (int)(byte)250);
             newTxtBox2.Font = new System.Drawing.Font("微软雅黑", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, (byte)134);
             newTxtBox2.Location = new System.Drawing.Point(85, 54);
@@ -208,11 +208,11 @@ internal partial class ErrorMessageBox : UIForm
             newTxtBox2.Padding = new Padding(5);
             newTxtBox2.ReadOnly = true;
             newTxtBox2.RectColor = System.Drawing.Color.FromArgb((int)(byte)0, (int)(byte)190, (int)(byte)172);
-            newTxtBox2.RectSides = System.Windows.Forms.ToolStripStatusLabelBorderSides.None;
+            newTxtBox2.RectSides = ToolStripStatusLabelBorderSides.None;
             newTxtBox2.ScrollBarColor = System.Drawing.Color.FromArgb((int)(byte)0, (int)(byte)190, (int)(byte)172);
             newTxtBox2.ShowText = false;
             newTxtBox2.Size = new System.Drawing.Size(183, 42);
-            newTxtBox2.Style = Sunny.UI.UIStyle.Custom;
+            newTxtBox2.Style = UIStyle.Custom;
             newTxtBox2.StyleCustomMode = true;
             newTxtBox2.TabIndex = 4;
             newTxtBox2.Text = lines[i].ToString();
@@ -228,7 +228,7 @@ internal partial class ErrorMessageBox : UIForm
             newTxtBox1.ButtonRectHoverColor = System.Drawing.Color.FromArgb((int)(byte)51, (int)(byte)203, (int)(byte)189);
             newTxtBox1.ButtonRectPressColor = System.Drawing.Color.FromArgb((int)(byte)0, (int)(byte)152, (int)(byte)138);
             newTxtBox1.ButtonSymbolOffset = new System.Drawing.Point(0, 0);
-            newTxtBox1.Cursor = System.Windows.Forms.Cursors.IBeam;
+            newTxtBox1.Cursor = Cursors.IBeam;
             newTxtBox1.FillColor2 = System.Drawing.Color.FromArgb((int)(byte)238, (int)(byte)251, (int)(byte)250);
             newTxtBox1.Font = new System.Drawing.Font("微软雅黑", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, (byte)134);
             newTxtBox1.Location = new System.Drawing.Point(85, 9);
@@ -238,11 +238,11 @@ internal partial class ErrorMessageBox : UIForm
             newTxtBox1.Padding = new Padding(5);
             newTxtBox1.ReadOnly = true;
             newTxtBox1.RectColor = System.Drawing.Color.FromArgb((int)(byte)0, (int)(byte)190, (int)(byte)172);
-            newTxtBox1.RectSides = System.Windows.Forms.ToolStripStatusLabelBorderSides.None;
+            newTxtBox1.RectSides = ToolStripStatusLabelBorderSides.None;
             newTxtBox1.ScrollBarColor = System.Drawing.Color.FromArgb((int)(byte)0, (int)(byte)190, (int)(byte)172);
             newTxtBox1.ShowText = false;
             newTxtBox1.Size = new System.Drawing.Size(183, 42);
-            newTxtBox1.Style = Sunny.UI.UIStyle.Custom;
+            newTxtBox1.Style = UIStyle.Custom;
             newTxtBox1.StyleCustomMode = true;
             newTxtBox1.TabIndex = 1;
             newTxtBox1.Text = exceptions[i];
@@ -254,7 +254,7 @@ internal partial class ErrorMessageBox : UIForm
             l1.Location = new System.Drawing.Point(3, 7);
             l1.Name = "uiLabel1";
             l1.Size = new System.Drawing.Size(75, 29);
-            l1.Style = Sunny.UI.UIStyle.Custom;
+            l1.Style = UIStyle.Custom;
             l1.TabIndex = 0;
             l1.Text = uiLabel1.Text;
             l1.TextAlign = System.Drawing.ContentAlignment.MiddleLeft;
@@ -264,7 +264,7 @@ internal partial class ErrorMessageBox : UIForm
             l2.Location = new System.Drawing.Point(3, 63);
             l2.Name = "uiLabel2";
             l2.Size = new System.Drawing.Size(75, 29);
-            l2.Style = Sunny.UI.UIStyle.Custom;
+            l2.Style = UIStyle.Custom;
             l2.TabIndex = 3;
             l2.Text = uiLabel2.Text;
             l2.TextAlign = System.Drawing.ContentAlignment.MiddleLeft;
@@ -274,21 +274,21 @@ internal partial class ErrorMessageBox : UIForm
             l3.Location = new System.Drawing.Point(3, 109);
             l3.Name = "uiLabel3";
             l3.Size = new System.Drawing.Size(75, 98);
-            l3.Style = Sunny.UI.UIStyle.Custom;
+            l3.Style = UIStyle.Custom;
             l3.TabIndex = 6;
             l3.Text = uiLabel3.Text;
             l3.TextAlign = System.Drawing.ContentAlignment.MiddleLeft;
             #endregion
             #region btn1
-            btn1.Cursor = System.Windows.Forms.Cursors.Hand;
+            btn1.Cursor = Cursors.Hand;
             btn1.Font = new System.Drawing.Font("微软雅黑", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, (byte)134);
             btn1.Location = new System.Drawing.Point(275, 3);
             btn1.MinimumSize = new System.Drawing.Size(1, 1);
             btn1.Name = "uiButton1";
             btn1.Radius = 15;
-            btn1.RectSides = System.Windows.Forms.ToolStripStatusLabelBorderSides.None;
+            btn1.RectSides = ToolStripStatusLabelBorderSides.None;
             btn1.Size = new System.Drawing.Size(33, 33);
-            btn1.Style = Sunny.UI.UIStyle.Custom;
+            btn1.Style = UIStyle.Custom;
             btn1.StyleCustomMode = true;
             btn1.TabIndex = 2;
             btn1.Text = "?";
@@ -296,15 +296,15 @@ internal partial class ErrorMessageBox : UIForm
             btn1.Click += new EventHandler(this.GetHelp);
             #endregion
             #region btn2
-            btn2.Cursor = System.Windows.Forms.Cursors.Hand;
+            btn2.Cursor = Cursors.Hand;
             btn2.Font = new System.Drawing.Font("微软雅黑", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, (byte)134);
             btn2.Location = new System.Drawing.Point(275, 59);
             btn2.MinimumSize = new System.Drawing.Size(1, 1);
             btn2.Name = "uiButton2";
             btn2.Radius = 15;
-            btn2.RectSides = System.Windows.Forms.ToolStripStatusLabelBorderSides.None;
+            btn2.RectSides = ToolStripStatusLabelBorderSides.None;
             btn2.Size = new System.Drawing.Size(33, 33);
-            btn2.Style = Sunny.UI.UIStyle.Custom;
+            btn2.Style = UIStyle.Custom;
             btn2.StyleCustomMode = true;
             btn2.TabIndex = 5;
             btn2.Text = "⇱";
@@ -322,8 +322,8 @@ internal partial class ErrorMessageBox : UIForm
             newBtn.Click += new EventHandler(this.Translate);
             #endregion
             #region newBtn2
-            newBtn2.BackgroundImage = global::IDE.Properties.Resources.seek;
-            newBtn2.BackgroundImageLayout = System.Windows.Forms.ImageLayout.Stretch;
+            newBtn2.BackgroundImage = Properties.Resources.seek;
+            newBtn2.BackgroundImageLayout = ImageLayout.Stretch;
             newBtn2.Location = new System.Drawing.Point(0, 223);
             newBtn2.Name = "button2";
             newBtn2.Size = new System.Drawing.Size(36, 36);

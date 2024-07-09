@@ -11,6 +11,7 @@ namespace IDE
         public Entry(bool light)
         {
             InitializeComponent();
+            uiLabel2.Text = string.Format(uiLabel2.Text, DateTime.Now.Year.ToString());
             this.light = light;
             foreach (Control ctrl in this.Controls)
             {
@@ -22,6 +23,7 @@ namespace IDE
         public Entry()
         {
             InitializeComponent();
+            uiLabel2.Text = string.Format(uiLabel2.Text, DateTime.Now.Year.ToString());
             foreach (Control ctrl in this.Controls)
             {
                 if (ctrl is not Label) { continue; }
@@ -95,6 +97,7 @@ namespace IDE
 
         private void Delay(object sender, EventArgs e)
         {
+            metroProgressBar1.Value = metroProgressBar1.Maximum;
             timer1.Stop();
         }
     }

@@ -27,4 +27,4 @@ text.item.theme.light=淺色
 text.item.theme.dark=深色
 text.item.theme.IDEA=IDEA
 text.item.theme.custom=自定義
-
+text.tip.editreconffile=點擊擴展按鈕（標題列上的“∨”），編輯設定檔案（.reconf）。

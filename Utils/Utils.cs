@@ -228,7 +228,7 @@ namespace IDE
                 while ((bytesRead = fs.Read(buffer, 0, buffer.Length)) > 0)
                 {
                     binaryString += ConvertBytesToBinaryString(buffer, bytesRead);
-                    textString += System.Text.Encoding.Default.GetString(buffer, 0, bytesRead);
+                    textString += Encoding.Default.GetString(buffer, 0, bytesRead);
                 }
             }
 
@@ -304,6 +304,11 @@ namespace IDE
         public static int CrashAttempts = Program.reConf.ReadInt("CrashHanding", "CrashAttempts", 3);
 
         /// <summary>
+        /// 扩展包路径
+        /// </summary>
+        internal static string packagePath = "./Package";
+
+        /// <summary>
         /// 主题
         /// </summary>
         internal static Tuple<string, Color, Color> theme = Themes.GetTheme(Program.reConf.ReadString("General", "Theme", "Dark"));
@@ -330,6 +335,17 @@ namespace IDE
         {
             { "Dark", new(){System.Windows.Media.Color.FromRgb(0xA9, 0xB7, 0xC6), System.Windows.Media.Color.FromRgb(0x1E, 0x1F, 0x22) } },
             { "Light",  new(){System.Windows.Media.Color.FromRgb(8, 8, 8), System.Windows.Media.Color.FromRgb(255, 255, 255) }},
+        };
+
+        /// <summary>
+        /// 可信任的扩展包作者
+        /// </summary>
+        public static List<string> TrustedAuthors = new()
+        {
+            "RYCB Studio",
+            "RYCBStudio",
+            "QYF-RYCBStudio",
+            "QYF",
         };
 
         public static class Downloading
@@ -409,6 +425,47 @@ namespace IDE
     public static class Extensions
     {
 
+        /// <summary>
+        /// 复制文件夹及文件
+        /// </summary>
+        /// <param name="sourceFolder">原文件路径</param>
+        /// <param name="destFolder">目标文件路径</param>
+        /// <returns></returns>
+        public static int CopyFolder(string sourceFolder, string destFolder)
+        {
+            try
+            {
+                //如果目标路径不存在,则创建目标路径
+                if (!System.IO.Directory.Exists(destFolder))
+                {
+                    System.IO.Directory.CreateDirectory(destFolder);
+                }
+                //得到原文件根目录下的所有文件
+                string[] files = System.IO.Directory.GetFiles(sourceFolder);
+                foreach (string file in files)
+                {
+                    string name = System.IO.Path.GetFileName(file);
+                    string dest = System.IO.Path.Combine(destFolder, name);
+                    System.IO.File.Copy(file, dest);//复制文件
+                }
+                //得到原文件根目录下的所有文件夹
+                string[] folders = System.IO.Directory.GetDirectories(sourceFolder);
+                foreach (string folder in folders)
+                {
+                    string name = System.IO.Path.GetFileName(folder);
+                    string dest = System.IO.Path.Combine(destFolder, name);
+                    CopyFolder(folder, dest);//构建目标路径,递归复制文件
+                }
+                return 1;
+            }
+            catch (Exception e)
+            {
+                MessageBox.Show(e.Message);
+                return 0;
+            }
+
+        }
+
         public static bool DecompressFile(string zipPath, string filePath)
         {
             bool exeRes = true;
@@ -450,7 +507,7 @@ namespace IDE
         {
             try
             {
-                var file = new FileStream(fileName, System.IO.FileMode.Open);
+                var file = new FileStream(fileName, FileMode.Open);
                 MD5 md5 = new MD5CryptoServiceProvider();
                 var retVal = md5.ComputeHash(file);
                 file.Close();
@@ -513,7 +570,7 @@ namespace IDE
         public static bool FontExists(this string fontName)
         {
             using var font = new Font(fontName, 12);
-            return string.Equals(font.Name, fontName, System.StringComparison.InvariantCultureIgnoreCase);
+            return string.Equals(font.Name, fontName, StringComparison.InvariantCultureIgnoreCase);
         }
         /// <summary>
         /// 检查指定字符串所对应的字体是否存在。若不存在，则替换成<paramref name="substituteFontName"/>对应的字体。

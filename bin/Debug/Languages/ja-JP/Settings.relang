@@ -27,3 +27,4 @@ text.item.theme.light=ライト
 text.item.theme.dark=ダーク
 text.item.theme.IDEA=IDEA
 text.item.theme.custom=カスタム
+text.tip.editreconffile=拡張ボタン（タイトルバーの「∨」）をクリックし、設定ファイル（.reconf）を編集します。

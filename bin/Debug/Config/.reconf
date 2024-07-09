@@ -1,10 +1,4 @@
-﻿[FirstBoot]
-# DO NOT edit this key, unless for joke.
-# This is auto-generated key, shows whether the user fist uses IDE or not.
-# Accepted Value: true,false
-IsFirstBoot=False
-
-[Display]
+﻿[Display]
 # This sets the main display font of IDE.
 DisplayFont=微软雅黑
 
@@ -89,4 +83,7 @@ Custom.ForeGround=
 Custom.BackGround=
 
 [FirstBoot]
+# DO NOT edit this key, unless for joke.
+# This is auto-generated key, shows whether the user first uses IDE or not.
+# Accepted Value: true,false
 IsFirstBoot=False

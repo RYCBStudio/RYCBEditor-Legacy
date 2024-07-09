@@ -29,6 +29,8 @@ text.ts.tool.options=オプション(&O)
 text.ts.tool.application=アプリケーション
 text.ts.tool.application.exit=終了
 text.ts.tool.application.restart=再起動
+text.ts.tool.application.reset=IDEをリセット
+text.ts.tool.application.packagemanagement=パッケージ管理
 text.ts.tool.quick=クイックツール
 text.ts.tool.quick.clearcache=キャッシュをクリアする
 text.ts.help.about=について(&A)...
@@ -50,6 +52,7 @@ text.st.filereadytosave=ファイルを保存する準備ができています
 text.bottom.errors=エラー
 text.bottom.errors.sub.type=タイプ
 text.bottom.errors.sub.description=異常の説明
+text.ts.run.configrunners=ドライバの設定
 text.bottom.errors.sub.line=行番号
 text.inprogram.fileex.dmp=メモリダンプファイル
 

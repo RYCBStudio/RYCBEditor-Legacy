@@ -16,9 +16,9 @@ public partial class CustomSettings
         this.MainTabCtrl.FillColor = Fore;
         this.MainTabCtrl.TabBackColor = Back;
         this.TitleFont = new(GlobalSettings.MainFontName, this.TitleFont.Size, this.TitleFont.Style);
+        this.toolStripStatusLabel1.Text = _I18nFile.Localize(toolStripStatusLabel1.Text);
         if (Theme == "Light")
         {
-            uiButton1.Show();
             this.TitleColor = Back;
             this.TitleForeColor = Fore;
             this.MainTabCtrl.MenuStyle = UIMenuStyle.White;
@@ -31,7 +31,8 @@ public partial class CustomSettings
             item.BackColor = Back;
             item.Font = new(GlobalSettings.MainFontName, item.Font.Size, item.Font.Style);
 
-            foreach (Control ctrls in item.Controls)
+            var table = item.Controls[0];
+            foreach (Control ctrls in table.Controls)
             {
                 if (ctrls.Text is null)
                 {
