@@ -2,13 +2,25 @@
 # This sets the main display font of IDE.
 DisplayFont=微软雅黑
 
+[Run]
+# This sets whether the IDE uses runtime compilation.
+# *runtime compilation: IDE will run the python script to check errors instead of just compiling it.
+# NOTICE: Runtime compilation uses more memory and will find more runtime errors,  including user-raised custom exceptions
+#         (i.e. "raise Exception" will also be included). Besides, when using turtle lib, IDE will always use compilation 
+#         check because each time the script runs, the turtle window will show and cannot close.
+# NOTICE: When you run the python script, IDE will automatically check errors again. And this pre-running check will also
+#         check runtime errors, so you can set this to false trustingly.
+# Accepted Value: true, false
+# Recommend Value: if you still worry about runtime errors cannot be found, set this to true. Otherwise, keep it false.
+useRuntimeCompileCheck=true
+
 [General]
 # This sets the update channel of IDE(Under development)
 UpdateChannel=Normal
 # This sets the display language of IDE.
 # Format: xx-XX
 # Accepted Value(Now): zh-CN(Simplified Chinese), zh-TD(Traditional Chinese), en-US(English), ja-JP(Japanese)
-Language=zh-CN
+Language=zh-TD
 # This sets the log language of IDE.
 # Format: xx
 # Accepted Value(Now): zh(Simplified Chinese), td(Traditional Chinese), en(English), ja(Japanese)

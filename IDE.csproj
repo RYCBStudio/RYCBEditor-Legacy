@@ -1881,6 +1881,9 @@
     <None Include="Resources\plugin-ban.png" />
     <None Include="Resources\plugin-enable.png" />
     <None Include="Resources\ABout1.png" />
+    <None Include="Resources\Icon-Ver3.256x.png" />
+    <None Include="Resources\Icon-Ver3.152x.png" />
+    <None Include="Resources\infoWarningDark.png" />
     <Content Include="Utils\RE-Addon-Controls\Enter-Dark.png" />
     <Content Include="Utils\RE-Addon-Controls\Enter.png" />
     <Content Include="语法说明.html" />

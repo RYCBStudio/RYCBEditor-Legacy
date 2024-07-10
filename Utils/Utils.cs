@@ -13,7 +13,6 @@ using System.Runtime.InteropServices;
 using System.Threading;
 using System.Diagnostics;
 using Microsoft.Diagnostics.Runtime;
-using static Community.CsharpSqlite.Sqlite3;
 using System.Security.Cryptography;
 
 namespace IDE
@@ -309,6 +308,11 @@ namespace IDE
         internal static string packagePath = "./Package";
 
         /// <summary>
+        /// 使用运行程序来检查错误
+        /// </summary>
+        internal static bool useRuntimeCompileCheck = false;
+
+        /// <summary>
         /// 主题
         /// </summary>
         internal static Tuple<string, Color, Color> theme = Themes.GetTheme(Program.reConf.ReadString("General", "Theme", "Dark"));
@@ -392,35 +396,60 @@ namespace IDE
         }
     }
 
-    public static class PythonVariableAnalyzer
+    public class PythonVariableAnalyzer
     {
-        public static List<string> Analyze(string content)
+        private string content;
+        private List<string> lines = new();
+        internal PythonVariableAnalyzer(string content)
         {
-            // 去除注释和字符串字面量，只保留代码行
-            var lines = Regex.Split(content, @"(?:#[^\n]*|'[^']*'|""[^""]*"")*\n");
+            this.content = content;
+        }
 
-            // 匹配所有以字母或下划线开头的标识符
-            var pattern = new Regex(@"\b\w+\b");
+        private void GetLines()
+        {
+            lines.AddRange(content.Split('\n'));
+        }
 
-            var variables = new HashSet<string>();
-
-            // 逐行扫描，提取所有标识符
-            foreach (var line in lines)
+        private bool matchVar(string line)
+        {
+            Regex varRegex = new("([_a-zA-Z])+[0-9]*\\s*=.*");
+            if (varRegex.IsMatch(line))
             {
-                var matches = pattern.Matches(line);
-                foreach (Match match in matches)
+                return true;
+            }
+            return false;
+        }
+
+        private string GetVar(string line)
+        {
+            Regex illegalVarName = new("^[0-9]+.*=.*");
+            try
+            {
+                if (illegalVarName.IsMatch(line)) { return string.Empty; }
+                return line.Trim().Replace(" ", "").Split('=')[0];
+            }
+            catch
+            {
+                return string.Empty;
+            }
+        }
+
+        internal List<string> Process()
+        {
+            List<string> vars = new List<string>();
+            GetLines();
+            foreach (string line in lines)
+            {
+                if (matchVar(line))
                 {
-                    var identifier = match.Value;
-                    if (!char.IsDigit(identifier[0]))
-                    {
-                        variables.Add(identifier);
-                    }
+                    if (GetVar(line) == string.Empty) { continue; }
+                    vars.Add(GetVar(line));
                 }
             }
-
-            return new List<string>(variables);
+            return vars;
         }
     }
+
 
     public static class Extensions
     {
@@ -503,6 +532,18 @@ namespace IDE
 
             return exeRes;
         }
+        public static int GetFilesCount(string dir)
+        {
+            DirectoryInfo dirInfo = new DirectoryInfo(dir);
+            int totalFile = 0;
+            totalFile += dirInfo.GetFiles().Length;//获取全部文件
+            foreach (System.IO.DirectoryInfo subdir in dirInfo.GetDirectories())
+            {
+                totalFile += GetFilesCount(subdir.FullName);
+            }
+            return totalFile;
+        }
+
         public static string GetMD5HashFromFile(string fileName)
         {
             try
@@ -865,59 +906,81 @@ namespace IDE
 
     public class PythonErrorAnalyzer
     {
-        //public static Dictionary<string, object> AnalyzePythonFile(string content)
-        //{
-        //    //var result = new Dictionary<string, object>();
-        //    //if (content.IsNullOrEmpty()) {
-        //    //    return result;
-        //    //}
-        //    //Directory.CreateDirectory(Path.GetTempPath() + "\\RYCB\\IDE\\code_analyze\\");
-        //    //var filePath = Path.GetTempPath() + "\\RYCB\\IDE\\code_analyze\\" + (content.Substring(0, 5).Contains(" ") ? "abcdefghijk" : content.Substring(0, 5)).GetHashCode() + ".py";
-        //    //File.WriteAllText(filePath, content);
+        public static List<Dictionary<string, string>> AnalyzePythonFile(string content)
+        {
+            GlobalSettings.useRuntimeCompileCheck = Program.reConf.ReadBool("Run", "useRuntimeCompileCheck", false);
+            string fileName;
+            try
+            {
+                fileName = (content.Substring(0, 5).Contains(" ") ? "abcdefghijk" : content.Substring(0, 5)).GetHashCode() + ".py";
+            }catch
+            {
+                fileName = DateTime.Now.ToString().GetHashCode().ToString()+".py";
+            }
+            if (content.Contains("import turtle")) { GlobalSettings.useRuntimeCompileCheck = false; }
+            var filePath = Path.GetTempPath() + "\\" + fileName;
+            File.WriteAllText(filePath, content);
+            var result = new List<Dictionary<string, string>>();
+            ProcessStartInfo psi;
+            // 使用 python 解释器编译文件，并获取错误信息
+            if (GlobalSettings.useRuntimeCompileCheck)
+            {
+                psi = new ProcessStartInfo("python", $" \"{filePath}\"")
+                {
+                    RedirectStandardOutput = true,
+                    RedirectStandardError = true,
+                    CreateNoWindow = true,
+                    UseShellExecute = false
+                };
+            }
+            else
+            {
+                psi = new ProcessStartInfo("python", $"-m py_compile \"{filePath}\"")
+                {
+                    RedirectStandardOutput = true,
+                    RedirectStandardError = true,
+                    CreateNoWindow = true,
+                    UseShellExecute = false
+                };
+            }
 
-        //    //// 使用 python 解释器运行文件，并获取输出结果和错误信息
-        //    //var psi = new ProcessStartInfo("python", $"-m py_compile \"{filePath}\"")
-        //    //{
-        //    //    RedirectStandardOutput = true,
-        //    //    RedirectStandardError = true,
-        //    //    CreateNoWindow = true,
-        //    //    UseShellExecute = false
-        //    //};
+            var process = new Process
+            {
+                StartInfo = psi
+            };
+            process.Start();
+            
+            var output = process.StandardOutput.ReadToEnd();
+            var error = process.StandardError.ReadToEnd();
 
-        //    //var process = new Process
-        //    //{
-        //    //    StartInfo = psi
-        //    //};
-        //    //var succeeded = process.Start();
+            if (!string.IsNullOrEmpty(error))
+            {
+                // 如果出现错误，处理错误信息，提取错误行号和错误描述
+                var errorLines = new List<int>();
+                var errorDescriptions = new List<string>();
 
-        //    //var output = process.StandardOutput.ReadToEnd();
-        //    //var error = process.StandardError.ReadToEnd();
+                Regex file_line = new("File \".+\", line \\d");
+                Regex exp = new(".+:\\s.+");
 
-        //    //if (!string.IsNullOrEmpty(error))
-        //    //{
-        //    //    // 如果出现错误，处理错误信息，提取错误行号和错误描述
-        //    //    var errorType = new List<string>();
-        //    //    var errorLines = new List<int>();
-        //    //    var errorDescriptions = new List<string>();
+                var errorLinesString = error.Split(new[] { "\r\n", "\r", "\n" }, StringSplitOptions.None);
+                Dictionary<string, string> v = new();
+                foreach (var lineString in errorLinesString)
+                {
+                    if (file_line.IsMatch(lineString))
+                    {
+                        v.Add("Line", lineString.Split(new string[] { "line " }, StringSplitOptions.RemoveEmptyEntries)[1]);
+                    }
+                    else if (exp.IsMatch(lineString))
+                    {
+                        v.Add("Type", lineString.Split(new string[] { ": " }, StringSplitOptions.RemoveEmptyEntries)[0]);
+                        v.Add("Desc", lineString.Split(new string[] { ": " }, StringSplitOptions.RemoveEmptyEntries)[1]);
+                    }
+                }
+                result.Add(v);
+            }
 
-        //    //    var errorLinesString = error.Split(new[] { "\r\n", "\r", "\n" }, StringSplitOptions.RemoveEmptyEntries);
-        //    //    foreach (var lineString in errorLinesString)
-        //    //    {
-
-        //    //    }
-
-        //    //    result["Type"] = "exceptions";
-        //    //    result["Line"] = errorLines;
-        //    //    result["Description"] = errorDescriptions;
-        //    //}
-        //    //else
-        //    //{
-        //    //    // 如果没有错误，返回空结果
-        //    //    result["Type"] = "success";
-        //    //}
-
-        //    //return result;
-        //}
+            return result;
+        }
     }
 
     public class PythonSyntaxErrorChecker

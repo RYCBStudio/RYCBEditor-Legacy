@@ -91,10 +91,10 @@ namespace IDE
             this.toolStripStatusLabel5 = new System.Windows.Forms.ToolStripStatusLabel();
             this.toolStripStatusLabel10 = new System.Windows.Forms.ToolStripStatusLabel();
             this.UpdateIcon = new System.Windows.Forms.ToolStripStatusLabel();
-            this.toolStripStatusLabel11 = new System.Windows.Forms.ToolStripStatusLabel();
+            this.UpdateIconsSeparator = new System.Windows.Forms.ToolStripStatusLabel();
             this.CanUpdateIcon = new System.Windows.Forms.ToolStripStatusLabel();
-            this.toolStripStatusLabel9 = new System.Windows.Forms.ToolStripStatusLabel();
-            this.toolStripStatusLabel12 = new System.Windows.Forms.ToolStripStatusLabel();
+            this.NewUpdateTip = new System.Windows.Forms.ToolStripStatusLabel();
+            this.DownloadUpdateButton = new System.Windows.Forms.ToolStripStatusLabel();
             this.WorkingIcon = new System.Windows.Forms.ToolStripStatusLabel();
             this.CurrentWorkTip = new System.Windows.Forms.ToolStripStatusLabel();
             this.FileSavingIcon = new System.Windows.Forms.ToolStripStatusLabel();
@@ -107,6 +107,16 @@ namespace IDE
             this.tableLayoutPanel2 = new System.Windows.Forms.TableLayoutPanel();
             this.elementHost1 = new System.Windows.Forms.Integration.ElementHost();
             this.webView1 = new Microsoft.Web.WebView2.WinForms.WebView2();
+            this.tabPage3 = new System.Windows.Forms.TabPage();
+            this.tableLayoutPanel3 = new System.Windows.Forms.TableLayoutPanel();
+            this.linkLabel4 = new System.Windows.Forms.LinkLabel();
+            this.linkLabel3 = new System.Windows.Forms.LinkLabel();
+            this.pictureBox1 = new System.Windows.Forms.PictureBox();
+            this.WelcomeTitle = new System.Windows.Forms.Label();
+            this.linkLabel1 = new System.Windows.Forms.LinkLabel();
+            this.label2 = new System.Windows.Forms.Label();
+            this.linkLabel2 = new System.Windows.Forms.LinkLabel();
+            this.label3 = new System.Windows.Forms.Label();
             this.uiTabControl1 = new Sunny.UI.UITabControl();
             this.ErrorAndExceptionsPage = new System.Windows.Forms.TabPage();
             this.listView1 = new System.Windows.Forms.ListView();
@@ -125,7 +135,7 @@ namespace IDE
             this.toolStripButton2 = new System.Windows.Forms.ToolStripButton();
             this.toolStripButton3 = new System.Windows.Forms.ToolStripButton();
             this.toolStripSeparator1 = new System.Windows.Forms.ToolStripSeparator();
-            this.statusStrip3 = new System.Windows.Forms.StatusStrip();
+            this.UpdateStatusBar = new System.Windows.Forms.StatusStrip();
             this.Downloading = new System.Windows.Forms.ToolStripStatusLabel();
             this.ReceivedBytes = new System.Windows.Forms.ToolStripStatusLabel();
             this.ReceivedBytesSeparatorSign = new System.Windows.Forms.ToolStripStatusLabel();
@@ -135,6 +145,7 @@ namespace IDE
             this.Percent = new System.Windows.Forms.ToolStripStatusLabel();
             this.DownloadSpeed = new System.Windows.Forms.ToolStripStatusLabel();
             this.UpdateControlBlocker = new System.Windows.Forms.ToolStripStatusLabel();
+            this.UpdateCancelledTip = new System.Windows.Forms.ToolStripStatusLabel();
             this.UpdateForceStopLabel = new System.Windows.Forms.ToolStripStatusLabel();
             this.menuStrip1.SuspendLayout();
             this.contextMenuStrip1.SuspendLayout();
@@ -145,11 +156,14 @@ namespace IDE
             this.tabPage1.SuspendLayout();
             this.tableLayoutPanel2.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.webView1)).BeginInit();
+            this.tabPage3.SuspendLayout();
+            this.tableLayoutPanel3.SuspendLayout();
+            ((System.ComponentModel.ISupportInitialize)(this.pictureBox1)).BeginInit();
             this.uiTabControl1.SuspendLayout();
             this.ErrorAndExceptionsPage.SuspendLayout();
             this.tabPage2.SuspendLayout();
             this.toolStrip1.SuspendLayout();
-            this.statusStrip3.SuspendLayout();
+            this.UpdateStatusBar.SuspendLayout();
             this.SuspendLayout();
             // 
             // menuStrip1
@@ -165,7 +179,7 @@ namespace IDE
             this.开发者选项DToolStripMenuItem});
             this.menuStrip1.Location = new System.Drawing.Point(0, 0);
             this.menuStrip1.Name = "menuStrip1";
-            this.menuStrip1.Size = new System.Drawing.Size(1064, 36);
+            this.menuStrip1.Size = new System.Drawing.Size(1064, 32);
             this.menuStrip1.TabIndex = 0;
             this.menuStrip1.Text = "menuStrip1";
             // 
@@ -178,7 +192,7 @@ namespace IDE
             this.另存为AToolStripMenuItem});
             this.文件FToolStripMenuItem.ForeColor = System.Drawing.Color.White;
             this.文件FToolStripMenuItem.Name = "文件FToolStripMenuItem";
-            this.文件FToolStripMenuItem.Size = new System.Drawing.Size(108, 32);
+            this.文件FToolStripMenuItem.Size = new System.Drawing.Size(108, 28);
             this.文件FToolStripMenuItem.Text = "text.ts.file";
             // 
             // 新建NToolStripMenuItem
@@ -263,7 +277,7 @@ namespace IDE
             this.查找替换ToolStripMenuItem});
             this.编辑EToolStripMenuItem.ForeColor = System.Drawing.Color.White;
             this.编辑EToolStripMenuItem.Name = "编辑EToolStripMenuItem";
-            this.编辑EToolStripMenuItem.Size = new System.Drawing.Size(116, 32);
+            this.编辑EToolStripMenuItem.Size = new System.Drawing.Size(116, 28);
             this.编辑EToolStripMenuItem.Text = "text.ts.edit";
             // 
             // 撤消UToolStripMenuItem
@@ -347,7 +361,7 @@ namespace IDE
             this.配置运行器ToolStripMenuItem});
             this.运行RToolStripMenuItem.ForeColor = System.Drawing.Color.White;
             this.运行RToolStripMenuItem.Name = "运行RToolStripMenuItem";
-            this.运行RToolStripMenuItem.Size = new System.Drawing.Size(111, 32);
+            this.运行RToolStripMenuItem.Size = new System.Drawing.Size(111, 28);
             this.运行RToolStripMenuItem.Text = "text.ts.run";
             // 
             // 运行ToolStripMenuItem
@@ -380,7 +394,7 @@ namespace IDE
             this.快速工具ToolStripMenuItem});
             this.工具TToolStripMenuItem.ForeColor = System.Drawing.Color.White;
             this.工具TToolStripMenuItem.Name = "工具TToolStripMenuItem";
-            this.工具TToolStripMenuItem.Size = new System.Drawing.Size(116, 32);
+            this.工具TToolStripMenuItem.Size = new System.Drawing.Size(116, 28);
             this.工具TToolStripMenuItem.Text = "text.ts.tool";
             // 
             // 自定义CToolStripMenuItem
@@ -489,7 +503,7 @@ namespace IDE
             this.捐助ToolStripMenuItem});
             this.帮助HToolStripMenuItem.ForeColor = System.Drawing.Color.White;
             this.帮助HToolStripMenuItem.Name = "帮助HToolStripMenuItem";
-            this.帮助HToolStripMenuItem.Size = new System.Drawing.Size(120, 32);
+            this.帮助HToolStripMenuItem.Size = new System.Drawing.Size(120, 28);
             this.帮助HToolStripMenuItem.Text = "text.ts.help";
             // 
             // 关于AToolStripMenuItem
@@ -548,7 +562,7 @@ namespace IDE
             this.崩溃测试ToolStripMenuItem});
             this.开发者选项DToolStripMenuItem.ForeColor = System.Drawing.Color.WhiteSmoke;
             this.开发者选项DToolStripMenuItem.Name = "开发者选项DToolStripMenuItem";
-            this.开发者选项DToolStripMenuItem.Size = new System.Drawing.Size(163, 32);
+            this.开发者选项DToolStripMenuItem.Size = new System.Drawing.Size(163, 28);
             this.开发者选项DToolStripMenuItem.Text = "text.ts.devmode";
             this.开发者选项DToolStripMenuItem.Visible = false;
             // 
@@ -682,10 +696,10 @@ namespace IDE
             this.toolStripStatusLabel5,
             this.toolStripStatusLabel10,
             this.UpdateIcon,
-            this.toolStripStatusLabel11,
+            this.UpdateIconsSeparator,
             this.CanUpdateIcon,
-            this.toolStripStatusLabel9,
-            this.toolStripStatusLabel12,
+            this.NewUpdateTip,
+            this.DownloadUpdateButton,
             this.WorkingIcon,
             this.CurrentWorkTip,
             this.FileSavingIcon,
@@ -722,7 +736,7 @@ namespace IDE
             // toolStripStatusLabel10
             // 
             this.toolStripStatusLabel10.Name = "toolStripStatusLabel10";
-            this.toolStripStatusLabel10.Size = new System.Drawing.Size(328, 24);
+            this.toolStripStatusLabel10.Size = new System.Drawing.Size(1, 24);
             this.toolStripStatusLabel10.Spring = true;
             // 
             // UpdateIcon
@@ -732,12 +746,12 @@ namespace IDE
             this.UpdateIcon.Name = "UpdateIcon";
             this.UpdateIcon.Size = new System.Drawing.Size(20, 24);
             // 
-            // toolStripStatusLabel11
+            // UpdateIconsSeparator
             // 
-            this.toolStripStatusLabel11.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(162)))), ((int)(((byte)(162)))), ((int)(((byte)(162)))));
-            this.toolStripStatusLabel11.Name = "toolStripStatusLabel11";
-            this.toolStripStatusLabel11.Size = new System.Drawing.Size(20, 24);
-            this.toolStripStatusLabel11.Text = " |";
+            this.UpdateIconsSeparator.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(162)))), ((int)(((byte)(162)))), ((int)(((byte)(162)))));
+            this.UpdateIconsSeparator.Name = "UpdateIconsSeparator";
+            this.UpdateIconsSeparator.Size = new System.Drawing.Size(20, 24);
+            this.UpdateIconsSeparator.Text = " |";
             // 
             // CanUpdateIcon
             // 
@@ -745,23 +759,23 @@ namespace IDE
             this.CanUpdateIcon.Name = "CanUpdateIcon";
             this.CanUpdateIcon.Size = new System.Drawing.Size(20, 24);
             // 
-            // toolStripStatusLabel9
+            // NewUpdateTip
             // 
-            this.toolStripStatusLabel9.Name = "toolStripStatusLabel9";
-            this.toolStripStatusLabel9.Size = new System.Drawing.Size(272, 24);
-            this.toolStripStatusLabel9.Text = "There are new updates for IDE.";
+            this.NewUpdateTip.Name = "NewUpdateTip";
+            this.NewUpdateTip.Size = new System.Drawing.Size(272, 24);
+            this.NewUpdateTip.Text = "There are new updates for IDE.";
             // 
-            // toolStripStatusLabel12
+            // DownloadUpdateButton
             // 
-            this.toolStripStatusLabel12.IsLink = true;
-            this.toolStripStatusLabel12.LinkBehavior = System.Windows.Forms.LinkBehavior.NeverUnderline;
-            this.toolStripStatusLabel12.LinkColor = System.Drawing.Color.Turquoise;
-            this.toolStripStatusLabel12.Name = "toolStripStatusLabel12";
-            this.toolStripStatusLabel12.Size = new System.Drawing.Size(167, 24);
-            this.toolStripStatusLabel12.Text = "Download Update";
-            this.toolStripStatusLabel12.VisitedLinkColor = System.Drawing.Color.DarkOrchid;
-            this.toolStripStatusLabel12.Click += new System.EventHandler(this.DownloadUpdate);
-            this.toolStripStatusLabel12.DoubleClick += new System.EventHandler(this.DownloadUpdate);
+            this.DownloadUpdateButton.IsLink = true;
+            this.DownloadUpdateButton.LinkBehavior = System.Windows.Forms.LinkBehavior.NeverUnderline;
+            this.DownloadUpdateButton.LinkColor = System.Drawing.Color.Turquoise;
+            this.DownloadUpdateButton.Name = "DownloadUpdateButton";
+            this.DownloadUpdateButton.Size = new System.Drawing.Size(167, 24);
+            this.DownloadUpdateButton.Text = "Download Update";
+            this.DownloadUpdateButton.VisitedLinkColor = System.Drawing.Color.DarkOrchid;
+            this.DownloadUpdateButton.Click += new System.EventHandler(this.DownloadUpdate);
+            this.DownloadUpdateButton.DoubleClick += new System.EventHandler(this.DownloadUpdate);
             // 
             // WorkingIcon
             // 
@@ -800,6 +814,7 @@ namespace IDE
             // 
             // SyntaxErrorChecker
             // 
+            this.SyntaxErrorChecker.Enabled = true;
             this.SyntaxErrorChecker.Interval = 1000;
             this.SyntaxErrorChecker.Tick += new System.EventHandler(this.CheckSyntaxError);
             // 
@@ -810,18 +825,19 @@ namespace IDE
             this.tableLayoutPanel1.Controls.Add(this.tabControl1, 0, 0);
             this.tableLayoutPanel1.Controls.Add(this.uiTabControl1, 0, 1);
             this.tableLayoutPanel1.Dock = System.Windows.Forms.DockStyle.Fill;
-            this.tableLayoutPanel1.Location = new System.Drawing.Point(0, 74);
+            this.tableLayoutPanel1.Location = new System.Drawing.Point(0, 61);
             this.tableLayoutPanel1.Name = "tableLayoutPanel1";
             this.tableLayoutPanel1.RowCount = 2;
             this.tableLayoutPanel1.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Percent, 75F));
             this.tableLayoutPanel1.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Percent, 25F));
-            this.tableLayoutPanel1.Size = new System.Drawing.Size(1064, 575);
+            this.tableLayoutPanel1.Size = new System.Drawing.Size(1064, 588);
             this.tableLayoutPanel1.TabIndex = 6;
             // 
             // tabControl1
             // 
             this.tabControl1.ContextMenuStrip = this.contextMenuStrip1;
             this.tabControl1.Controls.Add(this.tabPage1);
+            this.tabControl1.Controls.Add(this.tabPage3);
             this.tabControl1.Dock = System.Windows.Forms.DockStyle.Fill;
             this.tabControl1.DrawMode = System.Windows.Forms.TabDrawMode.OwnerDrawFixed;
             this.tabControl1.Font = new System.Drawing.Font("微软雅黑", 10.5F);
@@ -833,7 +849,7 @@ namespace IDE
             this.tabControl1.Name = "tabControl1";
             this.tabControl1.SelectedIndex = 0;
             this.tabControl1.ShowCloseButton = true;
-            this.tabControl1.Size = new System.Drawing.Size(1058, 425);
+            this.tabControl1.Size = new System.Drawing.Size(1058, 435);
             this.tabControl1.SizeMode = System.Windows.Forms.TabSizeMode.Fixed;
             this.tabControl1.StyleCustomMode = true;
             this.tabControl1.TabBackColor = System.Drawing.Color.Black;
@@ -850,7 +866,7 @@ namespace IDE
             this.tabPage1.Controls.Add(this.webView1);
             this.tabPage1.Location = new System.Drawing.Point(0, 30);
             this.tabPage1.Name = "tabPage1";
-            this.tabPage1.Size = new System.Drawing.Size(1058, 395);
+            this.tabPage1.Size = new System.Drawing.Size(1058, 405);
             this.tabPage1.TabIndex = 0;
             this.tabPage1.Text = "text.tc.tp.tmp";
             // 
@@ -864,7 +880,7 @@ namespace IDE
             this.tableLayoutPanel2.Name = "tableLayoutPanel2";
             this.tableLayoutPanel2.RowCount = 1;
             this.tableLayoutPanel2.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Percent, 50F));
-            this.tableLayoutPanel2.Size = new System.Drawing.Size(1058, 395);
+            this.tableLayoutPanel2.Size = new System.Drawing.Size(1058, 405);
             this.tableLayoutPanel2.TabIndex = 0;
             // 
             // elementHost1
@@ -872,7 +888,7 @@ namespace IDE
             this.elementHost1.Dock = System.Windows.Forms.DockStyle.Fill;
             this.elementHost1.Location = new System.Drawing.Point(3, 3);
             this.elementHost1.Name = "elementHost1";
-            this.elementHost1.Size = new System.Drawing.Size(1052, 389);
+            this.elementHost1.Size = new System.Drawing.Size(1052, 399);
             this.elementHost1.TabIndex = 1;
             this.elementHost1.Validating += new System.ComponentModel.CancelEventHandler(this.LayoutTextEditor);
             this.elementHost1.Child = null;
@@ -888,6 +904,181 @@ namespace IDE
             this.webView1.TabIndex = 1;
             this.webView1.ZoomFactor = 1D;
             // 
+            // tabPage3
+            // 
+            this.tabPage3.BackColor = System.Drawing.Color.Black;
+            this.tabPage3.Controls.Add(this.tableLayoutPanel3);
+            this.tabPage3.Location = new System.Drawing.Point(0, 30);
+            this.tabPage3.Name = "tabPage3";
+            this.tabPage3.Size = new System.Drawing.Size(1058, 405);
+            this.tabPage3.TabIndex = 1;
+            this.tabPage3.Text = "text.tc.tp.welcome";
+            // 
+            // tableLayoutPanel3
+            // 
+            this.tableLayoutPanel3.BackColor = System.Drawing.Color.Transparent;
+            this.tableLayoutPanel3.ColumnCount = 20;
+            this.tableLayoutPanel3.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Percent, 5F));
+            this.tableLayoutPanel3.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Percent, 5F));
+            this.tableLayoutPanel3.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Percent, 5F));
+            this.tableLayoutPanel3.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Percent, 5F));
+            this.tableLayoutPanel3.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Percent, 5F));
+            this.tableLayoutPanel3.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Percent, 5F));
+            this.tableLayoutPanel3.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Percent, 5F));
+            this.tableLayoutPanel3.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Percent, 5F));
+            this.tableLayoutPanel3.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Percent, 5F));
+            this.tableLayoutPanel3.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Percent, 5F));
+            this.tableLayoutPanel3.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Percent, 5F));
+            this.tableLayoutPanel3.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Percent, 5F));
+            this.tableLayoutPanel3.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Percent, 5F));
+            this.tableLayoutPanel3.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Percent, 5F));
+            this.tableLayoutPanel3.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Percent, 5F));
+            this.tableLayoutPanel3.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Percent, 5F));
+            this.tableLayoutPanel3.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Percent, 5F));
+            this.tableLayoutPanel3.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Percent, 5F));
+            this.tableLayoutPanel3.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Percent, 5F));
+            this.tableLayoutPanel3.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Percent, 5F));
+            this.tableLayoutPanel3.Controls.Add(this.linkLabel4, 9, 6);
+            this.tableLayoutPanel3.Controls.Add(this.linkLabel3, 9, 5);
+            this.tableLayoutPanel3.Controls.Add(this.pictureBox1, 0, 0);
+            this.tableLayoutPanel3.Controls.Add(this.WelcomeTitle, 5, 0);
+            this.tableLayoutPanel3.Controls.Add(this.linkLabel1, 5, 5);
+            this.tableLayoutPanel3.Controls.Add(this.label2, 5, 3);
+            this.tableLayoutPanel3.Controls.Add(this.linkLabel2, 5, 6);
+            this.tableLayoutPanel3.Controls.Add(this.label3, 5, 7);
+            this.tableLayoutPanel3.Dock = System.Windows.Forms.DockStyle.Fill;
+            this.tableLayoutPanel3.Location = new System.Drawing.Point(0, 0);
+            this.tableLayoutPanel3.Name = "tableLayoutPanel3";
+            this.tableLayoutPanel3.RowCount = 10;
+            this.tableLayoutPanel3.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Percent, 10F));
+            this.tableLayoutPanel3.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Percent, 10F));
+            this.tableLayoutPanel3.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Percent, 10F));
+            this.tableLayoutPanel3.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Percent, 10F));
+            this.tableLayoutPanel3.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Percent, 10F));
+            this.tableLayoutPanel3.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Percent, 10F));
+            this.tableLayoutPanel3.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Percent, 10F));
+            this.tableLayoutPanel3.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Percent, 10F));
+            this.tableLayoutPanel3.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Percent, 10F));
+            this.tableLayoutPanel3.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Percent, 10F));
+            this.tableLayoutPanel3.Size = new System.Drawing.Size(1058, 405);
+            this.tableLayoutPanel3.TabIndex = 0;
+            // 
+            // linkLabel4
+            // 
+            this.linkLabel4.AutoSize = true;
+            this.tableLayoutPanel3.SetColumnSpan(this.linkLabel4, 7);
+            this.linkLabel4.Dock = System.Windows.Forms.DockStyle.Fill;
+            this.linkLabel4.LinkColor = System.Drawing.Color.Aqua;
+            this.linkLabel4.Location = new System.Drawing.Point(523, 240);
+            this.linkLabel4.Name = "linkLabel4";
+            this.linkLabel4.Size = new System.Drawing.Size(358, 40);
+            this.linkLabel4.TabIndex = 7;
+            this.linkLabel4.TabStop = true;
+            this.linkLabel4.Text = "text.welcome.displaysettings";
+            this.linkLabel4.TextAlign = System.Drawing.ContentAlignment.MiddleCenter;
+            this.linkLabel4.VisitedLinkColor = System.Drawing.Color.Firebrick;
+            this.linkLabel4.Click += new System.EventHandler(this.CustomSet);
+            // 
+            // linkLabel3
+            // 
+            this.linkLabel3.AutoSize = true;
+            this.tableLayoutPanel3.SetColumnSpan(this.linkLabel3, 7);
+            this.linkLabel3.Dock = System.Windows.Forms.DockStyle.Fill;
+            this.linkLabel3.LinkColor = System.Drawing.Color.Aqua;
+            this.linkLabel3.Location = new System.Drawing.Point(523, 200);
+            this.linkLabel3.Name = "linkLabel3";
+            this.linkLabel3.Size = new System.Drawing.Size(358, 40);
+            this.linkLabel3.TabIndex = 6;
+            this.linkLabel3.TabStop = true;
+            this.linkLabel3.Text = "text.welcome.newpyscript";
+            this.linkLabel3.TextAlign = System.Drawing.ContentAlignment.MiddleCenter;
+            this.linkLabel3.VisitedLinkColor = System.Drawing.Color.Firebrick;
+            // 
+            // pictureBox1
+            // 
+            this.pictureBox1.BackgroundImage = global::IDE.Properties.Resources.Icon_Ver3_152x;
+            this.pictureBox1.BackgroundImageLayout = System.Windows.Forms.ImageLayout.Center;
+            this.tableLayoutPanel3.SetColumnSpan(this.pictureBox1, 5);
+            this.pictureBox1.Dock = System.Windows.Forms.DockStyle.Fill;
+            this.pictureBox1.Location = new System.Drawing.Point(3, 3);
+            this.pictureBox1.Name = "pictureBox1";
+            this.tableLayoutPanel3.SetRowSpan(this.pictureBox1, 5);
+            this.pictureBox1.Size = new System.Drawing.Size(254, 194);
+            this.pictureBox1.TabIndex = 0;
+            this.pictureBox1.TabStop = false;
+            // 
+            // WelcomeTitle
+            // 
+            this.WelcomeTitle.AutoSize = true;
+            this.tableLayoutPanel3.SetColumnSpan(this.WelcomeTitle, 13);
+            this.WelcomeTitle.Dock = System.Windows.Forms.DockStyle.Fill;
+            this.WelcomeTitle.Font = new System.Drawing.Font("微软雅黑", 21F, System.Drawing.FontStyle.Bold);
+            this.WelcomeTitle.ForeColor = System.Drawing.SystemColors.ButtonFace;
+            this.WelcomeTitle.ImageAlign = System.Drawing.ContentAlignment.TopRight;
+            this.WelcomeTitle.Location = new System.Drawing.Point(263, 0);
+            this.WelcomeTitle.Name = "WelcomeTitle";
+            this.tableLayoutPanel3.SetRowSpan(this.WelcomeTitle, 3);
+            this.WelcomeTitle.Size = new System.Drawing.Size(670, 120);
+            this.WelcomeTitle.TabIndex = 1;
+            this.WelcomeTitle.Text = "text.welcome.title";
+            this.WelcomeTitle.TextAlign = System.Drawing.ContentAlignment.MiddleCenter;
+            this.WelcomeTitle.SizeChanged += new System.EventHandler(this.WelcomeTitle_SizeChanged);
+            // 
+            // linkLabel1
+            // 
+            this.linkLabel1.AutoSize = true;
+            this.tableLayoutPanel3.SetColumnSpan(this.linkLabel1, 5);
+            this.linkLabel1.Dock = System.Windows.Forms.DockStyle.Fill;
+            this.linkLabel1.LinkColor = System.Drawing.Color.Aqua;
+            this.linkLabel1.Location = new System.Drawing.Point(263, 200);
+            this.linkLabel1.Name = "linkLabel1";
+            this.linkLabel1.Size = new System.Drawing.Size(254, 40);
+            this.linkLabel1.TabIndex = 2;
+            this.linkLabel1.TabStop = true;
+            this.linkLabel1.Text = "text.welcome.usertutorial";
+            this.linkLabel1.TextAlign = System.Drawing.ContentAlignment.MiddleCenter;
+            this.linkLabel1.VisitedLinkColor = System.Drawing.Color.Firebrick;
+            // 
+            // label2
+            // 
+            this.label2.AutoSize = true;
+            this.tableLayoutPanel3.SetColumnSpan(this.label2, 13);
+            this.label2.Dock = System.Windows.Forms.DockStyle.Fill;
+            this.label2.Location = new System.Drawing.Point(263, 120);
+            this.label2.Name = "label2";
+            this.label2.Size = new System.Drawing.Size(670, 40);
+            this.label2.TabIndex = 3;
+            this.label2.Text = "text.welcome.poem";
+            this.label2.TextAlign = System.Drawing.ContentAlignment.MiddleRight;
+            // 
+            // linkLabel2
+            // 
+            this.linkLabel2.AutoSize = true;
+            this.tableLayoutPanel3.SetColumnSpan(this.linkLabel2, 5);
+            this.linkLabel2.Dock = System.Windows.Forms.DockStyle.Fill;
+            this.linkLabel2.LinkColor = System.Drawing.Color.Aqua;
+            this.linkLabel2.Location = new System.Drawing.Point(263, 240);
+            this.linkLabel2.Name = "linkLabel2";
+            this.linkLabel2.Size = new System.Drawing.Size(254, 40);
+            this.linkLabel2.TabIndex = 4;
+            this.linkLabel2.TabStop = true;
+            this.linkLabel2.Text = "text.welcome.initialsettings";
+            this.linkLabel2.TextAlign = System.Drawing.ContentAlignment.MiddleCenter;
+            this.linkLabel2.VisitedLinkColor = System.Drawing.Color.Firebrick;
+            // 
+            // label3
+            // 
+            this.label3.AutoSize = true;
+            this.tableLayoutPanel3.SetColumnSpan(this.label3, 15);
+            this.label3.Dock = System.Windows.Forms.DockStyle.Fill;
+            this.label3.Font = new System.Drawing.Font("微软雅黑", 10F);
+            this.label3.Location = new System.Drawing.Point(263, 280);
+            this.label3.Name = "label3";
+            this.tableLayoutPanel3.SetRowSpan(this.label3, 3);
+            this.label3.Size = new System.Drawing.Size(792, 125);
+            this.label3.TabIndex = 5;
+            this.label3.Text = "text.welcome.tip";
+            // 
             // uiTabControl1
             // 
             this.uiTabControl1.Alignment = System.Windows.Forms.TabAlignment.Bottom;
@@ -898,12 +1089,12 @@ namespace IDE
             this.uiTabControl1.FillColor = System.Drawing.Color.FromArgb(((int)(((byte)(248)))), ((int)(((byte)(248)))), ((int)(((byte)(248)))));
             this.uiTabControl1.Font = new System.Drawing.Font("微软雅黑", 9F);
             this.uiTabControl1.ItemSize = new System.Drawing.Size(150, 25);
-            this.uiTabControl1.Location = new System.Drawing.Point(3, 434);
+            this.uiTabControl1.Location = new System.Drawing.Point(3, 444);
             this.uiTabControl1.MainPage = "";
             this.uiTabControl1.MenuStyle = Sunny.UI.UIMenuStyle.Custom;
             this.uiTabControl1.Name = "uiTabControl1";
             this.uiTabControl1.SelectedIndex = 0;
-            this.uiTabControl1.Size = new System.Drawing.Size(1058, 138);
+            this.uiTabControl1.Size = new System.Drawing.Size(1058, 141);
             this.uiTabControl1.SizeMode = System.Windows.Forms.TabSizeMode.Fixed;
             this.uiTabControl1.Style = Sunny.UI.UIStyle.Custom;
             this.uiTabControl1.StyleCustomMode = true;
@@ -920,7 +1111,7 @@ namespace IDE
             this.ErrorAndExceptionsPage.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(243)))), ((int)(((byte)(249)))), ((int)(((byte)(255)))));
             this.ErrorAndExceptionsPage.Location = new System.Drawing.Point(0, 0);
             this.ErrorAndExceptionsPage.Name = "ErrorAndExceptionsPage";
-            this.ErrorAndExceptionsPage.Size = new System.Drawing.Size(1058, 113);
+            this.ErrorAndExceptionsPage.Size = new System.Drawing.Size(1058, 116);
             this.ErrorAndExceptionsPage.TabIndex = 1;
             this.ErrorAndExceptionsPage.Text = "text.bottom.errors";
             // 
@@ -939,7 +1130,7 @@ namespace IDE
             this.listView1.Location = new System.Drawing.Point(0, 0);
             this.listView1.MultiSelect = false;
             this.listView1.Name = "listView1";
-            this.listView1.Size = new System.Drawing.Size(1058, 113);
+            this.listView1.Size = new System.Drawing.Size(1058, 116);
             this.listView1.SmallImageList = this.imageList1;
             this.listView1.Sorting = System.Windows.Forms.SortOrder.Ascending;
             this.listView1.TabIndex = 0;
@@ -1039,10 +1230,10 @@ namespace IDE
             this.toolStripButton2,
             this.toolStripButton3,
             this.toolStripSeparator1});
-            this.toolStrip1.Location = new System.Drawing.Point(0, 36);
+            this.toolStrip1.Location = new System.Drawing.Point(0, 32);
             this.toolStrip1.Name = "toolStrip1";
             this.toolStrip1.RenderMode = System.Windows.Forms.ToolStripRenderMode.Professional;
-            this.toolStrip1.Size = new System.Drawing.Size(1064, 38);
+            this.toolStrip1.Size = new System.Drawing.Size(1064, 29);
             this.toolStrip1.TabIndex = 7;
             this.toolStrip1.Text = "toolStrip1";
             // 
@@ -1052,7 +1243,7 @@ namespace IDE
             this.toolStripButton1.Image = global::IDE.Properties.Resources.Run;
             this.toolStripButton1.ImageTransparentColor = System.Drawing.Color.Magenta;
             this.toolStripButton1.Name = "toolStripButton1";
-            this.toolStripButton1.Size = new System.Drawing.Size(34, 33);
+            this.toolStripButton1.Size = new System.Drawing.Size(34, 24);
             this.toolStripButton1.Text = "toolStripButton1";
             this.toolStripButton1.Click += new System.EventHandler(this.Run);
             // 
@@ -1063,7 +1254,7 @@ namespace IDE
             this.toolStripButton2.DisplayStyle = System.Windows.Forms.ToolStripItemDisplayStyle.Image;
             this.toolStripButton2.ImageTransparentColor = System.Drawing.Color.Magenta;
             this.toolStripButton2.Name = "toolStripButton2";
-            this.toolStripButton2.Size = new System.Drawing.Size(34, 33);
+            this.toolStripButton2.Size = new System.Drawing.Size(34, 24);
             this.toolStripButton2.Text = "toolStripButton2";
             this.toolStripButton2.Click += new System.EventHandler(this.ForceStop);
             // 
@@ -1073,19 +1264,19 @@ namespace IDE
             this.toolStripButton3.Image = global::IDE.Properties.Resources.Debug_Color;
             this.toolStripButton3.ImageTransparentColor = System.Drawing.Color.Magenta;
             this.toolStripButton3.Name = "toolStripButton3";
-            this.toolStripButton3.Size = new System.Drawing.Size(34, 33);
+            this.toolStripButton3.Size = new System.Drawing.Size(34, 24);
             this.toolStripButton3.Text = "toolStripButton3";
             // 
             // toolStripSeparator1
             // 
             this.toolStripSeparator1.Name = "toolStripSeparator1";
-            this.toolStripSeparator1.Size = new System.Drawing.Size(6, 38);
+            this.toolStripSeparator1.Size = new System.Drawing.Size(6, 29);
             // 
-            // statusStrip3
+            // UpdateStatusBar
             // 
-            this.statusStrip3.BackColor = System.Drawing.Color.Black;
-            this.statusStrip3.ImageScalingSize = new System.Drawing.Size(20, 20);
-            this.statusStrip3.Items.AddRange(new System.Windows.Forms.ToolStripItem[] {
+            this.UpdateStatusBar.BackColor = System.Drawing.Color.Black;
+            this.UpdateStatusBar.ImageScalingSize = new System.Drawing.Size(20, 20);
+            this.UpdateStatusBar.Items.AddRange(new System.Windows.Forms.ToolStripItem[] {
             this.Downloading,
             this.ReceivedBytes,
             this.ReceivedBytesSeparatorSign,
@@ -1095,13 +1286,14 @@ namespace IDE
             this.Percent,
             this.DownloadSpeed,
             this.UpdateControlBlocker,
+            this.UpdateCancelledTip,
             this.UpdateForceStopLabel});
-            this.statusStrip3.Location = new System.Drawing.Point(0, 617);
-            this.statusStrip3.Name = "statusStrip3";
-            this.statusStrip3.Size = new System.Drawing.Size(1064, 32);
-            this.statusStrip3.SizingGrip = false;
-            this.statusStrip3.TabIndex = 1;
-            this.statusStrip3.Visible = false;
+            this.UpdateStatusBar.Location = new System.Drawing.Point(0, 617);
+            this.UpdateStatusBar.Name = "UpdateStatusBar";
+            this.UpdateStatusBar.Size = new System.Drawing.Size(1064, 32);
+            this.UpdateStatusBar.SizingGrip = false;
+            this.UpdateStatusBar.TabIndex = 1;
+            this.UpdateStatusBar.Visible = false;
             // 
             // Downloading
             // 
@@ -1152,8 +1344,22 @@ namespace IDE
             // UpdateControlBlocker
             // 
             this.UpdateControlBlocker.Name = "UpdateControlBlocker";
-            this.UpdateControlBlocker.Size = new System.Drawing.Size(474, 25);
+            this.UpdateControlBlocker.Size = new System.Drawing.Size(123, 25);
             this.UpdateControlBlocker.Spring = true;
+            // 
+            // UpdateCancelledTip
+            // 
+            this.UpdateCancelledTip.ActiveLinkColor = System.Drawing.Color.Chocolate;
+            this.UpdateCancelledTip.Image = global::IDE.Properties.Resources.infoWarningDark;
+            this.UpdateCancelledTip.IsLink = true;
+            this.UpdateCancelledTip.LinkBehavior = System.Windows.Forms.LinkBehavior.HoverUnderline;
+            this.UpdateCancelledTip.LinkColor = System.Drawing.Color.Orange;
+            this.UpdateCancelledTip.Name = "UpdateCancelledTip";
+            this.UpdateCancelledTip.Size = new System.Drawing.Size(351, 25);
+            this.UpdateCancelledTip.Text = "Update Cancelled. Click here to close.";
+            this.UpdateCancelledTip.Visible = false;
+            this.UpdateCancelledTip.VisitedLinkColor = System.Drawing.Color.Wheat;
+            this.UpdateCancelledTip.Click += new System.EventHandler(this.CloseUpdateBar);
             // 
             // UpdateForceStopLabel
             // 
@@ -1178,7 +1384,7 @@ namespace IDE
             this.Controls.Add(this.toolStrip1);
             this.Controls.Add(this.menuStrip1);
             this.Controls.Add(this.HelpButton);
-            this.Controls.Add(this.statusStrip3);
+            this.Controls.Add(this.UpdateStatusBar);
             this.Controls.Add(this.statusStrip2);
             this.Controls.Add(this.statusStrip1);
             this.Cursor = System.Windows.Forms.Cursors.Default;
@@ -1206,13 +1412,17 @@ namespace IDE
             this.tabPage1.ResumeLayout(false);
             this.tableLayoutPanel2.ResumeLayout(false);
             ((System.ComponentModel.ISupportInitialize)(this.webView1)).EndInit();
+            this.tabPage3.ResumeLayout(false);
+            this.tableLayoutPanel3.ResumeLayout(false);
+            this.tableLayoutPanel3.PerformLayout();
+            ((System.ComponentModel.ISupportInitialize)(this.pictureBox1)).EndInit();
             this.uiTabControl1.ResumeLayout(false);
             this.ErrorAndExceptionsPage.ResumeLayout(false);
             this.tabPage2.ResumeLayout(false);
             this.toolStrip1.ResumeLayout(false);
             this.toolStrip1.PerformLayout();
-            this.statusStrip3.ResumeLayout(false);
-            this.statusStrip3.PerformLayout();
+            this.UpdateStatusBar.ResumeLayout(false);
+            this.UpdateStatusBar.PerformLayout();
             this.ResumeLayout(false);
             this.PerformLayout();
 
@@ -1305,11 +1515,11 @@ namespace IDE
         internal ToolStripStatusLabel toolStripStatusLabel8;
         internal ToolStripStatusLabel Blank;
         internal ToolStripStatusLabel UpdateIcon;
-        internal ToolStripStatusLabel toolStripStatusLabel11;
+        internal ToolStripStatusLabel UpdateIconsSeparator;
         internal ToolStripStatusLabel CanUpdateIcon;
         internal ToolStripStatusLabel toolStripStatusLabel10;
-        internal ToolStripStatusLabel toolStripStatusLabel12;
-        internal StatusStrip statusStrip3;
+        internal ToolStripStatusLabel DownloadUpdateButton;
+        internal StatusStrip UpdateStatusBar;
         internal ToolStripStatusLabel ReceivedBytes;
         internal ToolStripStatusLabel ReceivedBytesSeparatorSign;
         internal ToolStripStatusLabel ToReceiveBytes;
@@ -1318,11 +1528,22 @@ namespace IDE
         internal ToolStripStatusLabel Percent;
         internal ToolStripStatusLabel Downloading;
         internal ToolStripStatusLabel DownloadSpeed;
-        internal ToolStripStatusLabel toolStripStatusLabel9;
+        internal ToolStripStatusLabel NewUpdateTip;
         private ToolStripStatusLabel UpdateControlBlocker;
         private ToolStripStatusLabel UpdateForceStopLabel;
         private ToolStripMenuItem texttstoolapplicationresetToolStripMenuItem;
         private ToolStripMenuItem texttsapplicationpackagemanagementToolStripMenuItem;
+        private TabPage tabPage3;
+        private TableLayoutPanel tableLayoutPanel3;
+        private PictureBox pictureBox1;
+        private Label WelcomeTitle;
+        private LinkLabel linkLabel1;
+        private Label label2;
+        private LinkLabel linkLabel2;
+        private Label label3;
+        private LinkLabel linkLabel4;
+        private LinkLabel linkLabel3;
+        private ToolStripStatusLabel UpdateCancelledTip;
     }
 }
 

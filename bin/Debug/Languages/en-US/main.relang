@@ -41,6 +41,7 @@ text.ts.devmode.crashtest=Crash Test
 text.ts.file.new.proj=Project
 text.ts.file.new.file=File
 text.tc.tp.tmp=(Temporary)
+text.tc.tp.welcome=Welcome
 this.openFileDialog1.Title=Select Your File:
 text.main.selectfile.filter=Py-CN File|*.pycn|Python File|*.py|All File|*.*
 text.help.window.title.help=Help

@@ -41,6 +41,7 @@ text.ts.devmode.crashtest=クラッシュテスト
 text.ts.file.new.proj=プロジェクト
 text.ts.file.new.file=ファイル
 text.tc.tp.tmp=(一時的な)
+text.tc.tp.welcome=ようこそ
 text.main.selectfile.title=ファイルを選択：
 text.main.selectfile.filter=Py-CNファイル|*.pycn|Pythonファイル|*.py|すべてのファイル|*.*
 text.help.window.title.help=ヘルプ

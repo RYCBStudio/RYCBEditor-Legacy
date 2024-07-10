@@ -46,7 +46,7 @@ namespace IDE
             w.Start();
             startTimer.Start();
             GlobalSettings.MainFontName = reConf.Read("Display", "DisplayFont", "Microsoft YaHei UI").FontExists("Microsoft YaHei UI");
-
+            GlobalSettings.useRuntimeCompileCheck = reConf.ReadBool("Run", "useRuntimeCompileCheck", false);
             ParseArguments(args);
 
             splash = new(isLightEdit);

@@ -22,7 +22,7 @@ internal partial class UpdateGlobalDeployer
                 Main.instance.Percent.Visible = false;
                 if (DecompressFile(GlobalDefinitions.UpdateArchive_Path, path))
                 {
-                    Main.instance.toolStripStatusLabel9.Text = "Updates are ready.";
+                    Main.instance.NewUpdateTip.Text = "Updates are ready.";
                     GlobalDefinitions.UpdateDeployed = true;
                     GlobalDefinitions.DecompressedUpdateArchive_Path = path;
                 }
@@ -33,7 +33,7 @@ internal partial class UpdateGlobalDeployer
             }
             else
             {
-                Main.instance.toolStripStatusLabel9.Text = "Updates are broken.";
+                Main.instance.NewUpdateTip.Text = "Updates are broken.";
                 Main.instance.CanUpdateIcon.Image = Properties.Resources.Exception_32X;
                 Main.LOGGER.WriteLog("Fatal Error: The MD5 value or SHA256 value does not match the original value. The update file may have been modified. To keep your computer safe, IDE has stopped reading it.", EnumMsgLevel.FATAL, EnumPort.CLIENT, EnumModule.UPDATE);
             }

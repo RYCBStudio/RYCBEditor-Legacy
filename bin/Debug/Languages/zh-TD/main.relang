@@ -43,6 +43,7 @@ text.ts.file.new.proj=項目
 text.ts.file.new.file=文件
 text.ts.run.configrunners=配寘運行器
 text.tc.tp.tmp=(臨時)
+text.tc.tp.welcome=歡迎
 text.main.selectfile.title=選擇文件：
 text.main.selectfile.filter=Py-CN文件|*.pycn|Python 文件|*.py|所有文件|*.*
 text.help.window.title.help=幫助

@@ -27,6 +27,8 @@ using Microsoft.Web.WebView2.WinForms;
 using System.Threading.Tasks;
 using IDE.Init;
 using IDE.Utils.Update;
+using System.Drawing;
+using System.Web.UI.WebControls;
 #endregion
 
 namespace IDE
@@ -161,7 +163,7 @@ namespace IDE
             {
                 Width = elementHost1.Width,
                 Height = elementHost1.Height,
-                FontFamily = new FontFamily(reConf.ReadString("Editor", "Font", "Consolas")),
+                FontFamily = new System.Windows.Media.FontFamily(reConf.ReadString("Editor", "Font", "Consolas")),
                 Background = new SolidColorBrush(Editor.Back),
                 Foreground = new SolidColorBrush(Editor.Fore),
                 FontSize = reConf.ReadInt("Editor", "Size", 12),
@@ -181,6 +183,8 @@ namespace IDE
                 var xshd = HighlightingLoader.LoadXshd(reader);
                 edit.SyntaxHighlighting = HighlightingLoader.Load(xshd, HighlightingManager.Instance);
             }
+            tabControl1.TabPages.Clear();
+            tabControl1.TabPages.Add(tabPage3);
             this.Width = Screen.PrimaryScreen.WorkingArea.Width;//获取当前屏幕显示区域大小，让窗体长宽等于这个值，这里不包含任务栏哦
             this.Height = Screen.PrimaryScreen.WorkingArea.Height;//这样窗体打开的时候直接就是屏幕的大小了
             if (LightEdit)
@@ -313,7 +317,7 @@ namespace IDE
                 {
                     Width = elementHost1.Width,
                     Height = elementHost1.Height,
-                    FontFamily = new FontFamily(reConf.ReadString("Editor", "Font", "Consolas")),
+                    FontFamily = new System.Windows.Media.FontFamily(reConf.ReadString("Editor", "Font", "Consolas")),
                     Background = new SolidColorBrush(Editor.Back),
                     Foreground = new SolidColorBrush(Editor.Fore),
                     FontSize = reConf.ReadInt("Editor", "Size"),
@@ -325,7 +329,7 @@ namespace IDE
                 {
                     Width = elementHost1.Width,
                     Height = elementHost1.Height,
-                    FontFamily = new FontFamily(reConf.ReadString("Editor", "Font", "Consolas")),
+                    FontFamily = new System.Windows.Media.FontFamily(reConf.ReadString("Editor", "Font", "Consolas")),
                     Background = new SolidColorBrush(Editor.Back),
                     Foreground = new SolidColorBrush(Editor.Fore),
                     FontSize = reConf.ReadInt("Editor", "Size"),
@@ -399,7 +403,7 @@ namespace IDE
                 {
                     Width = elementHost1.Width,
                     Height = elementHost1.Height,
-                    FontFamily = new FontFamily(reConf.ReadString("Editor", "Font", "Consolas")),
+                    FontFamily = new System.Windows.Media.FontFamily(reConf.ReadString("Editor", "Font", "Consolas")),
                     Background = new SolidColorBrush(Editor.Back),
                     Foreground = new SolidColorBrush(Editor.Fore),
                     FontSize = reConf.ReadInt("Editor", "Size"),
@@ -522,7 +526,12 @@ namespace IDE
                 return null;
             }
 
-            return (table.Controls[0] as ElementHost).Child as TextEditor;
+            if (table.Controls[0] is not ElementHost ele)
+            {
+                return null;
+            }
+
+            return ele.Child as TextEditor;
         }
 
         private string GetTabTitle()
@@ -1117,50 +1126,68 @@ namespace IDE
         #region 检查语法错误
         private void CheckSyntaxError(object sender, EventArgs e)
         {
+            listView1.Items.Clear();
             var editor = GetCurrentTextEditor();
             if (editor is null) { return; }
-            var content = editor.Text;
-            if (tabControl1.SelectedTab.ToolTipText != null)
+            var content = editor.Text; if (content.IsNullOrEmpty()) return;
+            var res = PythonSyntaxErrorChecker.SyntaxCheck(content).Split("\r\n");
+            if (res.Length == 1 & res[0] == "Find No Error.") { res = []; }
+            var _res = PythonErrorAnalyzer.AnalyzePythonFile(content);
+            var tmpExs = new List<System.Windows.Forms.ListViewItem>();
+            for (; _i < res.Length; _i++)
             {
-                //var ret = RunPythonSrcipt(tabControl1.SelectedTab.ToolTipText)[1];
-                if (content.IsNullOrEmpty()) return;
-                var res = PythonSyntaxErrorChecker.SyntaxCheck(content).Split("\r\n");
-                //var res = PythonErrorAnalyzer.AnalyzePythonFile(content);
-                //var types = (List<string>)res["Type"];
-                //var desc = new List<string>()/*(List<string>)res["Description"]*/;
-                //var lines = new List<int>()/*(List<int>)res["Line"]*/;
-                var tmpExs = new List<ListViewItem>();
-                for (; _i < res.Length; _i++)
+                var tmpEx = new System.Windows.Forms.ListViewItem("[ERROR]", imageKey: "EII")
                 {
-                    var tmpEx = new ListViewItem("[ERROR]", imageKey: "EII")
-                    {
-                        Text = "   ",
-                    };
-                    tmpExs.Add(tmpEx);
-                }
-                for (var i = 0; i <= tmpExs.Count; ++i)
-                {
-                    tmpExs[i].SubItems.Add(new ListViewItem.ListViewSubItem() { Text = "" });
-                    tmpExs[i].SubItems.Add(new ListViewItem.ListViewSubItem() { Text = res[i].Between("|Ls-", "-Le|") });
-                    tmpExs[i].SubItems.Add(new ListViewItem.ListViewSubItem() { Text = res[i].Between("|Ds-", "-De|") });
-                }
-                foreach (var item in tmpExs)
-                {
-                    listView1.Items.Add(item);
-                }
-                //foreach (var item in types)
-                //{
-                //    listView1.Items[types.IndexOf(item)].SubItems.Add(new ListViewItem.ListViewSubItem() { Text = item });
-                //}
-                //foreach (var item in desc)
-                //{
-                //    listView1.Items[desc.IndexOf(item)].SubItems.Add(new ListViewItem.ListViewSubItem() { Text = item });
-                //}
-                //foreach (var item in lines)
-                //{
-                //    listView1.Items[lines.IndexOf(item)].SubItems.Add(new ListViewItem.ListViewSubItem() { Text = item.ToString() });
-                //}
+                    Text = "   ",
+                };
+                tmpExs.Add(tmpEx);
             }
+            for (var i = 0; i < tmpExs.Count; i++)
+            {
+                tmpExs[i].SubItems.Add(new System.Windows.Forms.ListViewItem.ListViewSubItem() { Text = "" });
+                tmpExs[i].SubItems.Add(new System.Windows.Forms.ListViewItem.ListViewSubItem() { Text = res[i].Between("|Ls-", "-Le|") });
+                tmpExs[i].SubItems.Add(new System.Windows.Forms.ListViewItem.ListViewSubItem() { Text = res[i].Between("|Ds-", "-De|") });
+            }
+            foreach (var item in _res)
+            {
+                var tmpEx = new System.Windows.Forms.ListViewItem("[ERROR]", imageKey: "EII")
+                {
+                    Text = "   ",
+                };
+                tmpEx.SubItems.Add(new System.Windows.Forms.ListViewItem.ListViewSubItem()
+                {
+                    Text = item["Type"]
+                });
+                if (item["Type"].Contains("Exception") || item["Type"].Contains("Error"))
+                {
+                    tmpEx.ImageKey = "exception";
+                }
+                tmpEx.SubItems.Add(new System.Windows.Forms.ListViewItem.ListViewSubItem()
+                {
+                    Text = item["Desc"]
+                });
+                tmpEx.SubItems.Add(new System.Windows.Forms.ListViewItem.ListViewSubItem()
+                {
+                    Text = item["Line"]
+                });
+                tmpExs.Add(tmpEx);
+            }
+            foreach (var item in tmpExs)
+            {
+                listView1.Items.Add(item);
+            }
+            //foreach (var item in types)
+            //{
+            //    listView1.Items[types.IndexOf(item)].SubItems.Add(new ListViewItem.ListViewSubItem() { Text = item });
+            //}
+            //foreach (var item in desc)
+            //{
+            //    listView1.Items[desc.IndexOf(item)].SubItems.Add(new ListViewItem.ListViewSubItem() { Text = item });
+            //}
+            //foreach (var item in lines)
+            //{
+            //    listView1.Items[lines.IndexOf(item)].SubItems.Add(new ListViewItem.ListViewSubItem() { Text = item.ToString() });
+            //}
         }
         #endregion
         #region 循环判断：窗体是否处于最大化状态
@@ -1303,10 +1330,7 @@ namespace IDE
                         _keywords = LangKeywords.Keywords.python;
                         _specialdefs = LangKeywords.SpecialDefs.python;
                         _builtins = LangKeywords.BulitIns.py;
-                        if (!_tmpfilepath.IsNullOrEmpty())
-                        {
-                            _fields.AddRange(PythonVariableAnalyzer.Analyze(GetCurrentTextEditor().Text));
-                        }
+                        _fields.AddRange(new PythonVariableAnalyzer(GetCurrentTextEditor().Text).Process());
                         break;
                     case "Py-CN":
                         _keywords = LangKeywords.Keywords.pycn;
@@ -1415,6 +1439,18 @@ namespace IDE
 
         private async void FirstInit(object sender, EventArgs e)
         {
+            var size = WelcomeTitle.Font.Size;
+            var fontStyle = WelcomeTitle.Font.Style;
+            var ff = WelcomeTitle.Font.Name;
+            var lblWidth = WelcomeTitle.Width;
+            this.WelcomeTitle.AutoSize = true;
+            while (this.WelcomeTitle.Width > lblWidth)
+            {
+                size -= 0.25F;
+                this.WelcomeTitle.Font = new Font(ff, size, fontStyle, GraphicsUnit.World);
+            }
+            this.WelcomeTitle.AutoSize = false;
+            this.WelcomeTitle.Width = lblWidth;
             ExecuteCMDWithOutput("mkdir " + Environment.GetFolderPath(Environment.SpecialFolder.ApplicationData) + "\\RYCB\\IDE\\protect", "cmd", "/s /c");
             keepFile = new StreamWriter(new FileStream(Environment.GetFolderPath(Environment.SpecialFolder.ApplicationData) + "\\RYCB\\IDE\\protect\\.KEEP", FileMode.OpenOrCreate, FileAccess.ReadWrite, FileShare.ReadWrite), Encoding.UTF8);
             stopwatch.Start();
@@ -1475,6 +1511,7 @@ namespace IDE
 
         private new void Layout(object sender, TabControlEventArgs e)
         {
+            if (tabControl1.SelectedTab == null) { return; }
             if (tabControl1.SelectedTab.Text.Length >= 32)
             {
                 tabControl1.ItemSize = new System.Drawing.Size(500, tabControl1.ItemSize.Height);
@@ -1521,12 +1558,27 @@ namespace IDE
         }
         #endregion
         #region 界面调整
+        private void WelcomeTitle_SizeChanged(object sender, EventArgs e)
+        {
+            var size = WelcomeTitle.Font.Size;
+            var fontStyle = WelcomeTitle.Font.Style;
+            var ff = WelcomeTitle.Font.Name;
+            var lblWidth = WelcomeTitle.Width;
+            this.WelcomeTitle.AutoSize = true;
+            while (this.WelcomeTitle.Width > lblWidth)
+            {
+                size -= 0.25F;
+                this.WelcomeTitle.Font = new Font(ff, size, fontStyle, GraphicsUnit.World);
+            }
+            this.WelcomeTitle.AutoSize = false;
+            this.WelcomeTitle.Width = lblWidth;
+        }
         private void Validating_Layout(object sender, System.ComponentModel.CancelEventArgs e)
         {
             Layout(sender, new TabControlEventArgs(tabControl1.SelectedTab, tabControl1.SelectedIndex, TabControlAction.Selecting));
         }
 
-        private void Layout(object sender, EventArgs e)
+        private new void Layout(object sender, EventArgs e)
         {
             Layout(sender, new TabControlEventArgs(tabControl1.SelectedTab, tabControl1.SelectedIndex, TabControlAction.Selecting));
         }
@@ -1793,7 +1845,7 @@ namespace IDE
                 {
                     Width = elementHost1.Width,
                     Height = elementHost1.Height,
-                    FontFamily = new FontFamily(reConf.ReadString("Editor", "Font", "Consolas")),
+                    FontFamily = new System.Windows.Media.FontFamily(reConf.ReadString("Editor", "Font", "Consolas")),
                     Background = new SolidColorBrush(Editor.Back),
                     Foreground = new SolidColorBrush(Editor.Fore),
                     FontSize = reConf.ReadInt("Editor", "Size"),
@@ -1859,7 +1911,7 @@ namespace IDE
                 {
                     Width = elementHost1.Width,
                     Height = elementHost1.Height,
-                    FontFamily = new FontFamily(reConf.ReadString("Editor", "Font", "Consolas")),
+                    FontFamily = new System.Windows.Media.FontFamily(reConf.ReadString("Editor", "Font", "Consolas")),
                     Background = new SolidColorBrush(Editor.Back),
                     Foreground = new SolidColorBrush(Editor.Fore),
                     FontSize = reConf.ReadInt("Editor", "Size"),
@@ -1872,7 +1924,7 @@ namespace IDE
                 {
                     Width = elementHost1.Width,
                     Height = elementHost1.Height,
-                    FontFamily = new FontFamily(reConf.ReadString("Editor", "Font", "Consolas")),
+                    FontFamily = new System.Windows.Media.FontFamily(reConf.ReadString("Editor", "Font", "Consolas")),
                     Background = new SolidColorBrush(Editor.Back),
                     Foreground = new SolidColorBrush(Editor.Fore),
                     FontSize = reConf.ReadInt("Editor", "Size"),
@@ -1952,7 +2004,7 @@ namespace IDE
                 {
                     Width = elementHost1.Width,
                     Height = elementHost1.Height,
-                    FontFamily = new FontFamily(reConf.ReadString("Editor", "Font", "Consolas")),
+                    FontFamily = new System.Windows.Media.FontFamily(reConf.ReadString("Editor", "Font", "Consolas")),
                     Background = new SolidColorBrush(Editor.Back),
                     Foreground = new SolidColorBrush(Editor.Fore),
                     FontSize = reConf.ReadInt("Editor", "Size"),
@@ -1964,7 +2016,7 @@ namespace IDE
                 {
                     Width = elementHost1.Width,
                     Height = elementHost1.Height,
-                    FontFamily = new FontFamily(reConf.ReadString("Editor", "Font", "Consolas")),
+                    FontFamily = new System.Windows.Media.FontFamily(reConf.ReadString("Editor", "Font", "Consolas")),
                     Background = new SolidColorBrush(Editor.Back),
                     Foreground = new SolidColorBrush(Editor.Fore),
                     FontSize = reConf.ReadInt("Editor", "Size"),
@@ -2054,7 +2106,7 @@ namespace IDE
                 {
                     Width = elementHost1.Width,
                     Height = elementHost1.Height,
-                    FontFamily = new FontFamily("Consolas"),
+                    FontFamily = new System.Windows.Media.FontFamily("Consolas"),
                     Background = new SolidColorBrush(Editor.Back),
                     Foreground = new SolidColorBrush(Editor.Fore),
                     ShowLineNumbers = true,
@@ -2157,6 +2209,7 @@ namespace IDE
                 var tmpETable = tabControl1.SelectedTab.Controls[0] as TableLayoutPanel;
                 if (tmpETable.Controls[0] is not null)
                 {
+                    if (!(tmpETable.Controls[0] is ElementHost)) { return null; }
                     return ((tmpETable.Controls[0] as ElementHost).Child as TextEditor);
                 }
                 return null;
@@ -2206,9 +2259,9 @@ namespace IDE
 
         private async void DownloadUpdate(object sender, EventArgs e)
         {
-            statusStrip3.Show();
+            UpdateStatusBar.Show();
             activeubd = new UpdateBackgroundDownloader();
-            toolStripStatusLabel12.Enabled = false;
+            DownloadUpdateButton.Enabled = false;
             LOGGER.WriteLog("下载更新文件。", EnumMsgLevel.INFO, EnumPort.CLIENT, EnumModule.UPDATE);
             await activeubd.DownloadUpdateAsync();
             if (activeubd.downloader.IsCancelled)
@@ -2253,12 +2306,16 @@ namespace IDE
             activeubd.downloader.CancelAsync();
             if (activeubd.downloader.IsCancelled)
             {
+                UpdateCancelledTip.Visible = true;
                 LOGGER.WriteLog("Update Cancelled.", EnumMsgLevel.WARN, EnumPort.CLIENT, EnumModule.UPDATE);
                 return;
             }
             LOGGER.WriteLog("Fail to cancel update task.", EnumMsgLevel.WARN, EnumPort.SERVER, EnumModule.UPDATE);
         }
-
+        private void CloseUpdateBar(object sender, EventArgs e)
+        {
+            UpdateStatusBar.Visible = false;
+        }
         #endregion
         #region extern模块
         [DllImport("user32.dll", EntryPoint = "PostMessage")]

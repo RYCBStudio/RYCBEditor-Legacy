@@ -40,17 +40,22 @@ partial class CacheCleaner
             this.BtnOk = new Sunny.UI.UIButton();
             this.uiCheckBox1 = new Sunny.UI.UICheckBox();
             this.uiCheckBox2 = new Sunny.UI.UICheckBox();
+            this.uiTableLayoutPanel1 = new Sunny.UI.UITableLayoutPanel();
+            this.uiCheckBox3 = new Sunny.UI.UICheckBox();
+            this.uiTableLayoutPanel1.SuspendLayout();
             this.SuspendLayout();
             // 
             // CLogFile
             // 
+            this.uiTableLayoutPanel1.SetColumnSpan(this.CLogFile, 10);
             this.CLogFile.Cursor = System.Windows.Forms.Cursors.Hand;
+            this.CLogFile.Dock = System.Windows.Forms.DockStyle.Fill;
             this.CLogFile.Font = new System.Drawing.Font("微软雅黑", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(134)));
             this.CLogFile.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(48)))), ((int)(((byte)(48)))), ((int)(((byte)(48)))));
-            this.CLogFile.Location = new System.Drawing.Point(3, 90);
+            this.CLogFile.Location = new System.Drawing.Point(3, 91);
             this.CLogFile.MinimumSize = new System.Drawing.Size(1, 1);
             this.CLogFile.Name = "CLogFile";
-            this.CLogFile.Size = new System.Drawing.Size(621, 37);
+            this.CLogFile.Size = new System.Drawing.Size(621, 38);
             this.CLogFile.Style = Sunny.UI.UIStyle.Custom;
             this.CLogFile.StyleCustomMode = true;
             this.CLogFile.TabIndex = 0;
@@ -59,13 +64,15 @@ partial class CacheCleaner
             // 
             // CPyCNCompiledFile
             // 
+            this.uiTableLayoutPanel1.SetColumnSpan(this.CPyCNCompiledFile, 10);
             this.CPyCNCompiledFile.Cursor = System.Windows.Forms.Cursors.Hand;
+            this.CPyCNCompiledFile.Dock = System.Windows.Forms.DockStyle.Fill;
             this.CPyCNCompiledFile.Font = new System.Drawing.Font("微软雅黑", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(134)));
             this.CPyCNCompiledFile.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(48)))), ((int)(((byte)(48)))), ((int)(((byte)(48)))));
-            this.CPyCNCompiledFile.Location = new System.Drawing.Point(3, 133);
+            this.CPyCNCompiledFile.Location = new System.Drawing.Point(3, 47);
             this.CPyCNCompiledFile.MinimumSize = new System.Drawing.Size(1, 1);
             this.CPyCNCompiledFile.Name = "CPyCNCompiledFile";
-            this.CPyCNCompiledFile.Size = new System.Drawing.Size(621, 37);
+            this.CPyCNCompiledFile.Size = new System.Drawing.Size(621, 38);
             this.CPyCNCompiledFile.Style = Sunny.UI.UIStyle.Custom;
             this.CPyCNCompiledFile.StyleCustomMode = true;
             this.CPyCNCompiledFile.TabIndex = 1;
@@ -74,13 +81,15 @@ partial class CacheCleaner
             // 
             // CTemporaryCode
             // 
+            this.uiTableLayoutPanel1.SetColumnSpan(this.CTemporaryCode, 10);
             this.CTemporaryCode.Cursor = System.Windows.Forms.Cursors.Hand;
+            this.CTemporaryCode.Dock = System.Windows.Forms.DockStyle.Fill;
             this.CTemporaryCode.Font = new System.Drawing.Font("微软雅黑", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(134)));
             this.CTemporaryCode.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(48)))), ((int)(((byte)(48)))), ((int)(((byte)(48)))));
-            this.CTemporaryCode.Location = new System.Drawing.Point(3, 176);
+            this.CTemporaryCode.Location = new System.Drawing.Point(3, 135);
             this.CTemporaryCode.MinimumSize = new System.Drawing.Size(1, 1);
             this.CTemporaryCode.Name = "CTemporaryCode";
-            this.CTemporaryCode.Size = new System.Drawing.Size(621, 37);
+            this.CTemporaryCode.Size = new System.Drawing.Size(621, 38);
             this.CTemporaryCode.Style = Sunny.UI.UIStyle.Custom;
             this.CTemporaryCode.StyleCustomMode = true;
             this.CTemporaryCode.TabIndex = 2;
@@ -90,12 +99,14 @@ partial class CacheCleaner
             // uiLine1
             // 
             this.uiLine1.BackColor = System.Drawing.Color.Transparent;
+            this.uiTableLayoutPanel1.SetColumnSpan(this.uiLine1, 10);
+            this.uiLine1.Dock = System.Windows.Forms.DockStyle.Fill;
             this.uiLine1.Font = new System.Drawing.Font("微软雅黑", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(134)));
             this.uiLine1.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(48)))), ((int)(((byte)(48)))), ((int)(((byte)(48)))));
             this.uiLine1.LineColor2 = System.Drawing.Color.White;
             this.uiLine1.LineDashStyle = Sunny.UI.UILineDashStyle.Solid;
             this.uiLine1.LineSize = 5;
-            this.uiLine1.Location = new System.Drawing.Point(3, 38);
+            this.uiLine1.Location = new System.Drawing.Point(3, 3);
             this.uiLine1.MinimumSize = new System.Drawing.Size(1, 1);
             this.uiLine1.Name = "uiLine1";
             this.uiLine1.Size = new System.Drawing.Size(621, 38);
@@ -106,12 +117,14 @@ partial class CacheCleaner
             // 
             // uiProcessBar1
             // 
+            this.uiTableLayoutPanel1.SetColumnSpan(this.uiProcessBar1, 10);
+            this.uiProcessBar1.Dock = System.Windows.Forms.DockStyle.Fill;
             this.uiProcessBar1.FillColor = System.Drawing.Color.FromArgb(((int)(((byte)(235)))), ((int)(((byte)(243)))), ((int)(((byte)(255)))));
             this.uiProcessBar1.Font = new System.Drawing.Font("微软雅黑", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(134)));
-            this.uiProcessBar1.Location = new System.Drawing.Point(3, 402);
+            this.uiProcessBar1.Location = new System.Drawing.Point(3, 355);
             this.uiProcessBar1.MinimumSize = new System.Drawing.Size(70, 3);
             this.uiProcessBar1.Name = "uiProcessBar1";
-            this.uiProcessBar1.Size = new System.Drawing.Size(621, 34);
+            this.uiProcessBar1.Size = new System.Drawing.Size(621, 38);
             this.uiProcessBar1.Style = Sunny.UI.UIStyle.Custom;
             this.uiProcessBar1.StyleCustomMode = true;
             this.uiProcessBar1.TabIndex = 4;
@@ -120,12 +133,14 @@ partial class CacheCleaner
             // uiLine2
             // 
             this.uiLine2.BackColor = System.Drawing.Color.Transparent;
+            this.uiTableLayoutPanel1.SetColumnSpan(this.uiLine2, 10);
+            this.uiLine2.Dock = System.Windows.Forms.DockStyle.Fill;
             this.uiLine2.Font = new System.Drawing.Font("微软雅黑", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(134)));
             this.uiLine2.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(48)))), ((int)(((byte)(48)))), ((int)(((byte)(48)))));
             this.uiLine2.LineColor2 = System.Drawing.Color.White;
             this.uiLine2.LineDashStyle = Sunny.UI.UILineDashStyle.Solid;
             this.uiLine2.LineSize = 5;
-            this.uiLine2.Location = new System.Drawing.Point(3, 358);
+            this.uiLine2.Location = new System.Drawing.Point(3, 311);
             this.uiLine2.MinimumSize = new System.Drawing.Size(1, 1);
             this.uiLine2.Name = "uiLine2";
             this.uiLine2.Size = new System.Drawing.Size(621, 38);
@@ -136,12 +151,14 @@ partial class CacheCleaner
             // 
             // BtnStart
             // 
+            this.uiTableLayoutPanel1.SetColumnSpan(this.BtnStart, 2);
             this.BtnStart.Cursor = System.Windows.Forms.Cursors.Hand;
+            this.BtnStart.Dock = System.Windows.Forms.DockStyle.Fill;
             this.BtnStart.Font = new System.Drawing.Font("微软雅黑", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(134)));
-            this.BtnStart.Location = new System.Drawing.Point(315, 442);
+            this.BtnStart.Location = new System.Drawing.Point(251, 399);
             this.BtnStart.MinimumSize = new System.Drawing.Size(1, 1);
             this.BtnStart.Name = "BtnStart";
-            this.BtnStart.Size = new System.Drawing.Size(99, 36);
+            this.BtnStart.Size = new System.Drawing.Size(118, 44);
             this.BtnStart.Style = Sunny.UI.UIStyle.Custom;
             this.BtnStart.StyleCustomMode = true;
             this.BtnStart.TabIndex = 6;
@@ -151,13 +168,15 @@ partial class CacheCleaner
             // 
             // BtnCancel
             // 
+            this.uiTableLayoutPanel1.SetColumnSpan(this.BtnCancel, 2);
             this.BtnCancel.Cursor = System.Windows.Forms.Cursors.Hand;
             this.BtnCancel.DialogResult = System.Windows.Forms.DialogResult.Cancel;
+            this.BtnCancel.Dock = System.Windows.Forms.DockStyle.Fill;
             this.BtnCancel.Font = new System.Drawing.Font("微软雅黑", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(134)));
-            this.BtnCancel.Location = new System.Drawing.Point(525, 442);
+            this.BtnCancel.Location = new System.Drawing.Point(499, 399);
             this.BtnCancel.MinimumSize = new System.Drawing.Size(1, 1);
             this.BtnCancel.Name = "BtnCancel";
-            this.BtnCancel.Size = new System.Drawing.Size(99, 36);
+            this.BtnCancel.Size = new System.Drawing.Size(125, 44);
             this.BtnCancel.Style = Sunny.UI.UIStyle.Custom;
             this.BtnCancel.StyleCustomMode = true;
             this.BtnCancel.TabIndex = 7;
@@ -167,13 +186,15 @@ partial class CacheCleaner
             // 
             // BtnOk
             // 
+            this.uiTableLayoutPanel1.SetColumnSpan(this.BtnOk, 2);
             this.BtnOk.Cursor = System.Windows.Forms.Cursors.Hand;
             this.BtnOk.DialogResult = System.Windows.Forms.DialogResult.OK;
+            this.BtnOk.Dock = System.Windows.Forms.DockStyle.Fill;
             this.BtnOk.Font = new System.Drawing.Font("微软雅黑", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(134)));
-            this.BtnOk.Location = new System.Drawing.Point(420, 442);
+            this.BtnOk.Location = new System.Drawing.Point(375, 399);
             this.BtnOk.MinimumSize = new System.Drawing.Size(1, 1);
             this.BtnOk.Name = "BtnOk";
-            this.BtnOk.Size = new System.Drawing.Size(99, 36);
+            this.BtnOk.Size = new System.Drawing.Size(118, 44);
             this.BtnOk.Style = Sunny.UI.UIStyle.Custom;
             this.BtnOk.StyleCustomMode = true;
             this.BtnOk.TabIndex = 8;
@@ -182,13 +203,15 @@ partial class CacheCleaner
             // 
             // uiCheckBox1
             // 
+            this.uiTableLayoutPanel1.SetColumnSpan(this.uiCheckBox1, 10);
             this.uiCheckBox1.Cursor = System.Windows.Forms.Cursors.Hand;
+            this.uiCheckBox1.Dock = System.Windows.Forms.DockStyle.Fill;
             this.uiCheckBox1.Font = new System.Drawing.Font("微软雅黑", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(134)));
             this.uiCheckBox1.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(48)))), ((int)(((byte)(48)))), ((int)(((byte)(48)))));
-            this.uiCheckBox1.Location = new System.Drawing.Point(3, 219);
+            this.uiCheckBox1.Location = new System.Drawing.Point(3, 179);
             this.uiCheckBox1.MinimumSize = new System.Drawing.Size(1, 1);
             this.uiCheckBox1.Name = "uiCheckBox1";
-            this.uiCheckBox1.Size = new System.Drawing.Size(621, 37);
+            this.uiCheckBox1.Size = new System.Drawing.Size(621, 38);
             this.uiCheckBox1.Style = Sunny.UI.UIStyle.Custom;
             this.uiCheckBox1.StyleCustomMode = true;
             this.uiCheckBox1.TabIndex = 9;
@@ -197,38 +220,88 @@ partial class CacheCleaner
             // 
             // uiCheckBox2
             // 
+            this.uiTableLayoutPanel1.SetColumnSpan(this.uiCheckBox2, 10);
             this.uiCheckBox2.Cursor = System.Windows.Forms.Cursors.Hand;
+            this.uiCheckBox2.Dock = System.Windows.Forms.DockStyle.Fill;
             this.uiCheckBox2.Font = new System.Drawing.Font("微软雅黑", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(134)));
             this.uiCheckBox2.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(48)))), ((int)(((byte)(48)))), ((int)(((byte)(48)))));
-            this.uiCheckBox2.Location = new System.Drawing.Point(3, 262);
+            this.uiCheckBox2.Location = new System.Drawing.Point(3, 223);
             this.uiCheckBox2.MinimumSize = new System.Drawing.Size(1, 1);
             this.uiCheckBox2.Name = "uiCheckBox2";
-            this.uiCheckBox2.Size = new System.Drawing.Size(621, 37);
+            this.uiCheckBox2.Size = new System.Drawing.Size(621, 38);
             this.uiCheckBox2.Style = Sunny.UI.UIStyle.Custom;
             this.uiCheckBox2.StyleCustomMode = true;
             this.uiCheckBox2.TabIndex = 10;
             this.uiCheckBox2.Text = "text.window.cc.choices.updateres";
             this.uiCheckBox2.CheckedChanged += new System.EventHandler(this.ChangeState_UR);
             // 
+            // uiTableLayoutPanel1
+            // 
+            this.uiTableLayoutPanel1.ColumnCount = 10;
+            this.uiTableLayoutPanel1.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Percent, 10F));
+            this.uiTableLayoutPanel1.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Percent, 10F));
+            this.uiTableLayoutPanel1.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Percent, 10F));
+            this.uiTableLayoutPanel1.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Percent, 10F));
+            this.uiTableLayoutPanel1.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Percent, 10F));
+            this.uiTableLayoutPanel1.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Percent, 10F));
+            this.uiTableLayoutPanel1.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Percent, 10F));
+            this.uiTableLayoutPanel1.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Percent, 10F));
+            this.uiTableLayoutPanel1.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Percent, 10F));
+            this.uiTableLayoutPanel1.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Percent, 10F));
+            this.uiTableLayoutPanel1.Controls.Add(this.uiCheckBox3, 0, 6);
+            this.uiTableLayoutPanel1.Controls.Add(this.uiCheckBox2, 0, 5);
+            this.uiTableLayoutPanel1.Controls.Add(this.CLogFile, 0, 2);
+            this.uiTableLayoutPanel1.Controls.Add(this.BtnStart, 4, 9);
+            this.uiTableLayoutPanel1.Controls.Add(this.uiCheckBox1, 0, 4);
+            this.uiTableLayoutPanel1.Controls.Add(this.uiProcessBar1, 0, 8);
+            this.uiTableLayoutPanel1.Controls.Add(this.uiLine2, 0, 7);
+            this.uiTableLayoutPanel1.Controls.Add(this.CPyCNCompiledFile, 0, 1);
+            this.uiTableLayoutPanel1.Controls.Add(this.CTemporaryCode, 0, 3);
+            this.uiTableLayoutPanel1.Controls.Add(this.uiLine1, 0, 0);
+            this.uiTableLayoutPanel1.Controls.Add(this.BtnOk, 6, 9);
+            this.uiTableLayoutPanel1.Controls.Add(this.BtnCancel, 8, 9);
+            this.uiTableLayoutPanel1.Dock = System.Windows.Forms.DockStyle.Fill;
+            this.uiTableLayoutPanel1.Location = new System.Drawing.Point(0, 35);
+            this.uiTableLayoutPanel1.Name = "uiTableLayoutPanel1";
+            this.uiTableLayoutPanel1.RowCount = 10;
+            this.uiTableLayoutPanel1.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Percent, 10F));
+            this.uiTableLayoutPanel1.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Percent, 10F));
+            this.uiTableLayoutPanel1.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Percent, 10F));
+            this.uiTableLayoutPanel1.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Percent, 10F));
+            this.uiTableLayoutPanel1.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Percent, 10F));
+            this.uiTableLayoutPanel1.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Percent, 10F));
+            this.uiTableLayoutPanel1.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Percent, 10F));
+            this.uiTableLayoutPanel1.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Percent, 10F));
+            this.uiTableLayoutPanel1.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Percent, 10F));
+            this.uiTableLayoutPanel1.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Percent, 10F));
+            this.uiTableLayoutPanel1.Size = new System.Drawing.Size(627, 446);
+            this.uiTableLayoutPanel1.TabIndex = 11;
+            this.uiTableLayoutPanel1.TagString = null;
+            // 
+            // uiCheckBox3
+            // 
+            this.uiTableLayoutPanel1.SetColumnSpan(this.uiCheckBox3, 10);
+            this.uiCheckBox3.Cursor = System.Windows.Forms.Cursors.Hand;
+            this.uiCheckBox3.Dock = System.Windows.Forms.DockStyle.Fill;
+            this.uiCheckBox3.Font = new System.Drawing.Font("微软雅黑", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(134)));
+            this.uiCheckBox3.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(48)))), ((int)(((byte)(48)))), ((int)(((byte)(48)))));
+            this.uiCheckBox3.Location = new System.Drawing.Point(3, 267);
+            this.uiCheckBox3.MinimumSize = new System.Drawing.Size(1, 1);
+            this.uiCheckBox3.Name = "uiCheckBox3";
+            this.uiCheckBox3.Size = new System.Drawing.Size(621, 38);
+            this.uiCheckBox3.Style = Sunny.UI.UIStyle.Custom;
+            this.uiCheckBox3.StyleCustomMode = true;
+            this.uiCheckBox3.TabIndex = 11;
+            this.uiCheckBox3.Text = "text.window.cc.choices.cachepath";
+            this.uiCheckBox3.CheckedChanged += new System.EventHandler(this.ChangeStatus_CP);
+            // 
             // CacheCleaner
             // 
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.None;
             this.ClientSize = new System.Drawing.Size(627, 481);
-            this.Controls.Add(this.uiCheckBox2);
-            this.Controls.Add(this.uiCheckBox1);
-            this.Controls.Add(this.BtnOk);
-            this.Controls.Add(this.BtnCancel);
-            this.Controls.Add(this.BtnStart);
-            this.Controls.Add(this.uiLine2);
-            this.Controls.Add(this.uiProcessBar1);
-            this.Controls.Add(this.uiLine1);
-            this.Controls.Add(this.CTemporaryCode);
-            this.Controls.Add(this.CPyCNCompiledFile);
-            this.Controls.Add(this.CLogFile);
+            this.Controls.Add(this.uiTableLayoutPanel1);
             this.Font = new System.Drawing.Font("微软雅黑", 12F);
             this.Icon = ((System.Drawing.Icon)(resources.GetObject("$this.Icon")));
-            this.MaximizeBox = false;
-            this.MinimizeBox = false;
             this.Name = "CacheCleaner";
             this.ShowTitleIcon = true;
             this.Style = Sunny.UI.UIStyle.Custom;
@@ -236,6 +309,7 @@ partial class CacheCleaner
             this.Text = "text.window.cachecleaner.title";
             this.TitleFont = new System.Drawing.Font("微软雅黑", 12F);
             this.ZoomScaleRect = new System.Drawing.Rectangle(19, 19, 800, 450);
+            this.uiTableLayoutPanel1.ResumeLayout(false);
             this.ResumeLayout(false);
 
     }
@@ -253,4 +327,6 @@ partial class CacheCleaner
     private Sunny.UI.UIButton BtnOk;
     private Sunny.UI.UICheckBox uiCheckBox1;
     private Sunny.UI.UICheckBox uiCheckBox2;
+    private Sunny.UI.UITableLayoutPanel uiTableLayoutPanel1;
+    private Sunny.UI.UICheckBox uiCheckBox3;
 }

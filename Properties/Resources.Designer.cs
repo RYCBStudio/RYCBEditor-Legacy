@@ -583,6 +583,26 @@ namespace IDE.Properties {
         /// <summary>
         ///   查找 System.Drawing.Bitmap 类型的本地化资源。
         /// </summary>
+        public static System.Drawing.Bitmap Icon_Ver3_152x {
+            get {
+                object obj = ResourceManager.GetObject("Icon-Ver3.152x", resourceCulture);
+                return ((System.Drawing.Bitmap)(obj));
+            }
+        }
+        
+        /// <summary>
+        ///   查找 System.Drawing.Bitmap 类型的本地化资源。
+        /// </summary>
+        public static System.Drawing.Bitmap Icon_Ver3_256x {
+            get {
+                object obj = ResourceManager.GetObject("Icon-Ver3.256x", resourceCulture);
+                return ((System.Drawing.Bitmap)(obj));
+            }
+        }
+        
+        /// <summary>
+        ///   查找 System.Drawing.Bitmap 类型的本地化资源。
+        /// </summary>
         public static System.Drawing.Bitmap iconredo_2x {
             get {
                 object obj = ResourceManager.GetObject("iconredo@2x", resourceCulture);
@@ -646,6 +666,16 @@ namespace IDE.Properties {
         public static System.Drawing.Bitmap Info_dark {
             get {
                 object obj = ResourceManager.GetObject("Info_dark", resourceCulture);
+                return ((System.Drawing.Bitmap)(obj));
+            }
+        }
+        
+        /// <summary>
+        ///   查找 System.Drawing.Bitmap 类型的本地化资源。
+        /// </summary>
+        public static System.Drawing.Bitmap infoWarningDark {
+            get {
+                object obj = ResourceManager.GetObject("infoWarningDark", resourceCulture);
                 return ((System.Drawing.Bitmap)(obj));
             }
         }
