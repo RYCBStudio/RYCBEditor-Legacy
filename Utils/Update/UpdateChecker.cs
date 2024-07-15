@@ -90,7 +90,7 @@ internal partial class UpdateChecker
                     Accept = "*/*",
                     AutomaticDecompression = DecompressionMethods.GZip | DecompressionMethods.Deflate,
                     CookieContainer =  new CookieContainer(), // Add your cookies
-                    Headers = new WebHeaderCollection(), // Add your custom headers
+                    Headers = [], // Add your custom headers
                     KeepAlive = false,
                     ProtocolVersion = HttpVersion.Version11, // Default value is HTTP 1.1
                     UseDefaultCredentials = false,

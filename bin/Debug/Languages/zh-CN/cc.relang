@@ -8,3 +8,7 @@ text.window.cc.clearchoices=清理选项
 text.window.cc.choices.tmpcodefile=临时代码文件
 text.window.cc.choices.pycnfile=The Py-CN Project编译后文件
 text.window.cc.choices.logfile=日志文件
+text.window.cc.choices.updatearchive=更新文件
+text.window.cc.choices.updateres=更新索引
+text.window.cc.choices.cachepath=缓存文件夹(包含上述两个选项)
+text.window.cc.choices.dump=内存转储(dmp)文件

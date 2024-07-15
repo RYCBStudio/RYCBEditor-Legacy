@@ -3,11 +3,9 @@ using System.IO;
 using ICSharpCode.AvalonEdit;
 using ICSharpCode.AvalonEdit.Highlighting.Xshd;
 using ICSharpCode.AvalonEdit.Highlighting;
-using Microsoft.CodeAnalysis.Differencing;
 using Sunny.UI;
 using System.Xml;
 using System.Runtime.InteropServices;
-using Microsoft.Extensions.Logging;
 using System.Text;
 
 namespace IDE;

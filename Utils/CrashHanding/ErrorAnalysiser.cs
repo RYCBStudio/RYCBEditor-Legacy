@@ -7,7 +7,7 @@ namespace IDE;
 internal class ErrorAnalysiser
 {
 
-    private static List<string> Exceptions = new();
+    private static List<string> Exceptions = [];
     private static Exception _ex;
     private static string _path;
 

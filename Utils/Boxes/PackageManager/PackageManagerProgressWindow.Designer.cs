@@ -31,8 +31,8 @@ partial class PackageManagerProgressWindow
             this.tableLayoutPanel1 = new System.Windows.Forms.TableLayoutPanel();
             this.label1 = new System.Windows.Forms.Label();
             this.label2 = new System.Windows.Forms.Label();
-            this.uiWaitingBar1 = new Sunny.UI.UIWaitingBar();
             this.uiProcessBar1 = new Sunny.UI.UIProcessBar();
+            this.progressBar1 = new System.Windows.Forms.ProgressBar();
             this.tableLayoutPanel1.SuspendLayout();
             this.SuspendLayout();
             // 
@@ -45,8 +45,8 @@ partial class PackageManagerProgressWindow
             this.tableLayoutPanel1.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Percent, 25F));
             this.tableLayoutPanel1.Controls.Add(this.label1, 0, 0);
             this.tableLayoutPanel1.Controls.Add(this.label2, 0, 2);
-            this.tableLayoutPanel1.Controls.Add(this.uiWaitingBar1, 1, 2);
             this.tableLayoutPanel1.Controls.Add(this.uiProcessBar1, 1, 3);
+            this.tableLayoutPanel1.Controls.Add(this.progressBar1, 1, 2);
             this.tableLayoutPanel1.Dock = System.Windows.Forms.DockStyle.Fill;
             this.tableLayoutPanel1.Location = new System.Drawing.Point(0, 0);
             this.tableLayoutPanel1.Name = "tableLayoutPanel1";
@@ -86,21 +86,6 @@ partial class PackageManagerProgressWindow
             this.label2.Text = "进度";
             this.label2.TextAlign = System.Drawing.ContentAlignment.MiddleCenter;
             // 
-            // uiWaitingBar1
-            // 
-            this.uiWaitingBar1.BlockCount = 35;
-            this.tableLayoutPanel1.SetColumnSpan(this.uiWaitingBar1, 3);
-            this.uiWaitingBar1.Dock = System.Windows.Forms.DockStyle.Fill;
-            this.uiWaitingBar1.Font = new System.Drawing.Font("宋体", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(134)));
-            this.uiWaitingBar1.Interval = 150;
-            this.uiWaitingBar1.Location = new System.Drawing.Point(182, 47);
-            this.uiWaitingBar1.MinimumSize = new System.Drawing.Size(70, 23);
-            this.uiWaitingBar1.Name = "uiWaitingBar1";
-            this.uiWaitingBar1.Size = new System.Drawing.Size(532, 23);
-            this.uiWaitingBar1.SliderWidth = 100;
-            this.uiWaitingBar1.TabIndex = 2;
-            this.uiWaitingBar1.Text = "uiWaitingBar1";
-            // 
             // uiProcessBar1
             // 
             this.tableLayoutPanel1.SetColumnSpan(this.uiProcessBar1, 3);
@@ -115,6 +100,17 @@ partial class PackageManagerProgressWindow
             this.uiProcessBar1.TabIndex = 3;
             this.uiProcessBar1.Text = "uiProcessBar1";
             this.uiProcessBar1.ValueChanged += new Sunny.UI.UIProcessBar.OnValueChanged(this.uiProcessBar1_ValueChanged);
+            // 
+            // progressBar1
+            // 
+            this.tableLayoutPanel1.SetColumnSpan(this.progressBar1, 3);
+            this.progressBar1.Dock = System.Windows.Forms.DockStyle.Fill;
+            this.progressBar1.Location = new System.Drawing.Point(182, 47);
+            this.progressBar1.MarqueeAnimationSpeed = 50;
+            this.progressBar1.Name = "progressBar1";
+            this.progressBar1.Size = new System.Drawing.Size(532, 16);
+            this.progressBar1.Style = System.Windows.Forms.ProgressBarStyle.Marquee;
+            this.progressBar1.TabIndex = 4;
             // 
             // PackageManagerProgressWindow
             // 
@@ -131,6 +127,7 @@ partial class PackageManagerProgressWindow
             this.Text = "";
             this.TitleFont = new System.Drawing.Font("微软雅黑", 10F);
             this.ZoomScaleRect = new System.Drawing.Rectangle(22, 22, 800, 450);
+            this.Shown += new System.EventHandler(this.ChangeStatus);
             this.tableLayoutPanel1.ResumeLayout(false);
             this.tableLayoutPanel1.PerformLayout();
             this.ResumeLayout(false);
@@ -141,7 +138,7 @@ partial class PackageManagerProgressWindow
 
     private System.Windows.Forms.TableLayoutPanel tableLayoutPanel1;
     private System.Windows.Forms.Label label1;
-    private System.Windows.Forms.Label label2;
-    private Sunny.UI.UIWaitingBar uiWaitingBar1;
-    private Sunny.UI.UIProcessBar uiProcessBar1;
+    internal System.Windows.Forms.Label label2;
+    internal Sunny.UI.UIProcessBar uiProcessBar1;
+    internal System.Windows.Forms.ProgressBar progressBar1;
 }

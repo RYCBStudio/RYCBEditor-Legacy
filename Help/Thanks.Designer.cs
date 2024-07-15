@@ -52,7 +52,7 @@ partial class Thanks
             this.uiTitlePanel1.ShowCollapse = true;
             this.uiTitlePanel1.ShowText = false;
             this.uiTitlePanel1.Size = new System.Drawing.Size(756, 35);
-            this.uiTitlePanel1.Style = Sunny.UI.UIStyle.LayuiOrange;
+            this.uiTitlePanel1.Style = Sunny.UI.UIStyle.Custom;
             this.uiTitlePanel1.StyleCustomMode = true;
             this.uiTitlePanel1.TabIndex = 0;
             this.uiTitlePanel1.Text = "text.thanks.p.1.title";
@@ -67,6 +67,7 @@ partial class Thanks
             this.uiTextBox1.ButtonRectColor = System.Drawing.Color.FromArgb(((int)(((byte)(255)))), ((int)(((byte)(184)))), ((int)(((byte)(0)))));
             this.uiTextBox1.ButtonRectHoverColor = System.Drawing.Color.FromArgb(((int)(((byte)(255)))), ((int)(((byte)(198)))), ((int)(((byte)(51)))));
             this.uiTextBox1.ButtonRectPressColor = System.Drawing.Color.FromArgb(((int)(((byte)(204)))), ((int)(((byte)(148)))), ((int)(((byte)(0)))));
+            this.uiTextBox1.ButtonStyleInherited = false;
             this.uiTextBox1.ButtonSymbolOffset = new System.Drawing.Point(0, 0);
             this.uiTextBox1.Cursor = System.Windows.Forms.Cursors.IBeam;
             this.uiTextBox1.FillColor2 = System.Drawing.Color.FromArgb(((int)(((byte)(255)))), ((int)(((byte)(251)))), ((int)(((byte)(238)))));
@@ -79,9 +80,10 @@ partial class Thanks
             this.uiTextBox1.Padding = new System.Windows.Forms.Padding(5);
             this.uiTextBox1.RectColor = System.Drawing.Color.FromArgb(((int)(((byte)(255)))), ((int)(((byte)(184)))), ((int)(((byte)(0)))));
             this.uiTextBox1.ScrollBarColor = System.Drawing.Color.FromArgb(((int)(((byte)(255)))), ((int)(((byte)(184)))), ((int)(((byte)(0)))));
+            this.uiTextBox1.ScrollBarStyleInherited = false;
             this.uiTextBox1.ShowText = false;
             this.uiTextBox1.Size = new System.Drawing.Size(747, 86);
-            this.uiTextBox1.Style = Sunny.UI.UIStyle.LayuiOrange;
+            this.uiTextBox1.Style = Sunny.UI.UIStyle.Custom;
             this.uiTextBox1.TabIndex = 0;
             this.uiTextBox1.Text = "text.thanks.p.1.words";
             this.uiTextBox1.TextAlignment = System.Drawing.ContentAlignment.MiddleLeft;
@@ -103,7 +105,7 @@ partial class Thanks
             this.uiTitlePanel2.ShowCollapse = true;
             this.uiTitlePanel2.ShowText = false;
             this.uiTitlePanel2.Size = new System.Drawing.Size(756, 35);
-            this.uiTitlePanel2.Style = Sunny.UI.UIStyle.LayuiOrange;
+            this.uiTitlePanel2.Style = Sunny.UI.UIStyle.Custom;
             this.uiTitlePanel2.StyleCustomMode = true;
             this.uiTitlePanel2.TabIndex = 1;
             this.uiTitlePanel2.Text = "text.thanks.p.2.title";
@@ -118,6 +120,7 @@ partial class Thanks
             this.uiTextBox2.ButtonRectColor = System.Drawing.Color.FromArgb(((int)(((byte)(255)))), ((int)(((byte)(184)))), ((int)(((byte)(0)))));
             this.uiTextBox2.ButtonRectHoverColor = System.Drawing.Color.FromArgb(((int)(((byte)(255)))), ((int)(((byte)(198)))), ((int)(((byte)(51)))));
             this.uiTextBox2.ButtonRectPressColor = System.Drawing.Color.FromArgb(((int)(((byte)(204)))), ((int)(((byte)(148)))), ((int)(((byte)(0)))));
+            this.uiTextBox2.ButtonStyleInherited = false;
             this.uiTextBox2.ButtonSymbolOffset = new System.Drawing.Point(0, 0);
             this.uiTextBox2.Cursor = System.Windows.Forms.Cursors.IBeam;
             this.uiTextBox2.FillColor2 = System.Drawing.Color.FromArgb(((int)(((byte)(255)))), ((int)(((byte)(251)))), ((int)(((byte)(238)))));
@@ -130,9 +133,10 @@ partial class Thanks
             this.uiTextBox2.Padding = new System.Windows.Forms.Padding(5);
             this.uiTextBox2.RectColor = System.Drawing.Color.FromArgb(((int)(((byte)(255)))), ((int)(((byte)(184)))), ((int)(((byte)(0)))));
             this.uiTextBox2.ScrollBarColor = System.Drawing.Color.FromArgb(((int)(((byte)(255)))), ((int)(((byte)(184)))), ((int)(((byte)(0)))));
+            this.uiTextBox2.ScrollBarStyleInherited = false;
             this.uiTextBox2.ShowText = false;
             this.uiTextBox2.Size = new System.Drawing.Size(747, 86);
-            this.uiTextBox2.Style = Sunny.UI.UIStyle.LayuiOrange;
+            this.uiTextBox2.Style = Sunny.UI.UIStyle.Custom;
             this.uiTextBox2.TabIndex = 4;
             this.uiTextBox2.Text = "text.thanks.p.2.words";
             this.uiTextBox2.TextAlignment = System.Drawing.ContentAlignment.MiddleLeft;
@@ -141,6 +145,7 @@ partial class Thanks
             // Thanks
             // 
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.None;
+            this.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(255)))), ((int)(((byte)(251)))), ((int)(((byte)(238)))));
             this.ClientSize = new System.Drawing.Size(765, 311);
             this.ControlBoxFillHoverColor = System.Drawing.Color.FromArgb(((int)(((byte)(255)))), ((int)(((byte)(198)))), ((int)(((byte)(51)))));
             this.Controls.Add(this.uiTitlePanel2);
@@ -149,9 +154,11 @@ partial class Thanks
             this.MaximizeBox = false;
             this.Name = "Thanks";
             this.RectColor = System.Drawing.Color.FromArgb(((int)(((byte)(255)))), ((int)(((byte)(184)))), ((int)(((byte)(0)))));
-            this.Style = Sunny.UI.UIStyle.LayuiOrange;
+            this.ShowIcon = false;
+            this.Style = Sunny.UI.UIStyle.Custom;
             this.Text = "text.thanks.window.title";
             this.TitleColor = System.Drawing.Color.FromArgb(((int)(((byte)(255)))), ((int)(((byte)(184)))), ((int)(((byte)(0)))));
+            this.TitleFont = new System.Drawing.Font("微软雅黑", 12F);
             this.ZoomScaleRect = new System.Drawing.Rectangle(19, 19, 800, 450);
             this.uiTitlePanel1.ResumeLayout(false);
             this.uiTitlePanel2.ResumeLayout(false);

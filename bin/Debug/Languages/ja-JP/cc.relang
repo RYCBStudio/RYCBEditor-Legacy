@@ -8,3 +8,7 @@ text.window.cc.clearchoices=クリーンアップオプション
 text.window.cc.choices.tmpcodefile=一時コードファイル
 text.window.cc.choices.pycnfile=The Py-CN Projectコンパイル後のファイル
 text.window.cc.choices.logfile=ログファイル
+text.window.cc.choices.updatearchive=更新ファイル
+text.window.cc.choices.updateres=インデックスの更新
+text.window.cc.choices.cachepath=キャッシュフォルダ（上記2つのオプションを含む）
+text.window.cc.choices.dump=メモリダンプ（dmp）ファイル

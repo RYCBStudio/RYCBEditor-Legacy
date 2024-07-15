@@ -1,0 +1,14 @@
+[LangSet]
+Name=简体中文
+
+[I18n]
+text.icb.title=运行器配置
+text.icb.itptr=解释器
+text.icb.itptr.type=解释器类型
+text.icb.itptr.path=解释器路径
+text.icb.itptr.args=解释器启动参数
+text.icb.itptr.finalcmd=最终命令
+tip.failtodel=删除失败，请查看日志。
+text.icb.filename.enter=请输入文件名
+text.icb.name.enter=请输入配置名称
+text.tip.nullvalue=您未输入值，RYCB Editor会自动分配该值。

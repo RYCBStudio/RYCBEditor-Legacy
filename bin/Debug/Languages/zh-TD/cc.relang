@@ -1,3 +1,6 @@
+[LangSet]
+Name=繁體中文（中國、中國台灣）
+
 [I18n]
 text.window.cachecleaner.title=緩存清理
 text.window.cc.ok=確定
@@ -8,3 +11,7 @@ text.window.cc.clearchoices=清理選項
 text.window.cc.choices.tmpcodefile=臨時程式碼檔案
 text.window.cc.choices.pycnfile=The Py-CN Project編譯後檔案
 text.window.cc.choices.logfile=日誌檔案
+text.window.cc.choices.updatearchive=更新檔案
+text.window.cc.choices.updateres=更新索引
+text.window.cc.choices.cachepath=緩存資料夾（包含上述兩個選項）
+text.window.cc.choices.dump=記憶體轉儲（dmp）檔案

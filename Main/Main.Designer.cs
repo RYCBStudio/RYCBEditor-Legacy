@@ -60,6 +60,8 @@ namespace IDE
             this.重启ToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.texttstoolapplicationresetToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.texttsapplicationpackagemanagementToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
+            this.texttstoolapplicationpkgmgmtPythonToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
+            this.texttstoolapplicationpkgmgmtappToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.快速工具ToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.清理缓存ToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.帮助HToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
@@ -104,9 +106,7 @@ namespace IDE
             this.tableLayoutPanel1 = new System.Windows.Forms.TableLayoutPanel();
             this.tabControl1 = new Sunny.UI.UITabControl();
             this.tabPage1 = new System.Windows.Forms.TabPage();
-            this.tableLayoutPanel2 = new System.Windows.Forms.TableLayoutPanel();
             this.elementHost1 = new System.Windows.Forms.Integration.ElementHost();
-            this.webView1 = new Microsoft.Web.WebView2.WinForms.WebView2();
             this.tabPage3 = new System.Windows.Forms.TabPage();
             this.tableLayoutPanel3 = new System.Windows.Forms.TableLayoutPanel();
             this.linkLabel4 = new System.Windows.Forms.LinkLabel();
@@ -128,13 +128,15 @@ namespace IDE
             this.tabPage2 = new System.Windows.Forms.TabPage();
             this.appContainer1 = new SmileWei.EmbeddedApp.AppContainer(this.components);
             this.panel1 = new System.Windows.Forms.Panel();
-            this.HelpButton = new System.Windows.Forms.Button();
             this.配置ToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.toolStrip1 = new System.Windows.Forms.ToolStrip();
             this.toolStripButton1 = new System.Windows.Forms.ToolStripButton();
             this.toolStripButton2 = new System.Windows.Forms.ToolStripButton();
             this.toolStripButton3 = new System.Windows.Forms.ToolStripButton();
             this.toolStripSeparator1 = new System.Windows.Forms.ToolStripSeparator();
+            this._Blank = new System.Windows.Forms.ToolStripLabel();
+            this.InfoTip = new System.Windows.Forms.ToolStripLabel();
+            this.CloseInfoTip = new System.Windows.Forms.ToolStripButton();
             this.UpdateStatusBar = new System.Windows.Forms.StatusStrip();
             this.Downloading = new System.Windows.Forms.ToolStripStatusLabel();
             this.ReceivedBytes = new System.Windows.Forms.ToolStripStatusLabel();
@@ -154,8 +156,6 @@ namespace IDE
             this.tableLayoutPanel1.SuspendLayout();
             this.tabControl1.SuspendLayout();
             this.tabPage1.SuspendLayout();
-            this.tableLayoutPanel2.SuspendLayout();
-            ((System.ComponentModel.ISupportInitialize)(this.webView1)).BeginInit();
             this.tabPage3.SuspendLayout();
             this.tableLayoutPanel3.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.pictureBox1)).BeginInit();
@@ -169,6 +169,7 @@ namespace IDE
             // menuStrip1
             // 
             this.menuStrip1.BackColor = System.Drawing.Color.Black;
+            this.menuStrip1.GripMargin = new System.Windows.Forms.Padding(2, 2, 0, 2);
             this.menuStrip1.ImageScalingSize = new System.Drawing.Size(20, 20);
             this.menuStrip1.Items.AddRange(new System.Windows.Forms.ToolStripItem[] {
             this.文件FToolStripMenuItem,
@@ -465,12 +466,34 @@ namespace IDE
             // texttsapplicationpackagemanagementToolStripMenuItem
             // 
             this.texttsapplicationpackagemanagementToolStripMenuItem.BackColor = System.Drawing.SystemColors.ActiveCaptionText;
+            this.texttsapplicationpackagemanagementToolStripMenuItem.DropDownItems.AddRange(new System.Windows.Forms.ToolStripItem[] {
+            this.texttstoolapplicationpkgmgmtPythonToolStripMenuItem,
+            this.texttstoolapplicationpkgmgmtappToolStripMenuItem});
             this.texttsapplicationpackagemanagementToolStripMenuItem.ForeColor = System.Drawing.SystemColors.ControlLightLight;
             this.texttsapplicationpackagemanagementToolStripMenuItem.Image = global::IDE.Properties.Resources.plugin_enable;
             this.texttsapplicationpackagemanagementToolStripMenuItem.Name = "texttsapplicationpackagemanagementToolStripMenuItem";
             this.texttsapplicationpackagemanagementToolStripMenuItem.Size = new System.Drawing.Size(493, 34);
             this.texttsapplicationpackagemanagementToolStripMenuItem.Text = "text.ts.tool.application.packagemanagement";
-            this.texttsapplicationpackagemanagementToolStripMenuItem.Click += new System.EventHandler(this.OpenPkgMgmt);
+            // 
+            // texttstoolapplicationpkgmgmtPythonToolStripMenuItem
+            // 
+            this.texttstoolapplicationpkgmgmtPythonToolStripMenuItem.BackColor = System.Drawing.SystemColors.ActiveCaptionText;
+            this.texttstoolapplicationpkgmgmtPythonToolStripMenuItem.ForeColor = System.Drawing.SystemColors.ControlLightLight;
+            this.texttstoolapplicationpkgmgmtPythonToolStripMenuItem.Image = global::IDE.Properties.Resources.python;
+            this.texttstoolapplicationpkgmgmtPythonToolStripMenuItem.Name = "texttstoolapplicationpkgmgmtPythonToolStripMenuItem";
+            this.texttstoolapplicationpkgmgmtPythonToolStripMenuItem.Size = new System.Drawing.Size(457, 34);
+            this.texttstoolapplicationpkgmgmtPythonToolStripMenuItem.Text = "text.ts.tool.application.pkgmgmt.Python";
+            this.texttstoolapplicationpkgmgmtPythonToolStripMenuItem.Click += new System.EventHandler(this.PythonPkgMgmt);
+            // 
+            // texttstoolapplicationpkgmgmtappToolStripMenuItem
+            // 
+            this.texttstoolapplicationpkgmgmtappToolStripMenuItem.BackColor = System.Drawing.SystemColors.ActiveCaptionText;
+            this.texttstoolapplicationpkgmgmtappToolStripMenuItem.ForeColor = System.Drawing.SystemColors.ControlLightLight;
+            this.texttstoolapplicationpkgmgmtappToolStripMenuItem.Image = global::IDE.Properties.Resources.Icon_Ver3_256x;
+            this.texttstoolapplicationpkgmgmtappToolStripMenuItem.Name = "texttstoolapplicationpkgmgmtappToolStripMenuItem";
+            this.texttstoolapplicationpkgmgmtappToolStripMenuItem.Size = new System.Drawing.Size(457, 34);
+            this.texttstoolapplicationpkgmgmtappToolStripMenuItem.Text = "text.ts.tool.application.pkgmgmt.app";
+            this.texttstoolapplicationpkgmgmtappToolStripMenuItem.Click += new System.EventHandler(this.OpenPkgMgmt);
             // 
             // 快速工具ToolStripMenuItem
             // 
@@ -736,7 +759,7 @@ namespace IDE
             // toolStripStatusLabel10
             // 
             this.toolStripStatusLabel10.Name = "toolStripStatusLabel10";
-            this.toolStripStatusLabel10.Size = new System.Drawing.Size(1, 24);
+            this.toolStripStatusLabel10.Size = new System.Drawing.Size(328, 24);
             this.toolStripStatusLabel10.Spring = true;
             // 
             // UpdateIcon
@@ -809,6 +832,7 @@ namespace IDE
             // 
             // SizeController
             // 
+            this.SizeController.Enabled = true;
             this.SizeController.Interval = 1000;
             this.SizeController.Tick += new System.EventHandler(this.LayoutForConsole);
             // 
@@ -839,9 +863,9 @@ namespace IDE
             this.tabControl1.Controls.Add(this.tabPage1);
             this.tabControl1.Controls.Add(this.tabPage3);
             this.tabControl1.Dock = System.Windows.Forms.DockStyle.Fill;
-            this.tabControl1.DrawMode = System.Windows.Forms.TabDrawMode.OwnerDrawFixed;
             this.tabControl1.Font = new System.Drawing.Font("微软雅黑", 10.5F);
-            this.tabControl1.ItemSize = new System.Drawing.Size(100, 30);
+            this.tabControl1.HotTrack = true;
+            this.tabControl1.ItemSize = new System.Drawing.Size(150, 35);
             this.tabControl1.Location = new System.Drawing.Point(3, 3);
             this.tabControl1.MainPage = "tabPage1";
             this.tabControl1.MenuStyle = Sunny.UI.UIMenuStyle.Custom;
@@ -849,68 +873,41 @@ namespace IDE
             this.tabControl1.Name = "tabControl1";
             this.tabControl1.SelectedIndex = 0;
             this.tabControl1.ShowCloseButton = true;
+            this.tabControl1.ShowToolTips = true;
             this.tabControl1.Size = new System.Drawing.Size(1058, 435);
             this.tabControl1.SizeMode = System.Windows.Forms.TabSizeMode.Fixed;
             this.tabControl1.StyleCustomMode = true;
-            this.tabControl1.TabBackColor = System.Drawing.Color.Black;
             this.tabControl1.TabIndex = 3;
             this.tabControl1.TipsFont = new System.Drawing.Font("微软雅黑", 9F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(134)));
             this.tabControl1.BeforeRemoveTabPage += new Sunny.UI.UITabControl.OnBeforeRemoveTabPage(this.TabControl1_BeforeRemoveTabPage);
-            this.tabControl1.SelectedIndexChanged += new System.EventHandler(this.Layout);
             this.tabControl1.Validating += new System.ComponentModel.CancelEventHandler(this.Validating_Layout);
             // 
             // tabPage1
             // 
             this.tabPage1.BackColor = System.Drawing.Color.Black;
-            this.tabPage1.Controls.Add(this.tableLayoutPanel2);
-            this.tabPage1.Controls.Add(this.webView1);
-            this.tabPage1.Location = new System.Drawing.Point(0, 30);
+            this.tabPage1.Controls.Add(this.elementHost1);
+            this.tabPage1.Location = new System.Drawing.Point(0, 35);
             this.tabPage1.Name = "tabPage1";
-            this.tabPage1.Size = new System.Drawing.Size(1058, 405);
+            this.tabPage1.Size = new System.Drawing.Size(1058, 400);
             this.tabPage1.TabIndex = 0;
             this.tabPage1.Text = "text.tc.tp.tmp";
-            // 
-            // tableLayoutPanel2
-            // 
-            this.tableLayoutPanel2.ColumnCount = 1;
-            this.tableLayoutPanel2.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Percent, 50F));
-            this.tableLayoutPanel2.Controls.Add(this.elementHost1, 0, 0);
-            this.tableLayoutPanel2.Dock = System.Windows.Forms.DockStyle.Fill;
-            this.tableLayoutPanel2.Location = new System.Drawing.Point(0, 0);
-            this.tableLayoutPanel2.Name = "tableLayoutPanel2";
-            this.tableLayoutPanel2.RowCount = 1;
-            this.tableLayoutPanel2.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Percent, 50F));
-            this.tableLayoutPanel2.Size = new System.Drawing.Size(1058, 405);
-            this.tableLayoutPanel2.TabIndex = 0;
             // 
             // elementHost1
             // 
             this.elementHost1.Dock = System.Windows.Forms.DockStyle.Fill;
-            this.elementHost1.Location = new System.Drawing.Point(3, 3);
+            this.elementHost1.Location = new System.Drawing.Point(0, 0);
             this.elementHost1.Name = "elementHost1";
-            this.elementHost1.Size = new System.Drawing.Size(1052, 399);
-            this.elementHost1.TabIndex = 1;
-            this.elementHost1.Validating += new System.ComponentModel.CancelEventHandler(this.LayoutTextEditor);
+            this.elementHost1.Size = new System.Drawing.Size(1058, 400);
+            this.elementHost1.TabIndex = 2;
             this.elementHost1.Child = null;
-            // 
-            // webView1
-            // 
-            this.webView1.AllowExternalDrop = true;
-            this.webView1.CreationProperties = null;
-            this.webView1.DefaultBackgroundColor = System.Drawing.Color.White;
-            this.webView1.Location = new System.Drawing.Point(11, 11);
-            this.webView1.Name = "webView1";
-            this.webView1.Size = new System.Drawing.Size(1044, 405);
-            this.webView1.TabIndex = 1;
-            this.webView1.ZoomFactor = 1D;
             // 
             // tabPage3
             // 
             this.tabPage3.BackColor = System.Drawing.Color.Black;
             this.tabPage3.Controls.Add(this.tableLayoutPanel3);
-            this.tabPage3.Location = new System.Drawing.Point(0, 30);
+            this.tabPage3.Location = new System.Drawing.Point(0, 35);
             this.tabPage3.Name = "tabPage3";
-            this.tabPage3.Size = new System.Drawing.Size(1058, 405);
+            this.tabPage3.Size = new System.Drawing.Size(1058, 400);
             this.tabPage3.TabIndex = 1;
             this.tabPage3.Text = "text.tc.tp.welcome";
             // 
@@ -960,7 +957,7 @@ namespace IDE
             this.tableLayoutPanel3.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Percent, 10F));
             this.tableLayoutPanel3.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Percent, 10F));
             this.tableLayoutPanel3.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Percent, 10F));
-            this.tableLayoutPanel3.Size = new System.Drawing.Size(1058, 405);
+            this.tableLayoutPanel3.Size = new System.Drawing.Size(1058, 400);
             this.tableLayoutPanel3.TabIndex = 0;
             // 
             // linkLabel4
@@ -993,6 +990,7 @@ namespace IDE
             this.linkLabel3.Text = "text.welcome.newpyscript";
             this.linkLabel3.TextAlign = System.Drawing.ContentAlignment.MiddleCenter;
             this.linkLabel3.VisitedLinkColor = System.Drawing.Color.Firebrick;
+            this.linkLabel3.LinkClicked += new System.Windows.Forms.LinkLabelLinkClickedEventHandler(this.CreatePySample);
             // 
             // pictureBox1
             // 
@@ -1022,7 +1020,6 @@ namespace IDE
             this.WelcomeTitle.TabIndex = 1;
             this.WelcomeTitle.Text = "text.welcome.title";
             this.WelcomeTitle.TextAlign = System.Drawing.ContentAlignment.MiddleCenter;
-            this.WelcomeTitle.SizeChanged += new System.EventHandler(this.WelcomeTitle_SizeChanged);
             // 
             // linkLabel1
             // 
@@ -1038,6 +1035,7 @@ namespace IDE
             this.linkLabel1.Text = "text.welcome.usertutorial";
             this.linkLabel1.TextAlign = System.Drawing.ContentAlignment.MiddleCenter;
             this.linkLabel1.VisitedLinkColor = System.Drawing.Color.Firebrick;
+            this.linkLabel1.LinkClicked += new System.Windows.Forms.LinkLabelLinkClickedEventHandler(this.OpenUsrTutorial);
             // 
             // label2
             // 
@@ -1065,6 +1063,7 @@ namespace IDE
             this.linkLabel2.Text = "text.welcome.initialsettings";
             this.linkLabel2.TextAlign = System.Drawing.ContentAlignment.MiddleCenter;
             this.linkLabel2.VisitedLinkColor = System.Drawing.Color.Firebrick;
+            this.linkLabel2.LinkClicked += new System.Windows.Forms.LinkLabelLinkClickedEventHandler(this.OpenFirstBoot);
             // 
             // label3
             // 
@@ -1075,7 +1074,7 @@ namespace IDE
             this.label3.Location = new System.Drawing.Point(263, 280);
             this.label3.Name = "label3";
             this.tableLayoutPanel3.SetRowSpan(this.label3, 3);
-            this.label3.Size = new System.Drawing.Size(792, 125);
+            this.label3.Size = new System.Drawing.Size(792, 120);
             this.label3.TabIndex = 5;
             this.label3.Text = "text.welcome.tip";
             // 
@@ -1137,6 +1136,7 @@ namespace IDE
             this.listView1.UseCompatibleStateImageBehavior = false;
             this.listView1.View = System.Windows.Forms.View.Details;
             this.listView1.ItemActivate += new System.EventHandler(this.GotoLine);
+            this.listView1.SelectedIndexChanged += new System.EventHandler(this.GotoLine);
             this.listView1.DoubleClick += new System.EventHandler(this.GetExceptionHelp);
             // 
             // columnHeader5
@@ -1173,7 +1173,7 @@ namespace IDE
             this.tabPage2.Controls.Add(this.appContainer1);
             this.tabPage2.Location = new System.Drawing.Point(0, 0);
             this.tabPage2.Name = "tabPage2";
-            this.tabPage2.Size = new System.Drawing.Size(200, 60);
+            this.tabPage2.Size = new System.Drawing.Size(1058, 116);
             this.tabPage2.TabIndex = 2;
             this.tabPage2.Text = "text.bottom.console";
             // 
@@ -1185,7 +1185,7 @@ namespace IDE
             this.appContainer1.Dock = System.Windows.Forms.DockStyle.Fill;
             this.appContainer1.Location = new System.Drawing.Point(0, 0);
             this.appContainer1.Name = "appContainer1";
-            this.appContainer1.Size = new System.Drawing.Size(200, 60);
+            this.appContainer1.Size = new System.Drawing.Size(1058, 116);
             this.appContainer1.TabIndex = 0;
             // 
             // panel1
@@ -1196,20 +1196,6 @@ namespace IDE
             this.panel1.Name = "panel1";
             this.panel1.Size = new System.Drawing.Size(1058, 118);
             this.panel1.TabIndex = 0;
-            // 
-            // HelpButton
-            // 
-            this.HelpButton.BackColor = System.Drawing.SystemColors.ActiveCaptionText;
-            this.HelpButton.BackgroundImage = global::IDE.Properties.Resources.help2;
-            this.HelpButton.BackgroundImageLayout = System.Windows.Forms.ImageLayout.Stretch;
-            this.HelpButton.FlatAppearance.BorderSize = 0;
-            this.HelpButton.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
-            this.HelpButton.Location = new System.Drawing.Point(1023, 9);
-            this.HelpButton.Name = "HelpButton";
-            this.HelpButton.Size = new System.Drawing.Size(20, 20);
-            this.HelpButton.TabIndex = 5;
-            this.HelpButton.UseVisualStyleBackColor = false;
-            this.HelpButton.Click += new System.EventHandler(this.help);
             // 
             // 配置ToolStripMenuItem
             // 
@@ -1229,7 +1215,10 @@ namespace IDE
             this.toolStripButton1,
             this.toolStripButton2,
             this.toolStripButton3,
-            this.toolStripSeparator1});
+            this.toolStripSeparator1,
+            this._Blank,
+            this.InfoTip,
+            this.CloseInfoTip});
             this.toolStrip1.Location = new System.Drawing.Point(0, 32);
             this.toolStrip1.Name = "toolStrip1";
             this.toolStrip1.RenderMode = System.Windows.Forms.ToolStripRenderMode.Professional;
@@ -1271,6 +1260,29 @@ namespace IDE
             // 
             this.toolStripSeparator1.Name = "toolStripSeparator1";
             this.toolStripSeparator1.Size = new System.Drawing.Size(6, 29);
+            // 
+            // _Blank
+            // 
+            this._Blank.Name = "_Blank";
+            this._Blank.Size = new System.Drawing.Size(15, 24);
+            this._Blank.Text = " ";
+            // 
+            // InfoTip
+            // 
+            this.InfoTip.Image = global::IDE.Properties.Resources.Info_64x;
+            this.InfoTip.Name = "InfoTip";
+            this.InfoTip.Size = new System.Drawing.Size(20, 24);
+            this.InfoTip.Visible = false;
+            // 
+            // CloseInfoTip
+            // 
+            this.CloseInfoTip.DisplayStyle = System.Windows.Forms.ToolStripItemDisplayStyle.Image;
+            this.CloseInfoTip.Image = global::IDE.Properties.Resources.delete;
+            this.CloseInfoTip.ImageTransparentColor = System.Drawing.Color.Magenta;
+            this.CloseInfoTip.Name = "CloseInfoTip";
+            this.CloseInfoTip.Size = new System.Drawing.Size(34, 24);
+            this.CloseInfoTip.Visible = false;
+            this.CloseInfoTip.Click += new System.EventHandler(this.CIT);
             // 
             // UpdateStatusBar
             // 
@@ -1383,7 +1395,6 @@ namespace IDE
             this.Controls.Add(this.tableLayoutPanel1);
             this.Controls.Add(this.toolStrip1);
             this.Controls.Add(this.menuStrip1);
-            this.Controls.Add(this.HelpButton);
             this.Controls.Add(this.UpdateStatusBar);
             this.Controls.Add(this.statusStrip2);
             this.Controls.Add(this.statusStrip1);
@@ -1410,8 +1421,6 @@ namespace IDE
             this.tableLayoutPanel1.ResumeLayout(false);
             this.tabControl1.ResumeLayout(false);
             this.tabPage1.ResumeLayout(false);
-            this.tableLayoutPanel2.ResumeLayout(false);
-            ((System.ComponentModel.ISupportInitialize)(this.webView1)).EndInit();
             this.tabPage3.ResumeLayout(false);
             this.tableLayoutPanel3.ResumeLayout(false);
             this.tableLayoutPanel3.PerformLayout();
@@ -1458,7 +1467,6 @@ namespace IDE
         internal Timer MemoryChecker;
         internal StatusStrip statusStrip2;
         internal ToolStripStatusLabel toolStripStatusLabel3;
-        internal Button HelpButton;
         internal ToolStripMenuItem 配置ToolStripMenuItem;
         internal ToolStripMenuItem 鸣谢ToolStripMenuItem;
         internal ToolStripMenuItem 许可与版权声明ToolStripMenuItem;
@@ -1485,8 +1493,6 @@ namespace IDE
         internal TableLayoutPanel tableLayoutPanel1;
         internal Sunny.UI.UITabControl tabControl1;
         internal TabPage tabPage1;
-        internal TableLayoutPanel tableLayoutPanel2;
-        internal System.Windows.Forms.Integration.ElementHost elementHost1;
         internal ToolStripMenuItem 查找替换ToolStripMenuItem;
         internal ToolStripStatusLabel FileSavingIcon;
         internal ToolStripStatusLabel FileSavingTip;
@@ -1503,7 +1509,6 @@ namespace IDE
         internal TabPage tabPage2;
         internal Panel panel1;
         internal SmileWei.EmbeddedApp.AppContainer appContainer1;
-        internal Microsoft.Web.WebView2.WinForms.WebView2 webView1;
         internal ToolStrip toolStrip1;
         internal ToolStripButton toolStripButton1;
         internal ToolStripButton toolStripButton2;
@@ -1544,6 +1549,12 @@ namespace IDE
         private LinkLabel linkLabel4;
         private LinkLabel linkLabel3;
         private ToolStripStatusLabel UpdateCancelledTip;
+        private ToolStripMenuItem texttstoolapplicationpkgmgmtPythonToolStripMenuItem;
+        private ToolStripMenuItem texttstoolapplicationpkgmgmtappToolStripMenuItem;
+        internal System.Windows.Forms.Integration.ElementHost elementHost1;
+        private ToolStripLabel _Blank;
+        internal ToolStripLabel InfoTip;
+        internal ToolStripButton CloseInfoTip;
     }
 }
 

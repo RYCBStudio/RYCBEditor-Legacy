@@ -1,12 +1,4 @@
 ﻿using System;
-using System.Collections.Generic;
-using System.ComponentModel;
-using System.Data;
-using System.Drawing;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
-using System.Windows.Forms;
 using Sunny.UI;
 
 namespace IDE.Utils.Boxes.PackageManager;
@@ -16,6 +8,10 @@ public partial class PackageManagerProgressWindow : UIForm
     public int value, total;
     public bool shouldAuto;
     public string tip;
+    public bool Initialized
+    {
+        get; private set;
+    }
 
     private void uiProcessBar1_ValueChanged(object sender, int value)
     {
@@ -41,6 +37,11 @@ public partial class PackageManagerProgressWindow : UIForm
     private void label1_Click(object sender, EventArgs e)
     {
         this.Close();
+    }
+
+    private void ChangeStatus(object sender, EventArgs e)
+    {
+        this.Initialized = true;
     }
 
     public void Update(int value, int total, bool shouldAuto = true, string tip = "正在处理，请稍候")

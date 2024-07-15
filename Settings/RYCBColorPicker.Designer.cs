@@ -55,6 +55,7 @@ partial class RYCBColorPicker
             this.uiColorPicker1.Size = new System.Drawing.Size(345, 32);
             this.uiColorPicker1.Style = Sunny.UI.UIStyle.Custom;
             this.uiColorPicker1.StyleCustomMode = true;
+            this.uiColorPicker1.SymbolSize = 24;
             this.uiColorPicker1.TabIndex = 0;
             this.uiColorPicker1.TextAlignment = System.Drawing.ContentAlignment.MiddleLeft;
             this.uiColorPicker1.Watermark = "";
@@ -62,6 +63,9 @@ partial class RYCBColorPicker
             // 
             // uiStyleManager1
             // 
+            this.uiStyleManager1.DPIScale = true;
+            this.uiStyleManager1.GlobalFont = true;
+            this.uiStyleManager1.GlobalFontName = "微软雅黑";
             this.uiStyleManager1.Style = Sunny.UI.UIStyle.Black;
             // 
             // uiLabel1
@@ -71,7 +75,7 @@ partial class RYCBColorPicker
             this.uiLabel1.Location = new System.Drawing.Point(3, 39);
             this.uiLabel1.Name = "uiLabel1";
             this.uiLabel1.Size = new System.Drawing.Size(94, 32);
-            this.uiLabel1.Style = Sunny.UI.UIStyle.Black;
+            this.uiLabel1.Style = Sunny.UI.UIStyle.Custom;
             this.uiLabel1.TabIndex = 2;
             this.uiLabel1.Text = "text.settings.colorpicker.tip.rgb";
             this.uiLabel1.TextAlign = System.Drawing.ContentAlignment.MiddleLeft;
@@ -79,6 +83,7 @@ partial class RYCBColorPicker
             // rgbText
             // 
             this.rgbText.ButtonRectColor = System.Drawing.Color.FromArgb(((int)(((byte)(18)))), ((int)(((byte)(58)))), ((int)(((byte)(92)))));
+            this.rgbText.ButtonStyleInherited = false;
             this.rgbText.ButtonSymbolOffset = new System.Drawing.Point(0, 0);
             this.rgbText.Cursor = System.Windows.Forms.Cursors.IBeam;
             this.rgbText.FillColor = System.Drawing.Color.FromArgb(((int)(((byte)(24)))), ((int)(((byte)(24)))), ((int)(((byte)(24)))));
@@ -96,6 +101,7 @@ partial class RYCBColorPicker
             this.rgbText.RectColor = System.Drawing.Color.FromArgb(((int)(((byte)(18)))), ((int)(((byte)(58)))), ((int)(((byte)(92)))));
             this.rgbText.RectReadOnlyColor = System.Drawing.Color.FromArgb(((int)(((byte)(18)))), ((int)(((byte)(58)))), ((int)(((byte)(92)))));
             this.rgbText.ScrollBarColor = System.Drawing.Color.FromArgb(((int)(((byte)(24)))), ((int)(((byte)(24)))), ((int)(((byte)(24)))));
+            this.rgbText.ScrollBarStyleInherited = false;
             this.rgbText.ShowText = false;
             this.rgbText.Size = new System.Drawing.Size(230, 31);
             this.rgbText.Style = Sunny.UI.UIStyle.Custom;
@@ -107,6 +113,7 @@ partial class RYCBColorPicker
             // hexText
             // 
             this.hexText.ButtonRectColor = System.Drawing.Color.FromArgb(((int)(((byte)(18)))), ((int)(((byte)(58)))), ((int)(((byte)(92)))));
+            this.hexText.ButtonStyleInherited = false;
             this.hexText.ButtonSymbolOffset = new System.Drawing.Point(0, 0);
             this.hexText.Cursor = System.Windows.Forms.Cursors.IBeam;
             this.hexText.FillColor = System.Drawing.Color.FromArgb(((int)(((byte)(24)))), ((int)(((byte)(24)))), ((int)(((byte)(24)))));
@@ -124,6 +131,7 @@ partial class RYCBColorPicker
             this.hexText.RectColor = System.Drawing.Color.FromArgb(((int)(((byte)(18)))), ((int)(((byte)(58)))), ((int)(((byte)(92)))));
             this.hexText.RectReadOnlyColor = System.Drawing.Color.FromArgb(((int)(((byte)(18)))), ((int)(((byte)(58)))), ((int)(((byte)(92)))));
             this.hexText.ScrollBarColor = System.Drawing.Color.FromArgb(((int)(((byte)(24)))), ((int)(((byte)(24)))), ((int)(((byte)(24)))));
+            this.hexText.ScrollBarStyleInherited = false;
             this.hexText.ShowText = false;
             this.hexText.Size = new System.Drawing.Size(212, 31);
             this.hexText.Style = Sunny.UI.UIStyle.Custom;
@@ -139,7 +147,7 @@ partial class RYCBColorPicker
             this.uiLabel2.Location = new System.Drawing.Point(3, 80);
             this.uiLabel2.Name = "uiLabel2";
             this.uiLabel2.Size = new System.Drawing.Size(94, 32);
-            this.uiLabel2.Style = Sunny.UI.UIStyle.Black;
+            this.uiLabel2.Style = Sunny.UI.UIStyle.Custom;
             this.uiLabel2.TabIndex = 4;
             this.uiLabel2.Text = "text.settings.colorpicker.tip.hex";
             this.uiLabel2.TextAlign = System.Drawing.ContentAlignment.MiddleLeft;
@@ -151,7 +159,7 @@ partial class RYCBColorPicker
             this.uiLabel3.Location = new System.Drawing.Point(114, 81);
             this.uiLabel3.Name = "uiLabel3";
             this.uiLabel3.Size = new System.Drawing.Size(23, 32);
-            this.uiLabel3.Style = Sunny.UI.UIStyle.Black;
+            this.uiLabel3.Style = Sunny.UI.UIStyle.Custom;
             this.uiLabel3.TabIndex = 6;
             this.uiLabel3.Text = "#";
             this.uiLabel3.TextAlign = System.Drawing.ContentAlignment.MiddleLeft;
@@ -159,6 +167,7 @@ partial class RYCBColorPicker
             // RYCBColorPicker
             // 
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.None;
+            this.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(24)))), ((int)(((byte)(24)))), ((int)(((byte)(24)))));
             this.ClientSize = new System.Drawing.Size(353, 174);
             this.ControlBoxFillHoverColor = System.Drawing.Color.FromArgb(((int)(((byte)(70)))), ((int)(((byte)(70)))), ((int)(((byte)(70)))));
             this.Controls.Add(this.uiLabel3);
@@ -173,9 +182,11 @@ partial class RYCBColorPicker
             this.MinimizeBox = false;
             this.Name = "RYCBColorPicker";
             this.RectColor = System.Drawing.Color.FromArgb(((int)(((byte)(18)))), ((int)(((byte)(58)))), ((int)(((byte)(92)))));
-            this.Style = Sunny.UI.UIStyle.Black;
+            this.ShowIcon = false;
+            this.Style = Sunny.UI.UIStyle.Custom;
             this.Text = "text.settings.colorpicker.title";
             this.TitleColor = System.Drawing.Color.FromArgb(((int)(((byte)(21)))), ((int)(((byte)(21)))), ((int)(((byte)(21)))));
+            this.TitleFont = new System.Drawing.Font("微软雅黑", 12F);
             this.ZoomScaleRect = new System.Drawing.Rectangle(19, 19, 800, 450);
             this.Load += new System.EventHandler(this.RYCBColorPicker_Load);
             this.ResumeLayout(false);

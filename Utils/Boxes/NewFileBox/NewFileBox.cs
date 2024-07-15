@@ -127,7 +127,7 @@ namespace IDE
                         {
                             var tmpStr = uiTextBox1.Text;
                             uiTextBox1.Clear();
-                            uiTextBox1.Text += tmpStr.Split('.')[0] + ".cs";
+                            uiTextBox1.Text += tmpStr.Split('.')[0] + ".md";
                         }
                     }
                 }

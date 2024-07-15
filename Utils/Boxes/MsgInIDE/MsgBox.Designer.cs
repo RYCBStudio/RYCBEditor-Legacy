@@ -29,6 +29,7 @@ partial class MsgBox
     /// </summary>
     private void InitializeComponent()
     {
+            System.ComponentModel.ComponentResourceManager resources = new System.ComponentModel.ComponentResourceManager(typeof(MsgBox));
             this.htmlLabel1 = new MetroFramework.Drawing.Html.HtmlLabel();
             this.SuspendLayout();
             // 
@@ -51,6 +52,7 @@ partial class MsgBox
             this.ClientSize = new System.Drawing.Size(416, 205);
             this.Controls.Add(this.htmlLabel1);
             this.Font = new System.Drawing.Font("Microsoft YaHei UI", 12F);
+            this.Icon = ((System.Drawing.Icon)(resources.GetObject("$this.Icon")));
             this.Name = "MsgBox";
             this.Text = "MsgBox";
             this.TitleFont = new System.Drawing.Font("Microsoft YaHei UI", 12F);
@@ -60,6 +62,7 @@ partial class MsgBox
             this.FormClosing += new System.Windows.Forms.FormClosingEventHandler(this.MsgBox_FormClosing);
             this.Load += new System.EventHandler(this.PreInit);
             this.Shown += new System.EventHandler(this.PostInit);
+            this.SizeChanged += new System.EventHandler(this.MsgBox_SizeChanged);
             this.ResumeLayout(false);
 
     }

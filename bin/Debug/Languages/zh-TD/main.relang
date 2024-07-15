@@ -1,5 +1,5 @@
 [LangSet]
-Name=繁體中文
+Name=繁體中文（中國、中國台灣）
 
 [I18n]
 text.st.editprohibited=文件：已禁止修改。
@@ -31,6 +31,8 @@ text.ts.tool.application.exit=退出
 text.ts.tool.application.restart=重啟
 text.ts.tool.application.reset=重置IDE
 text.ts.tool.application.packagemanagement=包管理
+text.ts.tool.application.pkgmgmt.Python=Python包管理
+text.ts.tool.application.pkgmgmt.app=RYCB Editor包管理
 text.ts.tool.quick=快捷工具
 text.ts.tool.quick.clearcache=清理缓存
 text.ts.help.about=關於(&A)...
@@ -53,6 +55,7 @@ text.st.filesaved=文件已保存
 text.st.filesavefailed=文件保存失敗，詳情請查看日誌
 text.st.filereadytosave=文件已準備好保存
 text.bottom.errors=錯誤
+text.bottom.console=終端
 text.bottom.errors.sub.type=類型
 text.bottom.errors.sub.description=異常描述
 text.bottom.errors.sub.line=行號
@@ -82,6 +85,15 @@ text.inprogram.fileex.vmdk.warn=，該操作將引起IDE未響應和內存溢出
 text.inprogram.fileex.sb=Scratch 檔案
 text.inprogram.fileex.sb.intro=Scratch 檔案可以使用其官方編輯器打開。
 text.inprogram.fileex.dmp=（小型）記憶體轉儲檔案
+
+text.welcome.title=歡迎使用RYCB Editor！
+text.welcome.poem=有朋自遠方來，不亦樂乎？
+text.welcome.usertutorial=新手教程
+text.welcome.newpyscript=新建Python示例腳本
+text.welcome.initialsettings=初始設定
+text.welcome.displaysettings=顯示設定
+text.welcome.tip=點擊”文件>新建>文件“或按Ctrl+N創建新文件\n點擊”檔案>打開“或按Ctrl+O打開一個檔案\n按F5運行Python檔案\n點擊”工具>應用程序>包管理“管理包
+
 
 text.inprogram.title.warning=警告
 text.inprogram.title.info=資訊

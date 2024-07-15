@@ -5,6 +5,7 @@ Name=简体中文(中国)
 text.settings.window.title=设置
 text.settings.page.general.title=常规设置
 text.settings.page.general.basicsettings.title=基础设置
+text.settings.page.general.basicsettings.mainfont=主字体
 text.settings.page.general.basicsettings.theme=主题
 text.settings.page.general.basicsettings.lang=语言
 text.settings.page.general.basicsettings.xshdpath=Xshd文件路径
@@ -29,3 +30,13 @@ text.item.theme.dark=深色
 text.item.theme.IDEA=IDEA
 text.item.theme.custom=自定义
 text.tip.editreconffile=点击扩展按钮(标题栏上的“∨”)，编辑设置文件(.reconf)。
+text.settings.page.general.downloading.title=下载
+text.settings.page.general.downloading.pd=使用多线程下载
+text.settings.page.general.downloading.autopc=使用自动分配的线程数
+text.settings.page.general.downloading.pc=自定义线程数
+text.settings.page.run=运行
+
+tip.restart=重启后生效
+
+text.switch.on=启用
+text.switch.off=禁用

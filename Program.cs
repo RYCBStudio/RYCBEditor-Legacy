@@ -1,6 +1,5 @@
 ﻿using IDE.Utils;
 using Microsoft.VisualBasic.Devices;
-using SmileWei.EmbeddedEXE;
 using Sunny.UI;
 using System;
 using System.Diagnostics;
@@ -30,17 +29,17 @@ namespace IDE
         {
             Application.ThreadException += Application_ThreadException;
             AppDomain.CurrentDomain.UnhandledException += CurrentDomain_UnhandledException;
-            bool createdNew;
-            var CurrentMutexForRE = new Mutex(true, "RYCB_Editor_Running", out createdNew);
-            if (!createdNew)
-            {
-                MessageBox.Show("Another instance of this program is running, please close the instance and try again.");
-                return;
-            }
-            else
-            {
-                CurrentMutexForRE.ReleaseMutex();
-            }
+            //bool createdNew;
+            //var CurrentMutexForRE = new Mutex(true, "RYCB_Editor_Running", out createdNew);
+            //if (!createdNew)
+            //{
+            //    MessageBox.Show("Another instance of this program is running, please close the instance and try again.");
+            //    return;
+            //}
+            //else
+            //{
+            //    CurrentMutexForRE.ReleaseMutex();
+            //}
             Application.EnableVisualStyles();
             Application.SetCompatibleTextRenderingDefault(false);
             w.Start();
@@ -48,9 +47,11 @@ namespace IDE
             GlobalSettings.MainFontName = reConf.Read("Display", "DisplayFont", "Microsoft YaHei UI").FontExists("Microsoft YaHei UI");
             GlobalSettings.useRuntimeCompileCheck = reConf.ReadBool("Run", "useRuntimeCompileCheck", false);
             ParseArguments(args);
+            reConf.Write("Editor", "XshdFilePath", STARTUP_PATH + "\\Config\\HighLighting");
 
             splash = new(isLightEdit);
-            splash.Show();
+            var handler = new Action(() => splash.ShowDialog(class_));
+            handler.BeginInvoke(null, null);
             GlobalSettings.CrashAttempts = reConf.ReadInt("CrashHanding", "CrashAttempts", 3);
             if (GlobalSettings.CrashAttempts == 0)
             {
@@ -86,11 +87,16 @@ namespace IDE
         {
             var ex = e.Exception;
             IDE.Main.LOGGER.WriteErrLog(ex, EnumMsgLevel.ERROR, EnumPort.CLIENT);
-            Infrastructure.MiniDump.TryDump(STARTUP_PATH + $"\\Crash\\{DateTime.Now:yyyy-MM-dd_HH-mm-ss+fff}.dmp");
+            ((Main)class_).InfoTip.Text = string.Concat(ex.GetType().ToString(), ": ", ex.Message);
+            ((Main)class_).InfoTip.Image = Properties.Resources.Error_64x;
+            ((Main)class_).InfoTip.Visible = true;
+            ((Main)class_).CloseInfoTip.Visible = true;
             ((Main)class_).msgBox.MainForm = class_;
             ((Main)class_).msgBox.CurrentMsgType = MsgBox.MsgType.Error;
             ((Main)class_).msgBox.CurrentException = ex;
+            ((Main)class_).msgBox.TopMost = true;
             ((Main)class_).msgBox.Show();
+            ((Main)class_).msgBox.TopMost = false;
         }
 
         private static void CurrentDomain_UnhandledException(object sender, UnhandledExceptionEventArgs e)
@@ -139,9 +145,9 @@ namespace IDE
             Initializer.Init();
             startTimer.Stop();
             startTime = startTimer.Elapsed;
-            splash.Hide();
             Application.Run(class_);
             isInitialized = true;
+            splash.Hide();
         }
 
         private static void End(Exception ex)
@@ -153,6 +159,7 @@ namespace IDE
                 w.Stop();
                 var time = w.Elapsed;
                 var filePath = Environment.GetFolderPath(Environment.SpecialFolder.ApplicationData) + "\\RYCB\\IDE\\protect\\time";
+                Infrastructure.MiniDump.TryDump(STARTUP_PATH + $"\\Crash\\{DateTime.Now:yyyy-MM-dd_HH-mm-ss+fff}.dmp");
                 File.WriteAllText(filePath, time.TotalSeconds.ToString());
                 CrashHandler crashHandler = new(ex, Environment.GetFolderPath(Environment.SpecialFolder.Desktop)); ;
                 crashHandler.CollectCrashInfo();

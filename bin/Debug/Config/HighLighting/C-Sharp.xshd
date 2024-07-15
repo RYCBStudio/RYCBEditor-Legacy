@@ -1,5 +1,4 @@
-﻿<?xml version="1.0"?>
-<SyntaxDefinition name="CSharp" extensions=".cs"
+﻿<SyntaxDefinition name="CSharp" extensions=".cs"
 	xmlns="http://icsharpcode.net/sharpdevelop/syntaxdefinition/2008">
 	<!-- The named colors 'Comment' and 'String' are used in SharpDevelop to detect if a line is
 	inside a multiline string/comment -->
@@ -193,11 +192,13 @@
 			[\d\w_]+ # an identifier
 			(?=\s*\{) # followed by {
 		</Rule>
-		<Rule color="MethodCall">
+		<!---
+		<Rule foreground="#4EC9B0">
 			\b
-			[\d\w_]+ # an identifier
-			(?=\s*\[) # followed by [
+			[\d\w_]+
+			(?=\s* =.+)
 		</Rule>
+		-->
 
 		<!-- Digits -->
 		<Rule color="NumberLiteral">

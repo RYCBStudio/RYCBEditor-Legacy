@@ -16,6 +16,7 @@ public partial class CacheCleaner : UIForm
         internal static bool UpdateArchive = false;
         internal static bool UpdateFile = false;
         internal static bool CachePath = false;
+        internal static bool Dumps = false;
     }
 
     public CacheCleaner()
@@ -67,6 +68,10 @@ public partial class CacheCleaner : UIForm
         {
             total += Extensions.GetFilesCount(Program.STARTUP_PATH + "\\Cache");
         }
+        if (ClearChoices.Dumps)
+        {
+            total += Extensions.GetFilesCount(Program.STARTUP_PATH + "\\Crash");
+        }
         uiProcessBar1.Maximum = total;
     }
 
@@ -117,13 +122,22 @@ public partial class CacheCleaner : UIForm
             Directory.Delete(Program.STARTUP_PATH + "\\Cache", true);
             uiProcessBar1.StepIt();
         }
+        if (ClearChoices.Dumps)
+        {
+            var files = Directory.EnumerateFiles(Program.STARTUP_PATH+"\\Crash");
+            foreach (var file in files)
+            {
+                File.Delete(file);
+                uiProcessBar1.StepIt();
+            }
+        }
     }
 
     public static void DeleteFiles(string dir)
     {
         DirectoryInfo dirInfo = new DirectoryInfo(dir);
         dirInfo.Delete();
-        foreach (System.IO.DirectoryInfo subdir in dirInfo.GetDirectories())
+        foreach (DirectoryInfo subdir in dirInfo.GetDirectories())
         {
             DeleteFiles(subdir.FullName);
         }
@@ -165,5 +179,10 @@ public partial class CacheCleaner : UIForm
     private void ChangeStatus_CP(object sender, EventArgs e)
     {
         ClearChoices.CachePath = ((UICheckBox)sender).Checked;
+    }
+
+    private void ChangeStatus_DMP(object sender, EventArgs e)
+    {
+        ClearChoices.Dumps = ((UICheckBox)sender).Checked;
     }
 }

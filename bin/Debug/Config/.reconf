@@ -20,7 +20,7 @@ UpdateChannel=Normal
 # This sets the display language of IDE.
 # Format: xx-XX
 # Accepted Value(Now): zh-CN(Simplified Chinese), zh-TD(Traditional Chinese), en-US(English), ja-JP(Japanese)
-Language=zh-TD
+Language=zh-CN
 # This sets the log language of IDE.
 # Format: xx
 # Accepted Value(Now): zh(Simplified Chinese), td(Traditional Chinese), en(English), ja(Japanese)
@@ -42,16 +42,21 @@ Theme=IDEA_Dark
 [Downloading]
 # This sets whether IDE will download parallelly or not when downloading files.
 # Accepted Value: true, false
-ParallelDownload=true
+ParallelDownload=True
 # If you have enabled "ParallelDownload" key, this will set 
 # whether the IDE automatically uses the appropriate number of threads for downloading based on the number of your processors.
 # Accepted Value: true, false
-AutoParallelCount=false
+AutoParallelCount=False
 # If you have enabled "ParallelDownload" key and disabled "AutoParallelCount" key, 
 # this will set the parallel count IDE will download when downloading files.
 # Maximum Value: four times the number of processors on your computer.
 # Notice: normally a maximum of 32 threads is already sufficient.
 ParallelCount=16
+
+[Python]
+# This sets the downloading source of Pypi.
+Pypi.Source=https://pypi.tuna.tsinghua.edu.cn
+
 
 [Editor]
 # This sets the editor font of IDE.

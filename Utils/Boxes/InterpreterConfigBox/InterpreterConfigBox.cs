@@ -2,10 +2,8 @@
 using System.Collections.Generic;
 using System.Diagnostics;
 using System.IO;
-using System.Threading.Tasks;
 using System.Windows;
 using Sunny.UI;
-using static IronPython.Modules._ast;
 
 namespace IDE;
 public partial class InterpreterConfigBox : UIForm
@@ -15,6 +13,7 @@ public partial class InterpreterConfigBox : UIForm
     public InterpreterConfigBox(string path)
     {
         InitializeComponent();
+        InitializeLocalization();
         this.path = path;
     }
 
@@ -40,18 +39,18 @@ public partial class InterpreterConfigBox : UIForm
     private void AddNewConfig(object sender, EventArgs e)
     {
         var filename = "New.icbconfig";
-        if (!UIInputDialog.InputStringDialog(this, ref filename, true, "text.icb.filename.enter", true))
+        if (!UIInputDialog.InputStringDialog(this, ref filename, true, _I18nFile.Localize("text.icb.filename.enter"), true))
         {
             return;
         }
         var filepath = Program.STARTUP_PATH + "\\Config\\Runners\\" + (filename.EndsWith(".icbconfig") ? filename : filename + ".icbconfig");
         File.Create(filepath).Dispose();
-        if (!UIInputDialog.InputStringDialog(this, ref filename, true, "text.icb.name.enter", true))
+        var name = Path.GetFileNameWithoutExtension(filename);
+        if (!UIInputDialog.InputStringDialog(this, ref name, true, _I18nFile.Localize("text.icb.name.enter"), true))
         {
-            //text.tip.nullvalue = 您未输入{0}，RYCB Editor会自动分配该值。
-            MessageBox.Show("text.tip.nullvalue", "", MessageBoxButton.OK, MessageBoxImage.Warning);
+            //text.tip.nullvalue = 您未输入值，RYCB Editor会自动分配该值。
+            MessageBox.Show(_I18nFile.Localize("text.tip.nullvalue"), "", MessageBoxButton.OK, MessageBoxImage.Warning);
         }
-        var name = filename;
         File.WriteAllText(filepath, $"[itptr]\r\nname={name}\r\ntype=\r\npath=\r\nargs=");
         int index = uiListBox1.Items.Add(name);
         ((List<Dictionary<int, string>>)uiListBox1.Tag).Add(new Dictionary<int, string> { { index, filepath } });
@@ -66,13 +65,12 @@ public partial class InterpreterConfigBox : UIForm
             try
             {
                 File.Delete(path);
-                uiListBox1.SelectedIndex = 0;
                 uiListBox1.Delete(uiListBox1.SelectedItem);
+                uiListBox1.SelectedIndex = 0;
             }
             catch (Exception ex)
             {
                 Main.LOGGER.WriteErrLog(ex, EnumMsgLevel.ERROR, EnumPort.CLIENT);
-                label6.Text = "Fail to delete. Something wrong happened.";
                 label6.Show();
                 pictureBox1.Show();
             }
@@ -81,11 +79,11 @@ public partial class InterpreterConfigBox : UIForm
 
     private void SearchForExistingConfig(object sender, EventArgs e)
     {
-        openFileDialog1.Filter = "|*.*";
+        openFileDialog1.Filter = "|*.icbconfig||*.*";
         if (openFileDialog1.ShowDialog() == System.Windows.Forms.DialogResult.OK)
         {
             var filedirectorypath = Program.STARTUP_PATH + "\\Config\\Runners\\";
-            var filename = Path.GetFileName(openFileDialog1.FileName);
+            var filename = Path.GetFileNameWithoutExtension(openFileDialog1.FileName);
             var destfilename = filedirectorypath + filename + ".icbconfig";
             try
             {
@@ -136,9 +134,10 @@ public partial class InterpreterConfigBox : UIForm
 
     private void ReadValues(object sender, EventArgs e)
     {
-        string path = (uiListBox1.Tag as List<Dictionary<int, string>>)[uiListBox1.SelectedIndex][uiListBox1.SelectedIndex];
+        string path;
         try
         {
+            path = (uiListBox1.Tag as List<Dictionary<int, string>>)[uiListBox1.SelectedIndex][uiListBox1.SelectedIndex];
             var icbfp = new ICBFileProcessor(path);
             var itptr_type = icbfp.GetInfo(ICBFileProcessor.InfoType.Itptr_type);
             var itptr_path = icbfp.GetInfo(ICBFileProcessor.InfoType.Itptr_path);
@@ -151,7 +150,7 @@ public partial class InterpreterConfigBox : UIForm
         catch (Exception ex)
         {
             Main.LOGGER.WriteErrLog(ex, EnumMsgLevel.WARN, EnumPort.CLIENT);
-            Main.LOGGER.WriteLog("I/O错误：无法读取文件。", EnumMsgLevel.ERROR, EnumPort.CLIENT, EnumModule.IO);
+            if (ex is IOException) Main.LOGGER.WriteLog("I/O错误：无法读取文件。", EnumMsgLevel.ERROR, EnumPort.CLIENT, EnumModule.IO);
         }
     }
 

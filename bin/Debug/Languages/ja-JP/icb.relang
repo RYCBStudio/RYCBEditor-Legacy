@@ -1,0 +1,11 @@
+[LangSet]
+Name=日本語
+
+[I18n]
+text.icb.title=ドライバ構成
+text.icb.itptr=インタプリタ
+text.icb.itptr.type=インタプリタタイプ
+text.icb.itptr.path=インタプリタパス
+text.icb.itptr.args=インタプリタ起動パラメータ
+text.icb.itptr.finalcmd=最終コマンド
+tip.failtodel=削除に失敗しました。ログを確認してください。

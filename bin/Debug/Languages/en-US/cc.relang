@@ -8,3 +8,7 @@ text.window.cc.clearchoices=Clear Choices
 text.window.cc.choices.tmpcodefile=Temporary Code Files(generated when run an unsaved file)
 text.window.cc.choices.pycnfile=The Py-CN Project Compiled Files
 text.window.cc.choices.logfile=Log Files
+text.window.cc.choices.updatearchive=Update Archive Files
+text.window.cc.choices.updateres=Uncompressed Update Files
+text.window.cc.choices.cachepath=Cache(Including above two choices)
+text.window.cc.choices.dump=Memory Dump(dmp) Files

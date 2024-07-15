@@ -1,15 +1,11 @@
-﻿using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
+﻿using System.Text;
 using Sunny.UI;
 
 namespace IDE.Utils;
 
 partial class PackageManagerMain
 {
-    IniFile _I18nFile = new(Program.STARTUP_PATH + $"\\Languages\\{GlobalSettings.language}\\lpmm.relang", System.Text.Encoding.UTF8);
+    IniFile _I18nFile = new(Program.STARTUP_PATH + $"\\Languages\\{GlobalSettings.language}\\lpmm.relang", Encoding.UTF8);
 
     private void InitializeLocalization()
     {

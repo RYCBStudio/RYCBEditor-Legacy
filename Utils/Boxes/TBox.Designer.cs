@@ -76,10 +76,10 @@ partial class TBox
             this.uiButton1 = new Sunny.UI.UIButton();
             this.uiTabControlMenu1 = new Sunny.UI.UITabControlMenu();
             this.tabPage2 = new System.Windows.Forms.TabPage();
-            this.uiLabel8 = new Sunny.UI.UILabel();
-            this.uiButton23 = new Sunny.UI.UIButton();
             this.uiLabel9 = new Sunny.UI.UILabel();
             this.uiButton24 = new Sunny.UI.UIButton();
+            this.uiLabel8 = new Sunny.UI.UILabel();
+            this.uiButton23 = new Sunny.UI.UIButton();
             this.tabPage3.SuspendLayout();
             this.tabPage1.SuspendLayout();
             this.uiGroupBox2.SuspendLayout();
@@ -543,6 +543,7 @@ partial class TBox
             // uiLabel7
             // 
             this.uiLabel7.Font = new System.Drawing.Font("微软雅黑", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(134)));
+            this.uiLabel7.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(48)))), ((int)(((byte)(48)))), ((int)(((byte)(48)))));
             this.uiLabel7.Location = new System.Drawing.Point(3, 65);
             this.uiLabel7.Name = "uiLabel7";
             this.uiLabel7.Size = new System.Drawing.Size(92, 33);
@@ -552,7 +553,9 @@ partial class TBox
             // 
             // uiWaitingBar2
             // 
+            this.uiWaitingBar2.FillColor = System.Drawing.Color.FromArgb(((int)(((byte)(243)))), ((int)(((byte)(249)))), ((int)(((byte)(255)))));
             this.uiWaitingBar2.Font = new System.Drawing.Font("微软雅黑", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(134)));
+            this.uiWaitingBar2.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(80)))), ((int)(((byte)(160)))), ((int)(((byte)(255)))));
             this.uiWaitingBar2.Interval = 50;
             this.uiWaitingBar2.Location = new System.Drawing.Point(365, 82);
             this.uiWaitingBar2.MinimumSize = new System.Drawing.Size(70, 23);
@@ -583,6 +586,7 @@ partial class TBox
             // uiLabel4
             // 
             this.uiLabel4.Font = new System.Drawing.Font("微软雅黑", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(134)));
+            this.uiLabel4.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(48)))), ((int)(((byte)(48)))), ((int)(((byte)(48)))));
             this.uiLabel4.Location = new System.Drawing.Point(3, 28);
             this.uiLabel4.Name = "uiLabel4";
             this.uiLabel4.Size = new System.Drawing.Size(92, 33);
@@ -610,6 +614,7 @@ partial class TBox
             // uiLabel5
             // 
             this.uiLabel5.Font = new System.Drawing.Font("微软雅黑", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(134)));
+            this.uiLabel5.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(48)))), ((int)(((byte)(48)))), ((int)(((byte)(48)))));
             this.uiLabel5.Location = new System.Drawing.Point(3, 146);
             this.uiLabel5.Name = "uiLabel5";
             this.uiLabel5.Size = new System.Drawing.Size(76, 33);
@@ -637,6 +642,7 @@ partial class TBox
             // uiLabel6
             // 
             this.uiLabel6.Font = new System.Drawing.Font("微软雅黑", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(134)));
+            this.uiLabel6.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(48)))), ((int)(((byte)(48)))), ((int)(((byte)(48)))));
             this.uiLabel6.Location = new System.Drawing.Point(3, 104);
             this.uiLabel6.Name = "uiLabel6";
             this.uiLabel6.Size = new System.Drawing.Size(76, 33);
@@ -679,7 +685,9 @@ partial class TBox
             // 
             // uiWaitingBar1
             // 
+            this.uiWaitingBar1.FillColor = System.Drawing.Color.FromArgb(((int)(((byte)(243)))), ((int)(((byte)(249)))), ((int)(((byte)(255)))));
             this.uiWaitingBar1.Font = new System.Drawing.Font("微软雅黑", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(134)));
+            this.uiWaitingBar1.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(80)))), ((int)(((byte)(160)))), ((int)(((byte)(255)))));
             this.uiWaitingBar1.Interval = 50;
             this.uiWaitingBar1.Location = new System.Drawing.Point(2, 219);
             this.uiWaitingBar1.MinimumSize = new System.Drawing.Size(70, 23);
@@ -711,6 +719,7 @@ partial class TBox
             // uiLabel3
             // 
             this.uiLabel3.Font = new System.Drawing.Font("微软雅黑", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(134)));
+            this.uiLabel3.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(48)))), ((int)(((byte)(48)))), ((int)(((byte)(48)))));
             this.uiLabel3.Location = new System.Drawing.Point(3, 28);
             this.uiLabel3.Name = "uiLabel3";
             this.uiLabel3.Size = new System.Drawing.Size(92, 33);
@@ -738,6 +747,7 @@ partial class TBox
             // uiLabel2
             // 
             this.uiLabel2.Font = new System.Drawing.Font("微软雅黑", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(134)));
+            this.uiLabel2.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(48)))), ((int)(((byte)(48)))), ((int)(((byte)(48)))));
             this.uiLabel2.Location = new System.Drawing.Point(3, 129);
             this.uiLabel2.Name = "uiLabel2";
             this.uiLabel2.Size = new System.Drawing.Size(76, 33);
@@ -765,6 +775,7 @@ partial class TBox
             // uiLabel1
             // 
             this.uiLabel1.Font = new System.Drawing.Font("微软雅黑", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(134)));
+            this.uiLabel1.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(48)))), ((int)(((byte)(48)))), ((int)(((byte)(48)))));
             this.uiLabel1.Location = new System.Drawing.Point(3, 87);
             this.uiLabel1.Name = "uiLabel1";
             this.uiLabel1.Size = new System.Drawing.Size(76, 33);
@@ -815,32 +826,10 @@ partial class TBox
             this.tabPage2.Text = "工具";
             this.tabPage2.UseVisualStyleBackColor = true;
             // 
-            // uiLabel8
-            // 
-            this.uiLabel8.Font = new System.Drawing.Font("微软雅黑", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(134)));
-            this.uiLabel8.Location = new System.Drawing.Point(500, 5);
-            this.uiLabel8.Name = "uiLabel8";
-            this.uiLabel8.Size = new System.Drawing.Size(263, 42);
-            this.uiLabel8.TabIndex = 1;
-            this.uiLabel8.Text = "Version 1.0 Unversal";
-            this.uiLabel8.TextAlign = System.Drawing.ContentAlignment.MiddleRight;
-            // 
-            // uiButton23
-            // 
-            this.uiButton23.Cursor = System.Windows.Forms.Cursors.Hand;
-            this.uiButton23.Font = new System.Drawing.Font("微软雅黑", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(134)));
-            this.uiButton23.Location = new System.Drawing.Point(3, 3);
-            this.uiButton23.MinimumSize = new System.Drawing.Size(1, 1);
-            this.uiButton23.Name = "uiButton23";
-            this.uiButton23.Size = new System.Drawing.Size(491, 44);
-            this.uiButton23.TabIndex = 0;
-            this.uiButton23.Text = "Random File Renamer";
-            this.uiButton23.TipsFont = new System.Drawing.Font("微软雅黑", 9F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(134)));
-            this.uiButton23.Click += new System.EventHandler(this.StartRFR);
-            // 
             // uiLabel9
             // 
             this.uiLabel9.Font = new System.Drawing.Font("微软雅黑", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(134)));
+            this.uiLabel9.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(48)))), ((int)(((byte)(48)))), ((int)(((byte)(48)))));
             this.uiLabel9.Location = new System.Drawing.Point(500, 55);
             this.uiLabel9.Name = "uiLabel9";
             this.uiLabel9.Size = new System.Drawing.Size(263, 42);
@@ -861,6 +850,30 @@ partial class TBox
             this.uiButton24.TipsFont = new System.Drawing.Font("微软雅黑", 9F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(134)));
             this.uiButton24.Click += new System.EventHandler(this.StartFSMEV);
             // 
+            // uiLabel8
+            // 
+            this.uiLabel8.Font = new System.Drawing.Font("微软雅黑", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(134)));
+            this.uiLabel8.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(48)))), ((int)(((byte)(48)))), ((int)(((byte)(48)))));
+            this.uiLabel8.Location = new System.Drawing.Point(500, 5);
+            this.uiLabel8.Name = "uiLabel8";
+            this.uiLabel8.Size = new System.Drawing.Size(263, 42);
+            this.uiLabel8.TabIndex = 1;
+            this.uiLabel8.Text = "Version 1.0 Unversal";
+            this.uiLabel8.TextAlign = System.Drawing.ContentAlignment.MiddleRight;
+            // 
+            // uiButton23
+            // 
+            this.uiButton23.Cursor = System.Windows.Forms.Cursors.Hand;
+            this.uiButton23.Font = new System.Drawing.Font("微软雅黑", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(134)));
+            this.uiButton23.Location = new System.Drawing.Point(3, 3);
+            this.uiButton23.MinimumSize = new System.Drawing.Size(1, 1);
+            this.uiButton23.Name = "uiButton23";
+            this.uiButton23.Size = new System.Drawing.Size(491, 44);
+            this.uiButton23.TabIndex = 0;
+            this.uiButton23.Text = "Random File Renamer";
+            this.uiButton23.TipsFont = new System.Drawing.Font("微软雅黑", 9F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(134)));
+            this.uiButton23.Click += new System.EventHandler(this.StartRFR);
+            // 
             // TBox
             // 
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.None;
@@ -870,6 +883,7 @@ partial class TBox
             this.Name = "TBox";
             this.ShowTitleIcon = true;
             this.Text = "百宝箱";
+            this.TitleFont = new System.Drawing.Font("微软雅黑", 12F);
             this.ZoomScaleRect = new System.Drawing.Rectangle(19, 19, 800, 450);
             this.tabPage3.ResumeLayout(false);
             this.tabPage1.ResumeLayout(false);

@@ -20,10 +20,10 @@ internal partial class ErrorMessageBox : UIForm
     private string _error;
     private TextEditor _editor;
     private Form _parent;
-    private List<string> errors = new();
-    private List<string> exceptions = new();
-    private List<int> lines = new();
-    private List<string> contents = new();
+    private List<string> errors = [];
+    private List<string> exceptions = [];
+    private List<int> lines = [];
+    private List<string> contents = [];
 
     internal static readonly Dictionary<Engines, string> TranslateEngines = new()
     {

@@ -14,6 +14,7 @@ using System.Threading;
 using System.Diagnostics;
 using Microsoft.Diagnostics.Runtime;
 using System.Security.Cryptography;
+using System.Net;
 
 namespace IDE
 {
@@ -178,6 +179,99 @@ namespace IDE
         }
     }
 
+    public static class PypiHelper
+    {
+        public static (Dictionary<string, List<string>>, string) ParseLinkWithContent(string html)
+        {
+            Dictionary<string, List<string>> res = new();
+            var doc = new HtmlAgilityPack.HtmlDocument();
+            doc.LoadHtml(html);
+            var linkNodes = doc.DocumentNode.SelectNodes("//span[@class='package-snippet__name']");
+            var names = new List<string>();
+            var descs = new List<string>();
+            var vers = new List<string>();
+            foreach (var linkNode in linkNodes)
+            {
+                string link = linkNode.GetDirectInnerText();
+                names.Add(link);
+
+            }
+            linkNodes = doc.DocumentNode.SelectNodes("//p[@class='package-snippet__description']");
+            foreach (var linkNode in linkNodes)
+            {
+                string link = linkNode.GetDirectInnerText();
+                descs.Add(link);
+            }
+            linkNodes = doc.DocumentNode.SelectNodes("//span[@class='package-snippet__version']");
+            foreach (var linkNode in linkNodes)
+            {
+                string link = linkNode.GetDirectInnerText();
+                vers.Add(link);
+            }
+            linkNodes = doc.DocumentNode.SelectNodes("//a[@class='button button-group__button']");
+            int max = 0;
+            foreach (var node in linkNodes)
+            {
+                string link = node.GetDirectInnerText();
+                try
+                {
+                    if (max <= Convert.ToInt32(link))
+                    {
+                        max = Convert.ToInt32(link);
+                    }
+                }
+                catch { }
+            }
+            res.Add("name", names);
+            res.Add("desc", descs);
+            res.Add("ver", vers);
+            return (res, max.ToString());
+        }
+
+        public static string GetHtml(string url)
+        {
+            string res = "";
+            WebClient client = new WebClient();
+            Stream stream = client.OpenRead(url);
+            StreamReader sr = new StreamReader(stream, Encoding.UTF8);
+            res = sr.ReadToEnd();
+            sr.Close();
+            client.Dispose();
+            return res;
+        }
+
+        public static List<Dictionary<string, string>> ConvertToDict(Dictionary<string, List<string>> res)
+        {
+            List<Dictionary<string, string>> ret = new(res["name"].Count);
+            var i = 0;
+
+            var names = res["name"];
+            var descs = res["desc"];
+            var vers = res["ver"];
+            foreach (var val in names)
+            {
+                Dictionary<string, string> tmp = new()
+                {
+                    {
+                        "name",
+                        val
+                    },
+                    {
+                        "desc",
+                        descs[names.IndexOf(val)]
+                    },
+                    {
+                        "ver",
+                        vers[names.IndexOf(val)]
+                    }
+                };
+                ret.Add(tmp);
+            }
+
+            return ret;
+        }
+    }
+
     public static class ChinsesePinYinHelper
     {
         ///<summary>
@@ -261,27 +355,25 @@ namespace IDE
         public static string RunCmd(string cmd)
         {
             cmd = cmd.Trim().TrimEnd('&') + "&exit";//说明：不管命令是否成功均执行exit命令，否则当调用ReadToEnd()方法时，会处于假死状态
-            using (var p = new Process())
-            {
-                p.StartInfo.FileName = CmdPath;
-                p.StartInfo.UseShellExecute = false; //是否使用操作系统shell启动
-                p.StartInfo.RedirectStandardInput = true; //接受来自调用程序的输入信息
-                p.StartInfo.RedirectStandardOutput = true; //由调用程序获取输出信息
-                p.StartInfo.RedirectStandardError = true; //重定向标准错误输出
-                p.StartInfo.CreateNoWindow = true; //不显示程序窗口
-                p.Start();//启动程序
+            var p = new Process();
+            p.StartInfo.FileName = CmdPath;
+            p.StartInfo.UseShellExecute = false; //是否使用操作系统shell启动
+            p.StartInfo.RedirectStandardInput = true; //接受来自调用程序的输入信息
+            p.StartInfo.RedirectStandardOutput = true; //由调用程序获取输出信息
+            p.StartInfo.RedirectStandardError = true; //重定向标准错误输出
+            p.StartInfo.CreateNoWindow = true; //不显示程序窗口
+            p.Start();//启动程序
 
-                //向cmd窗口写入命令
-                p.StandardInput.WriteLine(cmd);
-                p.StandardInput.AutoFlush = true;
+            //向cmd窗口写入命令
+            p.StandardInput.WriteLine(cmd);
+            p.StandardInput.AutoFlush = true;
 
-                //获取cmd窗口的输出信息
-                var output = p.StandardOutput.ReadToEnd();
-                p.WaitForExit();//等待程序执行完退出进程
-                p.Close();
+            //获取cmd窗口的输出信息
+            var output = p.StandardOutput.ReadToEnd();
+            p.WaitForExit();//等待程序执行完退出进程
+            p.Close();
 
-                return output;
-            }
+            return output;
         }
     }
 
@@ -311,6 +403,11 @@ namespace IDE
         /// 使用运行程序来检查错误
         /// </summary>
         internal static bool useRuntimeCompileCheck = false;
+
+        /// <summary>
+        /// 
+        /// </summary>
+        internal static readonly string commonTempFilePath = Program.STARTUP_PATH + "\\Cache\\" + DateTime.Now.GetHashCode().ToString();
 
         /// <summary>
         /// 主题
@@ -344,19 +441,24 @@ namespace IDE
         /// <summary>
         /// 可信任的扩展包作者
         /// </summary>
-        public static List<string> TrustedAuthors = new()
-        {
+        public static List<string> TrustedAuthors =
+        [
             "RYCB Studio",
             "RYCBStudio",
             "QYF-RYCBStudio",
             "QYF",
-        };
+        ];
 
         public static class Downloading
         {
             public static bool ParallelDownload = Program.reConf.ReadBool("Downloading", "ParallelDownload", true);
             public static bool AutoParallelCount = Program.reConf.ReadBool("Downloading", "AutoParallelCount", false);
             public static int ParallelCount = (AutoParallelCount ? Program.reConf.ReadInt("Downloading", "ParallelCount", Environment.ProcessorCount * 2) : Environment.ProcessorCount * 2);
+        }
+
+        public static class Pypi
+        {
+            public static string source = Program.reConf.ReadString("Python", "Pypi.Source");
         }
     }
 
@@ -399,7 +501,7 @@ namespace IDE
     public class PythonVariableAnalyzer
     {
         private string content;
-        private List<string> lines = new();
+        private List<string> lines = [];
         internal PythonVariableAnalyzer(string content)
         {
             this.content = content;
@@ -436,7 +538,7 @@ namespace IDE
 
         internal List<string> Process()
         {
-            List<string> vars = new List<string>();
+            List<string> vars = [];
             GetLines();
             foreach (string line in lines)
             {
@@ -465,24 +567,24 @@ namespace IDE
             try
             {
                 //如果目标路径不存在,则创建目标路径
-                if (!System.IO.Directory.Exists(destFolder))
+                if (!Directory.Exists(destFolder))
                 {
-                    System.IO.Directory.CreateDirectory(destFolder);
+                    Directory.CreateDirectory(destFolder);
                 }
                 //得到原文件根目录下的所有文件
-                string[] files = System.IO.Directory.GetFiles(sourceFolder);
+                string[] files = Directory.GetFiles(sourceFolder);
                 foreach (string file in files)
                 {
-                    string name = System.IO.Path.GetFileName(file);
-                    string dest = System.IO.Path.Combine(destFolder, name);
-                    System.IO.File.Copy(file, dest);//复制文件
+                    string name = Path.GetFileName(file);
+                    string dest = Path.Combine(destFolder, name);
+                    File.Copy(file, dest);//复制文件
                 }
                 //得到原文件根目录下的所有文件夹
-                string[] folders = System.IO.Directory.GetDirectories(sourceFolder);
+                string[] folders = Directory.GetDirectories(sourceFolder);
                 foreach (string folder in folders)
                 {
-                    string name = System.IO.Path.GetFileName(folder);
-                    string dest = System.IO.Path.Combine(destFolder, name);
+                    string name = Path.GetFileName(folder);
+                    string dest = Path.Combine(destFolder, name);
                     CopyFolder(folder, dest);//构建目标路径,递归复制文件
                 }
                 return 1;
@@ -537,7 +639,7 @@ namespace IDE
             DirectoryInfo dirInfo = new DirectoryInfo(dir);
             int totalFile = 0;
             totalFile += dirInfo.GetFiles().Length;//获取全部文件
-            foreach (System.IO.DirectoryInfo subdir in dirInfo.GetDirectories())
+            foreach (DirectoryInfo subdir in dirInfo.GetDirectories())
             {
                 totalFile += GetFilesCount(subdir.FullName);
             }
@@ -795,7 +897,7 @@ namespace IDE
         }
 
         /// <summary>
-        /// 向ListBox中删除项目
+        /// 在ListBox中删除项目
         /// </summary>
         /// <param name="lb">需删除项目的ListBox</param>
         /// <param name="item">需删除的项目</param>
@@ -806,11 +908,12 @@ namespace IDE
             {
                 _lb.Items.Remove(item);
             }
+            _lb.SelectedIndex = 0;
             lb.Invalidate(false);
         }
 
         /// <summary>
-        /// 向ListBox中删除项目
+        /// 在ListBox中删除项目
         /// </summary>
         /// <param name="lb">需删除项目的ListBox</param>
         /// <param name="index">需删除的项目的下标</param>
@@ -821,6 +924,7 @@ namespace IDE
             {
                 _lb.Items.RemoveAt(index);
             }
+            _lb.SelectedIndex = 0;
             lb.Invalidate(false);
         }
 
@@ -913,9 +1017,10 @@ namespace IDE
             try
             {
                 fileName = (content.Substring(0, 5).Contains(" ") ? "abcdefghijk" : content.Substring(0, 5)).GetHashCode() + ".py";
-            }catch
+            }
+            catch
             {
-                fileName = DateTime.Now.ToString().GetHashCode().ToString()+".py";
+                fileName = DateTime.Now.ToString().GetHashCode().ToString() + ".py";
             }
             if (content.Contains("import turtle")) { GlobalSettings.useRuntimeCompileCheck = false; }
             var filePath = Path.GetTempPath() + "\\" + fileName;
@@ -949,32 +1054,64 @@ namespace IDE
                 StartInfo = psi
             };
             process.Start();
-            
+
             var output = process.StandardOutput.ReadToEnd();
             var error = process.StandardError.ReadToEnd();
 
             if (!string.IsNullOrEmpty(error))
             {
-                // 如果出现错误，处理错误信息，提取错误行号和错误描述
-                var errorLines = new List<int>();
-                var errorDescriptions = new List<string>();
-
                 Regex file_line = new("File \".+\", line \\d");
                 Regex exp = new(".+:\\s.+");
 
                 var errorLinesString = error.Split(new[] { "\r\n", "\r", "\n" }, StringSplitOptions.None);
-                Dictionary<string, string> v = new();
+                Dictionary<string, string> v = [];
+                if (errorLinesString.Length == 1)
+                {
+                    var list = errorLinesString[0].Split(" on line ");
+                    for (int i = 0; i < list.Length; i++)
+                    {
+                        var line = list[i];
+                        Regex single_line_exp = new("[a-zA-Z]{1}\\w+([Ee]rror|[Ee]xception)");
+                        try
+                        {
+                            if (single_line_exp.IsMatch(line))
+                            {
+                                var _ = line.Split(": ");
+                                for (int j = 0; j < _.Length; j++)
+                                {
+                                    var item = _[j];
+                                    if (single_line_exp.IsMatch(item))
+                                    {
+                                        v.Add("Type", item.Trim());
+                                        v.Add("Desc", _[j + 1]);
+                                        break;
+                                    }
+                                }
+                            }
+                            else
+                            {
+                                v.Add("Line", line.Split(", line")[1].Replace(")", ""));
+                            }
+                        }
+                        catch (Exception ex) { Main.LOGGER.WriteErrLog(ex, EnumMsgLevel.ERROR, EnumPort.CLIENT); }
+
+                    }
+                }
                 foreach (var lineString in errorLinesString)
                 {
-                    if (file_line.IsMatch(lineString))
+                    try
                     {
-                        v.Add("Line", lineString.Split(new string[] { "line " }, StringSplitOptions.RemoveEmptyEntries)[1]);
+                        if (file_line.IsMatch(lineString))
+                        {
+                            v.Add("Line", lineString.Split(new string[] { "line " }, StringSplitOptions.RemoveEmptyEntries)[1]);
+                        }
+                        else if (exp.IsMatch(lineString))
+                        {
+                            v.Add("Type", lineString.Split(new string[] { ": " }, StringSplitOptions.RemoveEmptyEntries)[0]);
+                            v.Add("Desc", lineString.Split(new string[] { ": " }, StringSplitOptions.RemoveEmptyEntries)[1]);
+                        }
                     }
-                    else if (exp.IsMatch(lineString))
-                    {
-                        v.Add("Type", lineString.Split(new string[] { ": " }, StringSplitOptions.RemoveEmptyEntries)[0]);
-                        v.Add("Desc", lineString.Split(new string[] { ": " }, StringSplitOptions.RemoveEmptyEntries)[1]);
-                    }
+                    catch (Exception ex) { Main.LOGGER.WriteErrLog(ex, EnumMsgLevel.ERROR, EnumPort.CLIENT); }
                 }
                 result.Add(v);
             }

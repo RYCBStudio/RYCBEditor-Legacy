@@ -1,4 +1,4 @@
-﻿namespace IDE.Utils;
+namespace IDE.Utils;
 
 partial class PackageManagerMain
 {
@@ -44,9 +44,9 @@ partial class PackageManagerMain
             this.button3 = new System.Windows.Forms.Button();
             this.uiTextBox1 = new Sunny.UI.UITextBox();
             this.button1 = new System.Windows.Forms.Button();
+            this.button4 = new System.Windows.Forms.Button();
             this.InfoTip = new MetroFramework.Drawing.Html.HtmlToolTip();
             this.folderBrowserDialog1 = new System.Windows.Forms.FolderBrowserDialog();
-            this.button4 = new System.Windows.Forms.Button();
             this.tableLayoutPanel1.SuspendLayout();
             this.uiTabControlMenu1.SuspendLayout();
             this.tabPage1.SuspendLayout();
@@ -309,11 +309,6 @@ partial class PackageManagerMain
             this.button1.UseVisualStyleBackColor = true;
             this.button1.Click += new System.EventHandler(this.Search);
             // 
-            // InfoTip
-            // 
-            this.InfoTip.OwnerDraw = true;
-            this.InfoTip.ToolTipIcon = System.Windows.Forms.ToolTipIcon.Info;
-            // 
             // button4
             // 
             this.button4.Dock = System.Windows.Forms.DockStyle.Fill;
@@ -325,6 +320,11 @@ partial class PackageManagerMain
             this.button4.Text = "  ";
             this.button4.UseVisualStyleBackColor = true;
             this.button4.Click += new System.EventHandler(this.Refresh);
+            // 
+            // InfoTip
+            // 
+            this.InfoTip.OwnerDraw = true;
+            this.InfoTip.ToolTipIcon = System.Windows.Forms.ToolTipIcon.Info;
             // 
             // PackageManagerMain
             // 

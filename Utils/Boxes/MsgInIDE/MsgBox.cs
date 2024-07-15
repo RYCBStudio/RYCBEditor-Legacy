@@ -145,4 +145,9 @@ public partial class MsgBox : UIForm
     {
         htmlLabel1.Text = string.Empty;
     }
+
+    private void MsgBox_SizeChanged(object sender, EventArgs e)
+    {
+        htmlLabel1.Invalidate();
+    }
 }

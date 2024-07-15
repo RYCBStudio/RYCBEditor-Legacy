@@ -16,12 +16,12 @@ namespace IDE
 {
     public partial class CustomSettings : UIForm
     {
-        private static string _path, _path_oringin, tip_1 = "重启应用程序后生效";
+        private static string _path, _path_oringin, tip_1 = "tip.restart";
         private bool isInitialized = false;
         private static readonly IniFile settings = Program.reConf;
         private static TextEditor edit;
         private static readonly System.Drawing.Size SHOW_SIZE = new(1343, 787);
-        private List<string> xshd_files = new();
+        private List<string> xshd_files = [];
 
         public CustomSettings(string path)
         {
@@ -34,7 +34,7 @@ namespace IDE
             var language = GlobalSettings.language_set.FirstOrDefault(q => q.Value == GlobalSettings.language).Key;
             CBoxLanguage.SelectedItem = language;
             CBoxLanguage.Text = language;
-            List<string> items = new();
+            List<string> items = [];
             foreach (string item in CBoxTheme.Items)
             {
                 items.Add(_I18nFile.ReadString("I18n", item, item));
@@ -58,6 +58,9 @@ namespace IDE
         private void CustomSettings_Load(object sender, EventArgs e)
         {
             this.Size = SHOW_SIZE;
+            SwtchParallelDownload.Active = settings.ReadBool("Downloading", "ParallelDownload");
+            SwtchAutoParallelDownloadCount.Active = settings.ReadBool("Downloading", "AutoParallelCount");
+            TBPC.Value = settings.ReadInt("Downloading", "ParallelCount");
             edit = new TextEditor()
             {
                 Width = EHostForEditor.Width,
@@ -111,7 +114,7 @@ namespace IDE
                     }
                     var attrName = item.Attributes["name"]?.Value;
                     var attrForeground = item.Attributes["foreground"]?.Value;
-                    
+
 
                     if (attrName == "Keywords")
                     {
@@ -136,7 +139,7 @@ namespace IDE
                 }
             }
             TBoxXshdCache.Text = settings.ReadString("Editor", "XshdFilePath", Application.StartupPath + "\\Config\\Highlightings\\");
-            isInitialized = true;
+            tip_1 = _I18nFile.Localize(tip_1);
         }
 
         private void FormUpdate(object sender, EventArgs e)
@@ -150,18 +153,20 @@ namespace IDE
                     font_list.Add(item);
                 }
             }
-            foreach (var item in Directory.EnumerateFiles(Program.STARTUP_PATH+"\\Config\\Highlighting\\"))
+            foreach (var item in Directory.EnumerateFiles(Program.STARTUP_PATH + "\\Config\\Highlighting\\"))
             {
                 xshd_list.Add(Main.GetFileName(item));
                 xshd_files.Add(item);
             }
             SetSunnyCobBoxItems(CBoxEditorXshd, xshd_list);
             SetSunnyCobBoxItems(CBoxEditorFont, font_list.ToArray());
+            SetSunnyCobBoxItems(CBoxFont, font_list.ToArray());
             CBoxEditorFont.SelectedItem = settings.ReadString("Editor", "Font", "Consolas");
+            CBoxFont.SelectedItem = settings.ReadString("General", "Font", "Microsoft YaHei UI");
             NUDFontSize.Value = 12;
             CkBoxShowLN.Checked = settings.ReadBool("Editor", "ShowLineNum", true);
             edit.FontFamily = new FontFamily(CBoxEditorFont.SelectedText);
-            edit.FontSize = NUDFontSize.Value;
+            edit.FontSize = NUDFontSize.Value; isInitialized = true;
         }
 
         private void Update(object sender, EventArgs e)
@@ -248,7 +253,7 @@ namespace IDE
             if (isInitialized)
             {
                 var selectedLanguage = CBoxLanguage.Text;
-                if (selectedLanguage != GlobalSettings.language)
+                if (selectedLanguage != GlobalSettings.language & !selectedLanguage.IsNullOrEmpty())
                 {
                     GlobalSettings.language = GlobalSettings.language_set[selectedLanguage];
                     Program.reConf.Write("General", "Language", GlobalSettings.language_set[selectedLanguage]);
@@ -384,6 +389,28 @@ namespace IDE
         private void OpenEditor(object sender, EventArgs e)
         {
             new CustomSettingsFileEditor().Show();
+        }
+
+        private void EditXshdFIles(object sender, EventArgs e)
+        {
+            new XshdFileEditor(TBoxXshdCache.Text+"\\"+CBoxEditorXshd.SelectedItem).Show();
+        }
+
+        private void uiTrackBar1_ValueChanged(object sender, EventArgs e)
+        {
+            NUDDPC.Value = TBPC.Value;
+        }
+
+        private void UpdateDownloadSettings(object sender, EventArgs e)
+        {
+            settings.Write("Downloading", "ParallelDownload", SwtchParallelDownload.Active);
+            settings.Write("Downloading", "AutoParallelCount", SwtchAutoParallelDownloadCount.Active);
+            settings.Write("Downloading", "ParallelCount", NUDDPC.Value);
+        }
+
+        private void NUDDPC_ValueChanged(object sender, int value)
+        {
+            TBPC.Value = NUDDPC.Value;
         }
 
         /// <summary>

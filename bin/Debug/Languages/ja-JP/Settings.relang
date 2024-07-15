@@ -5,6 +5,7 @@ Name=日本語
 text.settings.window.title=設定
 text.settings.page.general.title=一般の設定
 text.settings.page.general.basicsettings.title=基本設定
+text.settings.page.general.basicsettings.mainfont=メインフォント
 text.settings.page.general.basicsettings.theme=テーマ
 text.settings.page.general.basicsettings.lang=言語
 text.settings.page.general.basicsettings.xshdpath=Xshdファイルのパス
@@ -28,3 +29,13 @@ text.item.theme.dark=ダーク
 text.item.theme.IDEA=IDEA
 text.item.theme.custom=カスタム
 text.tip.editreconffile=拡張ボタン（タイトルバーの「∨」）をクリックし、設定ファイル（.reconf）を編集します。
+text.settings.page.general.downloading.title=ダウンロード
+text.settings.page.general.downloading.pd=マルチスレッドを使用したダウンロード
+text.settings.page.general.downloading.autopc=自動割り当てを使用したスレッド数
+text.settings.page.general.downloading.pc=カスタムスレッド数
+text.settings.page.run=実行
+
+tip.restart=再起動後に有効
+
+text.switch.on=有効
+text.switch.off=無効

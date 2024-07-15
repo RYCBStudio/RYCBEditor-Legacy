@@ -43,7 +43,7 @@
             this.uiLabel1.Location = new System.Drawing.Point(3, 35);
             this.uiLabel1.Name = "uiLabel1";
             this.uiLabel1.Size = new System.Drawing.Size(81, 49);
-            this.uiLabel1.Style = Sunny.UI.UIStyle.Black;
+            this.uiLabel1.Style = Sunny.UI.UIStyle.Custom;
             this.uiLabel1.TabIndex = 0;
             this.uiLabel1.Text = "text.newfile.filename";
             this.uiLabel1.TextAlign = System.Drawing.ContentAlignment.MiddleLeft;
@@ -51,6 +51,7 @@
             // uiTextBox1
             // 
             this.uiTextBox1.ButtonRectColor = System.Drawing.Color.FromArgb(((int)(((byte)(18)))), ((int)(((byte)(58)))), ((int)(((byte)(92)))));
+            this.uiTextBox1.ButtonStyleInherited = false;
             this.uiTextBox1.ButtonSymbolOffset = new System.Drawing.Point(0, 0);
             this.uiTextBox1.Cursor = System.Windows.Forms.Cursors.IBeam;
             this.uiTextBox1.FillColor2 = System.Drawing.Color.FromArgb(((int)(((byte)(24)))), ((int)(((byte)(24)))), ((int)(((byte)(24)))));
@@ -62,9 +63,10 @@
             this.uiTextBox1.Padding = new System.Windows.Forms.Padding(5);
             this.uiTextBox1.RectColor = System.Drawing.Color.FromArgb(((int)(((byte)(18)))), ((int)(((byte)(58)))), ((int)(((byte)(92)))));
             this.uiTextBox1.ScrollBarColor = System.Drawing.Color.FromArgb(((int)(((byte)(24)))), ((int)(((byte)(24)))), ((int)(((byte)(24)))));
+            this.uiTextBox1.ScrollBarStyleInherited = false;
             this.uiTextBox1.ShowText = false;
             this.uiTextBox1.Size = new System.Drawing.Size(251, 26);
-            this.uiTextBox1.Style = Sunny.UI.UIStyle.Black;
+            this.uiTextBox1.Style = Sunny.UI.UIStyle.Custom;
             this.uiTextBox1.TabIndex = 1;
             this.uiTextBox1.TextAlignment = System.Drawing.ContentAlignment.MiddleLeft;
             this.uiTextBox1.Watermark = "";
@@ -74,11 +76,12 @@
             this.uiButton2.Cursor = System.Windows.Forms.Cursors.Hand;
             this.uiButton2.DialogResult = System.Windows.Forms.DialogResult.Cancel;
             this.uiButton2.Font = new System.Drawing.Font("微软雅黑", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(134)));
+            this.uiButton2.LightColor = System.Drawing.Color.FromArgb(((int)(((byte)(24)))), ((int)(((byte)(24)))), ((int)(((byte)(24)))));
             this.uiButton2.Location = new System.Drawing.Point(232, 144);
             this.uiButton2.MinimumSize = new System.Drawing.Size(1, 1);
             this.uiButton2.Name = "uiButton2";
             this.uiButton2.Size = new System.Drawing.Size(109, 27);
-            this.uiButton2.Style = Sunny.UI.UIStyle.Black;
+            this.uiButton2.Style = Sunny.UI.UIStyle.Custom;
             this.uiButton2.TabIndex = 4;
             this.uiButton2.Text = "text.newfile.no";
             this.uiButton2.TipsFont = new System.Drawing.Font("微软雅黑", 9F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(134)));
@@ -89,11 +92,12 @@
             this.uiButton1.Cursor = System.Windows.Forms.Cursors.Hand;
             this.uiButton1.DialogResult = System.Windows.Forms.DialogResult.Cancel;
             this.uiButton1.Font = new System.Drawing.Font("微软雅黑", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(134)));
+            this.uiButton1.LightColor = System.Drawing.Color.FromArgb(((int)(((byte)(24)))), ((int)(((byte)(24)))), ((int)(((byte)(24)))));
             this.uiButton1.Location = new System.Drawing.Point(118, 144);
             this.uiButton1.MinimumSize = new System.Drawing.Size(1, 1);
             this.uiButton1.Name = "uiButton1";
             this.uiButton1.Size = new System.Drawing.Size(108, 27);
-            this.uiButton1.Style = Sunny.UI.UIStyle.Black;
+            this.uiButton1.Style = Sunny.UI.UIStyle.Custom;
             this.uiButton1.TabIndex = 3;
             this.uiButton1.Text = "text.newfile.yes";
             this.uiButton1.TipsFont = new System.Drawing.Font("微软雅黑", 9F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(134)));
@@ -106,7 +110,7 @@
             this.uiLabel2.Location = new System.Drawing.Point(3, 83);
             this.uiLabel2.Name = "uiLabel2";
             this.uiLabel2.Size = new System.Drawing.Size(90, 46);
-            this.uiLabel2.Style = Sunny.UI.UIStyle.Black;
+            this.uiLabel2.Style = Sunny.UI.UIStyle.Custom;
             this.uiLabel2.TabIndex = 5;
             this.uiLabel2.Text = "text.newfile.filetype";
             this.uiLabel2.TextAlign = System.Drawing.ContentAlignment.MiddleLeft;
@@ -134,9 +138,10 @@
             this.uiListBox1.RectColor = System.Drawing.Color.FromArgb(((int)(((byte)(18)))), ((int)(((byte)(58)))), ((int)(((byte)(92)))));
             this.uiListBox1.ScrollBarBackColor = System.Drawing.Color.FromArgb(((int)(((byte)(24)))), ((int)(((byte)(24)))), ((int)(((byte)(24)))));
             this.uiListBox1.ScrollBarColor = System.Drawing.Color.White;
+            this.uiListBox1.ScrollBarStyleInherited = false;
             this.uiListBox1.ShowText = false;
             this.uiListBox1.Size = new System.Drawing.Size(250, 58);
-            this.uiListBox1.Style = Sunny.UI.UIStyle.Black;
+            this.uiListBox1.Style = Sunny.UI.UIStyle.Custom;
             this.uiListBox1.TabIndex = 6;
             this.uiListBox1.Text = null;
             this.uiListBox1.SelectedValueChanged += new System.EventHandler(this.AddSuffix);
@@ -145,6 +150,7 @@
             // 
             this.AcceptButton = this.uiButton1;
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.None;
+            this.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(24)))), ((int)(((byte)(24)))), ((int)(((byte)(24)))));
             this.CancelButton = this.uiButton2;
             this.ClientSize = new System.Drawing.Size(354, 185);
             this.ControlBoxFillHoverColor = System.Drawing.Color.FromArgb(((int)(((byte)(70)))), ((int)(((byte)(70)))), ((int)(((byte)(70)))));
@@ -162,9 +168,11 @@
             this.MinimizeBox = false;
             this.Name = "NewFileBox";
             this.RectColor = System.Drawing.Color.FromArgb(((int)(((byte)(18)))), ((int)(((byte)(58)))), ((int)(((byte)(92)))));
-            this.Style = Sunny.UI.UIStyle.Black;
+            this.ShowIcon = false;
+            this.Style = Sunny.UI.UIStyle.Custom;
             this.Text = "";
             this.TitleColor = System.Drawing.Color.FromArgb(((int)(((byte)(21)))), ((int)(((byte)(21)))), ((int)(((byte)(21)))));
+            this.TitleFont = new System.Drawing.Font("微软雅黑", 12F);
             this.TopMost = true;
             this.ZoomScaleRect = new System.Drawing.Rectangle(19, 19, 354, 152);
             this.ResumeLayout(false);

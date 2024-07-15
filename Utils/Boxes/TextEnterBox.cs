@@ -30,7 +30,7 @@ namespace IDE
         private Color BackStyle { get; set; }
         
 
-        public string Show()
+        public new string Show()
         {
             base.Show();
             return uiTextBox1.Text;

@@ -5,6 +5,7 @@ Name=English
 text.settings.window.title=Settings
 text.settings.page.general.title=General Settings
 text.settings.page.general.basicsettings.title=Basic Settings
+text.settings.page.general.basicsettings.mainfont=Main Font
 text.settings.page.general.basicsettings.theme=Theme
 text.settings.page.general.basicsettings.lang=Language
 text.settings.page.general.basicsettings.xshdpath=Xshd Files Path
@@ -29,3 +30,13 @@ text.item.theme.dark=Dark
 text.item.theme.IDEA=IDEA
 text.item.theme.custom=Custom (WIP)
 text.tip.editreconffile=Click extend button("∨" on the title bar) to edit settings file(.reconf).
+text.settings.page.general.downloading.title=Downloading
+text.settings.page.general.downloading.pd=Use Parallelly Download
+text.settings.page.general.downloading.autopc=Use Automatic Threads Count to Download
+text.settings.page.general.downloading.pc=Custom Threads Count
+text.settings.page.run=Run
+
+tip.restart=Settings will take effect after restart.
+
+text.switch.on=Enabled
+text.switch.off=Disabled

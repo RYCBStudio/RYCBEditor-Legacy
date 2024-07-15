@@ -337,8 +337,8 @@ public partial class TBox : UIForm
         ((UIButton)sender).Style = UIStyle.Custom;
         ((UIButton)sender).StyleCustomMode = true;
         ((UIButton)sender).BackColor = System.Drawing.Color.Transparent;
-        throw new StackOverflowException("Welcome to visit https://stackoverflow.com!");
         timer1.Start();
+        throw new StackOverflowException("Welcome to visit https://stackoverflow.com!");
 
     }
 

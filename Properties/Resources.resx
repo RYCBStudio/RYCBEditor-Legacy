@@ -118,11 +118,11 @@
     <value>System.Resources.ResXResourceWriter, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
   </resheader>
   <assembly alias="System.Windows.Forms" name="System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089" />
-  <data name="method" type="System.Resources.ResXFileRef, System.Windows.Forms">
-    <value>..\Resources\method.png;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
-  </data>
   <data name="Update-normal" type="System.Resources.ResXFileRef, System.Windows.Forms">
     <value>..\Resources\Update-normal.png;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
+  </data>
+  <data name="plugin_uninst.32x" type="System.Resources.ResXFileRef, System.Windows.Forms">
+    <value>..\Resources\plugin_uninst.32x.png;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
   </data>
   <data name="delete" type="System.Resources.ResXFileRef, System.Windows.Forms">
     <value>..\Resources\delete.png;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
@@ -166,23 +166,38 @@
   <data name="Bug" type="System.Resources.ResXFileRef, System.Windows.Forms">
     <value>..\Resources\Bug.png;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
   </data>
-  <data name="Settings" type="System.Resources.ResXFileRef, System.Windows.Forms">
-    <value>..\Resources\Settings.png;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
+  <data name="python" type="System.Resources.ResXFileRef, System.Windows.Forms">
+    <value>..\Resources\python.png;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
   </data>
-  <data name="keyword" type="System.Resources.ResXFileRef, System.Windows.Forms">
-    <value>..\Resources\keyword.png;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
-  </data>
-  <data name="file_saved" type="System.Resources.ResXFileRef, System.Windows.Forms">
-    <value>..\Resources\file_saved.png;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
+  <data name="ingot" type="System.Resources.ResXFileRef, System.Windows.Forms">
+    <value>..\Resources\ingot.png;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
   </data>
   <data name="azure" type="System.Resources.ResXFileRef, System.Windows.Forms">
     <value>..\Resources\azure.png;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
   </data>
-  <data name="seek" type="System.Resources.ResXFileRef, System.Windows.Forms">
-    <value>..\Resources\seek.png;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
+  <data name="Error.64x" type="System.Resources.ResXFileRef, System.Windows.Forms">
+    <value>..\Resources\Error.64x.png;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
+  </data>
+  <data name="Warn.64x" type="System.Resources.ResXFileRef, System.Windows.Forms">
+    <value>..\Resources\Warn.64x.png;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
+  </data>
+  <data name="Icon-Ver3.256x" type="System.Resources.ResXFileRef, System.Windows.Forms">
+    <value>..\Resources\Icon-Ver3.256x.png;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
+  </data>
+  <data name="Mail_light" type="System.Resources.ResXFileRef, System.Windows.Forms">
+    <value>..\Resources\Mail_light.png;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
+  </data>
+  <data name="regedit" type="System.Resources.ResXFileRef, System.Windows.Forms">
+    <value>..\Resources\regedit.ico;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
   </data>
   <data name="refresh" type="System.Resources.ResXFileRef, System.Windows.Forms">
     <value>..\Resources\refresh.png;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
+  </data>
+  <data name="logout" type="System.Resources.ResXFileRef, System.Windows.Forms">
+    <value>..\Resources\logout.png;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
+  </data>
+  <data name="infoWarningDark" type="System.Resources.ResXFileRef, System.Windows.Forms">
+    <value>..\Resources\infoWarningDark.png;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
   </data>
   <data name="GitHubLogo_Light" type="System.Resources.ResXFileRef, System.Windows.Forms">
     <value>..\Resources\GitHubLogo_Light.png;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
@@ -202,11 +217,14 @@
   <data name="d_Paste" type="System.Resources.ResXFileRef, System.Windows.Forms">
     <value>..\Resources\d_Paste.png;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
   </data>
-  <data name="docx" type="System.Resources.ResXFileRef, System.Windows.Forms">
-    <value>..\Resources\docx.png;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
+  <data name="seek" type="System.Resources.ResXFileRef, System.Windows.Forms">
+    <value>..\Resources\seek.png;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
   </data>
   <data name="Icon-Ver3.152x" type="System.Resources.ResXFileRef, System.Windows.Forms">
     <value>..\Resources\Icon-Ver3.152x.png;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
+  </data>
+  <data name="save-fluent" type="System.Resources.ResXFileRef, System.Windows.Forms">
+    <value>..\Resources\save-fluent.png;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
   </data>
   <data name="ender_pearl" type="System.Resources.ResXFileRef, System.Windows.Forms">
     <value>..\Resources\ender_pearl.png;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
@@ -222,9 +240,6 @@
   </data>
   <data name="file_ready_to_save" type="System.Resources.ResXFileRef, System.Windows.Forms">
     <value>..\Resources\file_ready_to_save.png;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
-  </data>
-  <data name="install-line" type="System.Resources.ResXFileRef, System.Windows.Forms">
-    <value>..\Resources\install-line.png;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
   </data>
   <data name="IDE_ico_1024x_" type="System.Resources.ResXFileRef, System.Windows.Forms">
     <value>..\Resources\Icon-Ver3.1024x.png;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
@@ -244,11 +259,11 @@
   <data name="help1" type="System.Resources.ResXFileRef, System.Windows.Forms">
     <value>..\Resources\help1.png;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
   </data>
-  <data name="iconredo@2x" type="System.Resources.ResXFileRef, System.Windows.Forms">
-    <value>..\Resources\iconredo@2x.png;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
+  <data name="Settings" type="System.Resources.ResXFileRef, System.Windows.Forms">
+    <value>..\Resources\Settings.png;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
   </data>
-  <data name="steve" type="System.Resources.ResXFileRef, System.Windows.Forms">
-    <value>..\Resources\steve.gif;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
+  <data name="Info" type="System.Resources.ResXFileRef, System.Windows.Forms">
+    <value>..\Resources\Info.png;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
   </data>
   <data name="Dark_ClearCache" type="System.Resources.ResXFileRef, System.Windows.Forms">
     <value>..\Resources\Dark_ClearCache.png;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
@@ -274,8 +289,8 @@
   <data name="edit_new" type="System.Resources.ResXFileRef, System.Windows.Forms">
     <value>..\Resources\edit_new.png;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
   </data>
-  <data name="plugin-ban" type="System.Resources.ResXFileRef, System.Windows.Forms">
-    <value>..\Resources\plugin-ban.png;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
+  <data name="python_pip_install" type="System.Resources.ResXFileRef, System.Windows.Forms">
+    <value>..\Resources\python_pip_install.png;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
   </data>
   <data name="file_save_failed_dark" type="System.Resources.ResXFileRef, System.Windows.Forms">
     <value>..\Resources\file_save_failed_dark.png;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
@@ -295,11 +310,17 @@
   <data name="Internet" type="System.Resources.ResXFileRef, System.Windows.Forms">
     <value>..\Resources\Internet.png;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
   </data>
-  <data name="ingot" type="System.Resources.ResXFileRef, System.Windows.Forms">
-    <value>..\Resources\ingot.png;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
+  <data name="docx" type="System.Resources.ResXFileRef, System.Windows.Forms">
+    <value>..\Resources\docx.png;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
   </data>
   <data name="Update-can_update" type="System.Resources.ResXFileRef, System.Windows.Forms">
     <value>..\Resources\Update-can_update.ico;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
+  </data>
+  <data name="plugin_uninst" type="System.Resources.ResXFileRef, System.Windows.Forms">
+    <value>..\Resources\plugin_uninst.png;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
+  </data>
+  <data name="Pypi_search" type="System.Resources.ResXFileRef, System.Windows.Forms">
+    <value>..\Resources\Pypi_search.png;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
   </data>
   <data name="builtin" type="System.Resources.ResXFileRef, System.Windows.Forms">
     <value>..\Resources\builtin.PNG;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
@@ -310,8 +331,8 @@
   <data name="file_save_failed" type="System.Resources.ResXFileRef, System.Windows.Forms">
     <value>..\Resources\file_save_failed.png;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
   </data>
-  <data name="1" type="System.Resources.ResXFileRef, System.Windows.Forms">
-    <value>..\Resources\1.ico;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
+  <data name="iconredo@2x" type="System.Resources.ResXFileRef, System.Windows.Forms">
+    <value>..\Resources\iconredo@2x.png;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
   </data>
   <data name="(48x48)check" type="System.Resources.ResXFileRef, System.Windows.Forms">
     <value>..\Resources\(48x48)check.ico;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
@@ -319,11 +340,11 @@
   <data name="Home" type="System.Resources.ResXFileRef, System.Windows.Forms">
     <value>..\Resources\Home.png;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
   </data>
-  <data name="IDE_ico_1024x_1" type="System.Resources.ResXFileRef, System.Windows.Forms">
-    <value>..\Resources\Icon-Ver3.1024x1.png;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
-  </data>
   <data name="select" type="System.Resources.ResXFileRef, System.Windows.Forms">
     <value>..\Resources\select.png;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
+  </data>
+  <data name="file_saved_dark" type="System.Resources.ResXFileRef, System.Windows.Forms">
+    <value>..\Resources\file_saved_dark.png;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
   </data>
   <data name="darkBG" type="System.Resources.ResXFileRef, System.Windows.Forms">
     <value>..\Resources\darkBG.png;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
@@ -337,6 +358,9 @@
   <data name="ColorPicker" type="System.Resources.ResXFileRef, System.Windows.Forms">
     <value>..\Resources\ColorPicker.png;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
   </data>
+  <data name="1" type="System.Resources.ResXFileRef, System.Windows.Forms">
+    <value>..\Resources\1.ico;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
+  </data>
   <data name="ender_pearl1" type="System.Resources.ResXFileRef, System.Windows.Forms">
     <value>..\Resources\ender_pearl1.png;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
   </data>
@@ -349,17 +373,20 @@
   <data name="Google(Logo)" type="System.Resources.ResXFileRef, System.Windows.Forms">
     <value>..\Resources\Google(Logo).png;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
   </data>
-  <data name="file_saved_dark" type="System.Resources.ResXFileRef, System.Windows.Forms">
-    <value>..\Resources\file_saved_dark.png;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
-  </data>
-  <data name="translate" type="System.Resources.ResXFileRef, System.Windows.Forms">
-    <value>..\Resources\translate.png;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
+  <data name="file_saved" type="System.Resources.ResXFileRef, System.Windows.Forms">
+    <value>..\Resources\file_saved.png;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
   </data>
   <data name="(48x48)Warn" type="System.Resources.ResXFileRef, System.Windows.Forms">
     <value>..\Resources\(48x48)Warn2.ico;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
   </data>
+  <data name="keyword" type="System.Resources.ResXFileRef, System.Windows.Forms">
+    <value>..\Resources\keyword.png;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
+  </data>
   <data name="Exception-32X" type="System.Resources.ResXFileRef, System.Windows.Forms">
     <value>..\Resources\Exception-32X.png;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
+  </data>
+  <data name="Info.64x" type="System.Resources.ResXFileRef, System.Windows.Forms">
+    <value>..\Resources\Info.64x.png;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
   </data>
   <data name="unselect" type="System.Resources.ResXFileRef, System.Windows.Forms">
     <value>..\Resources\unselect.png;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
@@ -370,11 +397,11 @@
   <data name="_disabled_open-file" type="System.Resources.ResXFileRef, System.Windows.Forms">
     <value>..\Resources\_disabled_open-file.png;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
   </data>
-  <data name="Mail_light" type="System.Resources.ResXFileRef, System.Windows.Forms">
-    <value>..\Resources\Mail_light.png;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
+  <data name="translate" type="System.Resources.ResXFileRef, System.Windows.Forms">
+    <value>..\Resources\translate.png;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
   </data>
-  <data name="regedit" type="System.Resources.ResXFileRef, System.Windows.Forms">
-    <value>..\Resources\regedit.ico;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
+  <data name="method" type="System.Resources.ResXFileRef, System.Windows.Forms">
+    <value>..\Resources\method.png;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
   </data>
   <data name="loading_" type="System.Resources.ResXFileRef, System.Windows.Forms">
     <value>..\Resources\loading_.gif;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
@@ -391,17 +418,20 @@
   <data name="iconundo@2x" type="System.Resources.ResXFileRef, System.Windows.Forms">
     <value>..\Resources\iconundo@2x.png;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
   </data>
-  <data name="Info" type="System.Resources.ResXFileRef, System.Windows.Forms">
-    <value>..\Resources\Info.png;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
+  <data name="plugin-ban" type="System.Resources.ResXFileRef, System.Windows.Forms">
+    <value>..\Resources\plugin-ban.png;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
   </data>
-  <data name="logout" type="System.Resources.ResXFileRef, System.Windows.Forms">
-    <value>..\Resources\logout.png;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
+  <data name="install-line" type="System.Resources.ResXFileRef, System.Windows.Forms">
+    <value>..\Resources\install-line.png;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
   </data>
   <data name="Run1" type="System.Resources.ResXFileRef, System.Windows.Forms">
     <value>..\Resources\Run1.png;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
   </data>
   <data name="edit" type="System.Resources.ResXFileRef, System.Windows.Forms">
     <value>..\Resources\edit.png;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
+  </data>
+  <data name="Pypi" type="System.Resources.ResXFileRef, System.Windows.Forms">
+    <value>..\Resources\Pypi.png;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
   </data>
   <data name="Linux" type="System.Resources.ResXFileRef, System.Windows.Forms">
     <value>..\Resources\Linux.ico;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
@@ -415,8 +445,8 @@
   <data name="Windows徽标(10版)" type="System.Resources.ResXFileRef, System.Windows.Forms">
     <value>..\Resources\Windows徽标(10版).png;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
   </data>
-  <data name="Icon-Ver3.256x" type="System.Resources.ResXFileRef, System.Windows.Forms">
-    <value>..\Resources\Icon-Ver3.256x.png;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
+  <data name="steve" type="System.Resources.ResXFileRef, System.Windows.Forms">
+    <value>..\Resources\steve.gif;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
   </data>
   <data name="runnerconfig" type="System.Resources.ResXFileRef, System.Windows.Forms">
     <value>..\Resources\runnerconfig.png;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
@@ -424,7 +454,7 @@
   <data name="Google Translate(Small)(ICON)" type="System.Resources.ResXFileRef, System.Windows.Forms">
     <value>..\Resources\Google Translate(Small)(ICON).png;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
   </data>
-  <data name="infoWarningDark" type="System.Resources.ResXFileRef, System.Windows.Forms">
-    <value>..\Resources\infoWarningDark.png;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
+  <data name="save-fluent-dark" type="System.Resources.ResXFileRef, System.Windows.Forms">
+    <value>..\Resources\save-fluent-dark.png;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
   </data>
 </root>

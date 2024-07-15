@@ -50,7 +50,6 @@ partial class InterpreterConfigBox
             this.button2 = new System.Windows.Forms.Button();
             this.button3 = new System.Windows.Forms.Button();
             this.button4 = new System.Windows.Forms.Button();
-            this.uiStyleManager1 = new Sunny.UI.UIStyleManager(this.components);
             this.openFileDialog1 = new System.Windows.Forms.OpenFileDialog();
             this.timer1 = new System.Windows.Forms.Timer(this.components);
             this.tableLayoutPanel1.SuspendLayout();
@@ -78,9 +77,9 @@ partial class InterpreterConfigBox
             this.tableLayoutPanel1.Location = new System.Drawing.Point(0, 35);
             this.tableLayoutPanel1.Name = "tableLayoutPanel1";
             this.tableLayoutPanel1.RowCount = 3;
-            this.tableLayoutPanel1.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Percent, 10F));
-            this.tableLayoutPanel1.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Percent, 10F));
-            this.tableLayoutPanel1.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Percent, 80F));
+            this.tableLayoutPanel1.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Percent, 11.11111F));
+            this.tableLayoutPanel1.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Percent, 10.59432F));
+            this.tableLayoutPanel1.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Percent, 78.29457F));
             this.tableLayoutPanel1.Size = new System.Drawing.Size(826, 387);
             this.tableLayoutPanel1.TabIndex = 0;
             // 
@@ -88,8 +87,8 @@ partial class InterpreterConfigBox
             // 
             this.tableLayoutPanel2.ColumnCount = 3;
             this.tableLayoutPanel2.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Percent, 25F));
-            this.tableLayoutPanel2.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Percent, 70F));
-            this.tableLayoutPanel2.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Percent, 5F));
+            this.tableLayoutPanel2.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Percent, 69.81707F));
+            this.tableLayoutPanel2.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Percent, 5.182927F));
             this.tableLayoutPanel2.Controls.Add(this.TBoxItptrArgs, 1, 2);
             this.tableLayoutPanel2.Controls.Add(this.label4, 0, 2);
             this.tableLayoutPanel2.Controls.Add(this.label2, 0, 0);
@@ -103,21 +102,21 @@ partial class InterpreterConfigBox
             this.tableLayoutPanel2.Controls.Add(this.label6, 0, 9);
             this.tableLayoutPanel2.Controls.Add(this.button5, 2, 7);
             this.tableLayoutPanel2.Dock = System.Windows.Forms.DockStyle.Fill;
-            this.tableLayoutPanel2.Location = new System.Drawing.Point(167, 41);
+            this.tableLayoutPanel2.Location = new System.Drawing.Point(167, 45);
             this.tableLayoutPanel2.Name = "tableLayoutPanel2";
             this.tableLayoutPanel2.RowCount = 10;
             this.tableLayoutPanel1.SetRowSpan(this.tableLayoutPanel2, 2);
-            this.tableLayoutPanel2.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Percent, 10F));
-            this.tableLayoutPanel2.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Percent, 10F));
-            this.tableLayoutPanel2.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Percent, 10F));
-            this.tableLayoutPanel2.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Percent, 10F));
-            this.tableLayoutPanel2.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Percent, 10F));
-            this.tableLayoutPanel2.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Percent, 10F));
-            this.tableLayoutPanel2.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Percent, 10F));
-            this.tableLayoutPanel2.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Percent, 10F));
-            this.tableLayoutPanel2.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Percent, 10F));
-            this.tableLayoutPanel2.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Percent, 10F));
-            this.tableLayoutPanel2.Size = new System.Drawing.Size(656, 343);
+            this.tableLayoutPanel2.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Percent, 13.69766F));
+            this.tableLayoutPanel2.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Percent, 13.69767F));
+            this.tableLayoutPanel2.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Percent, 8.780555F));
+            this.tableLayoutPanel2.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Percent, 8.780555F));
+            this.tableLayoutPanel2.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Percent, 8.780555F));
+            this.tableLayoutPanel2.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Percent, 8.780555F));
+            this.tableLayoutPanel2.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Percent, 7.87172F));
+            this.tableLayoutPanel2.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Percent, 13.11953F));
+            this.tableLayoutPanel2.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Percent, 7.580175F));
+            this.tableLayoutPanel2.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Percent, 8.780555F));
+            this.tableLayoutPanel2.Size = new System.Drawing.Size(656, 339);
             this.tableLayoutPanel2.TabIndex = 11;
             // 
             // TBoxItptrArgs
@@ -126,7 +125,7 @@ partial class InterpreterConfigBox
             this.TBoxItptrArgs.Cursor = System.Windows.Forms.Cursors.IBeam;
             this.TBoxItptrArgs.Dock = System.Windows.Forms.DockStyle.Fill;
             this.TBoxItptrArgs.Font = new System.Drawing.Font("微软雅黑", 10F);
-            this.TBoxItptrArgs.Location = new System.Drawing.Point(168, 73);
+            this.TBoxItptrArgs.Location = new System.Drawing.Point(168, 97);
             this.TBoxItptrArgs.Margin = new System.Windows.Forms.Padding(4, 5, 4, 5);
             this.TBoxItptrArgs.MinimumSize = new System.Drawing.Size(1, 16);
             this.TBoxItptrArgs.Multiline = true;
@@ -134,7 +133,7 @@ partial class InterpreterConfigBox
             this.TBoxItptrArgs.Padding = new System.Windows.Forms.Padding(5);
             this.tableLayoutPanel2.SetRowSpan(this.TBoxItptrArgs, 4);
             this.TBoxItptrArgs.ShowText = false;
-            this.TBoxItptrArgs.Size = new System.Drawing.Size(484, 126);
+            this.TBoxItptrArgs.Size = new System.Drawing.Size(484, 106);
             this.TBoxItptrArgs.TabIndex = 5;
             this.TBoxItptrArgs.TextAlignment = System.Drawing.ContentAlignment.TopLeft;
             this.TBoxItptrArgs.Watermark = "";
@@ -144,23 +143,26 @@ partial class InterpreterConfigBox
             // 
             this.label4.AutoSize = true;
             this.label4.Dock = System.Windows.Forms.DockStyle.Fill;
-            this.label4.Location = new System.Drawing.Point(3, 68);
+            this.label4.Font = new System.Drawing.Font("微软雅黑", 9F);
+            this.label4.Location = new System.Drawing.Point(3, 92);
             this.label4.Name = "label4";
             this.tableLayoutPanel2.SetRowSpan(this.label4, 4);
-            this.label4.Size = new System.Drawing.Size(158, 136);
+            this.label4.Size = new System.Drawing.Size(158, 116);
             this.label4.TabIndex = 4;
             this.label4.Text = "text.icb.itptr.args";
+            this.label4.TextAlign = System.Drawing.ContentAlignment.MiddleCenter;
             // 
             // label2
             // 
             this.label2.AutoSize = true;
             this.label2.Dock = System.Windows.Forms.DockStyle.Fill;
+            this.label2.Font = new System.Drawing.Font("微软雅黑", 9F);
             this.label2.Location = new System.Drawing.Point(3, 0);
             this.label2.Name = "label2";
-            this.label2.Size = new System.Drawing.Size(158, 34);
+            this.label2.Size = new System.Drawing.Size(158, 46);
             this.label2.TabIndex = 0;
             this.label2.Text = "text.icb.itptr.type";
-            this.label2.TextAlign = System.Drawing.ContentAlignment.MiddleLeft;
+            this.label2.TextAlign = System.Drawing.ContentAlignment.MiddleCenter;
             // 
             // CBoxItptrType
             // 
@@ -181,7 +183,8 @@ partial class InterpreterConfigBox
             this.CBoxItptrType.MinimumSize = new System.Drawing.Size(63, 0);
             this.CBoxItptrType.Name = "CBoxItptrType";
             this.CBoxItptrType.Padding = new System.Windows.Forms.Padding(0, 0, 30, 2);
-            this.CBoxItptrType.Size = new System.Drawing.Size(484, 31);
+            this.CBoxItptrType.Size = new System.Drawing.Size(484, 36);
+            this.CBoxItptrType.SymbolSize = 24;
             this.CBoxItptrType.TabIndex = 1;
             this.CBoxItptrType.TextAlignment = System.Drawing.ContentAlignment.MiddleLeft;
             this.CBoxItptrType.Watermark = "";
@@ -192,27 +195,28 @@ partial class InterpreterConfigBox
             // 
             this.label3.AutoSize = true;
             this.label3.Dock = System.Windows.Forms.DockStyle.Fill;
-            this.label3.Location = new System.Drawing.Point(3, 34);
+            this.label3.Font = new System.Drawing.Font("微软雅黑", 9F);
+            this.label3.Location = new System.Drawing.Point(3, 46);
             this.label3.Name = "label3";
-            this.label3.Size = new System.Drawing.Size(158, 34);
+            this.label3.Size = new System.Drawing.Size(158, 46);
             this.label3.TabIndex = 2;
             this.label3.Text = "text.icb.itptr.path";
+            this.label3.TextAlign = System.Drawing.ContentAlignment.MiddleCenter;
             // 
             // TBoxItptrPath
             // 
             this.TBoxItptrPath.Cursor = System.Windows.Forms.Cursors.IBeam;
             this.TBoxItptrPath.Dock = System.Windows.Forms.DockStyle.Fill;
             this.TBoxItptrPath.Font = new System.Drawing.Font("微软雅黑", 10F);
-            this.TBoxItptrPath.Location = new System.Drawing.Point(168, 39);
+            this.TBoxItptrPath.Location = new System.Drawing.Point(168, 51);
             this.TBoxItptrPath.Margin = new System.Windows.Forms.Padding(4, 5, 4, 5);
             this.TBoxItptrPath.MinimumSize = new System.Drawing.Size(1, 16);
             this.TBoxItptrPath.Name = "TBoxItptrPath";
             this.TBoxItptrPath.Padding = new System.Windows.Forms.Padding(5);
             this.TBoxItptrPath.ShowText = false;
-            this.TBoxItptrPath.Size = new System.Drawing.Size(451, 31);
+            this.TBoxItptrPath.Size = new System.Drawing.Size(449, 36);
             this.TBoxItptrPath.Symbol = 162434;
             this.TBoxItptrPath.TabIndex = 3;
-            this.TBoxItptrPath.Text = "C:\\Example\\eg\\Simple\\py.exe";
             this.TBoxItptrPath.TextAlignment = System.Drawing.ContentAlignment.TopLeft;
             this.TBoxItptrPath.Watermark = "";
             this.TBoxItptrPath.TextChanged += new System.EventHandler(this.UpdateItptrPathInfo);
@@ -220,11 +224,12 @@ partial class InterpreterConfigBox
             // uiButton1
             // 
             this.uiButton1.Cursor = System.Windows.Forms.Cursors.Hand;
+            this.uiButton1.Dock = System.Windows.Forms.DockStyle.Fill;
             this.uiButton1.Font = new System.Drawing.Font("Yu Gothic UI", 14F);
-            this.uiButton1.Location = new System.Drawing.Point(626, 37);
+            this.uiButton1.Location = new System.Drawing.Point(624, 49);
             this.uiButton1.MinimumSize = new System.Drawing.Size(1, 1);
             this.uiButton1.Name = "uiButton1";
-            this.uiButton1.Size = new System.Drawing.Size(27, 28);
+            this.uiButton1.Size = new System.Drawing.Size(29, 40);
             this.uiButton1.TabIndex = 6;
             this.uiButton1.Text = "...";
             this.uiButton1.TipsFont = new System.Drawing.Font("宋体", 9F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(134)));
@@ -234,11 +239,13 @@ partial class InterpreterConfigBox
             // 
             this.label5.AutoSize = true;
             this.label5.Dock = System.Windows.Forms.DockStyle.Fill;
-            this.label5.Location = new System.Drawing.Point(3, 238);
+            this.label5.Font = new System.Drawing.Font("微软雅黑", 9F);
+            this.label5.Location = new System.Drawing.Point(3, 234);
             this.label5.Name = "label5";
-            this.label5.Size = new System.Drawing.Size(158, 34);
+            this.label5.Size = new System.Drawing.Size(158, 44);
             this.label5.TabIndex = 7;
             this.label5.Text = "text.icb.itptr.finalcmd";
+            this.label5.TextAlign = System.Drawing.ContentAlignment.MiddleCenter;
             // 
             // TBoxItptrFinalCmd
             // 
@@ -249,7 +256,7 @@ partial class InterpreterConfigBox
             this.TBoxItptrFinalCmd.FillReadOnlyColor = System.Drawing.Color.White;
             this.TBoxItptrFinalCmd.Font = new System.Drawing.Font("微软雅黑", 10F);
             this.TBoxItptrFinalCmd.ForeReadOnlyColor = System.Drawing.Color.FromArgb(((int)(((byte)(48)))), ((int)(((byte)(48)))), ((int)(((byte)(48)))));
-            this.TBoxItptrFinalCmd.Location = new System.Drawing.Point(168, 243);
+            this.TBoxItptrFinalCmd.Location = new System.Drawing.Point(168, 239);
             this.TBoxItptrFinalCmd.Margin = new System.Windows.Forms.Padding(4, 5, 4, 5);
             this.TBoxItptrFinalCmd.MinimumSize = new System.Drawing.Size(1, 16);
             this.TBoxItptrFinalCmd.Name = "TBoxItptrFinalCmd";
@@ -257,7 +264,7 @@ partial class InterpreterConfigBox
             this.TBoxItptrFinalCmd.ReadOnly = true;
             this.TBoxItptrFinalCmd.ShowButton = true;
             this.TBoxItptrFinalCmd.ShowText = false;
-            this.TBoxItptrFinalCmd.Size = new System.Drawing.Size(451, 31);
+            this.TBoxItptrFinalCmd.Size = new System.Drawing.Size(449, 34);
             this.TBoxItptrFinalCmd.TabIndex = 8;
             this.TBoxItptrFinalCmd.TextAlignment = System.Drawing.ContentAlignment.MiddleLeft;
             this.TBoxItptrFinalCmd.Watermark = "";
@@ -265,12 +272,12 @@ partial class InterpreterConfigBox
             // 
             // pictureBox1
             // 
-            this.pictureBox1.BackgroundImage = global::IDE.Properties.Resources.Exception_32X;
+            this.pictureBox1.BackgroundImage = global::IDE.Properties.Resources.Error_64x;
             this.pictureBox1.BackgroundImageLayout = System.Windows.Forms.ImageLayout.Zoom;
             this.pictureBox1.Dock = System.Windows.Forms.DockStyle.Fill;
-            this.pictureBox1.Location = new System.Drawing.Point(626, 309);
+            this.pictureBox1.Location = new System.Drawing.Point(624, 306);
             this.pictureBox1.Name = "pictureBox1";
-            this.pictureBox1.Size = new System.Drawing.Size(27, 31);
+            this.pictureBox1.Size = new System.Drawing.Size(29, 30);
             this.pictureBox1.TabIndex = 9;
             this.pictureBox1.TabStop = false;
             this.pictureBox1.Visible = false;
@@ -280,11 +287,11 @@ partial class InterpreterConfigBox
             this.label6.AutoSize = true;
             this.tableLayoutPanel2.SetColumnSpan(this.label6, 2);
             this.label6.Dock = System.Windows.Forms.DockStyle.Fill;
-            this.label6.Location = new System.Drawing.Point(3, 306);
+            this.label6.Location = new System.Drawing.Point(3, 303);
             this.label6.Name = "label6";
-            this.label6.Size = new System.Drawing.Size(617, 37);
+            this.label6.Size = new System.Drawing.Size(615, 36);
             this.label6.TabIndex = 10;
-            this.label6.Text = "Fail to delete. Something wrong happened.";
+            this.label6.Text = "tip.failtodel";
             this.label6.TextAlign = System.Drawing.ContentAlignment.MiddleRight;
             this.label6.Visible = false;
             this.label6.VisibleChanged += new System.EventHandler(this.label6_VisibleChanged);
@@ -293,13 +300,13 @@ partial class InterpreterConfigBox
             // 
             this.button5.BackColor = System.Drawing.Color.Transparent;
             this.button5.BackgroundImage = global::IDE.Properties.Resources.Run1;
-            this.button5.BackgroundImageLayout = System.Windows.Forms.ImageLayout.Stretch;
+            this.button5.BackgroundImageLayout = System.Windows.Forms.ImageLayout.Zoom;
             this.button5.Dock = System.Windows.Forms.DockStyle.Fill;
             this.button5.FlatAppearance.BorderSize = 0;
             this.button5.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
-            this.button5.Location = new System.Drawing.Point(626, 241);
+            this.button5.Location = new System.Drawing.Point(624, 237);
             this.button5.Name = "button5";
-            this.button5.Size = new System.Drawing.Size(27, 28);
+            this.button5.Size = new System.Drawing.Size(29, 38);
             this.button5.TabIndex = 11;
             this.button5.TextImageRelation = System.Windows.Forms.TextImageRelation.ImageAboveText;
             this.button5.UseVisualStyleBackColor = false;
@@ -324,7 +331,8 @@ partial class InterpreterConfigBox
             this.uiComboBox1.MinimumSize = new System.Drawing.Size(63, 0);
             this.uiComboBox1.Name = "uiComboBox1";
             this.uiComboBox1.Padding = new System.Windows.Forms.Padding(0, 0, 30, 2);
-            this.uiComboBox1.Size = new System.Drawing.Size(654, 36);
+            this.uiComboBox1.Size = new System.Drawing.Size(654, 32);
+            this.uiComboBox1.SymbolSize = 24;
             this.uiComboBox1.TabIndex = 5;
             this.uiComboBox1.Text = "Python";
             this.uiComboBox1.TextAlignment = System.Drawing.ContentAlignment.MiddleLeft;
@@ -337,7 +345,7 @@ partial class InterpreterConfigBox
             this.label1.Dock = System.Windows.Forms.DockStyle.Fill;
             this.label1.Location = new System.Drawing.Point(3, 0);
             this.label1.Name = "label1";
-            this.label1.Size = new System.Drawing.Size(158, 38);
+            this.label1.Size = new System.Drawing.Size(158, 42);
             this.label1.TabIndex = 4;
             this.label1.Text = "text.icb.itptr";
             this.label1.TextAlign = System.Drawing.ContentAlignment.MiddleLeft;
@@ -349,13 +357,13 @@ partial class InterpreterConfigBox
             this.uiListBox1.Font = new System.Drawing.Font("微软雅黑", 12F);
             this.uiListBox1.HoverColor = System.Drawing.Color.FromArgb(((int)(((byte)(155)))), ((int)(((byte)(200)))), ((int)(((byte)(255)))));
             this.uiListBox1.ItemSelectForeColor = System.Drawing.Color.White;
-            this.uiListBox1.Location = new System.Drawing.Point(4, 81);
+            this.uiListBox1.Location = new System.Drawing.Point(4, 88);
             this.uiListBox1.Margin = new System.Windows.Forms.Padding(4, 5, 4, 5);
             this.uiListBox1.MinimumSize = new System.Drawing.Size(1, 1);
             this.uiListBox1.Name = "uiListBox1";
             this.uiListBox1.Padding = new System.Windows.Forms.Padding(2);
             this.uiListBox1.ShowText = false;
-            this.uiListBox1.Size = new System.Drawing.Size(156, 301);
+            this.uiListBox1.Size = new System.Drawing.Size(156, 294);
             this.uiListBox1.TabIndex = 6;
             this.uiListBox1.Text = "uiListBox1";
             this.uiListBox1.SelectedIndexChanged += new System.EventHandler(this.ReadValues);
@@ -365,9 +373,9 @@ partial class InterpreterConfigBox
             // 
             this.button1.Dock = System.Windows.Forms.DockStyle.Fill;
             this.button1.Image = global::IDE.Properties.Resources.plus;
-            this.button1.Location = new System.Drawing.Point(3, 41);
+            this.button1.Location = new System.Drawing.Point(3, 45);
             this.button1.Name = "button1";
-            this.button1.Size = new System.Drawing.Size(35, 32);
+            this.button1.Size = new System.Drawing.Size(35, 35);
             this.button1.TabIndex = 7;
             this.button1.TextImageRelation = System.Windows.Forms.TextImageRelation.ImageAboveText;
             this.button1.UseVisualStyleBackColor = true;
@@ -377,9 +385,9 @@ partial class InterpreterConfigBox
             // 
             this.button2.Dock = System.Windows.Forms.DockStyle.Fill;
             this.button2.Image = global::IDE.Properties.Resources.minus;
-            this.button2.Location = new System.Drawing.Point(44, 41);
+            this.button2.Location = new System.Drawing.Point(44, 45);
             this.button2.Name = "button2";
-            this.button2.Size = new System.Drawing.Size(35, 32);
+            this.button2.Size = new System.Drawing.Size(35, 35);
             this.button2.TabIndex = 8;
             this.button2.TextImageRelation = System.Windows.Forms.TextImageRelation.ImageAboveText;
             this.button2.UseVisualStyleBackColor = true;
@@ -387,11 +395,12 @@ partial class InterpreterConfigBox
             // 
             // button3
             // 
+            this.button3.BackgroundImage = global::IDE.Properties.Resources.seek;
+            this.button3.BackgroundImageLayout = System.Windows.Forms.ImageLayout.Zoom;
             this.button3.Dock = System.Windows.Forms.DockStyle.Fill;
-            this.button3.Image = global::IDE.Properties.Resources.seek;
-            this.button3.Location = new System.Drawing.Point(85, 41);
+            this.button3.Location = new System.Drawing.Point(85, 45);
             this.button3.Name = "button3";
-            this.button3.Size = new System.Drawing.Size(35, 32);
+            this.button3.Size = new System.Drawing.Size(35, 35);
             this.button3.TabIndex = 9;
             this.button3.TextImageRelation = System.Windows.Forms.TextImageRelation.ImageAboveText;
             this.button3.UseVisualStyleBackColor = true;
@@ -400,20 +409,15 @@ partial class InterpreterConfigBox
             // button4
             // 
             this.button4.BackgroundImage = global::IDE.Properties.Resources.refresh;
-            this.button4.BackgroundImageLayout = System.Windows.Forms.ImageLayout.Stretch;
+            this.button4.BackgroundImageLayout = System.Windows.Forms.ImageLayout.Zoom;
             this.button4.Dock = System.Windows.Forms.DockStyle.Fill;
-            this.button4.Location = new System.Drawing.Point(126, 41);
+            this.button4.Location = new System.Drawing.Point(126, 45);
             this.button4.Name = "button4";
-            this.button4.Size = new System.Drawing.Size(35, 32);
+            this.button4.Size = new System.Drawing.Size(35, 35);
             this.button4.TabIndex = 10;
             this.button4.TextImageRelation = System.Windows.Forms.TextImageRelation.ImageAboveText;
             this.button4.UseVisualStyleBackColor = true;
             this.button4.Click += new System.EventHandler(this.RefreshConfig);
-            // 
-            // uiStyleManager1
-            // 
-            this.uiStyleManager1.GlobalFont = true;
-            this.uiStyleManager1.GlobalFontName = "微软雅黑";
             // 
             // openFileDialog1
             // 
@@ -432,6 +436,7 @@ partial class InterpreterConfigBox
             this.Controls.Add(this.tableLayoutPanel1);
             this.Font = new System.Drawing.Font("微软雅黑", 12F);
             this.Name = "InterpreterConfigBox";
+            this.ShowIcon = false;
             this.Text = "text.icb.title";
             this.TitleFont = new System.Drawing.Font("微软雅黑", 12F);
             this.ZoomScaleRect = new System.Drawing.Rectangle(19, 19, 800, 450);
@@ -448,7 +453,6 @@ partial class InterpreterConfigBox
     #endregion
 
     private System.Windows.Forms.TableLayoutPanel tableLayoutPanel1;
-    private Sunny.UI.UIStyleManager uiStyleManager1;
     private System.Windows.Forms.Label label1;
     private Sunny.UI.UIComboBox uiComboBox1;
     private Sunny.UI.UIListBox uiListBox1;

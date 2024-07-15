@@ -11,7 +11,7 @@ namespace IDE.Utils;
 public partial class PackageManagerMain : UIForm
 {
 
-    private List<string> packageNames = new();
+    private List<string> packageNames = [];
     private PackageManagerProgressWindow pw;
 
     public PackageManagerMain()
@@ -21,7 +21,7 @@ public partial class PackageManagerMain : UIForm
     }
     private Dictionary<string, string> AnalyzePackageInfoFile(string path)
     {
-        Dictionary<string, string> ret = new Dictionary<string, string>();
+        Dictionary<string, string> ret = [];
         var _ = File.ReadAllLines(path + "\\package.info");
         try
         {
@@ -71,8 +71,10 @@ public partial class PackageManagerMain : UIForm
 
     private void InitializePackage(string pkgPath)
     {
-        Dictionary<string, string> pkgTags = new Dictionary<string, string>();
-        pkgTags.Add("Path", pkgPath);
+        Dictionary<string, string> pkgTags = new Dictionary<string, string>
+        {
+            { "Path", pkgPath }
+        };
         var pkgName = Path.GetFileName(pkgPath).Split('.')[0];
         var pkgInfo = AnalyzePackageInfoFile(pkgPath);
         #region WinForms Auto-Generated Code

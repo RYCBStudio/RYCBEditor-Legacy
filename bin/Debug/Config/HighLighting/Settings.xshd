@@ -1,4 +1,3 @@
-<?xml version="1.0"?>
 <SyntaxDefinition name="SharpSettingsForRYCBEditor" extensions="" xmlns="http://icsharpcode.net/sharpdevelop/syntaxdefinition/2008">
 	<Color name="Comment" foreground="#ff808080" exampleText="#comment" />
 	<Color name="String" foreground="#ff6A8759" />

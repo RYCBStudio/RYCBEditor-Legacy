@@ -1,0 +1,11 @@
+[LangSet]
+Name=English
+
+[I18n]
+text.icb.title=Runners Configuration
+text.icb.itptr=Interpreter
+text.icb.itptr.type=Interpreter Type
+text.icb.itptr.path=Interpreter Path
+text.icb.itptr.args=Interpreter Arguments
+text.icb.itptr.finalcmd=Final Command
+tip.failtodel=Fail to delete, please check the log file.

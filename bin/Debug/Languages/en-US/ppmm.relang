@@ -1,0 +1,39 @@
+[LangSet]
+Name=English
+
+[I18n]
+title.ppmm.text=Python Packages Management
+text.ppmm.searchbox.wm=Search on PyPi...
+text.ppmm.pkg.pypiprocessing=Getting packages from PyPi...
+text.ppmm.pkg.processing=Processing local packages, please wait a minute.        If timeout occurs, please click here to close.
+text.ppmm.pkg.notfound=No local package was found. Do you want to import from disk or install online?
+text.ppmm.pkg.notfound.import=import
+text.ppmm.pkg.notfound.search=install
+text.ppmm.pkg.notfound.cancel=cancel
+text.ppmm.pkgloca=Package Location
+text.ppmm.rqby=Required by
+text.ppmm.rq=Requires
+text.ppmm.sum=Summary
+text.ppmm.status=Status
+text.ppmm.name=Name
+text.ppmm.author=Author
+text.ppmm.lic=License
+text.ppmm.ver=Version
+text.ppmm.status.nf=Not Found
+text.ppmm.status.i=Installed
+text.ppmm.exm.cfgpypisource=Configure PyPi Source
+text.ppmm.exm.cfgpypisource.change=Change
+text.ppmm.exm.cfgpypisource.reset=Reset
+text.ppmm.exm.console=Use console
+text.ppmm.exm.importtxt=Import packages from disk
+text.ppmm.source=Source
+text.ppmm.pkg.inst.suc=Successfully installed {0}.
+text.ppmm.pkg.inst.rtxt.suc=Successfully installed from {0}.
+text.ppmm.pkg.uninst.suc=Successfully uninstalled {0}.
+text.ppmm.pkg.inst.fail=Fail to uninstall.
+text.ppmm.pkg.onlineinst.enter=Enter the package name you want to install.
+text.ppmm.pkg.uninstconfirm=Are you sure to uninstall this package?
+text.ppmm.pkg.uninst=Uninstalling package
+text.ppmm.cfgpypisource.title=Enter a valid PyPi source URL.
+text.ppmm.cfgpypisource.illegal=Invalid source URL.
+text.ppmm.exm.pypiui=Open PyPi Packages Searching Window

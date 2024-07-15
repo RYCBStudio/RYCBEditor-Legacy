@@ -17,6 +17,10 @@ public partial class CustomSettings
         this.MainTabCtrl.TabBackColor = Back;
         this.TitleFont = new(GlobalSettings.MainFontName, this.TitleFont.Size, this.TitleFont.Style);
         this.toolStripStatusLabel1.Text = _I18nFile.Localize(toolStripStatusLabel1.Text);
+        this.SwtchAutoParallelDownloadCount.ActiveText = _I18nFile.Localize(this.SwtchAutoParallelDownloadCount.ActiveText);
+        this.SwtchParallelDownload.ActiveText = _I18nFile.Localize(this.SwtchAutoParallelDownloadCount.ActiveText);
+        this.SwtchAutoParallelDownloadCount.InActiveText = _I18nFile.Localize(this.SwtchAutoParallelDownloadCount.InActiveText);
+        this.SwtchParallelDownload.InActiveText = _I18nFile.Localize(this.SwtchAutoParallelDownloadCount.InActiveText);
         if (Theme == "Light")
         {
             this.TitleColor = Back;

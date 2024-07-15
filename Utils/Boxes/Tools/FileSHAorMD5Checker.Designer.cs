@@ -359,6 +359,7 @@ partial class FileSHAorMD5Checker
             this.ExtendSymbolSize = 30;
             this.Font = new System.Drawing.Font("微软雅黑", 12F);
             this.Name = "FileSHAorMD5Checker";
+            this.ShowIcon = false;
             this.Text = "File SHA or MD5 Encoding Validator";
             this.TitleFont = new System.Drawing.Font("微软雅黑", 12F);
             this.ZoomScaleRect = new System.Drawing.Rectangle(19, 19, 800, 450);

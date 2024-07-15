@@ -4,7 +4,7 @@ namespace IDE
 {
     public partial class LicenseAndCopyrights : Sunny.UI.UIForm
     {
-        private string Text;
+        private new string Text;
         public LicenseAndCopyrights()
         {
             InitializeComponent();

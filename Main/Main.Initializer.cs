@@ -40,6 +40,10 @@ namespace IDE
             {
                 this.Font = new(fontName, this.Font.Size, this.Font.Style);
             }
+            foreach (Control ctrl in tabPage3.Controls[0].Controls)
+            {
+                ctrl.Text = _I18nFile.Localize(ctrl.Text).Replace("\\n", "\n");
+            }
 
             foreach (var control in controls)
             {

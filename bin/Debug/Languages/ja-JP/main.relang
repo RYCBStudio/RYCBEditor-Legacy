@@ -31,6 +31,8 @@ text.ts.tool.application.exit=終了
 text.ts.tool.application.restart=再起動
 text.ts.tool.application.reset=IDEをリセット
 text.ts.tool.application.packagemanagement=パッケージ管理
+text.ts.tool.application.pkgmgmt.Python=Pythonパッケージ管理
+text.ts.tool.application.pkgmgmt.app=RYCB Editorパッケージ管理
 text.ts.tool.quick=クイックツール
 text.ts.tool.quick.clearcache=キャッシュをクリアする
 text.ts.help.about=について(&A)...
@@ -51,6 +53,7 @@ text.st.filesaved=ファイルが保存されました
 text.st.filesavefailed=ファイルの保存に失敗しました，詳細はログをご覧ください
 text.st.filereadytosave=ファイルを保存する準備ができています
 text.bottom.errors=エラー
+text.bottom.console=コンソール
 text.bottom.errors.sub.type=タイプ
 text.bottom.errors.sub.description=異常の説明
 text.ts.run.configrunners=ドライバの設定
@@ -81,6 +84,15 @@ text.inprogram.fileex.vmdk=VMWare®仮想ディスクファイル
 text.inprogram.fileex.vmdk.warn=この操作はIDEが応答しなくなり、メモリオーバーフローやプログラムのクラッシュ、さらにはコンピューターのフリーズ、クラッシュ、ブルースクリーンなどを引き起こす可能性が非常に高いため、ファイルを開く前に確認してください：
 text.inprogram.fileex.sb=Scratchファイル
 text.inprogram.fileex.sb.intro=Scratchファイルは、公式エディターで開くことができます。
+
+text.welcome.title=「RYCB Editor」へようこそ！
+text.welcome.poem=友達が遠くから来ても、楽しいのではないでしょうか。
+text.welcome.usertutorial=ユーザーチュートリアル
+text.welcome.newpyscript=新しいPythonサンプルファイル
+text.welcome.initialsettings=初期設定
+text.welcome.displaysettings=表示設定
+text.welcome.tip=「ファイル」>「新規」>「ファイル」をクリックするか、Ctrl+Nでファイルを新規作成します\n「ファイル」>「開く」をクリックするか、Ctrl+Oを押してファイルを開きます\nPythonファイルをF 5で実行する\nクリックツール>アプリケーション>パッケージ管理パッケージ
+
 
 text.inprogram.title.warning=警告
 text.inprogram.title.info=情報

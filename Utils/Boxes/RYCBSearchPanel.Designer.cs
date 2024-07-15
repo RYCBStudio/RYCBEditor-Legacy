@@ -362,7 +362,7 @@ partial class RYCBSearchPanel
     internal Sunny.UI.UIStyleManager uiStyleManager1;
     internal Sunny.UI.UITextBox TBoxFind;
     internal Sunny.UI.UILabel uiLabel1;
-    internal Sunny.UI.UIButton Close;
+    internal new Sunny.UI.UIButton Close;
     internal Sunny.UI.UIButton Collapse;
     internal Sunny.UI.UILabel uiLabel2;
     internal Sunny.UI.UITextBox uiTextBox1;

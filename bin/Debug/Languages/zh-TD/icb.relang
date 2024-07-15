@@ -1,0 +1,11 @@
+[LangSet]
+Name=繁體中文（中國、中國台灣）
+
+[I18n]
+text.icb.title=運行器配寘
+text.icb.itptr=解譯器
+text.icb.itptr.type=解譯器類型
+text.icb.itptr.path=解譯器路徑
+text.icb.itptr.args=解譯器啟動參數
+text.icb.itptr.finalcmd=最終命令
+tip.failtodel=删除失敗，請查看日誌。

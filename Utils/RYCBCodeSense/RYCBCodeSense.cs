@@ -3,7 +3,6 @@ using ICSharpCode.AvalonEdit.Document;
 using ICSharpCode.AvalonEdit.Editing;
 using IDE.Properties;
 using System;
-using RE_Addon_Controls;
 using System.Windows;
 using System.Windows.Interop;
 using System.Windows.Media;
@@ -26,18 +25,34 @@ namespace IDE
 
         public RYCBCodeSense(string text, int completionStrLength, CodeSenseType type)
         {
-            if (type == CodeSenseType.KEYWORD)
+            switch (type)
             {
-                this.Text = text;
-                this._type = type;
-                this.Description = $"{text} 关键字";
-            }
-            else
-            {
-                this.Text = text;
-                this._type = type;
-                this.Description = "";
-                this.cstrl = completionStrLength;
+                case CodeSenseType.FIELD:
+                    this.Text = text;
+                    this._type = type;
+                    this.Description = $"FIELD {text}";
+                    this.cstrl = completionStrLength;
+                    break;
+                case CodeSenseType.FUNC:
+                    this.Text = text;
+                    this._type = type;
+                    this.Description = $"FUNC {text}";
+                    this.cstrl = completionStrLength;
+                    break;
+                case CodeSenseType.KEYWORD:
+                    this.Text = text;
+                    this._type = type;
+                    this.Description = $"KEYWORD {text}";
+                    this.cstrl = completionStrLength;
+                    break;
+                case CodeSenseType.BUILTIN:
+                    this.Text = text;
+                    this._type = type;
+                    this.Description = $"BUILTIN {text}";
+                    this.cstrl = completionStrLength;
+                    break;
+                default:
+                    break;
             }
         }
 

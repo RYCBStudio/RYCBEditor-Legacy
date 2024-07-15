@@ -1,10 +1,11 @@
 [LangSet]
-Name=繁體中文
+Name=繁體中文（中國、中國台灣）
 
 [I18n]
 text.settings.window.title=設置
 text.settings.page.general.title=一般設定
 text.settings.page.general.basicsettings.title=基本設定
+text.settings.page.general.basicsettings.mainfont=主字體
 text.settings.page.general.basicsettings.theme=主題
 text.settings.page.general.basicsettings.lang=語言
 text.settings.page.general.basicsettings.xshdpath=Xshd檔案路徑
@@ -28,3 +29,13 @@ text.item.theme.dark=深色
 text.item.theme.IDEA=IDEA
 text.item.theme.custom=自定義
 text.tip.editreconffile=點擊擴展按鈕（標題列上的“∨”），編輯設定檔案（.reconf）。
+text.settings.page.general.downloading.title=下載
+text.settings.page.general.downloading.pd=使用多執行緒下載
+text.settings.page.general.downloading.autopc=使用自動分配的線程數
+text.settings.page.general.downloading.pc=自定義線程數
+text.settings.page.run=運行
+
+tip.restart=設定將在重啟後生效
+
+text.switch.on=啟用
+text.switch.off=禁用
