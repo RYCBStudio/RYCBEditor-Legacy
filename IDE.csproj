@@ -76,9 +76,11 @@
   <ItemGroup>
     <Reference Include="Azure.Core, Version=1.41.0.0, Culture=neutral, PublicKeyToken=92742159e12e44c8, processorArchitecture=MSIL">
       <HintPath>packages\Azure.Core.1.41.0\lib\net472\Azure.Core.dll</HintPath>
+      <Private>False</Private>
     </Reference>
     <Reference Include="Azure.Identity, Version=1.12.0.0, Culture=neutral, PublicKeyToken=92742159e12e44c8, processorArchitecture=MSIL">
       <HintPath>packages\Azure.Identity.1.12.0\lib\netstandard2.0\Azure.Identity.dll</HintPath>
+      <Private>False</Private>
     </Reference>
     <Reference Include="ChnCharInfo, Version=1.0.0.0, Culture=neutral, PublicKeyToken=18f031bd02e5e291, processorArchitecture=MSIL">
       <HintPath>packages\Microsoft.PinYinConverter.1.0.0\lib\ChnCharInfo.dll</HintPath>
@@ -130,9 +132,11 @@
     </Reference>
     <Reference Include="MessagePack, Version=2.5.0.0, Culture=neutral, PublicKeyToken=b4a0369545f0a1be, processorArchitecture=MSIL">
       <HintPath>packages\MessagePack.2.5.171\lib\net472\MessagePack.dll</HintPath>
+      <Private>False</Private>
     </Reference>
     <Reference Include="MessagePack.Annotations, Version=2.5.0.0, Culture=neutral, PublicKeyToken=b4a0369545f0a1be, processorArchitecture=MSIL">
       <HintPath>packages\MessagePack.Annotations.2.5.171\lib\netstandard2.0\MessagePack.Annotations.dll</HintPath>
+      <Private>False</Private>
     </Reference>
     <Reference Include="MetroFramework, Version=1.4.0.0, Culture=neutral, PublicKeyToken=5f91a84759bf584a, processorArchitecture=MSIL">
       <HintPath>packages\MetroModernUI.1.4.0.0\lib\net\MetroFramework.dll</HintPath>
@@ -156,30 +160,38 @@
     </Reference>
     <Reference Include="Microsoft.Build.Framework, Version=15.1.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a, processorArchitecture=MSIL">
       <HintPath>packages\Microsoft.Build.Framework.17.10.4\lib\net472\Microsoft.Build.Framework.dll</HintPath>
+      <Private>False</Private>
     </Reference>
     <Reference Include="Microsoft.CodeAnalysis, Version=4.10.0.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35, processorArchitecture=MSIL">
       <HintPath>packages\Microsoft.CodeAnalysis.Common.4.10.0\lib\netstandard2.0\Microsoft.CodeAnalysis.dll</HintPath>
+      <Private>False</Private>
     </Reference>
     <Reference Include="Microsoft.CodeAnalysis.CSharp, Version=4.10.0.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35, processorArchitecture=MSIL">
       <HintPath>packages\Microsoft.CodeAnalysis.CSharp.4.10.0\lib\netstandard2.0\Microsoft.CodeAnalysis.CSharp.dll</HintPath>
+      <Private>False</Private>
     </Reference>
     <Reference Include="Microsoft.CodeAnalysis.CSharp.Workspaces, Version=4.10.0.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35, processorArchitecture=MSIL">
       <HintPath>packages\Microsoft.CodeAnalysis.CSharp.Workspaces.4.10.0\lib\netstandard2.0\Microsoft.CodeAnalysis.CSharp.Workspaces.dll</HintPath>
+      <Private>False</Private>
     </Reference>
     <Reference Include="Microsoft.CodeAnalysis.Workspaces, Version=4.10.0.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35, processorArchitecture=MSIL">
       <HintPath>packages\Microsoft.CodeAnalysis.Workspaces.Common.4.10.0\lib\netstandard2.0\Microsoft.CodeAnalysis.Workspaces.dll</HintPath>
+      <Private>False</Private>
     </Reference>
     <Reference Include="Microsoft.Data.SqlClient, Version=5.0.0.0, Culture=neutral, PublicKeyToken=23ec7fc2d6eaa4a5, processorArchitecture=MSIL">
       <HintPath>packages\Microsoft.Data.SqlClient.5.2.1\lib\net462\Microsoft.Data.SqlClient.dll</HintPath>
     </Reference>
     <Reference Include="Microsoft.Data.Tools.Sql.BatchParser, Version=17.100.0.0, Culture=neutral, PublicKeyToken=89845dcd8080cc91, processorArchitecture=MSIL">
       <HintPath>packages\Microsoft.SqlServer.SqlManagementObjects.171.30.0\lib\net462\Microsoft.Data.Tools.Sql.BatchParser.dll</HintPath>
+      <Private>False</Private>
     </Reference>
     <Reference Include="Microsoft.Diagnostics.NETCore.Client, Version=0.2.10.32401, Culture=neutral, PublicKeyToken=31bf3856ad364e35, processorArchitecture=MSIL">
       <HintPath>packages\Microsoft.Diagnostics.NETCore.Client.0.2.532401\lib\netstandard2.0\Microsoft.Diagnostics.NETCore.Client.dll</HintPath>
+      <Private>False</Private>
     </Reference>
     <Reference Include="Microsoft.Diagnostics.Runtime, Version=3.1.10.12801, Culture=neutral, PublicKeyToken=31bf3856ad364e35, processorArchitecture=MSIL">
       <HintPath>packages\Microsoft.Diagnostics.Runtime.3.1.512801\lib\netstandard2.0\Microsoft.Diagnostics.Runtime.dll</HintPath>
+      <Private>False</Private>
     </Reference>
     <Reference Include="Microsoft.Dynamic, Version=1.3.4.0, Culture=neutral, PublicKeyToken=7f709c5b713576e1, processorArchitecture=MSIL">
       <HintPath>packages\DynamicLanguageRuntime.1.3.4\lib\net452\Microsoft.Dynamic.dll</HintPath>
@@ -195,6 +207,7 @@
     </Reference>
     <Reference Include="Microsoft.Extensions.Configuration.Binder, Version=8.0.0.2, Culture=neutral, PublicKeyToken=adb9793829ddae60, processorArchitecture=MSIL">
       <HintPath>packages\Microsoft.Extensions.Configuration.Binder.8.0.2\lib\net462\Microsoft.Extensions.Configuration.Binder.dll</HintPath>
+      <Private>False</Private>
     </Reference>
     <Reference Include="Microsoft.Extensions.DependencyInjection, Version=8.0.0.0, Culture=neutral, PublicKeyToken=adb9793829ddae60, processorArchitecture=MSIL">
       <HintPath>packages\Microsoft.Extensions.DependencyInjection.8.0.0\lib\net462\Microsoft.Extensions.DependencyInjection.dll</HintPath>
@@ -202,6 +215,7 @@
     </Reference>
     <Reference Include="Microsoft.Extensions.DependencyInjection.Abstractions, Version=8.0.0.1, Culture=neutral, PublicKeyToken=adb9793829ddae60, processorArchitecture=MSIL">
       <HintPath>packages\Microsoft.Extensions.DependencyInjection.Abstractions.8.0.1\lib\net462\Microsoft.Extensions.DependencyInjection.Abstractions.dll</HintPath>
+      <Private>False</Private>
     </Reference>
     <Reference Include="Microsoft.Extensions.Logging, Version=8.0.0.0, Culture=neutral, PublicKeyToken=adb9793829ddae60, processorArchitecture=MSIL">
       <HintPath>packages\Microsoft.Extensions.Logging.8.0.0\lib\net462\Microsoft.Extensions.Logging.dll</HintPath>
@@ -209,9 +223,11 @@
     </Reference>
     <Reference Include="Microsoft.Extensions.Logging.Abstractions, Version=8.0.0.1, Culture=neutral, PublicKeyToken=adb9793829ddae60, processorArchitecture=MSIL">
       <HintPath>packages\Microsoft.Extensions.Logging.Abstractions.8.0.1\lib\net462\Microsoft.Extensions.Logging.Abstractions.dll</HintPath>
+      <Private>False</Private>
     </Reference>
     <Reference Include="Microsoft.Extensions.Options, Version=8.0.0.2, Culture=neutral, PublicKeyToken=adb9793829ddae60, processorArchitecture=MSIL">
       <HintPath>packages\Microsoft.Extensions.Options.8.0.2\lib\net462\Microsoft.Extensions.Options.dll</HintPath>
+      <Private>False</Private>
     </Reference>
     <Reference Include="Microsoft.Extensions.Primitives, Version=8.0.0.0, Culture=neutral, PublicKeyToken=adb9793829ddae60, processorArchitecture=MSIL">
       <HintPath>packages\Microsoft.Extensions.Primitives.8.0.0\lib\net462\Microsoft.Extensions.Primitives.dll</HintPath>
@@ -219,33 +235,43 @@
     </Reference>
     <Reference Include="Microsoft.Identity.Client, Version=4.61.3.0, Culture=neutral, PublicKeyToken=0a613f4dd989e8ae, processorArchitecture=MSIL">
       <HintPath>packages\Microsoft.Identity.Client.4.61.3\lib\net462\Microsoft.Identity.Client.dll</HintPath>
+      <Private>False</Private>
     </Reference>
     <Reference Include="Microsoft.Identity.Client.Extensions.Msal, Version=4.61.3.0, Culture=neutral, PublicKeyToken=0a613f4dd989e8ae, processorArchitecture=MSIL">
       <HintPath>packages\Microsoft.Identity.Client.Extensions.Msal.4.61.3\lib\netstandard2.0\Microsoft.Identity.Client.Extensions.Msal.dll</HintPath>
+      <Private>False</Private>
     </Reference>
     <Reference Include="Microsoft.IdentityModel.Abstractions, Version=8.0.0.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35, processorArchitecture=MSIL">
       <HintPath>packages\Microsoft.IdentityModel.Abstractions.8.0.0\lib\net472\Microsoft.IdentityModel.Abstractions.dll</HintPath>
+      <Private>False</Private>
     </Reference>
     <Reference Include="Microsoft.IdentityModel.JsonWebTokens, Version=8.0.0.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35, processorArchitecture=MSIL">
       <HintPath>packages\Microsoft.IdentityModel.JsonWebTokens.8.0.0\lib\net472\Microsoft.IdentityModel.JsonWebTokens.dll</HintPath>
+      <Private>False</Private>
     </Reference>
     <Reference Include="Microsoft.IdentityModel.Logging, Version=8.0.0.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35, processorArchitecture=MSIL">
       <HintPath>packages\Microsoft.IdentityModel.Logging.8.0.0\lib\net472\Microsoft.IdentityModel.Logging.dll</HintPath>
+      <Private>False</Private>
     </Reference>
     <Reference Include="Microsoft.IdentityModel.Protocols, Version=8.0.0.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35, processorArchitecture=MSIL">
       <HintPath>packages\Microsoft.IdentityModel.Protocols.8.0.0\lib\net472\Microsoft.IdentityModel.Protocols.dll</HintPath>
+      <Private>False</Private>
     </Reference>
     <Reference Include="Microsoft.IdentityModel.Protocols.OpenIdConnect, Version=8.0.0.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35, processorArchitecture=MSIL">
       <HintPath>packages\Microsoft.IdentityModel.Protocols.OpenIdConnect.8.0.0\lib\net472\Microsoft.IdentityModel.Protocols.OpenIdConnect.dll</HintPath>
+      <Private>False</Private>
     </Reference>
     <Reference Include="Microsoft.IdentityModel.Tokens, Version=8.0.0.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35, processorArchitecture=MSIL">
       <HintPath>packages\Microsoft.IdentityModel.Tokens.8.0.0\lib\net472\Microsoft.IdentityModel.Tokens.dll</HintPath>
+      <Private>False</Private>
     </Reference>
     <Reference Include="Microsoft.IO.Redist, Version=6.0.0.1, Culture=neutral, PublicKeyToken=cc7b13ffcd2ddd51, processorArchitecture=MSIL">
       <HintPath>packages\Microsoft.IO.Redist.6.0.1\lib\net472\Microsoft.IO.Redist.dll</HintPath>
+      <Private>False</Private>
     </Reference>
     <Reference Include="Microsoft.NET.StringTools, Version=1.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a, processorArchitecture=MSIL">
       <HintPath>packages\Microsoft.NET.StringTools.17.10.4\lib\net472\Microsoft.NET.StringTools.dll</HintPath>
+      <Private>False</Private>
     </Reference>
     <Reference Include="Microsoft.Scripting, Version=1.3.4.0, Culture=neutral, PublicKeyToken=7f709c5b713576e1, processorArchitecture=MSIL">
       <HintPath>packages\DynamicLanguageRuntime.1.3.4\lib\net452\Microsoft.Scripting.dll</HintPath>
@@ -261,6 +287,7 @@
     </Reference>
     <Reference Include="Microsoft.ServiceHub.Framework, Version=4.5.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a, processorArchitecture=MSIL">
       <HintPath>packages\Microsoft.ServiceHub.Framework.4.5.31\lib\net472\Microsoft.ServiceHub.Framework.dll</HintPath>
+      <Private>False</Private>
     </Reference>
     <Reference Include="Microsoft.SqlServer.Assessment, Version=1.100.0.0, Culture=neutral, PublicKeyToken=89845dcd8080cc91, processorArchitecture=MSIL">
       <HintPath>packages\Microsoft.SqlServer.Assessment.1.1.17\lib\net462\Microsoft.SqlServer.Assessment.dll</HintPath>
@@ -275,75 +302,99 @@
     </Reference>
     <Reference Include="Microsoft.SqlServer.Dmf, Version=17.100.0.0, Culture=neutral, PublicKeyToken=89845dcd8080cc91, processorArchitecture=MSIL">
       <HintPath>packages\Microsoft.SqlServer.SqlManagementObjects.171.30.0\lib\net462\Microsoft.SqlServer.Dmf.dll</HintPath>
+      <Private>False</Private>
     </Reference>
     <Reference Include="Microsoft.SqlServer.Dmf.Common, Version=17.100.0.0, Culture=neutral, PublicKeyToken=89845dcd8080cc91, processorArchitecture=MSIL">
       <HintPath>packages\Microsoft.SqlServer.SqlManagementObjects.171.30.0\lib\net462\Microsoft.SqlServer.Dmf.Common.dll</HintPath>
+      <Private>False</Private>
     </Reference>
     <Reference Include="Microsoft.SqlServer.Management.Assessment, Version=17.100.0.0, Culture=neutral, PublicKeyToken=89845dcd8080cc91, processorArchitecture=MSIL">
       <HintPath>packages\Microsoft.SqlServer.SqlManagementObjects.171.30.0\lib\net462\Microsoft.SqlServer.Management.Assessment.dll</HintPath>
+      <Private>False</Private>
     </Reference>
     <Reference Include="Microsoft.SqlServer.Management.Collector, Version=17.100.0.0, Culture=neutral, PublicKeyToken=89845dcd8080cc91, processorArchitecture=MSIL">
       <HintPath>packages\Microsoft.SqlServer.SqlManagementObjects.171.30.0\lib\net462\Microsoft.SqlServer.Management.Collector.dll</HintPath>
+      <Private>False</Private>
     </Reference>
     <Reference Include="Microsoft.SqlServer.Management.CollectorEnum, Version=17.100.0.0, Culture=neutral, PublicKeyToken=89845dcd8080cc91, processorArchitecture=MSIL">
       <HintPath>packages\Microsoft.SqlServer.SqlManagementObjects.171.30.0\lib\net462\Microsoft.SqlServer.Management.CollectorEnum.dll</HintPath>
+      <Private>False</Private>
     </Reference>
     <Reference Include="Microsoft.SqlServer.Management.HadrData, Version=17.100.0.0, Culture=neutral, PublicKeyToken=89845dcd8080cc91, processorArchitecture=MSIL">
       <HintPath>packages\Microsoft.SqlServer.SqlManagementObjects.171.30.0\lib\net462\Microsoft.SqlServer.Management.HadrData.dll</HintPath>
+      <Private>False</Private>
     </Reference>
     <Reference Include="Microsoft.SqlServer.Management.HadrModel, Version=17.100.0.0, Culture=neutral, PublicKeyToken=89845dcd8080cc91, processorArchitecture=MSIL">
       <HintPath>packages\Microsoft.SqlServer.SqlManagementObjects.171.30.0\lib\net462\Microsoft.SqlServer.Management.HadrModel.dll</HintPath>
+      <Private>False</Private>
     </Reference>
     <Reference Include="Microsoft.SqlServer.Management.RegisteredServers, Version=17.100.0.0, Culture=neutral, PublicKeyToken=89845dcd8080cc91, processorArchitecture=MSIL">
       <HintPath>packages\Microsoft.SqlServer.SqlManagementObjects.171.30.0\lib\net462\Microsoft.SqlServer.Management.RegisteredServers.dll</HintPath>
+      <Private>False</Private>
     </Reference>
     <Reference Include="Microsoft.SqlServer.Management.Sdk.Sfc, Version=17.100.0.0, Culture=neutral, PublicKeyToken=89845dcd8080cc91, processorArchitecture=MSIL">
       <HintPath>packages\Microsoft.SqlServer.SqlManagementObjects.171.30.0\lib\net462\Microsoft.SqlServer.Management.Sdk.Sfc.dll</HintPath>
+      <Private>False</Private>
     </Reference>
     <Reference Include="Microsoft.SqlServer.Management.SqlScriptPublish, Version=17.100.0.0, Culture=neutral, PublicKeyToken=89845dcd8080cc91, processorArchitecture=MSIL">
       <HintPath>packages\Microsoft.SqlServer.SqlManagementObjects.171.30.0\lib\net462\Microsoft.SqlServer.Management.SqlScriptPublish.dll</HintPath>
+      <Private>False</Private>
     </Reference>
     <Reference Include="Microsoft.SqlServer.Management.XEvent, Version=17.100.0.0, Culture=neutral, PublicKeyToken=89845dcd8080cc91, processorArchitecture=MSIL">
       <HintPath>packages\Microsoft.SqlServer.SqlManagementObjects.171.30.0\lib\net462\Microsoft.SqlServer.Management.XEvent.dll</HintPath>
+      <Private>False</Private>
     </Reference>
     <Reference Include="Microsoft.SqlServer.Management.XEventDbScoped, Version=17.100.0.0, Culture=neutral, PublicKeyToken=89845dcd8080cc91, processorArchitecture=MSIL">
       <HintPath>packages\Microsoft.SqlServer.SqlManagementObjects.171.30.0\lib\net462\Microsoft.SqlServer.Management.XEventDbScoped.dll</HintPath>
+      <Private>False</Private>
     </Reference>
     <Reference Include="Microsoft.SqlServer.Management.XEventDbScopedEnum, Version=17.100.0.0, Culture=neutral, PublicKeyToken=89845dcd8080cc91, processorArchitecture=MSIL">
       <HintPath>packages\Microsoft.SqlServer.SqlManagementObjects.171.30.0\lib\net462\Microsoft.SqlServer.Management.XEventDbScopedEnum.dll</HintPath>
+      <Private>False</Private>
     </Reference>
     <Reference Include="Microsoft.SqlServer.Management.XEventEnum, Version=17.100.0.0, Culture=neutral, PublicKeyToken=89845dcd8080cc91, processorArchitecture=MSIL">
       <HintPath>packages\Microsoft.SqlServer.SqlManagementObjects.171.30.0\lib\net462\Microsoft.SqlServer.Management.XEventEnum.dll</HintPath>
+      <Private>False</Private>
     </Reference>
     <Reference Include="Microsoft.SqlServer.PolicyEnum, Version=17.100.0.0, Culture=neutral, PublicKeyToken=89845dcd8080cc91, processorArchitecture=MSIL">
       <HintPath>packages\Microsoft.SqlServer.SqlManagementObjects.171.30.0\lib\net462\Microsoft.SqlServer.PolicyEnum.dll</HintPath>
+      <Private>False</Private>
     </Reference>
     <Reference Include="Microsoft.SqlServer.RegSvrEnum, Version=17.100.0.0, Culture=neutral, PublicKeyToken=89845dcd8080cc91, processorArchitecture=MSIL">
       <HintPath>packages\Microsoft.SqlServer.SqlManagementObjects.171.30.0\lib\net462\Microsoft.SqlServer.RegSvrEnum.dll</HintPath>
+      <Private>False</Private>
     </Reference>
     <Reference Include="Microsoft.SqlServer.ServiceBrokerEnum, Version=17.100.0.0, Culture=neutral, PublicKeyToken=89845dcd8080cc91, processorArchitecture=MSIL">
       <HintPath>packages\Microsoft.SqlServer.SqlManagementObjects.171.30.0\lib\net462\Microsoft.SqlServer.ServiceBrokerEnum.dll</HintPath>
+      <Private>False</Private>
     </Reference>
     <Reference Include="Microsoft.SqlServer.Smo, Version=17.100.0.0, Culture=neutral, PublicKeyToken=89845dcd8080cc91, processorArchitecture=MSIL">
       <HintPath>packages\Microsoft.SqlServer.SqlManagementObjects.171.30.0\lib\net462\Microsoft.SqlServer.Smo.dll</HintPath>
+      <Private>False</Private>
     </Reference>
     <Reference Include="Microsoft.SqlServer.Smo.Notebook, Version=17.100.0.0, Culture=neutral, PublicKeyToken=89845dcd8080cc91, processorArchitecture=MSIL">
       <HintPath>packages\Microsoft.SqlServer.SqlManagementObjects.171.30.0\lib\net462\Microsoft.SqlServer.Smo.Notebook.dll</HintPath>
+      <Private>False</Private>
     </Reference>
     <Reference Include="Microsoft.SqlServer.SmoExtended, Version=17.100.0.0, Culture=neutral, PublicKeyToken=89845dcd8080cc91, processorArchitecture=MSIL">
       <HintPath>packages\Microsoft.SqlServer.SqlManagementObjects.171.30.0\lib\net462\Microsoft.SqlServer.SmoExtended.dll</HintPath>
+      <Private>False</Private>
     </Reference>
     <Reference Include="Microsoft.SqlServer.SqlClrProvider, Version=17.100.0.0, Culture=neutral, PublicKeyToken=89845dcd8080cc91, processorArchitecture=MSIL">
       <HintPath>packages\Microsoft.SqlServer.SqlManagementObjects.171.30.0\lib\net462\Microsoft.SqlServer.SqlClrProvider.dll</HintPath>
+      <Private>False</Private>
     </Reference>
     <Reference Include="Microsoft.SqlServer.SqlEnum, Version=17.100.0.0, Culture=neutral, PublicKeyToken=89845dcd8080cc91, processorArchitecture=MSIL">
       <HintPath>packages\Microsoft.SqlServer.SqlManagementObjects.171.30.0\lib\net462\Microsoft.SqlServer.SqlEnum.dll</HintPath>
+      <Private>False</Private>
     </Reference>
     <Reference Include="Microsoft.SqlServer.SqlWmiManagement, Version=17.100.0.0, Culture=neutral, PublicKeyToken=89845dcd8080cc91, processorArchitecture=MSIL">
       <HintPath>packages\Microsoft.SqlServer.SqlManagementObjects.171.30.0\lib\net462\Microsoft.SqlServer.SqlWmiManagement.dll</HintPath>
+      <Private>False</Private>
     </Reference>
     <Reference Include="Microsoft.SqlServer.WmiEnum, Version=17.100.0.0, Culture=neutral, PublicKeyToken=89845dcd8080cc91, processorArchitecture=MSIL">
       <HintPath>packages\Microsoft.SqlServer.SqlManagementObjects.171.30.0\lib\net462\Microsoft.SqlServer.WmiEnum.dll</HintPath>
+      <Private>False</Private>
     </Reference>
     <Reference Include="Microsoft.VisualBasic">
       <Private>False</Private>
@@ -353,18 +404,22 @@
     </Reference>
     <Reference Include="Microsoft.VisualStudio.Composition, Version=17.10.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a, processorArchitecture=MSIL">
       <HintPath>packages\Microsoft.VisualStudio.Composition.17.10.37\lib\net472\Microsoft.VisualStudio.Composition.dll</HintPath>
+      <Private>False</Private>
     </Reference>
     <Reference Include="Microsoft.VisualStudio.CoreUtility, Version=17.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a, processorArchitecture=MSIL">
       <HintPath>packages\Microsoft.VisualStudio.CoreUtility.17.10.191\lib\net472\Microsoft.VisualStudio.CoreUtility.dll</HintPath>
+      <Private>False</Private>
     </Reference>
     <Reference Include="Microsoft.VisualStudio.DebuggerVisualizers, Version=17.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a, processorArchitecture=MSIL">
       <Private>False</Private>
     </Reference>
     <Reference Include="Microsoft.VisualStudio.GraphModel, Version=17.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a, processorArchitecture=MSIL">
       <HintPath>packages\Microsoft.VisualStudio.GraphModel.17.10.40170\lib\net472\Microsoft.VisualStudio.GraphModel.dll</HintPath>
+      <Private>False</Private>
     </Reference>
     <Reference Include="Microsoft.VisualStudio.ImageCatalog, Version=17.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a, processorArchitecture=MSIL">
       <HintPath>packages\Microsoft.VisualStudio.ImageCatalog.17.10.40170\lib\net472\Microsoft.VisualStudio.ImageCatalog.dll</HintPath>
+      <Private>False</Private>
     </Reference>
     <Reference Include="Microsoft.VisualStudio.Imaging.Interop.14.0.DesignTime, Version=14.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a, processorArchitecture=MSIL">
       <HintPath>packages\Microsoft.VisualStudio.Imaging.Interop.14.0.DesignTime.17.10.40152\lib\net472\Microsoft.VisualStudio.Imaging.Interop.14.0.DesignTime.dll</HintPath>
@@ -372,6 +427,7 @@
     </Reference>
     <Reference Include="Microsoft.VisualStudio.Interop, Version=17.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a, processorArchitecture=MSIL">
       <HintPath>packages\Microsoft.VisualStudio.Interop.17.10.40170\lib\net472\Microsoft.VisualStudio.Interop.dll</HintPath>
+      <Private>False</Private>
     </Reference>
     <Reference Include="Microsoft.VisualStudio.RemoteControl, Version=14.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a, processorArchitecture=MSIL">
       <HintPath>packages\Microsoft.VisualStudio.RemoteControl.16.3.52\lib\net45\Microsoft.VisualStudio.RemoteControl.dll</HintPath>
@@ -379,6 +435,7 @@
     </Reference>
     <Reference Include="Microsoft.VisualStudio.RpcContracts, Version=17.10.21.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a, processorArchitecture=MSIL">
       <HintPath>packages\Microsoft.VisualStudio.RpcContracts.17.10.21\lib\netstandard2.0\Microsoft.VisualStudio.RpcContracts.dll</HintPath>
+      <Private>False</Private>
     </Reference>
     <Reference Include="Microsoft.VisualStudio.Setup.Configuration.Interop, Version=1.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a, processorArchitecture=MSIL">
       <HintPath>packages\Microsoft.VisualStudio.Setup.Configuration.Interop.3.10.2154\lib\net35\Microsoft.VisualStudio.Setup.Configuration.Interop.dll</HintPath>
@@ -386,27 +443,35 @@
     </Reference>
     <Reference Include="Microsoft.VisualStudio.Shell.Framework, Version=17.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a, processorArchitecture=MSIL">
       <HintPath>packages\Microsoft.VisualStudio.Shell.Framework.17.10.40170\lib\net472\Microsoft.VisualStudio.Shell.Framework.dll</HintPath>
+      <Private>False</Private>
     </Reference>
     <Reference Include="Microsoft.VisualStudio.Telemetry, Version=16.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a, processorArchitecture=MSIL">
       <HintPath>packages\Microsoft.VisualStudio.Telemetry.17.10.32\lib\net45\Microsoft.VisualStudio.Telemetry.dll</HintPath>
+      <Private>False</Private>
     </Reference>
     <Reference Include="Microsoft.VisualStudio.Text.Data, Version=17.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a, processorArchitecture=MSIL">
       <HintPath>packages\Microsoft.VisualStudio.Text.Data.17.10.191\lib\net472\Microsoft.VisualStudio.Text.Data.dll</HintPath>
+      <Private>False</Private>
     </Reference>
     <Reference Include="Microsoft.VisualStudio.Text.Logic, Version=17.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a, processorArchitecture=MSIL">
       <HintPath>packages\Microsoft.VisualStudio.Text.Logic.17.10.191\lib\net472\Microsoft.VisualStudio.Text.Logic.dll</HintPath>
+      <Private>False</Private>
     </Reference>
     <Reference Include="Microsoft.VisualStudio.Text.UI, Version=17.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a, processorArchitecture=MSIL">
       <HintPath>packages\Microsoft.VisualStudio.Text.UI.17.10.191\lib\net472\Microsoft.VisualStudio.Text.UI.dll</HintPath>
+      <Private>False</Private>
     </Reference>
     <Reference Include="Microsoft.VisualStudio.Text.UI.Wpf, Version=17.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a, processorArchitecture=MSIL">
       <HintPath>packages\Microsoft.VisualStudio.Text.UI.Wpf.17.10.191\lib\net472\Microsoft.VisualStudio.Text.UI.Wpf.dll</HintPath>
+      <Private>False</Private>
     </Reference>
     <Reference Include="Microsoft.VisualStudio.Threading, Version=17.10.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a, processorArchitecture=MSIL">
       <HintPath>packages\Microsoft.VisualStudio.Threading.17.10.48\lib\net472\Microsoft.VisualStudio.Threading.dll</HintPath>
+      <Private>False</Private>
     </Reference>
     <Reference Include="Microsoft.VisualStudio.Utilities, Version=17.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a, processorArchitecture=MSIL">
       <HintPath>packages\Microsoft.VisualStudio.Utilities.17.10.40170\lib\net472\Microsoft.VisualStudio.Utilities.dll</HintPath>
+      <Private>False</Private>
     </Reference>
     <Reference Include="Microsoft.VisualStudio.Utilities.Internal, Version=14.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a, processorArchitecture=MSIL">
       <HintPath>packages\Microsoft.VisualStudio.Utilities.Internal.16.3.56\lib\net45\Microsoft.VisualStudio.Utilities.Internal.dll</HintPath>
@@ -418,12 +483,15 @@
     </Reference>
     <Reference Include="Microsoft.Web.WebView2.Core, Version=1.0.2592.51, Culture=neutral, PublicKeyToken=2a8ab48044d2601e, processorArchitecture=MSIL">
       <HintPath>packages\Microsoft.Web.WebView2.1.0.2592.51\lib\net462\Microsoft.Web.WebView2.Core.dll</HintPath>
+      <Private>False</Private>
     </Reference>
     <Reference Include="Microsoft.Web.WebView2.WinForms, Version=1.0.2592.51, Culture=neutral, PublicKeyToken=2a8ab48044d2601e, processorArchitecture=MSIL">
       <HintPath>packages\Microsoft.Web.WebView2.1.0.2592.51\lib\net462\Microsoft.Web.WebView2.WinForms.dll</HintPath>
+      <Private>False</Private>
     </Reference>
     <Reference Include="Microsoft.Web.WebView2.Wpf, Version=1.0.2592.51, Culture=neutral, PublicKeyToken=2a8ab48044d2601e, processorArchitecture=MSIL">
       <HintPath>packages\Microsoft.Web.WebView2.1.0.2592.51\lib\net462\Microsoft.Web.WebView2.Wpf.dll</HintPath>
+      <Private>False</Private>
     </Reference>
     <Reference Include="Microsoft.Win32.Registry, Version=5.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a, processorArchitecture=MSIL">
       <HintPath>packages\Microsoft.Win32.Registry.5.0.0\lib\net461\Microsoft.Win32.Registry.dll</HintPath>
@@ -431,6 +499,7 @@
     </Reference>
     <Reference Include="Nerdbank.Streams, Version=2.11.0.0, Culture=neutral, PublicKeyToken=cac503e1823ce71c, processorArchitecture=MSIL">
       <HintPath>packages\Nerdbank.Streams.2.11.74\lib\netstandard2.0\Nerdbank.Streams.dll</HintPath>
+      <Private>False</Private>
     </Reference>
     <Reference Include="netstandard">
       <Private>False</Private>
@@ -462,6 +531,7 @@
     </Reference>
     <Reference Include="StreamJsonRpc, Version=2.18.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a, processorArchitecture=MSIL">
       <HintPath>packages\StreamJsonRpc.2.18.48\lib\netstandard2.0\StreamJsonRpc.dll</HintPath>
+      <Private>False</Private>
     </Reference>
     <Reference Include="SunnyUI, Version=3.6.5.0, Culture=neutral, PublicKeyToken=27d7d2e821d97aeb, processorArchitecture=MSIL">
       <HintPath>packages\SunnyUI.3.6.5\lib\net472\SunnyUI.dll</HintPath>
@@ -480,6 +550,7 @@
     </Reference>
     <Reference Include="System.ClientModel, Version=1.0.0.0, Culture=neutral, PublicKeyToken=92742159e12e44c8, processorArchitecture=MSIL">
       <HintPath>packages\System.ClientModel.1.0.0\lib\netstandard2.0\System.ClientModel.dll</HintPath>
+      <Private>False</Private>
     </Reference>
     <Reference Include="System.Collections.Immutable, Version=8.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a, processorArchitecture=MSIL">
       <HintPath>packages\System.Collections.Immutable.8.0.0\lib\net462\System.Collections.Immutable.dll</HintPath>
@@ -538,10 +609,12 @@
     </Reference>
     <Reference Include="System.Diagnostics.DiagnosticSource, Version=8.0.0.1, Culture=neutral, PublicKeyToken=cc7b13ffcd2ddd51, processorArchitecture=MSIL">
       <HintPath>packages\System.Diagnostics.DiagnosticSource.8.0.1\lib\net462\System.Diagnostics.DiagnosticSource.dll</HintPath>
+      <Private>False</Private>
     </Reference>
     <Reference Include="System.DirectoryServices" />
     <Reference Include="System.Drawing.Common, Version=8.0.0.0, Culture=neutral, PublicKeyToken=cc7b13ffcd2ddd51, processorArchitecture=MSIL">
       <HintPath>packages\System.Drawing.Common.8.0.7\lib\net462\System.Drawing.Common.dll</HintPath>
+      <Private>False</Private>
     </Reference>
     <Reference Include="System.Drawing.Design">
       <Private>False</Private>
@@ -551,6 +624,7 @@
     </Reference>
     <Reference Include="System.IdentityModel.Tokens.Jwt, Version=8.0.0.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35, processorArchitecture=MSIL">
       <HintPath>packages\System.IdentityModel.Tokens.Jwt.8.0.0\lib\net472\System.IdentityModel.Tokens.Jwt.dll</HintPath>
+      <Private>False</Private>
     </Reference>
     <Reference Include="System.IO, Version=4.1.1.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a, processorArchitecture=MSIL">
       <HintPath>packages\System.IO.4.3.0\lib\net462\System.IO.dll</HintPath>
@@ -614,6 +688,7 @@
     </Reference>
     <Reference Include="System.Security.AccessControl, Version=6.0.0.1, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a, processorArchitecture=MSIL">
       <HintPath>packages\System.Security.AccessControl.6.0.1\lib\net461\System.Security.AccessControl.dll</HintPath>
+      <Private>False</Private>
     </Reference>
     <Reference Include="System.Security.Cryptography.Algorithms, Version=4.2.1.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a, processorArchitecture=MSIL">
       <HintPath>packages\System.Security.Cryptography.Algorithms.4.3.1\lib\net463\System.Security.Cryptography.Algorithms.dll</HintPath>
@@ -660,6 +735,7 @@
     </Reference>
     <Reference Include="System.Text.Json, Version=8.0.0.4, Culture=neutral, PublicKeyToken=cc7b13ffcd2ddd51, processorArchitecture=MSIL">
       <HintPath>packages\System.Text.Json.8.0.4\lib\net462\System.Text.Json.dll</HintPath>
+      <Private>False</Private>
     </Reference>
     <Reference Include="System.Threading.AccessControl, Version=8.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a, processorArchitecture=MSIL">
       <HintPath>packages\System.Threading.AccessControl.8.0.0\lib\net462\System.Threading.AccessControl.dll</HintPath>
@@ -667,9 +743,11 @@
     </Reference>
     <Reference Include="System.Threading.Channels, Version=8.0.0.0, Culture=neutral, PublicKeyToken=cc7b13ffcd2ddd51, processorArchitecture=MSIL">
       <HintPath>packages\System.Threading.Channels.8.0.0\lib\net462\System.Threading.Channels.dll</HintPath>
+      <Private>False</Private>
     </Reference>
     <Reference Include="System.Threading.Tasks.Dataflow, Version=8.0.0.1, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a, processorArchitecture=MSIL">
       <HintPath>packages\System.Threading.Tasks.Dataflow.8.0.1\lib\net462\System.Threading.Tasks.Dataflow.dll</HintPath>
+      <Private>False</Private>
     </Reference>
     <Reference Include="System.Threading.Tasks.Extensions, Version=4.2.0.1, Culture=neutral, PublicKeyToken=cc7b13ffcd2ddd51, processorArchitecture=MSIL">
       <HintPath>packages\System.Threading.Tasks.Extensions.4.5.4\lib\net461\System.Threading.Tasks.Extensions.dll</HintPath>
@@ -956,7 +1034,6 @@
     <Compile Include="Utils\Update\UpdateGlobalDeployer.cs" />
     <Compile Include="Utils\Update\UpdateGlobalDeployer.HideInfo.cs" />
     <Compile Include="Utils\Update\UpdateValidater.cs" />
-    <Compile Include="Utils\Update\UpdateValidater.HideInfo.cs" />
     <Compile Include="Utils\Utils.cs" />
     <Compile Include="XshdVisualEdit\XshdVisualEditor.cs">
       <SubType>Form</SubType>

@@ -42,9 +42,8 @@ internal partial class UpdateChecker
         var url = GlobalDefinitions.TestFileLists[GlobalDefinitions.CurrentArea];
         var DownloadOpt = new DownloadConfiguration()
         {
-            BufferBlockSize = 10240, // 通常，主机最大支持8000字节，默认值为8000。
-            ChunkCount = Environment.ProcessorCount * 16, // 要下载的文件分片数量，默认值为1
-            MaximumBytesPerSecond = (long)(1024 * Math.Pow(1024, 2)), // 下载速度限制为1GB/s，默认值为零或无限制
+            BufferBlockSize = 8000, // 通常，主机最大支持8000字节，默认值为8000。
+            ChunkCount = 16, // 要下载的文件分片数量，默认值为1
             MaxTryAgainOnFailover = 10, // 失败的最大次数
             ParallelDownload = GlobalSettings.Downloading.ParallelDownload, // 下载文件是否为并行的。默认值为false
             ParallelCount = GlobalSettings.Downloading.ParallelCount,
@@ -59,7 +58,7 @@ internal partial class UpdateChecker
                     KeepAlive = false,
                     ProtocolVersion = HttpVersion.Version11, // Default value is HTTP 1.1
                     UseDefaultCredentials = false,
-                    UserAgent = $"DownloaderSample/{Assembly.GetExecutingAssembly().GetName().Version.ToString(3)}",
+                    UserAgent ="Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/126.0.0.0 Safari/537.36 Edg/126.0.0.0",
                     Credentials = GetCredentialCache(url, USERNAME, PASSWORD),
 
                 }
@@ -77,9 +76,8 @@ internal partial class UpdateChecker
         var url = GlobalDefinitions.DownloadBaseUri + "Update.ucf";
         var DownloadOpt = new DownloadConfiguration()
         {
-            BufferBlockSize = 10240, // 通常，主机最大支持8000字节，默认值为8000。
-            ChunkCount = Environment.ProcessorCount * 16, // 要下载的文件分片数量，默认值为1
-            MaximumBytesPerSecond = (long)(1024 * Math.Pow(1024, 2)), // 下载速度限制为1GB/s，默认值为零或无限制
+            BufferBlockSize = 8000, // 通常，主机最大支持8000字节，默认值为8000。
+            ChunkCount = 16, // 要下载的文件分片数量，默认值为1
             MaxTryAgainOnFailover = 10, // 失败的最大次数
             ParallelDownload = GlobalSettings.Downloading.ParallelDownload, // 下载文件是否为并行的。默认值为false
             ParallelCount = GlobalSettings.Downloading.ParallelCount,
@@ -94,7 +92,7 @@ internal partial class UpdateChecker
                     KeepAlive = false,
                     ProtocolVersion = HttpVersion.Version11, // Default value is HTTP 1.1
                     UseDefaultCredentials = false,
-                    UserAgent = $"DownloaderSample/{Assembly.GetExecutingAssembly().GetName().Version.ToString(3)}",
+                    UserAgent = "Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/126.0.0.0 Safari/537.36 Edg/126.0.0.0s",
                     Credentials =GetCredentialCache(url, USERNAME, PASSWORD),
 
                 }

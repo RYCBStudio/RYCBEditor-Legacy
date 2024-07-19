@@ -1,0 +1,1874 @@
+{
+    "7z.exe.pvtconf": {
+        "MD5": "b62899ba51db057afa7aef336533ef21",
+        "SHA256": "b562e5fed1e6a02768c0bdfe5516386d7d0565cba54b262bad7df5088116cccd"
+    },
+    "Compiler.exe": {
+        "MD5": "3cad679c38dad8e7142b8d835cb7c3c6",
+        "SHA256": "3d15a7c9fef0dca4a7d7eae3fce83af35cc4044139031ff0b21e26c07877ce4e"
+    },
+    "IDE.exe": {
+        "MD5": "14319ee9994a6f6d38832fc70f654225",
+        "SHA256": "05d627553823e188eae9d6ef6661f2c2bde03b12bbf0f2e3ea869db9fa78d0a1"
+    },
+    "IDE.exe.config": {
+        "MD5": "404c5c214e3286a8cc8d8d8eac6d309e",
+        "SHA256": "411efbca4440357a18689f69339fb78c219526f67f6a426d87a2dc4c6917a836"
+    },
+    "IDE.pdb": {
+        "MD5": "6e3aa43d32d20385c06ec9b8436ab2f0",
+        "SHA256": "1aac09887a299b5d2abf07347dee694607ebe7d853373284a19cde8821a19c8f"
+    },
+    "Microsoft.Data.SqlClient.SNI.arm64.dll": {
+        "MD5": "cfac33a1c499aa6003d6cf32e6875451",
+        "SHA256": "2740424b9217b5fb95f76f658e3f5b0d8a8b511608f21e89e7e871a97d0c333a"
+    },
+    "Microsoft.Data.SqlClient.SNI.arm64.pdb": {
+        "MD5": "204c9b3037f9cb07b23b3b344ffa9631",
+        "SHA256": "780d9d466500821dda1770c2a5a00c13d65ad86d825158e231fb3952e7907a06"
+    },
+    "Microsoft.Data.SqlClient.SNI.x64.dll": {
+        "MD5": "b542298fba40c470eb1c566718dd4171",
+        "SHA256": "57adb08fde97d32a68d30c37e5c68b8cdd19b52eb4100043dffd16acdc1495de"
+    },
+    "Microsoft.Data.SqlClient.SNI.x64.pdb": {
+        "MD5": "80f05490e24511720e08e0113e81c9ac",
+        "SHA256": "71916601b42d78ccdc1f46f29baa4faad690051331a94ac55bf3df6f211aecaa"
+    },
+    "Microsoft.Data.SqlClient.SNI.x86.dll": {
+        "MD5": "a09f8fc602d5e5e66ccb4d27437bcc6f",
+        "SHA256": "06ef300bf9f164019abd930f03064e2e380ce9ba25ffdde35c64c6b54daaccb5"
+    },
+    "Microsoft.Data.SqlClient.SNI.x86.pdb": {
+        "MD5": "160c87bebb4c964b7c9307af2a36afc9",
+        "SHA256": "71e3641d4ebdb73757060ddb380542a76a76b69aaf499fbafa5c4e680917d95e"
+    },
+    "Runner.exe": {
+        "MD5": "0ca50b241f3f8298cb30132dc0ca49e6",
+        "SHA256": "325f252b3bba5fe0d0565a91225b49b96369d92e4a9f71651f6ac3c88b58014a"
+    },
+    "SmileWei.EmbeddedApp.dll": {
+        "MD5": "18ed016a1a7dce0b57b44bfc7a45e297",
+        "SHA256": "a9ae8ba8fb5a59d69182d51f53121a877721c097575fa816f4122582ceeb6fec"
+    },
+    "SmileWei.EmbeddedEXE.dll": {
+        "MD5": "29c1154c5d89104657047f890473c399",
+        "SHA256": "31520bcd7a69ec7d687b2067f87d365b254374418826a07e853d3202bb75ecb0"
+    },
+    "Config\\.reconf": {
+        "MD5": "268ff5d9a7a1c56855f414179c3c3b2b",
+        "SHA256": "92dd90ad9429e5c6669d48e89ae933c975bc5dde64140ec6d47cf30217bafd2f"
+    },
+    "Config\\HighLighting\\C-Sharp.xshd": {
+        "MD5": "83541ea49acc68f4e4031c7ff30229ae",
+        "SHA256": "3ca142b5835a6c983d68fa783e721eaaf5998d7351b6c5f098cd202aae370302"
+    },
+    "Config\\HighLighting\\HTML.xshd": {
+        "MD5": "d5c67c7f26d2a8f9e6d80ec242b98754",
+        "SHA256": "01dc0c33ef44d87ec70b0ec366e4144cedeef734054ccf69d0d50f4f90818dbd"
+    },
+    "Config\\HighLighting\\Ini.xshd": {
+        "MD5": "046cf5b8c56c0bd4c3b377d46201a3fd",
+        "SHA256": "50e62deac5c6e5a5f2bf90bea129dd0f08652d25e729740834fb2f95285467d7"
+    },
+    "Config\\HighLighting\\PlainText.xshd": {
+        "MD5": "605b1b7299ad715208339a7710e3f608",
+        "SHA256": "ff65887cb135bb2df854fa13753894dab3707c440b507ea8ebb6f7511e888bf6"
+    },
+    "Config\\HighLighting\\Py-CN.xshd": {
+        "MD5": "d703f7782cf535579be22fa54a867456",
+        "SHA256": "559b998fc5ae47bbfcb9d828b8fc59710188fedda692941c5e24b9d16958cc4e"
+    },
+    "Config\\HighLighting\\Python.xshd": {
+        "MD5": "a1d31e3641a9ac702cd3ec0843b7c50f",
+        "SHA256": "d9fe2e8e8bb56225c0e33317debe60f7717d95c05b25cdadd48dfc5666c19d38"
+    },
+    "Config\\HighLighting\\Settings.xshd": {
+        "MD5": "23a4ed32d4e3f8d908251ba2d72905c3",
+        "SHA256": "6185ed4b89e1aa25ebd68f23bf83f763508efe5de35c3ac9b8dfdcd295bbeda5"
+    },
+    "Config\\HighLighting\\XML.xshd": {
+        "MD5": "ff82504e8b1f120468cb1c855b1e9f01",
+        "SHA256": "81da6c6f8f07890b64a8dec4aba956adea2d2eb07c90536cd21e76fd6bccd904"
+    },
+    "Config\\Runners\\global_pip_upgrade.icbconfig": {
+        "MD5": "cc9bd86d3d818db4fc532cda32ffd97d",
+        "SHA256": "a631deb7d8fb9b840449a05c45564c442b90950c5de933ee13f92dd348efc50d"
+    },
+    "Config\\Runners\\turtledemo.icbconfig": {
+        "MD5": "a63ef0b07cecf3028af904a144638bb1",
+        "SHA256": "868e089b000c894fb35a9ff33bbe2188edb8961cfd55e197499c2544145c3591"
+    },
+    "Languages\\en-US\\cc.relang": {
+        "MD5": "f71896f6cef17106d6a5a88a01035773",
+        "SHA256": "c8bb1134f7776e9dff1114ecdb903069b2778e3b4c2290c27dd465956151513d"
+    },
+    "Languages\\en-US\\errMsgBox.relang": {
+        "MD5": "8c08fb1306bc6a4b18f5ceaf48251f01",
+        "SHA256": "33760ecbddfe1eee1f32416c2e559a95ef57997a31e541abfe4ad5ae7cc8f1e9"
+    },
+    "Languages\\en-US\\fbs.relang": {
+        "MD5": "2d5d30df9627fefe23c953f26aa43d09",
+        "SHA256": "e2a656585d75c1e215117896e3b284f88ab5568bb8b0bcafc61afeab1ca8fe60"
+    },
+    "Languages\\en-US\\icb.relang": {
+        "MD5": "e1068951394ff5787d3bc46ceca6c096",
+        "SHA256": "053aa0dc3a4527029ea621e15b13bc637e3ca9118a59e3c400cd8e524653b8e9"
+    },
+    "Languages\\en-US\\LAC.html": {
+        "MD5": "6f7a25e2cb609975b05eeeea08c2bb2d",
+        "SHA256": "db027649f0d857e0b14d7d412f6c2c4be9217c986a57f621e8babb64fdc91d4a"
+    },
+    "Languages\\en-US\\LAC.relang": {
+        "MD5": "a2028df922bc58f79a22d6cd4de08052",
+        "SHA256": "8b8235f82868bd4ead1de4feee86eacb7de2e4304d778d229d56505d9049558e"
+    },
+    "Languages\\en-US\\lpmm.relang": {
+        "MD5": "6bb921444114787caabc7685e78ac297",
+        "SHA256": "d04f617be29ce57987a6d0a9aee44a48a0f4ec59c327f12461ea03ee014d9056"
+    },
+    "Languages\\en-US\\main.relang": {
+        "MD5": "d239b74ab2ab9c35fa8da4565e35153b",
+        "SHA256": "800d2b58ab664760fa540ca6d82ca3bcb570c92a427ac535a7f4799a09697c33"
+    },
+    "Languages\\en-US\\newfile.relang": {
+        "MD5": "99197c9c683d847430e99a321f5011e3",
+        "SHA256": "7ddda46759160b53c12c171d26a0242b6b794513b3af93f85958ed2a50b63071"
+    },
+    "Languages\\en-US\\ppmm.relang": {
+        "MD5": "e599969725e06b55efc1a3725309877e",
+        "SHA256": "4d9ffc3261434368b1ae41e7ebb8697c541ef8cd50815b3e3d609bdba4861cdc"
+    },
+    "Languages\\en-US\\Settings.relang": {
+        "MD5": "39972c34a6025ae4c9e294aa29ec7a30",
+        "SHA256": "c34d51d94baf30dc2a496416eb8a5fca5d39997730c1c2663072a531d6e0e0c3"
+    },
+    "Languages\\en-US\\thanks.relang": {
+        "MD5": "d9bb52552c3a67630d8aa15ddaf2c446",
+        "SHA256": "ca67f80ffdb68a0c33a54d4f1ce12c9353ea19301dc92287c599b5be87845cae"
+    },
+    "Languages\\ja-JP\\cc.relang": {
+        "MD5": "84acbd39a5b9ecdfe6243833ec0ef704",
+        "SHA256": "9a45cfd8f173e1cc8143a0286c34d9d0312cf97059959f86a0b09a686d422032"
+    },
+    "Languages\\ja-JP\\errMsgBox.relang": {
+        "MD5": "5416c8d29d987e8ef5fedb844093684b",
+        "SHA256": "98da66a6b7c8f1318c360be111fe269c520c3451811d00d02bb3ddafe4ddbe37"
+    },
+    "Languages\\ja-JP\\icb.relang": {
+        "MD5": "b880c3d16bc7ef2ddf0106f7197af8cb",
+        "SHA256": "b052dd24711034c90ad10e5cf1566e576049f6038cdbf92d8a2a36b134f50f21"
+    },
+    "Languages\\ja-JP\\LAC.html": {
+        "MD5": "fd8f87f84fc1503e1cc5b586d108a16e",
+        "SHA256": "7b73f78a305d631b0ed9ec22bd7e1cb7ff29d13f5f90a67862394bc9e111b2e1"
+    },
+    "Languages\\ja-JP\\LAC.relang": {
+        "MD5": "efed9d4d4d458de73cfb77b92b8fec28",
+        "SHA256": "88eb2fdb88240fdd2bcff1466fd94db49abdf945276b86aadd321b66a502362c"
+    },
+    "Languages\\ja-JP\\lpmm.relang": {
+        "MD5": "1de2dd4b1d320598706767c31a739dfa",
+        "SHA256": "352d55eea453a780bc7c46211e213c0f7c4e5858283f25c4a4ff7eb366a36438"
+    },
+    "Languages\\ja-JP\\main.relang": {
+        "MD5": "33fe940f70deae6772eae292983fdd9b",
+        "SHA256": "24c947f970a4ad92e91cd971c51e8c562e49628b726e842c0f5f2514cc18b457"
+    },
+    "Languages\\ja-JP\\newfile.relang": {
+        "MD5": "c58adf16c3ccba566464a0a6c41caea7",
+        "SHA256": "d52e54e1fae2e90d6d70a5ffab1986fd9fda3c155a78ccb568b3d1662ad3afa4"
+    },
+    "Languages\\ja-JP\\ppmm.relang": {
+        "MD5": "ac1784428f53e6a9f72a4ee51adfe545",
+        "SHA256": "1c568950eed8835da9ea7de5b16e4eb1a38ebae85ba00d6013fcbd61c8199a1b"
+    },
+    "Languages\\ja-JP\\Settings.relang": {
+        "MD5": "6cee8052906dbe25c32fd896ed4f8019",
+        "SHA256": "b02c860690415208e218fcbe213d3d6589fcc16f0efae26ee1e4e89095643efa"
+    },
+    "Languages\\ja-JP\\thanks.relang": {
+        "MD5": "23e2d1f9dbc7be4511097707f1c134ff",
+        "SHA256": "4d7e1644fdc85edc406d8f7d86c84a86070bd5a96c5f77f213b4116ecc3d9839"
+    },
+    "Languages\\zh-CN\\cc.relang": {
+        "MD5": "2754a2de1c90a290055124cbae4ec6d2",
+        "SHA256": "e59c6895f97cd7afb8d0b41902f68c760dfe0578232610581ffb48813168f7a5"
+    },
+    "Languages\\zh-CN\\errMsgBox.relang": {
+        "MD5": "e284f4aad0200a7298b2f9790dab5d8c",
+        "SHA256": "0ed6cca47c1fdb2d5c304dab8dc4fcb07e11b38474eacc42c5e3867684c39b08"
+    },
+    "Languages\\zh-CN\\fbs.relang": {
+        "MD5": "43f36fdbdd3ebeaf8471f088c1e98927",
+        "SHA256": "20c3b92f9f832482d80654795b512c2e5527a49588fe5d8aec884649bf2d7e77"
+    },
+    "Languages\\zh-CN\\icb.relang": {
+        "MD5": "a9dade01ba52506acdab691b428ffe50",
+        "SHA256": "c96210663faaa4e0a7f31fa55267b3b085e8cfb9c13ae97e3efeb6df367ad486"
+    },
+    "Languages\\zh-CN\\LAC.html": {
+        "MD5": "1f3fa772effa656af29573e84a457a02",
+        "SHA256": "d047725c532a724311173895936ad740e83909e8267a67bf9fdce14f9a01226a"
+    },
+    "Languages\\zh-CN\\LAC.relang": {
+        "MD5": "be992317a6501af2fc1f622370789686",
+        "SHA256": "4537e3cf31f4f689322b59384c69f8de08da17cf0e52028b0be032dd32d16a00"
+    },
+    "Languages\\zh-CN\\lpmm.relang": {
+        "MD5": "4dcb3862ea2bccb85f3845596cebf0b2",
+        "SHA256": "06c9044b2f46df1a726d9e51e2406805f0a143d34585de8f39c79378d35a884c"
+    },
+    "Languages\\zh-CN\\main.bak.relang": {
+        "MD5": "601650ecc01d2d9fd09144335a4bb6da",
+        "SHA256": "887e54f63b302ec5aa68b1cc471e68eab955a9e2c4dad6ef461788d8339043fd"
+    },
+    "Languages\\zh-CN\\main.relang": {
+        "MD5": "f4bef9f499f870ba37db00a4abda7915",
+        "SHA256": "682254ca95f1cd90ebdcff34c12f458a01b4080eb8c5199f5118ecd832bcf5db"
+    },
+    "Languages\\zh-CN\\newfile.relang": {
+        "MD5": "d3a96b1f527e92bee466db20f5ff9a24",
+        "SHA256": "46074859ba961035400ce3ee77e536858b0d183c98ac9cc9819efa80a05ee6d2"
+    },
+    "Languages\\zh-CN\\ppmm.relang": {
+        "MD5": "1e9e0acb7c8817b04af96ef9add3942f",
+        "SHA256": "8db94700e9e6d21502cf1aeae3696b5e09f5add83a59df6f91eb2d8647042f90"
+    },
+    "Languages\\zh-CN\\Settings.relang": {
+        "MD5": "e9b5acfac7811f73c511952521056c85",
+        "SHA256": "198cdbe22e4905b95ac3ef5dc4167e1e5aa01d307312e9761a431faf87aef614"
+    },
+    "Languages\\zh-CN\\thanks.relang": {
+        "MD5": "81158e90cf9a4c22122de3e36210670c",
+        "SHA256": "184867793000837e620ea671d680460ee0feaa5e4699846abd6295f53f98050e"
+    },
+    "Languages\\zh-TD\\cc.relang": {
+        "MD5": "33e2e895be009379fcc1ea16a37026e0",
+        "SHA256": "bbd980136f26150ffdc82f1343c08cd2b0cfcef6d10f06f9ba116595d4c6363c"
+    },
+    "Languages\\zh-TD\\errMsgBox.relang": {
+        "MD5": "9e24820ed44fffc35895b930feedcca3",
+        "SHA256": "90e3e059b4bf7bcabdb75b61169b9157c2e60b783f106e977c8f826d0f6b90b5"
+    },
+    "Languages\\zh-TD\\icb.relang": {
+        "MD5": "eb18f2366d79f0c9b3f2e8a1081af199",
+        "SHA256": "422f9c322e0c0894a2497b0a4cced480682bae8f756c225e4148e81777ac0d7c"
+    },
+    "Languages\\zh-TD\\LAC.html": {
+        "MD5": "05b76c72ee0d340df6a205d588199ed6",
+        "SHA256": "bbefd4a62e4566a02d00daf89f220a8757eb9191d21c93fb69c0b96c00cb0514"
+    },
+    "Languages\\zh-TD\\LAC.relang": {
+        "MD5": "d49d188cd20ec99a7a566214e50aa9a4",
+        "SHA256": "742278cee4f00e9b25c7fbd7ac38bde6fcaf80ffd77c1a4133dc213af937f7da"
+    },
+    "Languages\\zh-TD\\lpmm.relang": {
+        "MD5": "85bb3daa9412f0db86d8d892ac452b7b",
+        "SHA256": "46555b41400e9921dd8ba262bfbf7d9f8ce319437b9357e069b26d25e15419c8"
+    },
+    "Languages\\zh-TD\\main.relang": {
+        "MD5": "4726adf689c37b4d1cc09d5ed845f45a",
+        "SHA256": "fbd72f31fca071a3e492fd23c5ed6e99a5c4545d0ce7e205cc04474596e947a9"
+    },
+    "Languages\\zh-TD\\newfile.relang": {
+        "MD5": "edd203c5b8deaf319b23f90835597402",
+        "SHA256": "95e01d7624333760c406c4e8c7c8659e21d60ba4ff9a7a366d9bf8a5580cc069"
+    },
+    "Languages\\zh-TD\\ppmm.relang": {
+        "MD5": "b4c6c340c15e3c02920c4ad2f1344d48",
+        "SHA256": "6fee71006b7d14d0ce62976200fad535586340f69d575ae6b7f924a42d9ca675"
+    },
+    "Languages\\zh-TD\\Settings.relang": {
+        "MD5": "754bf559a8bc337fe70697e8ea7f9c89",
+        "SHA256": "63db612ecdbf1d55a6a34e2502862b05dfc2d2e8afd4b727badba8683dcb8195"
+    },
+    "Languages\\zh-TD\\thanks.relang": {
+        "MD5": "1f6b3f67fa2d8f7d189fc1f600ccf9c2",
+        "SHA256": "32819f57360750a51c59e4585a891725ece1b53cd06c661dab7a2eb0c96a8efa"
+    },
+    "Libs\\Azure.Core.dll": {
+        "MD5": "4431b553a1526bb25f586d6d85e3f636",
+        "SHA256": "fb40d57f07b54cd3e4bf5c358a0a89e0b3341543f428584f788c14b0b00b8c5c"
+    },
+    "Libs\\Azure.Core.xml": {
+        "MD5": "dcf188a35b2326ccbc8ec13a9286b845",
+        "SHA256": "002febe6927e3b57cea4ac626861b4ddd20407562254a25f6803e4acc9677cb3"
+    },
+    "Libs\\Azure.Identity.dll": {
+        "MD5": "613bc9fe428d74e3b844989a44545ad6",
+        "SHA256": "2cd75618d621cb9699dd797620409b4c8dc18b0385bcf6fe26d3284124f2d638"
+    },
+    "Libs\\Azure.Identity.xml": {
+        "MD5": "45e7e43557cb9c3177a0052ff1951c8e",
+        "SHA256": "595cb0d1561e0b1cd85de87131bd1f8d1a73fe783f5c0e8d80f4e616ed375ea1"
+    },
+    "Libs\\ChnCharInfo.dll": {
+        "MD5": "b8bb34a6ecf0e61c750dd158f87fda14",
+        "SHA256": "56c61d14fa39e167205125f3d77c0640cd2e991bfcdfc1050b0647c2d4b0d7dd"
+    },
+    "Libs\\Downloader.dll": {
+        "MD5": "6d4b7b2328852db180791316fb15a3a3",
+        "SHA256": "c5d961ecaade6078a4024ad6c1ce4d463f686d1807ab0d2d5214ca762d8386ca"
+    },
+    "Libs\\HtmlAgilityPack.dll": {
+        "MD5": "0f64d6db86e6862eaaaa60d88d84db6b",
+        "SHA256": "84af2aade3e2d691f58d44c5062fbd1573c6c1340cd3b5d401d79591abcd2c30"
+    },
+    "Libs\\HtmlAgilityPack.pdb": {
+        "MD5": "b9362f01021afb1c8a76f75ca02b0be4",
+        "SHA256": "1d6b2838f23393f38eff5f7c27e2812cd3328490a4b8a5e0e0ecf52a118a6002"
+    },
+    "Libs\\HtmlAgilityPack.xml": {
+        "MD5": "506a6aca76b17bd2073b2f0ba95f91d6",
+        "SHA256": "6a9e824adb83b0c4d70403742bba8926af8d784843a32772958b8f6e76755b08"
+    },
+    "Libs\\Humanizer.dll": {
+        "MD5": "c687cbdea0138936fc4b88b3086207cc",
+        "SHA256": "2c522cd285de2e3a02520f91203f548e454b980821f10df90e801bd7d3f5c43e"
+    },
+    "Libs\\Humanizer.xml": {
+        "MD5": "bdf4eaeba42a796b7042a77f6846641f",
+        "SHA256": "d500e81f3aaccc2fee969ffdd90818ef84541fbbb4ca8595b07beaccba2bb229"
+    },
+    "Libs\\ICSharpCode.AvalonEdit.dll": {
+        "MD5": "d8f0e3940b5bbe9599ee0a84b541d50f",
+        "SHA256": "202a4719e4b879da67445ab50901d80a259f8680b5d16bc0f929e0a6f6fad199"
+    },
+    "Libs\\ICSharpCode.AvalonEdit.xml": {
+        "MD5": "b295b46861df2759dc9466c3f0785a6d",
+        "SHA256": "082b73fa8c1c1def37eaabfa16f8980d9f7b840d39c4eb9d2b26a86b0a7b3207"
+    },
+    "Libs\\ICSharpCode.SharpZipLib.dll": {
+        "MD5": "9e9e0a210297968aaf2e00d13958c0b4",
+        "SHA256": "cb9c05b5a1e1db26ff43490ee26f2e02abae3f321d2dd5ddd43a68da48eab83d"
+    },
+    "Libs\\ICSharpCode.SharpZipLib.pdb": {
+        "MD5": "6816fa53932d4a4a32c78258f14dbec1",
+        "SHA256": "d14d75b91138cfda95c8396752c4935fbe8afdad12e026c0845899b460bf555e"
+    },
+    "Libs\\ICSharpCode.SharpZipLib.xml": {
+        "MD5": "f00f8dbc9b089558a0bc7eb053fcf154",
+        "SHA256": "fbb29076d40ae84ce5d7c0811ab19ea7441013075b1cb1a4acb517de824c9bf1"
+    },
+    "Libs\\IronPython.dll": {
+        "MD5": "0cef60f8033247008f70d12457f52c6d",
+        "SHA256": "fa31585f4ee4140ee4dc3e4130643ea21f514d142a8dbacbc12afba5ed7bb5a3"
+    },
+    "Libs\\IronPython.Modules.dll": {
+        "MD5": "81cb4e974bdd7be3d2b6a517d5a6be8a",
+        "SHA256": "42154d6cf9fc8c15571140f0656bd98a127814e40f8cea1fb567d9d97cde0aa5"
+    },
+    "Libs\\IronPython.Modules.xml": {
+        "MD5": "fda77ad6642502752b6b6dc87739c2d2",
+        "SHA256": "f082d161d269d1ed196e745ae08b70b85245a6a65d47ba7224fba37c25142581"
+    },
+    "Libs\\IronPython.SQLite.dll": {
+        "MD5": "428c0bdea54356a34218627970c3cfe7",
+        "SHA256": "5c43c75d7d88df61cf76c4739346a1f7947671019c08785457e61dc790ecb0a5"
+    },
+    "Libs\\IronPython.SQLite.xml": {
+        "MD5": "30dd8d34fd63a20b0e0d67c9a798a1e7",
+        "SHA256": "0e6a27c7081025b11376a7f0c27a1b0ad1e092943afaa6935e32f1d840fc0ef1"
+    },
+    "Libs\\IronPython.Wpf.dll": {
+        "MD5": "248c5d53aa98789fefbd8da6dba4156c",
+        "SHA256": "4e3c9e0d0ec9120de35521ee3c3e7a5ad6709686edc26e7b2b746973ba9c1a47"
+    },
+    "Libs\\IronPython.Wpf.xml": {
+        "MD5": "e3ef7471e126c407848b1a0f6c2f05eb",
+        "SHA256": "c7af93a91c4929aaa73b15c7425d89350c101114a9387fe052049af0add20565"
+    },
+    "Libs\\IronPython.xml": {
+        "MD5": "78a7cd0a87a46a9d4ed6cd34d2788c75",
+        "SHA256": "172563f9bba0456b16f1b07ff0aa27f47301af418d81463259159c6fa83dffa6"
+    },
+    "Libs\\Markdig.dll": {
+        "MD5": "af2156dec8ba73319141ad2f87df10cf",
+        "SHA256": "194587cdf19ec17eee6f69461b27a7d1f542c96b78fd468a2025f3269043fb69"
+    },
+    "Libs\\Markdig.xml": {
+        "MD5": "29ee95f123b1d527b4b17cd9a1c7b8a7",
+        "SHA256": "e169ea7b4f5618ec7f42e1a416e7d02acec3bb7055358ab1157dea499efe811f"
+    },
+    "Libs\\Markdown.dll": {
+        "MD5": "10f64234a3334fbf34f8167cac278b80",
+        "SHA256": "82d21a0add990d984f2341504958da7b108b915225d311a144ca0798f729d0d4"
+    },
+    "Libs\\MessagePack.Annotations.dll": {
+        "MD5": "d8dc23aefe3035d7fbafc381caf77c2f",
+        "SHA256": "a2b4d559e90482903facaa1ba894831c2dc15fbb322c029cdc5447899aa61bb1"
+    },
+    "Libs\\MessagePack.Annotations.xml": {
+        "MD5": "9302722ba45e0bacd8735a1fa5a77ef9",
+        "SHA256": "f6134d6bacbf696afd122462a5ec55bfe86a7b447aea82f19152efd72977e8c3"
+    },
+    "Libs\\MessagePack.dll": {
+        "MD5": "4eeb865492d383523475ce9c411cf756",
+        "SHA256": "96183ebe7429573896bb3d270c7380050ca45409b19b2d784dcd3913bd08c107"
+    },
+    "Libs\\MessagePack.xml": {
+        "MD5": "7f3ba3ac59993db4b480e30f5293e723",
+        "SHA256": "1de93dd79f3a2c2ea0ff1726a887d477d88c05da6fa744d6ff4da930332e7fe2"
+    },
+    "Libs\\MetroFramework.Design.dll": {
+        "MD5": "ab4c3529694fc8d2427434825f71b2b8",
+        "SHA256": "0a4a96082e25767e4697033649b16c76a652e120757a2cecab8092ad0d716b65"
+    },
+    "Libs\\MetroFramework.dll": {
+        "MD5": "34ea7f7d66563f724318e322ff08f4db",
+        "SHA256": "c2c12d31b4844e29de31594fc9632a372a553631de0a0a04c8af91668e37cf49"
+    },
+    "Libs\\MetroFramework.Fonts.dll": {
+        "MD5": "65ef4b23060128743cef937a43b82aa3",
+        "SHA256": "c843869aaca5135c2d47296985f35c71ca8af4431288d04d481c4e46cc93ee26"
+    },
+    "Libs\\MicroCom.Runtime.dll": {
+        "MD5": "140247ff6d09f587157738e93e124c98",
+        "SHA256": "e992f1407476ec7691ab6fe15e3239fd9b887fe53f2e19c79464f594ea667ca1"
+    },
+    "Libs\\Microsoft.Bcl.AsyncInterfaces.dll": {
+        "MD5": "ff34978b62d5e0be84a895d9c30f99ae",
+        "SHA256": "80678203bd0203a6594f4e330b22543c0de5059382bb1c9334b7868b8f31b1bc"
+    },
+    "Libs\\Microsoft.Bcl.AsyncInterfaces.xml": {
+        "MD5": "1fc4bc74b30d484c24b04de5c0a38f5e",
+        "SHA256": "3d06c35d7b0eca37abe2d135cfe12d1012816a99e5e92e0cf4e8501e1b540aae"
+    },
+    "Libs\\Microsoft.Build.Framework.dll": {
+        "MD5": "9e5ec62e82278773a8d5ff8983c113c5",
+        "SHA256": "16a2d4bc7e1b21834482ff7bfa53875367da4fc583e0efda02d143aecd443481"
+    },
+    "Libs\\Microsoft.Build.Framework.pdb": {
+        "MD5": "fd45eb052acf1e87f103a8bde954fcb9",
+        "SHA256": "8c841c58b70f6727b859b770817ddae1b7cb2143cbe66f75cc0f993c1c4c7684"
+    },
+    "Libs\\Microsoft.Build.Framework.xml": {
+        "MD5": "b6ae66f014ed406070122eab255df8ef",
+        "SHA256": "80935a9cf3c5f057c85e192dbd472d6164ea154f3788184508032c6a42869561"
+    },
+    "Libs\\Microsoft.CodeAnalysis.CSharp.dll": {
+        "MD5": "3af5617dfb0a052e693aff10ce80d5f4",
+        "SHA256": "bc4e4cfe276fb97e70978e1d484e806c5a1c9301d1f9752c6d39840840118723"
+    },
+    "Libs\\Microsoft.CodeAnalysis.CSharp.pdb": {
+        "MD5": "9a1a1bd2fd5114a29aba2745dc420068",
+        "SHA256": "2347c54d028ae32e79611bee222d72565ad6814a7ff480092764ba299312e301"
+    },
+    "Libs\\Microsoft.CodeAnalysis.CSharp.Workspaces.dll": {
+        "MD5": "6a987e3eafbdac3f182d58fada3ec417",
+        "SHA256": "365c6b19a039b28475e3562d83e84d38c7c6a25f438d12ae1ebf2d2171e84b54"
+    },
+    "Libs\\Microsoft.CodeAnalysis.CSharp.Workspaces.pdb": {
+        "MD5": "f2c0fa4da0161c0f597a2ffc10851155",
+        "SHA256": "5869caac1ac52c3a775a7127af88650ab97076b9f8bc73fbf6e914053245b0e9"
+    },
+    "Libs\\Microsoft.CodeAnalysis.CSharp.Workspaces.xml": {
+        "MD5": "90b0cd61c2df52c910af34d9bc366158",
+        "SHA256": "a3f761c1a49c436b0550d58c250c18e98d364df1a8b100f5d9477c2b2068dd5f"
+    },
+    "Libs\\Microsoft.CodeAnalysis.CSharp.xml": {
+        "MD5": "e5296a15e8ae7e074bb7387d43026509",
+        "SHA256": "c2a04a136800277c81d12772114d879e65042bf48ac22b2bdf1907f4ffa2a2af"
+    },
+    "Libs\\Microsoft.CodeAnalysis.dll": {
+        "MD5": "4648ca3c7c7826ee580b99278c496ff2",
+        "SHA256": "aab3674134122f9c04fcb55a2d1af2d19342cf92a1e593159236dfbce05de59c"
+    },
+    "Libs\\Microsoft.CodeAnalysis.pdb": {
+        "MD5": "52a9b85ec1fedae73b68e91e1a237d93",
+        "SHA256": "314c0bb788117006988bff673c01b972d760bc6931f9f3511adecc9532ee7edc"
+    },
+    "Libs\\Microsoft.CodeAnalysis.Workspaces.dll": {
+        "MD5": "8858c0296efc98e9029a4ad63af19df2",
+        "SHA256": "27dab6850d1e6a1445549d1e13187554e77275eaa0e720c86f0bbc23e02f3497"
+    },
+    "Libs\\Microsoft.CodeAnalysis.Workspaces.pdb": {
+        "MD5": "176bacbade54ab4be72e5b914aeecd95",
+        "SHA256": "3256f4fef8e183238a3fa55157f338f170369fb1718ceb92a85de6260c27f856"
+    },
+    "Libs\\Microsoft.CodeAnalysis.Workspaces.xml": {
+        "MD5": "3edef13a884de621da4d69dd5d4366a2",
+        "SHA256": "ddf7c0d100980635093a03de151b60c9d0b6b678c41efaa9f52ffe61c7b90332"
+    },
+    "Libs\\Microsoft.CodeAnalysis.xml": {
+        "MD5": "21ee5e16a45520ad3c714d6de6b5244b",
+        "SHA256": "7fdaad68a7bb0937f2889d4e60e94fe810b6e17fc6c60404939f3d7608e5f9c2"
+    },
+    "Libs\\Microsoft.CSharp.dll": {
+        "MD5": "c47e7176b821003eb830f44cbb1c92e0",
+        "SHA256": "cd5767fef2ab0069042bb0c09f9095afcf29d2ceee82213728448d64e14eddd7"
+    },
+    "Libs\\Microsoft.Data.SqlClient.dll": {
+        "MD5": "1306c4281ac17b20754e467dfb75c860",
+        "SHA256": "19b8efb2645d148292df7d21f3439720892b537d1df534a0ea23d82d82e8a4c2"
+    },
+    "Libs\\Microsoft.Data.SqlClient.pdb": {
+        "MD5": "9217db82aa9b5bcecfdbe66ccba5af23",
+        "SHA256": "ec561e2eb791ab2419a4676f87c08880a5032f18ba3e5c8c582eebe5215ed1cf"
+    },
+    "Libs\\Microsoft.Data.SqlClient.SNI.arm64.dll": {
+        "MD5": "cfac33a1c499aa6003d6cf32e6875451",
+        "SHA256": "2740424b9217b5fb95f76f658e3f5b0d8a8b511608f21e89e7e871a97d0c333a"
+    },
+    "Libs\\Microsoft.Data.SqlClient.SNI.arm64.pdb": {
+        "MD5": "204c9b3037f9cb07b23b3b344ffa9631",
+        "SHA256": "780d9d466500821dda1770c2a5a00c13d65ad86d825158e231fb3952e7907a06"
+    },
+    "Libs\\Microsoft.Data.SqlClient.SNI.x64.dll": {
+        "MD5": "3bb43afe6219f1f61291129f8bc61e58",
+        "SHA256": "be3e9ef3ee26f2ebf37a33ec69202e24ff42310cafb9f221631ca502627d54fa"
+    },
+    "Libs\\Microsoft.Data.SqlClient.SNI.x64.pdb": {
+        "MD5": "194b412c34aa518efbc9e0ae50e31b81",
+        "SHA256": "7f0aca93af66ad2e66332769bcc2ae8a8abc2920cabc20bf664c18a762fc1d3a"
+    },
+    "Libs\\Microsoft.Data.SqlClient.SNI.x86.dll": {
+        "MD5": "44bbee25ba363764a273a98b221bd28b",
+        "SHA256": "97f04ce4b1dad57d913139578536edd582d74a21ab3cf78ea5ce84c5362b33eb"
+    },
+    "Libs\\Microsoft.Data.SqlClient.SNI.x86.pdb": {
+        "MD5": "41e9156976e3e158e63090c952cf0805",
+        "SHA256": "37dfaa4696929e887a19d64ac8ed1b60c9bcd9086b60b3c91892b3ca351307fe"
+    },
+    "Libs\\Microsoft.Data.SqlClient.xml": {
+        "MD5": "ac3a0100000cca1c5050ee10b6d29787",
+        "SHA256": "602a103bd6ec0eedf34c74cf90a880c35728b096f5d6ad79ba99bf4e4e61a165"
+    },
+    "Libs\\Microsoft.Data.Tools.Sql.BatchParser.dll": {
+        "MD5": "2eacd0beccf75e42ff39203b6549362d",
+        "SHA256": "480380aab2a984e5aece3349faeeb355b7ad26dbd114a533cd821ee12af5fcbb"
+    },
+    "Libs\\Microsoft.Data.Tools.Sql.BatchParser.pdb": {
+        "MD5": "0d1591dc3a00a481a3c0c2c397b161f0",
+        "SHA256": "7381e0f449044a476a50484c09a3aeab46b886b3f130e1f3a8f67c6c17dd8100"
+    },
+    "Libs\\Microsoft.Data.Tools.Sql.BatchParser.xml": {
+        "MD5": "c6dab54de4a14a9efc2a2a35e60ed081",
+        "SHA256": "6542a0ab411f7bf08d86f8c8018e883578f798e2e1ce757226a69d209330cf18"
+    },
+    "Libs\\Microsoft.Diagnostics.NETCore.Client.dll": {
+        "MD5": "b27b818bae8dc74df662d607b93c93f9",
+        "SHA256": "ff106499ffc816cd9fb95a33594b6ad2eef50ff41d15bd73496834cf6f536198"
+    },
+    "Libs\\Microsoft.Diagnostics.NETCore.Client.xml": {
+        "MD5": "b23550160b27a985b991769601392da6",
+        "SHA256": "502b850a123471285c7bdc527e4b33fa5947b693d842da77979344abb90c3595"
+    },
+    "Libs\\Microsoft.Diagnostics.Runtime.dll": {
+        "MD5": "f4d7a18f586a498f47e7e0dabf653319",
+        "SHA256": "f6ddcd791373c8baf9a7f0b124a6f3de8888b9a721079a17056b8e5a7f48bb6b"
+    },
+    "Libs\\Microsoft.Diagnostics.Runtime.pdb": {
+        "MD5": "1acc0c2f97de6158b92d6610b3aef2ff",
+        "SHA256": "6f44f1c516659cfd22535e3c3e79ea5ee3ac590eeb3feb91eb77136a3fbf36dd"
+    },
+    "Libs\\Microsoft.Diagnostics.Runtime.xml": {
+        "MD5": "79ab7e4e9566f4e89bae9e152edc72ef",
+        "SHA256": "c4128c174ea839ce1688d3da72d2676e6cbd6b32b59c7e623333b814676eba3e"
+    },
+    "Libs\\Microsoft.Dynamic.dll": {
+        "MD5": "a6cfb714f5db59ae8c301d0a89aeaf42",
+        "SHA256": "87b428c03871d72cf2ee895dc1f2b5de8b2f1d42cbf6f685683ed0026ed5adca"
+    },
+    "Libs\\Microsoft.Dynamic.xml": {
+        "MD5": "e08264e1e563b711b4ba54089a0b4038",
+        "SHA256": "1585bb0ce7658a074f7e8593120d053edb5f49c67087b94380809ebf1ca840f1"
+    },
+    "Libs\\Microsoft.Extensions.Configuration.Abstractions.dll": {
+        "MD5": "d54af1962bb17e5a1bd39b39c7fc08c5",
+        "SHA256": "47bcc0dd74ab89d355309b86aa9bc4da05b250a7d3ae558e424bbb85588d2e95"
+    },
+    "Libs\\Microsoft.Extensions.Configuration.Abstractions.xml": {
+        "MD5": "495a49d300b9ad521fb7d1084b1c0074",
+        "SHA256": "45d778a037ffcaa96d162b80b5ae02d9e0c117405880ccaf02fb04b449d6468e"
+    },
+    "Libs\\Microsoft.Extensions.Configuration.Binder.dll": {
+        "MD5": "70cbae89673e3979115f2025763df10f",
+        "SHA256": "b777fe506fa0e70912a4ef12b3f57d4ba0d8245fda3ea7604872da6997d7a15e"
+    },
+    "Libs\\Microsoft.Extensions.Configuration.Binder.xml": {
+        "MD5": "807ad8f36aea6af6e1306539dafaf4ee",
+        "SHA256": "d8180826f56f0aa19593dd7d492e7b6da3253d5e9284757ee7c84517d6594d63"
+    },
+    "Libs\\Microsoft.Extensions.Configuration.dll": {
+        "MD5": "c3aa56acfc4088be301c12a00ad83da3",
+        "SHA256": "247037c17970af1c994a0c43d71fafa11c22f1dc6e6e4d8deac0a53f26a93592"
+    },
+    "Libs\\Microsoft.Extensions.Configuration.xml": {
+        "MD5": "292e6247b395f475b9cb34af6df4d457",
+        "SHA256": "9a934bb85408f1a352b6537a70d2f6beb24da30195915189197f9160542303b1"
+    },
+    "Libs\\Microsoft.Extensions.DependencyInjection.Abstractions.dll": {
+        "MD5": "00053ff3b5744853b9ebf90af4fdd816",
+        "SHA256": "c5a119ec89471194b505140fba13001fa05f81c4b4725b80bb63ccb4e1408c1e"
+    },
+    "Libs\\Microsoft.Extensions.DependencyInjection.Abstractions.xml": {
+        "MD5": "5b265e477f90803dc73e4949142e79ea",
+        "SHA256": "2101d1050c7f6a1a59a2840082fce4e0340c09c5d8a89126a49f1bda47921008"
+    },
+    "Libs\\Microsoft.Extensions.DependencyInjection.dll": {
+        "MD5": "3452007cab829c2ba196f72b261f7dec",
+        "SHA256": "18b39777ee45220217459641991ab700bc9253acaf0940cf6e017e9392b43698"
+    },
+    "Libs\\Microsoft.Extensions.DependencyInjection.xml": {
+        "MD5": "06d5260b3f1dde69f684f6ecc1b0ec9a",
+        "SHA256": "f33a98b3e75c566a1f3b5e66c05d6ee6140c1d2e4a2c0e6cf1488c57e9b08ac3"
+    },
+    "Libs\\Microsoft.Extensions.Logging.Abstractions.dll": {
+        "MD5": "edcf259b8ad051b75441657aaf7fce4d",
+        "SHA256": "5907c585797617c998df0953d2a05d334a9d80f04a5c0bc20377725327e3355d"
+    },
+    "Libs\\Microsoft.Extensions.Logging.Abstractions.xml": {
+        "MD5": "fffc56aec29193a7faab2ea8ba881606",
+        "SHA256": "8ea6209c93e063a0f0e03feb43dbe05f0e7e4cd5117b6519c566183d27b7b81c"
+    },
+    "Libs\\Microsoft.Extensions.Logging.dll": {
+        "MD5": "0392cd41ba1ff3fa3be8dfcf5e263096",
+        "SHA256": "c7756fe1d2641d905a61d11ccdda2acc94c3379a81ba5a280aaf4c1fe4f289ab"
+    },
+    "Libs\\Microsoft.Extensions.Logging.xml": {
+        "MD5": "e15ccc2c598b11bf10a3c9fefc4fd963",
+        "SHA256": "00ff4277a74004527783ab7cf94330928567a4c1c8cf77ef5017a5c33d3a321a"
+    },
+    "Libs\\Microsoft.Extensions.Options.dll": {
+        "MD5": "f6d72a37cdc4c11351134b1ba14e0a07",
+        "SHA256": "854f50bfd46336b9a7a0a8803e608d53874cb2e5e1cb7f0ff78865395ad87ef4"
+    },
+    "Libs\\Microsoft.Extensions.Options.xml": {
+        "MD5": "7d489166564267eaab0650789ec3856c",
+        "SHA256": "f85bcedbc50d05815786cd7e94455e678db85514da39c423fde447e720adbdf4"
+    },
+    "Libs\\Microsoft.Extensions.Primitives.dll": {
+        "MD5": "cb24b09fdc28b1fc98e432935331d30d",
+        "SHA256": "3c6ea55594433e2f0340227bd1588fbab1ba8a10c99319b528cc5573259340cb"
+    },
+    "Libs\\Microsoft.Extensions.Primitives.xml": {
+        "MD5": "cb9d19108fbc372d4572fa58b169f3a8",
+        "SHA256": "6ce493b8ef77e7e264b92afa5e9cb1a3f7842ba276bb9315a92a0e07092d7731"
+    },
+    "Libs\\Microsoft.Identity.Client.dll": {
+        "MD5": "fb228beba97cabd51b9e4a6099d55fca",
+        "SHA256": "188f56cab17be6cb005252f3029be213c027a17e33b8e89a43643ddcd78fff96"
+    },
+    "Libs\\Microsoft.Identity.Client.Extensions.Msal.dll": {
+        "MD5": "0e602822f3fca02cc3a74e828f9df58e",
+        "SHA256": "ddeeb0be8d8c633f66b6df18bdfcd37f884c2e5b9d19c188099cf87bf4d5cb0c"
+    },
+    "Libs\\Microsoft.Identity.Client.Extensions.Msal.xml": {
+        "MD5": "b2161cac4fd4862e4818322768154473",
+        "SHA256": "55ec284688c8deee8d513c8d8d5c0cc0b69658cfc409ab3464e2a07ba18b1f83"
+    },
+    "Libs\\Microsoft.Identity.Client.xml": {
+        "MD5": "eca0bd212db6836f79bc2ba7e77a7d64",
+        "SHA256": "69952a9ab02550c832b551ae3f1c7960fee34bbfb0aae336ac7c1a264b2da21e"
+    },
+    "Libs\\Microsoft.IdentityModel.Abstractions.dll": {
+        "MD5": "7a91aecaae8f83b59f98c75e96c77932",
+        "SHA256": "d2df4a4f1d6d74bccad8f7aeb5b3fd5bc299e4e4d5b14f5bb40a6e4d418231b9"
+    },
+    "Libs\\Microsoft.IdentityModel.Abstractions.xml": {
+        "MD5": "9508b8014c25a184631e8cb8221756df",
+        "SHA256": "5e729e604a63929ba0d77d1b484da1144d719e5a76dc32a8109acf609ca2fc3b"
+    },
+    "Libs\\Microsoft.IdentityModel.JsonWebTokens.dll": {
+        "MD5": "e26bbd97552b55a609b96bd9d2217432",
+        "SHA256": "176a6a99fa385583a0044dc4c2307df333de2bc0096474ec631efbefedbdebf6"
+    },
+    "Libs\\Microsoft.IdentityModel.JsonWebTokens.xml": {
+        "MD5": "fed54b838ee39ca7a9dafc8b9f47de9f",
+        "SHA256": "294d1cfbfb96eceecc14dd4d3de4ebf0348b1121593a82d1d6aeb6bf1bff0034"
+    },
+    "Libs\\Microsoft.IdentityModel.Logging.dll": {
+        "MD5": "12c2c3a5ed392d720d548bd580a349c5",
+        "SHA256": "262aa7257cb874a8cabf96b5a6d18b4a217f5c9d2a841cd1a7d9ed1724e59ddb"
+    },
+    "Libs\\Microsoft.IdentityModel.Logging.xml": {
+        "MD5": "71f0073f8ceef16b1c1d4c327463c11e",
+        "SHA256": "bcd29310c4c3d5e201daf9535c3ea4ea87ac84e0a129db8a9a3addf66b03f1ce"
+    },
+    "Libs\\Microsoft.IdentityModel.Protocols.dll": {
+        "MD5": "869578e61196a41e5383c1cd9d7c02b2",
+        "SHA256": "5d1c2a30d99d15e3b0fa783846b637a174c71f9a4beec2d4dd62701668bb8ebb"
+    },
+    "Libs\\Microsoft.IdentityModel.Protocols.OpenIdConnect.dll": {
+        "MD5": "459926631925fd244fb9509bac523c3b",
+        "SHA256": "92ca744ce36e06e8c0b9a3f32ab76509aad31bcfe374574108174bdca7beac76"
+    },
+    "Libs\\Microsoft.IdentityModel.Protocols.OpenIdConnect.xml": {
+        "MD5": "6a075ed85a8345400c9956a761a5ae2b",
+        "SHA256": "599448dcc9e0d2b07dcc17a9662053d3b5615fb574ab4467dcc975155588bcdf"
+    },
+    "Libs\\Microsoft.IdentityModel.Protocols.xml": {
+        "MD5": "5f51ae107e15a9c71995c1a7ebd620f4",
+        "SHA256": "295c72e0b41660a0a0679ac74bc86c3c988b0844e3b276f114801caec2015249"
+    },
+    "Libs\\Microsoft.IdentityModel.Tokens.dll": {
+        "MD5": "99375fedf193484344e647ed73024b4a",
+        "SHA256": "52e734b9ffa2acc2cd25684ee815ecd398f1fb0d1fc3f26b58ae5d5c522b5f41"
+    },
+    "Libs\\Microsoft.IdentityModel.Tokens.xml": {
+        "MD5": "83c7e2fdf6f546886f718df27e6b500c",
+        "SHA256": "69ad6021118c852790804e77c8bed35b924146fcfe8809be44caa131faaf49ad"
+    },
+    "Libs\\Microsoft.IO.Redist.dll": {
+        "MD5": "dea7ab4b024cff3e29c08da915324586",
+        "SHA256": "6c94ee150cacf59561c1c38bf20e0d9799de5da6ce80d964c83c3879d84100e9"
+    },
+    "Libs\\Microsoft.IO.Redist.xml": {
+        "MD5": "c9218f991c02f844bda08111b097c662",
+        "SHA256": "80a690d5d6c6e91dc6de247d96e1b1642cc99768036454f42d5eabdbc4c9e544"
+    },
+    "Libs\\Microsoft.NET.StringTools.dll": {
+        "MD5": "fd698ca9eaa8aeeff55c99b2169f1d52",
+        "SHA256": "d48c42bf73d544e94f2b674390f6518d8c86e991080149328e08f0d893e217e3"
+    },
+    "Libs\\Microsoft.NET.StringTools.pdb": {
+        "MD5": "9b36abc379fd63579dbd1ca51233d9de",
+        "SHA256": "05b4c4e73261b86ef27277cbbff154477da7116e1a9d27fadcd74349e3f74202"
+    },
+    "Libs\\Microsoft.NET.StringTools.xml": {
+        "MD5": "b8dd20b983ea02d9dc52d4eaf4c18e5c",
+        "SHA256": "fc48b1e5c0b14f0422db04f3824f05bb19c6eaa6d326f0d72d793865c42feef1"
+    },
+    "Libs\\Microsoft.Scripting.dll": {
+        "MD5": "7fc5e9afd455ee579a2ffe624b9a14c0",
+        "SHA256": "2dfbeb0f68ee9828f50c246f379d60da5f37ddda07e07acce92cca2ded9f3a7f"
+    },
+    "Libs\\Microsoft.Scripting.Metadata.dll": {
+        "MD5": "ad16a22470890bd464651fbdf867fffe",
+        "SHA256": "9748910fefa76dc8770fde957ec5eebe55cd27bae0c1e1d5d859c9aac1d89af3"
+    },
+    "Libs\\Microsoft.Scripting.Metadata.xml": {
+        "MD5": "526c76e940b2051deaf7af144ce85ef6",
+        "SHA256": "cb9e602d5503800cb2157118ecd044ac7e6a71043c290cf0a2d1db1bab35e6fc"
+    },
+    "Libs\\Microsoft.Scripting.xml": {
+        "MD5": "b734cb97acc054f60cc47a9bfba0d2b8",
+        "SHA256": "e2d0777db0c1fedf857145b60cd32a0504d07dc50244f192395723c1b95bff41"
+    },
+    "Libs\\Microsoft.ServiceHub.Client.dll": {
+        "MD5": "73fd6211dbc5746a58ad1fb44e4ef947",
+        "SHA256": "e72ad8b10351270eb16d4a8ad5162296b4a734c410650536290cf0301a5cf977"
+    },
+    "Libs\\Microsoft.ServiceHub.Client.xml": {
+        "MD5": "833b0281878a4043f62d163bc754f2ce",
+        "SHA256": "8e2b1a60a01c4aa9632e69c0d2fdd9939fa38782a9b00072d8f6accbeeb57d84"
+    },
+    "Libs\\Microsoft.ServiceHub.Framework.dll": {
+        "MD5": "cf8c020f19e7fd1e0db89fe4675a5af6",
+        "SHA256": "63bf0300c23653bfd75700d020d9f26667ee50c524ee25aa57bd5d50d9c85dbc"
+    },
+    "Libs\\Microsoft.ServiceHub.Framework.xml": {
+        "MD5": "3c235ed00cdda5124465f684a2f1a993",
+        "SHA256": "6b0cba60888b39af8bf1a1ea3878bc68c180f325dfe7ac53953fa4576fd36437"
+    },
+    "Libs\\Microsoft.SqlServer.Assessment.dll": {
+        "MD5": "49747531c7dd9b5c511a46290f9bd0b1",
+        "SHA256": "cedd56cfc00c40bba7c41439fdaed2f5e6eeb4349d3d27f39212203cabf2e8fe"
+    },
+    "Libs\\Microsoft.SqlServer.Assessment.Types.dll": {
+        "MD5": "9767846dfa84659cd529f3516a440a44",
+        "SHA256": "269cd9b7c729959e4ff413147cf9b73b31faa8b9a3ebf26c734156b23bddb3d0"
+    },
+    "Libs\\Microsoft.SqlServer.Assessment.Types.xml": {
+        "MD5": "46e169fdc0be401e2543b31d1a0ade26",
+        "SHA256": "7de672ddf957cbf947eb7f3a6e7c2bcb720665a65a367d67174bd7874ad5ae15"
+    },
+    "Libs\\Microsoft.SqlServer.Assessment.xml": {
+        "MD5": "266af451281ab54b2ff330b98a5258b4",
+        "SHA256": "2a9601c15e7cb25e5e6a2e8a760ac965a77bf02a6b9441c10d42d402c59b9cfb"
+    },
+    "Libs\\Microsoft.SqlServer.ConnectionInfo.dll": {
+        "MD5": "8d9535c4e11389dfb329a7b57ae6d34d",
+        "SHA256": "9b22aa806608129004f13036033330a2ba1984a52803a589f76a80c9dfe111ed"
+    },
+    "Libs\\Microsoft.SqlServer.ConnectionInfo.dll.config": {
+        "MD5": "ce94b4ad32488cd6900cb0d8f4ec0c03",
+        "SHA256": "fde4f1fafa28f68c1dd789c6f15558fac92eb6d11cd2054b802e304640900e1a"
+    },
+    "Libs\\Microsoft.SqlServer.ConnectionInfo.pdb": {
+        "MD5": "11d637af4facea1a267a35a39ef4ccff",
+        "SHA256": "250ad99c86a5d045016c4842acdb03466b196198f545539e13c2d7f70987879f"
+    },
+    "Libs\\Microsoft.SqlServer.ConnectionInfo.xml": {
+        "MD5": "ef4de8c55d626c7db8e22871dc5c98e9",
+        "SHA256": "1fc973356d1f6f093ba96df291c417ff4a830ed481e51c73f7e2a25363627153"
+    },
+    "Libs\\Microsoft.SqlServer.Dmf.Common.dll": {
+        "MD5": "d37f1f6a27bfb4ec8227b90f05b264c3",
+        "SHA256": "af956bfcc742122bd7d63a52f26e0ba8c9c08776db7f442c3178b32969df60dc"
+    },
+    "Libs\\Microsoft.SqlServer.Dmf.Common.pdb": {
+        "MD5": "1adce7106a728344e11208fcab9761a7",
+        "SHA256": "13609afc39cbe5d53a884742b26598140670bdb0dc43b97cea7db4c6926471f7"
+    },
+    "Libs\\Microsoft.SqlServer.Dmf.Common.xml": {
+        "MD5": "75b38fc981431876736545f1ad38cb4e",
+        "SHA256": "bc78914fb338785d7dde36e34efd2e213b4e83ce162ad8f661b6fea45bf01d71"
+    },
+    "Libs\\Microsoft.SqlServer.Dmf.dll": {
+        "MD5": "0affb44891f9256e337e6442856bb6ed",
+        "SHA256": "eae67eb60ab4824f7103963b28fbab1252a0abeaaf468c150c8ac41bb3f76faa"
+    },
+    "Libs\\Microsoft.SqlServer.Dmf.pdb": {
+        "MD5": "9b1c7238516c4b3876296a150f232b54",
+        "SHA256": "3000fcb2308cf7de5b8ec1f9a753b732d9c064a39b734bd4b3c313af8a126b4e"
+    },
+    "Libs\\Microsoft.SqlServer.Dmf.xml": {
+        "MD5": "742fca1840f5a93a1a3d82c8e7179d72",
+        "SHA256": "03d0476cffe4e643c4d3fd9118d8e5a46d2700547820be72e7bd5e9d405331dc"
+    },
+    "Libs\\Microsoft.SqlServer.Management.Assessment.dll": {
+        "MD5": "b4e1758dc72a8291f5a753666a69ae5d",
+        "SHA256": "62b17d185d3516c6277aed4eb188c6fac8e23278cc59369f1e58710e5381fdd7"
+    },
+    "Libs\\Microsoft.SqlServer.Management.Assessment.pdb": {
+        "MD5": "a836388f422e869bf7c4db0ca3d90074",
+        "SHA256": "35a94d42dc96f9b0496f89e8a458ce305229661306dbd11f1499e1365ded1763"
+    },
+    "Libs\\Microsoft.SqlServer.Management.Assessment.xml": {
+        "MD5": "a2b675192e397c2a98c36c7b61198311",
+        "SHA256": "a6920e074a8dea641848c3b0eeb97b3bffec910a60bb7d1c0fe1b0ce2d6281d9"
+    },
+    "Libs\\Microsoft.SqlServer.Management.Collector.dll": {
+        "MD5": "f10119749716ddb40fc9b47e001322fb",
+        "SHA256": "936995e40930fcdee4625e83d78a6218d33384caa8bc89bc99a69202aa0051a3"
+    },
+    "Libs\\Microsoft.SqlServer.Management.Collector.pdb": {
+        "MD5": "408f235abef629288e60765cdef0c782",
+        "SHA256": "5a74934bd8cc45bdf084937e91f8e0807e3b0b38eb74c8eab4f94d68524c16e8"
+    },
+    "Libs\\Microsoft.SqlServer.Management.Collector.xml": {
+        "MD5": "a2ddadd80f2857299f0038ac91e78337",
+        "SHA256": "3ff250c18c73469171054c89ccea1ecd5e93c5487ee4a6e48123bed2f331c29f"
+    },
+    "Libs\\Microsoft.SqlServer.Management.CollectorEnum.dll": {
+        "MD5": "a55f319e722f7c4e439769b794cf03b5",
+        "SHA256": "df794b2e06f64f8e0b0c37bbefd752036e4cb5b2837a1e5b13480672b9ec4ac6"
+    },
+    "Libs\\Microsoft.SqlServer.Management.CollectorEnum.pdb": {
+        "MD5": "87ec500dad5cf540b5776a3c22965b1c",
+        "SHA256": "6dcb26bfdd0c26ede8067c4d29d01b353b8a59811c40faf0ca63238868462eb0"
+    },
+    "Libs\\Microsoft.SqlServer.Management.CollectorEnum.xml": {
+        "MD5": "e6ee09fffca3261d375908f200917479",
+        "SHA256": "1e61a48395697f2cb7cc7eebfab679f0016a836a58399c425369317b0eb2a207"
+    },
+    "Libs\\Microsoft.SqlServer.Management.HadrData.dll": {
+        "MD5": "1483981a94a0a1d61ea3e84ee67a9e66",
+        "SHA256": "b80f5d5fe0c1fb37ab9323e346dacaee41cbb8cce8c9248f7c40988a11552a47"
+    },
+    "Libs\\Microsoft.SqlServer.Management.HadrData.pdb": {
+        "MD5": "2383b3e9be1071150dedc709406e8982",
+        "SHA256": "f4bf1e67ff133aefd15d73e906a95e6f88d06363ceb2f6405ddb62cdd9e691a4"
+    },
+    "Libs\\Microsoft.SqlServer.Management.HadrData.xml": {
+        "MD5": "b56ef0c18461c5ac7a4e811fde2ea783",
+        "SHA256": "aa6f6d3ae9291b0b4e084932be4ac7f3202bd082b6f86d3531b6d1f68d1bcbdf"
+    },
+    "Libs\\Microsoft.SqlServer.Management.HadrModel.dll": {
+        "MD5": "db8b9932277c9613b980f2d89554fbe0",
+        "SHA256": "5d957d06e5ba103eefd3cba842c7043e1dd3b5b0d713b6ab3cef4b9520e3cad2"
+    },
+    "Libs\\Microsoft.SqlServer.Management.HadrModel.pdb": {
+        "MD5": "246b8d1496dc0879c3ae6857ceed5d11",
+        "SHA256": "19143a0712aca7602bf70f968d87d3504e476abbf71585db2bc6ef7fee3e1976"
+    },
+    "Libs\\Microsoft.SqlServer.Management.HadrModel.xml": {
+        "MD5": "36e582a8f51c1f43c4139d9b742f751f",
+        "SHA256": "4dd6c2ee99f942d00361d45ee1ead2e76a9d399b0fbc455becec18f988bdbfc5"
+    },
+    "Libs\\Microsoft.SqlServer.Management.RegisteredServers.dll": {
+        "MD5": "3fc8d8f97afe1c43c093cd2be058cccc",
+        "SHA256": "96c7d26ee4a919926a173d054cfda5e0e787365de7a57e0a557ff14e3a348acf"
+    },
+    "Libs\\Microsoft.SqlServer.Management.RegisteredServers.pdb": {
+        "MD5": "c7e7a67ef5846b0b4411bafb591672c6",
+        "SHA256": "c76db4f159fad118ab5715a75829a2a0d3638edbf1fd5c221c19a58474a92f13"
+    },
+    "Libs\\Microsoft.SqlServer.Management.RegisteredServers.xml": {
+        "MD5": "7f7c31de91e023979effb1244727757d",
+        "SHA256": "7b583d4bc5db654ff840390b0557c1e6bfe825d98a0fb09bdb27caa0b0c4057c"
+    },
+    "Libs\\Microsoft.SqlServer.Management.Sdk.Sfc.dll": {
+        "MD5": "4bb460118480ae55a4e808b37f132bd8",
+        "SHA256": "53ee1bdd1a28c932b204329c685702aa8a08975a33e036fbceeb638d6f3f5baa"
+    },
+    "Libs\\Microsoft.SqlServer.Management.Sdk.Sfc.pdb": {
+        "MD5": "c85253995771a200c5e4d88b1e0f317c",
+        "SHA256": "f8132227b778ec1870260206ac386372ee5265eff772e8b857f9467d79360ad5"
+    },
+    "Libs\\Microsoft.SqlServer.Management.Sdk.Sfc.xml": {
+        "MD5": "52079ea9abb0c3c2a04bcc016b875640",
+        "SHA256": "d7679c784030978141fbe19d048dd1c316d82f83390b772d0c8bfbea0a81678a"
+    },
+    "Libs\\Microsoft.SqlServer.Management.SqlScriptPublish.dll": {
+        "MD5": "4b03eecdf8a302ef30ee354f064e7048",
+        "SHA256": "a9d0ba028de245c31a21651240147b285e00757cda24487dc740744114b5ad88"
+    },
+    "Libs\\Microsoft.SqlServer.Management.SqlScriptPublish.pdb": {
+        "MD5": "d63c24ffb659bbb609ba7176e39fd450",
+        "SHA256": "75f0b9d7a73b5bb54fcb3d46b30bed60f77bd1ef05c535b7b313b321e9232877"
+    },
+    "Libs\\Microsoft.SqlServer.Management.SqlScriptPublish.xml": {
+        "MD5": "327e7b7cba154ef71a1ac7dd7c7203b4",
+        "SHA256": "025bdd8a77b3a4529d4c3b18f19007b6ba5cc2918dcc80c80245da35a86e7376"
+    },
+    "Libs\\Microsoft.SqlServer.Management.XEvent.dll": {
+        "MD5": "bc04df734f8f24e8772a4959c5303e5e",
+        "SHA256": "a8a9e2386ce66cf0bd50bbce56c1f3aa35bebd04213ed4b18fc473ce16a1303e"
+    },
+    "Libs\\Microsoft.SqlServer.Management.XEvent.pdb": {
+        "MD5": "409c7e462a7ca5f77cf6897ce50de573",
+        "SHA256": "d9650f4a79e3c41961337af9ac4d2e569b8168725811e315fc44145d61e4f3eb"
+    },
+    "Libs\\Microsoft.SqlServer.Management.XEvent.xml": {
+        "MD5": "9b945180cfffbb2028ccd0db5fa991e1",
+        "SHA256": "99a7aa532f1e855fb913991e6b5e5a74c4534f4b12a2a09daf35291106013b90"
+    },
+    "Libs\\Microsoft.SqlServer.Management.XEventDbScoped.dll": {
+        "MD5": "33e535b28bd444aba4cd81fe8e850625",
+        "SHA256": "8328edc058f2fd68156baf89cf7f19f6f13a49ac4b147b963ca965238de80c8f"
+    },
+    "Libs\\Microsoft.SqlServer.Management.XEventDbScoped.pdb": {
+        "MD5": "c9231c5791499cf37b2c8d6171bcecac",
+        "SHA256": "754a3b69ccb71eec0aef1b9ff39f17a42b6b7635cfde145cc2c4836678ec77a7"
+    },
+    "Libs\\Microsoft.SqlServer.Management.XEventDbScoped.xml": {
+        "MD5": "f60ac485164b2ebdcc4a5e7367abfddf",
+        "SHA256": "af2dcc0e5d1dd626c4e5ed5400bfc5b467daf9088e3db9dead36ccadfc43747f"
+    },
+    "Libs\\Microsoft.SqlServer.Management.XEventDbScopedEnum.dll": {
+        "MD5": "f303059236276ed8c24eaf42ea0a0265",
+        "SHA256": "bdb6892e3ae5e06f2ea9cb8f22e020918163ef38bb4597ac1db684d29c41c95a"
+    },
+    "Libs\\Microsoft.SqlServer.Management.XEventDbScopedEnum.pdb": {
+        "MD5": "1f97d674d90d15ee544120cd1d885749",
+        "SHA256": "56e4181b0056b3fc8d8cc24c2cbb4a6b14e76f04f5f85e96dc092c189739a7f0"
+    },
+    "Libs\\Microsoft.SqlServer.Management.XEventDbScopedEnum.xml": {
+        "MD5": "2c4f18c1e3dcb2286616419173d9db89",
+        "SHA256": "3ed45b180c17d6189a117f611dbb570283310009e414c3a91343b57fbfc19e97"
+    },
+    "Libs\\Microsoft.SqlServer.Management.XEventEnum.dll": {
+        "MD5": "b58bbc714e2a15ebc56e701a521998b7",
+        "SHA256": "620ad894058e334c599575f521d29c7fca516fc3a2df48b642507132dbe5b10e"
+    },
+    "Libs\\Microsoft.SqlServer.Management.XEventEnum.pdb": {
+        "MD5": "b2f806132b383998f476d2944482821e",
+        "SHA256": "97124387bfae05900873e72d7a417681a972a362f8b0072294c7ba0ec5b4a14f"
+    },
+    "Libs\\Microsoft.SqlServer.Management.XEventEnum.xml": {
+        "MD5": "d66297fcc0b0bccace4b0a79bc8b70e7",
+        "SHA256": "8021f7a4a2d9b9be08999d0996ce616e66c79baad526b707ec67384826f2679a"
+    },
+    "Libs\\Microsoft.SqlServer.PolicyEnum.dll": {
+        "MD5": "228bfee7ce0e4ba687e7c55c240ad8cc",
+        "SHA256": "6eab1aaf5b7c795b798eefb07acf44164597c033430f2b30d711df2ac9773a7b"
+    },
+    "Libs\\Microsoft.SqlServer.PolicyEnum.pdb": {
+        "MD5": "fad3fb6c84a35078626d0d32e0851971",
+        "SHA256": "ff6f9807fed700847ba0b938385d424c0b1060dea8c3073f718c52fedfaeb300"
+    },
+    "Libs\\Microsoft.SqlServer.PolicyEnum.xml": {
+        "MD5": "6fec165772004d67be42b16c447061b6",
+        "SHA256": "105f9cffd949c0b97a301d4e7d9b730a5388c37f670b001af8c101ff7257748e"
+    },
+    "Libs\\Microsoft.SqlServer.RegSvrEnum.dll": {
+        "MD5": "454dab966d80f382dafc8daa853c0785",
+        "SHA256": "725f2f00f2c53e0ef555e9e944f58e96a3cd360c77d747cc099bb46d747edcd8"
+    },
+    "Libs\\Microsoft.SqlServer.RegSvrEnum.pdb": {
+        "MD5": "904385591b0b01079fba6a4b5840aeb2",
+        "SHA256": "c9217df6574558e9b453d9a3fa480a7559ab6e14c748523d1862bc73c0af0b62"
+    },
+    "Libs\\Microsoft.SqlServer.RegSvrEnum.xml": {
+        "MD5": "f089312323e4ef3cf6769e3dad98032f",
+        "SHA256": "804461a8df8a1b2f03870b8c5b8454dc39c4bf5ec59022401e9f5833b7f09918"
+    },
+    "Libs\\Microsoft.SqlServer.ServiceBrokerEnum.dll": {
+        "MD5": "72deb47eb0aba04700220d766f1f5557",
+        "SHA256": "9ef299c38785d1413c65368fce5164890ed67cbffcbb719c532e0d413e120838"
+    },
+    "Libs\\Microsoft.SqlServer.ServiceBrokerEnum.pdb": {
+        "MD5": "91591e8f88652988a3109b94a9f3b498",
+        "SHA256": "22bab3b7598e4da73bf9b5237dc74804e5ea73fd18c0fe9cbd976c03e664bd5b"
+    },
+    "Libs\\Microsoft.SqlServer.ServiceBrokerEnum.xml": {
+        "MD5": "2f1d8af49308a9481f1c40e4f6a1e44d",
+        "SHA256": "31a1a5e025cb8b7f76b68fd0f3856e857611295811703ff7bbbe529ef13d1863"
+    },
+    "Libs\\Microsoft.SqlServer.Smo.dll": {
+        "MD5": "6c35370b43e42bb8219a8820cc8e4ff2",
+        "SHA256": "d988a3c17a21b347f9e3000eeee7318f40b516ede7d3be7de365784a235e5baf"
+    },
+    "Libs\\Microsoft.SqlServer.Smo.Notebook.dll": {
+        "MD5": "0d1700f4b60ea4df643c9fb6780dd42c",
+        "SHA256": "437c286be22c58f0bf58dacccd2f0360144179fc5a11bc6b82d2eb8ef19f81d3"
+    },
+    "Libs\\Microsoft.SqlServer.Smo.Notebook.pdb": {
+        "MD5": "13ef6c6b0d7cb7877a79b6692ae4174e",
+        "SHA256": "61be1013c703e4632a7a4b1373eb456121b5ba5489801204254cfaa72ccd2855"
+    },
+    "Libs\\Microsoft.SqlServer.Smo.Notebook.xml": {
+        "MD5": "c874fec351fad9eba5c249fbf7742422",
+        "SHA256": "fa79710e77a2208bfff1b776ed4ad18aea4af86d6fc7bf0cc447d07373c933ab"
+    },
+    "Libs\\Microsoft.SqlServer.Smo.pdb": {
+        "MD5": "d97cc8f1b09d91474698868a65439e0a",
+        "SHA256": "c6c92b7d92c9082b26b3bcb38414e1978e530ac2c3832c22ba0687e938bc0ea4"
+    },
+    "Libs\\Microsoft.SqlServer.Smo.xml": {
+        "MD5": "ddc02565ecd207973c96d25c1d99af42",
+        "SHA256": "8f60ff8291203feeef5ccd240c691964f4842cb3d357b2f98e40f33df73796f3"
+    },
+    "Libs\\Microsoft.SqlServer.SmoExtended.dll": {
+        "MD5": "288d369395072b028e509deb661dde9a",
+        "SHA256": "2c60c9a3167c4021ab104380ee76a37d7f35fdda2e820f8a199b37349e29cacb"
+    },
+    "Libs\\Microsoft.SqlServer.SmoExtended.pdb": {
+        "MD5": "c900b638001de01800e33ad622020492",
+        "SHA256": "73c753c71a1f91d6cb7fbbafc26b8057941f88239e0ceb93bef9ff258dc785ce"
+    },
+    "Libs\\Microsoft.SqlServer.SmoExtended.xml": {
+        "MD5": "72c1cc6a6e44bb11c4d8587b6f6bc161",
+        "SHA256": "6816d6d4c9609811919a575048fb863f6dac772a4978627c89e4111f193a48bd"
+    },
+    "Libs\\Microsoft.SqlServer.SqlClrProvider.dll": {
+        "MD5": "be65e1e1b6927e44e8c94e4aa7df735d",
+        "SHA256": "ddf7d88e627faae6db24dccbd3e3112ba4a605a6914e10ea7803ecd26bbbb68d"
+    },
+    "Libs\\Microsoft.SqlServer.SqlClrProvider.pdb": {
+        "MD5": "09a6a80932e66719a8d7de66aaff76ed",
+        "SHA256": "1cb7d159bffc5656dcfe705135dd3e02e9b481320d1251ee615a7103e75df3e5"
+    },
+    "Libs\\Microsoft.SqlServer.SqlEnum.dll": {
+        "MD5": "407883537090d056e8959a0d9e17d101",
+        "SHA256": "143ad31069ea8d293b9ef64e94e14472a713af7c183fc58df688eef0fd1aae85"
+    },
+    "Libs\\Microsoft.SqlServer.SqlEnum.pdb": {
+        "MD5": "c949d1a69a221978df006b114162ff74",
+        "SHA256": "ebfc9e7691d0cfb778c7ae0ae56041ae4c57853ff13d439155b52f5958a8b618"
+    },
+    "Libs\\Microsoft.SqlServer.SqlEnum.xml": {
+        "MD5": "6133814bf9f5574b22949b1c064bc3e0",
+        "SHA256": "95c583ed0dee4bc02dbd8e0722b596d1a2688d3f647986602b74aca2656886ff"
+    },
+    "Libs\\Microsoft.SqlServer.SqlWmiManagement.dll": {
+        "MD5": "9be27026a9a070b4b28130e5e6ecc191",
+        "SHA256": "4eb5a3507d1e5912c03afa78b6fa342877295bf1136180d73863acfe4c4c6ed3"
+    },
+    "Libs\\Microsoft.SqlServer.SqlWmiManagement.pdb": {
+        "MD5": "0c61c53c845bb4ae38a20b675a76b447",
+        "SHA256": "a6ad0c96014923b1c59eed74a1fedf9aa8e8350e6a72240e145764188f016e63"
+    },
+    "Libs\\Microsoft.SqlServer.SqlWmiManagement.xml": {
+        "MD5": "6a4abf9b9faafd2930de6661d07ddeb4",
+        "SHA256": "159e71a1c07d4f4642ec597be3b2bca8a4a84faa32a92c05291fdd4d16bece59"
+    },
+    "Libs\\Microsoft.SqlServer.WmiEnum.dll": {
+        "MD5": "e6ac5d4419977b037ae7e70ca3081e12",
+        "SHA256": "a678862b3cd165adcf6a4f1afe60fcad4b3853b7854da7fd2cf6edbd1fd2204f"
+    },
+    "Libs\\Microsoft.SqlServer.WmiEnum.pdb": {
+        "MD5": "71b32bb28be6feaa99dd9860ba28e2d2",
+        "SHA256": "9f86633df68db1b1deb35443c73d9a3bfc2759e986557cad677fe288faf51695"
+    },
+    "Libs\\Microsoft.SqlServer.WmiEnum.xml": {
+        "MD5": "1d5395382c497c057927431900121450",
+        "SHA256": "d73899e157114bbdb0b6a12916a577e54f3132df394697a60febaae11bd53ad8"
+    },
+    "Libs\\Microsoft.VisualBasic.Compatibility.dll": {
+        "MD5": "7a13441326950f48200653bed85063e0",
+        "SHA256": "a558f4a543338b900ea47d8f3ccac3810913bf364b8e4ab1ab34b7f1fb4d22f3"
+    },
+    "Libs\\Microsoft.VisualBasic.dll": {
+        "MD5": "53759ab55161bfb15c196e88e80cca63",
+        "SHA256": "78bf4b561c889aa37cd2be5149e45c28f02daf78dcc2a20a9bc57ea3982ed161"
+    },
+    "Libs\\Microsoft.VisualStudio.Composition.dll": {
+        "MD5": "68cfee44d91de2060a25f942dccb673c",
+        "SHA256": "94a9159f10559e13ca6f9f66f2a424e678aca974eb9adcf5dbbe5b98103c2604"
+    },
+    "Libs\\Microsoft.VisualStudio.Composition.xml": {
+        "MD5": "b7d0ee986c199d9b4485c5db2c5479a9",
+        "SHA256": "2ad0cb5e095ede6f0f664ec6165cf276d606e2c23a8be8f4946004f810a6f5a7"
+    },
+    "Libs\\Microsoft.VisualStudio.CoreUtility.dll": {
+        "MD5": "76d5bb34958874d085683f1271b8c1d1",
+        "SHA256": "a6b68d2b417844564089a96d7c8ae49bb85c9161854cbc2d961ea496368d4d08"
+    },
+    "Libs\\Microsoft.VisualStudio.CoreUtility.xml": {
+        "MD5": "f2b5046ac8cc13c16f639755d2766f4e",
+        "SHA256": "f0d01fdf2fce2bbc262ef470b67ef74268967b0dc3f9aebf1fb0dad37ccab847"
+    },
+    "Libs\\Microsoft.VisualStudio.DebuggerVisualizers.dll": {
+        "MD5": "c708760bb0460b778dd4e88e80811901",
+        "SHA256": "ab7c403202e8b0ac358f8967c32c1f12f86c8d632d7dba5aaaf0e13993604c56"
+    },
+    "Libs\\Microsoft.VisualStudio.GraphModel.dll": {
+        "MD5": "eb2b559c7d5e61735715c8b24b04bac8",
+        "SHA256": "41216e6d273fc3a3a3c7b178a56958e634b1cc28ac7be407c6fe6f41750850ef"
+    },
+    "Libs\\Microsoft.VisualStudio.GraphModel.xml": {
+        "MD5": "2d7f921761d5b56a094ff268959007cc",
+        "SHA256": "91b4d9f83e206dd88ade4fc9616e9e011f79aa7905d23e0fa55c246248f9caad"
+    },
+    "Libs\\Microsoft.VisualStudio.ImageCatalog.dll": {
+        "MD5": "470229f669afbf9f37f75daad26a7bbe",
+        "SHA256": "85f475b86daba226b8bcabf38af08127d333af217ef39ab811918a43b0bda686"
+    },
+    "Libs\\Microsoft.VisualStudio.Interop.dll": {
+        "MD5": "5f804a56e74f70647fcafc7d464404e0",
+        "SHA256": "25a3904a144ef84806b0507b4d327f9a646f9d18b78b505183b424ead3b41933"
+    },
+    "Libs\\Microsoft.VisualStudio.Interop.xml": {
+        "MD5": "84acb5fffc804ea218c28ac2427136b0",
+        "SHA256": "7f697f2f8dbc7111cff63f8eaf0d719cd890978e59dcb88fa6b0adf85ac1717e"
+    },
+    "Libs\\Microsoft.VisualStudio.RemoteControl.dll": {
+        "MD5": "355c1a112bc0f859b374a4b1c811c1e7",
+        "SHA256": "cc52e19735d6152702672feb5911c8ba77f60fdc73df5ed0d601b37415f3a7ed"
+    },
+    "Libs\\Microsoft.VisualStudio.RemoteControl.xml": {
+        "MD5": "06acc7555b67f9defa41b8745426a1fd",
+        "SHA256": "afb527e13d3dbc7523e1f49d2a1fce45c781dc32c66e06eb023449a19583a0a7"
+    },
+    "Libs\\Microsoft.VisualStudio.RpcContracts.dll": {
+        "MD5": "6fdfd6e9158b5e97e98bd97769e9b0a8",
+        "SHA256": "8fca090a1a95ba5d2d8f3892444364db2fd9f0fa759c054e373b8f8e8ebeb51f"
+    },
+    "Libs\\Microsoft.VisualStudio.RpcContracts.xml": {
+        "MD5": "4d90cd11c5a536f2124e44c9c15e64a5",
+        "SHA256": "eeac7b347efcbad06e925d598efd6d9ef0c6c90e2d838c975b704f9a75863293"
+    },
+    "Libs\\Microsoft.VisualStudio.Shell.Framework.dll": {
+        "MD5": "37701b8da42483586367c6bab7c8f81f",
+        "SHA256": "be74d2dc1aaf3c8de59ce9233d549b88eea46442969586abb076bde719ed363a"
+    },
+    "Libs\\Microsoft.VisualStudio.Shell.Framework.xml": {
+        "MD5": "85c91eca4f87c1239aacdc3a3ade9adf",
+        "SHA256": "5a00da975803ecd2212f3a6d7b00d9c413b8369fd1403a1c3f5b89809cffe0cd"
+    },
+    "Libs\\Microsoft.VisualStudio.Telemetry.dll": {
+        "MD5": "c156265a33c7345eca9a3888ea962817",
+        "SHA256": "b97c0e6f4fa2a30e0f3191bfd8d4754e4b61ba75611bfac28dffcb1f154994be"
+    },
+    "Libs\\Microsoft.VisualStudio.Telemetry.xml": {
+        "MD5": "8750af4993ff79d6ab6c1c7737668fb0",
+        "SHA256": "c2231ff556b55b9c31d6a1dc528719800d50671c50e84a6d3f3ba8d29abd5c0c"
+    },
+    "Libs\\Microsoft.VisualStudio.Text.Data.dll": {
+        "MD5": "c87d8a980423e84d2fc7ea0fe05645f3",
+        "SHA256": "54b4b5c43de95f41f78bb57b5aeec6a08620cd4957c28936085e32a188223365"
+    },
+    "Libs\\Microsoft.VisualStudio.Text.Data.xml": {
+        "MD5": "92b99babfc7a16839b6257f13aa60149",
+        "SHA256": "6995fdcc6bd093f1770a6141d52f063e8b08a0258beaded549f560ab50dfa5bf"
+    },
+    "Libs\\Microsoft.VisualStudio.Text.Logic.dll": {
+        "MD5": "5303ba6a3f64e3954d411ea88cb99b7e",
+        "SHA256": "5a895b68a58ca271c7fa04831ca9576fe8c797fd7dbd35f891b44873a650cd75"
+    },
+    "Libs\\Microsoft.VisualStudio.Text.Logic.xml": {
+        "MD5": "b18d2e88169463e689c6323ca39fb7bd",
+        "SHA256": "47dafebd17c73de344f60350137a1435eb9ef8e6994acab8f67ac4c24d04d445"
+    },
+    "Libs\\Microsoft.VisualStudio.Text.UI.dll": {
+        "MD5": "217ccbf8ed8640018c88baad226cdb21",
+        "SHA256": "fd2436615c828db146906adf92ffaf1336fc6d76998ad552cc5ff204ce6403f3"
+    },
+    "Libs\\Microsoft.VisualStudio.Text.UI.Wpf.dll": {
+        "MD5": "adfc9df20cbb1cf1786b20ed848efd51",
+        "SHA256": "9fa6b62f460dbbea733517ccbf44776b07f4fd28fc2e03a22394a83de1bf762b"
+    },
+    "Libs\\Microsoft.VisualStudio.Text.UI.Wpf.xml": {
+        "MD5": "22d3643bfd5db0f3b1494fd445c773ba",
+        "SHA256": "0b73827f388d5eaa7847f2c47c600ad89a4b2fd87e24e29e2bb96db0bbe87254"
+    },
+    "Libs\\Microsoft.VisualStudio.Text.UI.xml": {
+        "MD5": "7e4b2074034feafe25997c6e9dd537c0",
+        "SHA256": "2e795679badbe762488141bc2219c993898516834ab0e7670f84d011cceae834"
+    },
+    "Libs\\Microsoft.VisualStudio.Threading.dll": {
+        "MD5": "b430de1eee4e7df66ef5e2fe54c0af52",
+        "SHA256": "33f880739ff253869cfd9dc94d84cb08e3aeb010358e034bef24645051bfdb0f"
+    },
+    "Libs\\Microsoft.VisualStudio.Threading.xml": {
+        "MD5": "590c6486bf95e6e723945b9abe4cadd1",
+        "SHA256": "10dd24e890fcdf5f21dd26b1f9f0e0b9df1cd0d20443a36e85ca9a10cb76795e"
+    },
+    "Libs\\Microsoft.VisualStudio.Utilities.dll": {
+        "MD5": "aee72a92506c5a6b1e4beef0646b32cb",
+        "SHA256": "8d580534f11730dbca81f537796dde0a0202e26bac5a6088c07cfe4350bb3618"
+    },
+    "Libs\\Microsoft.VisualStudio.Utilities.Internal.dll": {
+        "MD5": "2dc1dc66b267a3470add7fab88b78069",
+        "SHA256": "b044863f98af8d28f4f2f5e2dccb945c57439e1575afb37110e1eec306a6c89c"
+    },
+    "Libs\\Microsoft.VisualStudio.Utilities.Internal.xml": {
+        "MD5": "ae992b91f9f95814c59d09fc08e60cb8",
+        "SHA256": "1cd5349e5fab090598e0568e09a65022e03fe2baea1a21e5711493fda34dbb44"
+    },
+    "Libs\\Microsoft.VisualStudio.Utilities.xml": {
+        "MD5": "0d82e1aa9688b994598e6de6a631b1d4",
+        "SHA256": "c64eb3587100427eb5c29ca1f76e1e475abc21c0b6f033fe73fac0976ade99f0"
+    },
+    "Libs\\Microsoft.VisualStudio.Validation.dll": {
+        "MD5": "55ce53f1e140d12cabbf2b227d14b666",
+        "SHA256": "3882be8f796d77c645d62d7a4dd3b29fe497ce1e0a1da41a9ea26ddf9ee69da2"
+    },
+    "Libs\\Microsoft.VisualStudio.Validation.xml": {
+        "MD5": "7f18e6a8d265af8f65d38bfd9fb49f07",
+        "SHA256": "76f5d862e852dfde66e8257509560d5fd9cde5a91858a21005147720a01f8254"
+    },
+    "Libs\\Microsoft.Web.WebView2.Core.dll": {
+        "MD5": "b037ca44fd19b8eedb6d5b9de3e48469",
+        "SHA256": "11e88b2ca921e5c88f64567f11bd83cbc396c10365d40972f3359fcc7965d197"
+    },
+    "Libs\\Microsoft.Web.WebView2.Core.xml": {
+        "MD5": "cbfa210b87a054e84f21872bd4fcd6c0",
+        "SHA256": "7115c21fd323b38240ca3e77e40c4b23645ea4885f9ddc06179a1761c2c159a1"
+    },
+    "Libs\\Microsoft.Web.WebView2.WinForms.dll": {
+        "MD5": "c7000faa6c6040188c8cd8ef28b6deda",
+        "SHA256": "e4f695b72f99024e3ee5d5f26a367e664f4e120bd5d90aa87a8bc0509c365ec8"
+    },
+    "Libs\\Microsoft.Web.WebView2.WinForms.xml": {
+        "MD5": "c09409aac254f17c1c648e6f0464b035",
+        "SHA256": "4b40e49aec5dbda597224f997d57a16645ddc2eb00f31a6329204d1853a2245a"
+    },
+    "Libs\\Microsoft.Web.WebView2.Wpf.dll": {
+        "MD5": "e107c88a6fc54cc3ceb4d85768374074",
+        "SHA256": "8f821f0c818f8d817b82f76c25f90fde9fb73ff1ae99c3df3eaf2b955653c9c8"
+    },
+    "Libs\\Microsoft.Web.WebView2.Wpf.xml": {
+        "MD5": "cd83c8495fe175f446d6eb420df1a683",
+        "SHA256": "993d4e801fc9ab59bd53fd588c9c22da58b0430e031c36fa2b40fbb66857eec7"
+    },
+    "Libs\\Microsoft.Win32.Registry.dll": {
+        "MD5": "59c48aacb1c413c108161afe13fdbed9",
+        "SHA256": "e9a9d281c1a708aaae366f82fd6a1742f65da2918cc4fa5eaaaada0be24277d9"
+    },
+    "Libs\\Microsoft.Win32.Registry.xml": {
+        "MD5": "a3290ea94f8f3bb6577b78e792d6018d",
+        "SHA256": "ec37b0d38d2279b53cff84aa3e299c8007eda42f82ea4379c97118a7049b1e22"
+    },
+    "Libs\\Nerdbank.Streams.dll": {
+        "MD5": "27e6776ef23722df7fd1f9e62fca1db4",
+        "SHA256": "f41d63ed23c7cb123fb49de475d68b94fd21958f09e2d5f878a00b9d71545f45"
+    },
+    "Libs\\Nerdbank.Streams.pdb": {
+        "MD5": "b326c1fc26da6a51da443bd03c96a929",
+        "SHA256": "0cc7446033aad9b7ff760f2568b4f31b68fbd59e5b5e3c5283f9ad47aded70f1"
+    },
+    "Libs\\Nerdbank.Streams.xml": {
+        "MD5": "1d640a23e791ce1ed8994b1294923e57",
+        "SHA256": "b9135056bd3ad73a6541944418adf964ba890d82ef1122e95a088af8881764d6"
+    },
+    "Libs\\netstandard.dll": {
+        "MD5": "02375981f7970b1077c2da6d36915f4b",
+        "SHA256": "774384e684b4f5d0d6d77668bb615578e682df17de501948c3f53d55220a0d25"
+    },
+    "Libs\\Newtonsoft.Json.dll": {
+        "MD5": "195ffb7167db3219b217c4fd439eedd6",
+        "SHA256": "e1e27af7b07eeedf5ce71a9255f0422816a6fc5849a483c6714e1b472044fa9d"
+    },
+    "Libs\\Newtonsoft.Json.xml": {
+        "MD5": "d398ffe9fdac6a53a8d8bb26f29bbb3c",
+        "SHA256": "79ee87d4ede8783461de05b93379d576f6e8575d4ab49359f15897a854b643c4"
+    },
+    "Libs\\PresentationCore.dll": {
+        "MD5": "ede661579992313bab0fb01962a1da46",
+        "SHA256": "7c6cf727ee790f6625537bd607d0d755db3510cfc7d83c3630ba375eb83555e3"
+    },
+    "Libs\\PresentationFramework.dll": {
+        "MD5": "8d335f0257ddf37a120dccbfdc0f6f0c",
+        "SHA256": "a1958e008541e47eca7828dc59d8ea60528ec235db4fdaf5222c494df1e318e2"
+    },
+    "Libs\\Python.Runtime.dll": {
+        "MD5": "a44e49817c94afebff17d5b95d820983",
+        "SHA256": "f8be5debf57c36e0eb6d7e12cda00792711237a6f2f4fb861347fd5972e528d9"
+    },
+    "Libs\\SmileWei.EmbeddedApp.dll": {
+        "MD5": "18ed016a1a7dce0b57b44bfc7a45e297",
+        "SHA256": "a9ae8ba8fb5a59d69182d51f53121a877721c097575fa816f4122582ceeb6fec"
+    },
+    "Libs\\SmileWei.EmbeddedEXE.dll": {
+        "MD5": "29c1154c5d89104657047f890473c399",
+        "SHA256": "31520bcd7a69ec7d687b2067f87d365b254374418826a07e853d3202bb75ecb0"
+    },
+    "Libs\\stdole.dll": {
+        "MD5": "e1eeb7e26ab04075eecc7275239b20b3",
+        "SHA256": "d6cdf961c6d2712fe1958815e51a30960d79fff1e97788b7741627dba972e8f7"
+    },
+    "Libs\\StreamJsonRpc.dll": {
+        "MD5": "007710962ad2d10533cc67fe0bda8956",
+        "SHA256": "b4c052a58e6af6bfbd42f35269ff58078802e237c3a07982815bf63380686b2e"
+    },
+    "Libs\\StreamJsonRpc.xml": {
+        "MD5": "66d768c7d3bd3b83fd35beed9164f2ad",
+        "SHA256": "3d94f81628f8993c07f21fce803b92300df02381f632a734be8eddebcd08ed36"
+    },
+    "Libs\\SunnyUI.Common.dll": {
+        "MD5": "f165af28e10a14359ac51393018e61c9",
+        "SHA256": "a12c79ec494508c8743ddb3527a5c677e1ffa564e48f798d44eaa6ccf2c04267"
+    },
+    "Libs\\SunnyUI.dll": {
+        "MD5": "90dbaa153b3b0ffa7f871cf9b72e5ca5",
+        "SHA256": "a8bd858ae6c6c34b4a14608da7e5d30709f62fe5f321509a207edb7b2d421490"
+    },
+    "Libs\\System.Buffers.dll": {
+        "MD5": "ecdfe8ede869d2ccc6bf99981ea96400",
+        "SHA256": "accccfbe45d9f08ffeed9916e37b33e98c65be012cfff6e7fa7b67210ce1fefb"
+    },
+    "Libs\\System.Buffers.xml": {
+        "MD5": "1c55860dd93297a6ea2fad2974834c3a",
+        "SHA256": "2ec7fb12e11f9831e40524427f6d88a3c9ffdd56ccfa81d373467b75b479a578"
+    },
+    "Libs\\System.Collections.Immutable.dll": {
+        "MD5": "af7880a90c02c0115cd169c7182ab378",
+        "SHA256": "d5ec0837bb176abf13dcd52c658c4e84c5264f67065b9c19679b6643f7d21564"
+    },
+    "Libs\\System.Collections.Immutable.xml": {
+        "MD5": "fff53c65e84d6ce5cee04b74b568972e",
+        "SHA256": "9a6a67adcea57de70e10d1c30b4772a4388f86fbd4e7162b89ef433b50af7b93"
+    },
+    "Libs\\System.ComponentModel.Annotations.dll": {
+        "MD5": "7d3d14b0417a68ccdd9c51972ff74863",
+        "SHA256": "04113c8549185519f3202790ceb23df609644872b9c249a56d2bcf59566102c4"
+    },
+    "Libs\\System.ComponentModel.Composition.dll": {
+        "MD5": "678b235b77cdc1550403ede44406c6c8",
+        "SHA256": "c5d5866753a2c01dbc1b1bcf5ce1f64e695576886e6abcdc7344e2c996c36e66"
+    },
+    "Libs\\System.ComponentModel.DataAnnotations.dll": {
+        "MD5": "e27bc0e91b797222e8a34db1a9ae8b30",
+        "SHA256": "6f2c6ead4346720ed0810492e4070bc9cb473fcb73a3c3624c352217cbcadba5"
+    },
+    "Libs\\System.Composition.AttributedModel.dll": {
+        "MD5": "aeafef663dbe35fe72364d3c1c76cc39",
+        "SHA256": "044661b7a8cc136a25e4e1e5bf32707970ef50998f0a5077d8257a0b60a5ec39"
+    },
+    "Libs\\System.Composition.AttributedModel.xml": {
+        "MD5": "46ecfc8f4801613c4ee226881dd0bb1d",
+        "SHA256": "3ab0885e70c4ddbd88b06d367dfa5e43bd17c2d0c2ed0e16f57047ffc12c95c1"
+    },
+    "Libs\\System.Composition.Convention.dll": {
+        "MD5": "9c98f2d4eec3218285eb2cf08b5cbc85",
+        "SHA256": "fca58e82a837cc1f144c324db3a7a8c944af992281c44592a1958da723fcd459"
+    },
+    "Libs\\System.Composition.Convention.xml": {
+        "MD5": "2e8c5081099877f8c242908474333bf4",
+        "SHA256": "3df7f5588d64fc59196c7c5e58571e2daa6aaa95f0b7e904e86b3b12025ca63e"
+    },
+    "Libs\\System.Composition.Hosting.dll": {
+        "MD5": "23c9690ceb89dbfc8f54b35008a97704",
+        "SHA256": "a229a9f509b1819bf577057d94fdceab1147de52b488e05ebc20ba8a50370251"
+    },
+    "Libs\\System.Composition.Hosting.xml": {
+        "MD5": "0d96e0c19dae59c97b31b3c9dbdac1c0",
+        "SHA256": "7571f3805a0c9ea2f0aa6f02aa80032de1462b67f1ab2c3a08c879ab7f2589b7"
+    },
+    "Libs\\System.Composition.Runtime.dll": {
+        "MD5": "4ffe1d500e4cb147f60fa00435f9e46e",
+        "SHA256": "98fbf9cd4d77f114e18cdc91aacb74eaf881c0cbd6ac1a0894258cd547aed963"
+    },
+    "Libs\\System.Composition.Runtime.xml": {
+        "MD5": "25eb27ab2d11681e4947144bd3c0d4a3",
+        "SHA256": "cfdbf03f28d85a4a0336cd4d230d525f007b9313fd7f56a745ce94100abb2ce1"
+    },
+    "Libs\\System.Composition.TypedParts.dll": {
+        "MD5": "b4f38eea0f268383293275ee0fee3cdb",
+        "SHA256": "7a67dd2e42d08b865a55fa4296a717906f4fc47896887f8fb122a16b170fd536"
+    },
+    "Libs\\System.Composition.TypedParts.xml": {
+        "MD5": "9f45682776e2df602199ab9c13691348",
+        "SHA256": "fd5585f801c77296250ea2561a3709d7712c63dd84ee4fcf55e8b61476199493"
+    },
+    "Libs\\System.Configuration.ConfigurationManager.dll": {
+        "MD5": "40af84db8d9313a6827cb5bc8dd291bb",
+        "SHA256": "be1068d1af240549afcd48f22cfcf15ac10c4630600a5344ae025d3055029834"
+    },
+    "Libs\\System.Configuration.ConfigurationManager.xml": {
+        "MD5": "88e9310596c2e567daef439d44d35257",
+        "SHA256": "4212cfc7d15d63be3316190449f4d87a84787f376f68d9d3a192e98a50478fad"
+    },
+    "Libs\\System.Configuration.dll": {
+        "MD5": "652f44b1a6eef7beff9acf161350eb3b",
+        "SHA256": "39e64b50e018dd4a3b770dc4f8eb12fb8118061fa73fc77d5e95c33f5b37f0cd"
+    },
+    "Libs\\System.Data.DataSetExtensions.dll": {
+        "MD5": "2c290e2b61b20719359ce2a70dbd9fd2",
+        "SHA256": "f7c59b2c715ea18118cfae8a439a0d4ebfcfaa3be64d11a5ca48183ae5a65010"
+    },
+    "Libs\\System.Data.dll": {
+        "MD5": "31cf3c235cccb381ec282bbf3975f9ae",
+        "SHA256": "31812365198b0707ad98005e19e38a3d354b13fb5cdc272d5000bfe4b82a9b97"
+    },
+    "Libs\\System.Data.OracleClient.dll": {
+        "MD5": "04e6394867a4819da31ceadf35eaac15",
+        "SHA256": "a336627ce47175bcf88ebf1ca3a8a61bd364eb4d4c0ac10ad015c3ea4c329b25"
+    },
+    "Libs\\System.Deployment.dll": {
+        "MD5": "2c21bafa131d02505974e74dea0a8f4f",
+        "SHA256": "77c65d093de630865bcac7e31a6f23e5cc7d5964c6f7645ffdfa4d3330938d7c"
+    },
+    "Libs\\System.Design.dll": {
+        "MD5": "b6f2916a92ec643a21591b5bf7fb388a",
+        "SHA256": "1659bbf108adc1d8b3e9d3e2e69aaac89285c6c8e6b47314d52a914a73720719"
+    },
+    "Libs\\System.Diagnostics.DiagnosticSource.dll": {
+        "MD5": "faef01b70b8e775a92d4b9e2383f2749",
+        "SHA256": "c8a5ca93d8e40dafd48759226f70f90af8ccbc3a8df45d4e6fd5dc5626b05ab9"
+    },
+    "Libs\\System.Diagnostics.DiagnosticSource.xml": {
+        "MD5": "4b31b7723a6c70c5b0feea34cf227172",
+        "SHA256": "236d094482ea1ddf63b1f160d84fc364c1d661a9080b2685a317da82fdb3d43c"
+    },
+    "Libs\\System.dll": {
+        "MD5": "1b711459c28cb423940f9f9c348551bc",
+        "SHA256": "2fe343569f794f2ca92ee14a41875571a9f21bf92637b8f8ee86306534209cca"
+    },
+    "Libs\\System.Drawing.Common.dll": {
+        "MD5": "3c2445d3095f82ec8a526e7843a98ba9",
+        "SHA256": "ca18383a2070518ae8c3e96cbd1705da283c8ada4ddf396217d2bcb7dcd03103"
+    },
+    "Libs\\System.Drawing.Common.xml": {
+        "MD5": "e17181d9ecc9cdc219ba39aa7ef4b53e",
+        "SHA256": "23d89351c93f108a1c2b065a6a87a233cd9043c1086f9d2074c4c9ff00c89e2d"
+    },
+    "Libs\\System.Drawing.Design.dll": {
+        "MD5": "adac0b337450b59374cb41221bba1786",
+        "SHA256": "bcc260cfc0e5628ecf203ffe6e9d1b4c4e3c75b33a6e2ad79a41923e7a50ceb8"
+    },
+    "Libs\\System.Drawing.dll": {
+        "MD5": "87d2bc9f5fb617e15d5887f7ecb8dd80",
+        "SHA256": "65a42d3e5bd4508e3c75133cd1967301a84b5dae6698f300cd831ff79c54b611"
+    },
+    "Libs\\System.IdentityModel.dll": {
+        "MD5": "2aa329835e331876a5ab9df954f10786",
+        "SHA256": "49d5dbbe5e5704e1522f00d4c3e7637b1d3a9b7d1190f996fbc8687013874579"
+    },
+    "Libs\\System.IdentityModel.Tokens.Jwt.dll": {
+        "MD5": "289562fc7249580de4cf313062f4b3dc",
+        "SHA256": "e77f3b391444e550738edb40859ad2354ff2d459e168ef22c2e2753d70cf1210"
+    },
+    "Libs\\System.IdentityModel.Tokens.Jwt.xml": {
+        "MD5": "042769eb502f5d31e0d0a98fb0f0fc45",
+        "SHA256": "693ac7010d2373b0f472c4292182791a6d2aab68f0bbb417e748e936d9eb6dfa"
+    },
+    "Libs\\System.IO.FileSystem.AccessControl.dll": {
+        "MD5": "3409c581f0c5083f0c2a93a7a5ac9790",
+        "SHA256": "e6026501ad4056ff2f1655b0afdfe8923bc6e8fbad67e1e9ef56e3002f49fbb9"
+    },
+    "Libs\\System.IO.FileSystem.AccessControl.xml": {
+        "MD5": "aa27ff36ff4301ea07352b385a1bd399",
+        "SHA256": "ec17e2fe77b4b6635b9f2f1c3716284a83310348d8315690a3a1b60f9b8e139d"
+    },
+    "Libs\\System.IO.Pipelines.dll": {
+        "MD5": "a780fc912dccb6e10b7dd6d67f149bd6",
+        "SHA256": "07a57b9c555a278c359267674aa139aba352b464fea3cc4714a664ad999faf42"
+    },
+    "Libs\\System.IO.Pipelines.xml": {
+        "MD5": "01753e46bca2e10ca2ab28134fefda62",
+        "SHA256": "e4949c3acd3e146d48aa16a6713f172488fa4403227632ffc5d1d568ed00f2a3"
+    },
+    "Libs\\System.Management.dll": {
+        "MD5": "50c3072a4f0d17a5cd2d2c60a7b3f0ac",
+        "SHA256": "23b6d4e6fc3514b0b44feb5acf96e8bd6e1d76c79a39e17f5c3714e7aa3fb965"
+    },
+    "Libs\\System.Memory.Data.dll": {
+        "MD5": "df1e43f8299076b0881a82af16b4f78f",
+        "SHA256": "c17d14a9f3591911bbf1406e1d83d835cc0feb29094b02eda0bf51e40a185e32"
+    },
+    "Libs\\System.Memory.Data.xml": {
+        "MD5": "078364c25948af488dfd72b9ff4c076d",
+        "SHA256": "a5679d6a84131211d281abe332f565b00ef5e5b7d2926a2cb7b6078935846f85"
+    },
+    "Libs\\System.Memory.dll": {
+        "MD5": "f09441a1ee47fb3e6571a3a448e05baf",
+        "SHA256": "bf3fb84664f4097f1a8a9bc71a51dcf8cf1a905d4080a4d290da1730866e856f"
+    },
+    "Libs\\System.Memory.xml": {
+        "MD5": "add19745a43b2515280ce24671863114",
+        "SHA256": "d5714c96607eb1a9d0f90f57ca194d8a9c3ede0656a1d1f461e78b209f054813"
+    },
+    "Libs\\System.Net.dll": {
+        "MD5": "844cd2aed2b9a4dbfd56e8aa65f4ec36",
+        "SHA256": "a7314d7facfc35dd20c17c917fdc8fc9fab9119ab05f79f9fbb8d10e62c34b03"
+    },
+    "Libs\\System.Numerics.dll": {
+        "MD5": "9779c41a9964b6ebcf4712cf26a528b5",
+        "SHA256": "795bb8521f5fc76d64deb55ab3e608cf177e67217f16a10e825e3e6544862ebb"
+    },
+    "Libs\\System.Numerics.Vectors.dll": {
+        "MD5": "aaa2cbf14e06e9d3586d8a4ed455db33",
+        "SHA256": "1d3ef8698281e7cf7371d1554afef5872b39f96c26da772210a33da041ba1183"
+    },
+    "Libs\\System.Numerics.Vectors.xml": {
+        "MD5": "95dd29ca17b63843ad787d3bc9c8c933",
+        "SHA256": "ae2c3de9ad57d7091d9f44dcdee3f88eccf2ba7cb43adc9bb24769154a532dc7"
+    },
+    "Libs\\System.Reflection.Metadata.dll": {
+        "MD5": "b25621450be68d1c0397575dac869eb1",
+        "SHA256": "f79ea5e38af769cbde5d7f5e873564708941a148bb461472019e10373ea4c780"
+    },
+    "Libs\\System.Reflection.Metadata.xml": {
+        "MD5": "37ea659d960cda58e2c7c34a2aa2b38e",
+        "SHA256": "83f48cc8d2eec819c8ef4e12ad7e5bda51c1f965d17a864148627250c8687554"
+    },
+    "Libs\\System.Runtime.CompilerServices.Unsafe.dll": {
+        "MD5": "c610e828b54001574d86dd2ed730e392",
+        "SHA256": "37768488e8ef45729bc7d9a2677633c6450042975bb96516e186da6cb9cd0dcf"
+    },
+    "Libs\\System.Runtime.CompilerServices.Unsafe.xml": {
+        "MD5": "c782e92abbfc0531226f735c6ac56498",
+        "SHA256": "39c2d4a63a186d423e9c866f4d3e9a6acba0103398f20baf8b92a38744894215"
+    },
+    "Libs\\System.Security.AccessControl.dll": {
+        "MD5": "527595c86ad17045a101d567d7d3279f",
+        "SHA256": "ff14c5f628b9a6798d173aefbba0a43d61e66f715108e2576ac0d3dfab9071d0"
+    },
+    "Libs\\System.Security.AccessControl.xml": {
+        "MD5": "4b365d70286134aa219e358210a58ca9",
+        "SHA256": "7618cdd07e3f866a41f980693daad7d006c207643de826be37e5b8773731f3df"
+    },
+    "Libs\\System.Security.Cryptography.ProtectedData.dll": {
+        "MD5": "a318ebf2f27758e54c0ea57b15378f74",
+        "SHA256": "37fa9beebb4f6613a635378a7e145f9187e093471ba2aed5cdf9ae14874a5f7b"
+    },
+    "Libs\\System.Security.Cryptography.ProtectedData.xml": {
+        "MD5": "6d3727415c5849360f165778a2047489",
+        "SHA256": "d22f23a09c1054031e08948dda8c28c334e0e72d7debc7da868e582742ab5083"
+    },
+    "Libs\\System.Security.dll": {
+        "MD5": "46a333d08558d66fbf1f3d22ed3af004",
+        "SHA256": "c867ee14fef732c5803c67a5a00797ef62080b29ce71f6fb14e1af325c8d2a3d"
+    },
+    "Libs\\System.Security.Permissions.dll": {
+        "MD5": "c840a9dfb8572b3a96b3bbf065c9c2a5",
+        "SHA256": "006d4d13c4c4c8327b3a94dc502d0e91114c1c495b408f6b78c6b30a3062a14f"
+    },
+    "Libs\\System.Security.Permissions.xml": {
+        "MD5": "18887d910a0b84444a49557082277346",
+        "SHA256": "460c1caa8929689053d880378df6b5a81af75b222657844362f8c93672b26d1a"
+    },
+    "Libs\\System.Security.Principal.Windows.dll": {
+        "MD5": "be2962225b441cc23575456f32a9cf6a",
+        "SHA256": "b4d8e15adc235d0e858e39b5133e5d00a4baa8c94f4f39e3b5e791b0f9c0c806"
+    },
+    "Libs\\System.Security.Principal.Windows.xml": {
+        "MD5": "9977a803a9bc474843d4dc0b3fd8aff1",
+        "SHA256": "1ab01d3e4957628d79789a9903c90e5b2309f09e7914bb3345e4d087a4209b75"
+    },
+    "Libs\\System.ServiceProcess.dll": {
+        "MD5": "e1e986304d7f55e0dc56b471ec5eeea2",
+        "SHA256": "21b013050b46016f8e6d9e92a2986e32e3cfb19487dce05d672d4a3ab7edf00c"
+    },
+    "Libs\\System.Text.Encoding.CodePages.dll": {
+        "MD5": "2c9e9cd5c6f31ebfdc8155efdc20f4f7",
+        "SHA256": "b77ee852824a6e8098fbade000beb42ce9df32fa4189a00d5e7f472f6c6a5030"
+    },
+    "Libs\\System.Text.Encoding.CodePages.xml": {
+        "MD5": "c1bed46594fd83112d7e77050eb0e874",
+        "SHA256": "2aa6e789fa4827267fcf178cadc9f1eb9772e45fb6d8a1fa631343e221b2c5bc"
+    },
+    "Libs\\System.Text.Encodings.Web.dll": {
+        "MD5": "fa9d0d182c63c49a4c567f7c1652b6e6",
+        "SHA256": "e9c4f5eed186cb129c527c4b8d67d163ea2f2396e9d8b96e30b5e7c12203ce84"
+    },
+    "Libs\\System.Text.Encodings.Web.xml": {
+        "MD5": "85be27287d715b2aac6d2671b66334f0",
+        "SHA256": "8e96160dd96e742f859587a710bbcfa2f11813bfe560ca823da00d3557520d3d"
+    },
+    "Libs\\System.Text.Json.dll": {
+        "MD5": "63f1d0b53ce47b0ac3216281c8bcaf24",
+        "SHA256": "de069c408673e62b098d6e37e64fc2308f02f3f16cb45e051c08b52fe2d104fb"
+    },
+    "Libs\\System.Text.Json.xml": {
+        "MD5": "da51e86f5248eb112a9f02afa1d66138",
+        "SHA256": "2ce568cc3584f2c68e3037a4d2529e4467bf955d5b433790291e914d7a95366a"
+    },
+    "Libs\\System.Threading.AccessControl.dll": {
+        "MD5": "0160de2800bb8bc430f88d864c3ba1ee",
+        "SHA256": "27a6dc860920a8b6ed91437771fe4cfb01f2d15d44408ac8110973870492c19b"
+    },
+    "Libs\\System.Threading.AccessControl.xml": {
+        "MD5": "2af64ee283e98dd81f2864c941e9b2d0",
+        "SHA256": "afca69d2eac8775416e7a1923c11ffde00a1b8876f567677e047d53b91c78034"
+    },
+    "Libs\\System.Threading.Channels.dll": {
+        "MD5": "59436c9e3edf074acfb2c32c58d0c28c",
+        "SHA256": "4aaf175d1823a14899931c6257b7d0c1479f18fd3c1a5d30551786f900d41c5c"
+    },
+    "Libs\\System.Threading.Channels.xml": {
+        "MD5": "7679ebbcbcfc2c5dd0a74d436dcaefd8",
+        "SHA256": "7b1a700af7cf439b2924fd063766a88aea9c51507cdac57222e83abbe1f654ae"
+    },
+    "Libs\\System.Threading.Tasks.Dataflow.dll": {
+        "MD5": "523945fefb54ca3877b2bb684f0a459f",
+        "SHA256": "25dac8fceb82e51e33f2d74d2076f4ec0fb67edd92e02402c9ce6be11da39fdd"
+    },
+    "Libs\\System.Threading.Tasks.Dataflow.xml": {
+        "MD5": "f8a4909b865070e8cb1b610d02008c00",
+        "SHA256": "856c3d1f73bbdc97cf783e828731473c5dfe3e1be0eaec9cd105fd9e8ab14e16"
+    },
+    "Libs\\System.Threading.Tasks.Extensions.dll": {
+        "MD5": "e1e9d7d46e5cd9525c5927dc98d9ecc7",
+        "SHA256": "4f81ffd0dc7204db75afc35ea4291769b07c440592f28894260eea76626a23c6"
+    },
+    "Libs\\System.Threading.Tasks.Extensions.xml": {
+        "MD5": "c89e735fcf37e76e4c3d7903d2111c04",
+        "SHA256": "975a9555f561b363c3e02fd533f6bf7083aa11bbc7cbf2b46c31df3d3696b97b"
+    },
+    "Libs\\System.Transactions.dll": {
+        "MD5": "f116d3ca668daa8423249e5a205bee69",
+        "SHA256": "511e52cfd8ab3dc7c57db0c1ba4238be9f1373e6a506e1ba679f1f39d14a79d7"
+    },
+    "Libs\\System.ValueTuple.dll": {
+        "MD5": "23ee4302e85013a1eb4324c414d561d5",
+        "SHA256": "e905d102585b22c6df04f219af5cbdbfa7bc165979e9788b62df6dcc165e10f4"
+    },
+    "Libs\\System.ValueTuple.xml": {
+        "MD5": "b6e60687ae5db6d011e21e6993620745",
+        "SHA256": "c37e163fa76629c196460c7b4d54e95b1a46a4c66ab7b6f3311959c8137dc5f1"
+    },
+    "Libs\\System.Web.dll": {
+        "MD5": "9e943120cd8f8291dedef89b31939be7",
+        "SHA256": "495f926ee9e41da7e3b847c19a0fef9843ed5ed954034bee50e04f702ba62b4e"
+    },
+    "Libs\\System.Web.Extensions.dll": {
+        "MD5": "4eba6a569da096300dd9b6e3a067d6ae",
+        "SHA256": "7512218c4a6a83de0cdbb8a25240b8b5ee542f93ff9b31acfbf9f7399394450e"
+    },
+    "Libs\\System.Windows.Forms.dll": {
+        "MD5": "5704ee24d68eb8a6d01b2e74f926ce3a",
+        "SHA256": "0b0bc1f2ebfefe0cf827b2e2a0caa3fb8c772d84df26ab8e40abe98e0f2eb300"
+    },
+    "Libs\\System.Xaml.dll": {
+        "MD5": "db6d9b68b72e6ef70cab7eda4e76184f",
+        "SHA256": "f88a02dcc1dc1037884032624f3ab092aa5a3e85d215598d7d13ad7ddc814d81"
+    },
+    "Libs\\System.Xml.dll": {
+        "MD5": "9ea44b529e14810c45c35ff5e9de4e1a",
+        "SHA256": "00208e20e3d1d520c233e7ffc10e4e56f9e6b3920bf4a971faee864268c7e5a5"
+    },
+    "Libs\\System.Xml.Linq.dll": {
+        "MD5": "d0c673eadb63a8d11f573abb578dc98c",
+        "SHA256": "39e51b600362a070fbc231272d167072ecf74b2bbf0fd80bb8b37287683b29ac"
+    },
+    "Libs\\UIAutomationProvider.dll": {
+        "MD5": "6f8409c0a5d946eb28bb5a84783c6e60",
+        "SHA256": "aa28ada34e7c2809383d6e6d907610623a64567ea94f07561e3c3d0da568d64d"
+    },
+    "Libs\\WindowsBase.dll": {
+        "MD5": "640e47908e078505eb2ad6bc86d21ac3",
+        "SHA256": "99591f58a3b54d5e38c9ca85ac2488780161da511748005c542ee7db03857081"
+    },
+    "Libs\\WindowsFormsIntegration.dll": {
+        "MD5": "3c175452c6a6b6c5116bbfee7a7812a1",
+        "SHA256": "c7b810843879edafa5792e7de95e3aeed0abeea74a41381909e94a36de3b9a96"
+    },
+    "logs\\2024-2-6.log": {
+        "MD5": "6e49a224267be4b0ee3e9971c52911ae",
+        "SHA256": "7438f255ff380b4e009f586d47e88b57832b2138a3bb0415b8944db2539dbe36"
+    },
+    "logs\\2024-2-7.log": {
+        "MD5": "cf116105a52fb1fa9fc0601cc93fa2a8",
+        "SHA256": "dde18724222e8db8d25efff3ef15c3847af8a89e4886792aa939267907dad85f"
+    },
+    "logs\\2024-2-8.log": {
+        "MD5": "f043c5bbec7d10f08fe99cf022460db7",
+        "SHA256": "9a79a65743e60e62ee33dde0e6436b2ee35c521e3498c72271fd3677e8595159"
+    },
+    "logs\\2024-3-15.log": {
+        "MD5": "6f75f37991c1db099fa552f6378ef65f",
+        "SHA256": "6861fb6d13fee127d576b94348a3601bcaa166e80a25ad8c473d30bedd424b4f"
+    },
+    "logs\\2024-3-16.log": {
+        "MD5": "6b5908ab7291bf05a038302ccb4ae0fc",
+        "SHA256": "1b483389eb3d0e8019f699ffda4de69ae882831f981e0cc0d318846285473904"
+    },
+    "logs\\2024-3-23.log": {
+        "MD5": "f72085b00fb9aaf80a3fe97a00d4f898",
+        "SHA256": "4f72aa67f649cae00cba61c2bf1dd8ec03b6487188032b377eda1086ded795ec"
+    },
+    "logs\\2024-4-14.log": {
+        "MD5": "7797be91479c9b601dc63f25e2be7bca",
+        "SHA256": "3b4ded54c0e9445096b877348f106caad7435017368a24bf728349cb20c8be0f"
+    },
+    "logs\\2024-4-20.log": {
+        "MD5": "b8f41772a962b9c137eab95bff6715e2",
+        "SHA256": "33722c501e5fed0cc54e9bc2093159e47e800a2330a57f6183ad65f60ae994d5"
+    },
+    "logs\\2024-5-17.log": {
+        "MD5": "77b43e08ac95f13167e22f07d05c837d",
+        "SHA256": "521531cd3ef7b449e4f57a27b86684dad3802a22b6c7de83a487a4bc3c6a4b12"
+    },
+    "logs\\2024-6-28.log": {
+        "MD5": "a093f2b976480ea37ad43eac519b2744",
+        "SHA256": "1b52cf7f53e4098e5a89d3924c54ccd8a489b2947f363461564ce5f988ea3275"
+    },
+    "logs\\2024-6-29.log": {
+        "MD5": "0e6d1e3da58ec9a0fdcef4f89a916c50",
+        "SHA256": "e582edd5239573b53f5ddbd2dd046b9b25c03c7e27892d1a0ed632f034a48326"
+    },
+    "logs\\2024-6-30.log": {
+        "MD5": "169301c4c9c008fcc01ff732a671653c",
+        "SHA256": "c7cd676663d09aa8cdcf27acda733f889fe22f0d6aa98366eb6c3648fd8cac81"
+    },
+    "logs\\2024-7-1.log": {
+        "MD5": "d096b1d9433a9021c27e0349757caf1f",
+        "SHA256": "c6686ee3d37032509ec9fad9f63e6c29348175cd3ad659f911fe987e9b67277b"
+    },
+    "logs\\2024-7-10.log": {
+        "MD5": "4825fce4c1ea27deb09c03d5496246da",
+        "SHA256": "617c5be85f25847c634de0f8e21b5b220c2b99a59cbe020bb8dca23e57240ca4"
+    },
+    "logs\\2024-7-11.log": {
+        "MD5": "86ca2608d0981d176937a8677dd88eb2",
+        "SHA256": "8d274b9033c40a435b492f85d92a10b010711f4ea75990b1c0114afd4c9420f2"
+    },
+    "logs\\2024-7-12.log": {
+        "MD5": "0de9ad730f16558a6009546c4959862c",
+        "SHA256": "a14eeb7a908a2811ffd84ed87ac5f0880d493e4bacb12d48b0257c123aae7251"
+    },
+    "logs\\2024-7-13.log": {
+        "MD5": "d4bd6ba416e542f7bde0a1ee4531ae97",
+        "SHA256": "d4cd7540e1fc4378b70e4cdc2140968eedd71849629c627598b21610a2b8fcbd"
+    },
+    "logs\\2024-7-14.log": {
+        "MD5": "d56ee7c23d429fb636ae21dcc632b863",
+        "SHA256": "fb9174b55541e91842ac222ea62ec14772db5c720c5931b5f53a1437f839e2dc"
+    },
+    "logs\\2024-7-15.log": {
+        "MD5": "ff3e67f6da79851064953f4c8358f2a4",
+        "SHA256": "be48ac31ae5941b016260f61ccc3191ab215d2550ecc9014fd64e7aad99109f9"
+    },
+    "logs\\2024-7-16.log": {
+        "MD5": "ffa9898df2f18bbb5d59074cdedd718c",
+        "SHA256": "a5aa8855fb466512ac0722bf1692c3da7a4a901c700bb321efdb955c3dc13e2b"
+    },
+    "logs\\2024-7-7.log": {
+        "MD5": "aaac34f5c37fce191560213062bcfa11",
+        "SHA256": "43831002abb0fc5b5169384ff02ebe9584ea477149691f813723ff4877e16687"
+    },
+    "logs\\2024-7-8.log": {
+        "MD5": "ee58b59426f3652a2dfb1af2e1a162ea",
+        "SHA256": "146a87bb8ead0a81d5365e33880b5aed3690d630e6c70e83b70312a9b80bbc6a"
+    },
+    "logs\\2024-7-9.log": {
+        "MD5": "db7509ea2087f719548e4f6fa94eb781",
+        "SHA256": "92692d923d97f6ad9e15b6b157bd951a058c48779a9970adeccca973eea64d3d"
+    },
+    "Package\\Reset\\DISABLED.FLAG": {
+        "MD5": "d41d8cd98f00b204e9800998ecf8427e",
+        "SHA256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855"
+    },
+    "Package\\Reset\\InitialDirectory.7z": {
+        "MD5": "5bc639c886a3b48b6b0d16ba79ab0e72",
+        "SHA256": "850b2db896839794a05a28a375b035be7954ec325c7b65c9cab28b7c1c133d5c"
+    },
+    "Package\\Reset\\InitialDirectory.7z.pvtconf": {
+        "MD5": "6c141d27c68f5cb7c5b5c8d6579216f3",
+        "SHA256": "2517c8da02fd96f6595f1e3711991121de51761dbac3aa53d0e6c2fc474a7a6b"
+    },
+    "Package\\Reset\\InitialDirectory.path": {
+        "MD5": "3cc9e216a0b9784b8c4285c55c43d547",
+        "SHA256": "c4470b63e0df81e45546033038ff703e427a165426f8e80dfd7f5576baeeecd1"
+    },
+    "Package\\Reset\\package.info": {
+        "MD5": "98bd331141f141629798c6cd2910ad82",
+        "SHA256": "82dd78f795cceec6f507966fd90e4fb857fb4b45abb5179e31c1e0384e43742d"
+    },
+    "Tools\\7z.dll": {
+        "MD5": "bbf51226a8670475f283a2d57460d46c",
+        "SHA256": "73578f14d50f747efa82527a503f1ad542f9db170e2901eddb54d6bce93fc00e"
+    },
+    "Tools\\7z.dll.pvtconf": {
+        "MD5": "246afb5515164e53d43a7a1c8227547f",
+        "SHA256": "55e06233fc582f9927db654c2fa5f14417684813b8f580ecde7a42a19b6761a5"
+    },
+    "Tools\\7z.exe": {
+        "MD5": "fe522d8659618e3a50aafd8ac1518638",
+        "SHA256": "254cf6411d38903b2440819f7e0a847f0cfee7f8096cfad9e90fea62f42b0c23"
+    },
+    "Tools\\7z.exe.pvtconf": {
+        "MD5": "1ac7c221bdefa182106236e501957d42",
+        "SHA256": "dac9cb36d00822c735a806111b81718801b86e30220c421f0b1c580da3dbd37e"
+    },
+    "Tools\\Hello.py": {
+        "MD5": "58540ad68d67890f9739da1cf3546b99",
+        "SHA256": "eb912a3d8ddbe2ab7695a070403d26c6ae43e56f9b35170b07884a64fa38481a"
+    },
+    "Tools\\IDE-PatchApplyer.exe": {
+        "MD5": "e06886317ce9458335ab434f7b67470e",
+        "SHA256": "bbe974c39d593d59ddf9d590aa0a151bf6fb65c3027fefa641724f58d96ffc42"
+    },
+    "Tools\\IDE-PatchApplyer.exe.config": {
+        "MD5": "f6d7565a3ac257155f939fd6416e7321",
+        "SHA256": "a16bbbe33bcfcb4bf77c1f9c13454cd6789cc9f0344ef00d522ab2f144a89161"
+    },
+    "Tools\\IDE-PatchApplyer.pdb": {
+        "MD5": "b633f982ddf04cf0b456d64bc0652b40",
+        "SHA256": "7a72c7fcb27f0f24b3fd5062137ccb60301dd41bb7a326c9744778f2eda32ce0"
+    },
+    "Tools\\RandomRenamer.exe": {
+        "MD5": "5d871531a00f52f3b9394ca97715a665",
+        "SHA256": "1717210ba64b37ddcac79f9de74639397879218cbc50e47c38903f1cbb9aec4e"
+    },
+    "Tools\\RandomRenamer.exe.config": {
+        "MD5": "15c8c4ba1aa574c0c00fd45bb9cce1ab",
+        "SHA256": "f82338e8e9c746b5d95cd2ccc7bf94dd5de2b9b8982fffddf2118e475de50e15"
+    },
+    "Tools\\UserTutorial-lzh-TD.md": {
+        "MD5": "8b8c4f666879d0625a4f32bf3354ded3",
+        "SHA256": "e56e8e10abc7e5a92af14c84f5c9b096a728e4729f29373715b07a27e082118c"
+    },
+    "Tools\\UserTutorial_len-US.html": {
+        "MD5": "a1a4eac68b5e5713486f70451730ca5f",
+        "SHA256": "b73f2f8928b9f07ebdb31c59558e8bcad3773edb16e76a9f5af161ca4858febe"
+    },
+    "Tools\\UserTutorial_len-US.md": {
+        "MD5": "77cd409c6b539ebfdd6c78471b3e0569",
+        "SHA256": "0bca8bdcc31d604fd2eb532d34c176ba72b2c1cdbb3eb712734fea3ba50dcae0"
+    },
+    "Tools\\UserTutorial_lja-JP.html": {
+        "MD5": "8d72ae6baa3dfa5ec481edc4bb8839a7",
+        "SHA256": "adc2a32738e5aec12516a690cd8f6a28a878171724ca72ff29cb8e9fab03e73a"
+    },
+    "Tools\\UserTutorial_lja-JP.md": {
+        "MD5": "17a15bef840699c57644740a964ac81d",
+        "SHA256": "bd6362305b26c32c17f8d9320e43c412d2ab86f1e278ad5261f1b8c48e86da17"
+    },
+    "Tools\\UserTutorial_lzh-CN.html": {
+        "MD5": "b7f96cdbeb1e4890a773f35b4153d022",
+        "SHA256": "ff44bb3979f53c2ed1fb0c5bd2922e0411648b1d22bb89fd981e2fed645b957d"
+    },
+    "Tools\\UserTutorial_lzh-CN.md": {
+        "MD5": "07b81ed31bc1eb3167a1995b3181ba1f",
+        "SHA256": "7d72965bba44c23bd8483c2d85300729428a60cd88c8bf9dc8e3179d5e2f7380"
+    },
+    "Tools\\UserTutorial_lzh-TD.html": {
+        "MD5": "c69bba432c745f7e30a58a2ed0ef7f48",
+        "SHA256": "0b8f2fb61ed43063c1bb822dbffafe2a1d79d0531433e6bae2009a76530a7319"
+    },
+    "Tools\\UserTutorial.md.Assets\\1.1.1-en.png": {
+        "MD5": "83759acf864e47aa2c31db0c44f03783",
+        "SHA256": "9ce202a9d07db3477ba952b139c20a24a26bec61fe1852063865833c7ae0db66"
+    },
+    "Tools\\UserTutorial.md.Assets\\1.1.1-ja.png": {
+        "MD5": "8631dfe540b331c8ca67bbca01762aff",
+        "SHA256": "ace3a05ee20a64643e968314608cf9d8be95ed207fb71995e796a823a4c978a0"
+    },
+    "Tools\\UserTutorial.md.Assets\\1.1.1-zhtd.png": {
+        "MD5": "456373d1789c47a6ca634ff04c60083f",
+        "SHA256": "902aa7aa1da171ad7629d234b96dbf9a393253d63cc725b9e9f4be36488fdf05"
+    },
+    "Tools\\UserTutorial.md.Assets\\1.1.1.png": {
+        "MD5": "5e8e03a73d248a434477964a73383285",
+        "SHA256": "0020fa07b1da8af8725895c1d8f88ca1628ed517dc777914755d2c970e4b5283"
+    }
+}

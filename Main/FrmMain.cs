@@ -1492,13 +1492,16 @@ namespace IDE
             LOGGER.WriteLog($"主程序初始化时间共计：{Math.Round(end_time, 2)}s", EnumMsgLevel.INFO, EnumPort.CLIENT, EnumModule.INIT);
             var _end_time = Program.startTime.TotalSeconds;
             LOGGER.WriteLog($"初始化时间共计：{Math.Round(_end_time + end_time, 2)}s", EnumMsgLevel.INFO, EnumPort.CLIENT, EnumModule.INIT);
+            this.TopMost = true;
             Program.splash.metroProgressBar1.PerformStep();
             this.WindowState = FormWindowState.Maximized;
-            this.Show();
             Program.splash.metroProgressBar1.Value = Program.splash.metroProgressBar1.Maximum;
+            this.Show();
             Program.splash.Hide();
-            this.Focus();
             Program.splash.Close();
+            this.Show();
+            this.Focus();
+            this.TopMost = false;
             var isFirstBoot = reConf.ReadBool("FirstBoot", "IsFirstBoot");
             if (isFirstBoot) { new FrmFirstBootStep1().ShowDialog(); }
             await UpdateCheckAsync();
