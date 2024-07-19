@@ -871,7 +871,7 @@
             this.button1.TabIndex = 46;
             this.InfoTips.SetToolTip(this.button1, "编辑所选Xshd文件");
             this.button1.UseVisualStyleBackColor = true;
-            this.button1.Click += new System.EventHandler(this.EditXshdFIles);
+            this.button1.Click += new System.EventHandler(this.EditXshdFiles);
             // 
             // Running
             // 

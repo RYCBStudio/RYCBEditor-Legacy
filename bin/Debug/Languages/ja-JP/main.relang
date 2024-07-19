@@ -60,6 +60,7 @@ text.ts.run.configrunners=ドライバの設定
 text.bottom.errors.sub.line=行番号
 text.inprogram.fileex.dmp=メモリダンプファイル
 
+tip.reboottoapply=RYCB Editorはアップデートを適用するために再起動する必要があります。「OK」をクリックして続行します。
 text.inprogram.bootfile=ブートファイル
 text.inprogram.bootfile.0=開いていることを検出しました
 text.inprogram.bootfile.1=，この操作はIDEのクラッシュ、メモリオーバーフロー、システムのフリーズなどの制御不能な問題を引き起こす可能性があります。続行してよろしいですか？

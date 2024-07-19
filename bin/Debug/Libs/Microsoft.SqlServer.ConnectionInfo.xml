@@ -2691,33 +2691,6 @@
             </summary>
             <returns></returns>
         </member>
-        <member name="T:Microsoft.SqlServer.Management.Common.ITransferMetadataProvider">
-            <summary>
-            This interface abstracts the metadata provider - which is
-            the component that computes the metadata needed in the transfer process
-            </summary>
-        </member>
-        <member name="M:Microsoft.SqlServer.Management.Common.ITransferMetadataProvider.SaveMetadata">
-            <summary>
-            Save the metadata in the paths provided by the variables in the input list
-            </summary>
-        </member>
-        <member name="M:Microsoft.SqlServer.Management.Common.ITransferMetadataProvider.GetOptions">
-            <summary>
-            returns the options as a collection of named variables
-            </summary>
-            <returns></returns>
-        </member>
-        <member name="T:Microsoft.SqlServer.Management.Common.IDataTransferProvider">
-            <summary>
-            This interface abstracts the data transfer mechanism
-            </summary>
-        </member>
-        <member name="T:Microsoft.SqlServer.Management.Common.TransferException">
-            <summary>
-            This is the exception that will be thrown by the transfer operation
-            </summary>
-        </member>
         <member name="T:Microsoft.SqlServer.Management.Common.WindowsCredential">
             <summary>
             Enables storage and retrieval of passwords from Windows Credential Manager, keyed by connection type and user name

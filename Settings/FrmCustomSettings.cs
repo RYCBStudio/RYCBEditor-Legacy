@@ -391,7 +391,7 @@ namespace IDE
             new CustomSettingsFileEditor().Show();
         }
 
-        private void EditXshdFIles(object sender, EventArgs e)
+        private void EditXshdFiles(object sender, EventArgs e)
         {
             new XshdFileEditor(TBoxXshdCache.Text+"\\"+CBoxEditorXshd.SelectedItem).Show();
         }

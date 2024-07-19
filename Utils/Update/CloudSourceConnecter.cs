@@ -6,9 +6,9 @@ namespace IDE.Utils.Update;
 internal class CloudSourceConnecter
 {
     /// <summary>
-    /// 通过服务器超时更改<see cref="AreaInfo"/>信息。
+    /// 通过服务器超时更改<see cref="IDE.Utils.Update.GlobalDefinitions.AreaInfo"/>信息。
     /// </summary>
-    /// <returns>当前的<see cref="AreaInfo"/>。</returns>
+    /// <returns>当前的<see cref="IDE.Utils.Update.GlobalDefinitions.AreaInfo"/>。</returns>
     public async Task RecognizeAreaAsync()
     {
         HttpClient httpClient = new()

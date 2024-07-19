@@ -58,6 +58,7 @@ text.bottom.console=Console
 text.bottom.errors.sub.type=Type
 text.bottom.errors.sub.description=Description
 text.bottom.errors.sub.line=Line
+tip.reboottoapply=RYCB Editor needs reboot to apply package. Press "OK" to continue.
 
 text.inprogram.bootfile=Boot File
 text.inprogram.bootfile.0=Detected that you are opening
