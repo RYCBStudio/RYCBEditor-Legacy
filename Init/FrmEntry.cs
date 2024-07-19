@@ -10,6 +10,7 @@ namespace IDE
         private bool light = false;
         public FrmEntry(bool light)
         {
+            CheckForIllegalCrossThreadCalls = false;
             InitializeComponent();
             uiLabel2.Text = string.Format(uiLabel2.Text, DateTime.Now.Year.ToString());
             this.light = light;

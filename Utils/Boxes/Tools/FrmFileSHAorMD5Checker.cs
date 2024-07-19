@@ -106,7 +106,7 @@ public partial class FrmFileSHAorMD5Checker : UIForm
         }
         catch (Exception ex)
         {
-            FrmMain.LOGGER.WriteErrLog(new Exception("GetMD5HashFromFile() fail,error:" + ex.Message), EnumMsgLevel.ERROR, EnumPort.CLIENT);
+            FrmMain.LOGGER.Err(new Exception("GetMD5HashFromFile() fail,error:" + ex.Message), EnumMsgLevel.ERROR, EnumPort.CLIENT);
         }
         return string.Empty;
     }

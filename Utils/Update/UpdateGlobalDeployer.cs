@@ -28,14 +28,14 @@ internal partial class UpdateGlobalDeployer
                 }
                 else
                 {
-                    FrmMain.LOGGER.WriteLog("Errors occured when decompressing the update file.", EnumMsgLevel.ERROR, EnumPort.CLIENT, EnumModule.UPDATE);
+                    FrmMain.LOGGER.Log("Errors occured when decompressing the update file.", EnumMsgLevel.ERROR, EnumPort.CLIENT, EnumModule.UPDATE);
                 }
             }
             else
             {
                 FrmMain.instance.NewUpdateTip.Text = "Updates are broken.";
                 FrmMain.instance.CanUpdateIcon.Image = Properties.Resources.Exception_32X;
-                FrmMain.LOGGER.WriteLog("Fatal Error: The MD5 value or SHA256 value does not match the original value. The update file may have been modified. To keep your computer safe, IDE has stopped reading it.", EnumMsgLevel.FATAL, EnumPort.CLIENT, EnumModule.UPDATE);
+                FrmMain.LOGGER.Log("Fatal Error: The MD5 value or SHA256 value does not match the original value. The update file may have been modified. To keep your computer safe, IDE has stopped reading it.", EnumMsgLevel.FATAL, EnumPort.CLIENT, EnumModule.UPDATE);
             }
         }
     }

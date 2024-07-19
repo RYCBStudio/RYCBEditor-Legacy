@@ -83,7 +83,7 @@ internal static class GlobalDefinitions
         }
         catch (Exception ex)
         {
-            FrmMain.LOGGER.WriteErrLog(new Exception("GetMD5HashFromFile() fail,error:" + ex.Message), EnumMsgLevel.ERROR, EnumPort.CLIENT);
+            FrmMain.LOGGER.Err(new Exception("GetMD5HashFromFile() fail,error:" + ex.Message), EnumMsgLevel.ERROR, EnumPort.CLIENT);
         }
         return string.Empty;
     }
@@ -145,7 +145,7 @@ internal static class GlobalDefinitions
 
     internal static bool ValidateRevisionNumber(string revisionNumber)
     {
-        FrmMain.LOGGER.WriteLog("验证修订号。", EnumMsgLevel.INFO, EnumPort.CLIENT, EnumModule.UPDATE);
+        FrmMain.LOGGER.Log("验证修订号。", EnumMsgLevel.INFO, EnumPort.CLIENT, EnumModule.UPDATE);
         List<string> rn_list = ["alpha", "beta", "rc", "public"];
         if (rn_list.IndexOf(revisionNumber) >= rn_list.IndexOf(FrmMain.REVISION.ToLower()))
         {

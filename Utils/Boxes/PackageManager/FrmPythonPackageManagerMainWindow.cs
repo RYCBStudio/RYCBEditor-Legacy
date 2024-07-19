@@ -52,7 +52,7 @@ public partial class PythonPackageManagerMain : UIForm
     private string GetPackageStatus(string name)
     {
         Process pip = new();
-        var filename = "D:\\Desktop\\1.txt";//{GlobalSettings.commonTempFilePath}
+        var filename = GlobalSettings.commonTempFilePath;
         pip.StartInfo = new ProcessStartInfo()
         {
             Arguments = $"show {name} > {filename}",
@@ -364,7 +364,7 @@ public partial class PythonPackageManagerMain : UIForm
             }
             catch (Exception ex)
             {
-                FrmMain.LOGGER.WriteErrLog(ex, EnumMsgLevel.ERROR, EnumPort.CLIENT);
+                FrmMain.LOGGER.Err(ex, EnumMsgLevel.ERROR, EnumPort.CLIENT);
             }
         }
     }

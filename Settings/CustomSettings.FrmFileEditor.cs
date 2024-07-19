@@ -69,7 +69,7 @@ public partial class CustomSettingsFileEditor : UIForm
         {
             FileSavingIcon.Image = Properties.Resources.file_save_failed_dark;
             FileSavingTip.Text = FrmMain.I18nFile.Localize("text.st.filesavefailed");
-            FrmMain.LOGGER.WriteErrLog(ex, EnumMsgLevel.ERROR, EnumPort.CLIENT);
+            FrmMain.LOGGER.Err(ex, EnumMsgLevel.ERROR, EnumPort.CLIENT);
         }
         FileSavingIcon.Visible = true;
         FileSavingTip.Visible = true;

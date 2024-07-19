@@ -394,7 +394,7 @@ public partial class PackageManagerMain : UIForm
                 }
                 catch (Exception ex)
                 {
-                    FrmMain.LOGGER.WriteErrLog(ex, EnumMsgLevel.ERROR, EnumPort.CLIENT);
+                    FrmMain.LOGGER.Err(ex, EnumMsgLevel.ERROR, EnumPort.CLIENT);
                 }
             }
             else if (pkgTags["Status"] == "Disabled")
@@ -409,7 +409,7 @@ public partial class PackageManagerMain : UIForm
                 }
                 catch (Exception ex)
                 {
-                    FrmMain.LOGGER.WriteErrLog(ex, EnumMsgLevel.ERROR, EnumPort.CLIENT);
+                    FrmMain.LOGGER.Err(ex, EnumMsgLevel.ERROR, EnumPort.CLIENT);
                 }
             }
             else
@@ -423,7 +423,7 @@ public partial class PackageManagerMain : UIForm
                 }
                 catch (Exception ex)
                 {
-                    FrmMain.LOGGER.WriteErrLog(ex, EnumMsgLevel.ERROR, EnumPort.CLIENT);
+                    FrmMain.LOGGER.Err(ex, EnumMsgLevel.ERROR, EnumPort.CLIENT);
                 }
 
             }

@@ -214,7 +214,7 @@ partial class FrmFirstBootStep2
             this.uiIntegerUpDown2.Value = 12;
             this.uiIntegerUpDown2.ValueChanged += new Sunny.UI.UIIntegerUpDown.OnValueChanged(this.UpdateEditorFont);
             // 
-            // FirstBootStep2
+            // FrmFirstBootStep2
             // 
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.None;
             this.ClientSize = new System.Drawing.Size(945, 396);
@@ -232,10 +232,11 @@ partial class FrmFirstBootStep2
             this.Controls.Add(this.uiLabel1);
             this.Controls.Add(this.uiLabel3);
             this.MaximizeBox = false;
-            this.Name = "FirstBootStep2";
+            this.Name = "FrmFirstBootStep2";
             this.Text = "Basic Settings";
             this.TitleFont = new System.Drawing.Font("微软雅黑", 12F);
             this.ZoomScaleRect = new System.Drawing.Rectangle(19, 19, 800, 450);
+            this.Load += new System.EventHandler(this.FrmFirstBootStep2_Load);
             this.ResumeLayout(false);
             this.PerformLayout();
 

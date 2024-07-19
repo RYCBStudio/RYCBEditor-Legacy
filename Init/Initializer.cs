@@ -33,7 +33,7 @@ namespace IDE
             #region RegisterTypes
             var RE_F_py = HKCR.CreateSubKey("RE.File.py", true);
             RE_F_py.SetValue("", "Python 文件");
-            RE_F_py.CreateSubKey("DefaultIcon", true).SetValue("", $"{Application.StartupPath}\\IcoResources.dll,2");
+            RE_F_py.CreateSubKey("DefaultIcon", true).SetValue("", $"{Application.StartupPath}\\IcoResources.dll,1");
             RE_F_py.CreateSubKey("Shell", true).CreateSubKey("Open").CreateSubKey("Command").SetValue("", $"\"{Application.ExecutablePath}\" \"%1\"");
             var RE_F_pycn = HKCR.CreateSubKey("RE.File.pycn", true);
             RE_F_pycn.SetValue("", "The Py-CN Project 源文件");
@@ -41,13 +41,13 @@ namespace IDE
             RE_F_pycn.CreateSubKey("Shell", true).CreateSubKey("Open").CreateSubKey("Command").SetValue("", $"\"{Application.ExecutablePath}\" \"%1\"");
             var RE_F_icbc = HKCR.CreateSubKey("RE.File.icbc", true);
             RE_F_icbc.SetValue("", "RYCB Editor 运行配置文件");
-            RE_F_icbc.CreateSubKey("DefaultIcon", true).SetValue("", $"{Application.StartupPath}\\IcoResources.dll,1");
+            RE_F_icbc.CreateSubKey("DefaultIcon", true).SetValue("", $"{Application.StartupPath}\\IcoResources.dll,0");
             var RE_F_rec = HKCR.CreateSubKey("RE.File.rec", true);
             RE_F_rec.SetValue("", "RYCB Editor 配置文件");
-            RE_F_rec.CreateSubKey("DefaultIcon", true).SetValue("", $"{Application.StartupPath}\\IcoResources.dll,8");
+            RE_F_rec.CreateSubKey("DefaultIcon", true).SetValue("", $"{Application.StartupPath}\\IcoResources.dll,7");
             var RE_F_pyx = HKCR.CreateSubKey("RE.File.pyx", true);
             RE_F_pyx.SetValue("", "Cython 文件");
-            RE_F_pyx.CreateSubKey("DefaultIcon", true).SetValue("", $"{Application.StartupPath}\\IcoResources.dll,7");
+            RE_F_pyx.CreateSubKey("DefaultIcon", true).SetValue("", $"{Application.StartupPath}\\IcoResources.dll,6");
             var RE_F_pyi = HKCR.CreateSubKey("RE.File.pyi", true);
             RE_F_pyi.SetValue("", "Python 存根文件");
             RE_F_pyi.CreateSubKey("DefaultIcon", true).SetValue("", $"{Application.StartupPath}\\IcoResources.dll,5");

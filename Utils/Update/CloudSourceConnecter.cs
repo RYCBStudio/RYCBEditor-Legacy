@@ -47,7 +47,7 @@ internal class CloudSourceConnecter
                     GlobalDefinitions.DownloadBaseUri = "https://share.asytech.cn/remote.php/webdav/IDE/";
                     break;
                 case GlobalDefinitions.AreaInfo.GLOBAL:
-                    GlobalDefinitions.DownloadBaseUri = "https://raw.githubusercontent.com/RYCBStudio/RE-Update-Resources/UpdateResources/";
+                    GlobalDefinitions.DownloadBaseUri = "https://github.com/RYCBStudio/RE-Update-Resources/releases/download/0.1.0-rc/";
                     break;
                 default:
                     break;

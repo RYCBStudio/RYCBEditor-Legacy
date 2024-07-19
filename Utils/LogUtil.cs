@@ -44,7 +44,7 @@ namespace IDE
         /// <param name="data">要写入的数据</param>
         /// <param name="msgLevel">消息级别</param>
         /// <param name="port">端口</param>
-        public void WriteLog(string data, EnumMsgLevel msgLevel, EnumPort port)
+        public void Log(string data, EnumMsgLevel msgLevel, EnumPort port)
         {
             FileStream tmpStream;
             try
@@ -75,7 +75,7 @@ namespace IDE
         /// <param name="msgLevel">消息级别</param>
         /// <param name="port">端口</param>
         /// <param name="module">模块名</param>
-        public void WriteLog(string data, EnumMsgLevel msgLevel = EnumMsgLevel.INFO, EnumPort port = EnumPort.CLIENT, EnumModule module = EnumModule.MAIN, string cutsom_module = "")
+        public void Log(string data, EnumMsgLevel msgLevel = EnumMsgLevel.INFO, EnumPort port = EnumPort.CLIENT, EnumModule module = EnumModule.MAIN, string cutsom_module = "")
         {
             FileStream tmpStream;
             try
@@ -107,7 +107,7 @@ namespace IDE
         /// <param name="ex">捕获的异常</param>
         /// <param name="msgLevel">消息级别</param>
         /// <param name="port">端口</param>
-        public void WriteErrLog(Exception ex, EnumMsgLevel msgLevel, EnumPort port, EnumModule module = EnumModule.MAIN)
+        public void Err(Exception ex, EnumMsgLevel msgLevel, EnumPort port, EnumModule module = EnumModule.MAIN)
         {
             var data = ex.Message;
             FileStream tmpStream = new(logPath, FileMode.OpenOrCreate, FileAccess.ReadWrite, FileShare.ReadWrite);
@@ -144,7 +144,7 @@ namespace IDE
         /// <param name="ex">捕获的异常</param>
         /// <param name="msgLevel">消息级别</param>
         /// <param name="port">端口</param>
-        public void WriteErrLog(string data, Exception ex, EnumMsgLevel msgLevel, EnumPort port)
+        public void Err(string data, Exception ex, EnumMsgLevel msgLevel, EnumPort port)
         {
             FileStream tmpStream = new(logPath, FileMode.OpenOrCreate, FileAccess.ReadWrite, FileShare.ReadWrite);
             StreamWriter sw = new(tmpStream);
@@ -283,7 +283,7 @@ namespace IDE
             catch (Exception ex)
             {
                 var LOGGER = FrmMain.LOGGER;
-                LOGGER.WriteErrLog($"An/Some Exception(s) are caught：{ex.Message}", ex, EnumMsgLevel.FATAL, EnumPort.CLIENT);
+                LOGGER.Err($"An/Some Exception(s) are caught：{ex.Message}", ex, EnumMsgLevel.FATAL, EnumPort.CLIENT);
             }
             return "invalid param";
         }

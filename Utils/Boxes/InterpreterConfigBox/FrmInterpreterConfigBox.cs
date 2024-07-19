@@ -70,7 +70,7 @@ public partial class FrmInterpreterConfigBox : UIForm
             }
             catch (Exception ex)
             {
-                FrmMain.LOGGER.WriteErrLog(ex, EnumMsgLevel.ERROR, EnumPort.CLIENT);
+                FrmMain.LOGGER.Err(ex, EnumMsgLevel.ERROR, EnumPort.CLIENT);
                 label6.Show();
                 pictureBox1.Show();
             }
@@ -99,7 +99,7 @@ public partial class FrmInterpreterConfigBox : UIForm
             }
             catch (Exception ex)
             {
-                FrmMain.LOGGER.WriteErrLog(ex, EnumMsgLevel.ERROR, EnumPort.CLIENT);
+                FrmMain.LOGGER.Err(ex, EnumMsgLevel.ERROR, EnumPort.CLIENT);
             }
         }
     }
@@ -125,7 +125,7 @@ public partial class FrmInterpreterConfigBox : UIForm
         }
         catch (Exception ex)
         {
-            FrmMain.LOGGER.WriteErrLog(ex, EnumMsgLevel.ERROR, EnumPort.CLIENT);
+            FrmMain.LOGGER.Err(ex, EnumMsgLevel.ERROR, EnumPort.CLIENT);
             label6.Text = "Failed to refresh.";
             label6.Show();
             pictureBox1.Show();
@@ -149,8 +149,8 @@ public partial class FrmInterpreterConfigBox : UIForm
         }
         catch (Exception ex)
         {
-            FrmMain.LOGGER.WriteErrLog(ex, EnumMsgLevel.WARN, EnumPort.CLIENT);
-            if (ex is IOException) FrmMain.LOGGER.WriteLog("I/O错误：无法读取文件。", EnumMsgLevel.ERROR, EnumPort.CLIENT, EnumModule.IO);
+            FrmMain.LOGGER.Err(ex, EnumMsgLevel.WARN, EnumPort.CLIENT);
+            if (ex is IOException) FrmMain.LOGGER.Log("I/O错误：无法读取文件。", EnumMsgLevel.ERROR, EnumPort.CLIENT, EnumModule.IO);
         }
     }
 
@@ -219,7 +219,7 @@ public partial class FrmInterpreterConfigBox : UIForm
         }
         catch (Exception ex)
         {
-            FrmMain.LOGGER.WriteErrLog(ex, EnumMsgLevel.ERROR, EnumPort.CLIENT);
+            FrmMain.LOGGER.Err(ex, EnumMsgLevel.ERROR, EnumPort.CLIENT);
             label6.Text = "Fail to run command. Something wrong happened.";
             label6.Show();
             pictureBox1.Show();

@@ -125,22 +125,22 @@ internal partial class UpdateChecker
     #region Downloader 事件
     private void Downloader_DownloadTestFileCompleted(object sender, System.ComponentModel.AsyncCompletedEventArgs e)
     {
-        if (e.Error is not null) { FrmMain.LOGGER.WriteErrLog(e.Error, EnumMsgLevel.WARN, EnumPort.SERVER); }
-        FrmMain.LOGGER.WriteLog("测试文件下载完成", EnumMsgLevel.INFO, EnumPort.CLIENT, EnumModule.NET);
+        if (e.Error is not null) { FrmMain.LOGGER.Err(e.Error, EnumMsgLevel.WARN, EnumPort.SERVER); }
+        FrmMain.LOGGER.Log("测试文件下载完成", EnumMsgLevel.INFO, EnumPort.CLIENT, EnumModule.NET);
         GlobalDefinitions.UpdateCheckOK = true;
     }
 
     private void Downloader_DownloadFileCompleted(object sender, System.ComponentModel.AsyncCompletedEventArgs e)
     {
-        if (e.Error is not null) { FrmMain.LOGGER.WriteErrLog(e.Error, EnumMsgLevel.WARN, EnumPort.SERVER); }
-        FrmMain.LOGGER.WriteLog("文件下载完成", EnumMsgLevel.INFO, EnumPort.CLIENT, EnumModule.NET);
+        if (e.Error is not null) { FrmMain.LOGGER.Err(e.Error, EnumMsgLevel.WARN, EnumPort.SERVER); }
+        FrmMain.LOGGER.Log("文件下载完成", EnumMsgLevel.INFO, EnumPort.CLIENT, EnumModule.NET);
     }
 
     private void Downloader_DownloadStarted(object sender, DownloadStartedEventArgs e)
     {
-        FrmMain.LOGGER.WriteLog("开始下载文件", EnumMsgLevel.INFO, EnumPort.CLIENT, EnumModule.NET);
-        FrmMain.LOGGER.WriteLog("文件名：" + e.FileName, EnumMsgLevel.INFO, EnumPort.SERVER, EnumModule.NET);
-        FrmMain.LOGGER.WriteLog("文件大小：" + ProcessFileSize(e.TotalBytesToReceive), EnumMsgLevel.INFO, EnumPort.SERVER, EnumModule.NET);
+        FrmMain.LOGGER.Log("开始下载文件", EnumMsgLevel.INFO, EnumPort.CLIENT, EnumModule.NET);
+        FrmMain.LOGGER.Log("文件名：" + e.FileName, EnumMsgLevel.INFO, EnumPort.SERVER, EnumModule.NET);
+        FrmMain.LOGGER.Log("文件大小：" + ProcessFileSize(e.TotalBytesToReceive), EnumMsgLevel.INFO, EnumPort.SERVER, EnumModule.NET);
     }
 
     /// <summary>
@@ -170,9 +170,9 @@ internal partial class UpdateChecker
 
     public bool AnalyzeUpdateFile()
     {
-        if (!GlobalDefinitions.CloudSourceOK || !GlobalDefinitions.UpdateCheckOK || GlobalDefinitions.UpdateFile_Path.IsNullOrEmpty()) { FrmMain.LOGGER.WriteLog("云端模块未初始化完成或传入数据为空。", EnumMsgLevel.WARN, EnumPort.CLIENT, EnumModule.UPDATE); return false; }
+        if (!GlobalDefinitions.CloudSourceOK || !GlobalDefinitions.UpdateCheckOK || GlobalDefinitions.UpdateFile_Path.IsNullOrEmpty()) { FrmMain.LOGGER.Log("云端模块未初始化完成或传入数据为空。", EnumMsgLevel.WARN, EnumPort.CLIENT, EnumModule.UPDATE); return false; }
 
-        if (!GlobalDefinitions.ValidateFile(GlobalDefinitions.UpdateFile_Path, UCF_MD5, UCF_SHA256)) { FrmMain.LOGGER.WriteLog("Fatal Error: The MD5 value or SHA256 value does not match the original value. The update file may have been modified. To keep your computer safe, IDE has stopped reading it.", EnumMsgLevel.FATAL, EnumPort.CLIENT, EnumModule.UPDATE); return false; }
+        if (!GlobalDefinitions.ValidateFile(GlobalDefinitions.UpdateFile_Path, UCF_MD5, UCF_SHA256)) { FrmMain.LOGGER.Log("Fatal Error: The MD5 value or SHA256 value does not match the original value. The update file may have been modified. To keep your computer safe, IDE has stopped reading it.", EnumMsgLevel.FATAL, EnumPort.CLIENT, EnumModule.UPDATE); return false; }
 
         IniFile ucf = new(GlobalDefinitions.UpdateFile_Path)
         {
@@ -190,7 +190,7 @@ internal partial class UpdateChecker
         }
         catch (Exception ex)
         {
-            FrmMain.LOGGER.WriteErrLog(ex, EnumMsgLevel.WARN, EnumPort.CLIENT);
+            FrmMain.LOGGER.Err(ex, EnumMsgLevel.WARN, EnumPort.CLIENT);
             return false;
         }
         return true;

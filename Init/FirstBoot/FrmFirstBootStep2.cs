@@ -55,9 +55,17 @@ public partial class FrmFirstBootStep2 : UIForm
         }
     }
 
+    private void FrmFirstBootStep2_Load(object sender, EventArgs e)
+    {
+        uiButton3.Text = Program.reConf.Read("General", "Font", "Microsoft YaHei UI");
+        textBox1.Font = uiButton3.Font;
+        uiButton4.Text = Program.reConf.Read("Editor", "Font", "Consolas");
+        textBox2.Font = new(uiButton4.Font.Name, Program.reConf.ReadInt("Editor", "Size", 12));
+    }
+
     private void UpdateEditorFont(object sender, int value)
     {
-        textBox2.Font = new(textBox1.Font.Name, uiIntegerUpDown2.Value); 
+        textBox2.Font = new(uiButton4.Font.Name, uiIntegerUpDown2.Value); 
         Program.reConf.Write("Editor", "Size", uiIntegerUpDown2.Value);
     }
 }

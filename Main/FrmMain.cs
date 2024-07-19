@@ -93,9 +93,9 @@ namespace IDE
                 InitializeComponent();
                 InitializeTranslation();
                 CheckForIllegalCrossThreadCalls = false;
+                instance = this;
                 proc = Process.GetCurrentProcess();
                 msgBox = new(FrmMsgBox.MsgType.Normal, "", this);
-                instance = this;
                 Program.splash.metroProgressBar1.PerformStep();
             }
             catch (Exception ex)
@@ -128,7 +128,11 @@ namespace IDE
             {
                 InitializeComponent();
                 InitializeTranslation();
+                CheckForIllegalCrossThreadCalls = false;
                 LightEdit_File = file;
+                proc = Process.GetCurrentProcess();
+                instance = this;
+                msgBox = new(FrmMsgBox.MsgType.Normal, "", this);
                 LightEdit = true;
                 Program.splash.metroProgressBar1.PerformStep();
             }
@@ -190,9 +194,8 @@ namespace IDE
             tabControl1.TabPages.Add(tabPage3);
             if (LightEdit)
             {
-                edit.Load(LightEdit_File);
-                tabPage1.Text = GetFileName(LightEdit_File);
-                tabPage1.ToolTipText = LightEdit_File;
+                openFileDialog1.FileName = LightEdit_File;
+                OpenFile(true, e);
             }
         }
 
@@ -301,11 +304,11 @@ namespace IDE
         #region 关于
         private void AboutThis(object sender, EventArgs e)
         {
-            LOGGER.WriteLog("即将打开“关于”窗口。", EnumMsgLevel.INFO, EnumPort.CLIENT, EnumModule.MAIN);
+            LOGGER.Log("即将打开“关于”窗口。", EnumMsgLevel.INFO, EnumPort.CLIENT, EnumModule.MAIN);
             FrmAbout form = new();
             form.Show();
-            LOGGER.WriteLog("成功。", EnumMsgLevel.INFO, EnumPort.CLIENT, EnumModule.MAIN);
-            LOGGER.WriteLog($"窗口位置：({form.Location.X}, {form.Location.Y})", EnumMsgLevel.INFO, EnumPort.CLIENT, EnumModule.MAIN);
+            LOGGER.Log("成功。", EnumMsgLevel.INFO, EnumPort.CLIENT, EnumModule.MAIN);
+            LOGGER.Log($"窗口位置：({form.Location.X}, {form.Location.Y})", EnumMsgLevel.INFO, EnumPort.CLIENT, EnumModule.MAIN);
         }
         #endregion
         #region 新建文件
@@ -332,12 +335,12 @@ namespace IDE
         private async void New(object sender, EventArgs e)
         {
             var nf = new FrmNewFileBox("输入文件名");
-            LOGGER.WriteLog("新建文件", EnumMsgLevel.INFO, EnumPort.CLIENT, EnumModule.MAIN);
+            LOGGER.Log("新建文件", EnumMsgLevel.INFO, EnumPort.CLIENT, EnumModule.MAIN);
             var _ds = nf.ShowDialog(this);
             var fileName = nf.GetFileName();
             if (string.IsNullOrEmpty(fileName) || nf.GetStatus() == FrmNewFileBox.FileStatus.Failed)
             {
-                LOGGER.WriteLog("已取消新建文件。", EnumMsgLevel.INFO, EnumPort.CLIENT, EnumModule.MAIN);
+                LOGGER.Log("已取消新建文件。", EnumMsgLevel.INFO, EnumPort.CLIENT, EnumModule.MAIN);
                 return;
             }
             var tab = new TabPage
@@ -346,7 +349,7 @@ namespace IDE
                 BackColor = tabPage1.BackColor,
                 ForeColor = tabPage1.ForeColor
             };
-            LOGGER.WriteLog($"TabPage已准备就绪。\n文件名: {tab.Text}", EnumMsgLevel.INFO, EnumPort.CLIENT, EnumModule.MAIN);
+            LOGGER.Log($"TabPage已准备就绪。\n文件名: {tab.Text}", EnumMsgLevel.INFO, EnumPort.CLIENT, EnumModule.MAIN);
 
             if (fileName.EndsWith(".md", StringComparison.CurrentCultureIgnoreCase))
             {
@@ -385,7 +388,7 @@ namespace IDE
                     ForeColor = elementHost1.ForeColor,
                     Dock = DockStyle.Fill,
                 };
-                LOGGER.WriteLog("ElementHostForMarkdown已准备就绪。");
+                LOGGER.Log("ElementHostForMarkdown已准备就绪。");
                 bBox.uiProcessBar1.Value += 1;
                 var tmpEditorMd = new TextEditor
                 {
@@ -413,9 +416,9 @@ namespace IDE
                     IsReadOnly = true,
                 };
                 bBox.uiProcessBar1.Value += 1;
-                LOGGER.WriteLog($"编辑器控件已准备就绪。\n字体: {tmpEditorHtml.FontFamily}", EnumMsgLevel.INFO, EnumPort.CLIENT, EnumModule.MAIN);
+                LOGGER.Log($"编辑器控件已准备就绪。\n字体: {tmpEditorHtml.FontFamily}", EnumMsgLevel.INFO, EnumPort.CLIENT, EnumModule.MAIN);
                 tmpEditorMd.TextChanged += new EventHandler(this.TextAreaMarkdownEntered);
-                LOGGER.WriteLog("编辑器控件方法入口已准备就绪。", EnumMsgLevel.INFO, EnumPort.CLIENT, EnumModule.MAIN);
+                LOGGER.Log("编辑器控件方法入口已准备就绪。", EnumMsgLevel.INFO, EnumPort.CLIENT, EnumModule.MAIN);
                 tmpEHostHtml.Child = tmpEditorHtml;
                 tmpEHostMd.Child = tmpEditorMd;
                 var resourceName = XshdFilePath + "\\HTML.xshd";
@@ -456,7 +459,7 @@ namespace IDE
                     ForeColor = elementHost1.ForeColor,
                     Dock = DockStyle.Fill,
                 };
-                LOGGER.WriteLog("ElementHost已准备就绪。", EnumMsgLevel.INFO, EnumPort.CLIENT, EnumModule.MAIN);
+                LOGGER.Log("ElementHost已准备就绪。", EnumMsgLevel.INFO, EnumPort.CLIENT, EnumModule.MAIN);
 
                 var tmpEditor = new TextEditor
                 {
@@ -470,34 +473,34 @@ namespace IDE
                     VerticalScrollBarVisibility = System.Windows.Controls.ScrollBarVisibility.Auto,
                     HorizontalScrollBarVisibility = System.Windows.Controls.ScrollBarVisibility.Auto,
                 };
-                LOGGER.WriteLog($"编辑器控件已准备就绪。\n字体: {tmpEditor.FontFamily}", EnumMsgLevel.INFO, EnumPort.CLIENT, EnumModule.MAIN);
+                LOGGER.Log($"编辑器控件已准备就绪。\n字体: {tmpEditor.FontFamily}", EnumMsgLevel.INFO, EnumPort.CLIENT, EnumModule.MAIN);
                 tmpEditor.TextArea.TextEntered += new TextCompositionEventHandler(this.TextAreaOnTextEntered);
                 tmpEditor.TextArea.TextEntering += new TextCompositionEventHandler(this.TextArea_TextEntering);
                 tmpEditor.DocumentChanged += Edit_DocumentChanged;
-                LOGGER.WriteLog("编辑器控件方法入口已准备就绪。", EnumMsgLevel.INFO, EnumPort.CLIENT, EnumModule.MAIN);
+                LOGGER.Log("编辑器控件方法入口已准备就绪。", EnumMsgLevel.INFO, EnumPort.CLIENT, EnumModule.MAIN);
 
                 // 快速搜索功能
                 SearchPanel.Install(tmpEditor.TextArea);
 
                 // 设置语法规则
-                LOGGER.WriteLog("正在获取语法规则信息..");
+                LOGGER.Log("正在获取语法规则信息..");
                 var tmpLanguage = AutoGetLanguage(tab.Text);
                 var resourceName = XshdFilePath + $"\\{tmpLanguage}.xshd";
-                LOGGER.WriteLog("语法规则信息获取成功。");
-                LOGGER.WriteLog($"语法规则: {tmpLanguage}\t\t对应文件名: {resourceName}");
+                LOGGER.Log("语法规则信息获取成功。");
+                LOGGER.Log($"语法规则: {tmpLanguage}\t\t对应文件名: {resourceName}");
                 using (Stream s = new FileStream(resourceName, FileMode.Open, FileAccess.Read, FileShare.ReadWrite | FileShare.Delete))
                 {
                     using XmlTextReader reader = new(s);
                     var xshd = HighlightingLoader.LoadXshd(reader);
                     tmpEditor.SyntaxHighlighting = HighlightingLoader.Load(xshd, HighlightingManager.Instance);
                 }
-                LOGGER.WriteLog("语法规则已成功设置。");
+                LOGGER.Log("语法规则已成功设置。");
 
                 tmpEHost.Child = tmpEditor;
                 tab.Controls.Add(tmpEHost);
             }
             tabControl1.TabPages.Add(tab);
-            LOGGER.WriteLog("所有设置均已完成。");
+            LOGGER.Log("所有设置均已完成。");
             tabControl1.SelectedTab = tab;
         }
         #endregion
@@ -523,7 +526,7 @@ namespace IDE
                 {
                     FileSavingIcon.Image = Properties.Resources.file_save_failed_dark;
                     FileSavingTip.Text = _I18nFile.Localize("text.st.filesavefailed");
-                    LOGGER.WriteErrLog(ex, EnumMsgLevel.ERROR, EnumPort.CLIENT);
+                    LOGGER.Err(ex, EnumMsgLevel.ERROR, EnumPort.CLIENT);
                 }
             }
             else
@@ -567,7 +570,7 @@ namespace IDE
                 catch (Exception ex)
                 {
                     // 处理异常情况
-                    LOGGER.WriteErrLog(ex, EnumMsgLevel.ERROR, EnumPort.CLIENT);
+                    LOGGER.Err(ex, EnumMsgLevel.ERROR, EnumPort.CLIENT);
                 }
             }
         }
@@ -761,20 +764,20 @@ namespace IDE
                             WindowStyle = ProcessWindowStyle.Normal,
                             ErrorDialog = true,
                         };
-                        LOGGER.WriteLog("ProcessStartInfo对象已创建。", EnumMsgLevel.DEBUG, EnumPort.CLIENT, EnumModule.MAIN);
-                        LOGGER.WriteLog(string.Format("ProcessStartInfo对象属性：FileName={0}, Arguments={1}", ps.FileName, ps.Arguments), EnumMsgLevel.DEBUG, EnumPort.CLIENT, EnumModule.MAIN);
+                        LOGGER.Log("ProcessStartInfo对象已创建。", EnumMsgLevel.DEBUG, EnumPort.CLIENT, EnumModule.MAIN);
+                        LOGGER.Log(string.Format("ProcessStartInfo对象属性：FileName={0}, Arguments={1}", ps.FileName, ps.Arguments), EnumMsgLevel.DEBUG, EnumPort.CLIENT, EnumModule.MAIN);
                         Process p = new() { StartInfo = ps };
-                        LOGGER.WriteLog("Process对象已创建。", EnumMsgLevel.DEBUG, EnumPort.CLIENT, EnumModule.MAIN);
+                        LOGGER.Log("Process对象已创建。", EnumMsgLevel.DEBUG, EnumPort.CLIENT, EnumModule.MAIN);
                         p.Start();
                         RunnerProc = p;
-                        LOGGER.WriteLog("Process对象是否已运行：" + (p.StartTime != null), EnumMsgLevel.DEBUG, EnumPort.CLIENT, EnumModule.MAIN);
+                        LOGGER.Log("Process对象是否已运行：" + (p.StartTime != null), EnumMsgLevel.DEBUG, EnumPort.CLIENT, EnumModule.MAIN);
                         SetForegroundWindow(RunnerProc.Handle);
                     }
                 }
             }
             catch (Exception ex)
             {
-                LOGGER.WriteErrLog(ex, EnumMsgLevel.ERROR, EnumPort.CLIENT);
+                LOGGER.Err(ex, EnumMsgLevel.ERROR, EnumPort.CLIENT);
             }
         }
         #endregion
@@ -1061,7 +1064,7 @@ namespace IDE
             SuffixName = Path.GetExtension(SuffixName);
             if (log)
             {
-                LOGGER.WriteLog($"已获取文件名: {SuffixName}");
+                LOGGER.Log($"已获取文件名: {SuffixName}");
             }
             if (SuffixName.Contains(".cs"))
             {
@@ -1090,7 +1093,7 @@ namespace IDE
         private void ClearLog()
         {
             File.WriteAllText(LOGGER.logPath, "");
-            LOGGER.WriteLog("已清除过期的日志文件！", EnumMsgLevel.INFO, EnumPort.CLIENT, EnumModule.INIT);
+            LOGGER.Log("已清除过期的日志文件！", EnumMsgLevel.INFO, EnumPort.CLIENT, EnumModule.INIT);
         }
         #endregion
         #region 许可与版权声明
@@ -1184,7 +1187,7 @@ namespace IDE
         {
             if (e.CloseReason == CloseReason.ApplicationExitCall)
             {
-                LOGGER.WriteLog("Stopped by Patch Applyer", EnumMsgLevel.INFO, EnumPort.CLIENT, EnumModule.MAIN);
+                LOGGER.Log("Stopped by Patch Applyer", EnumMsgLevel.INFO, EnumPort.CLIENT, EnumModule.MAIN);
                 keepFile.WriteLine(long.MaxValue);
                 keepFile.Close();
                 Process.GetCurrentProcess().Kill();
@@ -1193,10 +1196,10 @@ namespace IDE
             else
             {
                 var dRes = MessageBoxEX.Show("确定退出吗？", "提示", MessageBoxButtons.YesNo, new string[] { "是", "否" });
-                LOGGER.WriteLog("已询问退出，返回值：" + dRes, EnumMsgLevel.INFO, EnumPort.CLIENT, EnumModule.MAIN);
+                LOGGER.Log("已询问退出，返回值：" + dRes, EnumMsgLevel.INFO, EnumPort.CLIENT, EnumModule.MAIN);
                 if (dRes == DialogResult.Yes)
                 {
-                    LOGGER.WriteLog("Stopping!", EnumMsgLevel.INFO, EnumPort.CLIENT, EnumModule.MAIN);
+                    LOGGER.Log("Stopping!", EnumMsgLevel.INFO, EnumPort.CLIENT, EnumModule.MAIN);
                     keepFile.WriteLine(long.MaxValue);
                     keepFile.Close();
                     Process.GetCurrentProcess().Kill();
@@ -1235,7 +1238,7 @@ namespace IDE
             }
             catch (Exception ex)
             {
-                LOGGER.WriteErrLog($"已捕捉异常：{ex.Message}", ex, EnumMsgLevel.ERROR, EnumPort.CLIENT);
+                LOGGER.Err($"已捕捉异常：{ex.Message}", ex, EnumMsgLevel.ERROR, EnumPort.CLIENT);
                 FileSavingIcon.Image = Properties.Resources.file_save_failed_dark;
                 FileSavingTip.Text = _I18nFile.Localize("text.st.filesavefailed");
             }
@@ -1278,22 +1281,22 @@ namespace IDE
             Regex _regex_closedstring = new("\".+\"");
             var _editor = GetCurrentTextEditor();
             tmpCompletionStr += text;
-            LOGGER.WriteLog($"tmpCompletionStr: {tmpCompletionStr}; text: {text}", EnumMsgLevel.DEBUG);
+            LOGGER.Log($"tmpCompletionStr: {tmpCompletionStr}; text: {text}", EnumMsgLevel.DEBUG);
             if (text[0] == ' ')
             {
-                LOGGER.WriteLog($"[MATCHED TEXT[0]=BLANK tmpCompletionStr: {tmpCompletionStr}; text: {text}", EnumMsgLevel.DEBUG);
+                LOGGER.Log($"[MATCHED TEXT[0]=BLANK tmpCompletionStr: {tmpCompletionStr}; text: {text}", EnumMsgLevel.DEBUG);
                 tmpCompletionStr = "";
             }
             else if (!text[0].IsLetterOrDigit())
             {
-                LOGGER.WriteLog($"[MATCHED ISNTLETTERORDIGIT] tmpCompletionStr: {tmpCompletionStr}; text: {text}", EnumMsgLevel.DEBUG);
+                LOGGER.Log($"[MATCHED ISNTLETTERORDIGIT] tmpCompletionStr: {tmpCompletionStr}; text: {text}", EnumMsgLevel.DEBUG);
                 tmpCompletionStr = "";
             }
             else if (_regex_unclosedstring.IsMatch(GetLineInTextEditor(_editor, text)) & !_regex_closedstring.IsMatch(GetLineInTextEditor(_editor, text)))
             {
                 tmpCompletionStr = "";
-                LOGGER.WriteLog($"[MATCHED UNCLOSED STRING] tmpCompletionStr: {tmpCompletionStr}; text: {text}", EnumMsgLevel.DEBUG);
-}
+                LOGGER.Log($"[MATCHED UNCLOSED STRING] tmpCompletionStr: {tmpCompletionStr}; text: {text}", EnumMsgLevel.DEBUG);
+            }
             else
             {
                 _codeSense = new CompletionWindow(textArea)
@@ -1454,11 +1457,11 @@ namespace IDE
             ExecuteCMDWithOutput("mkdir " + Environment.GetFolderPath(Environment.SpecialFolder.ApplicationData) + "\\RYCB\\IDE\\protect", "cmd", "/s /c");
             keepFile = new StreamWriter(new FileStream(Environment.GetFolderPath(Environment.SpecialFolder.ApplicationData) + "\\RYCB\\IDE\\protect\\.KEEP", FileMode.OpenOrCreate, FileAccess.ReadWrite, FileShare.ReadWrite), Encoding.UTF8);
             stopwatch.Start();
-            LOGGER.WriteLog($"窗口大小修改成功 (水平长度{this.Size.Width}px, 垂直长度{this.Size.Height}px)", EnumMsgLevel.INFO, EnumPort.CLIENT, EnumModule.INIT);
-            LOGGER.WriteLog($"窗口位置：{this.Location}", EnumMsgLevel.INFO, EnumPort.CLIENT, EnumModule.INIT);
-            LOGGER.WriteLog($"窗口PID：{Process.GetCurrentProcess().Id}", EnumMsgLevel.DEBUG, EnumPort.CLIENT, EnumModule.INIT);
-            LOGGER.WriteLog($"窗口句柄：{Process.GetCurrentProcess().Handle}", EnumMsgLevel.DEBUG, EnumPort.CLIENT, EnumModule.INIT);
-            LOGGER.WriteLog("主程序正在初始化...", EnumMsgLevel.INFO, EnumPort.CLIENT, EnumModule.INIT);
+            LOGGER.Log($"窗口大小修改成功 (水平长度{this.Size.Width}px, 垂直长度{this.Size.Height}px)", EnumMsgLevel.INFO, EnumPort.CLIENT, EnumModule.INIT);
+            LOGGER.Log($"窗口位置：{this.Location}", EnumMsgLevel.INFO, EnumPort.CLIENT, EnumModule.INIT);
+            LOGGER.Log($"窗口PID：{Process.GetCurrentProcess().Id}", EnumMsgLevel.DEBUG, EnumPort.CLIENT, EnumModule.INIT);
+            LOGGER.Log($"窗口句柄：{Process.GetCurrentProcess().Handle}", EnumMsgLevel.DEBUG, EnumPort.CLIENT, EnumModule.INIT);
+            LOGGER.Log("主程序正在初始化...", EnumMsgLevel.INFO, EnumPort.CLIENT, EnumModule.INIT);
             keepFile.WriteLine(long.MinValue);
             keepFile.Flush();
             this.Location = new Point(1, 1);
@@ -1467,7 +1470,7 @@ namespace IDE
             openFileDialog1.Filter = filter;
             openFileDialog1.Title = title;
             text_tsl2 = toolStripStatusLabel2.Text;
-            LOGGER.WriteLog("编辑器控件加载完毕。", EnumMsgLevel.INFO, EnumPort.CLIENT, EnumModule.INIT);
+            LOGGER.Log("编辑器控件加载完毕。", EnumMsgLevel.INFO, EnumPort.CLIENT, EnumModule.INIT);
             File.WriteAllText(Environment.GetFolderPath(Environment.SpecialFolder.ApplicationData) + "\\RYCB\\IDE\\SoftInfo",
                 $"""
                 [Version]
@@ -1488,10 +1491,10 @@ namespace IDE
             }
             var time = stopwatch.Elapsed;
             var end_time = time.TotalSeconds;
-            LOGGER.WriteLog("主程序初始化成功！", EnumMsgLevel.INFO, EnumPort.CLIENT, EnumModule.INIT);
-            LOGGER.WriteLog($"主程序初始化时间共计：{Math.Round(end_time, 2)}s", EnumMsgLevel.INFO, EnumPort.CLIENT, EnumModule.INIT);
+            LOGGER.Log("主程序初始化成功！", EnumMsgLevel.INFO, EnumPort.CLIENT, EnumModule.INIT);
+            LOGGER.Log($"主程序初始化时间共计：{Math.Round(end_time, 2)}s", EnumMsgLevel.INFO, EnumPort.CLIENT, EnumModule.INIT);
             var _end_time = Program.startTime.TotalSeconds;
-            LOGGER.WriteLog($"初始化时间共计：{Math.Round(_end_time + end_time, 2)}s", EnumMsgLevel.INFO, EnumPort.CLIENT, EnumModule.INIT);
+            LOGGER.Log($"初始化时间共计：{Math.Round(_end_time + end_time, 2)}s", EnumMsgLevel.INFO, EnumPort.CLIENT, EnumModule.INIT);
             this.TopMost = true;
             Program.splash.metroProgressBar1.PerformStep();
             this.WindowState = FormWindowState.Maximized;
@@ -1584,10 +1587,10 @@ namespace IDE
         private void Restart(object sender, EventArgs e)
         {
             var dRes = MessageBox.Show("确定重启吗？", "提示", MessageBoxButtons.YesNo, MessageBoxIcon.Asterisk);
-            LOGGER.WriteLog("已询问重启，返回值：" + dRes, EnumMsgLevel.INFO, EnumPort.CLIENT, EnumModule.MAIN);
+            LOGGER.Log("已询问重启，返回值：" + dRes, EnumMsgLevel.INFO, EnumPort.CLIENT, EnumModule.MAIN);
             if (dRes == DialogResult.Yes)
             {
-                LOGGER.WriteLog("Stopping!", EnumMsgLevel.INFO, EnumPort.CLIENT, EnumModule.MAIN);
+                LOGGER.Log("Stopping!", EnumMsgLevel.INFO, EnumPort.CLIENT, EnumModule.MAIN);
                 keepFile.WriteLine(long.MaxValue);
                 keepFile.Close();
                 var programpath = Application.ExecutablePath;
@@ -1982,7 +1985,7 @@ namespace IDE
                     BackColor = elementHost1.BackColor,
                     ForeColor = elementHost1.ForeColor
                 };
-                LOGGER.WriteLog("ElementHostForMarkdown已准备就绪。", EnumMsgLevel.INFO, EnumPort.CLIENT, EnumModule.MAIN);
+                LOGGER.Log("ElementHostForMarkdown已准备就绪。", EnumMsgLevel.INFO, EnumPort.CLIENT, EnumModule.MAIN);
                 bBox.uiProcessBar1.Value += 1;
                 var tmpEditorMd = new TextEditor
                 {
@@ -2010,8 +2013,8 @@ namespace IDE
                     IsReadOnly = true,
                 };
                 bBox.uiProcessBar1.Value += 1;
-                LOGGER.WriteLog($"编辑器控件已准备就绪。\n字体: {tmpEditorHtml.FontFamily}", EnumMsgLevel.INFO, EnumPort.CLIENT, EnumModule.MAIN);
-                LOGGER.WriteLog("编辑器控件方法入口已准备就绪。", EnumMsgLevel.INFO, EnumPort.CLIENT, EnumModule.MAIN);
+                LOGGER.Log($"编辑器控件已准备就绪。\n字体: {tmpEditorHtml.FontFamily}", EnumMsgLevel.INFO, EnumPort.CLIENT, EnumModule.MAIN);
+                LOGGER.Log("编辑器控件方法入口已准备就绪。", EnumMsgLevel.INFO, EnumPort.CLIENT, EnumModule.MAIN);
                 tmpEHostHtml.Child = tmpEditorHtml;
                 tmpEHostMd.Child = tmpEditorMd;
                 var resourceName = XshdFilePath + "\\HTML.xshd";
@@ -2175,12 +2178,12 @@ namespace IDE
                     }
                     else
                     {
-                        LOGGER.WriteErrLog(new NullReferenceException("SelectedSubItems为null。"), EnumMsgLevel.WARN, EnumPort.CLIENT);
+                        LOGGER.Err(new NullReferenceException("SelectedSubItems为null。"), EnumMsgLevel.WARN, EnumPort.CLIENT);
                     }
                 }
                 else
                 {
-                    LOGGER.WriteErrLog(new NullReferenceException("SelectedItem为null。"), EnumMsgLevel.WARN, EnumPort.CLIENT);
+                    LOGGER.Err(new NullReferenceException("SelectedItem为null。"), EnumMsgLevel.WARN, EnumPort.CLIENT);
                 }
             }
         }
@@ -2210,16 +2213,16 @@ namespace IDE
         private async Task UpdateCheckAsync()
         {
             var uc = new UpdateChecker();
-            LOGGER.WriteLog("开始检查更新。", EnumMsgLevel.INFO, EnumPort.CLIENT, EnumModule.UPDATE);
+            LOGGER.Log("开始检查更新。", EnumMsgLevel.INFO, EnumPort.CLIENT, EnumModule.UPDATE);
             await uc.InitAsync();
-            LOGGER.WriteLog("UpdateChecker初始化完毕。", EnumMsgLevel.INFO, EnumPort.CLIENT, EnumModule.UPDATE);
-            LOGGER.WriteLog("下载测试文件。", EnumMsgLevel.INFO, EnumPort.CLIENT, EnumModule.UPDATE);
+            LOGGER.Log("UpdateChecker初始化完毕。", EnumMsgLevel.INFO, EnumPort.CLIENT, EnumModule.UPDATE);
+            LOGGER.Log("下载测试文件。", EnumMsgLevel.INFO, EnumPort.CLIENT, EnumModule.UPDATE);
             await uc.DownloadTestAsync();
-            LOGGER.WriteLog("下载更新配置文件。", EnumMsgLevel.INFO, EnumPort.CLIENT, EnumModule.UPDATE);
+            LOGGER.Log("下载更新配置文件。", EnumMsgLevel.INFO, EnumPort.CLIENT, EnumModule.UPDATE);
             await uc.DownloadUpdateFileAsync();
-            LOGGER.WriteLog("分析更新配置文件。", EnumMsgLevel.INFO, EnumPort.CLIENT, EnumModule.UPDATE);
+            LOGGER.Log("分析更新配置文件。", EnumMsgLevel.INFO, EnumPort.CLIENT, EnumModule.UPDATE);
             uc.AnalyzeUpdateFile();
-            LOGGER.WriteLog("验证更新。", EnumMsgLevel.INFO, EnumPort.CLIENT, EnumModule.UPDATE);
+            LOGGER.Log("验证更新。", EnumMsgLevel.INFO, EnumPort.CLIENT, EnumModule.UPDATE);
             uc.ValidateUpdate();
             if (GlobalDefinitions.CanUpdate)
             {
@@ -2236,13 +2239,13 @@ namespace IDE
             UpdateStatusBar.Show();
             activeubd = new UpdateBackgroundDownloader();
             DownloadUpdateButton.Enabled = false;
-            LOGGER.WriteLog("下载更新文件。", EnumMsgLevel.INFO, EnumPort.CLIENT, EnumModule.UPDATE);
+            LOGGER.Log("下载更新文件。", EnumMsgLevel.INFO, EnumPort.CLIENT, EnumModule.UPDATE);
             await activeubd.DownloadUpdateAsync();
             if (activeubd.downloader.IsCancelled)
             {
                 return;
             }
-            LOGGER.WriteLog("开始部署更新。", EnumMsgLevel.INFO, EnumPort.CLIENT, EnumModule.UPDATE);
+            LOGGER.Log("开始部署更新。", EnumMsgLevel.INFO, EnumPort.CLIENT, EnumModule.UPDATE);
             DeployUpdate();
         }
 
@@ -2254,23 +2257,23 @@ namespace IDE
                 i += 0.01;
                 if (i % 1 == 0)
                 {
-                    LOGGER.WriteLog("等待开始更新：次数" + i.ToString(), EnumMsgLevel.INFO, EnumPort.CLIENT, EnumModule.UPDATE);
+                    LOGGER.Log("等待开始更新：次数" + i.ToString(), EnumMsgLevel.INFO, EnumPort.CLIENT, EnumModule.UPDATE);
                 }
             }
             var ugd = new UpdateGlobalDeployer();
-            LOGGER.WriteLog("正在部署更新。", EnumMsgLevel.INFO, EnumPort.CLIENT, EnumModule.UPDATE);
+            LOGGER.Log("正在部署更新。", EnumMsgLevel.INFO, EnumPort.CLIENT, EnumModule.UPDATE);
             ugd.DeployUpdate();
-            LOGGER.WriteLog("更新部署完成。", EnumMsgLevel.INFO, EnumPort.CLIENT, EnumModule.UPDATE);
+            LOGGER.Log("更新部署完成。", EnumMsgLevel.INFO, EnumPort.CLIENT, EnumModule.UPDATE);
             while (!GlobalDefinitions.UpdateDeployed)
             {
                 i += 0.1;
                 if (i % 1 == 0)
                 {
-                    LOGGER.WriteLog("等待验证更新：次数" + i.ToString(), EnumMsgLevel.INFO, EnumPort.CLIENT, EnumModule.UPDATE);
+                    LOGGER.Log("等待验证更新：次数" + i.ToString(), EnumMsgLevel.INFO, EnumPort.CLIENT, EnumModule.UPDATE);
                 }
             }
             UpdateValidater uv = new();
-            LOGGER.WriteLog("正在验证更新。", EnumMsgLevel.INFO, EnumPort.CLIENT, EnumModule.UPDATE);
+            LOGGER.Log("正在验证更新。", EnumMsgLevel.INFO, EnumPort.CLIENT, EnumModule.UPDATE);
             await uv.ValidateFileAsync();
             if (MessageBox.Show(_I18nFile.Localize("tip.reboottoapply"), "", MessageBoxButtons.OKCancel, MessageBoxIcon.Information, MessageBoxDefaultButton.Button1) == DialogResult.OK)
             {
@@ -2281,15 +2284,15 @@ namespace IDE
 
         private void StopDownload(object sender, EventArgs e)
         {
-            LOGGER.WriteLog("Try to cancel update task.", EnumMsgLevel.INFO, EnumPort.SERVER, EnumModule.UPDATE);
+            LOGGER.Log("Try to cancel update task.", EnumMsgLevel.INFO, EnumPort.SERVER, EnumModule.UPDATE);
             activeubd.downloader.CancelAsync();
             if (activeubd.downloader.IsCancelled)
             {
                 UpdateCancelledTip.Visible = true;
-                LOGGER.WriteLog("Update Cancelled.", EnumMsgLevel.WARN, EnumPort.CLIENT, EnumModule.UPDATE);
+                LOGGER.Log("Update Cancelled.", EnumMsgLevel.WARN, EnumPort.CLIENT, EnumModule.UPDATE);
                 return;
             }
-            LOGGER.WriteLog("Fail to cancel update task.", EnumMsgLevel.WARN, EnumPort.SERVER, EnumModule.UPDATE);
+            LOGGER.Log("Fail to cancel update task.", EnumMsgLevel.WARN, EnumPort.SERVER, EnumModule.UPDATE);
         }
         private void CloseUpdateBar(object sender, EventArgs e)
         {
@@ -2304,7 +2307,7 @@ namespace IDE
         private static extern IntPtr FindWindow(string lpClassName, string lpWindowName);//关键方法
         [DllImport("user32.dll", SetLastError = true)]
         private static extern int SendMessage(IntPtr HWnd, uint Msg, int WParam, int LParam);
-        public const int WM_SYSCOMMAND = 0x112;public const int SC_MINIMIZE = 0xF020;
+        public const int WM_SYSCOMMAND = 0x112; public const int SC_MINIMIZE = 0xF020;
         public const int SC_MAXIMIZE = 0xF030;
         public const uint WM_SYSCOMMAND2 = 0x0112;
         public const uint SC_MAXIMIZE2 = 0xF030;

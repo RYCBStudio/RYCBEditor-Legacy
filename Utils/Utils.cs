@@ -663,7 +663,7 @@ namespace IDE
             }
             catch (Exception ex)
             {
-                FrmMain.LOGGER.WriteErrLog(new Exception("GetMD5HashFromFile() fail,error:" + ex.Message), EnumMsgLevel.ERROR, EnumPort.CLIENT);
+                FrmMain.LOGGER.Err(new Exception("GetMD5HashFromFile() fail,error:" + ex.Message), EnumMsgLevel.ERROR, EnumPort.CLIENT);
             }
             return string.Empty;
         }
@@ -1093,7 +1093,7 @@ namespace IDE
                                 v.Add("Line", line.Split(", line")[1].Replace(")", ""));
                             }
                         }
-                        catch (Exception ex) { FrmMain.LOGGER.WriteErrLog(ex, EnumMsgLevel.ERROR, EnumPort.CLIENT); }
+                        catch (Exception ex) { FrmMain.LOGGER.Err(ex, EnumMsgLevel.ERROR, EnumPort.CLIENT); }
 
                     }
                 }
@@ -1111,7 +1111,7 @@ namespace IDE
                             v.Add("Desc", lineString.Split(new string[] { ": " }, StringSplitOptions.RemoveEmptyEntries)[1]);
                         }
                     }
-                    catch (Exception ex) { FrmMain.LOGGER.WriteErrLog(ex, EnumMsgLevel.ERROR, EnumPort.CLIENT); }
+                    catch (Exception ex) { FrmMain.LOGGER.Err(ex, EnumMsgLevel.ERROR, EnumPort.CLIENT); }
                 }
                 result.Add(v);
             }

@@ -86,7 +86,7 @@ namespace IDE
         private static void Application_ThreadException(object sender, ThreadExceptionEventArgs e)
         {
             var ex = e.Exception;
-            IDE.FrmMain.LOGGER.WriteErrLog(ex, EnumMsgLevel.ERROR, EnumPort.CLIENT);
+            IDE.FrmMain.LOGGER.Err(ex, EnumMsgLevel.ERROR, EnumPort.CLIENT);
             ((FrmMain)class_).InfoTip.Text = string.Concat(ex.GetType().ToString(), ": ", ex.Message);
             ((FrmMain)class_).InfoTip.Image = Properties.Resources.Error_64x;
             ((FrmMain)class_).InfoTip.Visible = true;
@@ -143,6 +143,7 @@ namespace IDE
         private static void func_1a1()
         {
             Initializer.Init();
+            FrmMain.LOGGER.Log("Initializer初始化完毕。");
             startTimer.Stop();
             startTime = startTimer.Elapsed;
             Application.Run(class_);
@@ -154,14 +155,14 @@ namespace IDE
         {
             if (CrashAttempts == GlobalSettings.CrashAttempts - 1 || !isInitialized)
             {
-                IDE.FrmMain.LOGGER.WriteLog("RYCB Editor 已崩溃。崩溃尝试次数：" + (CrashAttempts + 1).ToString());
+                IDE.FrmMain.LOGGER.Log("RYCB Editor 已崩溃。崩溃尝试次数：" + (CrashAttempts + 1).ToString());
 
                 w.Stop();
                 var time = w.Elapsed;
                 var filePath = Environment.GetFolderPath(Environment.SpecialFolder.ApplicationData) + "\\RYCB\\IDE\\protect\\time";
                 Infrastructure.MiniDump.TryDump(STARTUP_PATH + $"\\Crash\\{DateTime.Now:yyyy-MM-dd_HH-mm-ss+fff}.dmp");
                 File.WriteAllText(filePath, time.TotalSeconds.ToString());
-                CrashHandler crashHandler = new(ex, Environment.GetFolderPath(Environment.SpecialFolder.Desktop)); ;
+                CrashHandler crashHandler = new(ex, STARTUP_PATH + "\\Crash"); ;
                 crashHandler.CollectCrashInfo();
                 crashHandler.WriteDumpFile();
                 ErrorAnalysiser EA = new(ex, Environment.GetFolderPath(Environment.SpecialFolder.Desktop));
@@ -172,7 +173,7 @@ namespace IDE
             else
             {
                 CrashAttempts++;
-                IDE.FrmMain.LOGGER.WriteLog($"捕获异常：{{Type={ex.GetType()}, Message={ex.Message}}}\t尝试次数：{CrashAttempts}(距离崩溃还剩{GlobalSettings.CrashAttempts - CrashAttempts}次异常)", EnumMsgLevel.FATAL, EnumPort.CLIENT, EnumModule.MAIN); ;
+                IDE.FrmMain.LOGGER.Log($"捕获异常：{{Type={ex.GetType()}, Message={ex.Message}}}\t尝试次数：{CrashAttempts}(距离崩溃还剩{GlobalSettings.CrashAttempts - CrashAttempts}次异常)", EnumMsgLevel.FATAL, EnumPort.CLIENT, EnumModule.MAIN); ;
             }
         }
 
