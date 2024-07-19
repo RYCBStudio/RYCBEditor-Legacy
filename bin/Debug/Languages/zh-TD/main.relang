@@ -59,6 +59,7 @@ text.bottom.console=終端
 text.bottom.errors.sub.type=類型
 text.bottom.errors.sub.description=異常描述
 text.bottom.errors.sub.line=行號
+tip.reboottoapply=RYCB Editor需要重啓以應用更新。點擊“確定”以繼續。
 
 text.inprogram.bootfile=啟動檔案
 text.inprogram.bootfile.0=檢測到您正在打開

@@ -3,7 +3,7 @@ using System.Windows.Forms;
 using Sunny.UI;
 
 namespace IDE;
-public partial class CacheCleaner
+public partial class FrmCacheCleaner
 {
     private IniFile _I18nFile = new(Program.STARTUP_PATH + $"\\Languages\\{GlobalSettings.language}\\cc.relang", System.Text.Encoding.UTF8);
 

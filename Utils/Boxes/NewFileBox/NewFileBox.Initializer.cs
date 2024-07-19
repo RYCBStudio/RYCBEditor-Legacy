@@ -3,7 +3,7 @@ using Sunny.UI;
 
 namespace IDE
 {
-    partial class NewFileBox
+    partial class FrmNewFileBox
     {
         IniFile _I18nFile = new(Application.StartupPath + $"\\Languages\\{GlobalSettings.language}\\newfile.relang", System.Text.Encoding.UTF8);
 

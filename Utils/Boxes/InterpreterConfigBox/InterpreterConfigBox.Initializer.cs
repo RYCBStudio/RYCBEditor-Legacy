@@ -7,7 +7,7 @@ using System.Windows.Forms;
 using Sunny.UI;
 
 namespace IDE;
-partial class InterpreterConfigBox
+partial class FrmInterpreterConfigBox
 {
     private readonly IniFile _I18nFile = new(Program.STARTUP_PATH + $"\\Languages\\{GlobalSettings.language}\\icb.relang");
 

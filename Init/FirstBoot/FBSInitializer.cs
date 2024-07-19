@@ -11,7 +11,7 @@ namespace IDE.Init.FirstBoot
 }
 namespace IDE.Init
 {
-    public partial class FirstBootStep1
+    public partial class FrmFirstBootStep1
     {
         FirstBoot.FBSInitializer _fbsInitializer = new();
 
@@ -23,7 +23,7 @@ namespace IDE.Init
         }
     }
 
-    public partial class FirstBootStep2
+    public partial class FrmFirstBootStep2
     {
         FirstBoot.FBSInitializer _fbsInitializer = new();
 
@@ -40,7 +40,7 @@ namespace IDE.Init
         }
     }
 
-    public partial class FirstBootStep3
+    public partial class FrmFirstBootStep3
     {
         FirstBoot.FBSInitializer _fbsInitializer = new();
 
@@ -53,7 +53,7 @@ namespace IDE.Init
         }
     }
 
-    public partial class FirstBootStep4
+    public partial class FrmFirstBootStep4
     {
         FirstBoot.FBSInitializer _fbsInitializer = new();
 

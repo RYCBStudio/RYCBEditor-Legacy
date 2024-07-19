@@ -14,28 +14,28 @@ internal partial class UpdateGlobalDeployer
 
             if (GlobalDefinitions.ValidateFile(GlobalDefinitions.UpdateArchive_Path, ARCHIVE_MD5, ARCHIVE_SHA256))
             {
-                Main.instance.UpdateProgress.Style = System.Windows.Forms.ProgressBarStyle.Marquee;
-                Main.instance.ReceivedBytesSeparatorSign.Visible = false;
-                Main.instance.ToReceiveBytes.Text = "";
-                Main.instance.Downloading.Text = "Decompressing: ";
-                Main.instance.DownloadProgress.Text = "";
-                Main.instance.Percent.Visible = false;
+                FrmMain.instance.UpdateProgress.Style = System.Windows.Forms.ProgressBarStyle.Marquee;
+                FrmMain.instance.ReceivedBytesSeparatorSign.Visible = false;
+                FrmMain.instance.ToReceiveBytes.Text = "";
+                FrmMain.instance.Downloading.Text = "Decompressing: ";
+                FrmMain.instance.DownloadProgress.Text = "";
+                FrmMain.instance.Percent.Visible = false;
                 if (DecompressFile(GlobalDefinitions.UpdateArchive_Path, path))
                 {
-                    Main.instance.NewUpdateTip.Text = "Updates are ready.";
+                    FrmMain.instance.NewUpdateTip.Text = "Updates are ready.";
                     GlobalDefinitions.UpdateDeployed = true;
                     GlobalDefinitions.DecompressedUpdateArchive_Path = path;
                 }
                 else
                 {
-                    Main.LOGGER.WriteLog("Errors occured when decompressing the update file.", EnumMsgLevel.ERROR, EnumPort.CLIENT, EnumModule.UPDATE);
+                    FrmMain.LOGGER.WriteLog("Errors occured when decompressing the update file.", EnumMsgLevel.ERROR, EnumPort.CLIENT, EnumModule.UPDATE);
                 }
             }
             else
             {
-                Main.instance.NewUpdateTip.Text = "Updates are broken.";
-                Main.instance.CanUpdateIcon.Image = Properties.Resources.Exception_32X;
-                Main.LOGGER.WriteLog("Fatal Error: The MD5 value or SHA256 value does not match the original value. The update file may have been modified. To keep your computer safe, IDE has stopped reading it.", EnumMsgLevel.FATAL, EnumPort.CLIENT, EnumModule.UPDATE);
+                FrmMain.instance.NewUpdateTip.Text = "Updates are broken.";
+                FrmMain.instance.CanUpdateIcon.Image = Properties.Resources.Exception_32X;
+                FrmMain.LOGGER.WriteLog("Fatal Error: The MD5 value or SHA256 value does not match the original value. The update file may have been modified. To keep your computer safe, IDE has stopped reading it.", EnumMsgLevel.FATAL, EnumPort.CLIENT, EnumModule.UPDATE);
             }
         }
     }

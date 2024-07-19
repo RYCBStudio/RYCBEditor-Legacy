@@ -5,7 +5,7 @@ using Sunny.UI;
 
 namespace IDE
 {
-    partial class Main
+    partial class FrmMain
     {
         private struct Editor
         {

@@ -208,8 +208,8 @@ namespace IDE.Utils
 
         public void CollectCrashInfo()
         {
-            var LogPath = Main.LOGGER.logPath;
-            var path = Environment.GetFolderPath(Environment.SpecialFolder.ApplicationData) + $"\\Temp\\RYCB\\IDE\\{Main.LOGGER.logPath.Split('\\')[Main.LOGGER.logPath.Split('\\').Length - 1]}";
+            var LogPath = FrmMain.LOGGER.logPath;
+            var path = Environment.GetFolderPath(Environment.SpecialFolder.ApplicationData) + $"\\Temp\\RYCB\\IDE\\{FrmMain.LOGGER.logPath.Split('\\')[FrmMain.LOGGER.logPath.Split('\\').Length - 1]}";
             var cpuName = GetCpuName();
             var InnerExceptionProcess = _ex.InnerException != null ? $"""
                     {_lang_res[GlobalSettings.language][0]}: {_ex.InnerException.GetType()}

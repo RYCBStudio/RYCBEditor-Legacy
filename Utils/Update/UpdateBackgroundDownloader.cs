@@ -51,10 +51,10 @@ internal partial class UpdateBackgroundDownloader
 
     public void Downloader_DownloadProgressChanged(object sender, Downloader.DownloadProgressChangedEventArgs e)
     {
-        Main.instance.DownloadSpeed.Text = ProcessFileSize((long)e.BytesPerSecondSpeed) + "/s";
-        Main.instance.ReceivedBytes.Text = ProcessFileSize(e.ReceivedBytesSize);
-        Main.instance.ToReceiveBytes.Text = ProcessFileSize(e.TotalBytesToReceive);
-        Main.instance.UpdateProgress.Value = (int)e.ReceivedBytesSize;
-        Main.instance.DownloadProgress.Text = (Math.Round((double)Main.instance.UpdateProgress.Value / Main.instance.UpdateProgress.Maximum, 4) * 100).ToString();
+        FrmMain.instance.DownloadSpeed.Text = ProcessFileSize((long)e.BytesPerSecondSpeed) + "/s";
+        FrmMain.instance.ReceivedBytes.Text = ProcessFileSize(e.ReceivedBytesSize);
+        FrmMain.instance.ToReceiveBytes.Text = ProcessFileSize(e.TotalBytesToReceive);
+        FrmMain.instance.UpdateProgress.Value = (int)e.ReceivedBytesSize;
+        FrmMain.instance.DownloadProgress.Text = (Math.Round((double)FrmMain.instance.UpdateProgress.Value / FrmMain.instance.UpdateProgress.Maximum, 4) * 100).ToString();
     }
 }

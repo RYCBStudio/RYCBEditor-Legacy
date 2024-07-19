@@ -74,13 +74,11 @@
     <SatelliteResourceLanguages>zh</SatelliteResourceLanguages>
   </PropertyGroup>
   <ItemGroup>
-    <Reference Include="Azure.Core, Version=1.36.0.0, Culture=neutral, PublicKeyToken=92742159e12e44c8, processorArchitecture=MSIL">
-      <HintPath>packages\Azure.Core.1.36.0\lib\net472\Azure.Core.dll</HintPath>
-      <Private>False</Private>
+    <Reference Include="Azure.Core, Version=1.41.0.0, Culture=neutral, PublicKeyToken=92742159e12e44c8, processorArchitecture=MSIL">
+      <HintPath>packages\Azure.Core.1.41.0\lib\net472\Azure.Core.dll</HintPath>
     </Reference>
-    <Reference Include="Azure.Identity, Version=1.10.4.0, Culture=neutral, PublicKeyToken=92742159e12e44c8, processorArchitecture=MSIL">
-      <HintPath>packages\Azure.Identity.1.10.4\lib\netstandard2.0\Azure.Identity.dll</HintPath>
-      <Private>False</Private>
+    <Reference Include="Azure.Identity, Version=1.12.0.0, Culture=neutral, PublicKeyToken=92742159e12e44c8, processorArchitecture=MSIL">
+      <HintPath>packages\Azure.Identity.1.12.0\lib\netstandard2.0\Azure.Identity.dll</HintPath>
     </Reference>
     <Reference Include="ChnCharInfo, Version=1.0.0.0, Culture=neutral, PublicKeyToken=18f031bd02e5e291, processorArchitecture=MSIL">
       <HintPath>packages\Microsoft.PinYinConverter.1.0.0\lib\ChnCharInfo.dll</HintPath>
@@ -131,12 +129,10 @@
       <Private>False</Private>
     </Reference>
     <Reference Include="MessagePack, Version=2.5.0.0, Culture=neutral, PublicKeyToken=b4a0369545f0a1be, processorArchitecture=MSIL">
-      <HintPath>packages\MessagePack.2.5.140\lib\netstandard2.0\MessagePack.dll</HintPath>
-      <Private>False</Private>
+      <HintPath>packages\MessagePack.2.5.171\lib\net472\MessagePack.dll</HintPath>
     </Reference>
     <Reference Include="MessagePack.Annotations, Version=2.5.0.0, Culture=neutral, PublicKeyToken=b4a0369545f0a1be, processorArchitecture=MSIL">
-      <HintPath>packages\MessagePack.Annotations.2.5.140\lib\netstandard2.0\MessagePack.Annotations.dll</HintPath>
-      <Private>False</Private>
+      <HintPath>packages\MessagePack.Annotations.2.5.171\lib\netstandard2.0\MessagePack.Annotations.dll</HintPath>
     </Reference>
     <Reference Include="MetroFramework, Version=1.4.0.0, Culture=neutral, PublicKeyToken=5f91a84759bf584a, processorArchitecture=MSIL">
       <HintPath>packages\MetroModernUI.1.4.0.0\lib\net\MetroFramework.dll</HintPath>
@@ -159,40 +155,31 @@
       <Private>False</Private>
     </Reference>
     <Reference Include="Microsoft.Build.Framework, Version=15.1.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a, processorArchitecture=MSIL">
-      <HintPath>packages\Microsoft.Build.Framework.17.8.3\lib\net472\Microsoft.Build.Framework.dll</HintPath>
-      <Private>False</Private>
+      <HintPath>packages\Microsoft.Build.Framework.17.10.4\lib\net472\Microsoft.Build.Framework.dll</HintPath>
     </Reference>
-    <Reference Include="Microsoft.CodeAnalysis, Version=4.8.0.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35, processorArchitecture=MSIL">
-      <HintPath>packages\Microsoft.CodeAnalysis.Common.4.8.0\lib\netstandard2.0\Microsoft.CodeAnalysis.dll</HintPath>
-      <Private>False</Private>
+    <Reference Include="Microsoft.CodeAnalysis, Version=4.10.0.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35, processorArchitecture=MSIL">
+      <HintPath>packages\Microsoft.CodeAnalysis.Common.4.10.0\lib\netstandard2.0\Microsoft.CodeAnalysis.dll</HintPath>
     </Reference>
-    <Reference Include="Microsoft.CodeAnalysis.CSharp, Version=4.8.0.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35, processorArchitecture=MSIL">
-      <HintPath>packages\Microsoft.CodeAnalysis.CSharp.4.8.0\lib\netstandard2.0\Microsoft.CodeAnalysis.CSharp.dll</HintPath>
-      <Private>False</Private>
+    <Reference Include="Microsoft.CodeAnalysis.CSharp, Version=4.10.0.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35, processorArchitecture=MSIL">
+      <HintPath>packages\Microsoft.CodeAnalysis.CSharp.4.10.0\lib\netstandard2.0\Microsoft.CodeAnalysis.CSharp.dll</HintPath>
     </Reference>
-    <Reference Include="Microsoft.CodeAnalysis.CSharp.Workspaces, Version=4.8.0.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35, processorArchitecture=MSIL">
-      <HintPath>packages\Microsoft.CodeAnalysis.CSharp.Workspaces.4.8.0\lib\netstandard2.0\Microsoft.CodeAnalysis.CSharp.Workspaces.dll</HintPath>
-      <Private>False</Private>
+    <Reference Include="Microsoft.CodeAnalysis.CSharp.Workspaces, Version=4.10.0.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35, processorArchitecture=MSIL">
+      <HintPath>packages\Microsoft.CodeAnalysis.CSharp.Workspaces.4.10.0\lib\netstandard2.0\Microsoft.CodeAnalysis.CSharp.Workspaces.dll</HintPath>
     </Reference>
-    <Reference Include="Microsoft.CodeAnalysis.Workspaces, Version=4.8.0.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35, processorArchitecture=MSIL">
-      <HintPath>packages\Microsoft.CodeAnalysis.Workspaces.Common.4.8.0\lib\netstandard2.0\Microsoft.CodeAnalysis.Workspaces.dll</HintPath>
-      <Private>False</Private>
+    <Reference Include="Microsoft.CodeAnalysis.Workspaces, Version=4.10.0.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35, processorArchitecture=MSIL">
+      <HintPath>packages\Microsoft.CodeAnalysis.Workspaces.Common.4.10.0\lib\netstandard2.0\Microsoft.CodeAnalysis.Workspaces.dll</HintPath>
     </Reference>
     <Reference Include="Microsoft.Data.SqlClient, Version=5.0.0.0, Culture=neutral, PublicKeyToken=23ec7fc2d6eaa4a5, processorArchitecture=MSIL">
-      <HintPath>packages\Microsoft.Data.SqlClient.5.1.2\lib\net462\Microsoft.Data.SqlClient.dll</HintPath>
-      <Private>False</Private>
+      <HintPath>packages\Microsoft.Data.SqlClient.5.2.1\lib\net462\Microsoft.Data.SqlClient.dll</HintPath>
     </Reference>
     <Reference Include="Microsoft.Data.Tools.Sql.BatchParser, Version=17.100.0.0, Culture=neutral, PublicKeyToken=89845dcd8080cc91, processorArchitecture=MSIL">
-      <HintPath>packages\Microsoft.SqlServer.SqlManagementObjects.170.21.0\lib\net462\Microsoft.Data.Tools.Sql.BatchParser.dll</HintPath>
-      <Private>False</Private>
+      <HintPath>packages\Microsoft.SqlServer.SqlManagementObjects.171.30.0\lib\net462\Microsoft.Data.Tools.Sql.BatchParser.dll</HintPath>
     </Reference>
-    <Reference Include="Microsoft.Diagnostics.NETCore.Client, Version=0.2.9.2401, Culture=neutral, PublicKeyToken=31bf3856ad364e35, processorArchitecture=MSIL">
-      <HintPath>packages\Microsoft.Diagnostics.NETCore.Client.0.2.452401\lib\netstandard2.0\Microsoft.Diagnostics.NETCore.Client.dll</HintPath>
-      <Private>False</Private>
+    <Reference Include="Microsoft.Diagnostics.NETCore.Client, Version=0.2.10.32401, Culture=neutral, PublicKeyToken=31bf3856ad364e35, processorArchitecture=MSIL">
+      <HintPath>packages\Microsoft.Diagnostics.NETCore.Client.0.2.532401\lib\netstandard2.0\Microsoft.Diagnostics.NETCore.Client.dll</HintPath>
     </Reference>
-    <Reference Include="Microsoft.Diagnostics.Runtime, Version=3.1.9.6101, Culture=neutral, PublicKeyToken=31bf3856ad364e35, processorArchitecture=MSIL">
-      <HintPath>packages\Microsoft.Diagnostics.Runtime.3.1.456101\lib\netstandard2.0\Microsoft.Diagnostics.Runtime.dll</HintPath>
-      <Private>False</Private>
+    <Reference Include="Microsoft.Diagnostics.Runtime, Version=3.1.10.12801, Culture=neutral, PublicKeyToken=31bf3856ad364e35, processorArchitecture=MSIL">
+      <HintPath>packages\Microsoft.Diagnostics.Runtime.3.1.512801\lib\netstandard2.0\Microsoft.Diagnostics.Runtime.dll</HintPath>
     </Reference>
     <Reference Include="Microsoft.Dynamic, Version=1.3.4.0, Culture=neutral, PublicKeyToken=7f709c5b713576e1, processorArchitecture=MSIL">
       <HintPath>packages\DynamicLanguageRuntime.1.3.4\lib\net452\Microsoft.Dynamic.dll</HintPath>
@@ -206,73 +193,59 @@
       <HintPath>packages\Microsoft.Extensions.Configuration.Abstractions.8.0.0\lib\net462\Microsoft.Extensions.Configuration.Abstractions.dll</HintPath>
       <Private>False</Private>
     </Reference>
-    <Reference Include="Microsoft.Extensions.Configuration.Binder, Version=8.0.0.0, Culture=neutral, PublicKeyToken=adb9793829ddae60, processorArchitecture=MSIL">
-      <HintPath>packages\Microsoft.Extensions.Configuration.Binder.8.0.0\lib\net462\Microsoft.Extensions.Configuration.Binder.dll</HintPath>
-      <Private>False</Private>
+    <Reference Include="Microsoft.Extensions.Configuration.Binder, Version=8.0.0.2, Culture=neutral, PublicKeyToken=adb9793829ddae60, processorArchitecture=MSIL">
+      <HintPath>packages\Microsoft.Extensions.Configuration.Binder.8.0.2\lib\net462\Microsoft.Extensions.Configuration.Binder.dll</HintPath>
     </Reference>
     <Reference Include="Microsoft.Extensions.DependencyInjection, Version=8.0.0.0, Culture=neutral, PublicKeyToken=adb9793829ddae60, processorArchitecture=MSIL">
       <HintPath>packages\Microsoft.Extensions.DependencyInjection.8.0.0\lib\net462\Microsoft.Extensions.DependencyInjection.dll</HintPath>
       <Private>False</Private>
     </Reference>
-    <Reference Include="Microsoft.Extensions.DependencyInjection.Abstractions, Version=8.0.0.0, Culture=neutral, PublicKeyToken=adb9793829ddae60, processorArchitecture=MSIL">
-      <HintPath>packages\Microsoft.Extensions.DependencyInjection.Abstractions.8.0.0\lib\net462\Microsoft.Extensions.DependencyInjection.Abstractions.dll</HintPath>
-      <Private>False</Private>
+    <Reference Include="Microsoft.Extensions.DependencyInjection.Abstractions, Version=8.0.0.1, Culture=neutral, PublicKeyToken=adb9793829ddae60, processorArchitecture=MSIL">
+      <HintPath>packages\Microsoft.Extensions.DependencyInjection.Abstractions.8.0.1\lib\net462\Microsoft.Extensions.DependencyInjection.Abstractions.dll</HintPath>
     </Reference>
     <Reference Include="Microsoft.Extensions.Logging, Version=8.0.0.0, Culture=neutral, PublicKeyToken=adb9793829ddae60, processorArchitecture=MSIL">
       <HintPath>packages\Microsoft.Extensions.Logging.8.0.0\lib\net462\Microsoft.Extensions.Logging.dll</HintPath>
       <Private>False</Private>
     </Reference>
-    <Reference Include="Microsoft.Extensions.Logging.Abstractions, Version=8.0.0.0, Culture=neutral, PublicKeyToken=adb9793829ddae60, processorArchitecture=MSIL">
-      <HintPath>packages\Microsoft.Extensions.Logging.Abstractions.8.0.0\lib\net462\Microsoft.Extensions.Logging.Abstractions.dll</HintPath>
-      <Private>False</Private>
+    <Reference Include="Microsoft.Extensions.Logging.Abstractions, Version=8.0.0.1, Culture=neutral, PublicKeyToken=adb9793829ddae60, processorArchitecture=MSIL">
+      <HintPath>packages\Microsoft.Extensions.Logging.Abstractions.8.0.1\lib\net462\Microsoft.Extensions.Logging.Abstractions.dll</HintPath>
     </Reference>
-    <Reference Include="Microsoft.Extensions.Options, Version=8.0.0.0, Culture=neutral, PublicKeyToken=adb9793829ddae60, processorArchitecture=MSIL">
-      <HintPath>packages\Microsoft.Extensions.Options.8.0.0\lib\net462\Microsoft.Extensions.Options.dll</HintPath>
-      <Private>False</Private>
+    <Reference Include="Microsoft.Extensions.Options, Version=8.0.0.2, Culture=neutral, PublicKeyToken=adb9793829ddae60, processorArchitecture=MSIL">
+      <HintPath>packages\Microsoft.Extensions.Options.8.0.2\lib\net462\Microsoft.Extensions.Options.dll</HintPath>
     </Reference>
     <Reference Include="Microsoft.Extensions.Primitives, Version=8.0.0.0, Culture=neutral, PublicKeyToken=adb9793829ddae60, processorArchitecture=MSIL">
       <HintPath>packages\Microsoft.Extensions.Primitives.8.0.0\lib\net462\Microsoft.Extensions.Primitives.dll</HintPath>
       <Private>False</Private>
     </Reference>
-    <Reference Include="Microsoft.Identity.Client, Version=4.58.1.0, Culture=neutral, PublicKeyToken=0a613f4dd989e8ae, processorArchitecture=MSIL">
-      <HintPath>packages\Microsoft.Identity.Client.4.58.1\lib\net462\Microsoft.Identity.Client.dll</HintPath>
-      <Private>False</Private>
+    <Reference Include="Microsoft.Identity.Client, Version=4.61.3.0, Culture=neutral, PublicKeyToken=0a613f4dd989e8ae, processorArchitecture=MSIL">
+      <HintPath>packages\Microsoft.Identity.Client.4.61.3\lib\net462\Microsoft.Identity.Client.dll</HintPath>
     </Reference>
-    <Reference Include="Microsoft.Identity.Client.Extensions.Msal, Version=4.58.1.0, Culture=neutral, PublicKeyToken=0a613f4dd989e8ae, processorArchitecture=MSIL">
-      <HintPath>packages\Microsoft.Identity.Client.Extensions.Msal.4.58.1\lib\netstandard2.0\Microsoft.Identity.Client.Extensions.Msal.dll</HintPath>
-      <Private>False</Private>
+    <Reference Include="Microsoft.Identity.Client.Extensions.Msal, Version=4.61.3.0, Culture=neutral, PublicKeyToken=0a613f4dd989e8ae, processorArchitecture=MSIL">
+      <HintPath>packages\Microsoft.Identity.Client.Extensions.Msal.4.61.3\lib\netstandard2.0\Microsoft.Identity.Client.Extensions.Msal.dll</HintPath>
     </Reference>
-    <Reference Include="Microsoft.IdentityModel.Abstractions, Version=7.0.3.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35, processorArchitecture=MSIL">
-      <HintPath>packages\Microsoft.IdentityModel.Abstractions.7.0.3\lib\net472\Microsoft.IdentityModel.Abstractions.dll</HintPath>
-      <Private>False</Private>
+    <Reference Include="Microsoft.IdentityModel.Abstractions, Version=8.0.0.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35, processorArchitecture=MSIL">
+      <HintPath>packages\Microsoft.IdentityModel.Abstractions.8.0.0\lib\net472\Microsoft.IdentityModel.Abstractions.dll</HintPath>
     </Reference>
-    <Reference Include="Microsoft.IdentityModel.JsonWebTokens, Version=7.0.3.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35, processorArchitecture=MSIL">
-      <HintPath>packages\Microsoft.IdentityModel.JsonWebTokens.7.0.3\lib\net472\Microsoft.IdentityModel.JsonWebTokens.dll</HintPath>
-      <Private>False</Private>
+    <Reference Include="Microsoft.IdentityModel.JsonWebTokens, Version=8.0.0.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35, processorArchitecture=MSIL">
+      <HintPath>packages\Microsoft.IdentityModel.JsonWebTokens.8.0.0\lib\net472\Microsoft.IdentityModel.JsonWebTokens.dll</HintPath>
     </Reference>
-    <Reference Include="Microsoft.IdentityModel.Logging, Version=7.0.3.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35, processorArchitecture=MSIL">
-      <HintPath>packages\Microsoft.IdentityModel.Logging.7.0.3\lib\net472\Microsoft.IdentityModel.Logging.dll</HintPath>
-      <Private>False</Private>
+    <Reference Include="Microsoft.IdentityModel.Logging, Version=8.0.0.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35, processorArchitecture=MSIL">
+      <HintPath>packages\Microsoft.IdentityModel.Logging.8.0.0\lib\net472\Microsoft.IdentityModel.Logging.dll</HintPath>
     </Reference>
-    <Reference Include="Microsoft.IdentityModel.Protocols, Version=7.0.3.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35, processorArchitecture=MSIL">
-      <HintPath>packages\Microsoft.IdentityModel.Protocols.7.0.3\lib\net472\Microsoft.IdentityModel.Protocols.dll</HintPath>
-      <Private>False</Private>
+    <Reference Include="Microsoft.IdentityModel.Protocols, Version=8.0.0.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35, processorArchitecture=MSIL">
+      <HintPath>packages\Microsoft.IdentityModel.Protocols.8.0.0\lib\net472\Microsoft.IdentityModel.Protocols.dll</HintPath>
     </Reference>
-    <Reference Include="Microsoft.IdentityModel.Protocols.OpenIdConnect, Version=7.0.3.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35, processorArchitecture=MSIL">
-      <HintPath>packages\Microsoft.IdentityModel.Protocols.OpenIdConnect.7.0.3\lib\net472\Microsoft.IdentityModel.Protocols.OpenIdConnect.dll</HintPath>
-      <Private>False</Private>
+    <Reference Include="Microsoft.IdentityModel.Protocols.OpenIdConnect, Version=8.0.0.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35, processorArchitecture=MSIL">
+      <HintPath>packages\Microsoft.IdentityModel.Protocols.OpenIdConnect.8.0.0\lib\net472\Microsoft.IdentityModel.Protocols.OpenIdConnect.dll</HintPath>
     </Reference>
-    <Reference Include="Microsoft.IdentityModel.Tokens, Version=7.0.3.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35, processorArchitecture=MSIL">
-      <HintPath>packages\Microsoft.IdentityModel.Tokens.7.0.3\lib\net472\Microsoft.IdentityModel.Tokens.dll</HintPath>
-      <Private>False</Private>
+    <Reference Include="Microsoft.IdentityModel.Tokens, Version=8.0.0.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35, processorArchitecture=MSIL">
+      <HintPath>packages\Microsoft.IdentityModel.Tokens.8.0.0\lib\net472\Microsoft.IdentityModel.Tokens.dll</HintPath>
     </Reference>
-    <Reference Include="Microsoft.IO.Redist, Version=6.0.0.0, Culture=neutral, PublicKeyToken=cc7b13ffcd2ddd51, processorArchitecture=MSIL">
-      <HintPath>packages\Microsoft.IO.Redist.6.0.0\lib\net472\Microsoft.IO.Redist.dll</HintPath>
-      <Private>False</Private>
+    <Reference Include="Microsoft.IO.Redist, Version=6.0.0.1, Culture=neutral, PublicKeyToken=cc7b13ffcd2ddd51, processorArchitecture=MSIL">
+      <HintPath>packages\Microsoft.IO.Redist.6.0.1\lib\net472\Microsoft.IO.Redist.dll</HintPath>
     </Reference>
     <Reference Include="Microsoft.NET.StringTools, Version=1.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a, processorArchitecture=MSIL">
-      <HintPath>packages\Microsoft.NET.StringTools.17.8.3\lib\net472\Microsoft.NET.StringTools.dll</HintPath>
-      <Private>False</Private>
+      <HintPath>packages\Microsoft.NET.StringTools.17.10.4\lib\net472\Microsoft.NET.StringTools.dll</HintPath>
     </Reference>
     <Reference Include="Microsoft.Scripting, Version=1.3.4.0, Culture=neutral, PublicKeyToken=7f709c5b713576e1, processorArchitecture=MSIL">
       <HintPath>packages\DynamicLanguageRuntime.1.3.4\lib\net452\Microsoft.Scripting.dll</HintPath>
@@ -286,9 +259,8 @@
       <HintPath>packages\Microsoft.ServiceHub.Client.4.1.3102\lib\net472\Microsoft.ServiceHub.Client.dll</HintPath>
       <Private>False</Private>
     </Reference>
-    <Reference Include="Microsoft.ServiceHub.Framework, Version=4.4.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a, processorArchitecture=MSIL">
-      <HintPath>packages\Microsoft.ServiceHub.Framework.4.4.16\lib\net472\Microsoft.ServiceHub.Framework.dll</HintPath>
-      <Private>False</Private>
+    <Reference Include="Microsoft.ServiceHub.Framework, Version=4.5.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a, processorArchitecture=MSIL">
+      <HintPath>packages\Microsoft.ServiceHub.Framework.4.5.31\lib\net472\Microsoft.ServiceHub.Framework.dll</HintPath>
     </Reference>
     <Reference Include="Microsoft.SqlServer.Assessment, Version=1.100.0.0, Culture=neutral, PublicKeyToken=89845dcd8080cc91, processorArchitecture=MSIL">
       <HintPath>packages\Microsoft.SqlServer.Assessment.1.1.17\lib\net462\Microsoft.SqlServer.Assessment.dll</HintPath>
@@ -299,104 +271,79 @@
       <Private>False</Private>
     </Reference>
     <Reference Include="Microsoft.SqlServer.ConnectionInfo, Version=17.100.0.0, Culture=neutral, PublicKeyToken=89845dcd8080cc91, processorArchitecture=MSIL">
-      <HintPath>packages\Microsoft.SqlServer.SqlManagementObjects.170.21.0\lib\net462\Microsoft.SqlServer.ConnectionInfo.dll</HintPath>
-      <Private>False</Private>
+      <HintPath>packages\Microsoft.SqlServer.SqlManagementObjects.171.30.0\lib\net462\Microsoft.SqlServer.ConnectionInfo.dll</HintPath>
     </Reference>
     <Reference Include="Microsoft.SqlServer.Dmf, Version=17.100.0.0, Culture=neutral, PublicKeyToken=89845dcd8080cc91, processorArchitecture=MSIL">
-      <HintPath>packages\Microsoft.SqlServer.SqlManagementObjects.170.21.0\lib\net462\Microsoft.SqlServer.Dmf.dll</HintPath>
-      <Private>False</Private>
+      <HintPath>packages\Microsoft.SqlServer.SqlManagementObjects.171.30.0\lib\net462\Microsoft.SqlServer.Dmf.dll</HintPath>
     </Reference>
     <Reference Include="Microsoft.SqlServer.Dmf.Common, Version=17.100.0.0, Culture=neutral, PublicKeyToken=89845dcd8080cc91, processorArchitecture=MSIL">
-      <HintPath>packages\Microsoft.SqlServer.SqlManagementObjects.170.21.0\lib\net462\Microsoft.SqlServer.Dmf.Common.dll</HintPath>
-      <Private>False</Private>
+      <HintPath>packages\Microsoft.SqlServer.SqlManagementObjects.171.30.0\lib\net462\Microsoft.SqlServer.Dmf.Common.dll</HintPath>
     </Reference>
     <Reference Include="Microsoft.SqlServer.Management.Assessment, Version=17.100.0.0, Culture=neutral, PublicKeyToken=89845dcd8080cc91, processorArchitecture=MSIL">
-      <HintPath>packages\Microsoft.SqlServer.SqlManagementObjects.170.21.0\lib\net462\Microsoft.SqlServer.Management.Assessment.dll</HintPath>
-      <Private>False</Private>
+      <HintPath>packages\Microsoft.SqlServer.SqlManagementObjects.171.30.0\lib\net462\Microsoft.SqlServer.Management.Assessment.dll</HintPath>
     </Reference>
     <Reference Include="Microsoft.SqlServer.Management.Collector, Version=17.100.0.0, Culture=neutral, PublicKeyToken=89845dcd8080cc91, processorArchitecture=MSIL">
-      <HintPath>packages\Microsoft.SqlServer.SqlManagementObjects.170.21.0\lib\net462\Microsoft.SqlServer.Management.Collector.dll</HintPath>
-      <Private>False</Private>
+      <HintPath>packages\Microsoft.SqlServer.SqlManagementObjects.171.30.0\lib\net462\Microsoft.SqlServer.Management.Collector.dll</HintPath>
     </Reference>
     <Reference Include="Microsoft.SqlServer.Management.CollectorEnum, Version=17.100.0.0, Culture=neutral, PublicKeyToken=89845dcd8080cc91, processorArchitecture=MSIL">
-      <HintPath>packages\Microsoft.SqlServer.SqlManagementObjects.170.21.0\lib\net462\Microsoft.SqlServer.Management.CollectorEnum.dll</HintPath>
-      <Private>False</Private>
+      <HintPath>packages\Microsoft.SqlServer.SqlManagementObjects.171.30.0\lib\net462\Microsoft.SqlServer.Management.CollectorEnum.dll</HintPath>
     </Reference>
     <Reference Include="Microsoft.SqlServer.Management.HadrData, Version=17.100.0.0, Culture=neutral, PublicKeyToken=89845dcd8080cc91, processorArchitecture=MSIL">
-      <HintPath>packages\Microsoft.SqlServer.SqlManagementObjects.170.21.0\lib\net462\Microsoft.SqlServer.Management.HadrData.dll</HintPath>
-      <Private>False</Private>
+      <HintPath>packages\Microsoft.SqlServer.SqlManagementObjects.171.30.0\lib\net462\Microsoft.SqlServer.Management.HadrData.dll</HintPath>
     </Reference>
     <Reference Include="Microsoft.SqlServer.Management.HadrModel, Version=17.100.0.0, Culture=neutral, PublicKeyToken=89845dcd8080cc91, processorArchitecture=MSIL">
-      <HintPath>packages\Microsoft.SqlServer.SqlManagementObjects.170.21.0\lib\net462\Microsoft.SqlServer.Management.HadrModel.dll</HintPath>
-      <Private>False</Private>
+      <HintPath>packages\Microsoft.SqlServer.SqlManagementObjects.171.30.0\lib\net462\Microsoft.SqlServer.Management.HadrModel.dll</HintPath>
     </Reference>
     <Reference Include="Microsoft.SqlServer.Management.RegisteredServers, Version=17.100.0.0, Culture=neutral, PublicKeyToken=89845dcd8080cc91, processorArchitecture=MSIL">
-      <HintPath>packages\Microsoft.SqlServer.SqlManagementObjects.170.21.0\lib\net462\Microsoft.SqlServer.Management.RegisteredServers.dll</HintPath>
-      <Private>False</Private>
+      <HintPath>packages\Microsoft.SqlServer.SqlManagementObjects.171.30.0\lib\net462\Microsoft.SqlServer.Management.RegisteredServers.dll</HintPath>
     </Reference>
     <Reference Include="Microsoft.SqlServer.Management.Sdk.Sfc, Version=17.100.0.0, Culture=neutral, PublicKeyToken=89845dcd8080cc91, processorArchitecture=MSIL">
-      <HintPath>packages\Microsoft.SqlServer.SqlManagementObjects.170.21.0\lib\net462\Microsoft.SqlServer.Management.Sdk.Sfc.dll</HintPath>
-      <Private>False</Private>
+      <HintPath>packages\Microsoft.SqlServer.SqlManagementObjects.171.30.0\lib\net462\Microsoft.SqlServer.Management.Sdk.Sfc.dll</HintPath>
     </Reference>
     <Reference Include="Microsoft.SqlServer.Management.SqlScriptPublish, Version=17.100.0.0, Culture=neutral, PublicKeyToken=89845dcd8080cc91, processorArchitecture=MSIL">
-      <HintPath>packages\Microsoft.SqlServer.SqlManagementObjects.170.21.0\lib\net462\Microsoft.SqlServer.Management.SqlScriptPublish.dll</HintPath>
-      <Private>False</Private>
+      <HintPath>packages\Microsoft.SqlServer.SqlManagementObjects.171.30.0\lib\net462\Microsoft.SqlServer.Management.SqlScriptPublish.dll</HintPath>
     </Reference>
     <Reference Include="Microsoft.SqlServer.Management.XEvent, Version=17.100.0.0, Culture=neutral, PublicKeyToken=89845dcd8080cc91, processorArchitecture=MSIL">
-      <HintPath>packages\Microsoft.SqlServer.SqlManagementObjects.170.21.0\lib\net462\Microsoft.SqlServer.Management.XEvent.dll</HintPath>
-      <Private>False</Private>
+      <HintPath>packages\Microsoft.SqlServer.SqlManagementObjects.171.30.0\lib\net462\Microsoft.SqlServer.Management.XEvent.dll</HintPath>
     </Reference>
     <Reference Include="Microsoft.SqlServer.Management.XEventDbScoped, Version=17.100.0.0, Culture=neutral, PublicKeyToken=89845dcd8080cc91, processorArchitecture=MSIL">
-      <HintPath>packages\Microsoft.SqlServer.SqlManagementObjects.170.21.0\lib\net462\Microsoft.SqlServer.Management.XEventDbScoped.dll</HintPath>
-      <Private>False</Private>
+      <HintPath>packages\Microsoft.SqlServer.SqlManagementObjects.171.30.0\lib\net462\Microsoft.SqlServer.Management.XEventDbScoped.dll</HintPath>
     </Reference>
     <Reference Include="Microsoft.SqlServer.Management.XEventDbScopedEnum, Version=17.100.0.0, Culture=neutral, PublicKeyToken=89845dcd8080cc91, processorArchitecture=MSIL">
-      <HintPath>packages\Microsoft.SqlServer.SqlManagementObjects.170.21.0\lib\net462\Microsoft.SqlServer.Management.XEventDbScopedEnum.dll</HintPath>
-      <Private>False</Private>
+      <HintPath>packages\Microsoft.SqlServer.SqlManagementObjects.171.30.0\lib\net462\Microsoft.SqlServer.Management.XEventDbScopedEnum.dll</HintPath>
     </Reference>
     <Reference Include="Microsoft.SqlServer.Management.XEventEnum, Version=17.100.0.0, Culture=neutral, PublicKeyToken=89845dcd8080cc91, processorArchitecture=MSIL">
-      <HintPath>packages\Microsoft.SqlServer.SqlManagementObjects.170.21.0\lib\net462\Microsoft.SqlServer.Management.XEventEnum.dll</HintPath>
-      <Private>False</Private>
+      <HintPath>packages\Microsoft.SqlServer.SqlManagementObjects.171.30.0\lib\net462\Microsoft.SqlServer.Management.XEventEnum.dll</HintPath>
     </Reference>
     <Reference Include="Microsoft.SqlServer.PolicyEnum, Version=17.100.0.0, Culture=neutral, PublicKeyToken=89845dcd8080cc91, processorArchitecture=MSIL">
-      <HintPath>packages\Microsoft.SqlServer.SqlManagementObjects.170.21.0\lib\net462\Microsoft.SqlServer.PolicyEnum.dll</HintPath>
-      <Private>False</Private>
+      <HintPath>packages\Microsoft.SqlServer.SqlManagementObjects.171.30.0\lib\net462\Microsoft.SqlServer.PolicyEnum.dll</HintPath>
     </Reference>
     <Reference Include="Microsoft.SqlServer.RegSvrEnum, Version=17.100.0.0, Culture=neutral, PublicKeyToken=89845dcd8080cc91, processorArchitecture=MSIL">
-      <HintPath>packages\Microsoft.SqlServer.SqlManagementObjects.170.21.0\lib\net462\Microsoft.SqlServer.RegSvrEnum.dll</HintPath>
-      <Private>False</Private>
+      <HintPath>packages\Microsoft.SqlServer.SqlManagementObjects.171.30.0\lib\net462\Microsoft.SqlServer.RegSvrEnum.dll</HintPath>
     </Reference>
     <Reference Include="Microsoft.SqlServer.ServiceBrokerEnum, Version=17.100.0.0, Culture=neutral, PublicKeyToken=89845dcd8080cc91, processorArchitecture=MSIL">
-      <HintPath>packages\Microsoft.SqlServer.SqlManagementObjects.170.21.0\lib\net462\Microsoft.SqlServer.ServiceBrokerEnum.dll</HintPath>
-      <Private>False</Private>
+      <HintPath>packages\Microsoft.SqlServer.SqlManagementObjects.171.30.0\lib\net462\Microsoft.SqlServer.ServiceBrokerEnum.dll</HintPath>
     </Reference>
     <Reference Include="Microsoft.SqlServer.Smo, Version=17.100.0.0, Culture=neutral, PublicKeyToken=89845dcd8080cc91, processorArchitecture=MSIL">
-      <HintPath>packages\Microsoft.SqlServer.SqlManagementObjects.170.21.0\lib\net462\Microsoft.SqlServer.Smo.dll</HintPath>
-      <Private>False</Private>
+      <HintPath>packages\Microsoft.SqlServer.SqlManagementObjects.171.30.0\lib\net462\Microsoft.SqlServer.Smo.dll</HintPath>
     </Reference>
     <Reference Include="Microsoft.SqlServer.Smo.Notebook, Version=17.100.0.0, Culture=neutral, PublicKeyToken=89845dcd8080cc91, processorArchitecture=MSIL">
-      <HintPath>packages\Microsoft.SqlServer.SqlManagementObjects.170.21.0\lib\net462\Microsoft.SqlServer.Smo.Notebook.dll</HintPath>
-      <Private>False</Private>
+      <HintPath>packages\Microsoft.SqlServer.SqlManagementObjects.171.30.0\lib\net462\Microsoft.SqlServer.Smo.Notebook.dll</HintPath>
     </Reference>
     <Reference Include="Microsoft.SqlServer.SmoExtended, Version=17.100.0.0, Culture=neutral, PublicKeyToken=89845dcd8080cc91, processorArchitecture=MSIL">
-      <HintPath>packages\Microsoft.SqlServer.SqlManagementObjects.170.21.0\lib\net462\Microsoft.SqlServer.SmoExtended.dll</HintPath>
-      <Private>False</Private>
+      <HintPath>packages\Microsoft.SqlServer.SqlManagementObjects.171.30.0\lib\net462\Microsoft.SqlServer.SmoExtended.dll</HintPath>
     </Reference>
     <Reference Include="Microsoft.SqlServer.SqlClrProvider, Version=17.100.0.0, Culture=neutral, PublicKeyToken=89845dcd8080cc91, processorArchitecture=MSIL">
-      <HintPath>packages\Microsoft.SqlServer.SqlManagementObjects.170.21.0\lib\net462\Microsoft.SqlServer.SqlClrProvider.dll</HintPath>
-      <Private>False</Private>
+      <HintPath>packages\Microsoft.SqlServer.SqlManagementObjects.171.30.0\lib\net462\Microsoft.SqlServer.SqlClrProvider.dll</HintPath>
     </Reference>
     <Reference Include="Microsoft.SqlServer.SqlEnum, Version=17.100.0.0, Culture=neutral, PublicKeyToken=89845dcd8080cc91, processorArchitecture=MSIL">
-      <HintPath>packages\Microsoft.SqlServer.SqlManagementObjects.170.21.0\lib\net462\Microsoft.SqlServer.SqlEnum.dll</HintPath>
-      <Private>False</Private>
+      <HintPath>packages\Microsoft.SqlServer.SqlManagementObjects.171.30.0\lib\net462\Microsoft.SqlServer.SqlEnum.dll</HintPath>
     </Reference>
     <Reference Include="Microsoft.SqlServer.SqlWmiManagement, Version=17.100.0.0, Culture=neutral, PublicKeyToken=89845dcd8080cc91, processorArchitecture=MSIL">
-      <HintPath>packages\Microsoft.SqlServer.SqlManagementObjects.170.21.0\lib\net462\Microsoft.SqlServer.SqlWmiManagement.dll</HintPath>
-      <Private>False</Private>
+      <HintPath>packages\Microsoft.SqlServer.SqlManagementObjects.171.30.0\lib\net462\Microsoft.SqlServer.SqlWmiManagement.dll</HintPath>
     </Reference>
     <Reference Include="Microsoft.SqlServer.WmiEnum, Version=17.100.0.0, Culture=neutral, PublicKeyToken=89845dcd8080cc91, processorArchitecture=MSIL">
-      <HintPath>packages\Microsoft.SqlServer.SqlManagementObjects.170.21.0\lib\net462\Microsoft.SqlServer.WmiEnum.dll</HintPath>
-      <Private>False</Private>
+      <HintPath>packages\Microsoft.SqlServer.SqlManagementObjects.171.30.0\lib\net462\Microsoft.SqlServer.WmiEnum.dll</HintPath>
     </Reference>
     <Reference Include="Microsoft.VisualBasic">
       <Private>False</Private>
@@ -404,76 +351,62 @@
     <Reference Include="Microsoft.VisualBasic.Compatibility">
       <Private>False</Private>
     </Reference>
-    <Reference Include="Microsoft.VisualStudio.Composition, Version=17.7.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a, processorArchitecture=MSIL">
-      <HintPath>packages\Microsoft.VisualStudio.Composition.17.7.26\lib\net472\Microsoft.VisualStudio.Composition.dll</HintPath>
-      <Private>False</Private>
+    <Reference Include="Microsoft.VisualStudio.Composition, Version=17.10.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a, processorArchitecture=MSIL">
+      <HintPath>packages\Microsoft.VisualStudio.Composition.17.10.37\lib\net472\Microsoft.VisualStudio.Composition.dll</HintPath>
     </Reference>
     <Reference Include="Microsoft.VisualStudio.CoreUtility, Version=17.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a, processorArchitecture=MSIL">
-      <HintPath>packages\Microsoft.VisualStudio.CoreUtility.17.8.222\lib\net472\Microsoft.VisualStudio.CoreUtility.dll</HintPath>
-      <Private>False</Private>
+      <HintPath>packages\Microsoft.VisualStudio.CoreUtility.17.10.191\lib\net472\Microsoft.VisualStudio.CoreUtility.dll</HintPath>
     </Reference>
     <Reference Include="Microsoft.VisualStudio.DebuggerVisualizers, Version=17.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a, processorArchitecture=MSIL">
       <Private>False</Private>
     </Reference>
     <Reference Include="Microsoft.VisualStudio.GraphModel, Version=17.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a, processorArchitecture=MSIL">
-      <HintPath>packages\Microsoft.VisualStudio.GraphModel.17.8.37221\lib\net472\Microsoft.VisualStudio.GraphModel.dll</HintPath>
-      <Private>False</Private>
+      <HintPath>packages\Microsoft.VisualStudio.GraphModel.17.10.40170\lib\net472\Microsoft.VisualStudio.GraphModel.dll</HintPath>
     </Reference>
     <Reference Include="Microsoft.VisualStudio.ImageCatalog, Version=17.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a, processorArchitecture=MSIL">
-      <HintPath>packages\Microsoft.VisualStudio.ImageCatalog.17.8.37221\lib\net472\Microsoft.VisualStudio.ImageCatalog.dll</HintPath>
-      <Private>False</Private>
+      <HintPath>packages\Microsoft.VisualStudio.ImageCatalog.17.10.40170\lib\net472\Microsoft.VisualStudio.ImageCatalog.dll</HintPath>
     </Reference>
     <Reference Include="Microsoft.VisualStudio.Imaging.Interop.14.0.DesignTime, Version=14.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a, processorArchitecture=MSIL">
-      <HintPath>packages\Microsoft.VisualStudio.Imaging.Interop.14.0.DesignTime.17.8.37221\lib\net472\Microsoft.VisualStudio.Imaging.Interop.14.0.DesignTime.dll</HintPath>
+      <HintPath>packages\Microsoft.VisualStudio.Imaging.Interop.14.0.DesignTime.17.10.40152\lib\net472\Microsoft.VisualStudio.Imaging.Interop.14.0.DesignTime.dll</HintPath>
       <EmbedInteropTypes>True</EmbedInteropTypes>
     </Reference>
     <Reference Include="Microsoft.VisualStudio.Interop, Version=17.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a, processorArchitecture=MSIL">
-      <HintPath>packages\Microsoft.VisualStudio.Interop.17.8.37221\lib\net472\Microsoft.VisualStudio.Interop.dll</HintPath>
-      <Private>False</Private>
+      <HintPath>packages\Microsoft.VisualStudio.Interop.17.10.40170\lib\net472\Microsoft.VisualStudio.Interop.dll</HintPath>
     </Reference>
     <Reference Include="Microsoft.VisualStudio.RemoteControl, Version=14.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a, processorArchitecture=MSIL">
       <HintPath>packages\Microsoft.VisualStudio.RemoteControl.16.3.52\lib\net45\Microsoft.VisualStudio.RemoteControl.dll</HintPath>
       <Private>False</Private>
     </Reference>
-    <Reference Include="Microsoft.VisualStudio.RpcContracts, Version=17.8.9.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a, processorArchitecture=MSIL">
-      <HintPath>packages\Microsoft.VisualStudio.RpcContracts.17.8.9\lib\netstandard2.0\Microsoft.VisualStudio.RpcContracts.dll</HintPath>
-      <Private>False</Private>
+    <Reference Include="Microsoft.VisualStudio.RpcContracts, Version=17.10.21.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a, processorArchitecture=MSIL">
+      <HintPath>packages\Microsoft.VisualStudio.RpcContracts.17.10.21\lib\netstandard2.0\Microsoft.VisualStudio.RpcContracts.dll</HintPath>
     </Reference>
     <Reference Include="Microsoft.VisualStudio.Setup.Configuration.Interop, Version=1.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a, processorArchitecture=MSIL">
-      <HintPath>packages\Microsoft.VisualStudio.Setup.Configuration.Interop.3.8.2112\lib\net35\Microsoft.VisualStudio.Setup.Configuration.Interop.dll</HintPath>
+      <HintPath>packages\Microsoft.VisualStudio.Setup.Configuration.Interop.3.10.2154\lib\net35\Microsoft.VisualStudio.Setup.Configuration.Interop.dll</HintPath>
       <EmbedInteropTypes>True</EmbedInteropTypes>
     </Reference>
     <Reference Include="Microsoft.VisualStudio.Shell.Framework, Version=17.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a, processorArchitecture=MSIL">
-      <HintPath>packages\Microsoft.VisualStudio.Shell.Framework.17.8.37221\lib\net472\Microsoft.VisualStudio.Shell.Framework.dll</HintPath>
-      <Private>False</Private>
+      <HintPath>packages\Microsoft.VisualStudio.Shell.Framework.17.10.40170\lib\net472\Microsoft.VisualStudio.Shell.Framework.dll</HintPath>
     </Reference>
     <Reference Include="Microsoft.VisualStudio.Telemetry, Version=16.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a, processorArchitecture=MSIL">
-      <HintPath>packages\Microsoft.VisualStudio.Telemetry.17.9.102\lib\net45\Microsoft.VisualStudio.Telemetry.dll</HintPath>
-      <Private>False</Private>
+      <HintPath>packages\Microsoft.VisualStudio.Telemetry.17.10.32\lib\net45\Microsoft.VisualStudio.Telemetry.dll</HintPath>
     </Reference>
     <Reference Include="Microsoft.VisualStudio.Text.Data, Version=17.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a, processorArchitecture=MSIL">
-      <HintPath>packages\Microsoft.VisualStudio.Text.Data.17.8.222\lib\net472\Microsoft.VisualStudio.Text.Data.dll</HintPath>
-      <Private>False</Private>
+      <HintPath>packages\Microsoft.VisualStudio.Text.Data.17.10.191\lib\net472\Microsoft.VisualStudio.Text.Data.dll</HintPath>
     </Reference>
     <Reference Include="Microsoft.VisualStudio.Text.Logic, Version=17.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a, processorArchitecture=MSIL">
-      <HintPath>packages\Microsoft.VisualStudio.Text.Logic.17.8.222\lib\net472\Microsoft.VisualStudio.Text.Logic.dll</HintPath>
-      <Private>False</Private>
+      <HintPath>packages\Microsoft.VisualStudio.Text.Logic.17.10.191\lib\net472\Microsoft.VisualStudio.Text.Logic.dll</HintPath>
     </Reference>
     <Reference Include="Microsoft.VisualStudio.Text.UI, Version=17.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a, processorArchitecture=MSIL">
-      <HintPath>packages\Microsoft.VisualStudio.Text.UI.17.8.222\lib\net472\Microsoft.VisualStudio.Text.UI.dll</HintPath>
-      <Private>False</Private>
+      <HintPath>packages\Microsoft.VisualStudio.Text.UI.17.10.191\lib\net472\Microsoft.VisualStudio.Text.UI.dll</HintPath>
     </Reference>
     <Reference Include="Microsoft.VisualStudio.Text.UI.Wpf, Version=17.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a, processorArchitecture=MSIL">
-      <HintPath>packages\Microsoft.VisualStudio.Text.UI.Wpf.17.8.222\lib\net472\Microsoft.VisualStudio.Text.UI.Wpf.dll</HintPath>
-      <Private>False</Private>
+      <HintPath>packages\Microsoft.VisualStudio.Text.UI.Wpf.17.10.191\lib\net472\Microsoft.VisualStudio.Text.UI.Wpf.dll</HintPath>
     </Reference>
-    <Reference Include="Microsoft.VisualStudio.Threading, Version=17.8.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a, processorArchitecture=MSIL">
-      <HintPath>packages\Microsoft.VisualStudio.Threading.17.8.14\lib\net472\Microsoft.VisualStudio.Threading.dll</HintPath>
-      <Private>False</Private>
+    <Reference Include="Microsoft.VisualStudio.Threading, Version=17.10.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a, processorArchitecture=MSIL">
+      <HintPath>packages\Microsoft.VisualStudio.Threading.17.10.48\lib\net472\Microsoft.VisualStudio.Threading.dll</HintPath>
     </Reference>
     <Reference Include="Microsoft.VisualStudio.Utilities, Version=17.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a, processorArchitecture=MSIL">
-      <HintPath>packages\Microsoft.VisualStudio.Utilities.17.8.37221\lib\net472\Microsoft.VisualStudio.Utilities.dll</HintPath>
-      <Private>False</Private>
+      <HintPath>packages\Microsoft.VisualStudio.Utilities.17.10.40170\lib\net472\Microsoft.VisualStudio.Utilities.dll</HintPath>
     </Reference>
     <Reference Include="Microsoft.VisualStudio.Utilities.Internal, Version=14.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a, processorArchitecture=MSIL">
       <HintPath>packages\Microsoft.VisualStudio.Utilities.Internal.16.3.56\lib\net45\Microsoft.VisualStudio.Utilities.Internal.dll</HintPath>
@@ -496,9 +429,8 @@
       <HintPath>packages\Microsoft.Win32.Registry.5.0.0\lib\net461\Microsoft.Win32.Registry.dll</HintPath>
       <Private>False</Private>
     </Reference>
-    <Reference Include="Nerdbank.Streams, Version=2.10.0.0, Culture=neutral, PublicKeyToken=cac503e1823ce71c, processorArchitecture=MSIL">
-      <HintPath>packages\Nerdbank.Streams.2.10.72\lib\netstandard2.0\Nerdbank.Streams.dll</HintPath>
-      <Private>False</Private>
+    <Reference Include="Nerdbank.Streams, Version=2.11.0.0, Culture=neutral, PublicKeyToken=cac503e1823ce71c, processorArchitecture=MSIL">
+      <HintPath>packages\Nerdbank.Streams.2.11.74\lib\netstandard2.0\Nerdbank.Streams.dll</HintPath>
     </Reference>
     <Reference Include="netstandard">
       <Private>False</Private>
@@ -528,9 +460,8 @@
     <Reference Include="stdole, Version=7.0.3300.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a">
       <Private>False</Private>
     </Reference>
-    <Reference Include="StreamJsonRpc, Version=2.17.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a, processorArchitecture=MSIL">
-      <HintPath>packages\StreamJsonRpc.2.17.8\lib\netstandard2.0\StreamJsonRpc.dll</HintPath>
-      <Private>False</Private>
+    <Reference Include="StreamJsonRpc, Version=2.18.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a, processorArchitecture=MSIL">
+      <HintPath>packages\StreamJsonRpc.2.18.48\lib\netstandard2.0\StreamJsonRpc.dll</HintPath>
     </Reference>
     <Reference Include="SunnyUI, Version=3.6.5.0, Culture=neutral, PublicKeyToken=27d7d2e821d97aeb, processorArchitecture=MSIL">
       <HintPath>packages\SunnyUI.3.6.5\lib\net472\SunnyUI.dll</HintPath>
@@ -546,6 +477,9 @@
     <Reference Include="System.Buffers, Version=4.0.3.0, Culture=neutral, PublicKeyToken=cc7b13ffcd2ddd51, processorArchitecture=MSIL">
       <HintPath>packages\System.Buffers.4.5.1\lib\net461\System.Buffers.dll</HintPath>
       <Private>False</Private>
+    </Reference>
+    <Reference Include="System.ClientModel, Version=1.0.0.0, Culture=neutral, PublicKeyToken=92742159e12e44c8, processorArchitecture=MSIL">
+      <HintPath>packages\System.ClientModel.1.0.0\lib\netstandard2.0\System.ClientModel.dll</HintPath>
     </Reference>
     <Reference Include="System.Collections.Immutable, Version=8.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a, processorArchitecture=MSIL">
       <HintPath>packages\System.Collections.Immutable.8.0.0\lib\net462\System.Collections.Immutable.dll</HintPath>
@@ -602,14 +536,12 @@
     <Reference Include="System.Design">
       <Private>False</Private>
     </Reference>
-    <Reference Include="System.Diagnostics.DiagnosticSource, Version=8.0.0.0, Culture=neutral, PublicKeyToken=cc7b13ffcd2ddd51, processorArchitecture=MSIL">
-      <HintPath>packages\System.Diagnostics.DiagnosticSource.8.0.0\lib\net462\System.Diagnostics.DiagnosticSource.dll</HintPath>
-      <Private>False</Private>
+    <Reference Include="System.Diagnostics.DiagnosticSource, Version=8.0.0.1, Culture=neutral, PublicKeyToken=cc7b13ffcd2ddd51, processorArchitecture=MSIL">
+      <HintPath>packages\System.Diagnostics.DiagnosticSource.8.0.1\lib\net462\System.Diagnostics.DiagnosticSource.dll</HintPath>
     </Reference>
     <Reference Include="System.DirectoryServices" />
-    <Reference Include="System.Drawing.Common, Version=6.0.0.0, Culture=neutral, PublicKeyToken=cc7b13ffcd2ddd51, processorArchitecture=MSIL">
-      <HintPath>packages\System.Drawing.Common.6.0.0\lib\net461\System.Drawing.Common.dll</HintPath>
-      <Private>False</Private>
+    <Reference Include="System.Drawing.Common, Version=8.0.0.0, Culture=neutral, PublicKeyToken=cc7b13ffcd2ddd51, processorArchitecture=MSIL">
+      <HintPath>packages\System.Drawing.Common.8.0.7\lib\net462\System.Drawing.Common.dll</HintPath>
     </Reference>
     <Reference Include="System.Drawing.Design">
       <Private>False</Private>
@@ -617,9 +549,8 @@
     <Reference Include="System.IdentityModel">
       <Private>False</Private>
     </Reference>
-    <Reference Include="System.IdentityModel.Tokens.Jwt, Version=7.0.3.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35, processorArchitecture=MSIL">
-      <HintPath>packages\System.IdentityModel.Tokens.Jwt.7.0.3\lib\net472\System.IdentityModel.Tokens.Jwt.dll</HintPath>
-      <Private>False</Private>
+    <Reference Include="System.IdentityModel.Tokens.Jwt, Version=8.0.0.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35, processorArchitecture=MSIL">
+      <HintPath>packages\System.IdentityModel.Tokens.Jwt.8.0.0\lib\net472\System.IdentityModel.Tokens.Jwt.dll</HintPath>
     </Reference>
     <Reference Include="System.IO, Version=4.1.1.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a, processorArchitecture=MSIL">
       <HintPath>packages\System.IO.4.3.0\lib\net462\System.IO.dll</HintPath>
@@ -681,9 +612,8 @@
     <Reference Include="System.Security">
       <Private>False</Private>
     </Reference>
-    <Reference Include="System.Security.AccessControl, Version=6.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a, processorArchitecture=MSIL">
-      <HintPath>packages\System.Security.AccessControl.6.0.0\lib\net461\System.Security.AccessControl.dll</HintPath>
-      <Private>False</Private>
+    <Reference Include="System.Security.AccessControl, Version=6.0.0.1, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a, processorArchitecture=MSIL">
+      <HintPath>packages\System.Security.AccessControl.6.0.1\lib\net461\System.Security.AccessControl.dll</HintPath>
     </Reference>
     <Reference Include="System.Security.Cryptography.Algorithms, Version=4.2.1.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a, processorArchitecture=MSIL">
       <HintPath>packages\System.Security.Cryptography.Algorithms.4.3.1\lib\net463\System.Security.Cryptography.Algorithms.dll</HintPath>
@@ -728,21 +658,18 @@
       <HintPath>packages\System.Text.Encodings.Web.8.0.0\lib\net462\System.Text.Encodings.Web.dll</HintPath>
       <Private>False</Private>
     </Reference>
-    <Reference Include="System.Text.Json, Version=8.0.0.0, Culture=neutral, PublicKeyToken=cc7b13ffcd2ddd51, processorArchitecture=MSIL">
-      <HintPath>packages\System.Text.Json.8.0.0\lib\net462\System.Text.Json.dll</HintPath>
-      <Private>False</Private>
+    <Reference Include="System.Text.Json, Version=8.0.0.4, Culture=neutral, PublicKeyToken=cc7b13ffcd2ddd51, processorArchitecture=MSIL">
+      <HintPath>packages\System.Text.Json.8.0.4\lib\net462\System.Text.Json.dll</HintPath>
     </Reference>
     <Reference Include="System.Threading.AccessControl, Version=8.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a, processorArchitecture=MSIL">
       <HintPath>packages\System.Threading.AccessControl.8.0.0\lib\net462\System.Threading.AccessControl.dll</HintPath>
       <Private>False</Private>
     </Reference>
-    <Reference Include="System.Threading.Channels, Version=7.0.0.0, Culture=neutral, PublicKeyToken=cc7b13ffcd2ddd51, processorArchitecture=MSIL">
-      <HintPath>packages\System.Threading.Channels.7.0.0\lib\net462\System.Threading.Channels.dll</HintPath>
-      <Private>False</Private>
+    <Reference Include="System.Threading.Channels, Version=8.0.0.0, Culture=neutral, PublicKeyToken=cc7b13ffcd2ddd51, processorArchitecture=MSIL">
+      <HintPath>packages\System.Threading.Channels.8.0.0\lib\net462\System.Threading.Channels.dll</HintPath>
     </Reference>
-    <Reference Include="System.Threading.Tasks.Dataflow, Version=8.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a, processorArchitecture=MSIL">
-      <HintPath>packages\System.Threading.Tasks.Dataflow.8.0.0\lib\net462\System.Threading.Tasks.Dataflow.dll</HintPath>
-      <Private>False</Private>
+    <Reference Include="System.Threading.Tasks.Dataflow, Version=8.0.0.1, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a, processorArchitecture=MSIL">
+      <HintPath>packages\System.Threading.Tasks.Dataflow.8.0.1\lib\net462\System.Threading.Tasks.Dataflow.dll</HintPath>
     </Reference>
     <Reference Include="System.Threading.Tasks.Extensions, Version=4.2.0.1, Culture=neutral, PublicKeyToken=cc7b13ffcd2ddd51, processorArchitecture=MSIL">
       <HintPath>packages\System.Threading.Tasks.Extensions.4.5.4\lib\net461\System.Threading.Tasks.Extensions.dll</HintPath>
@@ -800,46 +727,46 @@
   </ItemGroup>
   <ItemGroup>
     <Compile Include="Init\FirstBoot\FBSInitializer.cs" />
-    <Compile Include="Init\FirstBoot\FirstBootStep1.cs">
+    <Compile Include="Init\FirstBoot\FrmFirstBootStep1.cs">
       <SubType>Form</SubType>
     </Compile>
-    <Compile Include="Init\FirstBoot\FirstBootStep1.Designer.cs">
-      <DependentUpon>FirstBootStep1.cs</DependentUpon>
+    <Compile Include="Init\FirstBoot\FrmFirstBootStep1.Designer.cs">
+      <DependentUpon>FrmFirstBootStep1.cs</DependentUpon>
     </Compile>
-    <Compile Include="Init\FirstBoot\FirstBootStep2.cs">
+    <Compile Include="Init\FirstBoot\FrmFirstBootStep2.cs">
       <SubType>Form</SubType>
     </Compile>
-    <Compile Include="Init\FirstBoot\FirstBootStep2.Designer.cs">
-      <DependentUpon>FirstBootStep2.cs</DependentUpon>
+    <Compile Include="Init\FirstBoot\FrmFirstBootStep2.Designer.cs">
+      <DependentUpon>FrmFirstBootStep2.cs</DependentUpon>
     </Compile>
-    <Compile Include="Init\FirstBoot\FirstBootStep3.cs">
+    <Compile Include="Init\FirstBoot\FrmFirstBootStep3.cs">
       <SubType>Form</SubType>
     </Compile>
-    <Compile Include="Init\FirstBoot\FirstBootStep3.Designer.cs">
-      <DependentUpon>FirstBootStep3.cs</DependentUpon>
+    <Compile Include="Init\FirstBoot\FrmFirstBootStep3.Designer.cs">
+      <DependentUpon>FrmFirstBootStep3.cs</DependentUpon>
     </Compile>
-    <Compile Include="Init\FirstBoot\FirstBootStep4.cs">
+    <Compile Include="Init\FirstBoot\FrmFirstBootStep4.cs">
       <SubType>Form</SubType>
     </Compile>
-    <Compile Include="Init\FirstBoot\FirstBootStep4.Designer.cs">
-      <DependentUpon>FirstBootStep4.cs</DependentUpon>
+    <Compile Include="Init\FirstBoot\FrmFirstBootStep4.Designer.cs">
+      <DependentUpon>FrmFirstBootStep4.cs</DependentUpon>
     </Compile>
     <Compile Include="Properties\Resources.Designer.cs">
       <AutoGen>True</AutoGen>
       <DesignTime>True</DesignTime>
       <DependentUpon>Resources.resx</DependentUpon>
     </Compile>
-    <Compile Include="Settings\CustomSettings.XshdFileEditor.cs">
+    <Compile Include="Settings\CustomSettings.FrmXshdFileEditor.cs">
       <SubType>Form</SubType>
     </Compile>
-    <Compile Include="Settings\CustomSettings.XshdFileEditor.Designer.cs">
-      <DependentUpon>CustomSettings.XshdFileEditor.cs</DependentUpon>
+    <Compile Include="Settings\CustomSettings.FrmXshdFileEditor.Designer.cs">
+      <DependentUpon>CustomSettings.FrmXshdFileEditor.cs</DependentUpon>
     </Compile>
-    <Compile Include="Settings\CustomSettings.FileEditor.cs">
+    <Compile Include="Settings\CustomSettings.FrmFileEditor.cs">
       <SubType>Form</SubType>
     </Compile>
-    <Compile Include="Settings\CustomSettings.FileEditor.Designer.cs">
-      <DependentUpon>CustomSettings.FileEditor.cs</DependentUpon>
+    <Compile Include="Settings\CustomSettings.FrmFileEditor.Designer.cs">
+      <DependentUpon>CustomSettings.FrmFileEditor.cs</DependentUpon>
     </Compile>
     <Compile Include="Settings\CustomSettings.Initializer.cs">
       <SubType>Form</SubType>
@@ -847,11 +774,11 @@
     <Compile Include="Help\LicenseAndCopyrights.Initializer.cs">
       <SubType>Form</SubType>
     </Compile>
-    <Compile Include="Help\Thanks.cs">
+    <Compile Include="Help\FrmThanks.cs">
       <SubType>Form</SubType>
     </Compile>
-    <Compile Include="Help\Thanks.Designer.cs">
-      <DependentUpon>Thanks.cs</DependentUpon>
+    <Compile Include="Help\FrmThanks.Designer.cs">
+      <DependentUpon>FrmThanks.cs</DependentUpon>
     </Compile>
     <Compile Include="Help\Thanks.Initializer.cs">
       <SubType>Form</SubType>
@@ -860,17 +787,17 @@
     <Compile Include="Main\Main.Initializer.cs">
       <SubType>Form</SubType>
     </Compile>
-    <Compile Include="Settings\RYCBColorPicker.cs">
+    <Compile Include="Settings\FrmRYCBColorPicker.cs">
       <SubType>Form</SubType>
     </Compile>
-    <Compile Include="Settings\RYCBColorPicker.Designer.cs">
-      <DependentUpon>RYCBColorPicker.cs</DependentUpon>
+    <Compile Include="Settings\FrmRYCBColorPicker.Designer.cs">
+      <DependentUpon>FrmRYCBColorPicker.cs</DependentUpon>
     </Compile>
-    <Compile Include="Utils\Boxes\CacheCleaner\CacheCleaner.cs">
+    <Compile Include="Utils\Boxes\CacheCleaner\FrmCacheCleaner.cs">
       <SubType>Form</SubType>
     </Compile>
-    <Compile Include="Utils\Boxes\CacheCleaner\CacheCleaner.Designer.cs">
-      <DependentUpon>CacheCleaner.cs</DependentUpon>
+    <Compile Include="Utils\Boxes\CacheCleaner\FrmCacheCleaner.Designer.cs">
+      <DependentUpon>FrmCacheCleaner.cs</DependentUpon>
     </Compile>
     <Compile Include="Utils\Boxes\CacheCleaner\CacheCleaner.Initializer.cs">
       <SubType>Form</SubType>
@@ -878,26 +805,26 @@
     <Compile Include="Utils\Boxes\ErrorMessageBox\ErrorMessageBox.Initializer.cs">
       <SubType>Form</SubType>
     </Compile>
-    <Compile Include="Utils\Boxes\InterpreterConfigBox\InterpreterConfigBox.cs">
+    <Compile Include="Utils\Boxes\InterpreterConfigBox\FrmInterpreterConfigBox.cs">
       <SubType>Form</SubType>
     </Compile>
-    <Compile Include="Utils\Boxes\InterpreterConfigBox\InterpreterConfigBox.Designer.cs">
-      <DependentUpon>InterpreterConfigBox.cs</DependentUpon>
+    <Compile Include="Utils\Boxes\InterpreterConfigBox\FrmInterpreterConfigBox.Designer.cs">
+      <DependentUpon>FrmInterpreterConfigBox.cs</DependentUpon>
     </Compile>
     <Compile Include="Utils\Boxes\InterpreterConfigBox\InterpreterConfigBox.Initializer.cs">
       <SubType>Form</SubType>
     </Compile>
-    <Compile Include="Utils\Boxes\PackageManager\PyPiSearcherUI.cs">
+    <Compile Include="Utils\Boxes\PackageManager\FrmPyPiSearcherUI.cs">
       <SubType>Form</SubType>
     </Compile>
-    <Compile Include="Utils\Boxes\PackageManager\PyPiSearcherUI.Designer.cs">
-      <DependentUpon>PyPiSearcherUI.cs</DependentUpon>
+    <Compile Include="Utils\Boxes\PackageManager\FrmPyPiSearcherUI.Designer.cs">
+      <DependentUpon>FrmPyPiSearcherUI.cs</DependentUpon>
     </Compile>
-    <Compile Include="Utils\Boxes\PackageManager\PythonPackageManagerMainWindow.cs">
+    <Compile Include="Utils\Boxes\PackageManager\FrmPythonPackageManagerMainWindow.cs">
       <SubType>Form</SubType>
     </Compile>
-    <Compile Include="Utils\Boxes\PackageManager\PythonPackageManagerMainWindow.Designer.cs">
-      <DependentUpon>PythonPackageManagerMainWindow.cs</DependentUpon>
+    <Compile Include="Utils\Boxes\PackageManager\FrmPythonPackageManagerMainWindow.Designer.cs">
+      <DependentUpon>FrmPythonPackageManagerMainWindow.cs</DependentUpon>
     </Compile>
     <Compile Include="Utils\Boxes\PackageManager\PythonPackageManagerMainWindow.Initializer.cs">
       <SubType>Form</SubType>
@@ -908,103 +835,97 @@
     <Compile Include="Utils\Boxes\WebviewBrowserBox.Designer.cs">
       <DependentUpon>WebviewBrowserBox.cs</DependentUpon>
     </Compile>
-    <Compile Include="Utils\Boxes\MsgInIDE\MsgBox.cs">
+    <Compile Include="Utils\Boxes\MsgInIDE\FrmMsgBox.cs">
       <SubType>Form</SubType>
     </Compile>
-    <Compile Include="Utils\Boxes\MsgInIDE\MsgBox.Designer.cs">
-      <DependentUpon>MsgBox.cs</DependentUpon>
+    <Compile Include="Utils\Boxes\MsgInIDE\FrmMsgBox.Designer.cs">
+      <DependentUpon>FrmMsgBox.cs</DependentUpon>
     </Compile>
-    <Compile Include="Utils\Boxes\PackageManager\LocalPackageManagerMainWindow.cs">
+    <Compile Include="Utils\Boxes\PackageManager\FrmLocalPackageManagerMainWindow.cs">
       <SubType>Form</SubType>
     </Compile>
-    <Compile Include="Utils\Boxes\PackageManager\LocalPackageManagerMainWindow.Designer.cs">
-      <DependentUpon>LocalPackageManagerMainWindow.cs</DependentUpon>
+    <Compile Include="Utils\Boxes\PackageManager\FrmLocalPackageManagerMainWindow.Designer.cs">
+      <DependentUpon>FrmLocalPackageManagerMainWindow.cs</DependentUpon>
     </Compile>
     <Compile Include="Utils\Boxes\PackageManager\LocalPackageManagerMainWindow.Initializer.cs">
       <SubType>Form</SubType>
     </Compile>
-    <Compile Include="Utils\Boxes\PackageManager\PackageManagerProgressWindow.cs">
+    <Compile Include="Utils\Boxes\PackageManager\FrmPackageManagerProgressWindow.cs">
       <SubType>Form</SubType>
     </Compile>
-    <Compile Include="Utils\Boxes\PackageManager\PackageManagerProgressWindow.Designer.cs">
-      <DependentUpon>PackageManagerProgressWindow.cs</DependentUpon>
+    <Compile Include="Utils\Boxes\PackageManager\FrmPackageManagerProgressWindow.Designer.cs">
+      <DependentUpon>FrmPackageManagerProgressWindow.cs</DependentUpon>
     </Compile>
-    <Compile Include="Utils\Boxes\Tools\FileSHAorMD5Checker.cs">
+    <Compile Include="Utils\Boxes\Tools\FrmFileSHAorMD5Checker.cs">
       <SubType>Form</SubType>
     </Compile>
-    <Compile Include="Utils\Boxes\Tools\FileSHAorMD5Checker.Designer.cs">
-      <DependentUpon>FileSHAorMD5Checker.cs</DependentUpon>
+    <Compile Include="Utils\Boxes\Tools\FrmFileSHAorMD5Checker.Designer.cs">
+      <DependentUpon>FrmFileSHAorMD5Checker.cs</DependentUpon>
     </Compile>
-    <Compile Include="Utils\Boxes\WaitingBar\WBBox.cs">
+    <Compile Include="Utils\Boxes\WaitingBar\FrmWBBox.cs">
       <SubType>Form</SubType>
     </Compile>
-    <Compile Include="Utils\Boxes\WaitingBar\WBBox.Designer.cs">
-      <DependentUpon>WBBox.cs</DependentUpon>
+    <Compile Include="Utils\Boxes\WaitingBar\FrmWBBox.Designer.cs">
+      <DependentUpon>FrmWBBox.cs</DependentUpon>
     </Compile>
     <Compile Include="Utils\RE-Addon-Controls\CodeSenseSelection.xaml.cs">
       <DependentUpon>CodeSenseSelection.xaml</DependentUpon>
     </Compile>
     <Compile Include="Utils\RYCBCodeSense\CodeSenseBase.cs" />
-    <Compile Include="Settings\CodeSettings.cs">
+    <Compile Include="Settings\FrmCodeSettings.cs">
       <SubType>Form</SubType>
     </Compile>
-    <Compile Include="Settings\CodeSettings.Designer.cs">
-      <DependentUpon>CodeSettings.cs</DependentUpon>
+    <Compile Include="Settings\FrmCodeSettings.Designer.cs">
+      <DependentUpon>FrmCodeSettings.cs</DependentUpon>
     </Compile>
-    <Compile Include="Settings\CustomSettings.cs">
+    <Compile Include="Settings\FrmCustomSettings.cs">
       <SubType>Form</SubType>
     </Compile>
-    <Compile Include="Settings\CustomSettings.Designer.cs">
-      <DependentUpon>CustomSettings.cs</DependentUpon>
+    <Compile Include="Settings\FrmCustomSettings.Designer.cs">
+      <DependentUpon>FrmCustomSettings.cs</DependentUpon>
     </Compile>
-    <Compile Include="Init\Entry.cs">
+    <Compile Include="Init\FrmEntry.cs">
       <SubType>Form</SubType>
     </Compile>
-    <Compile Include="Init\Entry.Designer.cs">
-      <DependentUpon>Entry.cs</DependentUpon>
+    <Compile Include="Init\FrmEntry.Designer.cs">
+      <DependentUpon>FrmEntry.cs</DependentUpon>
     </Compile>
     <Compile Include="GlobalSuppressions.cs" />
-    <Compile Include="Main\Help.cs">
+    <Compile Include="Help\FrmLicenseAndCopyrights.cs">
       <SubType>Form</SubType>
     </Compile>
-    <Compile Include="Main\Help.Designer.cs">
-      <DependentUpon>Help.cs</DependentUpon>
-    </Compile>
-    <Compile Include="Help\LicenseAndCopyrights.cs">
-      <SubType>Form</SubType>
-    </Compile>
-    <Compile Include="Help\LicenseAndCopyrights.Designer.cs">
-      <DependentUpon>LicenseAndCopyrights.cs</DependentUpon>
+    <Compile Include="Help\FrmLicenseAndCopyrights.Designer.cs">
+      <DependentUpon>FrmLicenseAndCopyrights.cs</DependentUpon>
     </Compile>
     <Compile Include="Utils\CrashHanding\CrashHandler.cs" />
     <Compile Include="Utils\CrashHanding\ErrorAnalysiser.cs" />
-    <Compile Include="Utils\Boxes\ErrorMessageBox\ErrorMessageBox.cs">
+    <Compile Include="Utils\Boxes\ErrorMessageBox\FrmErrorMessageBox.cs">
       <SubType>Form</SubType>
     </Compile>
-    <Compile Include="Utils\Boxes\ErrorMessageBox\ErrorMessageBox.Designer.cs">
-      <DependentUpon>ErrorMessageBox.cs</DependentUpon>
+    <Compile Include="Utils\Boxes\ErrorMessageBox\FrmErrorMessageBox.Designer.cs">
+      <DependentUpon>FrmErrorMessageBox.cs</DependentUpon>
     </Compile>
     <Compile Include="Utils\LogUtil.cs" />
-    <Compile Include="Main\Main.cs">
+    <Compile Include="Main\FrmMain.cs">
       <SubType>Form</SubType>
     </Compile>
-    <Compile Include="Main\Main.Designer.cs">
-      <DependentUpon>Main.cs</DependentUpon>
+    <Compile Include="Main\FrmMain.Designer.cs">
+      <DependentUpon>FrmMain.cs</DependentUpon>
     </Compile>
-    <Compile Include="Help\About.cs">
+    <Compile Include="Help\FrmAbout.cs">
       <SubType>Form</SubType>
     </Compile>
-    <Compile Include="Help\About.Designer.cs">
-      <DependentUpon>About.cs</DependentUpon>
+    <Compile Include="Help\FrmAbout.Designer.cs">
+      <DependentUpon>FrmAbout.cs</DependentUpon>
     </Compile>
     <Compile Include="Utils\Boxes\MessageBoxEX.cs" />
     <Compile Include="Program.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
-    <Compile Include="Utils\Boxes\NewFileBox\NewFileBox.cs">
+    <Compile Include="Utils\Boxes\NewFileBox\FrmNewFileBox.cs">
       <SubType>Form</SubType>
     </Compile>
-    <Compile Include="Utils\Boxes\NewFileBox\NewFileBox.Designer.cs">
-      <DependentUpon>NewFileBox.cs</DependentUpon>
+    <Compile Include="Utils\Boxes\NewFileBox\FrmNewFileBox.Designer.cs">
+      <DependentUpon>FrmNewFileBox.cs</DependentUpon>
     </Compile>
     <Compile Include="Utils\RYCBCodeSense\RYCBCodeSense.cs" />
     <Compile Include="Utils\Boxes\RYCBSearchPanel.cs">
@@ -1014,11 +935,11 @@
       <DependentUpon>RYCBSearchPanel.cs</DependentUpon>
     </Compile>
     <Compile Include="Utils\SettingsHandler.cs" />
-    <Compile Include="Utils\Boxes\TBox.cs">
+    <Compile Include="Utils\Boxes\FrmTBox.cs">
       <SubType>Form</SubType>
     </Compile>
-    <Compile Include="Utils\Boxes\TBox.Designer.cs">
-      <DependentUpon>TBox.cs</DependentUpon>
+    <Compile Include="Utils\Boxes\FrmTBox.Designer.cs">
+      <DependentUpon>FrmTBox.cs</DependentUpon>
     </Compile>
     <Compile Include="Utils\Boxes\TextEnterBox.cs">
       <SubType>Form</SubType>
@@ -1043,104 +964,101 @@
     <Compile Include="XshdVisualEdit\XshdVisualEditor.Designer.cs">
       <DependentUpon>XshdVisualEditor.cs</DependentUpon>
     </Compile>
-    <EmbeddedResource Include="Init\FirstBoot\FirstBootStep1.resx">
-      <DependentUpon>FirstBootStep1.cs</DependentUpon>
+    <EmbeddedResource Include="Init\FirstBoot\FrmFirstBootStep1.resx">
+      <DependentUpon>FrmFirstBootStep1.cs</DependentUpon>
     </EmbeddedResource>
-    <EmbeddedResource Include="Init\FirstBoot\FirstBootStep2.resx">
-      <DependentUpon>FirstBootStep2.cs</DependentUpon>
+    <EmbeddedResource Include="Init\FirstBoot\FrmFirstBootStep2.resx">
+      <DependentUpon>FrmFirstBootStep2.cs</DependentUpon>
     </EmbeddedResource>
-    <EmbeddedResource Include="Init\FirstBoot\FirstBootStep3.resx">
-      <DependentUpon>FirstBootStep3.cs</DependentUpon>
+    <EmbeddedResource Include="Init\FirstBoot\FrmFirstBootStep3.resx">
+      <DependentUpon>FrmFirstBootStep3.cs</DependentUpon>
     </EmbeddedResource>
-    <EmbeddedResource Include="Init\FirstBoot\FirstBootStep4.resx">
-      <DependentUpon>FirstBootStep4.cs</DependentUpon>
+    <EmbeddedResource Include="Init\FirstBoot\FrmFirstBootStep4.resx">
+      <DependentUpon>FrmFirstBootStep4.cs</DependentUpon>
     </EmbeddedResource>
-    <EmbeddedResource Include="Settings\CodeSettings.resx">
-      <DependentUpon>CodeSettings.cs</DependentUpon>
+    <EmbeddedResource Include="Settings\FrmCodeSettings.resx">
+      <DependentUpon>FrmCodeSettings.cs</DependentUpon>
     </EmbeddedResource>
-    <EmbeddedResource Include="Settings\CustomSettings.XshdFileEditor.resx">
-      <DependentUpon>CustomSettings.XshdFileEditor.cs</DependentUpon>
+    <EmbeddedResource Include="Settings\CustomSettings.FrmXshdFileEditor.resx">
+      <DependentUpon>CustomSettings.FrmXshdFileEditor.cs</DependentUpon>
     </EmbeddedResource>
-    <EmbeddedResource Include="Settings\CustomSettings.FileEditor.resx">
-      <DependentUpon>CustomSettings.FileEditor.cs</DependentUpon>
+    <EmbeddedResource Include="Settings\CustomSettings.FrmFileEditor.resx">
+      <DependentUpon>CustomSettings.FrmFileEditor.cs</DependentUpon>
     </EmbeddedResource>
-    <EmbeddedResource Include="Settings\CustomSettings.resx">
-      <DependentUpon>CustomSettings.cs</DependentUpon>
+    <EmbeddedResource Include="Settings\FrmCustomSettings.resx">
+      <DependentUpon>FrmCustomSettings.cs</DependentUpon>
     </EmbeddedResource>
-    <EmbeddedResource Include="Help\Thanks.resx">
-      <DependentUpon>Thanks.cs</DependentUpon>
+    <EmbeddedResource Include="Help\FrmThanks.resx">
+      <DependentUpon>FrmThanks.cs</DependentUpon>
     </EmbeddedResource>
-    <EmbeddedResource Include="Init\Entry.resx">
-      <DependentUpon>Entry.cs</DependentUpon>
+    <EmbeddedResource Include="Init\FrmEntry.resx">
+      <DependentUpon>FrmEntry.cs</DependentUpon>
     </EmbeddedResource>
-    <EmbeddedResource Include="Main\Help.resx">
-      <DependentUpon>Help.cs</DependentUpon>
+    <EmbeddedResource Include="Help\FrmLicenseAndCopyrights.resx">
+      <DependentUpon>FrmLicenseAndCopyrights.cs</DependentUpon>
     </EmbeddedResource>
-    <EmbeddedResource Include="Help\LicenseAndCopyrights.resx">
-      <DependentUpon>LicenseAndCopyrights.cs</DependentUpon>
-    </EmbeddedResource>
-    <EmbeddedResource Include="Main\Main.resx">
-      <DependentUpon>Main.cs</DependentUpon>
+    <EmbeddedResource Include="Main\FrmMain.resx">
+      <DependentUpon>FrmMain.cs</DependentUpon>
       <SubType>Designer</SubType>
     </EmbeddedResource>
-    <EmbeddedResource Include="Help\About.resx">
-      <DependentUpon>About.cs</DependentUpon>
+    <EmbeddedResource Include="Help\FrmAbout.resx">
+      <DependentUpon>FrmAbout.cs</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="Properties\Resources.resx">
       <Generator>PublicResXFileCodeGenerator</Generator>
       <SubType>Designer</SubType>
       <LastGenOutput>Resources.Designer.cs</LastGenOutput>
     </EmbeddedResource>
-    <EmbeddedResource Include="Settings\RYCBColorPicker.resx">
-      <DependentUpon>RYCBColorPicker.cs</DependentUpon>
+    <EmbeddedResource Include="Settings\FrmRYCBColorPicker.resx">
+      <DependentUpon>FrmRYCBColorPicker.cs</DependentUpon>
     </EmbeddedResource>
-    <EmbeddedResource Include="Utils\Boxes\CacheCleaner\CacheCleaner.resx">
-      <DependentUpon>CacheCleaner.cs</DependentUpon>
+    <EmbeddedResource Include="Utils\Boxes\CacheCleaner\FrmCacheCleaner.resx">
+      <DependentUpon>FrmCacheCleaner.cs</DependentUpon>
       <SubType>Designer</SubType>
     </EmbeddedResource>
-    <EmbeddedResource Include="Utils\Boxes\ErrorMessageBox\ErrorMessageBox.resx">
-      <DependentUpon>ErrorMessageBox.cs</DependentUpon>
+    <EmbeddedResource Include="Utils\Boxes\ErrorMessageBox\FrmErrorMessageBox.resx">
+      <DependentUpon>FrmErrorMessageBox.cs</DependentUpon>
     </EmbeddedResource>
-    <EmbeddedResource Include="Utils\Boxes\InterpreterConfigBox\InterpreterConfigBox.resx">
-      <DependentUpon>InterpreterConfigBox.cs</DependentUpon>
+    <EmbeddedResource Include="Utils\Boxes\InterpreterConfigBox\FrmInterpreterConfigBox.resx">
+      <DependentUpon>FrmInterpreterConfigBox.cs</DependentUpon>
     </EmbeddedResource>
-    <EmbeddedResource Include="Utils\Boxes\PackageManager\PyPiSearcherUI.resx">
-      <DependentUpon>PyPiSearcherUI.cs</DependentUpon>
+    <EmbeddedResource Include="Utils\Boxes\PackageManager\FrmPyPiSearcherUI.resx">
+      <DependentUpon>FrmPyPiSearcherUI.cs</DependentUpon>
     </EmbeddedResource>
-    <EmbeddedResource Include="Utils\Boxes\PackageManager\PythonPackageManagerMainWindow.resx">
-      <DependentUpon>PythonPackageManagerMainWindow.cs</DependentUpon>
+    <EmbeddedResource Include="Utils\Boxes\PackageManager\FrmPythonPackageManagerMainWindow.resx">
+      <DependentUpon>FrmPythonPackageManagerMainWindow.cs</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="Utils\Boxes\WebviewBrowserBox.resx">
       <DependentUpon>WebviewBrowserBox.cs</DependentUpon>
     </EmbeddedResource>
-    <EmbeddedResource Include="Utils\Boxes\MsgInIDE\MsgBox.resx">
-      <DependentUpon>MsgBox.cs</DependentUpon>
+    <EmbeddedResource Include="Utils\Boxes\MsgInIDE\FrmMsgBox.resx">
+      <DependentUpon>FrmMsgBox.cs</DependentUpon>
       <SubType>Designer</SubType>
     </EmbeddedResource>
-    <EmbeddedResource Include="Utils\Boxes\NewFileBox\NewFileBox.resx">
-      <DependentUpon>NewFileBox.cs</DependentUpon>
+    <EmbeddedResource Include="Utils\Boxes\NewFileBox\FrmNewFileBox.resx">
+      <DependentUpon>FrmNewFileBox.cs</DependentUpon>
       <SubType>Designer</SubType>
     </EmbeddedResource>
-    <EmbeddedResource Include="Utils\Boxes\PackageManager\LocalPackageManagerMainWindow.resx">
-      <DependentUpon>LocalPackageManagerMainWindow.cs</DependentUpon>
+    <EmbeddedResource Include="Utils\Boxes\PackageManager\FrmLocalPackageManagerMainWindow.resx">
+      <DependentUpon>FrmLocalPackageManagerMainWindow.cs</DependentUpon>
     </EmbeddedResource>
-    <EmbeddedResource Include="Utils\Boxes\PackageManager\PackageManagerProgressWindow.resx">
-      <DependentUpon>PackageManagerProgressWindow.cs</DependentUpon>
+    <EmbeddedResource Include="Utils\Boxes\PackageManager\FrmPackageManagerProgressWindow.resx">
+      <DependentUpon>FrmPackageManagerProgressWindow.cs</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="Utils\Boxes\RYCBSearchPanel.resx">
       <DependentUpon>RYCBSearchPanel.cs</DependentUpon>
     </EmbeddedResource>
-    <EmbeddedResource Include="Utils\Boxes\TBox.resx">
-      <DependentUpon>TBox.cs</DependentUpon>
+    <EmbeddedResource Include="Utils\Boxes\FrmTBox.resx">
+      <DependentUpon>FrmTBox.cs</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="Utils\Boxes\TextEnterBox.resx">
       <DependentUpon>TextEnterBox.cs</DependentUpon>
     </EmbeddedResource>
-    <EmbeddedResource Include="Utils\Boxes\Tools\FileSHAorMD5Checker.resx">
-      <DependentUpon>FileSHAorMD5Checker.cs</DependentUpon>
+    <EmbeddedResource Include="Utils\Boxes\Tools\FrmFileSHAorMD5Checker.resx">
+      <DependentUpon>FrmFileSHAorMD5Checker.cs</DependentUpon>
     </EmbeddedResource>
-    <EmbeddedResource Include="Utils\Boxes\WaitingBar\WBBox.resx">
-      <DependentUpon>WBBox.cs</DependentUpon>
+    <EmbeddedResource Include="Utils\Boxes\WaitingBar\FrmWBBox.resx">
+      <DependentUpon>FrmWBBox.cs</DependentUpon>
       <SubType>Designer</SubType>
     </EmbeddedResource>
     <EmbeddedResource Include="XshdVisualEdit\XshdVisualEditor.resx">
@@ -1163,7 +1081,6 @@
     <None Include="lib\venv\scripts\nt\deactivate.bat" />
     <None Include="lib\venv\scripts\posix\activate" />
     <None Include="lib\venv\scripts\posix\activate.fish" />
-    <None Include="Main\help.md" />
     <None Include="IDE.manifest" />
     <None Include="packages.config" />
     <None Include="Properties\Settings.settings">
@@ -1190,16 +1107,16 @@
     <Analyzer Include="packages\Microsoft.CodeAnalysis.Analyzers.3.3.4\analyzers\dotnet\cs\Microsoft.CodeAnalysis.CSharp.Analyzers.dll" />
     <Analyzer Include="packages\Microsoft.CodeAnalysis.BannedApiAnalyzers.3.3.4\analyzers\dotnet\cs\Microsoft.CodeAnalysis.BannedApiAnalyzers.dll" />
     <Analyzer Include="packages\Microsoft.CodeAnalysis.BannedApiAnalyzers.3.3.4\analyzers\dotnet\cs\Microsoft.CodeAnalysis.CSharp.BannedApiAnalyzers.dll" />
-    <Analyzer Include="packages\Microsoft.ServiceHub.Analyzers.4.4.16\analyzers\Microsoft.ServiceHub.Analyzers.dll" />
-    <Analyzer Include="packages\Microsoft.VisualStudio.Composition.Analyzers.17.7.26\analyzers\dotnet\Microsoft.VisualStudio.Composition.Analyzers.dll" />
-    <Analyzer Include="packages\Microsoft.VisualStudio.SDK.Analyzers.16.10.10\analyzers\cs\Microsoft.VisualStudio.SDK.Analyzers.CodeFixes.dll" />
-    <Analyzer Include="packages\Microsoft.VisualStudio.SDK.Analyzers.16.10.10\analyzers\cs\Microsoft.VisualStudio.SDK.Analyzers.dll" />
-    <Analyzer Include="packages\Microsoft.VisualStudio.Threading.Analyzers.17.8.14\analyzers\cs\Microsoft.VisualStudio.Threading.Analyzers.CodeFixes.dll" />
-    <Analyzer Include="packages\Microsoft.VisualStudio.Threading.Analyzers.17.8.14\analyzers\cs\Microsoft.VisualStudio.Threading.Analyzers.CSharp.dll" />
-    <Analyzer Include="packages\Microsoft.VisualStudio.Threading.Analyzers.17.8.14\analyzers\cs\Microsoft.VisualStudio.Threading.Analyzers.dll" />
-    <Analyzer Include="packages\Microsoft.VisualStudio.Threading.Analyzers.17.8.14\analyzers\vb\Microsoft.VisualStudio.Threading.Analyzers.CodeFixes.dll" />
-    <Analyzer Include="packages\Microsoft.VisualStudio.Threading.Analyzers.17.8.14\analyzers\vb\Microsoft.VisualStudio.Threading.Analyzers.dll" />
-    <Analyzer Include="packages\Microsoft.VisualStudio.Threading.Analyzers.17.8.14\analyzers\vb\Microsoft.VisualStudio.Threading.Analyzers.VisualBasic.dll" />
+    <Analyzer Include="packages\Microsoft.ServiceHub.Analyzers.4.5.31\analyzers\Microsoft.ServiceHub.Analyzers.dll" />
+    <Analyzer Include="packages\Microsoft.VisualStudio.Composition.Analyzers.17.10.37\analyzers\dotnet\Microsoft.VisualStudio.Composition.Analyzers.dll" />
+    <Analyzer Include="packages\Microsoft.VisualStudio.SDK.Analyzers.17.7.41\analyzers\cs\Microsoft.VisualStudio.SDK.Analyzers.CodeFixes.dll" />
+    <Analyzer Include="packages\Microsoft.VisualStudio.SDK.Analyzers.17.7.41\analyzers\cs\Microsoft.VisualStudio.SDK.Analyzers.dll" />
+    <Analyzer Include="packages\Microsoft.VisualStudio.Threading.Analyzers.17.10.48\analyzers\cs\Microsoft.VisualStudio.Threading.Analyzers.CodeFixes.dll" />
+    <Analyzer Include="packages\Microsoft.VisualStudio.Threading.Analyzers.17.10.48\analyzers\cs\Microsoft.VisualStudio.Threading.Analyzers.CSharp.dll" />
+    <Analyzer Include="packages\Microsoft.VisualStudio.Threading.Analyzers.17.10.48\analyzers\cs\Microsoft.VisualStudio.Threading.Analyzers.dll" />
+    <Analyzer Include="packages\Microsoft.VisualStudio.Threading.Analyzers.17.10.48\analyzers\vb\Microsoft.VisualStudio.Threading.Analyzers.CodeFixes.dll" />
+    <Analyzer Include="packages\Microsoft.VisualStudio.Threading.Analyzers.17.10.48\analyzers\vb\Microsoft.VisualStudio.Threading.Analyzers.dll" />
+    <Analyzer Include="packages\Microsoft.VisualStudio.Threading.Analyzers.17.10.48\analyzers\vb\Microsoft.VisualStudio.Threading.Analyzers.VisualBasic.dll" />
   </ItemGroup>
   <ItemGroup>
     <EmbeddedResource Include="C-Sharp.xshd" />
@@ -1971,20 +1888,20 @@
     <PropertyGroup>
       <ErrorText>这台计算机上缺少此项目引用的 NuGet 程序包。使用“NuGet 程序包还原”可下载这些程序包。有关更多信息，请参见 http://go.microsoft.com/fwlink/?LinkID=322105。缺少的文件是 {0}。</ErrorText>
     </PropertyGroup>
-    <Error Condition="!Exists('packages\Microsoft.VisualStudio.SDK.Analyzers.16.10.10\build\Microsoft.VisualStudio.SDK.Analyzers.targets')" Text="$([System.String]::Format('$(ErrorText)', 'packages\Microsoft.VisualStudio.SDK.Analyzers.16.10.10\build\Microsoft.VisualStudio.SDK.Analyzers.targets'))" />
     <Error Condition="!Exists('packages\Avalonia.BuildServices.0.0.29\build\Avalonia.BuildServices.targets')" Text="$([System.String]::Format('$(ErrorText)', 'packages\Avalonia.BuildServices.0.0.29\build\Avalonia.BuildServices.targets'))" />
     <Error Condition="!Exists('packages\Avalonia.11.0.3\build\Avalonia.targets')" Text="$([System.String]::Format('$(ErrorText)', 'packages\Avalonia.11.0.3\build\Avalonia.targets'))" />
     <Error Condition="!Exists('packages\Avalonia.11.0.3\build\Avalonia.props')" Text="$([System.String]::Format('$(ErrorText)', 'packages\Avalonia.11.0.3\build\Avalonia.props'))" />
-    <Error Condition="!Exists('packages\Microsoft.Data.SqlClient.SNI.5.1.1\build\net462\Microsoft.Data.SqlClient.SNI.targets')" Text="$([System.String]::Format('$(ErrorText)', 'packages\Microsoft.Data.SqlClient.SNI.5.1.1\build\net462\Microsoft.Data.SqlClient.SNI.targets'))" />
-    <Error Condition="!Exists('packages\Microsoft.VisualStudio.Setup.Configuration.Interop.3.8.2112\build\Microsoft.VisualStudio.Setup.Configuration.Interop.targets')" Text="$([System.String]::Format('$(ErrorText)', 'packages\Microsoft.VisualStudio.Setup.Configuration.Interop.3.8.2112\build\Microsoft.VisualStudio.Setup.Configuration.Interop.targets'))" />
-    <Error Condition="!Exists('packages\Microsoft.VisualStudio.Threading.Analyzers.17.8.14\build\Microsoft.VisualStudio.Threading.Analyzers.targets')" Text="$([System.String]::Format('$(ErrorText)', 'packages\Microsoft.VisualStudio.Threading.Analyzers.17.8.14\build\Microsoft.VisualStudio.Threading.Analyzers.targets'))" />
     <Error Condition="!Exists('packages\Microsoft.Web.WebView2.1.0.2592.51\build\Microsoft.Web.WebView2.targets')" Text="$([System.String]::Format('$(ErrorText)', 'packages\Microsoft.Web.WebView2.1.0.2592.51\build\Microsoft.Web.WebView2.targets'))" />
+    <Error Condition="!Exists('packages\Microsoft.Data.SqlClient.SNI.5.2.0\build\net462\Microsoft.Data.SqlClient.SNI.targets')" Text="$([System.String]::Format('$(ErrorText)', 'packages\Microsoft.Data.SqlClient.SNI.5.2.0\build\net462\Microsoft.Data.SqlClient.SNI.targets'))" />
+    <Error Condition="!Exists('packages\Microsoft.VisualStudio.SDK.Analyzers.17.7.41\build\Microsoft.VisualStudio.SDK.Analyzers.targets')" Text="$([System.String]::Format('$(ErrorText)', 'packages\Microsoft.VisualStudio.SDK.Analyzers.17.7.41\build\Microsoft.VisualStudio.SDK.Analyzers.targets'))" />
+    <Error Condition="!Exists('packages\Microsoft.VisualStudio.Setup.Configuration.Interop.3.10.2154\build\Microsoft.VisualStudio.Setup.Configuration.Interop.targets')" Text="$([System.String]::Format('$(ErrorText)', 'packages\Microsoft.VisualStudio.Setup.Configuration.Interop.3.10.2154\build\Microsoft.VisualStudio.Setup.Configuration.Interop.targets'))" />
+    <Error Condition="!Exists('packages\Microsoft.VisualStudio.Threading.Analyzers.17.10.48\build\Microsoft.VisualStudio.Threading.Analyzers.targets')" Text="$([System.String]::Format('$(ErrorText)', 'packages\Microsoft.VisualStudio.Threading.Analyzers.17.10.48\build\Microsoft.VisualStudio.Threading.Analyzers.targets'))" />
   </Target>
-  <Import Project="packages\Microsoft.VisualStudio.SDK.Analyzers.16.10.10\build\Microsoft.VisualStudio.SDK.Analyzers.targets" Condition="Exists('packages\Microsoft.VisualStudio.SDK.Analyzers.16.10.10\build\Microsoft.VisualStudio.SDK.Analyzers.targets')" />
   <Import Project="packages\Avalonia.BuildServices.0.0.29\build\Avalonia.BuildServices.targets" Condition="Exists('packages\Avalonia.BuildServices.0.0.29\build\Avalonia.BuildServices.targets')" />
   <Import Project="packages\Avalonia.11.0.3\build\Avalonia.targets" Condition="Exists('packages\Avalonia.11.0.3\build\Avalonia.targets')" />
-  <Import Project="packages\Microsoft.Data.SqlClient.SNI.5.1.1\build\net462\Microsoft.Data.SqlClient.SNI.targets" Condition="Exists('packages\Microsoft.Data.SqlClient.SNI.5.1.1\build\net462\Microsoft.Data.SqlClient.SNI.targets')" />
-  <Import Project="packages\Microsoft.VisualStudio.Setup.Configuration.Interop.3.8.2112\build\Microsoft.VisualStudio.Setup.Configuration.Interop.targets" Condition="Exists('packages\Microsoft.VisualStudio.Setup.Configuration.Interop.3.8.2112\build\Microsoft.VisualStudio.Setup.Configuration.Interop.targets')" />
-  <Import Project="packages\Microsoft.VisualStudio.Threading.Analyzers.17.8.14\build\Microsoft.VisualStudio.Threading.Analyzers.targets" Condition="Exists('packages\Microsoft.VisualStudio.Threading.Analyzers.17.8.14\build\Microsoft.VisualStudio.Threading.Analyzers.targets')" />
   <Import Project="packages\Microsoft.Web.WebView2.1.0.2592.51\build\Microsoft.Web.WebView2.targets" Condition="Exists('packages\Microsoft.Web.WebView2.1.0.2592.51\build\Microsoft.Web.WebView2.targets')" />
+  <Import Project="packages\Microsoft.Data.SqlClient.SNI.5.2.0\build\net462\Microsoft.Data.SqlClient.SNI.targets" Condition="Exists('packages\Microsoft.Data.SqlClient.SNI.5.2.0\build\net462\Microsoft.Data.SqlClient.SNI.targets')" />
+  <Import Project="packages\Microsoft.VisualStudio.SDK.Analyzers.17.7.41\build\Microsoft.VisualStudio.SDK.Analyzers.targets" Condition="Exists('packages\Microsoft.VisualStudio.SDK.Analyzers.17.7.41\build\Microsoft.VisualStudio.SDK.Analyzers.targets')" />
+  <Import Project="packages\Microsoft.VisualStudio.Setup.Configuration.Interop.3.10.2154\build\Microsoft.VisualStudio.Setup.Configuration.Interop.targets" Condition="Exists('packages\Microsoft.VisualStudio.Setup.Configuration.Interop.3.10.2154\build\Microsoft.VisualStudio.Setup.Configuration.Interop.targets')" />
+  <Import Project="packages\Microsoft.VisualStudio.Threading.Analyzers.17.10.48\build\Microsoft.VisualStudio.Threading.Analyzers.targets" Condition="Exists('packages\Microsoft.VisualStudio.Threading.Analyzers.17.10.48\build\Microsoft.VisualStudio.Threading.Analyzers.targets')" />
 </Project>

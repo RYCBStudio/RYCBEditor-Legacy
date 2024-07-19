@@ -3,7 +3,7 @@ using System.Collections.Generic;
 using System.Windows.Forms;
 
 namespace IDE;
-public partial class CustomSettings
+public partial class FrmCustomSettings
 {
     private static readonly IniFile _I18nFile = new(Application.StartupPath + $"\\Languages\\{GlobalSettings.language}\\Settings.relang", System.Text.Encoding.UTF8);
 

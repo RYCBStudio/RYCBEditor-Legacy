@@ -20,7 +20,7 @@ namespace IDE
         private static readonly Stopwatch w = new();
         private static readonly Stopwatch startTimer = new();
         private static int CrashAttempts = 0;
-        internal static Entry splash;
+        internal static FrmEntry splash;
         internal static TimeSpan startTime;
         internal static IniFile reConf = new(STARTUP_PATH + "\\Config\\.reconf", System.Text.Encoding.UTF8);
 
@@ -65,7 +65,7 @@ namespace IDE
                 return;
             }
 
-            class_ = param == "" ? new Main() : new Main(param);
+            class_ = param == "" ? new FrmMain() : new FrmMain(param);
 
             switch (true)
             {
@@ -86,17 +86,17 @@ namespace IDE
         private static void Application_ThreadException(object sender, ThreadExceptionEventArgs e)
         {
             var ex = e.Exception;
-            IDE.Main.LOGGER.WriteErrLog(ex, EnumMsgLevel.ERROR, EnumPort.CLIENT);
-            ((Main)class_).InfoTip.Text = string.Concat(ex.GetType().ToString(), ": ", ex.Message);
-            ((Main)class_).InfoTip.Image = Properties.Resources.Error_64x;
-            ((Main)class_).InfoTip.Visible = true;
-            ((Main)class_).CloseInfoTip.Visible = true;
-            ((Main)class_).msgBox.MainForm = class_;
-            ((Main)class_).msgBox.CurrentMsgType = MsgBox.MsgType.Error;
-            ((Main)class_).msgBox.CurrentException = ex;
-            ((Main)class_).msgBox.TopMost = true;
-            ((Main)class_).msgBox.Show();
-            ((Main)class_).msgBox.TopMost = false;
+            IDE.FrmMain.LOGGER.WriteErrLog(ex, EnumMsgLevel.ERROR, EnumPort.CLIENT);
+            ((FrmMain)class_).InfoTip.Text = string.Concat(ex.GetType().ToString(), ": ", ex.Message);
+            ((FrmMain)class_).InfoTip.Image = Properties.Resources.Error_64x;
+            ((FrmMain)class_).InfoTip.Visible = true;
+            ((FrmMain)class_).CloseInfoTip.Visible = true;
+            ((FrmMain)class_).msgBox.MainForm = class_;
+            ((FrmMain)class_).msgBox.CurrentMsgType = FrmMsgBox.MsgType.Error;
+            ((FrmMain)class_).msgBox.CurrentException = ex;
+            ((FrmMain)class_).msgBox.TopMost = true;
+            ((FrmMain)class_).msgBox.Show();
+            ((FrmMain)class_).msgBox.TopMost = false;
         }
 
         private static void CurrentDomain_UnhandledException(object sender, UnhandledExceptionEventArgs e)
@@ -154,7 +154,7 @@ namespace IDE
         {
             if (CrashAttempts == GlobalSettings.CrashAttempts - 1 || !isInitialized)
             {
-                IDE.Main.LOGGER.WriteLog("RYCB Editor 已崩溃。崩溃尝试次数：" + (CrashAttempts + 1).ToString());
+                IDE.FrmMain.LOGGER.WriteLog("RYCB Editor 已崩溃。崩溃尝试次数：" + (CrashAttempts + 1).ToString());
 
                 w.Stop();
                 var time = w.Elapsed;
@@ -172,7 +172,7 @@ namespace IDE
             else
             {
                 CrashAttempts++;
-                IDE.Main.LOGGER.WriteLog($"捕获异常：{{Type={ex.GetType()}, Message={ex.Message}}}\t尝试次数：{CrashAttempts}(距离崩溃还剩{GlobalSettings.CrashAttempts - CrashAttempts}次异常)", EnumMsgLevel.FATAL, EnumPort.CLIENT, EnumModule.MAIN); ;
+                IDE.FrmMain.LOGGER.WriteLog($"捕获异常：{{Type={ex.GetType()}, Message={ex.Message}}}\t尝试次数：{CrashAttempts}(距离崩溃还剩{GlobalSettings.CrashAttempts - CrashAttempts}次异常)", EnumMsgLevel.FATAL, EnumPort.CLIENT, EnumModule.MAIN); ;
             }
         }
 

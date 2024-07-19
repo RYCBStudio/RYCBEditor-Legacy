@@ -3,7 +3,7 @@ using System.Windows.Forms;
 using Sunny.UI;
 
 namespace IDE;
-public partial class LicenseAndCopyrights
+public partial class FrmLicenseAndCopyrights
 {
     StreamReader _I18nContentFile = new(Program.STARTUP_PATH + $"\\Languages\\{GlobalSettings.language}\\LAC.html", System.Text.Encoding.UTF8);
 

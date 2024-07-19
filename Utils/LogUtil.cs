@@ -282,7 +282,7 @@ namespace IDE
             }
             catch (Exception ex)
             {
-                var LOGGER = Main.LOGGER;
+                var LOGGER = FrmMain.LOGGER;
                 LOGGER.WriteErrLog($"An/Some Exception(s) are caught：{ex.Message}", ex, EnumMsgLevel.FATAL, EnumPort.CLIENT);
             }
             return "invalid param";
