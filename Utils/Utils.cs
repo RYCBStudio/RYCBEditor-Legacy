@@ -814,7 +814,7 @@ namespace IDE
                 process.StandardInput.WriteLine(command0);
                 process.StandardInput.WriteLine(command);
                 process.StandardInput.WriteLine("exit");
-                //process.WaitForExit();
+                process.WaitForExit();
                 message = process.StandardOutput.ReadToEnd();//要等压缩完成后才可以来抓取这个压缩文件
 
                 process.Close();

@@ -54,11 +54,17 @@ public partial class FrmWPFPackageManager : Window
         }
         catch (FileNotFoundException ex)
         {
-            MessageBox.Show($"找不到文件: {ex.Message}");
+            FrmMain.LOGGER.Log($"找不到文件: {ex.Message}");
+            FrmMain.LOGGER.Err(ex);
         }
         catch (JsonException ex)
         {
-            MessageBox.Show($"JSON 解析错误: {ex.Message}");
+            FrmMain.LOGGER.Log($"JSON 解析错误: {ex.Message}");
+            FrmMain.LOGGER.Err(ex);
+        }
+        catch (Exception ex)
+        {
+            FrmMain.LOGGER.Err(ex);
         }
     }
 
@@ -71,6 +77,7 @@ public partial class FrmWPFPackageManager : Window
         TBlkDesc.Text = pkginfo.Description;
         TBlkDepend.Text = pkginfo.Dependencies;
         TBlkAuthor.Text = pkginfo.Author;
+        ((FrmWPFPackageViewModel)this.DataContext).SelectedPackages = ListBoxPackages.SelectedItems.Count;
     }
 
     private async void GetPackage(object sender, RoutedEventArgs e)
@@ -81,6 +88,25 @@ public partial class FrmWPFPackageManager : Window
             packages.Add(item.Name);
         }
         await new PackageProcessor(packages).DownloadAsync();
+    }
+
+    private void Search(object sender, RoutedEventArgs e)
+    {
+        foreach (var item in (List<PackageInfo>)ListBoxPackages.ItemsSource)
+        {
+            if (item.Name.Contains(SearchBox.Text)
+                || item.Version.Contains(SearchBox.Text)
+                || item.Dependencies.Contains(SearchBox.Text)
+                || item.Description.Contains(SearchBox.Text)
+                || item.Author.Contains(SearchBox.Text)
+                || SearchBox.Text.Contains(item.Name)
+                || SearchBox.Text.Contains(item.Author)
+                || SearchBox.Text.Contains(item.Description)
+                || SearchBox.Text.Contains(item.Dependencies))
+            {
+                ListBoxPackages.SelectedItem = item;
+            }
+        }
     }
 }
 

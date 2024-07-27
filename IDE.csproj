@@ -1235,6 +1235,7 @@
     <EmbeddedResource Include="C-Sharp.xshd" />
     <EmbeddedResource Include="XML.xshd" />
     <EmbeddedResource Include="PlainText.xshd" />
+    <None Include="Resources\Fonts\iconfont.ttf" />
     <None Include="Resources\Run.png" />
     <None Include="Resources\Debug_Color.png" />
     <None Include="Resources\plus.png" />
@@ -2010,6 +2011,7 @@
       <SubType>Designer</SubType>
     </Page>
   </ItemGroup>
+  <ItemGroup />
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
   <Target Name="EnsureNuGetPackageBuildImports" BeforeTargets="PrepareForBuild">
     <PropertyGroup>

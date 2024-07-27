@@ -12,7 +12,7 @@ using IDE.Utils.Update;
 namespace IDE;
 internal partial class PackageProcessor
 {
-    private string TitleBase = "Downloading {0}:{2}/{3} {1}";
+    private string TitleBase = "{4} {0}:{2}/{3} {1}";
     internal bool CloudSourceOK;
     internal string BaseUrl;
     List<string> PackagesNames = [];
@@ -72,20 +72,26 @@ internal partial class PackageProcessor
                 downloader.DownloadProgressChanged += GetDownloadProgress;
                 downloader.DownloadStarted += StartDownloading;
                 var file = Program.STARTUP_PATH + "\\Cache\\Packages\\" + PackageName + ".repkg";
-                TitleBase = string.Format(TitleBase, PackageName, "{1}", "{2}", "{3}");
-                dpwViewModel.Title = TitleBase.Format("", "", "", "");
+                TitleBase = string.Format(TitleBase, PackageName, "{1}", "{2}", "{3}", "{4}");
+                dpwViewModel.Title = TitleBase.Format("", "", "", "", "Downloading");
                 await downloader.DownloadFileTaskAsync(downloadUrl, file);
             }
+            dpwViewModel.Value = 0;
             dpwViewModel.Maximum = PackagesNames.Count;
             dpwViewModel.IsIntermediate = true;
             foreach (var PackageName in PackagesNames)
             {
+                dpwViewModel.Title = TitleBase.Format(PackageName, "", "", "", "Decompressing");
                 dpwViewModel.IsIntermediate = false;
                 dpwViewModel.IsSingleIntermediate = true;
                 var file = Program.STARTUP_PATH + "\\Cache\\Packages\\" + PackageName + ".repkg";
-                await Task.Run(() => Extensions.DecompressFile(file, Program.STARTUP_PATH + $"Package\\{PackageName}"));
-                dpwViewModel.Value++;
+                if (Extensions.DecompressFile(file, Program.STARTUP_PATH + $"\\Package\\{PackageName}"))
+                {
+                    dpwViewModel.Title = "Decompressed success.";
+                    dpwViewModel.Value++;
+                }
             }
+            dpwViewModel.Title = "Everything is OK.";
         }
         else
         {
@@ -103,7 +109,7 @@ internal partial class PackageProcessor
     {
         var res = (int)e.ReceivedBytesSize;
         dpwViewModel.SingleValue = res;
-        dpwViewModel.Title = string.Format(TitleBase, "", ProcessFileSize((long)e.BytesPerSecondSpeed) + "/s", ProcessFileSize(e.ReceivedBytesSize), ProcessFileSize(e.TotalBytesToReceive));
+        dpwViewModel.Title = string.Format(TitleBase, "", ProcessFileSize((long)e.BytesPerSecondSpeed) + "/s", ProcessFileSize(e.ReceivedBytesSize), ProcessFileSize(e.TotalBytesToReceive), "Downloading");
     }
 
     /// <summary>
