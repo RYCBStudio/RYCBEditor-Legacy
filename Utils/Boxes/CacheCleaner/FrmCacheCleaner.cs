@@ -135,9 +135,9 @@ public partial class FrmCacheCleaner : UIForm
 
     public static void DeleteFiles(string dir)
     {
-        DirectoryInfo dirInfo = new DirectoryInfo(dir);
+        var dirInfo = new DirectoryInfo(dir);
         dirInfo.Delete();
-        foreach (DirectoryInfo subdir in dirInfo.GetDirectories())
+        foreach (var subdir in dirInfo.GetDirectories())
         {
             DeleteFiles(subdir.FullName);
         }

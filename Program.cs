@@ -85,18 +85,22 @@ namespace IDE
 
         private static void Application_ThreadException(object sender, ThreadExceptionEventArgs e)
         {
-            var ex = e.Exception;
-            IDE.FrmMain.LOGGER.Err(ex, EnumMsgLevel.ERROR, EnumPort.CLIENT);
-            ((FrmMain)class_).InfoTip.Text = string.Concat(ex.GetType().ToString(), ": ", ex.Message);
-            ((FrmMain)class_).InfoTip.Image = Properties.Resources.Error_64x;
-            ((FrmMain)class_).InfoTip.Visible = true;
-            ((FrmMain)class_).CloseInfoTip.Visible = true;
-            ((FrmMain)class_).msgBox.MainForm = class_;
-            ((FrmMain)class_).msgBox.CurrentMsgType = FrmMsgBox.MsgType.Error;
-            ((FrmMain)class_).msgBox.CurrentException = ex;
-            ((FrmMain)class_).msgBox.TopMost = true;
-            ((FrmMain)class_).msgBox.Show();
-            ((FrmMain)class_).msgBox.TopMost = false;
+            var ex = e.Exception; 
+            try
+            {
+                FrmMain.LOGGER.Err(ex, EnumMsgLevel.ERROR, EnumPort.CLIENT);
+                ((FrmMain)class_).InfoTip.Text = string.Concat(ex.GetType().ToString(), ": ", ex.Message);
+                ((FrmMain)class_).InfoTip.Image = Properties.Resources.Error_64x;
+                ((FrmMain)class_).InfoTip.Visible = true;
+                ((FrmMain)class_).CloseInfoTip.Visible = true;
+                ((FrmMain)class_).msgBox.MainForm = class_;
+                ((FrmMain)class_).msgBox.CurrentMsgType = FrmMsgBox.MsgType.Error;
+                ((FrmMain)class_).msgBox.CurrentException = ex;
+                ((FrmMain)class_).msgBox.TopMost = true;
+                ((FrmMain)class_).msgBox.Show();
+                ((FrmMain)class_).msgBox.TopMost = false;
+            }
+            catch { }
         }
 
         private static void CurrentDomain_UnhandledException(object sender, UnhandledExceptionEventArgs e)

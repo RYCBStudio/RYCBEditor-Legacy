@@ -42,14 +42,14 @@ internal partial class UpdateGlobalDeployer
 
     public bool DecompressFile(string zipPath, string filePath)
     {
-        bool exeRes = true;
+        var exeRes = true;
         try
         {
-            Process process = new Process();
+            var process = new Process();
             process.StartInfo.FileName = "cmd.exe";
-            string message = "";
-            string command0 = "cd \"" + Program.STARTUP_PATH + "\\Tools\"";
-            string command = "";
+            var message = "";
+            var command0 = "cd \"" + Program.STARTUP_PATH + "\\Tools\"";
+            var command = "";
 
             command = $"7Z x -t7z \"" + zipPath + "\" -o\"" + filePath + "\" -y";
             process.StartInfo.UseShellExecute = false;

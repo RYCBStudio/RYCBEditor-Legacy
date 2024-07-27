@@ -37,12 +37,31 @@ public partial class CustomSettingsFileEditor : UIForm
         };
         toolStripStatusLabel4.Text = Program.reConf.FileName;
     }
+    public CustomSettingsFileEditor(string FileName)
+    {
+        InitializeComponent();
+        Editor.Fore = GlobalSettings.editor_color_set["Light"][0];
+        Editor.Back = GlobalSettings.editor_color_set["Light"][1];
+        _editor = new TextEditor()
+        {
+            Width = elementHost1.Width,
+            Height = elementHost1.Height,
+            FontFamily = new System.Windows.Media.FontFamily(Program.reConf.ReadString("Editor", "Font", "Consolas")),
+            Background = new System.Windows.Media.SolidColorBrush(Editor.Back),
+            Foreground = new System.Windows.Media.SolidColorBrush(Editor.Fore),
+            FontSize = Program.reConf.ReadInt("Editor", "Size", 12),
+            ShowLineNumbers = bool.Parse(Program.reConf.ReadString("Editor", "ShowLineNum", "true")),
+            HorizontalScrollBarVisibility = System.Windows.Controls.ScrollBarVisibility.Auto,
+            VerticalScrollBarVisibility = System.Windows.Controls.ScrollBarVisibility.Auto,
+        };
+        toolStripStatusLabel4.Text = FileName;
+    }
 
     private void CustomSettingsFileEditor_Load(object sender, EventArgs e)
     {
         _editor.TextArea.TextEntered += TextArea_TextEntered;
         elementHost1.Child = _editor;
-        _editor.Load(Program.reConf.FileName);
+        _editor.Load(toolStripStatusLabel4.Text);
         using (Stream s = new FileStream(FrmMain.XshdFilePath + "\\Ini.xshd", FileMode.Open, FileAccess.Read, FileShare.ReadWrite | FileShare.Delete))
         {
             using XmlTextReader reader = new(s);

@@ -109,7 +109,7 @@ public class MessageBoxEX
         [DllImport("user32.dll", CharSet = CharSet.Auto)]
         public static extern bool SetWindowPos(IntPtr hWnd, IntPtr hWndInsertAfter, int x, int y, int Width, int Height, int flags);
         [DllImport("user32.dll")]
-        public static extern IntPtr GetWindow(IntPtr hWnd, Int32 wCmd);
+        public static extern IntPtr GetWindow(IntPtr hWnd, int wCmd);
         [DllImport("user32.dll")]
         public static extern bool SetWindowText(IntPtr hWnd, string lpString);
         [DllImport("user32.dll")]

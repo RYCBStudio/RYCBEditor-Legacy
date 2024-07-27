@@ -28,11 +28,9 @@
         /// </summary>
         private void InitializeComponent()
         {
-            this.components = new System.ComponentModel.Container();
             this.metroProgressBar1 = new MetroFramework.Controls.MetroProgressBar();
             this.uiLabel1 = new System.Windows.Forms.Label();
             this.uiLabel2 = new System.Windows.Forms.Label();
-            this.timer1 = new System.Windows.Forms.Timer(this.components);
             this.uiLabel4 = new System.Windows.Forms.Label();
             this.tableLayoutPanel1 = new System.Windows.Forms.TableLayoutPanel();
             this.tableLayoutPanel1.SuspendLayout();
@@ -81,12 +79,6 @@
             this.uiLabel2.Text = "© RYCB Studio {0}";
             this.uiLabel2.TextAlign = System.Drawing.ContentAlignment.MiddleRight;
             // 
-            // timer1
-            // 
-            this.timer1.Enabled = true;
-            this.timer1.Interval = 1000;
-            this.timer1.Tick += new System.EventHandler(this.Delay);
-            // 
             // uiLabel4
             // 
             this.uiLabel4.BackColor = System.Drawing.Color.Transparent;
@@ -128,7 +120,7 @@
             this.tableLayoutPanel1.Size = new System.Drawing.Size(987, 483);
             this.tableLayoutPanel1.TabIndex = 10;
             // 
-            // Entry
+            // FrmEntry
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(11F, 24F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
@@ -145,13 +137,12 @@
             this.Margin = new System.Windows.Forms.Padding(3, 4, 3, 4);
             this.MaximizeBox = false;
             this.MinimizeBox = false;
-            this.Name = "Entry";
+            this.Name = "FrmEntry";
             this.ShowIcon = false;
             this.ShowInTaskbar = false;
             this.StartPosition = System.Windows.Forms.FormStartPosition.CenterScreen;
             this.Text = "Entry";
             this.TopMost = true;
-            this.FormClosing += new System.Windows.Forms.FormClosingEventHandler(this.Entry_FormClosing);
             this.Shown += new System.EventHandler(this.Entry_Load);
             this.MouseDown += new System.Windows.Forms.MouseEventHandler(this.DragNoFrameWindow_MouseDown);
             this.tableLayoutPanel1.ResumeLayout(false);
@@ -164,7 +155,6 @@
         internal MetroFramework.Controls.MetroProgressBar metroProgressBar1;
         private System.Windows.Forms.Label uiLabel1;
         private System.Windows.Forms.Label uiLabel2;
-        private System.Windows.Forms.Timer timer1;
         private System.Windows.Forms.Label uiLabel4;
         private System.Windows.Forms.TableLayoutPanel tableLayoutPanel1;
     }

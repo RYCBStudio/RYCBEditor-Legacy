@@ -1,0 +1,51 @@
+﻿<Window
+    x:Class="IDE.Utils.PackageManager.FrmWPFDownloadProgressWindow"
+    xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+    xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+    xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
+    xmlns:local="clr-namespace:IDE.Utils.PackageManager"
+    xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
+    Title="{Binding Title}"
+    Height="200"
+    d:DataContext="{d:DesignInstance Type=local:FrmWPFDownloadProgressViewModel}"
+    d:DesignWidth="800"
+    WindowStartupLocation="CenterScreen"
+    mc:Ignorable="d">
+    <Window.Resources>
+        <LinearGradientBrush x:Key="RE-Color" MappingMode="RelativeToBoundingBox" Opacity="0.8" StartPoint="0.2,0" EndPoint="0.6,1">
+            <GradientStop Offset="1" Color="#FF3272B9" />
+            <GradientStop Offset="0" Color="#FF67C3C7" />
+        </LinearGradientBrush>
+    </Window.Resources>
+    <Grid>
+        <DockPanel Background="Black" LastChildFill="True">
+            <Label
+                HorizontalAlignment="Center"
+                VerticalAlignment="Center"
+                Background="#00000000"
+                Content="{Binding Title}"
+                DockPanel.Dock="Top"
+                FontSize="20"
+                FontWeight="Bold"
+                Foreground="White" />
+            <ProgressBar
+                x:Name="SinglePackageDownloadProgress"
+                Height="30"
+                Background="#FF040404"
+                DockPanel.Dock="Bottom"
+                Foreground="{StaticResource RE-Color}"
+                IsIndeterminate="{Binding IsSingleIntermediate}"
+                Maximum="{Binding SingleMaximum, Mode=OneWay}"
+                Value="{Binding SingleValue, Mode=OneWay}" />
+            <ProgressBar
+                x:Name="DownloadProgress"
+                Height="30"
+                Background="#FF040404"
+                DockPanel.Dock="Bottom"
+                Foreground="{StaticResource RE-Color}"
+                IsIndeterminate="{Binding IsIntermediate}"
+                Maximum="{Binding Maximum, Mode=OneWay}"
+                Value="{Binding Value, Mode=OneWay}" />
+        </DockPanel>
+    </Grid>
+</Window>

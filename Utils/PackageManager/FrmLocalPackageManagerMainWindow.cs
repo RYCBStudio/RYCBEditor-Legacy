@@ -71,7 +71,7 @@ public partial class PackageManagerMain : UIForm
 
     private void InitializePackage(string pkgPath)
     {
-        Dictionary<string, string> pkgTags = new Dictionary<string, string>
+        var pkgTags = new Dictionary<string, string>
         {
             { "Path", pkgPath }
         };
@@ -107,7 +107,7 @@ public partial class PackageManagerMain : UIForm
         table.RowStyles.Add(new RowStyle(SizeType.Percent, 8F));
         #endregion
         #region Custom Tabpage Controls
-        Label l1 = new Label()
+        var l1 = new Label()
         {
             AutoSize = true,
             Dock = DockStyle.Fill,
@@ -118,7 +118,7 @@ public partial class PackageManagerMain : UIForm
             Text = _I18nFile.Localize("text.lpmm.pkg.name"),
             TextAlign = ContentAlignment.MiddleCenter,
         };
-        Label l2 = new Label()
+        var l2 = new Label()
         {
             AutoSize = true,
             Dock = DockStyle.Fill,
@@ -129,7 +129,7 @@ public partial class PackageManagerMain : UIForm
             Text = _I18nFile.Localize("text.lpmm.pkg.author"),
             TextAlign = ContentAlignment.MiddleCenter,
         };
-        Label l3 = new Label()
+        var l3 = new Label()
         {
             AutoSize = true,
             Dock = DockStyle.Fill,
@@ -140,7 +140,7 @@ public partial class PackageManagerMain : UIForm
             Text = _I18nFile.Localize("text.lpmm.pkg.desc"),
             TextAlign = ContentAlignment.MiddleCenter,
         };
-        Label l4 = new Label()
+        var l4 = new Label()
         {
             AutoSize = true,
             Dock = DockStyle.Fill,
@@ -153,7 +153,7 @@ public partial class PackageManagerMain : UIForm
         };
         pkgTags.Add("Status", l4.Text);
         l4.Text = _I18nFile.Localize((l4.Text == "Not sure" ? "unknown" : l4.Text));
-        Label l5 = new Label()
+        var l5 = new Label()
         {
             AutoSize = true,
             Dock = DockStyle.Fill,
@@ -164,7 +164,7 @@ public partial class PackageManagerMain : UIForm
             Text = _I18nFile.Localize("text.lpmm.pkg.status"),
             TextAlign = ContentAlignment.MiddleCenter,
         };
-        UITextBox uiTb1 = new UITextBox()
+        var uiTb1 = new UITextBox()
         {
 
             Cursor = Cursors.IBeam,
@@ -197,7 +197,7 @@ public partial class PackageManagerMain : UIForm
             pkgTags.Add("TrustedAuthor", "false");
         }
         table.SetColumnSpan(uiTb1, 2);
-        UITextBox uiTb2 = new UITextBox()
+        var uiTb2 = new UITextBox()
         {
             Cursor = Cursors.IBeam,
             Dock = DockStyle.Fill,
@@ -220,7 +220,7 @@ public partial class PackageManagerMain : UIForm
         table.SetColumnSpan(uiTb2, 2);
         table.SetRowSpan(uiTb2, 6);
         pkgTags.Add("Desc", uiTb2.Text);
-        UITextBox uiTb3 = new UITextBox()
+        var uiTb3 = new UITextBox()
         {
             Cursor = Cursors.IBeam,
             Dock = DockStyle.Fill,
@@ -243,7 +243,7 @@ public partial class PackageManagerMain : UIForm
         pkgTags.Add("Name", uiTb3.Text);
         table.SetColumnSpan(uiTb3, 2);
         newTab.ToolTipText += "\n" + uiTb3.Text;
-        Button b1 = new Button()
+        var b1 = new Button()
         {
             Dock = DockStyle.Fill,
             Image = Properties.Resources.ABout1,
@@ -256,7 +256,7 @@ public partial class PackageManagerMain : UIForm
 
         };
         this.InfoTip.SetToolTip(b1, "Use this package");
-        Button b2 = new Button()
+        var b2 = new Button()
         {
             BackgroundImage = Properties.Resources.plugin_ban,
             BackgroundImageLayout = ImageLayout.Stretch,
@@ -303,7 +303,7 @@ public partial class PackageManagerMain : UIForm
         }
     }
 
-    private void Search(object sender, EventArgs e)
+    private async void Search(object sender, EventArgs e)
     {
         var containsKeyword = false;
         var matchedItem = "";
@@ -325,11 +325,16 @@ public partial class PackageManagerMain : UIForm
             var res = MessageBoxEX.Show(_I18nFile.Localize("text.lpmm.pkg.notfound"), _I18nFile.Localize("text.lpmm.pkg.tip"), MessageBoxButtons.AbortRetryIgnore, [_I18nFile.Localize("text.lpmm.pkg.notfound.import"), _I18nFile.Localize("text.lpmm.pkg.notfound.search"), _I18nFile.Localize("text.lpmm.pkg.notfound.cancel")]);
             if (res == DialogResult.Abort)
             {
-                if (folderBrowserDialog1.ShowDialog() == DialogResult.OK) 
+                if (folderBrowserDialog1.ShowDialog() == DialogResult.OK)
                 {
-                    Extensions.CopyFolder(folderBrowserDialog1.SelectedPath, Program.STARTUP_PATH + "\\Package\\"+Path.GetFileNameWithoutExtension(folderBrowserDialog1.SelectedPath));
+                    Extensions.CopyFolder(folderBrowserDialog1.SelectedPath, Program.STARTUP_PATH + "\\Package\\" + Path.GetFileNameWithoutExtension(folderBrowserDialog1.SelectedPath));
                     InitPkg();
                 }
+            }
+            else if (res == DialogResult.Retry)
+            {
+                PackageProcessor packageDownloader = new([uiTextBox1.Text]);
+                await packageDownloader.DownloadAsync();
             }
         }
     }
@@ -348,7 +353,7 @@ public partial class PackageManagerMain : UIForm
     {
         var si = uiTabControlMenu1.SelectedIndex;
         uiTabControlMenu1.Controls.Clear();
-        for (int i = 0; i < packageNames.Count; i++)
+        for (var i = 0; i < packageNames.Count; i++)
         {
             InitializePackage(packageNames[i]);
             var _1 = (int)(Math.Round((double)(i + 1) / packageNames.Count, 2) * 100);
@@ -360,7 +365,7 @@ public partial class PackageManagerMain : UIForm
 
     private void Init(object sender, DoWorkEventArgs e)
     {
-        BackgroundWorker worker = sender as BackgroundWorker;
+        var worker = sender as BackgroundWorker;
         foreach (var item in packageNames)
         {
             InitializePackage(item);

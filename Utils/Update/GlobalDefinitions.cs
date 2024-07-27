@@ -105,14 +105,14 @@ internal static class GlobalDefinitions
         try
         {
             // 读取JSON文件内容
-            string jsonContent = System.IO.File.ReadAllText(filePath);
+            var jsonContent = System.IO.File.ReadAllText(filePath);
 
             // 使用Json.NET反序列化JSON内容为字典
             var fileData = JsonConvert.DeserializeObject<Dictionary<string, FileData>>(jsonContent);
 
             // 创建存储结果的字典
-            Dictionary<string, string> md5Dictionary = new Dictionary<string, string>();
-            Dictionary<string, string> sha256Dictionary = new Dictionary<string, string>();
+            var md5Dictionary = new Dictionary<string, string>();
+            var sha256Dictionary = new Dictionary<string, string>();
 
             // 填充结果字典
             foreach (var entry in fileData)

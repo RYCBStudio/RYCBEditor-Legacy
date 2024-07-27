@@ -83,23 +83,12 @@ namespace IDE
         }
         #endregion
 
-        private void Entry_FormClosing(object sender, FormClosingEventArgs e)
-        {
-            timer1.Start();
-        }
-
         private void Exit(object sender, System.ComponentModel.CancelEventArgs e)
         {
             if (metroProgressBar1.Value == metroProgressBar1.Maximum)
             {
                 Close();
             }
-        }
-
-        private void Delay(object sender, EventArgs e)
-        {
-            metroProgressBar1.Value = metroProgressBar1.Maximum;
-            timer1.Stop();
         }
     }
 }

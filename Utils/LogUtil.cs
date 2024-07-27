@@ -107,7 +107,7 @@ namespace IDE
         /// <param name="ex">捕获的异常</param>
         /// <param name="msgLevel">消息级别</param>
         /// <param name="port">端口</param>
-        public void Err(Exception ex, EnumMsgLevel msgLevel, EnumPort port, EnumModule module = EnumModule.MAIN)
+        public void Err(Exception ex, EnumMsgLevel msgLevel = EnumMsgLevel.ERROR, EnumPort port = EnumPort.CLIENT, EnumModule module = EnumModule.MAIN)
         {
             var data = ex.Message;
             FileStream tmpStream = new(logPath, FileMode.OpenOrCreate, FileAccess.ReadWrite, FileShare.ReadWrite);

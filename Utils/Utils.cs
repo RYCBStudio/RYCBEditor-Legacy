@@ -15,6 +15,7 @@ using System.Diagnostics;
 using Microsoft.Diagnostics.Runtime;
 using System.Security.Cryptography;
 using System.Net;
+using System.ComponentModel;
 
 namespace IDE
 {
@@ -179,6 +180,190 @@ namespace IDE
         }
     }
 
+    public class RYCBIniProcessor
+    {
+        private string iniFilePath;
+
+        public RYCBIniProcessor(string iniFilePath)
+        {
+            this.iniFilePath = iniFilePath;
+        }
+
+        public T Read<T>(string section, string key)
+        {
+            var value = GetValue(section, key);
+            if (value == null)
+            {
+                throw new Exception($"Key '{key}' not found in section '{section}'");
+            }
+
+            return (T)Convert.ChangeType(value, typeof(T));
+        }
+
+        public List<string> GetAllSections()
+        {
+            var sections = new List<string>();
+            var lines = File.ReadAllLines(iniFilePath);
+            for (var i = 0; i < lines.Length; i++)
+            {
+                if (lines[i].StartsWith("[") && lines[i].EndsWith("]"))
+                {
+                    sections.Add(lines[i].Substring(1, lines[i].Length - 2));
+                }
+            }
+            return sections;
+        }
+
+        public List<string> GetAllKeysInSection(string section)
+        {
+            var keys = new List<string>();
+            var inSection = false;
+
+            using (var reader = new StreamReader(iniFilePath))
+            {
+                string line;
+                while ((line = reader.ReadLine()) != null)
+                {
+                    line = line.Trim();
+
+                    if (line.StartsWith("[") && (line.StartsWith("[" + section + "]") || line.StartsWith("[" + section + ":")))
+                    {
+                        inSection = true;
+                        continue;
+                    }
+
+                    if (!inSection || string.IsNullOrEmpty(line) || line.StartsWith("#") || line.StartsWith(";"))
+                    {
+                        continue;
+                    }
+
+                    if (line.Contains("="))
+                    {
+                        var key = line.Split('=')[0].Trim();
+                        keys.Add(key);
+                    }
+                    else if (line.StartsWith("["))
+                    {
+                        break; // End of the current section
+                    }
+                }
+            }
+
+            return keys;
+        }
+
+
+        public void Write<T>(string section, string key, T value)
+        {
+            SetValue(section, key, value.ToString());
+        }
+
+        public Type GetValueType(string section, string key, string value)
+        {
+            var type = typeof(object);
+            try
+            {
+                if (int.TryParse(value, out _))
+                {
+                    type = typeof(int);
+                }
+                else if (long.TryParse(value, out _))
+                {
+                    type = typeof(long);
+                }
+                else if (bool.TryParse(value, out _))
+                {
+                    type = typeof(bool);
+                }
+                else if (float.TryParse(value, out _))
+                {
+                    type = typeof(float);
+                }
+                else if (double.TryParse(value, out _))
+                {
+                    type = typeof(double);
+                }
+                else if (DateTime.TryParse(value, out _))
+                {
+                    type = typeof(DateTime);
+                }
+                else if (Regex.IsMatch(value, @"^[A-Za-z0-9\-\+\/]+={0,3}$")) // Base64 encoded string check
+                {
+                    type = typeof(string);
+                }
+            }
+            catch (Exception)
+            {
+                // If parsing fails, assume it's a string
+                type = typeof(string);
+            }
+
+            return type;
+        }
+
+        private string GetValue(string section, string key)
+        {
+            var lines = File.ReadAllLines(iniFilePath);
+            foreach (var line in lines)
+            {
+                if (line.StartsWith("# ") | line.StartsWith("; "))
+                {
+                    continue;
+                }
+                if (line.StartsWith("[" + section + "]") || line.StartsWith("[" + section + ":"))
+                {
+                    continue;
+                }
+
+                if (line.StartsWith(key + "="))
+                {
+                    return line.Substring(key.Length + 1).Trim();
+                }
+            }
+
+            return null;
+        }
+
+        private void SetValue(string section, string key, string value)
+        {
+            var lines = File.ReadAllLines(iniFilePath);
+            var index = -1;
+            for (var i = 0; i < lines.Length; i++)
+            {
+                if (lines[i].StartsWith("[" + section + "]") || lines[i].StartsWith("[" + section + ":"))
+                {
+                    index = i;
+                    break;
+                }
+            }
+
+            if (index == -1)
+            {
+                throw new Exception($"Section '{section}' not found");
+            }
+
+            var updatedLines = new string[lines.Length];
+            for (var i = 0; i < lines.Length; i++)
+            {
+                if (i == index)
+                {
+                    updatedLines[i] = lines[i]; // Section header remains unchanged
+                    updatedLines[i + 1] = key + "=" + value; // Add or update the key-value pair below the section header
+                }
+                else if (i > index && lines[i].StartsWith(key + "="))
+                {
+                    updatedLines[i] = key + "=" + value; // Update existing key-value pair
+                }
+                else
+                {
+                    updatedLines[i] = lines[i]; // Other lines remain unchanged
+                }
+            }
+
+            File.WriteAllLines(iniFilePath, updatedLines);
+        }
+    }
+
     public static class PypiHelper
     {
         public static (Dictionary<string, List<string>>, string) ParseLinkWithContent(string html)
@@ -192,27 +377,27 @@ namespace IDE
             var vers = new List<string>();
             foreach (var linkNode in linkNodes)
             {
-                string link = linkNode.GetDirectInnerText();
+                var link = linkNode.GetDirectInnerText();
                 names.Add(link);
 
             }
             linkNodes = doc.DocumentNode.SelectNodes("//p[@class='package-snippet__description']");
             foreach (var linkNode in linkNodes)
             {
-                string link = linkNode.GetDirectInnerText();
+                var link = linkNode.GetDirectInnerText();
                 descs.Add(link);
             }
             linkNodes = doc.DocumentNode.SelectNodes("//span[@class='package-snippet__version']");
             foreach (var linkNode in linkNodes)
             {
-                string link = linkNode.GetDirectInnerText();
+                var link = linkNode.GetDirectInnerText();
                 vers.Add(link);
             }
             linkNodes = doc.DocumentNode.SelectNodes("//a[@class='button button-group__button']");
-            int max = 0;
+            var max = 0;
             foreach (var node in linkNodes)
             {
-                string link = node.GetDirectInnerText();
+                var link = node.GetDirectInnerText();
                 try
                 {
                     if (max <= Convert.ToInt32(link))
@@ -230,10 +415,10 @@ namespace IDE
 
         public static string GetHtml(string url)
         {
-            string res = "";
-            WebClient client = new WebClient();
-            Stream stream = client.OpenRead(url);
-            StreamReader sr = new StreamReader(stream, Encoding.UTF8);
+            var res = "";
+            var client = new WebClient();
+            var stream = client.OpenRead(url);
+            var sr = new StreamReader(stream, Encoding.UTF8);
             res = sr.ReadToEnd();
             sr.Close();
             client.Dispose();
@@ -321,7 +506,7 @@ namespace IDE
                 while ((bytesRead = fs.Read(buffer, 0, buffer.Length)) > 0)
                 {
                     binaryString += ConvertBytesToBinaryString(buffer, bytesRead);
-                    textString += Encoding.Default.GetString(buffer, 0, bytesRead);
+                    textString += Encoding.UTF8.GetString(buffer, 0, bytesRead);
                 }
             }
 
@@ -405,9 +590,14 @@ namespace IDE
         internal static bool useRuntimeCompileCheck = false;
 
         /// <summary>
-        /// 
+        /// 通用的临时文件路径
         /// </summary>
         internal static readonly string commonTempFilePath = Program.STARTUP_PATH + "\\Cache\\" + DateTime.Now.GetHashCode().ToString();
+
+        /// <summary>
+        /// 通用的包索引文件路径
+        /// </summary>
+        internal static readonly string commonPackageIndexFilePath = Program.STARTUP_PATH + "\\Cache\\packages.index";
 
         /// <summary>
         /// 主题
@@ -447,6 +637,7 @@ namespace IDE
             "RYCBStudio",
             "QYF-RYCBStudio",
             "QYF",
+            "Python Code Quality",
         ];
 
         public static class Downloading
@@ -540,7 +731,7 @@ namespace IDE
         {
             List<string> vars = [];
             GetLines();
-            foreach (string line in lines)
+            foreach (var line in lines)
             {
                 if (matchVar(line))
                 {
@@ -572,19 +763,19 @@ namespace IDE
                     Directory.CreateDirectory(destFolder);
                 }
                 //得到原文件根目录下的所有文件
-                string[] files = Directory.GetFiles(sourceFolder);
-                foreach (string file in files)
+                var files = Directory.GetFiles(sourceFolder);
+                foreach (var file in files)
                 {
-                    string name = Path.GetFileName(file);
-                    string dest = Path.Combine(destFolder, name);
+                    var name = Path.GetFileName(file);
+                    var dest = Path.Combine(destFolder, name);
                     File.Copy(file, dest);//复制文件
                 }
                 //得到原文件根目录下的所有文件夹
-                string[] folders = Directory.GetDirectories(sourceFolder);
-                foreach (string folder in folders)
+                var folders = Directory.GetDirectories(sourceFolder);
+                foreach (var folder in folders)
                 {
-                    string name = Path.GetFileName(folder);
-                    string dest = Path.Combine(destFolder, name);
+                    var name = Path.GetFileName(folder);
+                    var dest = Path.Combine(destFolder, name);
                     CopyFolder(folder, dest);//构建目标路径,递归复制文件
                 }
                 return 1;
@@ -597,16 +788,21 @@ namespace IDE
 
         }
 
+        public static string Format(this string text, params string[] args)
+        {
+            return string.Format(text, args);
+        }
+
         public static bool DecompressFile(string zipPath, string filePath)
         {
-            bool exeRes = true;
+            var exeRes = true;
             try
             {
-                Process process = new Process();
+                var process = new Process();
                 process.StartInfo.FileName = "cmd.exe";
-                string message = "";
-                string command0 = "cd \"" + Program.STARTUP_PATH + "\\Tools\"";
-                string command = "";
+                var message = "";
+                var command0 = "cd \"" + Program.STARTUP_PATH + "\\Tools\"";
+                var command = "";
 
                 command = $"7Z x -t7z \"" + zipPath + "\" -o\"" + filePath + "\" -y";
                 process.StartInfo.UseShellExecute = false;
@@ -636,10 +832,10 @@ namespace IDE
         }
         public static int GetFilesCount(string dir)
         {
-            DirectoryInfo dirInfo = new DirectoryInfo(dir);
-            int totalFile = 0;
+            var dirInfo = new DirectoryInfo(dir);
+            var totalFile = 0;
             totalFile += dirInfo.GetFiles().Length;//获取全部文件
-            foreach (DirectoryInfo subdir in dirInfo.GetDirectories())
+            foreach (var subdir in dirInfo.GetDirectories())
             {
                 totalFile += GetFilesCount(subdir.FullName);
             }
@@ -783,6 +979,15 @@ namespace IDE
         public static void Enable(this Control ctrl)
         {
             ctrl.Enabled = true;
+        }
+
+        /// <summary>
+        /// 禁用控件
+        /// </summary>
+        /// <param name="ctrl">控件名</param>
+        public static void Disable(this Control ctrl)
+        {
+            ctrl.Enabled = false;
         }
 
         /// <summary>
@@ -1068,7 +1273,7 @@ namespace IDE
                 if (errorLinesString.Length == 1)
                 {
                     var list = errorLinesString[0].Split(" on line ");
-                    for (int i = 0; i < list.Length; i++)
+                    for (var i = 0; i < list.Length; i++)
                     {
                         var line = list[i];
                         Regex single_line_exp = new("[a-zA-Z]{1}\\w+([Ee]rror|[Ee]xception)");
@@ -1077,7 +1282,7 @@ namespace IDE
                             if (single_line_exp.IsMatch(line))
                             {
                                 var _ = line.Split(": ");
-                                for (int j = 0; j < _.Length; j++)
+                                for (var j = 0; j < _.Length; j++)
                                 {
                                     var item = _[j];
                                     if (single_line_exp.IsMatch(item))
@@ -1120,6 +1325,69 @@ namespace IDE
         }
     }
 
+    public class PylintResultAnalyzer
+    {
+        private string _filename, _rawpylintreturn;
+        private List<Dictionary<string, string>> _result = new();
+
+        public PylintResultAnalyzer(string filename)
+        {
+            this._filename = filename;
+        }
+
+        public void Init()
+        {
+            Process pylintproc = new()
+            {
+                StartInfo = new()
+                {
+                    Arguments = " --rc-file=\"./.pylintrc\" --reports=n " + _filename,
+                    WorkingDirectory = Program.STARTUP_PATH + "\\Tools",
+                    FileName = "pylint",
+                    CreateNoWindow = true,
+                    UseShellExecute = false,
+                    RedirectStandardOutput = true,
+                    RedirectStandardError = true,
+                    WindowStyle = ProcessWindowStyle.Hidden,
+                }
+            };
+            pylintproc.Start();
+            var _eror = pylintproc.StandardError.ReadToEnd();
+            if (_eror.IsNullOrEmpty())
+            {
+                this._rawpylintreturn = pylintproc.StandardOutput.ReadToEnd();
+            }
+        }
+
+        private Dictionary<string, string> GetValues(string line)
+        {
+            Dictionary<string, string> _ = new();
+            if (line.StartsWith(_filename))
+            {
+                line = line.Replace(_filename, " ");
+                var values = line.Split(":", true);
+                _.Add("line&column", values[1].Trim() + ":" + values[2].Trim());
+                _.Add("type", values[3].Trim());
+                _.Add("desc", values[4].Trim());
+            }
+            return _;
+        }
+
+        public List<Dictionary<string, string>> Analyze()
+        {
+            foreach (var line in _rawpylintreturn.Split(new char[] { '\n', '\r' }, StringSplitOptions.RemoveEmptyEntries))
+            {
+                if (line.StartsWith("*****"))
+                {
+                    continue;
+                }
+
+                _result.Add(GetValues(line));
+            }
+            return _result;
+        }
+    }
+
     public class PythonSyntaxErrorChecker
     {
         public static string SyntaxCheck(string pyhonScript)
@@ -1135,9 +1403,14 @@ namespace IDE
                 temEnd = lines[i].TrimEnd(new char[] { ' ' });
                 temStart = lines[i].TrimStart(new char[] { ' ' });
                 if (string.IsNullOrEmpty(temEnd))
+                {
                     continue;
+                }
+
                 if (temStart.StartsWith("#"))
+                {
                     continue;
+                }
 
                 if (CurrentCount < NextSpaceCount)
                 {
@@ -1154,7 +1427,9 @@ namespace IDE
                         }
                     }
                     else if (MustEqual)
+                    {
                         msg += "|Ls-" + (i + 1) + "-Le|" + "|Ds-expect new line\r\n-De|";
+                    }
                 }
                 else if (CurrentCount > NextSpaceCount)
                 {
@@ -1167,7 +1442,10 @@ namespace IDE
                 if (temStart.StartsWith("def ") || temStart.StartsWith("class "))
                 {
                     if (CurrentCount != 0)
+                    {
                         msg += "|Ls-" + (i + 1) + "-Le|" + "|Ds-unexpected space in front of the line\r\n-De|";
+                    }
+
                     if (!temEnd.EndsWith(":"))
                     {
                         msg += "|Ls-" + (i + 1) + "-Le|" + "|Ds-should end with ':'\r\n-De|";
@@ -1187,7 +1465,10 @@ namespace IDE
                 LastSpaceCount = CurrentCount;
             }
             if (msg == "")
+            {
                 msg = "Find No Error.";
+            }
+
             return msg;
         }
 
@@ -1197,7 +1478,9 @@ namespace IDE
             for (var i = 0; i < line.Length; i++)
             {
                 if (line[i] != ' ')
+                {
                     return i;
+                }
             }
             return 0;
         }
@@ -1410,7 +1693,7 @@ namespace IDE
                 return Write(fileHandle, dumpType, ExceptionInfo.None);
             }
 
-            public static Boolean TryDump(String dmpPath, Option dmpType = Option.Normal)
+            public static bool TryDump(string dmpPath, Option dmpType = Option.Normal)
             {
                 var path = Path.Combine(Environment.CurrentDirectory, dmpPath);
                 var dir = Path.GetDirectoryName(path);

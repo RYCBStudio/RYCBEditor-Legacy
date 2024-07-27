@@ -24,7 +24,7 @@ public partial class FrmInterpreterConfigBox : UIForm
         {
             ICBFileProcessor iCBFileProcessor = new(item);
             var name = iCBFileProcessor.GetInfo(ICBFileProcessor.InfoType.Itptr_name);
-            int index = uiListBox1.Items.Add(name);
+            var index = uiListBox1.Items.Add(name);
             ((List<Dictionary<int, string>>)uiListBox1.Tag).Add(new Dictionary<int, string> { { index, item } });
             iCBFileProcessor = null;
         }
@@ -52,7 +52,7 @@ public partial class FrmInterpreterConfigBox : UIForm
             MessageBox.Show(_I18nFile.Localize("text.tip.nullvalue"), "", MessageBoxButton.OK, MessageBoxImage.Warning);
         }
         File.WriteAllText(filepath, $"[itptr]\r\nname={name}\r\ntype=\r\npath=\r\nargs=");
-        int index = uiListBox1.Items.Add(name);
+        var index = uiListBox1.Items.Add(name);
         ((List<Dictionary<int, string>>)uiListBox1.Tag).Add(new Dictionary<int, string> { { index, filepath } });
 
     }
@@ -61,7 +61,7 @@ public partial class FrmInterpreterConfigBox : UIForm
     {
         if (uiListBox1.SelectedIndex != -1)
         {
-            string path = (uiListBox1.Tag as List<Dictionary<int, string>>)[uiListBox1.SelectedIndex][uiListBox1.SelectedIndex];
+            var path = (uiListBox1.Tag as List<Dictionary<int, string>>)[uiListBox1.SelectedIndex][uiListBox1.SelectedIndex];
             try
             {
                 File.Delete(path);
@@ -94,7 +94,7 @@ public partial class FrmInterpreterConfigBox : UIForm
                 {
                     return;
                 }
-                int index = uiListBox1.Items.Add(name);
+                var index = uiListBox1.Items.Add(name);
                 ((List<Dictionary<int, string>>)uiListBox1.Tag).Add(new Dictionary<int, string> { { index, destfilename } });
             }
             catch (Exception ex)
@@ -118,7 +118,7 @@ public partial class FrmInterpreterConfigBox : UIForm
                 {
                     return;
                 }
-                int index = uiListBox1.Items.Add(name);
+                var index = uiListBox1.Items.Add(name);
                 ((List<Dictionary<int, string>>)uiListBox1.Tag).Add(new Dictionary<int, string> { { index, item } });
                 iCBFileProcessor = null;
             }
@@ -150,13 +150,16 @@ public partial class FrmInterpreterConfigBox : UIForm
         catch (Exception ex)
         {
             FrmMain.LOGGER.Err(ex, EnumMsgLevel.WARN, EnumPort.CLIENT);
-            if (ex is IOException) FrmMain.LOGGER.Log("I/O错误：无法读取文件。", EnumMsgLevel.ERROR, EnumPort.CLIENT, EnumModule.IO);
+            if (ex is IOException)
+            {
+                FrmMain.LOGGER.Log("I/O错误：无法读取文件。", EnumMsgLevel.ERROR, EnumPort.CLIENT, EnumModule.IO);
+            }
         }
     }
 
     private void UpdateItptrTypeInfo(object sender, EventArgs e)
     {
-        string path = (uiListBox1.Tag as List<Dictionary<int, string>>)[uiListBox1.SelectedIndex][uiListBox1.SelectedIndex];
+        var path = (uiListBox1.Tag as List<Dictionary<int, string>>)[uiListBox1.SelectedIndex][uiListBox1.SelectedIndex];
         var icbfp = new ICBFileProcessor(path);
         icbfp.SetInfo(ICBFileProcessor.InfoType.Itptr_type, CBoxItptrType.SelectedText);
         icbfp = null;
@@ -164,7 +167,7 @@ public partial class FrmInterpreterConfigBox : UIForm
 
     private void UpdateItptrPathInfo(object sender, EventArgs e)
     {
-        string path = (uiListBox1.Tag as List<Dictionary<int, string>>)[uiListBox1.SelectedIndex][uiListBox1.SelectedIndex];
+        var path = (uiListBox1.Tag as List<Dictionary<int, string>>)[uiListBox1.SelectedIndex][uiListBox1.SelectedIndex];
         var icbfp = new ICBFileProcessor(path);
         icbfp.SetInfo(ICBFileProcessor.InfoType.Itptr_path, TBoxItptrPath.Text);
         icbfp = null;
@@ -173,7 +176,7 @@ public partial class FrmInterpreterConfigBox : UIForm
 
     private void UpdateItptrArgsInfo(object sender, EventArgs e)
     {
-        string path = (uiListBox1.Tag as List<Dictionary<int, string>>)[uiListBox1.SelectedIndex][uiListBox1.SelectedIndex];
+        var path = (uiListBox1.Tag as List<Dictionary<int, string>>)[uiListBox1.SelectedIndex][uiListBox1.SelectedIndex];
         var icbfp = new ICBFileProcessor(path);
         icbfp.SetInfo(ICBFileProcessor.InfoType.Itptr_args, TBoxItptrArgs.Text);
         icbfp = null;

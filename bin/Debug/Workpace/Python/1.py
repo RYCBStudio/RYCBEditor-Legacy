@@ -1,5 +1,7 @@
-﻿a = 0
-def foo():
-	print("You foo a bar")
-	
-foo();
+﻿"""Simple Intro"""
+A = 0
+
+def _():
+    print("You foo a bar")
+
+_()

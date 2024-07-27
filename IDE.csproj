@@ -89,6 +89,12 @@
       <HintPath>packages\Microsoft.PinYinConverter.1.0.0\lib\ChnCharInfo.dll</HintPath>
       <Private>False</Private>
     </Reference>
+    <Reference Include="CommonServiceLocator, Version=2.0.2.0, Culture=neutral, PublicKeyToken=489b6accfaf20ef0, processorArchitecture=MSIL">
+      <HintPath>packages\CommonServiceLocator.2.0.2\lib\net47\CommonServiceLocator.dll</HintPath>
+    </Reference>
+    <Reference Include="CommunityToolkit.Mvvm, Version=8.2.0.0, Culture=neutral, PublicKeyToken=4aff67a105548ee2, processorArchitecture=MSIL">
+      <HintPath>packages\CommunityToolkit.Mvvm.8.2.2\lib\netstandard2.0\CommunityToolkit.Mvvm.dll</HintPath>
+    </Reference>
     <Reference Include="Downloader, Version=3.1.2.0, Culture=neutral, PublicKeyToken=844973e732f6cdf4, processorArchitecture=MSIL">
       <HintPath>packages\Downloader.3.1.2\lib\net462\Downloader.dll</HintPath>
       <Private>False</Private>
@@ -530,6 +536,10 @@
       <HintPath>bin\Debug\Libs\SmileWei.EmbeddedEXE.dll</HintPath>
       <Private>True</Private>
     </Reference>
+    <Reference Include="SQK_Ui">
+      <HintPath>bin\Debug\Libs\SQK_Ui.dll</HintPath>
+      <Private>False</Private>
+    </Reference>
     <Reference Include="stdole, Version=7.0.3300.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a">
       <Private>False</Private>
     </Reference>
@@ -844,11 +854,11 @@
     <Compile Include="Settings\CustomSettings.FrmXshdFileEditor.Designer.cs">
       <DependentUpon>CustomSettings.FrmXshdFileEditor.cs</DependentUpon>
     </Compile>
-    <Compile Include="Settings\CustomSettings.FrmFileEditor.cs">
+    <Compile Include="Settings\CustomSettings.FrmIniFileEditor.cs">
       <SubType>Form</SubType>
     </Compile>
-    <Compile Include="Settings\CustomSettings.FrmFileEditor.Designer.cs">
-      <DependentUpon>CustomSettings.FrmFileEditor.cs</DependentUpon>
+    <Compile Include="Settings\CustomSettings.FrmIniFileEditor.Designer.cs">
+      <DependentUpon>CustomSettings.FrmIniFileEditor.cs</DependentUpon>
     </Compile>
     <Compile Include="Settings\CustomSettings.Initializer.cs">
       <SubType>Form</SubType>
@@ -867,6 +877,15 @@
     </Compile>
     <Compile Include="Init\Initializer.cs" />
     <Compile Include="Main\Main.Initializer.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="Settings\FrmCodeSettings.FileFormat.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="Settings\FrmCustomSettings.Edit.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="Settings\FrmCustomSettings.Extensions.cs">
       <SubType>Form</SubType>
     </Compile>
     <Compile Include="Settings\FrmRYCBColorPicker.cs">
@@ -896,19 +915,29 @@
     <Compile Include="Utils\Boxes\InterpreterConfigBox\InterpreterConfigBox.Initializer.cs">
       <SubType>Form</SubType>
     </Compile>
-    <Compile Include="Utils\Boxes\PackageManager\FrmPyPiSearcherUI.cs">
+    <Compile Include="Utils\PackageManager\FrmPyPiSearcherUI.cs">
       <SubType>Form</SubType>
     </Compile>
-    <Compile Include="Utils\Boxes\PackageManager\FrmPyPiSearcherUI.Designer.cs">
+    <Compile Include="Utils\PackageManager\FrmPyPiSearcherUI.Designer.cs">
       <DependentUpon>FrmPyPiSearcherUI.cs</DependentUpon>
     </Compile>
-    <Compile Include="Utils\Boxes\PackageManager\FrmPythonPackageManagerMainWindow.cs">
+    <Compile Include="Utils\PackageManager\FrmPythonPackageManagerMainWindow.cs">
       <SubType>Form</SubType>
     </Compile>
-    <Compile Include="Utils\Boxes\PackageManager\FrmPythonPackageManagerMainWindow.Designer.cs">
+    <Compile Include="Utils\PackageManager\FrmPythonPackageManagerMainWindow.Designer.cs">
       <DependentUpon>FrmPythonPackageManagerMainWindow.cs</DependentUpon>
     </Compile>
-    <Compile Include="Utils\Boxes\PackageManager\PythonPackageManagerMainWindow.Initializer.cs">
+    <Compile Include="Utils\PackageManager\FrmWPFDownlaodProgressWindow.xaml.cs">
+      <DependentUpon>FrmWPFDownlaodProgressWindow.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="Utils\PackageManager\FrmWPFDownloadProgressViewModel.cs" />
+    <Compile Include="Utils\PackageManager\FrmWPFPackageManager.xaml.cs">
+      <DependentUpon>FrmWPFPackageManager.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="Utils\PackageManager\FrmWPFPackageViewModel.cs" />
+    <Compile Include="Utils\PackageManager\PackageProcessor.cs" />
+    <Compile Include="Utils\PackageManager\PackageProcessor.HideInfo.cs" />
+    <Compile Include="Utils\PackageManager\PythonPackageManagerMainWindow.Initializer.cs">
       <SubType>Form</SubType>
     </Compile>
     <Compile Include="Utils\Boxes\WebviewBrowserBox.cs">
@@ -923,19 +952,19 @@
     <Compile Include="Utils\Boxes\MsgInIDE\FrmMsgBox.Designer.cs">
       <DependentUpon>FrmMsgBox.cs</DependentUpon>
     </Compile>
-    <Compile Include="Utils\Boxes\PackageManager\FrmLocalPackageManagerMainWindow.cs">
+    <Compile Include="Utils\PackageManager\FrmLocalPackageManagerMainWindow.cs">
       <SubType>Form</SubType>
     </Compile>
-    <Compile Include="Utils\Boxes\PackageManager\FrmLocalPackageManagerMainWindow.Designer.cs">
+    <Compile Include="Utils\PackageManager\FrmLocalPackageManagerMainWindow.Designer.cs">
       <DependentUpon>FrmLocalPackageManagerMainWindow.cs</DependentUpon>
     </Compile>
-    <Compile Include="Utils\Boxes\PackageManager\LocalPackageManagerMainWindow.Initializer.cs">
+    <Compile Include="Utils\PackageManager\LocalPackageManagerMainWindow.Initializer.cs">
       <SubType>Form</SubType>
     </Compile>
-    <Compile Include="Utils\Boxes\PackageManager\FrmPackageManagerProgressWindow.cs">
+    <Compile Include="Utils\PackageManager\FrmPackageManagerProgressWindow.cs">
       <SubType>Form</SubType>
     </Compile>
-    <Compile Include="Utils\Boxes\PackageManager\FrmPackageManagerProgressWindow.Designer.cs">
+    <Compile Include="Utils\PackageManager\FrmPackageManagerProgressWindow.Designer.cs">
       <DependentUpon>FrmPackageManagerProgressWindow.cs</DependentUpon>
     </Compile>
     <Compile Include="Utils\Boxes\Tools\FrmFileSHAorMD5Checker.cs">
@@ -1063,8 +1092,8 @@
     <EmbeddedResource Include="Settings\CustomSettings.FrmXshdFileEditor.resx">
       <DependentUpon>CustomSettings.FrmXshdFileEditor.cs</DependentUpon>
     </EmbeddedResource>
-    <EmbeddedResource Include="Settings\CustomSettings.FrmFileEditor.resx">
-      <DependentUpon>CustomSettings.FrmFileEditor.cs</DependentUpon>
+    <EmbeddedResource Include="Settings\CustomSettings.FrmIniFileEditor.resx">
+      <DependentUpon>CustomSettings.FrmIniFileEditor.cs</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="Settings\FrmCustomSettings.resx">
       <DependentUpon>FrmCustomSettings.cs</DependentUpon>
@@ -1103,10 +1132,10 @@
     <EmbeddedResource Include="Utils\Boxes\InterpreterConfigBox\FrmInterpreterConfigBox.resx">
       <DependentUpon>FrmInterpreterConfigBox.cs</DependentUpon>
     </EmbeddedResource>
-    <EmbeddedResource Include="Utils\Boxes\PackageManager\FrmPyPiSearcherUI.resx">
+    <EmbeddedResource Include="Utils\PackageManager\FrmPyPiSearcherUI.resx">
       <DependentUpon>FrmPyPiSearcherUI.cs</DependentUpon>
     </EmbeddedResource>
-    <EmbeddedResource Include="Utils\Boxes\PackageManager\FrmPythonPackageManagerMainWindow.resx">
+    <EmbeddedResource Include="Utils\PackageManager\FrmPythonPackageManagerMainWindow.resx">
       <DependentUpon>FrmPythonPackageManagerMainWindow.cs</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="Utils\Boxes\WebviewBrowserBox.resx">
@@ -1120,10 +1149,10 @@
       <DependentUpon>FrmNewFileBox.cs</DependentUpon>
       <SubType>Designer</SubType>
     </EmbeddedResource>
-    <EmbeddedResource Include="Utils\Boxes\PackageManager\FrmLocalPackageManagerMainWindow.resx">
+    <EmbeddedResource Include="Utils\PackageManager\FrmLocalPackageManagerMainWindow.resx">
       <DependentUpon>FrmLocalPackageManagerMainWindow.cs</DependentUpon>
     </EmbeddedResource>
-    <EmbeddedResource Include="Utils\Boxes\PackageManager\FrmPackageManagerProgressWindow.resx">
+    <EmbeddedResource Include="Utils\PackageManager\FrmPackageManagerProgressWindow.resx">
       <DependentUpon>FrmPackageManagerProgressWindow.cs</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="Utils\Boxes\RYCBSearchPanel.resx">
@@ -1179,6 +1208,9 @@
       <SubType>Form</SubType>
     </Compile>
     <EmbeddedResource Include="Settings.xshd" />
+    <Compile Include="Settings\FrmCustomSettings.General.cs">
+      <SubType>Form</SubType>
+    </Compile>
   </ItemGroup>
   <ItemGroup>
     <None Include="App.config" />
@@ -1935,6 +1967,12 @@
     <None Include="Resources\python_pip_install.png" />
     <None Include="Resources\save-fluent.png" />
     <None Include="Resources\save-fluent-dark.png" />
+    <None Include="Resources\pylint.png" />
+    <None Include="Resources\pylint-dark.png" />
+    <None Include="Resources\UseSingleLine-En.png" />
+    <Content Include="Utils\PackageManager\pylint-icon.png" />
+    <Content Include="Utils\PackageManager\pylint-icon_square.png" />
+    <Resource Include="Utils\PackageManager\uwp_services.png" />
     <Content Include="Utils\RE-Addon-Controls\Enter-Dark.png" />
     <Content Include="Utils\RE-Addon-Controls\Enter.png" />
     <Content Include="语法说明.html" />
@@ -1959,6 +1997,14 @@
     </BootstrapperPackage>
   </ItemGroup>
   <ItemGroup>
+    <Page Include="Utils\PackageManager\FrmWPFDownlaodProgressWindow.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
+    <Page Include="Utils\PackageManager\FrmWPFPackageManager.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
     <Page Include="Utils\RE-Addon-Controls\CodeSenseSelection.xaml">
       <Generator>MSBuild:Compile</Generator>
       <SubType>Designer</SubType>
@@ -1977,6 +2023,7 @@
     <Error Condition="!Exists('packages\Microsoft.VisualStudio.SDK.Analyzers.17.7.41\build\Microsoft.VisualStudio.SDK.Analyzers.targets')" Text="$([System.String]::Format('$(ErrorText)', 'packages\Microsoft.VisualStudio.SDK.Analyzers.17.7.41\build\Microsoft.VisualStudio.SDK.Analyzers.targets'))" />
     <Error Condition="!Exists('packages\Microsoft.VisualStudio.Setup.Configuration.Interop.3.10.2154\build\Microsoft.VisualStudio.Setup.Configuration.Interop.targets')" Text="$([System.String]::Format('$(ErrorText)', 'packages\Microsoft.VisualStudio.Setup.Configuration.Interop.3.10.2154\build\Microsoft.VisualStudio.Setup.Configuration.Interop.targets'))" />
     <Error Condition="!Exists('packages\Microsoft.VisualStudio.Threading.Analyzers.17.10.48\build\Microsoft.VisualStudio.Threading.Analyzers.targets')" Text="$([System.String]::Format('$(ErrorText)', 'packages\Microsoft.VisualStudio.Threading.Analyzers.17.10.48\build\Microsoft.VisualStudio.Threading.Analyzers.targets'))" />
+    <Error Condition="!Exists('packages\CommunityToolkit.Mvvm.8.2.2\build\netstandard2.0\CommunityToolkit.Mvvm.targets')" Text="$([System.String]::Format('$(ErrorText)', 'packages\CommunityToolkit.Mvvm.8.2.2\build\netstandard2.0\CommunityToolkit.Mvvm.targets'))" />
   </Target>
   <Import Project="packages\Avalonia.BuildServices.0.0.29\build\Avalonia.BuildServices.targets" Condition="Exists('packages\Avalonia.BuildServices.0.0.29\build\Avalonia.BuildServices.targets')" />
   <Import Project="packages\Avalonia.11.0.3\build\Avalonia.targets" Condition="Exists('packages\Avalonia.11.0.3\build\Avalonia.targets')" />
@@ -1985,4 +2032,5 @@
   <Import Project="packages\Microsoft.VisualStudio.SDK.Analyzers.17.7.41\build\Microsoft.VisualStudio.SDK.Analyzers.targets" Condition="Exists('packages\Microsoft.VisualStudio.SDK.Analyzers.17.7.41\build\Microsoft.VisualStudio.SDK.Analyzers.targets')" />
   <Import Project="packages\Microsoft.VisualStudio.Setup.Configuration.Interop.3.10.2154\build\Microsoft.VisualStudio.Setup.Configuration.Interop.targets" Condition="Exists('packages\Microsoft.VisualStudio.Setup.Configuration.Interop.3.10.2154\build\Microsoft.VisualStudio.Setup.Configuration.Interop.targets')" />
   <Import Project="packages\Microsoft.VisualStudio.Threading.Analyzers.17.10.48\build\Microsoft.VisualStudio.Threading.Analyzers.targets" Condition="Exists('packages\Microsoft.VisualStudio.Threading.Analyzers.17.10.48\build\Microsoft.VisualStudio.Threading.Analyzers.targets')" />
+  <Import Project="packages\CommunityToolkit.Mvvm.8.2.2\build\netstandard2.0\CommunityToolkit.Mvvm.targets" Condition="Exists('packages\CommunityToolkit.Mvvm.8.2.2\build\netstandard2.0\CommunityToolkit.Mvvm.targets')" />
 </Project>

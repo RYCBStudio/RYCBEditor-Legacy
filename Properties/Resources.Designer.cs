@@ -903,6 +903,26 @@ namespace IDE.Properties {
         /// <summary>
         ///   查找 System.Drawing.Bitmap 类型的本地化资源。
         /// </summary>
+        public static System.Drawing.Bitmap pylint {
+            get {
+                object obj = ResourceManager.GetObject("pylint", resourceCulture);
+                return ((System.Drawing.Bitmap)(obj));
+            }
+        }
+        
+        /// <summary>
+        ///   查找 System.Drawing.Bitmap 类型的本地化资源。
+        /// </summary>
+        public static System.Drawing.Bitmap pylint_dark {
+            get {
+                object obj = ResourceManager.GetObject("pylint-dark", resourceCulture);
+                return ((System.Drawing.Bitmap)(obj));
+            }
+        }
+        
+        /// <summary>
+        ///   查找 System.Drawing.Bitmap 类型的本地化资源。
+        /// </summary>
         public static System.Drawing.Bitmap Pypi {
             get {
                 object obj = ResourceManager.GetObject("Pypi", resourceCulture);
@@ -1136,6 +1156,16 @@ namespace IDE.Properties {
         public static System.Drawing.Bitmap Update_normal {
             get {
                 object obj = ResourceManager.GetObject("Update-normal", resourceCulture);
+                return ((System.Drawing.Bitmap)(obj));
+            }
+        }
+        
+        /// <summary>
+        ///   查找 System.Drawing.Bitmap 类型的本地化资源。
+        /// </summary>
+        public static System.Drawing.Bitmap UseSingleLine_En {
+            get {
+                object obj = ResourceManager.GetObject("UseSingleLine-En", resourceCulture);
                 return ((System.Drawing.Bitmap)(obj));
             }
         }

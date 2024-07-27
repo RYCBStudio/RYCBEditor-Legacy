@@ -236,7 +236,7 @@ public partial class PythonPackageManagerMain : UIForm
             si = 0;
         }
         pw.uiProcessBar1.Maximum = packageNames.Count;
-        for (int i = 0; i < packageNames.Count; i++)
+        for (var i = 0; i < packageNames.Count; i++)
         {
             uiListBox1.Items.Add(packageNames[i]);
             pw.uiProcessBar1.Value = i+1;

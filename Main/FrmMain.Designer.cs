@@ -124,7 +124,7 @@ namespace IDE
             this.columnHeader1 = ((System.Windows.Forms.ColumnHeader)(new System.Windows.Forms.ColumnHeader()));
             this.columnHeader2 = ((System.Windows.Forms.ColumnHeader)(new System.Windows.Forms.ColumnHeader()));
             this.columnHeader4 = ((System.Windows.Forms.ColumnHeader)(new System.Windows.Forms.ColumnHeader()));
-            this.imageList1 = new System.Windows.Forms.ImageList(this.components);
+            this.ProblemTypes = new System.Windows.Forms.ImageList(this.components);
             this.tabPage2 = new System.Windows.Forms.TabPage();
             this.appContainer1 = new SmileWei.EmbeddedApp.AppContainer(this.components);
             this.panel1 = new System.Windows.Forms.Panel();
@@ -843,7 +843,6 @@ namespace IDE
             // 
             // SyntaxErrorChecker
             // 
-            this.SyntaxErrorChecker.Enabled = true;
             this.SyntaxErrorChecker.Interval = 1000;
             this.SyntaxErrorChecker.Tick += new System.EventHandler(this.CheckSyntaxError);
             // 
@@ -1136,7 +1135,7 @@ namespace IDE
             this.listView1.MultiSelect = false;
             this.listView1.Name = "listView1";
             this.listView1.Size = new System.Drawing.Size(1311, 126);
-            this.listView1.SmallImageList = this.imageList1;
+            this.listView1.SmallImageList = this.ProblemTypes;
             this.listView1.Sorting = System.Windows.Forms.SortOrder.Ascending;
             this.listView1.TabIndex = 0;
             this.listView1.UseCompatibleStateImageBehavior = false;
@@ -1165,13 +1164,13 @@ namespace IDE
             this.columnHeader4.Text = "text.bottom.errors.sub.line";
             this.columnHeader4.Width = 47;
             // 
-            // imageList1
+            // ProblemTypes
             // 
-            this.imageList1.ImageStream = ((System.Windows.Forms.ImageListStreamer)(resources.GetObject("imageList1.ImageStream")));
-            this.imageList1.TransparentColor = System.Drawing.Color.Transparent;
-            this.imageList1.Images.SetKeyName(0, "exception");
-            this.imageList1.Images.SetKeyName(1, "warning");
-            this.imageList1.Images.SetKeyName(2, "EII");
+            this.ProblemTypes.ImageStream = ((System.Windows.Forms.ImageListStreamer)(resources.GetObject("ProblemTypes.ImageStream")));
+            this.ProblemTypes.TransparentColor = System.Drawing.Color.Transparent;
+            this.ProblemTypes.Images.SetKeyName(0, "exception");
+            this.ProblemTypes.Images.SetKeyName(1, "warning");
+            this.ProblemTypes.Images.SetKeyName(2, "EII");
             // 
             // tabPage2
             // 
@@ -1393,7 +1392,7 @@ namespace IDE
             this.UpdateForceStopLabel.VisitedLinkColor = System.Drawing.Color.Maroon;
             this.UpdateForceStopLabel.Click += new System.EventHandler(this.StopDownload);
             // 
-            // Main
+            // FrmMain
             // 
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.None;
             this.BackColor = System.Drawing.Color.Black;
@@ -1410,7 +1409,7 @@ namespace IDE
             this.Icon = ((System.Drawing.Icon)(resources.GetObject("$this.Icon")));
             this.MainMenuStrip = this.menuStrip1;
             this.Margin = new System.Windows.Forms.Padding(3, 4, 3, 4);
-            this.Name = "Main";
+            this.Name = "FrmMain";
             this.Text = "RYCB Editor";
             this.FormClosing += new System.Windows.Forms.FormClosingEventHandler(this.ExitByClosing);
             this.FormClosed += new System.Windows.Forms.FormClosedEventHandler(this.ForceExit);
@@ -1511,7 +1510,7 @@ namespace IDE
         internal ColumnHeader columnHeader2;
         internal ColumnHeader columnHeader4;
         internal ColumnHeader columnHeader5;
-        internal ImageList imageList1;
+        internal ImageList ProblemTypes;
         internal TabPage tabPage2;
         internal Panel panel1;
         internal SmileWei.EmbeddedApp.AppContainer appContainer1;

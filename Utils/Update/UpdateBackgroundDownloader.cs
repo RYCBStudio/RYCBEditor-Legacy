@@ -56,4 +56,5 @@ internal partial class UpdateBackgroundDownloader
         FrmMain.instance.UpdateProgress.Value = (int)e.ReceivedBytesSize;
         FrmMain.instance.DownloadProgress.Text = (Math.Round((double)FrmMain.instance.UpdateProgress.Value / FrmMain.instance.UpdateProgress.Maximum, 4) * 100).ToString();
     }
+
 }

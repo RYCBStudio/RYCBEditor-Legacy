@@ -28,6 +28,7 @@ using IDE.Init;
 using IDE.Utils.Update;
 using System.Drawing;
 using System.Web.UI.WebControls;
+using IDE.Utils.PackageManager;
 #endregion
 
 namespace IDE
@@ -37,7 +38,6 @@ namespace IDE
     {
 
         #region 一堆变量和常量
-        private Utils.PackageManagerMain _pmm = new();
         private Utils.PythonPackageManagerMain _ppmm = new();
         private static readonly string STARTUP_PATH = Program.STARTUP_PATH;
         private static readonly IniFile reConf = Program.reConf;
@@ -71,12 +71,13 @@ namespace IDE
             { Engines.TRADITIONAL_CHINESE_GLOBAL, "https://www.google.com/search?q=Python+{text}+{desc}"},
             { Engines.JAPANESE, "https://www.google.com/search?q=Python+{text}+{desc}"},
         };
-        public const string VERSION = "0.1.0";
-        public const string FRIENDLY_VER = "0.1.0-rc.64";
+        public const string VERSION = "0.2.0";
+        public const string FRIENDLY_VER = "0.2.0-public.64";
         public const int MAJOR_VER = 0;
-        public const int MINOR_VER = 1;
+        public const int MINOR_VER = 2;
         public const int MICRO_VER = 0;
-        public const string REVISION = "rc";
+        public const string REVISION = "public";
+        public const string SNAPSHOT_VER = "24w04p";
         public static readonly LogUtil LOGGER = new(Environment.CurrentDirectory + $"\\logs\\{DateTime.Now.Year}-{DateTime.Now.Month}-{DateTime.Now.Day}.log");
         public string text_tsl2;
         public static FrmMain instance;
@@ -265,7 +266,7 @@ namespace IDE
                 if (tmpEditor.Text.IsNullOrEmpty())
                 {
                     tmpEditor.Text = """
-                        # RYCB Editor Welcome Python Srcipt V 1.0
+                        # RYCB Editor Welcome Python Script V 1.0
 
                         def main() -> None:
                             print("Hello, RYCB Editor!")
@@ -274,6 +275,28 @@ namespace IDE
                         if __name__ == "__main__":
                             main()
                         """;
+                }
+                if (newTab.Text.EndsWith(".py"))
+                {
+                    if (tmpEditor.Text.GetLines().Length > 300)
+                    {
+                        WorkingIcon.Image = Properties.Resources.Warn_64x;
+                        CurrentWorkTip.Text = "RYCB Editor has banned Pylint to improve performance.";
+
+                        WorkingIcon.Visible = true;
+                        CurrentWorkTip.Visible = true;
+                        tabControl1.SelectedTab = newTab;
+                        return;
+                    }
+                    WorkingIcon.Image = Properties.Resources.loading_;
+                    WorkingIcon.Visible = true;
+                    CurrentWorkTip.Text = "Enabling Pylint...";
+                    CurrentWorkTip.Visible = true;
+                    if (this.BeginInvoke(PylintCheck).IsCompleted)
+                    {
+                        WorkingIcon.Visible = false;
+                        CurrentWorkTip.Visible = false;
+                    }
                 }
                 tabControl1.SelectedTab = newTab;
             }
@@ -285,7 +308,7 @@ namespace IDE
                 }
                 var tmp = @openFileDialog1.FileName.Split('\\')[@openFileDialog1.FileName.Split('\\').Length - 1];
                 var _ = tmp.Split('.')[tmp.Split('.').Length - 1];
-                if (tmp.Equals("BOOTMGR", StringComparison.CurrentCultureIgnoreCase))
+                if (tmp.Equals("BOOTMGR", StringComparison.CurrentCultureIgnoreCase)||tmp.EndsWith(".efi"))
                 {
                     toolStripStatusLabel2.Text = "Windows NT " + _I18nFile.ReadString("I18n", "text.inprogram.bootfile", "text.inprogram.bootfile") + "(.efi|BOOTMGR)" + text_tsl2;
                     var agreeText = _I18nFile.ReadString("I18n", "text.inprogram.bootfile.0", "text.inprogram.bootfile.0") + toolStripStatusLabel2.Text + _I18nFile.ReadString("I18n", "text.inprogram.bootfile.1", "text.inprogram.bootfile.1");
@@ -750,12 +773,15 @@ namespace IDE
                     }
                     else if (@tabControl1.SelectedTab.ToolTipText.Contains(".py"))
                     {
-                        var error = RunPythonSrcipt(@tabControl1.SelectedTab.ToolTipText)[1];
-                        if (error != "")
+                        if (GetCurrentTextEditor() != null & GetCurrentTextEditor().Text.Contains("import turtle") & !GetCurrentTextEditor().Text.Contains("#import turtle") & !GetCurrentTextEditor().Text.Contains("# import turtle"))
                         {
-                            errMsgBox = new(error, GetCurrentTextEditor(), this);
-                            errMsgBox.Show();
-                            return;
+                            var error = RunPythonSrcipt(@tabControl1.SelectedTab.ToolTipText)[1];
+                            if (error != "")
+                            {
+                                errMsgBox = new(error, GetCurrentTextEditor(), this);
+                                errMsgBox.Show();
+                                return;
+                            }
                         }
                         var ps = new ProcessStartInfo()
                         {
@@ -764,13 +790,9 @@ namespace IDE
                             WindowStyle = ProcessWindowStyle.Normal,
                             ErrorDialog = true,
                         };
-                        LOGGER.Log("ProcessStartInfo对象已创建。", EnumMsgLevel.DEBUG, EnumPort.CLIENT, EnumModule.MAIN);
-                        LOGGER.Log(string.Format("ProcessStartInfo对象属性：FileName={0}, Arguments={1}", ps.FileName, ps.Arguments), EnumMsgLevel.DEBUG, EnumPort.CLIENT, EnumModule.MAIN);
                         Process p = new() { StartInfo = ps };
-                        LOGGER.Log("Process对象已创建。", EnumMsgLevel.DEBUG, EnumPort.CLIENT, EnumModule.MAIN);
                         p.Start();
                         RunnerProc = p;
-                        LOGGER.Log("Process对象是否已运行：" + (p.StartTime != null), EnumMsgLevel.DEBUG, EnumPort.CLIENT, EnumModule.MAIN);
                         SetForegroundWindow(RunnerProc.Handle);
                     }
                 }
@@ -994,12 +1016,15 @@ namespace IDE
             }
             else
             {
-                try
+                if (tabControl1.SelectedTab.Tag is not null)
                 {
-                    var webView = (tabControl1.SelectedTab.Tag as Dictionary<WebView2, TextEditor>).Keys.ToList()[0];
-                    webView?.Dispose();
+                    try
+                    {
+                        var webView = (tabControl1.SelectedTab.Tag as Dictionary<WebView2, TextEditor>).Keys.ToList()[0];
+                        webView?.Dispose();
+                    }
+                    catch { }
                 }
-                catch { }
                 tabControl1.SelectedIndex = si;
                 tab.Controls[0].Dispose();
                 tab.Controls.Clear();
@@ -1092,7 +1117,7 @@ namespace IDE
         #region 清除日志
         private void ClearLog()
         {
-            File.WriteAllText(LOGGER.logPath, "");
+            try { File.WriteAllText(LOGGER.logPath, ""); } catch { }
             LOGGER.Log("已清除过期的日志文件！", EnumMsgLevel.INFO, EnumPort.CLIENT, EnumModule.INIT);
         }
         #endregion
@@ -1105,21 +1130,23 @@ namespace IDE
         #region 检查语法错误
         private void CheckSyntaxError(object sender, EventArgs e)
         {
+            listView1.DoubleBuffered();
             if (!tabControl1.SelectedTab.Text.EndsWith(".py")) { return; }
             listView1.Items.Clear();
             var editor = GetCurrentTextEditor();
             if (editor is null) { return; }
-            var content = editor.Text; if (content.IsNullOrEmpty()) return;
+            var content = editor.Text; if (content.IsNullOrEmpty())
+            {
+                return;
+            }
+
             var res = PythonSyntaxErrorChecker.SyntaxCheck(content).Split("\r\n");
             if (res.Length == 1 & res[0] == "Find No Error.") { res = []; }
             var _res = PythonErrorAnalyzer.AnalyzePythonFile(content);
             var tmpExs = new List<System.Windows.Forms.ListViewItem>();
             for (; _i < res.Length; _i++)
             {
-                var tmpEx = new System.Windows.Forms.ListViewItem("[ERROR]", imageKey: "EII")
-                {
-                    Text = "   ",
-                };
+                var tmpEx = new System.Windows.Forms.ListViewItem("  ", imageKey: "EII");
                 tmpExs.Add(tmpEx);
             }
             for (var i = 0; i < tmpExs.Count; i++)
@@ -1130,10 +1157,7 @@ namespace IDE
             }
             foreach (var item in _res)
             {
-                var tmpEx = new System.Windows.Forms.ListViewItem("[ERROR]", imageKey: "EII")
-                {
-                    Text = "   ",
-                };
+                var tmpEx = new System.Windows.Forms.ListViewItem("  ", imageKey: "EII");
                 tmpEx.SubItems.Add(new System.Windows.Forms.ListViewItem.ListViewSubItem()
                 {
                     Text = item["Type"]
@@ -1152,6 +1176,24 @@ namespace IDE
                 });
                 tmpExs.Add(tmpEx);
             }
+            if (GetCurrentTextEditor().Text.GetLines().Length > 300)
+            {
+                WorkingIcon.Image = Properties.Resources.Warn_64x;
+                CurrentWorkTip.Text = "RYCB Editor has banned Pylint to improve performance.";
+
+                WorkingIcon.Visible = true;
+                CurrentWorkTip.Visible = true;
+                return;
+            }
+            WorkingIcon.Image = Properties.Resources.loading_;
+            WorkingIcon.Visible = true;
+            CurrentWorkTip.Text = "Enabling Pylint...";
+            CurrentWorkTip.Visible = true;
+            if (this.BeginInvoke(PylintCheck).IsCompleted)
+            {
+                WorkingIcon.Visible = false;
+                CurrentWorkTip.Visible = false;
+            }
             foreach (var item in tmpExs)
             {
                 listView1.Items.Add(item);
@@ -1168,6 +1210,55 @@ namespace IDE
             //{
             //    listView1.Items[lines.IndexOf(item)].SubItems.Add(new ListViewItem.ListViewSubItem() { Text = item.ToString() });
             //}
+        }
+
+        private List<Dictionary<string, string>> _PylintCheck()
+        {
+            var _editor = GetCurrentTextEditor();
+            if (_editor != null)
+            {
+                var content = _editor.Text;
+                if (!content.IsNullOrEmpty())
+                {
+                    var file = Program.STARTUP_PATH + $"\\Cache\\{tabControl1.SelectedTab.Text}.py";
+                    File.WriteAllText(file, content);
+                    var pylintResultAnalyzer = new PylintResultAnalyzer(file);
+                    pylintResultAnalyzer.Init();
+                    var _ = pylintResultAnalyzer.Analyze();
+                    return _;
+                }
+            }
+            return null;
+        }
+        private void PylintCheck()
+        {
+            var _ = _PylintCheck();
+            if (_ != null)
+            {
+                foreach (var item in _)
+                {
+                    if (item.Keys.Count == 0)
+                    {
+                        continue;
+                    }
+
+                    var tmpEx = new System.Windows.Forms.ListViewItem("  ", imageKey: "EII");
+                    tmpEx.SubItems.Add(new System.Windows.Forms.ListViewItem.ListViewSubItem()
+                    {
+                        Text = item["type"]
+                    });
+                    tmpEx.ImageKey = "warning";
+                    tmpEx.SubItems.Add(new System.Windows.Forms.ListViewItem.ListViewSubItem()
+                    {
+                        Text = item["desc"]
+                    });
+                    tmpEx.SubItems.Add(new System.Windows.Forms.ListViewItem.ListViewSubItem()
+                    {
+                        Text = item["line&column"]
+                    });
+                    listView1.Items.Add(tmpEx);
+                }
+            }
         }
         #endregion
         #region 循环判断：窗体是否处于最大化状态
@@ -1261,6 +1352,30 @@ namespace IDE
             // ClearTemporaryCompletion();
 
             toolStripStatusLabel7.Text = tmpCompletionStr;
+
+            // Pylint检查
+            if (e.Text == "\n")
+            {
+                if (GetCurrentTextEditor().Text.GetLines().Length > 300)
+                {
+                    WorkingIcon.Image = Properties.Resources.Warn_64x;
+                    CurrentWorkTip.Text = "RYCB Editor has banned Pylint to improve performance.";
+
+                    WorkingIcon.Visible = true;
+                    CurrentWorkTip.Visible = true;
+                    return;
+                }
+                WorkingIcon.Image = Properties.Resources.loading_;
+                WorkingIcon.Visible = true;
+                CurrentWorkTip.Text = "Enabling Pylint...";
+                CurrentWorkTip.Visible = true;
+                if (this.BeginInvoke(PylintCheck).IsCompleted)
+                {
+                    WorkingIcon.Visible = false;
+                    CurrentWorkTip.Visible = false;
+                }
+                CheckSyntaxError(sender, e);
+            }
         }
 
         private string GetLineInTextEditor(TextEditor _editor, string text)
@@ -1281,21 +1396,21 @@ namespace IDE
             Regex _regex_closedstring = new("\".+\"");
             var _editor = GetCurrentTextEditor();
             tmpCompletionStr += text;
-            LOGGER.Log($"tmpCompletionStr: {tmpCompletionStr}; text: {text}", EnumMsgLevel.DEBUG);
+            //LOGGER.Log($"tmpCompletionStr: {tmpCompletionStr}; text: {text}", EnumMsgLevel.DEBUG);
             if (text[0] == ' ')
             {
-                LOGGER.Log($"[MATCHED TEXT[0]=BLANK tmpCompletionStr: {tmpCompletionStr}; text: {text}", EnumMsgLevel.DEBUG);
+                //LOGGER.Log($"[MATCHED TEXT[0]=BLANK tmpCompletionStr: {tmpCompletionStr}; text: {text}", EnumMsgLevel.DEBUG);
                 tmpCompletionStr = "";
             }
             else if (!text[0].IsLetterOrDigit())
             {
-                LOGGER.Log($"[MATCHED ISNTLETTERORDIGIT] tmpCompletionStr: {tmpCompletionStr}; text: {text}", EnumMsgLevel.DEBUG);
+                //LOGGER.Log($"[MATCHED ISNTLETTERORDIGIT] tmpCompletionStr: {tmpCompletionStr}; text: {text}", EnumMsgLevel.DEBUG);
                 tmpCompletionStr = "";
             }
             else if (_regex_unclosedstring.IsMatch(GetLineInTextEditor(_editor, text)) & !_regex_closedstring.IsMatch(GetLineInTextEditor(_editor, text)))
             {
                 tmpCompletionStr = "";
-                LOGGER.Log($"[MATCHED UNCLOSED STRING] tmpCompletionStr: {tmpCompletionStr}; text: {text}", EnumMsgLevel.DEBUG);
+                //LOGGER.Log($"[MATCHED UNCLOSED STRING] tmpCompletionStr: {tmpCompletionStr}; text: {text}", EnumMsgLevel.DEBUG);
             }
             else
             {
@@ -1661,14 +1776,14 @@ namespace IDE
             var editor = GetCurrentTextEditor();
             if (editor != null)
             {
-                editor.ScrollToLine(Convert.ToInt32(listView1.CheckedItems[0].SubItems[2].Text));
+                //editor.ScrollToLine(Convert.ToInt32(listView1.CheckedItems[0].SubItems[2].Text));
             }
         }
         #endregion
         #region 包管理
         private void OpenPkgMgmt(object sender, EventArgs e)
         {
-            _pmm.Show();
+            new FrmWPFPackageManager().Show();
         }
         private void PythonPkgMgmt(object sender, EventArgs e)
         {
@@ -1892,16 +2007,18 @@ namespace IDE
                 };
                 bBox.uiProcessBar1.Value += 1;
                 table.RowStyles.Add(new RowStyle(SizeType.Percent, 50.00F));
-                table.ColumnStyles.Add(new ColumnStyle(SizeType.Percent, 70F));
                 table.ColumnStyles.Add(new ColumnStyle(SizeType.Percent, 30F));
+                table.ColumnStyles.Add(new ColumnStyle(SizeType.Percent, 70F));
                 ElementHost tmpEHostForRawData = new()
                 {
                     Size = new Size(1052, 399),
-                    Location = elementHost1.Location
+                    Location = elementHost1.Location,
+                    Dock = DockStyle.Fill,
                 }; ElementHost tmpEHostForStringData = new()
                 {
                     Size = new Size(1052, 399),
-                    Location = elementHost1.Location
+                    Location = elementHost1.Location,
+                    Dock = DockStyle.Fill,
                 };
                 table.Controls.Add(tmpEHostForRawData, 0, 0);
                 table.Controls.Add(tmpEHostForStringData, 1, 0);
@@ -1931,6 +2048,7 @@ namespace IDE
                     VerticalScrollBarVisibility = System.Windows.Controls.ScrollBarVisibility.Auto,
                     HorizontalScrollBarVisibility = System.Windows.Controls.ScrollBarVisibility.Auto,
                     Text = "",
+                    WordWrap = true,
                 };
                 bBox.uiProcessBar1.Value += 1;
                 tmpEHostForRawData.Child = tmpEditorForRawData;
@@ -1939,8 +2057,9 @@ namespace IDE
                 tabControl1.TabPages.Add(newTab);
                 bBox.uiProcessBar1.Value += 1;
                 newTab.ToolTipText = openFileDialog1.FileName;
-                tmpEditorForRawData.Text = BinaryFileReader.ReadBinaryFile(fileName).Item1;
-                tmpEditorForStringData.Text = BinaryFileReader.ReadBinaryFile(fileName).Item2;
+                var _ = ((string, string))this.Invoke(BinaryFileReader.ReadBinaryFile, fileName);
+                tmpEditorForRawData.Text = _.Item1;
+                tmpEditorForStringData.Text = _.Item2;
                 bBox.uiProcessBar1.Value += 1;
                 tabControl1.SelectedTab = newTab;
                 bBox.Close();
@@ -2110,6 +2229,27 @@ namespace IDE
                 tabControl1.TabPages.Add(newTab);
                 tmpEditor.Load(openFileDialog1.FileName);
                 tabControl1.SelectedTab = newTab;
+                if (openFileDialog1.FileName.EndsWith(".py"))
+                {
+                    if (tmpEditor.Text.GetLines().Length > 300)
+                    {
+                        WorkingIcon.Image = Properties.Resources.Warn_64x;
+                        CurrentWorkTip.Text = "RYCB Editor has banned Pylint to improve performance.";
+
+                        WorkingIcon.Visible = true;
+                        CurrentWorkTip.Visible = true;
+                        return;
+                    }
+                    WorkingIcon.Image = Properties.Resources.loading_;
+                    WorkingIcon.Visible = true;
+                    CurrentWorkTip.Text = "Enabling Pylint...";
+                    CurrentWorkTip.Visible = true;
+                    if (this.BeginInvoke(PylintCheck).IsCompleted)
+                    {
+                        WorkingIcon.Visible = false;
+                        CurrentWorkTip.Visible = false;
+                    }
+                }
             }
             #endregion
         }
@@ -2194,7 +2334,10 @@ namespace IDE
             try
             {
                 var tmpEHost = tabControl1.SelectedTab.Controls[0] as ElementHost;
-                if (tmpEHost is not null) return tmpEHost.Child as TextEditor;
+                if (tmpEHost is not null)
+                {
+                    return tmpEHost.Child as TextEditor;
+                }
             }
             catch
             {

@@ -104,3 +104,8 @@ Custom.BackGround=
 # This is auto-generated key, shows whether the user first uses IDE or not.
 # Accepted Value: true,false
 IsFirstBoot=False
+
+[Pylint]
+# This sets whether IDE uses Pylint to format Python srcripts.
+# Accepted Value: true, false
+Enable=true
