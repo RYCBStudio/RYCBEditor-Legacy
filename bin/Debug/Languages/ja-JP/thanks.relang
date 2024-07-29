@@ -1,9 +1,0 @@
-[LangSet]
-Name=日本語
-
-[I18n]
-text.thanks.window.title=感謝の意
-text.thanks.p.1.title=Minecraft（マインクラフト）
-text.thanks.p.1.words=多くのアイデアを提供してくれました。各モジュールにとって非常に便利でした。例えば、ローカリゼーション（私がMinecraftの方法を思いつく前は大きな問題でした）やいくつかのイースターエッグ（これらは自分で見つける必要があります、ハハ）などです。
-text.thanks.p.2.title=CSDN.net
-text.thanks.p.2.words=CSDNは素晴らしいウェブサイトです。多くの解決策を提供してくれました。プログラムをより実用的で機能豊富にするための役立つ情報源です。

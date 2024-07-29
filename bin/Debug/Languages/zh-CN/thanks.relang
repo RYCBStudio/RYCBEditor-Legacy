@@ -1,9 +1,0 @@
-[LangSet]
-Name=简体中文（中国）
-
-[I18n]
-text.thanks.window.title=鸣谢
-text.thanks.p.1.title=Minecraft 
-text.thanks.p.1.words=它为我提供了很多想法，对每个小模块都很有用，比如本地化(在我想到 Minecraft 的方式之前，这是一个大问题)和一些复活节彩蛋(这些需要你自己发现，哈哈)
-text.thanks.p.2.title=CSDN.net
-text.thanks.p.2.words=不得不说，CSDN是一个不错的网站。它为我提供了许多解决方案，使程序更加实用，功能更加丰富。
