@@ -1,6 +1,6 @@
 > 注意: RYCB Editor已移植至WPF，且更名为[RYCB Editor X](https://github.com/RYCBStudio/RYCBEditorX)。此存储库将**很快封存(public-archived)**。
 > 
-> Note: RYCB Editor has been ported to WPF and renamed [RYCB Editor X](https://github.com/RYCBStudio/RYCBEditorX). This repository will **soon be public-archived**.
+> Note: RYCB Editor has been ported to WPF and renamed [RYCB Editor X](https://github.com/RYCBStudio/RYCBEditorX). This repository will <b><i>soon be public-archived</b></i>.
 
 # RYCB-Editor
 
